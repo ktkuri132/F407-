@@ -23,7 +23,6 @@
 
 
 #include "stm32f4xx.h"
-
 #include "bsp.h"
 #include <OLED.h>
 #include <usart.h>
