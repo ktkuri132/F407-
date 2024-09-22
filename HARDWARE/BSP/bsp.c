@@ -42,12 +42,9 @@ int BSP_Init()
     printf("->Motor Init  done\n");
     OLED_Init();
     printf("->OLED Init done\n");
+    GPIO_Config(GPIOF, GPIO_Pin_0 | GPIO_Pin_1 | GPIO_Pin_2 | GPIO_Pin_3 | GPIO_Pin_4 | GPIO_Pin_5 | GPIO_Pin_6 | GPIO_Pin_7, GPIO_Mode_OUT, GPIO_PuPd_NOPULL);
+    printf("->GPIOF Init done\n");
     
-
-    TIM8->CCR1 = 1200;
-    TIM8->CCR2 = 1200;
-    TIM8->CCR3 = 1200;
-    TIM8->CCR4 = 1200;
     
 
     delay_ms(20);

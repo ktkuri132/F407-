@@ -24,7 +24,23 @@
 #define SwingOut    CCR2
 #define SwingIn     CCR3
 
+//定义电机x的y方向
+#define MotorState(x,y) Motor_Enable(x,y)
+
+#define TargetRoll  0
+
 extern float pitch,roll,yaw;
+
+//直线状态控制PID参数
+float LSKp=0,
+      LSKi=0,
+      LSKd=0;
+
+//摆动状态控制PID参数
+float SWKp=0,
+      SWKi=0,
+      SWKd=0;
+
 
 /// @brief MPU6050读值触发的外部中断函数      
 void EXTI15_10_IRQHandler(void)
@@ -32,12 +48,11 @@ void EXTI15_10_IRQHandler(void)
     if (EXTI_GetITStatus(EXTI_Line15) != RESET)
     {
         EXTI_ClearITPendingBit(EXTI_Line15);
-
-        mpu_dmp_get_data(&pitch, &roll, &yaw);
-
         
-
+        mpu_dmp_get_data(&pitch, &roll, &yaw);      //读取MPU6050数据
         
+        Task_MoveLine();    //调用控制函数--->第一项
+
     }
 }
 
@@ -45,19 +60,36 @@ void EXTI15_10_IRQHandler(void)
 /*
     PID——1闭环控制直线状态不偏离
     PID——2闭环控制直线摆动不越界
-    
-
 */
 void Task_MoveLine()
 {
-    //规定走水平直线
-    float target_roll = 0;
-    static float target_pitch = 15;
 
-    float LineState_Output,SwingState_Output;
+    static float TargetPitch=15;
+    //摆动状态输出
+    static float SwingState_Output;
+    //直线状态输出
+    static float LineState_Output;
+    //检查当前摆体状态
+    if(pitch<15&&pitch>0)          //处在外侧
+    {
+        SwingState_Output = PidControl_SwingState(TargetPitch, pitch);
+    }
+    else if(pitch<-15&&pitch>0)  //处在内侧
+    {
+        SwingState_Output = PidControl_SwingState(TargetPitch, pitch);
+    }
+    else if(pitch==15)          //达到外侧极限
+    {
+        TargetPitch=-15;
+    }
+    else if(pitch==-15)         //达到内侧极限
+    {
+        TargetPitch=15;
+    }
 
-    LineState_Output= PidControl_LineState(target_roll, roll);
-    SwingState_Output= PidControl_SwingState(target_pitch, pitch);
+    //规定水平直线状态时，偏离角度roll为0
+
+    LineState_Output= PidControl_LineState(TargetRoll, roll);
 
     //假设OUt边全部为正，IN边全部为负
     if(LineState_Output>0)
@@ -120,5 +152,4 @@ void Task_MoveLine()
             Motor->SwingIn = 0;
         }
     }
-    
 }

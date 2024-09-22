@@ -9,19 +9,15 @@
 */
 
 
-#include <stdio.h>
+#include "stdio.h"
 #include <stm32f4xx.h>
 #include <bsp.h>
+#include <sys.h>
 
-//直线状态控制PID参数
-float LSKp=0,
-      LSKi=0,
-      LSKd=0;
 
-//摆动状态控制PID参数
-float SWKp=0,
-      SWKi=0,
-      SWKd=0;
+extern float LSKp, LSKi, LSKd;
+extern float SWKp, SWKi, SWKd;
+
 
 /// @brief PID直线控制函数
 /// @param target 目标值
@@ -168,8 +164,27 @@ void Motor_PWM_TIM8_Init()
     printf("->Motor->TIM1_TIM8 Enable  done\n");
 }
 
+
+//使能驱动1
+#define LIN1 PFout(0)
+#define LIN2 PFout(1)
+#define LIN3 PFout(2)
+#define LIN4 PFout(3)
+//使能驱动2
+#define RIN1 PFout(4)
+#define RIN2 PFout(5)
+#define RIN3 PFout(6)
+#define RIN4 PFout(7)
+
+
 /// @brief 电机使能函数
-void Motor_Enable(uint8_t)
+/// @param x MLevelOut 
+//           MLevelIlOut
+//           MVerticalOut
+//           MVerticalIn
+///
+/// @param y 
+void Motor_Enable(uint8_t x,uint8_t y)
 {
-    GPIO_SetBits(GPIOC, GPIO_Pin_5);
+    
 }
