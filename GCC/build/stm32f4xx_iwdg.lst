@@ -1,0 +1,161 @@
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccrksPQK.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"stm32f4xx_iwdg.c"
+  16              		.text
+  17              		.section	.text.IWDG_WriteAccessCmd,"ax",%progbits
+  18              		.align	1
+  19              		.global	IWDG_WriteAccessCmd
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  24              	IWDG_WriteAccessCmd:
+  25              		@ args = 0, pretend = 0, frame = 0
+  26              		@ frame_needed = 0, uses_anonymous_args = 0
+  27              		@ link register save eliminated.
+  28 0000 014B     		ldr	r3, .L2
+  29 0002 1860     		str	r0, [r3]
+  30 0004 7047     		bx	lr
+  31              	.L3:
+  32 0006 00BF     		.align	2
+  33              	.L2:
+  34 0008 00300040 		.word	1073754112
+  36              		.section	.text.IWDG_SetPrescaler,"ax",%progbits
+  37              		.align	1
+  38              		.global	IWDG_SetPrescaler
+  39              		.syntax unified
+  40              		.thumb
+  41              		.thumb_func
+  43              	IWDG_SetPrescaler:
+  44              		@ args = 0, pretend = 0, frame = 0
+  45              		@ frame_needed = 0, uses_anonymous_args = 0
+  46              		@ link register save eliminated.
+  47 0000 014B     		ldr	r3, .L5
+  48 0002 5860     		str	r0, [r3, #4]
+  49 0004 7047     		bx	lr
+  50              	.L6:
+  51 0006 00BF     		.align	2
+  52              	.L5:
+  53 0008 00300040 		.word	1073754112
+  55              		.section	.text.IWDG_SetReload,"ax",%progbits
+  56              		.align	1
+  57              		.global	IWDG_SetReload
+  58              		.syntax unified
+  59              		.thumb
+  60              		.thumb_func
+  62              	IWDG_SetReload:
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccrksPQK.s 			page 2
+
+
+  63              		@ args = 0, pretend = 0, frame = 0
+  64              		@ frame_needed = 0, uses_anonymous_args = 0
+  65              		@ link register save eliminated.
+  66 0000 014B     		ldr	r3, .L8
+  67 0002 9860     		str	r0, [r3, #8]
+  68 0004 7047     		bx	lr
+  69              	.L9:
+  70 0006 00BF     		.align	2
+  71              	.L8:
+  72 0008 00300040 		.word	1073754112
+  74              		.section	.text.IWDG_ReloadCounter,"ax",%progbits
+  75              		.align	1
+  76              		.global	IWDG_ReloadCounter
+  77              		.syntax unified
+  78              		.thumb
+  79              		.thumb_func
+  81              	IWDG_ReloadCounter:
+  82              		@ args = 0, pretend = 0, frame = 0
+  83              		@ frame_needed = 0, uses_anonymous_args = 0
+  84              		@ link register save eliminated.
+  85 0000 024B     		ldr	r3, .L11
+  86 0002 4AF6AA22 		movw	r2, #43690
+  87 0006 1A60     		str	r2, [r3]
+  88 0008 7047     		bx	lr
+  89              	.L12:
+  90 000a 00BF     		.align	2
+  91              	.L11:
+  92 000c 00300040 		.word	1073754112
+  94              		.section	.text.IWDG_Enable,"ax",%progbits
+  95              		.align	1
+  96              		.global	IWDG_Enable
+  97              		.syntax unified
+  98              		.thumb
+  99              		.thumb_func
+ 101              	IWDG_Enable:
+ 102              		@ args = 0, pretend = 0, frame = 0
+ 103              		@ frame_needed = 0, uses_anonymous_args = 0
+ 104              		@ link register save eliminated.
+ 105 0000 024B     		ldr	r3, .L14
+ 106 0002 4CF6CC42 		movw	r2, #52428
+ 107 0006 1A60     		str	r2, [r3]
+ 108 0008 7047     		bx	lr
+ 109              	.L15:
+ 110 000a 00BF     		.align	2
+ 111              	.L14:
+ 112 000c 00300040 		.word	1073754112
+ 114              		.section	.text.IWDG_GetFlagStatus,"ax",%progbits
+ 115              		.align	1
+ 116              		.global	IWDG_GetFlagStatus
+ 117              		.syntax unified
+ 118              		.thumb
+ 119              		.thumb_func
+ 121              	IWDG_GetFlagStatus:
+ 122              		@ args = 0, pretend = 0, frame = 0
+ 123              		@ frame_needed = 0, uses_anonymous_args = 0
+ 124              		@ link register save eliminated.
+ 125 0000 034B     		ldr	r3, .L19
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccrksPQK.s 			page 3
+
+
+ 126 0002 DB68     		ldr	r3, [r3, #12]
+ 127 0004 1842     		tst	r0, r3
+ 128 0006 01D0     		beq	.L18
+ 129 0008 0120     		movs	r0, #1
+ 130 000a 7047     		bx	lr
+ 131              	.L18:
+ 132 000c 0020     		movs	r0, #0
+ 133 000e 7047     		bx	lr
+ 134              	.L20:
+ 135              		.align	2
+ 136              	.L19:
+ 137 0010 00300040 		.word	1073754112
+ 139              		.ident	"GCC: (Arm GNU Toolchain 13.3.Rel1 (Build arm-13.24)) 13.3.1 20240614"
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccrksPQK.s 			page 4
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 stm32f4xx_iwdg.c
+C:\Users\ktkuru\AppData\Local\Temp\ccrksPQK.s:18     .text.IWDG_WriteAccessCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccrksPQK.s:24     .text.IWDG_WriteAccessCmd:00000000 IWDG_WriteAccessCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccrksPQK.s:34     .text.IWDG_WriteAccessCmd:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccrksPQK.s:37     .text.IWDG_SetPrescaler:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccrksPQK.s:43     .text.IWDG_SetPrescaler:00000000 IWDG_SetPrescaler
+C:\Users\ktkuru\AppData\Local\Temp\ccrksPQK.s:53     .text.IWDG_SetPrescaler:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccrksPQK.s:56     .text.IWDG_SetReload:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccrksPQK.s:62     .text.IWDG_SetReload:00000000 IWDG_SetReload
+C:\Users\ktkuru\AppData\Local\Temp\ccrksPQK.s:72     .text.IWDG_SetReload:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccrksPQK.s:75     .text.IWDG_ReloadCounter:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccrksPQK.s:81     .text.IWDG_ReloadCounter:00000000 IWDG_ReloadCounter
+C:\Users\ktkuru\AppData\Local\Temp\ccrksPQK.s:92     .text.IWDG_ReloadCounter:0000000c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccrksPQK.s:95     .text.IWDG_Enable:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccrksPQK.s:101    .text.IWDG_Enable:00000000 IWDG_Enable
+C:\Users\ktkuru\AppData\Local\Temp\ccrksPQK.s:112    .text.IWDG_Enable:0000000c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccrksPQK.s:115    .text.IWDG_GetFlagStatus:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccrksPQK.s:121    .text.IWDG_GetFlagStatus:00000000 IWDG_GetFlagStatus
+C:\Users\ktkuru\AppData\Local\Temp\ccrksPQK.s:137    .text.IWDG_GetFlagStatus:00000010 $d
+
+NO UNDEFINED SYMBOLS

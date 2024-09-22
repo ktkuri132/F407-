@@ -1,0 +1,83 @@
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccOSqdVU.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"Control_Task.c"
+  16              		.text
+  17              		.section	.text.EXTI15_10_IRQHandler,"ax",%progbits
+  18              		.align	1
+  19              		.global	EXTI15_10_IRQHandler
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  24              	EXTI15_10_IRQHandler:
+  25              		@ args = 0, pretend = 0, frame = 0
+  26              		@ frame_needed = 0, uses_anonymous_args = 0
+  27 0000 08B5     		push	{r3, lr}
+  28 0002 4FF40040 		mov	r0, #32768
+  29 0006 FFF7FEFF 		bl	EXTI_GetITStatus
+  30 000a 00B9     		cbnz	r0, .L4
+  31              	.L1:
+  32 000c 08BD     		pop	{r3, pc}
+  33              	.L4:
+  34 000e 4FF40040 		mov	r0, #32768
+  35 0012 FFF7FEFF 		bl	EXTI_ClearITPendingBit
+  36 0016 034A     		ldr	r2, .L5
+  37 0018 0349     		ldr	r1, .L5+4
+  38 001a 0448     		ldr	r0, .L5+8
+  39 001c FFF7FEFF 		bl	mpu_dmp_get_data
+  40 0020 F4E7     		b	.L1
+  41              	.L6:
+  42 0022 00BF     		.align	2
+  43              	.L5:
+  44 0024 00000000 		.word	yaw
+  45 0028 00000000 		.word	roll
+  46 002c 00000000 		.word	pitch
+  48              		.section	.text.Task_MoveLine,"ax",%progbits
+  49              		.align	1
+  50              		.global	Task_MoveLine
+  51              		.syntax unified
+  52              		.thumb
+  53              		.thumb_func
+  55              	Task_MoveLine:
+  56              		@ Volatile: function does not return.
+  57              		@ args = 0, pretend = 0, frame = 0
+  58              		@ frame_needed = 0, uses_anonymous_args = 0
+  59              		@ link register save eliminated.
+  60              	.L8:
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccOSqdVU.s 			page 2
+
+
+  61 0000 FEE7     		b	.L8
+  63              		.ident	"GCC: (Arm GNU Toolchain 13.3.Rel1 (Build arm-13.24)) 13.3.1 20240614"
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccOSqdVU.s 			page 3
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 Control_Task.c
+C:\Users\ktkuru\AppData\Local\Temp\ccOSqdVU.s:18     .text.EXTI15_10_IRQHandler:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccOSqdVU.s:24     .text.EXTI15_10_IRQHandler:00000000 EXTI15_10_IRQHandler
+C:\Users\ktkuru\AppData\Local\Temp\ccOSqdVU.s:44     .text.EXTI15_10_IRQHandler:00000024 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccOSqdVU.s:49     .text.Task_MoveLine:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccOSqdVU.s:55     .text.Task_MoveLine:00000000 Task_MoveLine
+
+UNDEFINED SYMBOLS
+EXTI_GetITStatus
+EXTI_ClearITPendingBit
+mpu_dmp_get_data
+yaw
+roll
+pitch

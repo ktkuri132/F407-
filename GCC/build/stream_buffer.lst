@@ -1,0 +1,1501 @@
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cce5rF4G.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"stream_buffer.c"
+  16              		.text
+  17              		.section	.text.prvBytesInBuffer,"ax",%progbits
+  18              		.align	1
+  19              		.syntax unified
+  20              		.thumb
+  21              		.thumb_func
+  23              	prvBytesInBuffer:
+  24              		@ args = 0, pretend = 0, frame = 0
+  25              		@ frame_needed = 0, uses_anonymous_args = 0
+  26              		@ link register save eliminated.
+  27 0000 8268     		ldr	r2, [r0, #8]
+  28 0002 4368     		ldr	r3, [r0, #4]
+  29 0004 1344     		add	r3, r3, r2
+  30 0006 0068     		ldr	r0, [r0]
+  31 0008 181A     		subs	r0, r3, r0
+  32 000a 8242     		cmp	r2, r0
+  33 000c 00D8     		bhi	.L1
+  34 000e 801A     		subs	r0, r0, r2
+  35              	.L1:
+  36 0010 7047     		bx	lr
+  38              		.section	.rodata.prvInitialiseNewStreamBuffer.str1.4,"aMS",%progbits,1
+  39              		.align	2
+  40              	.LC0:
+  41 0000 52544F53 		.ascii	"RTOS/stream_buffer.c\000"
+  41      2F737472 
+  41      65616D5F 
+  41      62756666 
+  41      65722E63 
+  42 0015 000000   		.align	2
+  43              	.LC1:
+  44 0018 4572726F 		.ascii	"Error:%s,%d\015\012\000"
+  44      723A2573 
+  44      2C25640D 
+  44      0A00
+  45              		.section	.text.prvInitialiseNewStreamBuffer,"ax",%progbits
+  46              		.align	1
+  47              		.syntax unified
+  48              		.thumb
+  49              		.thumb_func
+  51              	prvInitialiseNewStreamBuffer:
+  52              		@ args = 12, pretend = 0, frame = 0
+  53              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cce5rF4G.s 			page 2
+
+
+  54 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+  55 0002 0446     		mov	r4, r0
+  56 0004 0D46     		mov	r5, r1
+  57 0006 1746     		mov	r7, r2
+  58 0008 1E46     		mov	r6, r3
+  59 000a 5521     		movs	r1, #85
+  60 000c 2846     		mov	r0, r5
+  61 000e FFF7FEFF 		bl	memset
+  62 0012 8542     		cmp	r5, r0
+  63 0014 05D0     		beq	.L4
+  64 0016 4FF4AC62 		mov	r2, #1376
+  65 001a 0849     		ldr	r1, .L6
+  66 001c 0848     		ldr	r0, .L6+4
+  67 001e FFF7FEFF 		bl	printf
+  68              	.L4:
+  69 0022 2422     		movs	r2, #36
+  70 0024 0021     		movs	r1, #0
+  71 0026 2046     		mov	r0, r4
+  72 0028 FFF7FEFF 		bl	memset
+  73 002c A561     		str	r5, [r4, #24]
+  74 002e A760     		str	r7, [r4, #8]
+  75 0030 E660     		str	r6, [r4, #12]
+  76 0032 9DF81830 		ldrb	r3, [sp, #24]	@ zero_extendqisi2
+  77 0036 2377     		strb	r3, [r4, #28]
+  78 0038 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+  79              	.L7:
+  80 003a 00BF     		.align	2
+  81              	.L6:
+  82 003c 00000000 		.word	.LC0
+  83 0040 18000000 		.word	.LC1
+  85              		.section	.text.prvWriteBytesToBuffer,"ax",%progbits
+  86              		.align	1
+  87              		.syntax unified
+  88              		.thumb
+  89              		.thumb_func
+  91              	prvWriteBytesToBuffer:
+  92              		@ args = 0, pretend = 0, frame = 0
+  93              		@ frame_needed = 0, uses_anonymous_args = 0
+  94 0000 2DE9F843 		push	{r3, r4, r5, r6, r7, r8, r9, lr}
+  95 0004 0546     		mov	r5, r0
+  96 0006 8846     		mov	r8, r1
+  97 0008 1E46     		mov	r6, r3
+  98 000a 1446     		mov	r4, r2
+  99 000c 0AB3     		cbz	r2, .L15
+ 100              	.L9:
+ 101 000e AB68     		ldr	r3, [r5, #8]
+ 102 0010 9F1B     		subs	r7, r3, r6
+ 103 0012 A742     		cmp	r7, r4
+ 104 0014 28BF     		it	cs
+ 105 0016 2746     		movcs	r7, r4
+ 106 0018 F219     		adds	r2, r6, r7
+ 107 001a 9342     		cmp	r3, r2
+ 108 001c 20D3     		bcc	.L16
+ 109              	.L10:
+ 110 001e A869     		ldr	r0, [r5, #24]
+ 111 0020 3A46     		mov	r2, r7
+ 112 0022 4146     		mov	r1, r8
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cce5rF4G.s 			page 3
+
+
+ 113 0024 3044     		add	r0, r0, r6
+ 114 0026 FFF7FEFF 		bl	memcpy
+ 115 002a BC42     		cmp	r4, r7
+ 116 002c 0AD9     		bls	.L11
+ 117 002e A4EB0709 		sub	r9, r4, r7
+ 118 0032 AB68     		ldr	r3, [r5, #8]
+ 119 0034 9945     		cmp	r9, r3
+ 120 0036 1AD8     		bhi	.L17
+ 121              	.L12:
+ 122 0038 4A46     		mov	r2, r9
+ 123 003a 08EB0701 		add	r1, r8, r7
+ 124 003e A869     		ldr	r0, [r5, #24]
+ 125 0040 FFF7FEFF 		bl	memcpy
+ 126              	.L11:
+ 127 0044 A019     		adds	r0, r4, r6
+ 128 0046 AB68     		ldr	r3, [r5, #8]
+ 129 0048 8342     		cmp	r3, r0
+ 130 004a 00D8     		bhi	.L8
+ 131 004c C01A     		subs	r0, r0, r3
+ 132              	.L8:
+ 133 004e BDE8F883 		pop	{r3, r4, r5, r6, r7, r8, r9, pc}
+ 134              	.L15:
+ 135 0052 40F2E742 		movw	r2, #1255
+ 136 0056 0949     		ldr	r1, .L18
+ 137 0058 0948     		ldr	r0, .L18+4
+ 138 005a FFF7FEFF 		bl	printf
+ 139 005e D6E7     		b	.L9
+ 140              	.L16:
+ 141 0060 40F2EF42 		movw	r2, #1263
+ 142 0064 0549     		ldr	r1, .L18
+ 143 0066 0648     		ldr	r0, .L18+4
+ 144 0068 FFF7FEFF 		bl	printf
+ 145 006c D7E7     		b	.L10
+ 146              	.L17:
+ 147 006e 40F2F742 		movw	r2, #1271
+ 148 0072 0249     		ldr	r1, .L18
+ 149 0074 0248     		ldr	r0, .L18+4
+ 150 0076 FFF7FEFF 		bl	printf
+ 151 007a DDE7     		b	.L12
+ 152              	.L19:
+ 153              		.align	2
+ 154              	.L18:
+ 155 007c 00000000 		.word	.LC0
+ 156 0080 18000000 		.word	.LC1
+ 158              		.section	.text.prvWriteMessageToBuffer,"ax",%progbits
+ 159              		.align	1
+ 160              		.syntax unified
+ 161              		.thumb
+ 162              		.thumb_func
+ 164              	prvWriteMessageToBuffer:
+ 165              		@ args = 4, pretend = 0, frame = 8
+ 166              		@ frame_needed = 0, uses_anonymous_args = 0
+ 167 0000 F0B5     		push	{r4, r5, r6, r7, lr}
+ 168 0002 83B0     		sub	sp, sp, #12
+ 169 0004 0546     		mov	r5, r0
+ 170 0006 0F46     		mov	r7, r1
+ 171 0008 1646     		mov	r6, r2
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cce5rF4G.s 			page 4
+
+
+ 172 000a 1C46     		mov	r4, r3
+ 173 000c 4368     		ldr	r3, [r0, #4]
+ 174 000e 027F     		ldrb	r2, [r0, #28]	@ zero_extendqisi2
+ 175 0010 12F0010F 		tst	r2, #1
+ 176 0014 0DD0     		beq	.L21
+ 177 0016 0196     		str	r6, [sp, #4]
+ 178 0018 089A     		ldr	r2, [sp, #32]
+ 179 001a 9442     		cmp	r4, r2
+ 180 001c 01D2     		bcs	.L26
+ 181 001e 0024     		movs	r4, #0
+ 182 0020 0BE0     		b	.L20
+ 183              	.L26:
+ 184 0022 0422     		movs	r2, #4
+ 185 0024 0DEB0201 		add	r1, sp, r2
+ 186 0028 FFF7FEFF 		bl	prvWriteBytesToBuffer
+ 187 002c 0346     		mov	r3, r0
+ 188 002e 3446     		mov	r4, r6
+ 189 0030 02E0     		b	.L23
+ 190              	.L21:
+ 191 0032 B442     		cmp	r4, r6
+ 192 0034 28BF     		it	cs
+ 193 0036 3446     		movcs	r4, r6
+ 194              	.L23:
+ 195 0038 14B9     		cbnz	r4, .L27
+ 196              	.L20:
+ 197 003a 2046     		mov	r0, r4
+ 198 003c 03B0     		add	sp, sp, #12
+ 199              		@ sp needed
+ 200 003e F0BD     		pop	{r4, r5, r6, r7, pc}
+ 201              	.L27:
+ 202 0040 2246     		mov	r2, r4
+ 203 0042 3946     		mov	r1, r7
+ 204 0044 2846     		mov	r0, r5
+ 205 0046 FFF7FEFF 		bl	prvWriteBytesToBuffer
+ 206 004a 6860     		str	r0, [r5, #4]
+ 207 004c F5E7     		b	.L20
+ 209              		.section	.text.prvReadBytesFromBuffer,"ax",%progbits
+ 210              		.align	1
+ 211              		.syntax unified
+ 212              		.thumb
+ 213              		.thumb_func
+ 215              	prvReadBytesFromBuffer:
+ 216              		@ args = 0, pretend = 0, frame = 0
+ 217              		@ frame_needed = 0, uses_anonymous_args = 0
+ 218 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+ 219 0004 0746     		mov	r7, r0
+ 220 0006 8846     		mov	r8, r1
+ 221 0008 1D46     		mov	r5, r3
+ 222 000a 1446     		mov	r4, r2
+ 223 000c B2B1     		cbz	r2, .L34
+ 224              	.L29:
+ 225 000e BB68     		ldr	r3, [r7, #8]
+ 226 0010 5E1B     		subs	r6, r3, r5
+ 227 0012 A642     		cmp	r6, r4
+ 228 0014 28BF     		it	cs
+ 229 0016 2646     		movcs	r6, r4
+ 230 0018 AA19     		adds	r2, r5, r6
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cce5rF4G.s 			page 5
+
+
+ 231 001a 9342     		cmp	r3, r2
+ 232 001c 15D3     		bcc	.L35
+ 233              	.L30:
+ 234 001e B969     		ldr	r1, [r7, #24]
+ 235 0020 3246     		mov	r2, r6
+ 236 0022 2944     		add	r1, r1, r5
+ 237 0024 4046     		mov	r0, r8
+ 238 0026 FFF7FEFF 		bl	memcpy
+ 239 002a B442     		cmp	r4, r6
+ 240 002c 14D8     		bhi	.L36
+ 241              	.L31:
+ 242 002e 6019     		adds	r0, r4, r5
+ 243 0030 BB68     		ldr	r3, [r7, #8]
+ 244 0032 8342     		cmp	r3, r0
+ 245 0034 00D8     		bhi	.L28
+ 246 0036 C01A     		subs	r0, r0, r3
+ 247              	.L28:
+ 248 0038 BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 249              	.L34:
+ 250 003c 40F21552 		movw	r2, #1301
+ 251 0040 0949     		ldr	r1, .L37
+ 252 0042 0A48     		ldr	r0, .L37+4
+ 253 0044 FFF7FEFF 		bl	printf
+ 254 0048 E1E7     		b	.L29
+ 255              	.L35:
+ 256 004a 40F21F52 		movw	r2, #1311
+ 257 004e 0649     		ldr	r1, .L37
+ 258 0050 0648     		ldr	r0, .L37+4
+ 259 0052 FFF7FEFF 		bl	printf
+ 260 0056 E2E7     		b	.L30
+ 261              	.L36:
+ 262 0058 A21B     		subs	r2, r4, r6
+ 263 005a B969     		ldr	r1, [r7, #24]
+ 264 005c 08EB0600 		add	r0, r8, r6
+ 265 0060 FFF7FEFF 		bl	memcpy
+ 266 0064 E3E7     		b	.L31
+ 267              	.L38:
+ 268 0066 00BF     		.align	2
+ 269              	.L37:
+ 270 0068 00000000 		.word	.LC0
+ 271 006c 18000000 		.word	.LC1
+ 273              		.section	.text.prvReadMessageFromBuffer,"ax",%progbits
+ 274              		.align	1
+ 275              		.syntax unified
+ 276              		.thumb
+ 277              		.thumb_func
+ 279              	prvReadMessageFromBuffer:
+ 280              		@ args = 0, pretend = 0, frame = 8
+ 281              		@ frame_needed = 0, uses_anonymous_args = 0
+ 282 0000 F0B5     		push	{r4, r5, r6, r7, lr}
+ 283 0002 83B0     		sub	sp, sp, #12
+ 284 0004 0546     		mov	r5, r0
+ 285 0006 0F46     		mov	r7, r1
+ 286 0008 1646     		mov	r6, r2
+ 287 000a 1C46     		mov	r4, r3
+ 288 000c 0368     		ldr	r3, [r0]
+ 289 000e 027F     		ldrb	r2, [r0, #28]	@ zero_extendqisi2
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cce5rF4G.s 			page 6
+
+
+ 290 0010 12F0010F 		tst	r2, #1
+ 291 0014 06D1     		bne	.L44
+ 292              	.L40:
+ 293 0016 B442     		cmp	r4, r6
+ 294 0018 28BF     		it	cs
+ 295 001a 3446     		movcs	r4, r6
+ 296 001c 84B9     		cbnz	r4, .L45
+ 297              	.L39:
+ 298 001e 2046     		mov	r0, r4
+ 299 0020 03B0     		add	sp, sp, #12
+ 300              		@ sp needed
+ 301 0022 F0BD     		pop	{r4, r5, r6, r7, pc}
+ 302              	.L44:
+ 303 0024 0422     		movs	r2, #4
+ 304 0026 0DEB0201 		add	r1, sp, r2
+ 305 002a FFF7FEFF 		bl	prvReadBytesFromBuffer
+ 306 002e 0346     		mov	r3, r0
+ 307 0030 019A     		ldr	r2, [sp, #4]
+ 308 0032 043C     		subs	r4, r4, #4
+ 309 0034 9642     		cmp	r6, r2
+ 310 0036 01D3     		bcc	.L42
+ 311 0038 1646     		mov	r6, r2
+ 312 003a ECE7     		b	.L40
+ 313              	.L42:
+ 314 003c 0026     		movs	r6, #0
+ 315 003e EAE7     		b	.L40
+ 316              	.L45:
+ 317 0040 2246     		mov	r2, r4
+ 318 0042 3946     		mov	r1, r7
+ 319 0044 2846     		mov	r0, r5
+ 320 0046 FFF7FEFF 		bl	prvReadBytesFromBuffer
+ 321 004a 2860     		str	r0, [r5]
+ 322 004c E7E7     		b	.L39
+ 324              		.section	.text.xStreamBufferGenericCreate,"ax",%progbits
+ 325              		.align	1
+ 326              		.global	xStreamBufferGenericCreate
+ 327              		.syntax unified
+ 328              		.thumb
+ 329              		.thumb_func
+ 331              	xStreamBufferGenericCreate:
+ 332              		@ args = 4, pretend = 0, frame = 0
+ 333              		@ frame_needed = 0, uses_anonymous_args = 0
+ 334 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+ 335 0004 84B0     		sub	sp, sp, #16
+ 336 0006 0446     		mov	r4, r0
+ 337 0008 0D46     		mov	r5, r1
+ 338 000a 1E46     		mov	r6, r3
+ 339 000c 012A     		cmp	r2, #1
+ 340 000e 1BD0     		beq	.L57
+ 341 0010 30B3     		cbz	r0, .L58
+ 342 0012 0027     		movs	r7, #0
+ 343              	.L48:
+ 344 0014 AC42     		cmp	r4, r5
+ 345 0016 2BD3     		bcc	.L59
+ 346              	.L49:
+ 347 0018 05B9     		cbnz	r5, .L50
+ 348 001a 0125     		movs	r5, #1
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cce5rF4G.s 			page 7
+
+
+ 349              	.L50:
+ 350 001c 14F1260F 		cmn	r4, #38
+ 351 0020 2DD8     		bhi	.L55
+ 352 0022 04F10108 		add	r8, r4, #1
+ 353 0026 04F12500 		add	r0, r4, #37
+ 354 002a FFF7FEFF 		bl	pvPortMalloc
+ 355 002e 0446     		mov	r4, r0
+ 356 0030 30B3     		cbz	r0, .L46
+ 357 0032 0A9B     		ldr	r3, [sp, #40]
+ 358 0034 0293     		str	r3, [sp, #8]
+ 359 0036 0196     		str	r6, [sp, #4]
+ 360 0038 0097     		str	r7, [sp]
+ 361 003a 2B46     		mov	r3, r5
+ 362 003c 4246     		mov	r2, r8
+ 363 003e 00F12401 		add	r1, r0, #36
+ 364 0042 FFF7FEFF 		bl	prvInitialiseNewStreamBuffer
+ 365 0046 1BE0     		b	.L46
+ 366              	.L57:
+ 367 0048 0428     		cmp	r0, #4
+ 368 004a 01D9     		bls	.L60
+ 369 004c 0127     		movs	r7, #1
+ 370 004e E1E7     		b	.L48
+ 371              	.L60:
+ 372 0050 4FF4A972 		mov	r2, #338
+ 373 0054 0C49     		ldr	r1, .L61
+ 374 0056 0D48     		ldr	r0, .L61+4
+ 375 0058 FFF7FEFF 		bl	printf
+ 376 005c 0127     		movs	r7, #1
+ 377 005e D9E7     		b	.L48
+ 378              	.L58:
+ 379 0060 4FF4AC72 		mov	r2, #344
+ 380 0064 0849     		ldr	r1, .L61
+ 381 0066 0948     		ldr	r0, .L61+4
+ 382 0068 FFF7FEFF 		bl	printf
+ 383 006c 0027     		movs	r7, #0
+ 384 006e D1E7     		b	.L48
+ 385              	.L59:
+ 386 0070 40F25B12 		movw	r2, #347
+ 387 0074 0449     		ldr	r1, .L61
+ 388 0076 0548     		ldr	r0, .L61+4
+ 389 0078 FFF7FEFF 		bl	printf
+ 390 007c CCE7     		b	.L49
+ 391              	.L55:
+ 392 007e 0024     		movs	r4, #0
+ 393              	.L46:
+ 394 0080 2046     		mov	r0, r4
+ 395 0082 04B0     		add	sp, sp, #16
+ 396              		@ sp needed
+ 397 0084 BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 398              	.L62:
+ 399              		.align	2
+ 400              	.L61:
+ 401 0088 00000000 		.word	.LC0
+ 402 008c 18000000 		.word	.LC1
+ 404              		.section	.text.vStreamBufferDelete,"ax",%progbits
+ 405              		.align	1
+ 406              		.global	vStreamBufferDelete
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cce5rF4G.s 			page 8
+
+
+ 407              		.syntax unified
+ 408              		.thumb
+ 409              		.thumb_func
+ 411              	vStreamBufferDelete:
+ 412              		@ args = 0, pretend = 0, frame = 0
+ 413              		@ frame_needed = 0, uses_anonymous_args = 0
+ 414 0000 10B5     		push	{r4, lr}
+ 415 0002 0446     		mov	r4, r0
+ 416 0004 38B1     		cbz	r0, .L68
+ 417              	.L64:
+ 418 0006 237F     		ldrb	r3, [r4, #28]	@ zero_extendqisi2
+ 419 0008 13F0020F 		tst	r3, #2
+ 420 000c 0AD1     		bne	.L65
+ 421 000e 2046     		mov	r0, r4
+ 422 0010 FFF7FEFF 		bl	vPortFree
+ 423              	.L63:
+ 424 0014 10BD     		pop	{r4, pc}
+ 425              	.L68:
+ 426 0016 40F2E112 		movw	r2, #481
+ 427 001a 0549     		ldr	r1, .L69
+ 428 001c 0548     		ldr	r0, .L69+4
+ 429 001e FFF7FEFF 		bl	printf
+ 430 0022 F0E7     		b	.L64
+ 431              	.L65:
+ 432 0024 2422     		movs	r2, #36
+ 433 0026 0021     		movs	r1, #0
+ 434 0028 2046     		mov	r0, r4
+ 435 002a FFF7FEFF 		bl	memset
+ 436 002e F1E7     		b	.L63
+ 437              	.L70:
+ 438              		.align	2
+ 439              	.L69:
+ 440 0030 00000000 		.word	.LC0
+ 441 0034 18000000 		.word	.LC1
+ 443              		.section	.text.xStreamBufferReset,"ax",%progbits
+ 444              		.align	1
+ 445              		.global	xStreamBufferReset
+ 446              		.syntax unified
+ 447              		.thumb
+ 448              		.thumb_func
+ 450              	xStreamBufferReset:
+ 451              		@ args = 0, pretend = 0, frame = 0
+ 452              		@ frame_needed = 0, uses_anonymous_args = 0
+ 453 0000 30B5     		push	{r4, r5, lr}
+ 454 0002 85B0     		sub	sp, sp, #20
+ 455 0004 0446     		mov	r4, r0
+ 456 0006 50B1     		cbz	r0, .L77
+ 457              	.L72:
+ 458 0008 256A     		ldr	r5, [r4, #32]
+ 459 000a FFF7FEFF 		bl	vPortEnterCritical
+ 460 000e 2369     		ldr	r3, [r4, #16]
+ 461 0010 63B1     		cbz	r3, .L78
+ 462 0012 0024     		movs	r4, #0
+ 463              	.L73:
+ 464 0014 FFF7FEFF 		bl	vPortExitCritical
+ 465 0018 2046     		mov	r0, r4
+ 466 001a 05B0     		add	sp, sp, #20
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cce5rF4G.s 			page 9
+
+
+ 467              		@ sp needed
+ 468 001c 30BD     		pop	{r4, r5, pc}
+ 469              	.L77:
+ 470 001e 4FF40272 		mov	r2, #520
+ 471 0022 0B49     		ldr	r1, .L80
+ 472 0024 0B48     		ldr	r0, .L80+4
+ 473 0026 FFF7FEFF 		bl	printf
+ 474 002a EDE7     		b	.L72
+ 475              	.L78:
+ 476 002c 6369     		ldr	r3, [r4, #20]
+ 477 002e 0BB1     		cbz	r3, .L79
+ 478 0030 0024     		movs	r4, #0
+ 479 0032 EFE7     		b	.L73
+ 480              	.L79:
+ 481 0034 0293     		str	r3, [sp, #8]
+ 482 0036 0193     		str	r3, [sp, #4]
+ 483 0038 237F     		ldrb	r3, [r4, #28]	@ zero_extendqisi2
+ 484 003a 0093     		str	r3, [sp]
+ 485 003c E368     		ldr	r3, [r4, #12]
+ 486 003e A268     		ldr	r2, [r4, #8]
+ 487 0040 A169     		ldr	r1, [r4, #24]
+ 488 0042 2046     		mov	r0, r4
+ 489 0044 FFF7FEFF 		bl	prvInitialiseNewStreamBuffer
+ 490 0048 2562     		str	r5, [r4, #32]
+ 491 004a 0124     		movs	r4, #1
+ 492 004c E2E7     		b	.L73
+ 493              	.L81:
+ 494 004e 00BF     		.align	2
+ 495              	.L80:
+ 496 0050 00000000 		.word	.LC0
+ 497 0054 18000000 		.word	.LC1
+ 499              		.section	.text.xStreamBufferSetTriggerLevel,"ax",%progbits
+ 500              		.align	1
+ 501              		.global	xStreamBufferSetTriggerLevel
+ 502              		.syntax unified
+ 503              		.thumb
+ 504              		.thumb_func
+ 506              	xStreamBufferSetTriggerLevel:
+ 507              		@ args = 0, pretend = 0, frame = 0
+ 508              		@ frame_needed = 0, uses_anonymous_args = 0
+ 509 0000 38B5     		push	{r3, r4, r5, lr}
+ 510 0002 0C46     		mov	r4, r1
+ 511 0004 0546     		mov	r5, r0
+ 512 0006 38B1     		cbz	r0, .L89
+ 513              	.L83:
+ 514 0008 04B9     		cbnz	r4, .L84
+ 515 000a 0124     		movs	r4, #1
+ 516              	.L84:
+ 517 000c AB68     		ldr	r3, [r5, #8]
+ 518 000e A342     		cmp	r3, r4
+ 519 0010 09D9     		bls	.L87
+ 520 0012 EC60     		str	r4, [r5, #12]
+ 521 0014 0120     		movs	r0, #1
+ 522              	.L82:
+ 523 0016 38BD     		pop	{r3, r4, r5, pc}
+ 524              	.L89:
+ 525 0018 40F23D22 		movw	r2, #573
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cce5rF4G.s 			page 10
+
+
+ 526 001c 0349     		ldr	r1, .L90
+ 527 001e 0448     		ldr	r0, .L90+4
+ 528 0020 FFF7FEFF 		bl	printf
+ 529 0024 F0E7     		b	.L83
+ 530              	.L87:
+ 531 0026 0020     		movs	r0, #0
+ 532 0028 F5E7     		b	.L82
+ 533              	.L91:
+ 534 002a 00BF     		.align	2
+ 535              	.L90:
+ 536 002c 00000000 		.word	.LC0
+ 537 0030 18000000 		.word	.LC1
+ 539              		.section	.text.xStreamBufferSpacesAvailable,"ax",%progbits
+ 540              		.align	1
+ 541              		.global	xStreamBufferSpacesAvailable
+ 542              		.syntax unified
+ 543              		.thumb
+ 544              		.thumb_func
+ 546              	xStreamBufferSpacesAvailable:
+ 547              		@ args = 0, pretend = 0, frame = 0
+ 548              		@ frame_needed = 0, uses_anonymous_args = 0
+ 549 0000 10B5     		push	{r4, lr}
+ 550 0002 0446     		mov	r4, r0
+ 551 0004 68B1     		cbz	r0, .L97
+ 552              	.L94:
+ 553 0006 2268     		ldr	r2, [r4]
+ 554 0008 A368     		ldr	r3, [r4, #8]
+ 555 000a 2068     		ldr	r0, [r4]
+ 556 000c 1844     		add	r0, r0, r3
+ 557 000e 6168     		ldr	r1, [r4, #4]
+ 558 0010 401A     		subs	r0, r0, r1
+ 559 0012 2168     		ldr	r1, [r4]
+ 560 0014 9142     		cmp	r1, r2
+ 561 0016 F6D1     		bne	.L94
+ 562 0018 0138     		subs	r0, r0, #1
+ 563 001a 8342     		cmp	r3, r0
+ 564 001c 00D8     		bhi	.L92
+ 565 001e C01A     		subs	r0, r0, r3
+ 566              	.L92:
+ 567 0020 10BD     		pop	{r4, pc}
+ 568              	.L97:
+ 569 0022 40F25B22 		movw	r2, #603
+ 570 0026 0249     		ldr	r1, .L98
+ 571 0028 0248     		ldr	r0, .L98+4
+ 572 002a FFF7FEFF 		bl	printf
+ 573 002e EAE7     		b	.L94
+ 574              	.L99:
+ 575              		.align	2
+ 576              	.L98:
+ 577 0030 00000000 		.word	.LC0
+ 578 0034 18000000 		.word	.LC1
+ 580              		.section	.text.xStreamBufferBytesAvailable,"ax",%progbits
+ 581              		.align	1
+ 582              		.global	xStreamBufferBytesAvailable
+ 583              		.syntax unified
+ 584              		.thumb
+ 585              		.thumb_func
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cce5rF4G.s 			page 11
+
+
+ 587              	xStreamBufferBytesAvailable:
+ 588              		@ args = 0, pretend = 0, frame = 0
+ 589              		@ frame_needed = 0, uses_anonymous_args = 0
+ 590 0000 10B5     		push	{r4, lr}
+ 591 0002 0446     		mov	r4, r0
+ 592 0004 18B1     		cbz	r0, .L103
+ 593              	.L101:
+ 594 0006 2046     		mov	r0, r4
+ 595 0008 FFF7FEFF 		bl	prvBytesInBuffer
+ 596 000c 10BD     		pop	{r4, pc}
+ 597              	.L103:
+ 598 000e 40F27B22 		movw	r2, #635
+ 599 0012 0249     		ldr	r1, .L104
+ 600 0014 0248     		ldr	r0, .L104+4
+ 601 0016 FFF7FEFF 		bl	printf
+ 602 001a F4E7     		b	.L101
+ 603              	.L105:
+ 604              		.align	2
+ 605              	.L104:
+ 606 001c 00000000 		.word	.LC0
+ 607 0020 18000000 		.word	.LC1
+ 609              		.section	.text.xStreamBufferSend,"ax",%progbits
+ 610              		.align	1
+ 611              		.global	xStreamBufferSend
+ 612              		.syntax unified
+ 613              		.thumb
+ 614              		.thumb_func
+ 616              	xStreamBufferSend:
+ 617              		@ args = 0, pretend = 0, frame = 16
+ 618              		@ frame_needed = 0, uses_anonymous_args = 0
+ 619 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+ 620 0004 86B0     		sub	sp, sp, #24
+ 621 0006 0446     		mov	r4, r0
+ 622 0008 1746     		mov	r7, r2
+ 623 000a 0393     		str	r3, [sp, #12]
+ 624 000c 8846     		mov	r8, r1
+ 625 000e A1B1     		cbz	r1, .L122
+ 626              	.L107:
+ 627 0010 D4B1     		cbz	r4, .L123
+ 628              	.L108:
+ 629 0012 A568     		ldr	r5, [r4, #8]
+ 630 0014 013D     		subs	r5, r5, #1
+ 631 0016 237F     		ldrb	r3, [r4, #28]	@ zero_extendqisi2
+ 632 0018 13F0010F 		tst	r3, #1
+ 633 001c 22D0     		beq	.L109
+ 634 001e 3E1D     		adds	r6, r7, #4
+ 635 0020 B742     		cmp	r7, r6
+ 636 0022 18D2     		bcs	.L124
+ 637              	.L110:
+ 638 0024 B542     		cmp	r5, r6
+ 639 0026 01D2     		bcs	.L111
+ 640 0028 0023     		movs	r3, #0
+ 641 002a 0393     		str	r3, [sp, #12]
+ 642              	.L111:
+ 643 002c 039B     		ldr	r3, [sp, #12]
+ 644 002e 002B     		cmp	r3, #0
+ 645 0030 4BD0     		beq	.L112
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cce5rF4G.s 			page 12
+
+
+ 646 0032 04A8     		add	r0, sp, #16
+ 647 0034 FFF7FEFF 		bl	vTaskSetTimeOutState
+ 648 0038 2EE0     		b	.L115
+ 649              	.L122:
+ 650 003a 40F28D22 		movw	r2, #653
+ 651 003e 3649     		ldr	r1, .L126
+ 652 0040 3648     		ldr	r0, .L126+4
+ 653 0042 FFF7FEFF 		bl	printf
+ 654 0046 E3E7     		b	.L107
+ 655              	.L123:
+ 656 0048 40F28E22 		movw	r2, #654
+ 657 004c 3249     		ldr	r1, .L126
+ 658 004e 3348     		ldr	r0, .L126+4
+ 659 0050 FFF7FEFF 		bl	printf
+ 660 0054 DDE7     		b	.L108
+ 661              	.L124:
+ 662 0056 40F29D22 		movw	r2, #669
+ 663 005a 2F49     		ldr	r1, .L126
+ 664 005c 2F48     		ldr	r0, .L126+4
+ 665 005e FFF7FEFF 		bl	printf
+ 666 0062 DFE7     		b	.L110
+ 667              	.L109:
+ 668 0064 AF42     		cmp	r7, r5
+ 669 0066 01D8     		bhi	.L120
+ 670 0068 3E46     		mov	r6, r7
+ 671 006a DFE7     		b	.L111
+ 672              	.L120:
+ 673 006c 2E46     		mov	r6, r5
+ 674 006e DDE7     		b	.L111
+ 675              	.L114:
+ 676 0070 FFF7FEFF 		bl	xTaskGetCurrentTaskHandle
+ 677 0074 6061     		str	r0, [r4, #20]
+ 678 0076 FFF7FEFF 		bl	vPortExitCritical
+ 679 007a 039B     		ldr	r3, [sp, #12]
+ 680 007c 0093     		str	r3, [sp]
+ 681 007e 0023     		movs	r3, #0
+ 682 0080 1A46     		mov	r2, r3
+ 683 0082 1946     		mov	r1, r3
+ 684 0084 1846     		mov	r0, r3
+ 685 0086 FFF7FEFF 		bl	xTaskGenericNotifyWait
+ 686 008a 0023     		movs	r3, #0
+ 687 008c 6361     		str	r3, [r4, #20]
+ 688 008e 03A9     		add	r1, sp, #12
+ 689 0090 04A8     		add	r0, sp, #16
+ 690 0092 FFF7FEFF 		bl	xTaskCheckForTimeOut
+ 691 0096 B8B9     		cbnz	r0, .L116
+ 692              	.L115:
+ 693 0098 FFF7FEFF 		bl	vPortEnterCritical
+ 694 009c 2046     		mov	r0, r4
+ 695 009e FFF7FEFF 		bl	xStreamBufferSpacesAvailable
+ 696 00a2 0546     		mov	r5, r0
+ 697 00a4 8642     		cmp	r6, r0
+ 698 00a6 0DD9     		bls	.L113
+ 699 00a8 0021     		movs	r1, #0
+ 700 00aa 0846     		mov	r0, r1
+ 701 00ac FFF7FEFF 		bl	xTaskGenericNotifyStateClear
+ 702 00b0 6369     		ldr	r3, [r4, #20]
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cce5rF4G.s 			page 13
+
+
+ 703 00b2 002B     		cmp	r3, #0
+ 704 00b4 DCD0     		beq	.L114
+ 705 00b6 40F2CD22 		movw	r2, #717
+ 706 00ba 1749     		ldr	r1, .L126
+ 707 00bc 1748     		ldr	r0, .L126+4
+ 708 00be FFF7FEFF 		bl	printf
+ 709 00c2 D5E7     		b	.L114
+ 710              	.L113:
+ 711 00c4 FFF7FEFF 		bl	vPortExitCritical
+ 712              	.L116:
+ 713 00c8 1DB9     		cbnz	r5, .L117
+ 714              	.L112:
+ 715 00ca 2046     		mov	r0, r4
+ 716 00cc FFF7FEFF 		bl	xStreamBufferSpacesAvailable
+ 717 00d0 0546     		mov	r5, r0
+ 718              	.L117:
+ 719 00d2 0096     		str	r6, [sp]
+ 720 00d4 2B46     		mov	r3, r5
+ 721 00d6 3A46     		mov	r2, r7
+ 722 00d8 4146     		mov	r1, r8
+ 723 00da 2046     		mov	r0, r4
+ 724 00dc FFF7FEFF 		bl	prvWriteMessageToBuffer
+ 725 00e0 0546     		mov	r5, r0
+ 726 00e2 18B9     		cbnz	r0, .L125
+ 727              	.L106:
+ 728 00e4 2846     		mov	r0, r5
+ 729 00e6 06B0     		add	sp, sp, #24
+ 730              		@ sp needed
+ 731 00e8 BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 732              	.L125:
+ 733 00ec 2046     		mov	r0, r4
+ 734 00ee FFF7FEFF 		bl	prvBytesInBuffer
+ 735 00f2 E368     		ldr	r3, [r4, #12]
+ 736 00f4 9842     		cmp	r0, r3
+ 737 00f6 F5D3     		bcc	.L106
+ 738 00f8 FFF7FEFF 		bl	vTaskSuspendAll
+ 739 00fc 2369     		ldr	r3, [r4, #16]
+ 740 00fe 43B1     		cbz	r3, .L119
+ 741 0100 2069     		ldr	r0, [r4, #16]
+ 742 0102 0026     		movs	r6, #0
+ 743 0104 0096     		str	r6, [sp]
+ 744 0106 3346     		mov	r3, r6
+ 745 0108 3246     		mov	r2, r6
+ 746 010a 3146     		mov	r1, r6
+ 747 010c FFF7FEFF 		bl	xTaskGenericNotify
+ 748 0110 2661     		str	r6, [r4, #16]
+ 749              	.L119:
+ 750 0112 FFF7FEFF 		bl	xTaskResumeAll
+ 751 0116 E5E7     		b	.L106
+ 752              	.L127:
+ 753              		.align	2
+ 754              	.L126:
+ 755 0118 00000000 		.word	.LC0
+ 756 011c 18000000 		.word	.LC1
+ 758              		.section	.text.xStreamBufferSendFromISR,"ax",%progbits
+ 759              		.align	1
+ 760              		.global	xStreamBufferSendFromISR
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cce5rF4G.s 			page 14
+
+
+ 761              		.syntax unified
+ 762              		.thumb
+ 763              		.thumb_func
+ 765              	xStreamBufferSendFromISR:
+ 766              		@ args = 0, pretend = 0, frame = 0
+ 767              		@ frame_needed = 0, uses_anonymous_args = 0
+ 768 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+ 769 0004 82B0     		sub	sp, sp, #8
+ 770 0006 0446     		mov	r4, r0
+ 771 0008 1546     		mov	r5, r2
+ 772 000a 9846     		mov	r8, r3
+ 773 000c 0F46     		mov	r7, r1
+ 774 000e A9B1     		cbz	r1, .L136
+ 775              	.L129:
+ 776 0010 DCB1     		cbz	r4, .L137
+ 777              	.L130:
+ 778 0012 237F     		ldrb	r3, [r4, #28]	@ zero_extendqisi2
+ 779 0014 13F0010F 		tst	r3, #1
+ 780 0018 1ED0     		beq	.L134
+ 781 001a 2E1D     		adds	r6, r5, #4
+ 782              	.L131:
+ 783 001c 2046     		mov	r0, r4
+ 784 001e FFF7FEFF 		bl	xStreamBufferSpacesAvailable
+ 785 0022 0346     		mov	r3, r0
+ 786 0024 0096     		str	r6, [sp]
+ 787 0026 2A46     		mov	r2, r5
+ 788 0028 3946     		mov	r1, r7
+ 789 002a 2046     		mov	r0, r4
+ 790 002c FFF7FEFF 		bl	prvWriteMessageToBuffer
+ 791 0030 0546     		mov	r5, r0
+ 792 0032 98B9     		cbnz	r0, .L138
+ 793              	.L128:
+ 794 0034 2846     		mov	r0, r5
+ 795 0036 02B0     		add	sp, sp, #8
+ 796              		@ sp needed
+ 797 0038 BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 798              	.L136:
+ 799 003c 40F20E32 		movw	r2, #782
+ 800 0040 1649     		ldr	r1, .L139
+ 801 0042 1748     		ldr	r0, .L139+4
+ 802 0044 FFF7FEFF 		bl	printf
+ 803 0048 E2E7     		b	.L129
+ 804              	.L137:
+ 805 004a 40F20F32 		movw	r2, #783
+ 806 004e 1349     		ldr	r1, .L139
+ 807 0050 1348     		ldr	r0, .L139+4
+ 808 0052 FFF7FEFF 		bl	printf
+ 809 0056 DCE7     		b	.L130
+ 810              	.L134:
+ 811 0058 2E46     		mov	r6, r5
+ 812 005a DFE7     		b	.L131
+ 813              	.L138:
+ 814 005c 2046     		mov	r0, r4
+ 815 005e FFF7FEFF 		bl	prvBytesInBuffer
+ 816 0062 E368     		ldr	r3, [r4, #12]
+ 817 0064 9842     		cmp	r0, r3
+ 818 0066 E5D3     		bcc	.L128
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cce5rF4G.s 			page 15
+
+
+ 819              		.syntax unified
+ 820              	@ 214 "RTOS/portable/GCC/ARM_CM4F/portmacro.h" 1
+ 821 0068 EFF31187 			mrs r7, basepri											
+ 822 006c 4FF05003 		mov r3, #80												
+ 823 0070 83F31188 		msr basepri, r3											
+ 824 0074 BFF36F8F 		isb														
+ 825 0078 BFF34F8F 		dsb														
+ 826              	
+ 827              	@ 0 "" 2
+ 828              		.thumb
+ 829              		.syntax unified
+ 830 007c 2369     		ldr	r3, [r4, #16]
+ 831 007e 53B1     		cbz	r3, .L133
+ 832 0080 2069     		ldr	r0, [r4, #16]
+ 833 0082 CDF80480 		str	r8, [sp, #4]
+ 834 0086 0026     		movs	r6, #0
+ 835 0088 0096     		str	r6, [sp]
+ 836 008a 3346     		mov	r3, r6
+ 837 008c 3246     		mov	r2, r6
+ 838 008e 3146     		mov	r1, r6
+ 839 0090 FFF7FEFF 		bl	xTaskGenericNotifyFromISR
+ 840 0094 2661     		str	r6, [r4, #16]
+ 841              	.L133:
+ 842              		.syntax unified
+ 843              	@ 232 "RTOS/portable/GCC/ARM_CM4F/portmacro.h" 1
+ 844 0096 87F31188 			msr basepri, r7	
+ 845              	@ 0 "" 2
+ 846              		.thumb
+ 847              		.syntax unified
+ 848 009a CBE7     		b	.L128
+ 849              	.L140:
+ 850              		.align	2
+ 851              	.L139:
+ 852 009c 00000000 		.word	.LC0
+ 853 00a0 18000000 		.word	.LC1
+ 855              		.section	.text.xStreamBufferReceive,"ax",%progbits
+ 856              		.align	1
+ 857              		.global	xStreamBufferReceive
+ 858              		.syntax unified
+ 859              		.thumb
+ 860              		.thumb_func
+ 862              	xStreamBufferReceive:
+ 863              		@ args = 0, pretend = 0, frame = 0
+ 864              		@ frame_needed = 0, uses_anonymous_args = 0
+ 865 0000 2DE9F043 		push	{r4, r5, r6, r7, r8, r9, lr}
+ 866 0004 83B0     		sub	sp, sp, #12
+ 867 0006 0446     		mov	r4, r0
+ 868 0008 1646     		mov	r6, r2
+ 869 000a 9846     		mov	r8, r3
+ 870 000c 0F46     		mov	r7, r1
+ 871 000e 21B3     		cbz	r1, .L154
+ 872              	.L142:
+ 873 0010 54B3     		cbz	r4, .L155
+ 874              	.L143:
+ 875 0012 217F     		ldrb	r1, [r4, #28]	@ zero_extendqisi2
+ 876 0014 11F0010F 		tst	r1, #1
+ 877 0018 2DD0     		beq	.L151
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cce5rF4G.s 			page 16
+
+
+ 878 001a 4FF00409 		mov	r9, #4
+ 879              	.L144:
+ 880 001e B8F1000F 		cmp	r8, #0
+ 881 0022 3BD0     		beq	.L145
+ 882 0024 FFF7FEFF 		bl	vPortEnterCritical
+ 883 0028 2046     		mov	r0, r4
+ 884 002a FFF7FEFF 		bl	prvBytesInBuffer
+ 885 002e 0546     		mov	r5, r0
+ 886 0030 8145     		cmp	r9, r0
+ 887 0032 23D2     		bcs	.L156
+ 888              	.L146:
+ 889 0034 FFF7FEFF 		bl	vPortExitCritical
+ 890 0038 A945     		cmp	r9, r5
+ 891 003a 33D3     		bcc	.L148
+ 892 003c CDF80080 		str	r8, [sp]
+ 893 0040 0023     		movs	r3, #0
+ 894 0042 1A46     		mov	r2, r3
+ 895 0044 1946     		mov	r1, r3
+ 896 0046 1846     		mov	r0, r3
+ 897 0048 FFF7FEFF 		bl	xTaskGenericNotifyWait
+ 898 004c 0023     		movs	r3, #0
+ 899 004e 2361     		str	r3, [r4, #16]
+ 900 0050 2046     		mov	r0, r4
+ 901 0052 FFF7FEFF 		bl	prvBytesInBuffer
+ 902 0056 0546     		mov	r5, r0
+ 903 0058 24E0     		b	.L148
+ 904              	.L154:
+ 905 005a 40F27232 		movw	r2, #882
+ 906 005e 2149     		ldr	r1, .L158
+ 907 0060 2148     		ldr	r0, .L158+4
+ 908 0062 FFF7FEFF 		bl	printf
+ 909 0066 D3E7     		b	.L142
+ 910              	.L155:
+ 911 0068 40F27332 		movw	r2, #883
+ 912 006c 1D49     		ldr	r1, .L158
+ 913 006e 1E48     		ldr	r0, .L158+4
+ 914 0070 FFF7FEFF 		bl	printf
+ 915 0074 CDE7     		b	.L143
+ 916              	.L151:
+ 917 0076 4FF00009 		mov	r9, #0
+ 918 007a D0E7     		b	.L144
+ 919              	.L156:
+ 920 007c 0021     		movs	r1, #0
+ 921 007e 0846     		mov	r0, r1
+ 922 0080 FFF7FEFF 		bl	xTaskGenericNotifyStateClear
+ 923 0084 2369     		ldr	r3, [r4, #16]
+ 924 0086 2BB1     		cbz	r3, .L147
+ 925 0088 40F29632 		movw	r2, #918
+ 926 008c 1549     		ldr	r1, .L158
+ 927 008e 1648     		ldr	r0, .L158+4
+ 928 0090 FFF7FEFF 		bl	printf
+ 929              	.L147:
+ 930 0094 FFF7FEFF 		bl	xTaskGetCurrentTaskHandle
+ 931 0098 2061     		str	r0, [r4, #16]
+ 932 009a CBE7     		b	.L146
+ 933              	.L145:
+ 934 009c 2046     		mov	r0, r4
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cce5rF4G.s 			page 17
+
+
+ 935 009e FFF7FEFF 		bl	prvBytesInBuffer
+ 936 00a2 0546     		mov	r5, r0
+ 937              	.L148:
+ 938 00a4 4D45     		cmp	r5, r9
+ 939 00a6 04D8     		bhi	.L157
+ 940 00a8 0025     		movs	r5, #0
+ 941              	.L141:
+ 942 00aa 2846     		mov	r0, r5
+ 943 00ac 03B0     		add	sp, sp, #12
+ 944              		@ sp needed
+ 945 00ae BDE8F083 		pop	{r4, r5, r6, r7, r8, r9, pc}
+ 946              	.L157:
+ 947 00b2 2B46     		mov	r3, r5
+ 948 00b4 3246     		mov	r2, r6
+ 949 00b6 3946     		mov	r1, r7
+ 950 00b8 2046     		mov	r0, r4
+ 951 00ba FFF7FEFF 		bl	prvReadMessageFromBuffer
+ 952 00be 0546     		mov	r5, r0
+ 953 00c0 0028     		cmp	r0, #0
+ 954 00c2 F2D0     		beq	.L141
+ 955 00c4 FFF7FEFF 		bl	vTaskSuspendAll
+ 956 00c8 6369     		ldr	r3, [r4, #20]
+ 957 00ca 43B1     		cbz	r3, .L150
+ 958 00cc 6069     		ldr	r0, [r4, #20]
+ 959 00ce 0026     		movs	r6, #0
+ 960 00d0 0096     		str	r6, [sp]
+ 961 00d2 3346     		mov	r3, r6
+ 962 00d4 3246     		mov	r2, r6
+ 963 00d6 3146     		mov	r1, r6
+ 964 00d8 FFF7FEFF 		bl	xTaskGenericNotify
+ 965 00dc 6661     		str	r6, [r4, #20]
+ 966              	.L150:
+ 967 00de FFF7FEFF 		bl	xTaskResumeAll
+ 968 00e2 E2E7     		b	.L141
+ 969              	.L159:
+ 970              		.align	2
+ 971              	.L158:
+ 972 00e4 00000000 		.word	.LC0
+ 973 00e8 18000000 		.word	.LC1
+ 975              		.section	.text.xStreamBufferNextMessageLengthBytes,"ax",%progbits
+ 976              		.align	1
+ 977              		.global	xStreamBufferNextMessageLengthBytes
+ 978              		.syntax unified
+ 979              		.thumb
+ 980              		.thumb_func
+ 982              	xStreamBufferNextMessageLengthBytes:
+ 983              		@ args = 0, pretend = 0, frame = 8
+ 984              		@ frame_needed = 0, uses_anonymous_args = 0
+ 985 0000 10B5     		push	{r4, lr}
+ 986 0002 82B0     		sub	sp, sp, #8
+ 987 0004 0446     		mov	r4, r0
+ 988 0006 30B1     		cbz	r0, .L166
+ 989              	.L161:
+ 990 0008 237F     		ldrb	r3, [r4, #28]	@ zero_extendqisi2
+ 991 000a 13F0010F 		tst	r3, #1
+ 992 000e 09D1     		bne	.L167
+ 993 0010 0020     		movs	r0, #0
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cce5rF4G.s 			page 18
+
+
+ 994              	.L160:
+ 995 0012 02B0     		add	sp, sp, #8
+ 996              		@ sp needed
+ 997 0014 10BD     		pop	{r4, pc}
+ 998              	.L166:
+ 999 0016 4FF47672 		mov	r2, #984
+ 1000 001a 0E49     		ldr	r1, .L169
+ 1001 001c 0E48     		ldr	r0, .L169+4
+ 1002 001e FFF7FEFF 		bl	printf
+ 1003 0022 F1E7     		b	.L161
+ 1004              	.L167:
+ 1005 0024 2046     		mov	r0, r4
+ 1006 0026 FFF7FEFF 		bl	prvBytesInBuffer
+ 1007 002a 0428     		cmp	r0, #4
+ 1008 002c 09D8     		bhi	.L168
+ 1009 002e 0028     		cmp	r0, #0
+ 1010 0030 EFD0     		beq	.L160
+ 1011 0032 40F2ED32 		movw	r2, #1005
+ 1012 0036 0749     		ldr	r1, .L169
+ 1013 0038 0748     		ldr	r0, .L169+4
+ 1014 003a FFF7FEFF 		bl	printf
+ 1015 003e 0020     		movs	r0, #0
+ 1016 0040 E7E7     		b	.L160
+ 1017              	.L168:
+ 1018 0042 2368     		ldr	r3, [r4]
+ 1019 0044 0422     		movs	r2, #4
+ 1020 0046 0DEB0201 		add	r1, sp, r2
+ 1021 004a 2046     		mov	r0, r4
+ 1022 004c FFF7FEFF 		bl	prvReadBytesFromBuffer
+ 1023 0050 0198     		ldr	r0, [sp, #4]
+ 1024 0052 DEE7     		b	.L160
+ 1025              	.L170:
+ 1026              		.align	2
+ 1027              	.L169:
+ 1028 0054 00000000 		.word	.LC0
+ 1029 0058 18000000 		.word	.LC1
+ 1031              		.section	.text.xStreamBufferReceiveFromISR,"ax",%progbits
+ 1032              		.align	1
+ 1033              		.global	xStreamBufferReceiveFromISR
+ 1034              		.syntax unified
+ 1035              		.thumb
+ 1036              		.thumb_func
+ 1038              	xStreamBufferReceiveFromISR:
+ 1039              		@ args = 0, pretend = 0, frame = 0
+ 1040              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1041 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+ 1042 0004 82B0     		sub	sp, sp, #8
+ 1043 0006 0446     		mov	r4, r0
+ 1044 0008 1546     		mov	r5, r2
+ 1045 000a 1E46     		mov	r6, r3
+ 1046 000c 8846     		mov	r8, r1
+ 1047 000e 79B1     		cbz	r1, .L180
+ 1048              	.L172:
+ 1049 0010 ACB1     		cbz	r4, .L181
+ 1050              	.L173:
+ 1051 0012 237F     		ldrb	r3, [r4, #28]	@ zero_extendqisi2
+ 1052 0014 13F0010F 		tst	r3, #1
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cce5rF4G.s 			page 19
+
+
+ 1053 0018 18D0     		beq	.L177
+ 1054 001a 0427     		movs	r7, #4
+ 1055              	.L174:
+ 1056 001c 2046     		mov	r0, r4
+ 1057 001e FFF7FEFF 		bl	prvBytesInBuffer
+ 1058 0022 8742     		cmp	r7, r0
+ 1059 0024 14D3     		bcc	.L182
+ 1060 0026 0025     		movs	r5, #0
+ 1061              	.L171:
+ 1062 0028 2846     		mov	r0, r5
+ 1063 002a 02B0     		add	sp, sp, #8
+ 1064              		@ sp needed
+ 1065 002c BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 1066              	.L180:
+ 1067 0030 40F20242 		movw	r2, #1026
+ 1068 0034 1749     		ldr	r1, .L183
+ 1069 0036 1848     		ldr	r0, .L183+4
+ 1070 0038 FFF7FEFF 		bl	printf
+ 1071 003c E8E7     		b	.L172
+ 1072              	.L181:
+ 1073 003e 40F20342 		movw	r2, #1027
+ 1074 0042 1449     		ldr	r1, .L183
+ 1075 0044 1448     		ldr	r0, .L183+4
+ 1076 0046 FFF7FEFF 		bl	printf
+ 1077 004a E2E7     		b	.L173
+ 1078              	.L177:
+ 1079 004c 0027     		movs	r7, #0
+ 1080 004e E5E7     		b	.L174
+ 1081              	.L182:
+ 1082 0050 0346     		mov	r3, r0
+ 1083 0052 2A46     		mov	r2, r5
+ 1084 0054 4146     		mov	r1, r8
+ 1085 0056 2046     		mov	r0, r4
+ 1086 0058 FFF7FEFF 		bl	prvReadMessageFromBuffer
+ 1087 005c 0546     		mov	r5, r0
+ 1088 005e 0028     		cmp	r0, #0
+ 1089 0060 E2D0     		beq	.L171
+ 1090              		.syntax unified
+ 1091              	@ 214 "RTOS/portable/GCC/ARM_CM4F/portmacro.h" 1
+ 1092 0062 EFF31187 			mrs r7, basepri											
+ 1093 0066 4FF05003 		mov r3, #80												
+ 1094 006a 83F31188 		msr basepri, r3											
+ 1095 006e BFF36F8F 		isb														
+ 1096 0072 BFF34F8F 		dsb														
+ 1097              	
+ 1098              	@ 0 "" 2
+ 1099              		.thumb
+ 1100              		.syntax unified
+ 1101 0076 6369     		ldr	r3, [r4, #20]
+ 1102 0078 4BB1     		cbz	r3, .L176
+ 1103 007a 6069     		ldr	r0, [r4, #20]
+ 1104 007c 0196     		str	r6, [sp, #4]
+ 1105 007e 0026     		movs	r6, #0
+ 1106 0080 0096     		str	r6, [sp]
+ 1107 0082 3346     		mov	r3, r6
+ 1108 0084 3246     		mov	r2, r6
+ 1109 0086 3146     		mov	r1, r6
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cce5rF4G.s 			page 20
+
+
+ 1110 0088 FFF7FEFF 		bl	xTaskGenericNotifyFromISR
+ 1111 008c 6661     		str	r6, [r4, #20]
+ 1112              	.L176:
+ 1113              		.syntax unified
+ 1114              	@ 232 "RTOS/portable/GCC/ARM_CM4F/portmacro.h" 1
+ 1115 008e 87F31188 			msr basepri, r7	
+ 1116              	@ 0 "" 2
+ 1117              		.thumb
+ 1118              		.syntax unified
+ 1119 0092 C9E7     		b	.L171
+ 1120              	.L184:
+ 1121              		.align	2
+ 1122              	.L183:
+ 1123 0094 00000000 		.word	.LC0
+ 1124 0098 18000000 		.word	.LC1
+ 1126              		.section	.text.xStreamBufferIsEmpty,"ax",%progbits
+ 1127              		.align	1
+ 1128              		.global	xStreamBufferIsEmpty
+ 1129              		.syntax unified
+ 1130              		.thumb
+ 1131              		.thumb_func
+ 1133              	xStreamBufferIsEmpty:
+ 1134              		@ args = 0, pretend = 0, frame = 0
+ 1135              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1136 0000 10B5     		push	{r4, lr}
+ 1137 0002 0446     		mov	r4, r0
+ 1138 0004 28B1     		cbz	r0, .L190
+ 1139              	.L186:
+ 1140 0006 2368     		ldr	r3, [r4]
+ 1141 0008 6268     		ldr	r2, [r4, #4]
+ 1142 000a 9A42     		cmp	r2, r3
+ 1143 000c 08D0     		beq	.L191
+ 1144 000e 0020     		movs	r0, #0
+ 1145              	.L185:
+ 1146 0010 10BD     		pop	{r4, pc}
+ 1147              	.L190:
+ 1148 0012 40F26D42 		movw	r2, #1133
+ 1149 0016 0349     		ldr	r1, .L192
+ 1150 0018 0348     		ldr	r0, .L192+4
+ 1151 001a FFF7FEFF 		bl	printf
+ 1152 001e F2E7     		b	.L186
+ 1153              	.L191:
+ 1154 0020 0120     		movs	r0, #1
+ 1155 0022 F5E7     		b	.L185
+ 1156              	.L193:
+ 1157              		.align	2
+ 1158              	.L192:
+ 1159 0024 00000000 		.word	.LC0
+ 1160 0028 18000000 		.word	.LC1
+ 1162              		.section	.text.xStreamBufferIsFull,"ax",%progbits
+ 1163              		.align	1
+ 1164              		.global	xStreamBufferIsFull
+ 1165              		.syntax unified
+ 1166              		.thumb
+ 1167              		.thumb_func
+ 1169              	xStreamBufferIsFull:
+ 1170              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cce5rF4G.s 			page 21
+
+
+ 1171              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1172 0000 38B5     		push	{r3, r4, r5, lr}
+ 1173 0002 0446     		mov	r4, r0
+ 1174 0004 58B1     		cbz	r0, .L201
+ 1175              	.L195:
+ 1176 0006 237F     		ldrb	r3, [r4, #28]	@ zero_extendqisi2
+ 1177 0008 13F0010F 		tst	r3, #1
+ 1178 000c 0ED0     		beq	.L198
+ 1179 000e 0425     		movs	r5, #4
+ 1180              	.L196:
+ 1181 0010 2046     		mov	r0, r4
+ 1182 0012 FFF7FEFF 		bl	xStreamBufferSpacesAvailable
+ 1183 0016 A842     		cmp	r0, r5
+ 1184 0018 0AD8     		bhi	.L199
+ 1185 001a 0120     		movs	r0, #1
+ 1186              	.L194:
+ 1187 001c 38BD     		pop	{r3, r4, r5, pc}
+ 1188              	.L201:
+ 1189 001e 40F28542 		movw	r2, #1157
+ 1190 0022 0449     		ldr	r1, .L202
+ 1191 0024 0448     		ldr	r0, .L202+4
+ 1192 0026 FFF7FEFF 		bl	printf
+ 1193 002a ECE7     		b	.L195
+ 1194              	.L198:
+ 1195 002c 0025     		movs	r5, #0
+ 1196 002e EFE7     		b	.L196
+ 1197              	.L199:
+ 1198 0030 0020     		movs	r0, #0
+ 1199 0032 F3E7     		b	.L194
+ 1200              	.L203:
+ 1201              		.align	2
+ 1202              	.L202:
+ 1203 0034 00000000 		.word	.LC0
+ 1204 0038 18000000 		.word	.LC1
+ 1206              		.section	.text.xStreamBufferSendCompletedFromISR,"ax",%progbits
+ 1207              		.align	1
+ 1208              		.global	xStreamBufferSendCompletedFromISR
+ 1209              		.syntax unified
+ 1210              		.thumb
+ 1211              		.thumb_func
+ 1213              	xStreamBufferSendCompletedFromISR:
+ 1214              		@ args = 0, pretend = 0, frame = 0
+ 1215              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1216 0000 70B5     		push	{r4, r5, r6, lr}
+ 1217 0002 82B0     		sub	sp, sp, #8
+ 1218 0004 0D46     		mov	r5, r1
+ 1219 0006 0646     		mov	r6, r0
+ 1220 0008 D0B1     		cbz	r0, .L209
+ 1221              	.L205:
+ 1222              		.syntax unified
+ 1223              	@ 214 "RTOS/portable/GCC/ARM_CM4F/portmacro.h" 1
+ 1224 000a EFF31184 			mrs r4, basepri											
+ 1225 000e 4FF05003 		mov r3, #80												
+ 1226 0012 83F31188 		msr basepri, r3											
+ 1227 0016 BFF36F8F 		isb														
+ 1228 001a BFF34F8F 		dsb														
+ 1229              	
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cce5rF4G.s 			page 22
+
+
+ 1230              	@ 0 "" 2
+ 1231              		.thumb
+ 1232              		.syntax unified
+ 1233 001e 3369     		ldr	r3, [r6, #16]
+ 1234 0020 ABB1     		cbz	r3, .L207
+ 1235 0022 3069     		ldr	r0, [r6, #16]
+ 1236 0024 0195     		str	r5, [sp, #4]
+ 1237 0026 0025     		movs	r5, #0
+ 1238 0028 0095     		str	r5, [sp]
+ 1239 002a 2B46     		mov	r3, r5
+ 1240 002c 2A46     		mov	r2, r5
+ 1241 002e 2946     		mov	r1, r5
+ 1242 0030 FFF7FEFF 		bl	xTaskGenericNotifyFromISR
+ 1243 0034 3561     		str	r5, [r6, #16]
+ 1244 0036 0120     		movs	r0, #1
+ 1245              	.L206:
+ 1246              		.syntax unified
+ 1247              	@ 232 "RTOS/portable/GCC/ARM_CM4F/portmacro.h" 1
+ 1248 0038 84F31188 			msr basepri, r4	
+ 1249              	@ 0 "" 2
+ 1250              		.thumb
+ 1251              		.syntax unified
+ 1252 003c 02B0     		add	sp, sp, #8
+ 1253              		@ sp needed
+ 1254 003e 70BD     		pop	{r4, r5, r6, pc}
+ 1255              	.L209:
+ 1256 0040 40F2A942 		movw	r2, #1193
+ 1257 0044 0349     		ldr	r1, .L210
+ 1258 0046 0448     		ldr	r0, .L210+4
+ 1259 0048 FFF7FEFF 		bl	printf
+ 1260 004c DDE7     		b	.L205
+ 1261              	.L207:
+ 1262 004e 0020     		movs	r0, #0
+ 1263 0050 F2E7     		b	.L206
+ 1264              	.L211:
+ 1265 0052 00BF     		.align	2
+ 1266              	.L210:
+ 1267 0054 00000000 		.word	.LC0
+ 1268 0058 18000000 		.word	.LC1
+ 1270              		.section	.text.xStreamBufferReceiveCompletedFromISR,"ax",%progbits
+ 1271              		.align	1
+ 1272              		.global	xStreamBufferReceiveCompletedFromISR
+ 1273              		.syntax unified
+ 1274              		.thumb
+ 1275              		.thumb_func
+ 1277              	xStreamBufferReceiveCompletedFromISR:
+ 1278              		@ args = 0, pretend = 0, frame = 0
+ 1279              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1280 0000 70B5     		push	{r4, r5, r6, lr}
+ 1281 0002 82B0     		sub	sp, sp, #8
+ 1282 0004 0D46     		mov	r5, r1
+ 1283 0006 0646     		mov	r6, r0
+ 1284 0008 D0B1     		cbz	r0, .L217
+ 1285              	.L213:
+ 1286              		.syntax unified
+ 1287              	@ 214 "RTOS/portable/GCC/ARM_CM4F/portmacro.h" 1
+ 1288 000a EFF31184 			mrs r4, basepri											
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cce5rF4G.s 			page 23
+
+
+ 1289 000e 4FF05003 		mov r3, #80												
+ 1290 0012 83F31188 		msr basepri, r3											
+ 1291 0016 BFF36F8F 		isb														
+ 1292 001a BFF34F8F 		dsb														
+ 1293              	
+ 1294              	@ 0 "" 2
+ 1295              		.thumb
+ 1296              		.syntax unified
+ 1297 001e 7369     		ldr	r3, [r6, #20]
+ 1298 0020 ABB1     		cbz	r3, .L215
+ 1299 0022 7069     		ldr	r0, [r6, #20]
+ 1300 0024 0195     		str	r5, [sp, #4]
+ 1301 0026 0025     		movs	r5, #0
+ 1302 0028 0095     		str	r5, [sp]
+ 1303 002a 2B46     		mov	r3, r5
+ 1304 002c 2A46     		mov	r2, r5
+ 1305 002e 2946     		mov	r1, r5
+ 1306 0030 FFF7FEFF 		bl	xTaskGenericNotifyFromISR
+ 1307 0034 7561     		str	r5, [r6, #20]
+ 1308 0036 0120     		movs	r0, #1
+ 1309              	.L214:
+ 1310              		.syntax unified
+ 1311              	@ 232 "RTOS/portable/GCC/ARM_CM4F/portmacro.h" 1
+ 1312 0038 84F31188 			msr basepri, r4	
+ 1313              	@ 0 "" 2
+ 1314              		.thumb
+ 1315              		.syntax unified
+ 1316 003c 02B0     		add	sp, sp, #8
+ 1317              		@ sp needed
+ 1318 003e 70BD     		pop	{r4, r5, r6, pc}
+ 1319              	.L217:
+ 1320 0040 4FF49962 		mov	r2, #1224
+ 1321 0044 0349     		ldr	r1, .L218
+ 1322 0046 0448     		ldr	r0, .L218+4
+ 1323 0048 FFF7FEFF 		bl	printf
+ 1324 004c DDE7     		b	.L213
+ 1325              	.L215:
+ 1326 004e 0020     		movs	r0, #0
+ 1327 0050 F2E7     		b	.L214
+ 1328              	.L219:
+ 1329 0052 00BF     		.align	2
+ 1330              	.L218:
+ 1331 0054 00000000 		.word	.LC0
+ 1332 0058 18000000 		.word	.LC1
+ 1334              		.section	.text.uxStreamBufferGetStreamBufferNumber,"ax",%progbits
+ 1335              		.align	1
+ 1336              		.global	uxStreamBufferGetStreamBufferNumber
+ 1337              		.syntax unified
+ 1338              		.thumb
+ 1339              		.thumb_func
+ 1341              	uxStreamBufferGetStreamBufferNumber:
+ 1342              		@ args = 0, pretend = 0, frame = 0
+ 1343              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1344              		@ link register save eliminated.
+ 1345 0000 006A     		ldr	r0, [r0, #32]
+ 1346 0002 7047     		bx	lr
+ 1348              		.section	.text.vStreamBufferSetStreamBufferNumber,"ax",%progbits
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cce5rF4G.s 			page 24
+
+
+ 1349              		.align	1
+ 1350              		.global	vStreamBufferSetStreamBufferNumber
+ 1351              		.syntax unified
+ 1352              		.thumb
+ 1353              		.thumb_func
+ 1355              	vStreamBufferSetStreamBufferNumber:
+ 1356              		@ args = 0, pretend = 0, frame = 0
+ 1357              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1358              		@ link register save eliminated.
+ 1359 0000 0162     		str	r1, [r0, #32]
+ 1360 0002 7047     		bx	lr
+ 1362              		.section	.text.ucStreamBufferGetStreamBufferType,"ax",%progbits
+ 1363              		.align	1
+ 1364              		.global	ucStreamBufferGetStreamBufferType
+ 1365              		.syntax unified
+ 1366              		.thumb
+ 1367              		.thumb_func
+ 1369              	ucStreamBufferGetStreamBufferType:
+ 1370              		@ args = 0, pretend = 0, frame = 0
+ 1371              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1372              		@ link register save eliminated.
+ 1373 0000 007F     		ldrb	r0, [r0, #28]	@ zero_extendqisi2
+ 1374 0002 00F00100 		and	r0, r0, #1
+ 1375 0006 7047     		bx	lr
+ 1377              		.ident	"GCC: (Arm GNU Toolchain 13.3.Rel1 (Build arm-13.24)) 13.3.1 20240614"
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cce5rF4G.s 			page 25
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 stream_buffer.c
+C:\Users\ktkuru\AppData\Local\Temp\cce5rF4G.s:18     .text.prvBytesInBuffer:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cce5rF4G.s:23     .text.prvBytesInBuffer:00000000 prvBytesInBuffer
+C:\Users\ktkuru\AppData\Local\Temp\cce5rF4G.s:39     .rodata.prvInitialiseNewStreamBuffer.str1.4:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\cce5rF4G.s:46     .text.prvInitialiseNewStreamBuffer:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cce5rF4G.s:51     .text.prvInitialiseNewStreamBuffer:00000000 prvInitialiseNewStreamBuffer
+C:\Users\ktkuru\AppData\Local\Temp\cce5rF4G.s:82     .text.prvInitialiseNewStreamBuffer:0000003c $d
+C:\Users\ktkuru\AppData\Local\Temp\cce5rF4G.s:86     .text.prvWriteBytesToBuffer:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cce5rF4G.s:91     .text.prvWriteBytesToBuffer:00000000 prvWriteBytesToBuffer
+C:\Users\ktkuru\AppData\Local\Temp\cce5rF4G.s:155    .text.prvWriteBytesToBuffer:0000007c $d
+C:\Users\ktkuru\AppData\Local\Temp\cce5rF4G.s:159    .text.prvWriteMessageToBuffer:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cce5rF4G.s:164    .text.prvWriteMessageToBuffer:00000000 prvWriteMessageToBuffer
+C:\Users\ktkuru\AppData\Local\Temp\cce5rF4G.s:210    .text.prvReadBytesFromBuffer:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cce5rF4G.s:215    .text.prvReadBytesFromBuffer:00000000 prvReadBytesFromBuffer
+C:\Users\ktkuru\AppData\Local\Temp\cce5rF4G.s:270    .text.prvReadBytesFromBuffer:00000068 $d
+C:\Users\ktkuru\AppData\Local\Temp\cce5rF4G.s:274    .text.prvReadMessageFromBuffer:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cce5rF4G.s:279    .text.prvReadMessageFromBuffer:00000000 prvReadMessageFromBuffer
+C:\Users\ktkuru\AppData\Local\Temp\cce5rF4G.s:325    .text.xStreamBufferGenericCreate:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cce5rF4G.s:331    .text.xStreamBufferGenericCreate:00000000 xStreamBufferGenericCreate
+C:\Users\ktkuru\AppData\Local\Temp\cce5rF4G.s:401    .text.xStreamBufferGenericCreate:00000088 $d
+C:\Users\ktkuru\AppData\Local\Temp\cce5rF4G.s:405    .text.vStreamBufferDelete:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cce5rF4G.s:411    .text.vStreamBufferDelete:00000000 vStreamBufferDelete
+C:\Users\ktkuru\AppData\Local\Temp\cce5rF4G.s:440    .text.vStreamBufferDelete:00000030 $d
+C:\Users\ktkuru\AppData\Local\Temp\cce5rF4G.s:444    .text.xStreamBufferReset:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cce5rF4G.s:450    .text.xStreamBufferReset:00000000 xStreamBufferReset
+C:\Users\ktkuru\AppData\Local\Temp\cce5rF4G.s:496    .text.xStreamBufferReset:00000050 $d
+C:\Users\ktkuru\AppData\Local\Temp\cce5rF4G.s:500    .text.xStreamBufferSetTriggerLevel:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cce5rF4G.s:506    .text.xStreamBufferSetTriggerLevel:00000000 xStreamBufferSetTriggerLevel
+C:\Users\ktkuru\AppData\Local\Temp\cce5rF4G.s:536    .text.xStreamBufferSetTriggerLevel:0000002c $d
+C:\Users\ktkuru\AppData\Local\Temp\cce5rF4G.s:540    .text.xStreamBufferSpacesAvailable:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cce5rF4G.s:546    .text.xStreamBufferSpacesAvailable:00000000 xStreamBufferSpacesAvailable
+C:\Users\ktkuru\AppData\Local\Temp\cce5rF4G.s:577    .text.xStreamBufferSpacesAvailable:00000030 $d
+C:\Users\ktkuru\AppData\Local\Temp\cce5rF4G.s:581    .text.xStreamBufferBytesAvailable:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cce5rF4G.s:587    .text.xStreamBufferBytesAvailable:00000000 xStreamBufferBytesAvailable
+C:\Users\ktkuru\AppData\Local\Temp\cce5rF4G.s:606    .text.xStreamBufferBytesAvailable:0000001c $d
+C:\Users\ktkuru\AppData\Local\Temp\cce5rF4G.s:610    .text.xStreamBufferSend:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cce5rF4G.s:616    .text.xStreamBufferSend:00000000 xStreamBufferSend
+C:\Users\ktkuru\AppData\Local\Temp\cce5rF4G.s:755    .text.xStreamBufferSend:00000118 $d
+C:\Users\ktkuru\AppData\Local\Temp\cce5rF4G.s:759    .text.xStreamBufferSendFromISR:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cce5rF4G.s:765    .text.xStreamBufferSendFromISR:00000000 xStreamBufferSendFromISR
+C:\Users\ktkuru\AppData\Local\Temp\cce5rF4G.s:852    .text.xStreamBufferSendFromISR:0000009c $d
+C:\Users\ktkuru\AppData\Local\Temp\cce5rF4G.s:856    .text.xStreamBufferReceive:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cce5rF4G.s:862    .text.xStreamBufferReceive:00000000 xStreamBufferReceive
+C:\Users\ktkuru\AppData\Local\Temp\cce5rF4G.s:972    .text.xStreamBufferReceive:000000e4 $d
+C:\Users\ktkuru\AppData\Local\Temp\cce5rF4G.s:976    .text.xStreamBufferNextMessageLengthBytes:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cce5rF4G.s:982    .text.xStreamBufferNextMessageLengthBytes:00000000 xStreamBufferNextMessageLengthBytes
+C:\Users\ktkuru\AppData\Local\Temp\cce5rF4G.s:1028   .text.xStreamBufferNextMessageLengthBytes:00000054 $d
+C:\Users\ktkuru\AppData\Local\Temp\cce5rF4G.s:1032   .text.xStreamBufferReceiveFromISR:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cce5rF4G.s:1038   .text.xStreamBufferReceiveFromISR:00000000 xStreamBufferReceiveFromISR
+C:\Users\ktkuru\AppData\Local\Temp\cce5rF4G.s:1123   .text.xStreamBufferReceiveFromISR:00000094 $d
+C:\Users\ktkuru\AppData\Local\Temp\cce5rF4G.s:1127   .text.xStreamBufferIsEmpty:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cce5rF4G.s:1133   .text.xStreamBufferIsEmpty:00000000 xStreamBufferIsEmpty
+C:\Users\ktkuru\AppData\Local\Temp\cce5rF4G.s:1159   .text.xStreamBufferIsEmpty:00000024 $d
+C:\Users\ktkuru\AppData\Local\Temp\cce5rF4G.s:1163   .text.xStreamBufferIsFull:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cce5rF4G.s:1169   .text.xStreamBufferIsFull:00000000 xStreamBufferIsFull
+C:\Users\ktkuru\AppData\Local\Temp\cce5rF4G.s:1203   .text.xStreamBufferIsFull:00000034 $d
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cce5rF4G.s 			page 26
+
+
+C:\Users\ktkuru\AppData\Local\Temp\cce5rF4G.s:1207   .text.xStreamBufferSendCompletedFromISR:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cce5rF4G.s:1213   .text.xStreamBufferSendCompletedFromISR:00000000 xStreamBufferSendCompletedFromISR
+C:\Users\ktkuru\AppData\Local\Temp\cce5rF4G.s:1267   .text.xStreamBufferSendCompletedFromISR:00000054 $d
+C:\Users\ktkuru\AppData\Local\Temp\cce5rF4G.s:1271   .text.xStreamBufferReceiveCompletedFromISR:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cce5rF4G.s:1277   .text.xStreamBufferReceiveCompletedFromISR:00000000 xStreamBufferReceiveCompletedFromISR
+C:\Users\ktkuru\AppData\Local\Temp\cce5rF4G.s:1331   .text.xStreamBufferReceiveCompletedFromISR:00000054 $d
+C:\Users\ktkuru\AppData\Local\Temp\cce5rF4G.s:1335   .text.uxStreamBufferGetStreamBufferNumber:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cce5rF4G.s:1341   .text.uxStreamBufferGetStreamBufferNumber:00000000 uxStreamBufferGetStreamBufferNumber
+C:\Users\ktkuru\AppData\Local\Temp\cce5rF4G.s:1349   .text.vStreamBufferSetStreamBufferNumber:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cce5rF4G.s:1355   .text.vStreamBufferSetStreamBufferNumber:00000000 vStreamBufferSetStreamBufferNumber
+C:\Users\ktkuru\AppData\Local\Temp\cce5rF4G.s:1363   .text.ucStreamBufferGetStreamBufferType:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cce5rF4G.s:1369   .text.ucStreamBufferGetStreamBufferType:00000000 ucStreamBufferGetStreamBufferType
+
+UNDEFINED SYMBOLS
+memset
+printf
+memcpy
+pvPortMalloc
+vPortFree
+vPortEnterCritical
+vPortExitCritical
+vTaskSetTimeOutState
+xTaskGetCurrentTaskHandle
+xTaskGenericNotifyWait
+xTaskCheckForTimeOut
+xTaskGenericNotifyStateClear
+vTaskSuspendAll
+xTaskGenericNotify
+xTaskResumeAll
+xTaskGenericNotifyFromISR

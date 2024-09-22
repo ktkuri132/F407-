@@ -1,0 +1,105 @@
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccC8Hw51.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"shell.c"
+  16              		.text
+  17              		.section	.text.shscanf,"ax",%progbits
+  18              		.align	1
+  19              		.global	shscanf
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  24              	shscanf:
+  25              		@ args = 0, pretend = 0, frame = 0
+  26              		@ frame_needed = 0, uses_anonymous_args = 0
+  27 0000 08B5     		push	{r3, lr}
+  28              	.L2:
+  29 0002 074B     		ldr	r3, .L4
+  30 0004 1B88     		ldrh	r3, [r3]
+  31 0006 B3F5804F 		cmp	r3, #16384
+  32 000a FAD3     		bcc	.L2
+  33 000c 0549     		ldr	r1, .L4+4
+  34 000e FFF7FEFF 		bl	strcpy
+  35 0012 034B     		ldr	r3, .L4
+  36 0014 1888     		ldrh	r0, [r3]
+  37 0016 0022     		movs	r2, #0
+  38 0018 1A80     		strh	r2, [r3]	@ movhi
+  39 001a C0F30D00 		ubfx	r0, r0, #0, #14
+  40 001e 08BD     		pop	{r3, pc}
+  41              	.L5:
+  42              		.align	2
+  43              	.L4:
+  44 0020 00000000 		.word	USART_RX_STA
+  45 0024 00000000 		.word	USART_RX_BUF
+  47              		.section	.rodata.shell_terminal.str1.4,"aMS",%progbits,1
+  48              		.align	2
+  49              	.LC0:
+  50 0000 5368656C 		.ascii	"Shell> \000"
+  50      6C3E2000 
+  51              		.align	2
+  52              	.LC1:
+  53 0008 436F6D6D 		.ascii	"Command: %s\000"
+  53      616E643A 
+  53      20257300 
+  54              		.section	.text.shell_terminal,"ax",%progbits
+  55              		.align	1
+  56              		.global	shell_terminal
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccC8Hw51.s 			page 2
+
+
+  57              		.syntax unified
+  58              		.thumb
+  59              		.thumb_func
+  61              	shell_terminal:
+  62              		@ Volatile: function does not return.
+  63              		@ args = 0, pretend = 0, frame = 104
+  64              		@ frame_needed = 0, uses_anonymous_args = 0
+  65 0000 00B5     		push	{lr}
+  66 0002 9BB0     		sub	sp, sp, #108
+  67              	.L7:
+  68 0004 0548     		ldr	r0, .L9
+  69 0006 FFF7FEFF 		bl	printf
+  70 000a 01A8     		add	r0, sp, #4
+  71 000c FFF7FEFF 		bl	shscanf
+  72 0010 01A9     		add	r1, sp, #4
+  73 0012 0348     		ldr	r0, .L9+4
+  74 0014 FFF7FEFF 		bl	printf
+  75 0018 F4E7     		b	.L7
+  76              	.L10:
+  77 001a 00BF     		.align	2
+  78              	.L9:
+  79 001c 00000000 		.word	.LC0
+  80 0020 08000000 		.word	.LC1
+  82              		.ident	"GCC: (Arm GNU Toolchain 13.3.Rel1 (Build arm-13.24)) 13.3.1 20240614"
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccC8Hw51.s 			page 3
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 shell.c
+C:\Users\ktkuru\AppData\Local\Temp\ccC8Hw51.s:18     .text.shscanf:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccC8Hw51.s:24     .text.shscanf:00000000 shscanf
+C:\Users\ktkuru\AppData\Local\Temp\ccC8Hw51.s:44     .text.shscanf:00000020 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccC8Hw51.s:48     .rodata.shell_terminal.str1.4:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccC8Hw51.s:55     .text.shell_terminal:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccC8Hw51.s:61     .text.shell_terminal:00000000 shell_terminal
+C:\Users\ktkuru\AppData\Local\Temp\ccC8Hw51.s:79     .text.shell_terminal:0000001c $d
+
+UNDEFINED SYMBOLS
+strcpy
+USART_RX_STA
+USART_RX_BUF
+printf

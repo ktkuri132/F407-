@@ -1,0 +1,536 @@
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cczg8rYY.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"stm32f4xx_dac.c"
+  16              		.text
+  17              		.section	.text.DAC_DeInit,"ax",%progbits
+  18              		.align	1
+  19              		.global	DAC_DeInit
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  24              	DAC_DeInit:
+  25              		@ args = 0, pretend = 0, frame = 0
+  26              		@ frame_needed = 0, uses_anonymous_args = 0
+  27 0000 08B5     		push	{r3, lr}
+  28 0002 0121     		movs	r1, #1
+  29 0004 4FF00050 		mov	r0, #536870912
+  30 0008 FFF7FEFF 		bl	RCC_APB1PeriphResetCmd
+  31 000c 0021     		movs	r1, #0
+  32 000e 4FF00050 		mov	r0, #536870912
+  33 0012 FFF7FEFF 		bl	RCC_APB1PeriphResetCmd
+  34 0016 08BD     		pop	{r3, pc}
+  36              		.section	.text.DAC_Init,"ax",%progbits
+  37              		.align	1
+  38              		.global	DAC_Init
+  39              		.syntax unified
+  40              		.thumb
+  41              		.thumb_func
+  43              	DAC_Init:
+  44              		@ args = 0, pretend = 0, frame = 0
+  45              		@ frame_needed = 0, uses_anonymous_args = 0
+  46              		@ link register save eliminated.
+  47 0000 30B4     		push	{r4, r5}
+  48 0002 094C     		ldr	r4, .L5
+  49 0004 2268     		ldr	r2, [r4]
+  50 0006 40F6FE73 		movw	r3, #4094
+  51 000a 8340     		lsls	r3, r3, r0
+  52 000c 22EA0302 		bic	r2, r2, r3
+  53 0010 0B68     		ldr	r3, [r1]
+  54 0012 4D68     		ldr	r5, [r1, #4]
+  55 0014 2B43     		orrs	r3, r3, r5
+  56 0016 8D68     		ldr	r5, [r1, #8]
+  57 0018 2B43     		orrs	r3, r3, r5
+  58 001a C968     		ldr	r1, [r1, #12]
+  59 001c 0B43     		orrs	r3, r3, r1
+  60 001e 8340     		lsls	r3, r3, r0
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cczg8rYY.s 			page 2
+
+
+  61 0020 1343     		orrs	r3, r3, r2
+  62 0022 2360     		str	r3, [r4]
+  63 0024 30BC     		pop	{r4, r5}
+  64 0026 7047     		bx	lr
+  65              	.L6:
+  66              		.align	2
+  67              	.L5:
+  68 0028 00740040 		.word	1073771520
+  70              		.section	.text.DAC_StructInit,"ax",%progbits
+  71              		.align	1
+  72              		.global	DAC_StructInit
+  73              		.syntax unified
+  74              		.thumb
+  75              		.thumb_func
+  77              	DAC_StructInit:
+  78              		@ args = 0, pretend = 0, frame = 0
+  79              		@ frame_needed = 0, uses_anonymous_args = 0
+  80              		@ link register save eliminated.
+  81 0000 0023     		movs	r3, #0
+  82 0002 0360     		str	r3, [r0]
+  83 0004 4360     		str	r3, [r0, #4]
+  84 0006 8360     		str	r3, [r0, #8]
+  85 0008 C360     		str	r3, [r0, #12]
+  86 000a 7047     		bx	lr
+  88              		.section	.text.DAC_Cmd,"ax",%progbits
+  89              		.align	1
+  90              		.global	DAC_Cmd
+  91              		.syntax unified
+  92              		.thumb
+  93              		.thumb_func
+  95              	DAC_Cmd:
+  96              		@ args = 0, pretend = 0, frame = 0
+  97              		@ frame_needed = 0, uses_anonymous_args = 0
+  98              		@ link register save eliminated.
+  99 0000 31B1     		cbz	r1, .L9
+ 100 0002 0749     		ldr	r1, .L11
+ 101 0004 0B68     		ldr	r3, [r1]
+ 102 0006 0122     		movs	r2, #1
+ 103 0008 8240     		lsls	r2, r2, r0
+ 104 000a 1343     		orrs	r3, r3, r2
+ 105 000c 0B60     		str	r3, [r1]
+ 106 000e 7047     		bx	lr
+ 107              	.L9:
+ 108 0010 0349     		ldr	r1, .L11
+ 109 0012 0B68     		ldr	r3, [r1]
+ 110 0014 0122     		movs	r2, #1
+ 111 0016 8240     		lsls	r2, r2, r0
+ 112 0018 23EA0203 		bic	r3, r3, r2
+ 113 001c 0B60     		str	r3, [r1]
+ 114 001e 7047     		bx	lr
+ 115              	.L12:
+ 116              		.align	2
+ 117              	.L11:
+ 118 0020 00740040 		.word	1073771520
+ 120              		.section	.text.DAC_SoftwareTriggerCmd,"ax",%progbits
+ 121              		.align	1
+ 122              		.global	DAC_SoftwareTriggerCmd
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cczg8rYY.s 			page 3
+
+
+ 123              		.syntax unified
+ 124              		.thumb
+ 125              		.thumb_func
+ 127              	DAC_SoftwareTriggerCmd:
+ 128              		@ args = 0, pretend = 0, frame = 0
+ 129              		@ frame_needed = 0, uses_anonymous_args = 0
+ 130              		@ link register save eliminated.
+ 131 0000 39B1     		cbz	r1, .L14
+ 132 0002 0849     		ldr	r1, .L16
+ 133 0004 4B68     		ldr	r3, [r1, #4]
+ 134 0006 0009     		lsrs	r0, r0, #4
+ 135 0008 0122     		movs	r2, #1
+ 136 000a 8240     		lsls	r2, r2, r0
+ 137 000c 1343     		orrs	r3, r3, r2
+ 138 000e 4B60     		str	r3, [r1, #4]
+ 139 0010 7047     		bx	lr
+ 140              	.L14:
+ 141 0012 0449     		ldr	r1, .L16
+ 142 0014 4B68     		ldr	r3, [r1, #4]
+ 143 0016 0009     		lsrs	r0, r0, #4
+ 144 0018 0122     		movs	r2, #1
+ 145 001a 8240     		lsls	r2, r2, r0
+ 146 001c 23EA0203 		bic	r3, r3, r2
+ 147 0020 4B60     		str	r3, [r1, #4]
+ 148 0022 7047     		bx	lr
+ 149              	.L17:
+ 150              		.align	2
+ 151              	.L16:
+ 152 0024 00740040 		.word	1073771520
+ 154              		.section	.text.DAC_DualSoftwareTriggerCmd,"ax",%progbits
+ 155              		.align	1
+ 156              		.global	DAC_DualSoftwareTriggerCmd
+ 157              		.syntax unified
+ 158              		.thumb
+ 159              		.thumb_func
+ 161              	DAC_DualSoftwareTriggerCmd:
+ 162              		@ args = 0, pretend = 0, frame = 0
+ 163              		@ frame_needed = 0, uses_anonymous_args = 0
+ 164              		@ link register save eliminated.
+ 165 0000 28B1     		cbz	r0, .L19
+ 166 0002 064A     		ldr	r2, .L21
+ 167 0004 5368     		ldr	r3, [r2, #4]
+ 168 0006 43F00303 		orr	r3, r3, #3
+ 169 000a 5360     		str	r3, [r2, #4]
+ 170 000c 7047     		bx	lr
+ 171              	.L19:
+ 172 000e 034A     		ldr	r2, .L21
+ 173 0010 5368     		ldr	r3, [r2, #4]
+ 174 0012 23F00303 		bic	r3, r3, #3
+ 175 0016 5360     		str	r3, [r2, #4]
+ 176 0018 7047     		bx	lr
+ 177              	.L22:
+ 178 001a 00BF     		.align	2
+ 179              	.L21:
+ 180 001c 00740040 		.word	1073771520
+ 182              		.section	.text.DAC_WaveGenerationCmd,"ax",%progbits
+ 183              		.align	1
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cczg8rYY.s 			page 4
+
+
+ 184              		.global	DAC_WaveGenerationCmd
+ 185              		.syntax unified
+ 186              		.thumb
+ 187              		.thumb_func
+ 189              	DAC_WaveGenerationCmd:
+ 190              		@ args = 0, pretend = 0, frame = 0
+ 191              		@ frame_needed = 0, uses_anonymous_args = 0
+ 192              		@ link register save eliminated.
+ 193 0000 2AB1     		cbz	r2, .L24
+ 194 0002 064A     		ldr	r2, .L26
+ 195 0004 1368     		ldr	r3, [r2]
+ 196 0006 8140     		lsls	r1, r1, r0
+ 197 0008 0B43     		orrs	r3, r3, r1
+ 198 000a 1360     		str	r3, [r2]
+ 199 000c 7047     		bx	lr
+ 200              	.L24:
+ 201 000e 034A     		ldr	r2, .L26
+ 202 0010 1368     		ldr	r3, [r2]
+ 203 0012 8140     		lsls	r1, r1, r0
+ 204 0014 23EA0103 		bic	r3, r3, r1
+ 205 0018 1360     		str	r3, [r2]
+ 206 001a 7047     		bx	lr
+ 207              	.L27:
+ 208              		.align	2
+ 209              	.L26:
+ 210 001c 00740040 		.word	1073771520
+ 212              		.section	.text.DAC_SetChannel1Data,"ax",%progbits
+ 213              		.align	1
+ 214              		.global	DAC_SetChannel1Data
+ 215              		.syntax unified
+ 216              		.thumb
+ 217              		.thumb_func
+ 219              	DAC_SetChannel1Data:
+ 220              		@ args = 0, pretend = 0, frame = 8
+ 221              		@ frame_needed = 0, uses_anonymous_args = 0
+ 222              		@ link register save eliminated.
+ 223 0000 82B0     		sub	sp, sp, #8
+ 224 0002 0023     		movs	r3, #0
+ 225 0004 0193     		str	r3, [sp, #4]
+ 226 0006 054B     		ldr	r3, .L30
+ 227 0008 0193     		str	r3, [sp, #4]
+ 228 000a 019B     		ldr	r3, [sp, #4]
+ 229 000c 0344     		add	r3, r3, r0
+ 230 000e 0833     		adds	r3, r3, #8
+ 231 0010 0193     		str	r3, [sp, #4]
+ 232 0012 019B     		ldr	r3, [sp, #4]
+ 233 0014 1960     		str	r1, [r3]
+ 234 0016 02B0     		add	sp, sp, #8
+ 235              		@ sp needed
+ 236 0018 7047     		bx	lr
+ 237              	.L31:
+ 238 001a 00BF     		.align	2
+ 239              	.L30:
+ 240 001c 00740040 		.word	1073771520
+ 242              		.section	.text.DAC_SetChannel2Data,"ax",%progbits
+ 243              		.align	1
+ 244              		.global	DAC_SetChannel2Data
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cczg8rYY.s 			page 5
+
+
+ 245              		.syntax unified
+ 246              		.thumb
+ 247              		.thumb_func
+ 249              	DAC_SetChannel2Data:
+ 250              		@ args = 0, pretend = 0, frame = 8
+ 251              		@ frame_needed = 0, uses_anonymous_args = 0
+ 252              		@ link register save eliminated.
+ 253 0000 82B0     		sub	sp, sp, #8
+ 254 0002 0023     		movs	r3, #0
+ 255 0004 0193     		str	r3, [sp, #4]
+ 256 0006 054B     		ldr	r3, .L34
+ 257 0008 0193     		str	r3, [sp, #4]
+ 258 000a 019B     		ldr	r3, [sp, #4]
+ 259 000c 0344     		add	r3, r3, r0
+ 260 000e 1433     		adds	r3, r3, #20
+ 261 0010 0193     		str	r3, [sp, #4]
+ 262 0012 019B     		ldr	r3, [sp, #4]
+ 263 0014 1960     		str	r1, [r3]
+ 264 0016 02B0     		add	sp, sp, #8
+ 265              		@ sp needed
+ 266 0018 7047     		bx	lr
+ 267              	.L35:
+ 268 001a 00BF     		.align	2
+ 269              	.L34:
+ 270 001c 00740040 		.word	1073771520
+ 272              		.section	.text.DAC_SetDualChannelData,"ax",%progbits
+ 273              		.align	1
+ 274              		.global	DAC_SetDualChannelData
+ 275              		.syntax unified
+ 276              		.thumb
+ 277              		.thumb_func
+ 279              	DAC_SetDualChannelData:
+ 280              		@ args = 0, pretend = 0, frame = 0
+ 281              		@ frame_needed = 0, uses_anonymous_args = 0
+ 282              		@ link register save eliminated.
+ 283 0000 0828     		cmp	r0, #8
+ 284 0002 04D0     		beq	.L39
+ 285 0004 42EA0142 		orr	r2, r2, r1, lsl #16
+ 286              	.L38:
+ 287 0008 024B     		ldr	r3, .L40
+ 288 000a C250     		str	r2, [r0, r3]
+ 289 000c 7047     		bx	lr
+ 290              	.L39:
+ 291 000e 42EA0122 		orr	r2, r2, r1, lsl #8
+ 292 0012 F9E7     		b	.L38
+ 293              	.L41:
+ 294              		.align	2
+ 295              	.L40:
+ 296 0014 20740040 		.word	1073771552
+ 298              		.section	.text.DAC_GetDataOutputValue,"ax",%progbits
+ 299              		.align	1
+ 300              		.global	DAC_GetDataOutputValue
+ 301              		.syntax unified
+ 302              		.thumb
+ 303              		.thumb_func
+ 305              	DAC_GetDataOutputValue:
+ 306              		@ args = 0, pretend = 0, frame = 8
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cczg8rYY.s 			page 6
+
+
+ 307              		@ frame_needed = 0, uses_anonymous_args = 0
+ 308              		@ link register save eliminated.
+ 309 0000 82B0     		sub	sp, sp, #8
+ 310 0002 0023     		movs	r3, #0
+ 311 0004 0193     		str	r3, [sp, #4]
+ 312 0006 064B     		ldr	r3, .L44
+ 313 0008 0193     		str	r3, [sp, #4]
+ 314 000a 019B     		ldr	r3, [sp, #4]
+ 315 000c 03EB9003 		add	r3, r3, r0, lsr #2
+ 316 0010 2C33     		adds	r3, r3, #44
+ 317 0012 0193     		str	r3, [sp, #4]
+ 318 0014 019B     		ldr	r3, [sp, #4]
+ 319 0016 1868     		ldr	r0, [r3]
+ 320 0018 80B2     		uxth	r0, r0
+ 321 001a 02B0     		add	sp, sp, #8
+ 322              		@ sp needed
+ 323 001c 7047     		bx	lr
+ 324              	.L45:
+ 325 001e 00BF     		.align	2
+ 326              	.L44:
+ 327 0020 00740040 		.word	1073771520
+ 329              		.section	.text.DAC_DMACmd,"ax",%progbits
+ 330              		.align	1
+ 331              		.global	DAC_DMACmd
+ 332              		.syntax unified
+ 333              		.thumb
+ 334              		.thumb_func
+ 336              	DAC_DMACmd:
+ 337              		@ args = 0, pretend = 0, frame = 0
+ 338              		@ frame_needed = 0, uses_anonymous_args = 0
+ 339              		@ link register save eliminated.
+ 340 0000 39B1     		cbz	r1, .L47
+ 341 0002 0849     		ldr	r1, .L49
+ 342 0004 0B68     		ldr	r3, [r1]
+ 343 0006 4FF48052 		mov	r2, #4096
+ 344 000a 8240     		lsls	r2, r2, r0
+ 345 000c 1343     		orrs	r3, r3, r2
+ 346 000e 0B60     		str	r3, [r1]
+ 347 0010 7047     		bx	lr
+ 348              	.L47:
+ 349 0012 0449     		ldr	r1, .L49
+ 350 0014 0B68     		ldr	r3, [r1]
+ 351 0016 4FF48052 		mov	r2, #4096
+ 352 001a 8240     		lsls	r2, r2, r0
+ 353 001c 23EA0203 		bic	r3, r3, r2
+ 354 0020 0B60     		str	r3, [r1]
+ 355 0022 7047     		bx	lr
+ 356              	.L50:
+ 357              		.align	2
+ 358              	.L49:
+ 359 0024 00740040 		.word	1073771520
+ 361              		.section	.text.DAC_ITConfig,"ax",%progbits
+ 362              		.align	1
+ 363              		.global	DAC_ITConfig
+ 364              		.syntax unified
+ 365              		.thumb
+ 366              		.thumb_func
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cczg8rYY.s 			page 7
+
+
+ 368              	DAC_ITConfig:
+ 369              		@ args = 0, pretend = 0, frame = 0
+ 370              		@ frame_needed = 0, uses_anonymous_args = 0
+ 371              		@ link register save eliminated.
+ 372 0000 2AB1     		cbz	r2, .L52
+ 373 0002 064A     		ldr	r2, .L54
+ 374 0004 1368     		ldr	r3, [r2]
+ 375 0006 8140     		lsls	r1, r1, r0
+ 376 0008 0B43     		orrs	r3, r3, r1
+ 377 000a 1360     		str	r3, [r2]
+ 378 000c 7047     		bx	lr
+ 379              	.L52:
+ 380 000e 034A     		ldr	r2, .L54
+ 381 0010 1368     		ldr	r3, [r2]
+ 382 0012 8140     		lsls	r1, r1, r0
+ 383 0014 23EA0103 		bic	r3, r3, r1
+ 384 0018 1360     		str	r3, [r2]
+ 385 001a 7047     		bx	lr
+ 386              	.L55:
+ 387              		.align	2
+ 388              	.L54:
+ 389 001c 00740040 		.word	1073771520
+ 391              		.section	.text.DAC_GetFlagStatus,"ax",%progbits
+ 392              		.align	1
+ 393              		.global	DAC_GetFlagStatus
+ 394              		.syntax unified
+ 395              		.thumb
+ 396              		.thumb_func
+ 398              	DAC_GetFlagStatus:
+ 399              		@ args = 0, pretend = 0, frame = 0
+ 400              		@ frame_needed = 0, uses_anonymous_args = 0
+ 401              		@ link register save eliminated.
+ 402 0000 044B     		ldr	r3, .L59
+ 403 0002 5B6B     		ldr	r3, [r3, #52]
+ 404 0004 8140     		lsls	r1, r1, r0
+ 405 0006 0B42     		tst	r3, r1
+ 406 0008 01D0     		beq	.L58
+ 407 000a 0120     		movs	r0, #1
+ 408 000c 7047     		bx	lr
+ 409              	.L58:
+ 410 000e 0020     		movs	r0, #0
+ 411 0010 7047     		bx	lr
+ 412              	.L60:
+ 413 0012 00BF     		.align	2
+ 414              	.L59:
+ 415 0014 00740040 		.word	1073771520
+ 417              		.section	.text.DAC_ClearFlag,"ax",%progbits
+ 418              		.align	1
+ 419              		.global	DAC_ClearFlag
+ 420              		.syntax unified
+ 421              		.thumb
+ 422              		.thumb_func
+ 424              	DAC_ClearFlag:
+ 425              		@ args = 0, pretend = 0, frame = 0
+ 426              		@ frame_needed = 0, uses_anonymous_args = 0
+ 427              		@ link register save eliminated.
+ 428 0000 8140     		lsls	r1, r1, r0
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cczg8rYY.s 			page 8
+
+
+ 429 0002 014B     		ldr	r3, .L62
+ 430 0004 5963     		str	r1, [r3, #52]
+ 431 0006 7047     		bx	lr
+ 432              	.L63:
+ 433              		.align	2
+ 434              	.L62:
+ 435 0008 00740040 		.word	1073771520
+ 437              		.section	.text.DAC_GetITStatus,"ax",%progbits
+ 438              		.align	1
+ 439              		.global	DAC_GetITStatus
+ 440              		.syntax unified
+ 441              		.thumb
+ 442              		.thumb_func
+ 444              	DAC_GetITStatus:
+ 445              		@ args = 0, pretend = 0, frame = 0
+ 446              		@ frame_needed = 0, uses_anonymous_args = 0
+ 447              		@ link register save eliminated.
+ 448 0000 064A     		ldr	r2, .L68
+ 449 0002 1368     		ldr	r3, [r2]
+ 450 0004 8140     		lsls	r1, r1, r0
+ 451 0006 0B40     		ands	r3, r3, r1
+ 452 0008 526B     		ldr	r2, [r2, #52]
+ 453 000a 1142     		tst	r1, r2
+ 454 000c 02D0     		beq	.L66
+ 455 000e 1BB9     		cbnz	r3, .L67
+ 456 0010 0020     		movs	r0, #0
+ 457 0012 7047     		bx	lr
+ 458              	.L66:
+ 459 0014 0020     		movs	r0, #0
+ 460 0016 7047     		bx	lr
+ 461              	.L67:
+ 462 0018 0120     		movs	r0, #1
+ 463 001a 7047     		bx	lr
+ 464              	.L69:
+ 465              		.align	2
+ 466              	.L68:
+ 467 001c 00740040 		.word	1073771520
+ 469              		.section	.text.DAC_ClearITPendingBit,"ax",%progbits
+ 470              		.align	1
+ 471              		.global	DAC_ClearITPendingBit
+ 472              		.syntax unified
+ 473              		.thumb
+ 474              		.thumb_func
+ 476              	DAC_ClearITPendingBit:
+ 477              		@ args = 0, pretend = 0, frame = 0
+ 478              		@ frame_needed = 0, uses_anonymous_args = 0
+ 479              		@ link register save eliminated.
+ 480 0000 8140     		lsls	r1, r1, r0
+ 481 0002 014B     		ldr	r3, .L71
+ 482 0004 5963     		str	r1, [r3, #52]
+ 483 0006 7047     		bx	lr
+ 484              	.L72:
+ 485              		.align	2
+ 486              	.L71:
+ 487 0008 00740040 		.word	1073771520
+ 489              		.ident	"GCC: (Arm GNU Toolchain 13.3.Rel1 (Build arm-13.24)) 13.3.1 20240614"
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cczg8rYY.s 			page 9
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 stm32f4xx_dac.c
+C:\Users\ktkuru\AppData\Local\Temp\cczg8rYY.s:18     .text.DAC_DeInit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cczg8rYY.s:24     .text.DAC_DeInit:00000000 DAC_DeInit
+C:\Users\ktkuru\AppData\Local\Temp\cczg8rYY.s:37     .text.DAC_Init:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cczg8rYY.s:43     .text.DAC_Init:00000000 DAC_Init
+C:\Users\ktkuru\AppData\Local\Temp\cczg8rYY.s:68     .text.DAC_Init:00000028 $d
+C:\Users\ktkuru\AppData\Local\Temp\cczg8rYY.s:71     .text.DAC_StructInit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cczg8rYY.s:77     .text.DAC_StructInit:00000000 DAC_StructInit
+C:\Users\ktkuru\AppData\Local\Temp\cczg8rYY.s:89     .text.DAC_Cmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cczg8rYY.s:95     .text.DAC_Cmd:00000000 DAC_Cmd
+C:\Users\ktkuru\AppData\Local\Temp\cczg8rYY.s:118    .text.DAC_Cmd:00000020 $d
+C:\Users\ktkuru\AppData\Local\Temp\cczg8rYY.s:121    .text.DAC_SoftwareTriggerCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cczg8rYY.s:127    .text.DAC_SoftwareTriggerCmd:00000000 DAC_SoftwareTriggerCmd
+C:\Users\ktkuru\AppData\Local\Temp\cczg8rYY.s:152    .text.DAC_SoftwareTriggerCmd:00000024 $d
+C:\Users\ktkuru\AppData\Local\Temp\cczg8rYY.s:155    .text.DAC_DualSoftwareTriggerCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cczg8rYY.s:161    .text.DAC_DualSoftwareTriggerCmd:00000000 DAC_DualSoftwareTriggerCmd
+C:\Users\ktkuru\AppData\Local\Temp\cczg8rYY.s:180    .text.DAC_DualSoftwareTriggerCmd:0000001c $d
+C:\Users\ktkuru\AppData\Local\Temp\cczg8rYY.s:183    .text.DAC_WaveGenerationCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cczg8rYY.s:189    .text.DAC_WaveGenerationCmd:00000000 DAC_WaveGenerationCmd
+C:\Users\ktkuru\AppData\Local\Temp\cczg8rYY.s:210    .text.DAC_WaveGenerationCmd:0000001c $d
+C:\Users\ktkuru\AppData\Local\Temp\cczg8rYY.s:213    .text.DAC_SetChannel1Data:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cczg8rYY.s:219    .text.DAC_SetChannel1Data:00000000 DAC_SetChannel1Data
+C:\Users\ktkuru\AppData\Local\Temp\cczg8rYY.s:240    .text.DAC_SetChannel1Data:0000001c $d
+C:\Users\ktkuru\AppData\Local\Temp\cczg8rYY.s:243    .text.DAC_SetChannel2Data:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cczg8rYY.s:249    .text.DAC_SetChannel2Data:00000000 DAC_SetChannel2Data
+C:\Users\ktkuru\AppData\Local\Temp\cczg8rYY.s:270    .text.DAC_SetChannel2Data:0000001c $d
+C:\Users\ktkuru\AppData\Local\Temp\cczg8rYY.s:273    .text.DAC_SetDualChannelData:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cczg8rYY.s:279    .text.DAC_SetDualChannelData:00000000 DAC_SetDualChannelData
+C:\Users\ktkuru\AppData\Local\Temp\cczg8rYY.s:296    .text.DAC_SetDualChannelData:00000014 $d
+C:\Users\ktkuru\AppData\Local\Temp\cczg8rYY.s:299    .text.DAC_GetDataOutputValue:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cczg8rYY.s:305    .text.DAC_GetDataOutputValue:00000000 DAC_GetDataOutputValue
+C:\Users\ktkuru\AppData\Local\Temp\cczg8rYY.s:327    .text.DAC_GetDataOutputValue:00000020 $d
+C:\Users\ktkuru\AppData\Local\Temp\cczg8rYY.s:330    .text.DAC_DMACmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cczg8rYY.s:336    .text.DAC_DMACmd:00000000 DAC_DMACmd
+C:\Users\ktkuru\AppData\Local\Temp\cczg8rYY.s:359    .text.DAC_DMACmd:00000024 $d
+C:\Users\ktkuru\AppData\Local\Temp\cczg8rYY.s:362    .text.DAC_ITConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cczg8rYY.s:368    .text.DAC_ITConfig:00000000 DAC_ITConfig
+C:\Users\ktkuru\AppData\Local\Temp\cczg8rYY.s:389    .text.DAC_ITConfig:0000001c $d
+C:\Users\ktkuru\AppData\Local\Temp\cczg8rYY.s:392    .text.DAC_GetFlagStatus:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cczg8rYY.s:398    .text.DAC_GetFlagStatus:00000000 DAC_GetFlagStatus
+C:\Users\ktkuru\AppData\Local\Temp\cczg8rYY.s:415    .text.DAC_GetFlagStatus:00000014 $d
+C:\Users\ktkuru\AppData\Local\Temp\cczg8rYY.s:418    .text.DAC_ClearFlag:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cczg8rYY.s:424    .text.DAC_ClearFlag:00000000 DAC_ClearFlag
+C:\Users\ktkuru\AppData\Local\Temp\cczg8rYY.s:435    .text.DAC_ClearFlag:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\cczg8rYY.s:438    .text.DAC_GetITStatus:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cczg8rYY.s:444    .text.DAC_GetITStatus:00000000 DAC_GetITStatus
+C:\Users\ktkuru\AppData\Local\Temp\cczg8rYY.s:467    .text.DAC_GetITStatus:0000001c $d
+C:\Users\ktkuru\AppData\Local\Temp\cczg8rYY.s:470    .text.DAC_ClearITPendingBit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cczg8rYY.s:476    .text.DAC_ClearITPendingBit:00000000 DAC_ClearITPendingBit
+C:\Users\ktkuru\AppData\Local\Temp\cczg8rYY.s:487    .text.DAC_ClearITPendingBit:00000008 $d
+
+UNDEFINED SYMBOLS
+RCC_APB1PeriphResetCmd

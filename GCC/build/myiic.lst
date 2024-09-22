@@ -1,0 +1,397 @@
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccWDjBfi.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"myiic.c"
+  16              		.text
+  17              		.section	.text.IIC_Init,"ax",%progbits
+  18              		.align	1
+  19              		.global	IIC_Init
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  24              	IIC_Init:
+  25              		@ args = 0, pretend = 0, frame = 8
+  26              		@ frame_needed = 0, uses_anonymous_args = 0
+  27 0000 10B5     		push	{r4, lr}
+  28 0002 82B0     		sub	sp, sp, #8
+  29 0004 0121     		movs	r1, #1
+  30 0006 0220     		movs	r0, #2
+  31 0008 FFF7FEFF 		bl	RCC_AHB1PeriphClockCmd
+  32 000c 4FF44073 		mov	r3, #768
+  33 0010 0093     		str	r3, [sp]
+  34 0012 0124     		movs	r4, #1
+  35 0014 8DF80440 		strb	r4, [sp, #4]
+  36 0018 8DF80640 		strb	r4, [sp, #6]
+  37 001c 0323     		movs	r3, #3
+  38 001e 8DF80530 		strb	r3, [sp, #5]
+  39 0022 8DF80740 		strb	r4, [sp, #7]
+  40 0026 6946     		mov	r1, sp
+  41 0028 0448     		ldr	r0, .L3
+  42 002a FFF7FEFF 		bl	GPIO_Init
+  43 002e 044B     		ldr	r3, .L3+4
+  44 0030 C3F8A042 		str	r4, [r3, #672]
+  45 0034 C3F8A442 		str	r4, [r3, #676]
+  46 0038 02B0     		add	sp, sp, #8
+  47              		@ sp needed
+  48 003a 10BD     		pop	{r4, pc}
+  49              	.L4:
+  50              		.align	2
+  51              	.L3:
+  52 003c 00040240 		.word	1073873920
+  53 0040 00804042 		.word	1111523328
+  55              		.section	.text.IIC_Start,"ax",%progbits
+  56              		.align	1
+  57              		.global	IIC_Start
+  58              		.syntax unified
+  59              		.thumb
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccWDjBfi.s 			page 2
+
+
+  60              		.thumb_func
+  62              	IIC_Start:
+  63              		@ args = 0, pretend = 0, frame = 0
+  64              		@ frame_needed = 0, uses_anonymous_args = 0
+  65 0000 38B5     		push	{r3, r4, r5, lr}
+  66 0002 0D4B     		ldr	r3, .L7
+  67 0004 1A68     		ldr	r2, [r3]
+  68 0006 22F44022 		bic	r2, r2, #786432
+  69 000a 1A60     		str	r2, [r3]
+  70 000c 1A68     		ldr	r2, [r3]
+  71 000e 42F48022 		orr	r2, r2, #262144
+  72 0012 1A60     		str	r2, [r3]
+  73 0014 094C     		ldr	r4, .L7+4
+  74 0016 0123     		movs	r3, #1
+  75 0018 C4F8A432 		str	r3, [r4, #676]
+  76 001c C4F8A032 		str	r3, [r4, #672]
+  77 0020 0420     		movs	r0, #4
+  78 0022 FFF7FEFF 		bl	delay_us
+  79 0026 0025     		movs	r5, #0
+  80 0028 C4F8A452 		str	r5, [r4, #676]
+  81 002c 0420     		movs	r0, #4
+  82 002e FFF7FEFF 		bl	delay_us
+  83 0032 C4F8A052 		str	r5, [r4, #672]
+  84 0036 38BD     		pop	{r3, r4, r5, pc}
+  85              	.L8:
+  86              		.align	2
+  87              	.L7:
+  88 0038 00040240 		.word	1073873920
+  89 003c 00804042 		.word	1111523328
+  91              		.section	.text.IIC_Stop,"ax",%progbits
+  92              		.align	1
+  93              		.global	IIC_Stop
+  94              		.syntax unified
+  95              		.thumb
+  96              		.thumb_func
+  98              	IIC_Stop:
+  99              		@ args = 0, pretend = 0, frame = 0
+ 100              		@ frame_needed = 0, uses_anonymous_args = 0
+ 101 0000 10B5     		push	{r4, lr}
+ 102 0002 0D4B     		ldr	r3, .L11
+ 103 0004 1A68     		ldr	r2, [r3]
+ 104 0006 22F44022 		bic	r2, r2, #786432
+ 105 000a 1A60     		str	r2, [r3]
+ 106 000c 1A68     		ldr	r2, [r3]
+ 107 000e 42F48022 		orr	r2, r2, #262144
+ 108 0012 1A60     		str	r2, [r3]
+ 109 0014 094C     		ldr	r4, .L11+4
+ 110 0016 0023     		movs	r3, #0
+ 111 0018 C4F8A032 		str	r3, [r4, #672]
+ 112 001c C4F8A432 		str	r3, [r4, #676]
+ 113 0020 0420     		movs	r0, #4
+ 114 0022 FFF7FEFF 		bl	delay_us
+ 115 0026 0123     		movs	r3, #1
+ 116 0028 C4F8A032 		str	r3, [r4, #672]
+ 117 002c C4F8A432 		str	r3, [r4, #676]
+ 118 0030 0420     		movs	r0, #4
+ 119 0032 FFF7FEFF 		bl	delay_us
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccWDjBfi.s 			page 3
+
+
+ 120 0036 10BD     		pop	{r4, pc}
+ 121              	.L12:
+ 122              		.align	2
+ 123              	.L11:
+ 124 0038 00040240 		.word	1073873920
+ 125 003c 00804042 		.word	1111523328
+ 127              		.section	.text.IIC_Wait_Ack,"ax",%progbits
+ 128              		.align	1
+ 129              		.global	IIC_Wait_Ack
+ 130              		.syntax unified
+ 131              		.thumb
+ 132              		.thumb_func
+ 134              	IIC_Wait_Ack:
+ 135              		@ args = 0, pretend = 0, frame = 0
+ 136              		@ frame_needed = 0, uses_anonymous_args = 0
+ 137 0000 38B5     		push	{r3, r4, r5, lr}
+ 138 0002 124B     		ldr	r3, .L19
+ 139 0004 1A68     		ldr	r2, [r3]
+ 140 0006 22F44022 		bic	r2, r2, #786432
+ 141 000a 1A60     		str	r2, [r3]
+ 142 000c 1A68     		ldr	r2, [r3]
+ 143 000e 1A60     		str	r2, [r3]
+ 144 0010 0F4D     		ldr	r5, .L19+4
+ 145 0012 0124     		movs	r4, #1
+ 146 0014 C5F8A442 		str	r4, [r5, #676]
+ 147 0018 2046     		mov	r0, r4
+ 148 001a FFF7FEFF 		bl	delay_us
+ 149 001e C5F8A042 		str	r4, [r5, #672]
+ 150 0022 2046     		mov	r0, r4
+ 151 0024 FFF7FEFF 		bl	delay_us
+ 152 0028 0023     		movs	r3, #0
+ 153              	.L14:
+ 154 002a 094A     		ldr	r2, .L19+4
+ 155 002c D2F82422 		ldr	r2, [r2, #548]
+ 156 0030 3AB1     		cbz	r2, .L18
+ 157 0032 0133     		adds	r3, r3, #1
+ 158 0034 DBB2     		uxtb	r3, r3
+ 159 0036 FA2B     		cmp	r3, #250
+ 160 0038 F7D9     		bls	.L14
+ 161 003a FFF7FEFF 		bl	IIC_Stop
+ 162 003e 0120     		movs	r0, #1
+ 163 0040 03E0     		b	.L15
+ 164              	.L18:
+ 165 0042 0020     		movs	r0, #0
+ 166 0044 024B     		ldr	r3, .L19+4
+ 167 0046 C3F8A002 		str	r0, [r3, #672]
+ 168              	.L15:
+ 169 004a 38BD     		pop	{r3, r4, r5, pc}
+ 170              	.L20:
+ 171              		.align	2
+ 172              	.L19:
+ 173 004c 00040240 		.word	1073873920
+ 174 0050 00804042 		.word	1111523328
+ 176              		.section	.text.IIC_Ack,"ax",%progbits
+ 177              		.align	1
+ 178              		.global	IIC_Ack
+ 179              		.syntax unified
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccWDjBfi.s 			page 4
+
+
+ 180              		.thumb
+ 181              		.thumb_func
+ 183              	IIC_Ack:
+ 184              		@ args = 0, pretend = 0, frame = 0
+ 185              		@ frame_needed = 0, uses_anonymous_args = 0
+ 186 0000 38B5     		push	{r3, r4, r5, lr}
+ 187 0002 0D4C     		ldr	r4, .L23
+ 188 0004 0025     		movs	r5, #0
+ 189 0006 C4F8A052 		str	r5, [r4, #672]
+ 190 000a 0C4B     		ldr	r3, .L23+4
+ 191 000c 1A68     		ldr	r2, [r3]
+ 192 000e 22F44022 		bic	r2, r2, #786432
+ 193 0012 1A60     		str	r2, [r3]
+ 194 0014 1A68     		ldr	r2, [r3]
+ 195 0016 42F48022 		orr	r2, r2, #262144
+ 196 001a 1A60     		str	r2, [r3]
+ 197 001c C4F8A452 		str	r5, [r4, #676]
+ 198 0020 0220     		movs	r0, #2
+ 199 0022 FFF7FEFF 		bl	delay_us
+ 200 0026 0123     		movs	r3, #1
+ 201 0028 C4F8A032 		str	r3, [r4, #672]
+ 202 002c 0220     		movs	r0, #2
+ 203 002e FFF7FEFF 		bl	delay_us
+ 204 0032 C4F8A052 		str	r5, [r4, #672]
+ 205 0036 38BD     		pop	{r3, r4, r5, pc}
+ 206              	.L24:
+ 207              		.align	2
+ 208              	.L23:
+ 209 0038 00804042 		.word	1111523328
+ 210 003c 00040240 		.word	1073873920
+ 212              		.section	.text.IIC_NAck,"ax",%progbits
+ 213              		.align	1
+ 214              		.global	IIC_NAck
+ 215              		.syntax unified
+ 216              		.thumb
+ 217              		.thumb_func
+ 219              	IIC_NAck:
+ 220              		@ args = 0, pretend = 0, frame = 0
+ 221              		@ frame_needed = 0, uses_anonymous_args = 0
+ 222 0000 70B5     		push	{r4, r5, r6, lr}
+ 223 0002 0D4C     		ldr	r4, .L27
+ 224 0004 0025     		movs	r5, #0
+ 225 0006 C4F8A052 		str	r5, [r4, #672]
+ 226 000a 0C4B     		ldr	r3, .L27+4
+ 227 000c 1A68     		ldr	r2, [r3]
+ 228 000e 22F44022 		bic	r2, r2, #786432
+ 229 0012 1A60     		str	r2, [r3]
+ 230 0014 1A68     		ldr	r2, [r3]
+ 231 0016 42F48022 		orr	r2, r2, #262144
+ 232 001a 1A60     		str	r2, [r3]
+ 233 001c 0126     		movs	r6, #1
+ 234 001e C4F8A462 		str	r6, [r4, #676]
+ 235 0022 0220     		movs	r0, #2
+ 236 0024 FFF7FEFF 		bl	delay_us
+ 237 0028 C4F8A062 		str	r6, [r4, #672]
+ 238 002c 0220     		movs	r0, #2
+ 239 002e FFF7FEFF 		bl	delay_us
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccWDjBfi.s 			page 5
+
+
+ 240 0032 C4F8A052 		str	r5, [r4, #672]
+ 241 0036 70BD     		pop	{r4, r5, r6, pc}
+ 242              	.L28:
+ 243              		.align	2
+ 244              	.L27:
+ 245 0038 00804042 		.word	1111523328
+ 246 003c 00040240 		.word	1073873920
+ 248              		.section	.text.IIC_Send_Byte,"ax",%progbits
+ 249              		.align	1
+ 250              		.global	IIC_Send_Byte
+ 251              		.syntax unified
+ 252              		.thumb
+ 253              		.thumb_func
+ 255              	IIC_Send_Byte:
+ 256              		@ args = 0, pretend = 0, frame = 0
+ 257              		@ frame_needed = 0, uses_anonymous_args = 0
+ 258 0000 70B5     		push	{r4, r5, r6, lr}
+ 259 0002 0546     		mov	r5, r0
+ 260 0004 134B     		ldr	r3, .L33
+ 261 0006 1A68     		ldr	r2, [r3]
+ 262 0008 22F44022 		bic	r2, r2, #786432
+ 263 000c 1A60     		str	r2, [r3]
+ 264 000e 1A68     		ldr	r2, [r3]
+ 265 0010 42F48022 		orr	r2, r2, #262144
+ 266 0014 1A60     		str	r2, [r3]
+ 267 0016 0024     		movs	r4, #0
+ 268 0018 0F4B     		ldr	r3, .L33+4
+ 269 001a C3F8A042 		str	r4, [r3, #672]
+ 270 001e 16E0     		b	.L30
+ 271              	.L31:
+ 272 0020 EB09     		lsrs	r3, r5, #7
+ 273 0022 0D4E     		ldr	r6, .L33+4
+ 274 0024 C6F8A432 		str	r3, [r6, #676]
+ 275 0028 6D00     		lsls	r5, r5, #1
+ 276 002a EDB2     		uxtb	r5, r5
+ 277 002c 0220     		movs	r0, #2
+ 278 002e FFF7FEFF 		bl	delay_us
+ 279 0032 0123     		movs	r3, #1
+ 280 0034 C6F8A032 		str	r3, [r6, #672]
+ 281 0038 0220     		movs	r0, #2
+ 282 003a FFF7FEFF 		bl	delay_us
+ 283 003e 0023     		movs	r3, #0
+ 284 0040 C6F8A032 		str	r3, [r6, #672]
+ 285 0044 0220     		movs	r0, #2
+ 286 0046 FFF7FEFF 		bl	delay_us
+ 287 004a 0134     		adds	r4, r4, #1
+ 288 004c E4B2     		uxtb	r4, r4
+ 289              	.L30:
+ 290 004e 072C     		cmp	r4, #7
+ 291 0050 E6D9     		bls	.L31
+ 292 0052 70BD     		pop	{r4, r5, r6, pc}
+ 293              	.L34:
+ 294              		.align	2
+ 295              	.L33:
+ 296 0054 00040240 		.word	1073873920
+ 297 0058 00804042 		.word	1111523328
+ 299              		.section	.text.IIC_Read_Byte,"ax",%progbits
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccWDjBfi.s 			page 6
+
+
+ 300              		.align	1
+ 301              		.global	IIC_Read_Byte
+ 302              		.syntax unified
+ 303              		.thumb
+ 304              		.thumb_func
+ 306              	IIC_Read_Byte:
+ 307              		@ args = 0, pretend = 0, frame = 0
+ 308              		@ frame_needed = 0, uses_anonymous_args = 0
+ 309 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+ 310 0002 0746     		mov	r7, r0
+ 311 0004 154B     		ldr	r3, .L43
+ 312 0006 1A68     		ldr	r2, [r3]
+ 313 0008 22F44022 		bic	r2, r2, #786432
+ 314 000c 1A60     		str	r2, [r3]
+ 315 000e 1A68     		ldr	r2, [r3]
+ 316 0010 1A60     		str	r2, [r3]
+ 317 0012 0024     		movs	r4, #0
+ 318 0014 2546     		mov	r5, r4
+ 319 0016 04E0     		b	.L36
+ 320              	.L37:
+ 321 0018 0120     		movs	r0, #1
+ 322 001a FFF7FEFF 		bl	delay_us
+ 323 001e 0135     		adds	r5, r5, #1
+ 324 0020 EDB2     		uxtb	r5, r5
+ 325              	.L36:
+ 326 0022 072D     		cmp	r5, #7
+ 327 0024 12D8     		bhi	.L42
+ 328 0026 0E4E     		ldr	r6, .L43+4
+ 329 0028 0023     		movs	r3, #0
+ 330 002a C6F8A032 		str	r3, [r6, #672]
+ 331 002e 0220     		movs	r0, #2
+ 332 0030 FFF7FEFF 		bl	delay_us
+ 333 0034 0123     		movs	r3, #1
+ 334 0036 C6F8A032 		str	r3, [r6, #672]
+ 335 003a 9C40     		lsls	r4, r4, r3
+ 336 003c E4B2     		uxtb	r4, r4
+ 337 003e D6F82432 		ldr	r3, [r6, #548]
+ 338 0042 002B     		cmp	r3, #0
+ 339 0044 E8D0     		beq	.L37
+ 340 0046 0134     		adds	r4, r4, #1
+ 341 0048 E4B2     		uxtb	r4, r4
+ 342 004a E5E7     		b	.L37
+ 343              	.L42:
+ 344 004c 1FB9     		cbnz	r7, .L39
+ 345 004e FFF7FEFF 		bl	IIC_NAck
+ 346              	.L40:
+ 347 0052 2046     		mov	r0, r4
+ 348 0054 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 349              	.L39:
+ 350 0056 FFF7FEFF 		bl	IIC_Ack
+ 351 005a FAE7     		b	.L40
+ 352              	.L44:
+ 353              		.align	2
+ 354              	.L43:
+ 355 005c 00040240 		.word	1073873920
+ 356 0060 00804042 		.word	1111523328
+ 358              		.ident	"GCC: (Arm GNU Toolchain 13.3.Rel1 (Build arm-13.24)) 13.3.1 20240614"
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccWDjBfi.s 			page 7
+
+
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccWDjBfi.s 			page 8
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 myiic.c
+C:\Users\ktkuru\AppData\Local\Temp\ccWDjBfi.s:18     .text.IIC_Init:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccWDjBfi.s:24     .text.IIC_Init:00000000 IIC_Init
+C:\Users\ktkuru\AppData\Local\Temp\ccWDjBfi.s:52     .text.IIC_Init:0000003c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccWDjBfi.s:56     .text.IIC_Start:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccWDjBfi.s:62     .text.IIC_Start:00000000 IIC_Start
+C:\Users\ktkuru\AppData\Local\Temp\ccWDjBfi.s:88     .text.IIC_Start:00000038 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccWDjBfi.s:92     .text.IIC_Stop:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccWDjBfi.s:98     .text.IIC_Stop:00000000 IIC_Stop
+C:\Users\ktkuru\AppData\Local\Temp\ccWDjBfi.s:124    .text.IIC_Stop:00000038 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccWDjBfi.s:128    .text.IIC_Wait_Ack:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccWDjBfi.s:134    .text.IIC_Wait_Ack:00000000 IIC_Wait_Ack
+C:\Users\ktkuru\AppData\Local\Temp\ccWDjBfi.s:173    .text.IIC_Wait_Ack:0000004c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccWDjBfi.s:177    .text.IIC_Ack:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccWDjBfi.s:183    .text.IIC_Ack:00000000 IIC_Ack
+C:\Users\ktkuru\AppData\Local\Temp\ccWDjBfi.s:209    .text.IIC_Ack:00000038 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccWDjBfi.s:213    .text.IIC_NAck:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccWDjBfi.s:219    .text.IIC_NAck:00000000 IIC_NAck
+C:\Users\ktkuru\AppData\Local\Temp\ccWDjBfi.s:245    .text.IIC_NAck:00000038 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccWDjBfi.s:249    .text.IIC_Send_Byte:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccWDjBfi.s:255    .text.IIC_Send_Byte:00000000 IIC_Send_Byte
+C:\Users\ktkuru\AppData\Local\Temp\ccWDjBfi.s:296    .text.IIC_Send_Byte:00000054 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccWDjBfi.s:300    .text.IIC_Read_Byte:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccWDjBfi.s:306    .text.IIC_Read_Byte:00000000 IIC_Read_Byte
+C:\Users\ktkuru\AppData\Local\Temp\ccWDjBfi.s:355    .text.IIC_Read_Byte:0000005c $d
+
+UNDEFINED SYMBOLS
+RCC_AHB1PeriphClockCmd
+GPIO_Init
+delay_us

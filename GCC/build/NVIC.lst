@@ -1,0 +1,82 @@
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccfx4ASt.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"NVIC.c"
+  16              		.text
+  17              		.section	.text.BSP_NVIC_IT_Config,"ax",%progbits
+  18              		.align	1
+  19              		.global	BSP_NVIC_IT_Config
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  24              	BSP_NVIC_IT_Config:
+  25              		@ args = 0, pretend = 0, frame = 8
+  26              		@ frame_needed = 0, uses_anonymous_args = 0
+  27 0000 30B5     		push	{r4, r5, lr}
+  28 0002 83B0     		sub	sp, sp, #12
+  29 0004 4FF44070 		mov	r0, #768
+  30 0008 FFF7FEFF 		bl	NVIC_PriorityGroupConfig
+  31 000c 2823     		movs	r3, #40
+  32 000e 8DF80430 		strb	r3, [sp, #4]
+  33 0012 0124     		movs	r4, #1
+  34 0014 8DF80540 		strb	r4, [sp, #5]
+  35 0018 0025     		movs	r5, #0
+  36 001a 8DF80650 		strb	r5, [sp, #6]
+  37 001e 8DF80740 		strb	r4, [sp, #7]
+  38 0022 01A8     		add	r0, sp, #4
+  39 0024 FFF7FEFF 		bl	NVIC_Init
+  40 0028 2523     		movs	r3, #37
+  41 002a 8DF80430 		strb	r3, [sp, #4]
+  42 002e 0223     		movs	r3, #2
+  43 0030 8DF80530 		strb	r3, [sp, #5]
+  44 0034 8DF80650 		strb	r5, [sp, #6]
+  45 0038 8DF80740 		strb	r4, [sp, #7]
+  46 003c 01A8     		add	r0, sp, #4
+  47 003e FFF7FEFF 		bl	NVIC_Init
+  48 0042 2623     		movs	r3, #38
+  49 0044 8DF80430 		strb	r3, [sp, #4]
+  50 0048 8DF80550 		strb	r5, [sp, #5]
+  51 004c 8DF80650 		strb	r5, [sp, #6]
+  52 0050 8DF80740 		strb	r4, [sp, #7]
+  53 0054 01A8     		add	r0, sp, #4
+  54 0056 FFF7FEFF 		bl	NVIC_Init
+  55 005a 2723     		movs	r3, #39
+  56 005c 8DF80430 		strb	r3, [sp, #4]
+  57 0060 0323     		movs	r3, #3
+  58 0062 8DF80530 		strb	r3, [sp, #5]
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccfx4ASt.s 			page 2
+
+
+  59 0066 8DF80650 		strb	r5, [sp, #6]
+  60 006a 8DF80740 		strb	r4, [sp, #7]
+  61 006e 01A8     		add	r0, sp, #4
+  62 0070 FFF7FEFF 		bl	NVIC_Init
+  63 0074 03B0     		add	sp, sp, #12
+  64              		@ sp needed
+  65 0076 30BD     		pop	{r4, r5, pc}
+  67              		.ident	"GCC: (Arm GNU Toolchain 13.3.Rel1 (Build arm-13.24)) 13.3.1 20240614"
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccfx4ASt.s 			page 3
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 NVIC.c
+C:\Users\ktkuru\AppData\Local\Temp\ccfx4ASt.s:18     .text.BSP_NVIC_IT_Config:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccfx4ASt.s:24     .text.BSP_NVIC_IT_Config:00000000 BSP_NVIC_IT_Config
+
+UNDEFINED SYMBOLS
+NVIC_PriorityGroupConfig
+NVIC_Init

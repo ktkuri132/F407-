@@ -1,0 +1,1381 @@
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"stm32f4xx_flash.c"
+  16              		.text
+  17              		.section	.text.FLASH_SetLatency,"ax",%progbits
+  18              		.align	1
+  19              		.global	FLASH_SetLatency
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  24              	FLASH_SetLatency:
+  25              		@ args = 0, pretend = 0, frame = 0
+  26              		@ frame_needed = 0, uses_anonymous_args = 0
+  27              		@ link register save eliminated.
+  28 0000 C0B2     		uxtb	r0, r0
+  29 0002 014B     		ldr	r3, .L2
+  30 0004 1870     		strb	r0, [r3]
+  31 0006 7047     		bx	lr
+  32              	.L3:
+  33              		.align	2
+  34              	.L2:
+  35 0008 003C0240 		.word	1073888256
+  37              		.section	.text.FLASH_PrefetchBufferCmd,"ax",%progbits
+  38              		.align	1
+  39              		.global	FLASH_PrefetchBufferCmd
+  40              		.syntax unified
+  41              		.thumb
+  42              		.thumb_func
+  44              	FLASH_PrefetchBufferCmd:
+  45              		@ args = 0, pretend = 0, frame = 0
+  46              		@ frame_needed = 0, uses_anonymous_args = 0
+  47              		@ link register save eliminated.
+  48 0000 28B1     		cbz	r0, .L5
+  49 0002 064A     		ldr	r2, .L7
+  50 0004 1368     		ldr	r3, [r2]
+  51 0006 43F48073 		orr	r3, r3, #256
+  52 000a 1360     		str	r3, [r2]
+  53 000c 7047     		bx	lr
+  54              	.L5:
+  55 000e 034A     		ldr	r2, .L7
+  56 0010 1368     		ldr	r3, [r2]
+  57 0012 23F48073 		bic	r3, r3, #256
+  58 0016 1360     		str	r3, [r2]
+  59 0018 7047     		bx	lr
+  60              	.L8:
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s 			page 2
+
+
+  61 001a 00BF     		.align	2
+  62              	.L7:
+  63 001c 003C0240 		.word	1073888256
+  65              		.section	.text.FLASH_InstructionCacheCmd,"ax",%progbits
+  66              		.align	1
+  67              		.global	FLASH_InstructionCacheCmd
+  68              		.syntax unified
+  69              		.thumb
+  70              		.thumb_func
+  72              	FLASH_InstructionCacheCmd:
+  73              		@ args = 0, pretend = 0, frame = 0
+  74              		@ frame_needed = 0, uses_anonymous_args = 0
+  75              		@ link register save eliminated.
+  76 0000 28B1     		cbz	r0, .L10
+  77 0002 064A     		ldr	r2, .L12
+  78 0004 1368     		ldr	r3, [r2]
+  79 0006 43F40073 		orr	r3, r3, #512
+  80 000a 1360     		str	r3, [r2]
+  81 000c 7047     		bx	lr
+  82              	.L10:
+  83 000e 034A     		ldr	r2, .L12
+  84 0010 1368     		ldr	r3, [r2]
+  85 0012 23F40073 		bic	r3, r3, #512
+  86 0016 1360     		str	r3, [r2]
+  87 0018 7047     		bx	lr
+  88              	.L13:
+  89 001a 00BF     		.align	2
+  90              	.L12:
+  91 001c 003C0240 		.word	1073888256
+  93              		.section	.text.FLASH_DataCacheCmd,"ax",%progbits
+  94              		.align	1
+  95              		.global	FLASH_DataCacheCmd
+  96              		.syntax unified
+  97              		.thumb
+  98              		.thumb_func
+ 100              	FLASH_DataCacheCmd:
+ 101              		@ args = 0, pretend = 0, frame = 0
+ 102              		@ frame_needed = 0, uses_anonymous_args = 0
+ 103              		@ link register save eliminated.
+ 104 0000 28B1     		cbz	r0, .L15
+ 105 0002 064A     		ldr	r2, .L17
+ 106 0004 1368     		ldr	r3, [r2]
+ 107 0006 43F48063 		orr	r3, r3, #1024
+ 108 000a 1360     		str	r3, [r2]
+ 109 000c 7047     		bx	lr
+ 110              	.L15:
+ 111 000e 034A     		ldr	r2, .L17
+ 112 0010 1368     		ldr	r3, [r2]
+ 113 0012 23F48063 		bic	r3, r3, #1024
+ 114 0016 1360     		str	r3, [r2]
+ 115 0018 7047     		bx	lr
+ 116              	.L18:
+ 117 001a 00BF     		.align	2
+ 118              	.L17:
+ 119 001c 003C0240 		.word	1073888256
+ 121              		.section	.text.FLASH_InstructionCacheReset,"ax",%progbits
+ 122              		.align	1
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s 			page 3
+
+
+ 123              		.global	FLASH_InstructionCacheReset
+ 124              		.syntax unified
+ 125              		.thumb
+ 126              		.thumb_func
+ 128              	FLASH_InstructionCacheReset:
+ 129              		@ args = 0, pretend = 0, frame = 0
+ 130              		@ frame_needed = 0, uses_anonymous_args = 0
+ 131              		@ link register save eliminated.
+ 132 0000 024A     		ldr	r2, .L20
+ 133 0002 1368     		ldr	r3, [r2]
+ 134 0004 43F40063 		orr	r3, r3, #2048
+ 135 0008 1360     		str	r3, [r2]
+ 136 000a 7047     		bx	lr
+ 137              	.L21:
+ 138              		.align	2
+ 139              	.L20:
+ 140 000c 003C0240 		.word	1073888256
+ 142              		.section	.text.FLASH_DataCacheReset,"ax",%progbits
+ 143              		.align	1
+ 144              		.global	FLASH_DataCacheReset
+ 145              		.syntax unified
+ 146              		.thumb
+ 147              		.thumb_func
+ 149              	FLASH_DataCacheReset:
+ 150              		@ args = 0, pretend = 0, frame = 0
+ 151              		@ frame_needed = 0, uses_anonymous_args = 0
+ 152              		@ link register save eliminated.
+ 153 0000 024A     		ldr	r2, .L23
+ 154 0002 1368     		ldr	r3, [r2]
+ 155 0004 43F48053 		orr	r3, r3, #4096
+ 156 0008 1360     		str	r3, [r2]
+ 157 000a 7047     		bx	lr
+ 158              	.L24:
+ 159              		.align	2
+ 160              	.L23:
+ 161 000c 003C0240 		.word	1073888256
+ 163              		.section	.text.FLASH_Unlock,"ax",%progbits
+ 164              		.align	1
+ 165              		.global	FLASH_Unlock
+ 166              		.syntax unified
+ 167              		.thumb
+ 168              		.thumb_func
+ 170              	FLASH_Unlock:
+ 171              		@ args = 0, pretend = 0, frame = 0
+ 172              		@ frame_needed = 0, uses_anonymous_args = 0
+ 173              		@ link register save eliminated.
+ 174 0000 054B     		ldr	r3, .L28
+ 175 0002 1B69     		ldr	r3, [r3, #16]
+ 176 0004 002B     		cmp	r3, #0
+ 177 0006 00DB     		blt	.L27
+ 178              	.L25:
+ 179 0008 7047     		bx	lr
+ 180              	.L27:
+ 181 000a 034B     		ldr	r3, .L28
+ 182 000c 034A     		ldr	r2, .L28+4
+ 183 000e 5A60     		str	r2, [r3, #4]
+ 184 0010 02F18832 		add	r2, r2, #-2004318072
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s 			page 4
+
+
+ 185 0014 5A60     		str	r2, [r3, #4]
+ 186 0016 F7E7     		b	.L25
+ 187              	.L29:
+ 188              		.align	2
+ 189              	.L28:
+ 190 0018 003C0240 		.word	1073888256
+ 191 001c 23016745 		.word	1164378403
+ 193              		.section	.text.FLASH_Lock,"ax",%progbits
+ 194              		.align	1
+ 195              		.global	FLASH_Lock
+ 196              		.syntax unified
+ 197              		.thumb
+ 198              		.thumb_func
+ 200              	FLASH_Lock:
+ 201              		@ args = 0, pretend = 0, frame = 0
+ 202              		@ frame_needed = 0, uses_anonymous_args = 0
+ 203              		@ link register save eliminated.
+ 204 0000 024A     		ldr	r2, .L31
+ 205 0002 1369     		ldr	r3, [r2, #16]
+ 206 0004 43F00043 		orr	r3, r3, #-2147483648
+ 207 0008 1361     		str	r3, [r2, #16]
+ 208 000a 7047     		bx	lr
+ 209              	.L32:
+ 210              		.align	2
+ 211              	.L31:
+ 212 000c 003C0240 		.word	1073888256
+ 214              		.section	.text.FLASH_OB_Unlock,"ax",%progbits
+ 215              		.align	1
+ 216              		.global	FLASH_OB_Unlock
+ 217              		.syntax unified
+ 218              		.thumb
+ 219              		.thumb_func
+ 221              	FLASH_OB_Unlock:
+ 222              		@ args = 0, pretend = 0, frame = 0
+ 223              		@ frame_needed = 0, uses_anonymous_args = 0
+ 224              		@ link register save eliminated.
+ 225 0000 054B     		ldr	r3, .L35
+ 226 0002 5B69     		ldr	r3, [r3, #20]
+ 227 0004 13F0010F 		tst	r3, #1
+ 228 0008 05D0     		beq	.L33
+ 229 000a 034B     		ldr	r3, .L35
+ 230 000c 034A     		ldr	r2, .L35+4
+ 231 000e 9A60     		str	r2, [r3, #8]
+ 232 0010 02F14432 		add	r2, r2, #1145324612
+ 233 0014 9A60     		str	r2, [r3, #8]
+ 234              	.L33:
+ 235 0016 7047     		bx	lr
+ 236              	.L36:
+ 237              		.align	2
+ 238              	.L35:
+ 239 0018 003C0240 		.word	1073888256
+ 240 001c 3B2A1908 		.word	135866939
+ 242              		.section	.text.FLASH_OB_Lock,"ax",%progbits
+ 243              		.align	1
+ 244              		.global	FLASH_OB_Lock
+ 245              		.syntax unified
+ 246              		.thumb
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s 			page 5
+
+
+ 247              		.thumb_func
+ 249              	FLASH_OB_Lock:
+ 250              		@ args = 0, pretend = 0, frame = 0
+ 251              		@ frame_needed = 0, uses_anonymous_args = 0
+ 252              		@ link register save eliminated.
+ 253 0000 024A     		ldr	r2, .L38
+ 254 0002 5369     		ldr	r3, [r2, #20]
+ 255 0004 43F00103 		orr	r3, r3, #1
+ 256 0008 5361     		str	r3, [r2, #20]
+ 257 000a 7047     		bx	lr
+ 258              	.L39:
+ 259              		.align	2
+ 260              	.L38:
+ 261 000c 003C0240 		.word	1073888256
+ 263              		.section	.text.FLASH_OB_PCROPSelectionConfig,"ax",%progbits
+ 264              		.align	1
+ 265              		.global	FLASH_OB_PCROPSelectionConfig
+ 266              		.syntax unified
+ 267              		.thumb
+ 268              		.thumb_func
+ 270              	FLASH_OB_PCROPSelectionConfig:
+ 271              		@ args = 0, pretend = 0, frame = 0
+ 272              		@ frame_needed = 0, uses_anonymous_args = 0
+ 273              		@ link register save eliminated.
+ 274 0000 034A     		ldr	r2, .L41
+ 275 0002 D37D     		ldrb	r3, [r2, #23]	@ zero_extendqisi2
+ 276 0004 03F07F03 		and	r3, r3, #127
+ 277 0008 0343     		orrs	r3, r3, r0
+ 278 000a D375     		strb	r3, [r2, #23]
+ 279 000c 7047     		bx	lr
+ 280              	.L42:
+ 281 000e 00BF     		.align	2
+ 282              	.L41:
+ 283 0010 003C0240 		.word	1073888256
+ 285              		.section	.text.FLASH_OB_BootConfig,"ax",%progbits
+ 286              		.align	1
+ 287              		.global	FLASH_OB_BootConfig
+ 288              		.syntax unified
+ 289              		.thumb
+ 290              		.thumb_func
+ 292              	FLASH_OB_BootConfig:
+ 293              		@ args = 0, pretend = 0, frame = 0
+ 294              		@ frame_needed = 0, uses_anonymous_args = 0
+ 295              		@ link register save eliminated.
+ 296 0000 044B     		ldr	r3, .L44
+ 297 0002 1A7D     		ldrb	r2, [r3, #20]	@ zero_extendqisi2
+ 298 0004 02F0EF02 		and	r2, r2, #239
+ 299 0008 1A75     		strb	r2, [r3, #20]
+ 300 000a 1A7D     		ldrb	r2, [r3, #20]	@ zero_extendqisi2
+ 301 000c 0243     		orrs	r2, r2, r0
+ 302 000e 1A75     		strb	r2, [r3, #20]
+ 303 0010 7047     		bx	lr
+ 304              	.L45:
+ 305 0012 00BF     		.align	2
+ 306              	.L44:
+ 307 0014 003C0240 		.word	1073888256
+ 309              		.section	.text.FLASH_OB_BORConfig,"ax",%progbits
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s 			page 6
+
+
+ 310              		.align	1
+ 311              		.global	FLASH_OB_BORConfig
+ 312              		.syntax unified
+ 313              		.thumb
+ 314              		.thumb_func
+ 316              	FLASH_OB_BORConfig:
+ 317              		@ args = 0, pretend = 0, frame = 0
+ 318              		@ frame_needed = 0, uses_anonymous_args = 0
+ 319              		@ link register save eliminated.
+ 320 0000 044B     		ldr	r3, .L47
+ 321 0002 1A7D     		ldrb	r2, [r3, #20]	@ zero_extendqisi2
+ 322 0004 02F0F302 		and	r2, r2, #243
+ 323 0008 1A75     		strb	r2, [r3, #20]
+ 324 000a 1A7D     		ldrb	r2, [r3, #20]	@ zero_extendqisi2
+ 325 000c 0243     		orrs	r2, r2, r0
+ 326 000e 1A75     		strb	r2, [r3, #20]
+ 327 0010 7047     		bx	lr
+ 328              	.L48:
+ 329 0012 00BF     		.align	2
+ 330              	.L47:
+ 331 0014 003C0240 		.word	1073888256
+ 333              		.section	.text.FLASH_OB_GetUser,"ax",%progbits
+ 334              		.align	1
+ 335              		.global	FLASH_OB_GetUser
+ 336              		.syntax unified
+ 337              		.thumb
+ 338              		.thumb_func
+ 340              	FLASH_OB_GetUser:
+ 341              		@ args = 0, pretend = 0, frame = 0
+ 342              		@ frame_needed = 0, uses_anonymous_args = 0
+ 343              		@ link register save eliminated.
+ 344 0000 024B     		ldr	r3, .L50
+ 345 0002 5869     		ldr	r0, [r3, #20]
+ 346 0004 C0F34710 		ubfx	r0, r0, #5, #8
+ 347 0008 7047     		bx	lr
+ 348              	.L51:
+ 349 000a 00BF     		.align	2
+ 350              	.L50:
+ 351 000c 003C0240 		.word	1073888256
+ 353              		.section	.text.FLASH_OB_GetWRP,"ax",%progbits
+ 354              		.align	1
+ 355              		.global	FLASH_OB_GetWRP
+ 356              		.syntax unified
+ 357              		.thumb
+ 358              		.thumb_func
+ 360              	FLASH_OB_GetWRP:
+ 361              		@ args = 0, pretend = 0, frame = 0
+ 362              		@ frame_needed = 0, uses_anonymous_args = 0
+ 363              		@ link register save eliminated.
+ 364 0000 014B     		ldr	r3, .L53
+ 365 0002 D88A     		ldrh	r0, [r3, #22]
+ 366 0004 80B2     		uxth	r0, r0
+ 367 0006 7047     		bx	lr
+ 368              	.L54:
+ 369              		.align	2
+ 370              	.L53:
+ 371 0008 003C0240 		.word	1073888256
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s 			page 7
+
+
+ 373              		.section	.text.FLASH_OB_GetWRP1,"ax",%progbits
+ 374              		.align	1
+ 375              		.global	FLASH_OB_GetWRP1
+ 376              		.syntax unified
+ 377              		.thumb
+ 378              		.thumb_func
+ 380              	FLASH_OB_GetWRP1:
+ 381              		@ args = 0, pretend = 0, frame = 0
+ 382              		@ frame_needed = 0, uses_anonymous_args = 0
+ 383              		@ link register save eliminated.
+ 384 0000 014B     		ldr	r3, .L56
+ 385 0002 588B     		ldrh	r0, [r3, #26]
+ 386 0004 80B2     		uxth	r0, r0
+ 387 0006 7047     		bx	lr
+ 388              	.L57:
+ 389              		.align	2
+ 390              	.L56:
+ 391 0008 003C0240 		.word	1073888256
+ 393              		.section	.text.FLASH_OB_GetPCROP,"ax",%progbits
+ 394              		.align	1
+ 395              		.global	FLASH_OB_GetPCROP
+ 396              		.syntax unified
+ 397              		.thumb
+ 398              		.thumb_func
+ 400              	FLASH_OB_GetPCROP:
+ 401              		@ args = 0, pretend = 0, frame = 0
+ 402              		@ frame_needed = 0, uses_anonymous_args = 0
+ 403              		@ link register save eliminated.
+ 404 0000 014B     		ldr	r3, .L59
+ 405 0002 D88A     		ldrh	r0, [r3, #22]
+ 406 0004 80B2     		uxth	r0, r0
+ 407 0006 7047     		bx	lr
+ 408              	.L60:
+ 409              		.align	2
+ 410              	.L59:
+ 411 0008 003C0240 		.word	1073888256
+ 413              		.section	.text.FLASH_OB_GetPCROP1,"ax",%progbits
+ 414              		.align	1
+ 415              		.global	FLASH_OB_GetPCROP1
+ 416              		.syntax unified
+ 417              		.thumb
+ 418              		.thumb_func
+ 420              	FLASH_OB_GetPCROP1:
+ 421              		@ args = 0, pretend = 0, frame = 0
+ 422              		@ frame_needed = 0, uses_anonymous_args = 0
+ 423              		@ link register save eliminated.
+ 424 0000 014B     		ldr	r3, .L62
+ 425 0002 588B     		ldrh	r0, [r3, #26]
+ 426 0004 80B2     		uxth	r0, r0
+ 427 0006 7047     		bx	lr
+ 428              	.L63:
+ 429              		.align	2
+ 430              	.L62:
+ 431 0008 003C0240 		.word	1073888256
+ 433              		.section	.text.FLASH_OB_GetRDP,"ax",%progbits
+ 434              		.align	1
+ 435              		.global	FLASH_OB_GetRDP
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s 			page 8
+
+
+ 436              		.syntax unified
+ 437              		.thumb
+ 438              		.thumb_func
+ 440              	FLASH_OB_GetRDP:
+ 441              		@ args = 0, pretend = 0, frame = 0
+ 442              		@ frame_needed = 0, uses_anonymous_args = 0
+ 443              		@ link register save eliminated.
+ 444 0000 044B     		ldr	r3, .L67
+ 445 0002 5B7D     		ldrb	r3, [r3, #21]	@ zero_extendqisi2
+ 446 0004 DBB2     		uxtb	r3, r3
+ 447 0006 AA2B     		cmp	r3, #170
+ 448 0008 01D0     		beq	.L66
+ 449 000a 0120     		movs	r0, #1
+ 450 000c 7047     		bx	lr
+ 451              	.L66:
+ 452 000e 0020     		movs	r0, #0
+ 453 0010 7047     		bx	lr
+ 454              	.L68:
+ 455 0012 00BF     		.align	2
+ 456              	.L67:
+ 457 0014 003C0240 		.word	1073888256
+ 459              		.section	.text.FLASH_OB_GetBOR,"ax",%progbits
+ 460              		.align	1
+ 461              		.global	FLASH_OB_GetBOR
+ 462              		.syntax unified
+ 463              		.thumb
+ 464              		.thumb_func
+ 466              	FLASH_OB_GetBOR:
+ 467              		@ args = 0, pretend = 0, frame = 0
+ 468              		@ frame_needed = 0, uses_anonymous_args = 0
+ 469              		@ link register save eliminated.
+ 470 0000 024B     		ldr	r3, .L70
+ 471 0002 187D     		ldrb	r0, [r3, #20]	@ zero_extendqisi2
+ 472 0004 00F00C00 		and	r0, r0, #12
+ 473 0008 7047     		bx	lr
+ 474              	.L71:
+ 475 000a 00BF     		.align	2
+ 476              	.L70:
+ 477 000c 003C0240 		.word	1073888256
+ 479              		.section	.text.FLASH_ITConfig,"ax",%progbits
+ 480              		.align	1
+ 481              		.global	FLASH_ITConfig
+ 482              		.syntax unified
+ 483              		.thumb
+ 484              		.thumb_func
+ 486              	FLASH_ITConfig:
+ 487              		@ args = 0, pretend = 0, frame = 0
+ 488              		@ frame_needed = 0, uses_anonymous_args = 0
+ 489              		@ link register save eliminated.
+ 490 0000 21B1     		cbz	r1, .L73
+ 491 0002 054A     		ldr	r2, .L75
+ 492 0004 1369     		ldr	r3, [r2, #16]
+ 493 0006 0343     		orrs	r3, r3, r0
+ 494 0008 1361     		str	r3, [r2, #16]
+ 495 000a 7047     		bx	lr
+ 496              	.L73:
+ 497 000c 024A     		ldr	r2, .L75
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s 			page 9
+
+
+ 498 000e 1369     		ldr	r3, [r2, #16]
+ 499 0010 23EA0003 		bic	r3, r3, r0
+ 500 0014 1361     		str	r3, [r2, #16]
+ 501 0016 7047     		bx	lr
+ 502              	.L76:
+ 503              		.align	2
+ 504              	.L75:
+ 505 0018 003C0240 		.word	1073888256
+ 507              		.section	.text.FLASH_GetFlagStatus,"ax",%progbits
+ 508              		.align	1
+ 509              		.global	FLASH_GetFlagStatus
+ 510              		.syntax unified
+ 511              		.thumb
+ 512              		.thumb_func
+ 514              	FLASH_GetFlagStatus:
+ 515              		@ args = 0, pretend = 0, frame = 0
+ 516              		@ frame_needed = 0, uses_anonymous_args = 0
+ 517              		@ link register save eliminated.
+ 518 0000 034B     		ldr	r3, .L80
+ 519 0002 DB68     		ldr	r3, [r3, #12]
+ 520 0004 0342     		tst	r3, r0
+ 521 0006 01D0     		beq	.L79
+ 522 0008 0120     		movs	r0, #1
+ 523 000a 7047     		bx	lr
+ 524              	.L79:
+ 525 000c 0020     		movs	r0, #0
+ 526 000e 7047     		bx	lr
+ 527              	.L81:
+ 528              		.align	2
+ 529              	.L80:
+ 530 0010 003C0240 		.word	1073888256
+ 532              		.section	.text.FLASH_ClearFlag,"ax",%progbits
+ 533              		.align	1
+ 534              		.global	FLASH_ClearFlag
+ 535              		.syntax unified
+ 536              		.thumb
+ 537              		.thumb_func
+ 539              	FLASH_ClearFlag:
+ 540              		@ args = 0, pretend = 0, frame = 0
+ 541              		@ frame_needed = 0, uses_anonymous_args = 0
+ 542              		@ link register save eliminated.
+ 543 0000 014B     		ldr	r3, .L83
+ 544 0002 D860     		str	r0, [r3, #12]
+ 545 0004 7047     		bx	lr
+ 546              	.L84:
+ 547 0006 00BF     		.align	2
+ 548              	.L83:
+ 549 0008 003C0240 		.word	1073888256
+ 551              		.section	.text.FLASH_GetStatus,"ax",%progbits
+ 552              		.align	1
+ 553              		.global	FLASH_GetStatus
+ 554              		.syntax unified
+ 555              		.thumb
+ 556              		.thumb_func
+ 558              	FLASH_GetStatus:
+ 559              		@ args = 0, pretend = 0, frame = 0
+ 560              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s 			page 10
+
+
+ 561              		@ link register save eliminated.
+ 562 0000 124B     		ldr	r3, .L92
+ 563 0002 DB68     		ldr	r3, [r3, #12]
+ 564 0004 13F4803F 		tst	r3, #65536
+ 565 0008 15D1     		bne	.L87
+ 566 000a 104B     		ldr	r3, .L92
+ 567 000c DB68     		ldr	r3, [r3, #12]
+ 568 000e 13F0100F 		tst	r3, #16
+ 569 0012 12D1     		bne	.L88
+ 570 0014 0D4B     		ldr	r3, .L92
+ 571 0016 DB68     		ldr	r3, [r3, #12]
+ 572 0018 13F4807F 		tst	r3, #256
+ 573 001c 0FD1     		bne	.L89
+ 574 001e 0B4B     		ldr	r3, .L92
+ 575 0020 DB68     		ldr	r3, [r3, #12]
+ 576 0022 13F0EF0F 		tst	r3, #239
+ 577 0026 0CD1     		bne	.L90
+ 578 0028 084B     		ldr	r3, .L92
+ 579 002a DB68     		ldr	r3, [r3, #12]
+ 580 002c 13F0020F 		tst	r3, #2
+ 581 0030 09D0     		beq	.L91
+ 582 0032 0820     		movs	r0, #8
+ 583 0034 7047     		bx	lr
+ 584              	.L87:
+ 585 0036 0120     		movs	r0, #1
+ 586 0038 7047     		bx	lr
+ 587              	.L88:
+ 588 003a 0620     		movs	r0, #6
+ 589 003c 7047     		bx	lr
+ 590              	.L89:
+ 591 003e 0220     		movs	r0, #2
+ 592 0040 7047     		bx	lr
+ 593              	.L90:
+ 594 0042 0720     		movs	r0, #7
+ 595 0044 7047     		bx	lr
+ 596              	.L91:
+ 597 0046 0920     		movs	r0, #9
+ 598 0048 7047     		bx	lr
+ 599              	.L93:
+ 600 004a 00BF     		.align	2
+ 601              	.L92:
+ 602 004c 003C0240 		.word	1073888256
+ 604              		.section	.text.FLASH_WaitForLastOperation,"ax",%progbits
+ 605              		.align	1
+ 606              		.global	FLASH_WaitForLastOperation
+ 607              		.syntax unified
+ 608              		.thumb
+ 609              		.thumb_func
+ 611              	FLASH_WaitForLastOperation:
+ 612              		@ args = 0, pretend = 0, frame = 8
+ 613              		@ frame_needed = 0, uses_anonymous_args = 0
+ 614 0000 00B5     		push	{lr}
+ 615 0002 83B0     		sub	sp, sp, #12
+ 616 0004 0923     		movs	r3, #9
+ 617 0006 8DF80730 		strb	r3, [sp, #7]
+ 618 000a FFF7FEFF 		bl	FLASH_GetStatus
+ 619 000e 8DF80700 		strb	r0, [sp, #7]
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s 			page 11
+
+
+ 620 0012 03E0     		b	.L95
+ 621              	.L96:
+ 622 0014 FFF7FEFF 		bl	FLASH_GetStatus
+ 623 0018 8DF80700 		strb	r0, [sp, #7]
+ 624              	.L95:
+ 625 001c 9DF80730 		ldrb	r3, [sp, #7]	@ zero_extendqisi2
+ 626 0020 DBB2     		uxtb	r3, r3
+ 627 0022 012B     		cmp	r3, #1
+ 628 0024 F6D0     		beq	.L96
+ 629 0026 9DF80700 		ldrb	r0, [sp, #7]	@ zero_extendqisi2
+ 630 002a 03B0     		add	sp, sp, #12
+ 631              		@ sp needed
+ 632 002c 5DF804FB 		ldr	pc, [sp], #4
+ 634              		.section	.text.FLASH_EraseSector,"ax",%progbits
+ 635              		.align	1
+ 636              		.global	FLASH_EraseSector
+ 637              		.syntax unified
+ 638              		.thumb
+ 639              		.thumb_func
+ 641              	FLASH_EraseSector:
+ 642              		@ args = 0, pretend = 0, frame = 0
+ 643              		@ frame_needed = 0, uses_anonymous_args = 0
+ 644 0000 70B5     		push	{r4, r5, r6, lr}
+ 645 0002 0446     		mov	r4, r0
+ 646 0004 0129     		cmp	r1, #1
+ 647 0006 04D0     		beq	.L101
+ 648 0008 0229     		cmp	r1, #2
+ 649 000a 05D0     		beq	.L102
+ 650 000c 59B9     		cbnz	r1, .L103
+ 651 000e 0026     		movs	r6, #0
+ 652 0010 04E0     		b	.L99
+ 653              	.L101:
+ 654 0012 4FF48076 		mov	r6, #256
+ 655 0016 01E0     		b	.L99
+ 656              	.L102:
+ 657 0018 4FF40076 		mov	r6, #512
+ 658              	.L99:
+ 659 001c FFF7FEFF 		bl	FLASH_WaitForLastOperation
+ 660 0020 0928     		cmp	r0, #9
+ 661 0022 03D0     		beq	.L105
+ 662              	.L100:
+ 663 0024 70BD     		pop	{r4, r5, r6, pc}
+ 664              	.L103:
+ 665 0026 4FF44076 		mov	r6, #768
+ 666 002a F7E7     		b	.L99
+ 667              	.L105:
+ 668 002c 0F4D     		ldr	r5, .L106
+ 669 002e 2B69     		ldr	r3, [r5, #16]
+ 670 0030 23F44073 		bic	r3, r3, #768
+ 671 0034 2B61     		str	r3, [r5, #16]
+ 672 0036 2B69     		ldr	r3, [r5, #16]
+ 673 0038 3343     		orrs	r3, r3, r6
+ 674 003a 2B61     		str	r3, [r5, #16]
+ 675 003c 2B69     		ldr	r3, [r5, #16]
+ 676 003e 23F0F803 		bic	r3, r3, #248
+ 677 0042 2B61     		str	r3, [r5, #16]
+ 678 0044 2B69     		ldr	r3, [r5, #16]
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s 			page 12
+
+
+ 679 0046 2343     		orrs	r3, r3, r4
+ 680 0048 43F00203 		orr	r3, r3, #2
+ 681 004c 2B61     		str	r3, [r5, #16]
+ 682 004e 2B69     		ldr	r3, [r5, #16]
+ 683 0050 43F48033 		orr	r3, r3, #65536
+ 684 0054 2B61     		str	r3, [r5, #16]
+ 685 0056 FFF7FEFF 		bl	FLASH_WaitForLastOperation
+ 686 005a 2B69     		ldr	r3, [r5, #16]
+ 687 005c 23F00203 		bic	r3, r3, #2
+ 688 0060 2B61     		str	r3, [r5, #16]
+ 689 0062 2B69     		ldr	r3, [r5, #16]
+ 690 0064 23F0F803 		bic	r3, r3, #248
+ 691 0068 2B61     		str	r3, [r5, #16]
+ 692 006a DBE7     		b	.L100
+ 693              	.L107:
+ 694              		.align	2
+ 695              	.L106:
+ 696 006c 003C0240 		.word	1073888256
+ 698              		.section	.text.FLASH_EraseAllSectors,"ax",%progbits
+ 699              		.align	1
+ 700              		.global	FLASH_EraseAllSectors
+ 701              		.syntax unified
+ 702              		.thumb
+ 703              		.thumb_func
+ 705              	FLASH_EraseAllSectors:
+ 706              		@ args = 0, pretend = 0, frame = 0
+ 707              		@ frame_needed = 0, uses_anonymous_args = 0
+ 708 0000 10B5     		push	{r4, lr}
+ 709 0002 0446     		mov	r4, r0
+ 710 0004 FFF7FEFF 		bl	FLASH_WaitForLastOperation
+ 711 0008 012C     		cmp	r4, #1
+ 712 000a 04D0     		beq	.L111
+ 713 000c 022C     		cmp	r4, #2
+ 714 000e 05D0     		beq	.L112
+ 715 0010 4CB9     		cbnz	r4, .L113
+ 716 0012 0023     		movs	r3, #0
+ 717 0014 04E0     		b	.L109
+ 718              	.L111:
+ 719 0016 4FF48073 		mov	r3, #256
+ 720 001a 01E0     		b	.L109
+ 721              	.L112:
+ 722 001c 4FF40073 		mov	r3, #512
+ 723              	.L109:
+ 724 0020 0928     		cmp	r0, #9
+ 725 0022 03D0     		beq	.L115
+ 726              	.L110:
+ 727 0024 10BD     		pop	{r4, pc}
+ 728              	.L113:
+ 729 0026 4FF44073 		mov	r3, #768
+ 730 002a F9E7     		b	.L109
+ 731              	.L115:
+ 732 002c 0B4C     		ldr	r4, .L116
+ 733 002e 2269     		ldr	r2, [r4, #16]
+ 734 0030 22F44072 		bic	r2, r2, #768
+ 735 0034 2261     		str	r2, [r4, #16]
+ 736 0036 2269     		ldr	r2, [r4, #16]
+ 737 0038 1343     		orrs	r3, r3, r2
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s 			page 13
+
+
+ 738 003a 2361     		str	r3, [r4, #16]
+ 739 003c 2369     		ldr	r3, [r4, #16]
+ 740 003e 43F00403 		orr	r3, r3, #4
+ 741 0042 2361     		str	r3, [r4, #16]
+ 742 0044 2369     		ldr	r3, [r4, #16]
+ 743 0046 43F48033 		orr	r3, r3, #65536
+ 744 004a 2361     		str	r3, [r4, #16]
+ 745 004c FFF7FEFF 		bl	FLASH_WaitForLastOperation
+ 746 0050 2369     		ldr	r3, [r4, #16]
+ 747 0052 23F00403 		bic	r3, r3, #4
+ 748 0056 2361     		str	r3, [r4, #16]
+ 749 0058 E4E7     		b	.L110
+ 750              	.L117:
+ 751 005a 00BF     		.align	2
+ 752              	.L116:
+ 753 005c 003C0240 		.word	1073888256
+ 755              		.section	.text.FLASH_EraseAllBank1Sectors,"ax",%progbits
+ 756              		.align	1
+ 757              		.global	FLASH_EraseAllBank1Sectors
+ 758              		.syntax unified
+ 759              		.thumb
+ 760              		.thumb_func
+ 762              	FLASH_EraseAllBank1Sectors:
+ 763              		@ args = 0, pretend = 0, frame = 0
+ 764              		@ frame_needed = 0, uses_anonymous_args = 0
+ 765 0000 10B5     		push	{r4, lr}
+ 766 0002 0446     		mov	r4, r0
+ 767 0004 FFF7FEFF 		bl	FLASH_WaitForLastOperation
+ 768 0008 012C     		cmp	r4, #1
+ 769 000a 04D0     		beq	.L121
+ 770 000c 022C     		cmp	r4, #2
+ 771 000e 05D0     		beq	.L122
+ 772 0010 4CB9     		cbnz	r4, .L123
+ 773 0012 0023     		movs	r3, #0
+ 774 0014 04E0     		b	.L119
+ 775              	.L121:
+ 776 0016 4FF48073 		mov	r3, #256
+ 777 001a 01E0     		b	.L119
+ 778              	.L122:
+ 779 001c 4FF40073 		mov	r3, #512
+ 780              	.L119:
+ 781 0020 0928     		cmp	r0, #9
+ 782 0022 03D0     		beq	.L125
+ 783              	.L120:
+ 784 0024 10BD     		pop	{r4, pc}
+ 785              	.L123:
+ 786 0026 4FF44073 		mov	r3, #768
+ 787 002a F9E7     		b	.L119
+ 788              	.L125:
+ 789 002c 0B4C     		ldr	r4, .L126
+ 790 002e 2269     		ldr	r2, [r4, #16]
+ 791 0030 22F44072 		bic	r2, r2, #768
+ 792 0034 2261     		str	r2, [r4, #16]
+ 793 0036 2269     		ldr	r2, [r4, #16]
+ 794 0038 1343     		orrs	r3, r3, r2
+ 795 003a 2361     		str	r3, [r4, #16]
+ 796 003c 2369     		ldr	r3, [r4, #16]
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s 			page 14
+
+
+ 797 003e 43F00403 		orr	r3, r3, #4
+ 798 0042 2361     		str	r3, [r4, #16]
+ 799 0044 2369     		ldr	r3, [r4, #16]
+ 800 0046 43F48033 		orr	r3, r3, #65536
+ 801 004a 2361     		str	r3, [r4, #16]
+ 802 004c FFF7FEFF 		bl	FLASH_WaitForLastOperation
+ 803 0050 2369     		ldr	r3, [r4, #16]
+ 804 0052 23F00403 		bic	r3, r3, #4
+ 805 0056 2361     		str	r3, [r4, #16]
+ 806 0058 E4E7     		b	.L120
+ 807              	.L127:
+ 808 005a 00BF     		.align	2
+ 809              	.L126:
+ 810 005c 003C0240 		.word	1073888256
+ 812              		.section	.text.FLASH_EraseAllBank2Sectors,"ax",%progbits
+ 813              		.align	1
+ 814              		.global	FLASH_EraseAllBank2Sectors
+ 815              		.syntax unified
+ 816              		.thumb
+ 817              		.thumb_func
+ 819              	FLASH_EraseAllBank2Sectors:
+ 820              		@ args = 0, pretend = 0, frame = 0
+ 821              		@ frame_needed = 0, uses_anonymous_args = 0
+ 822 0000 10B5     		push	{r4, lr}
+ 823 0002 0446     		mov	r4, r0
+ 824 0004 FFF7FEFF 		bl	FLASH_WaitForLastOperation
+ 825 0008 012C     		cmp	r4, #1
+ 826 000a 04D0     		beq	.L131
+ 827 000c 022C     		cmp	r4, #2
+ 828 000e 05D0     		beq	.L132
+ 829 0010 4CB9     		cbnz	r4, .L133
+ 830 0012 0023     		movs	r3, #0
+ 831 0014 04E0     		b	.L129
+ 832              	.L131:
+ 833 0016 4FF48073 		mov	r3, #256
+ 834 001a 01E0     		b	.L129
+ 835              	.L132:
+ 836 001c 4FF40073 		mov	r3, #512
+ 837              	.L129:
+ 838 0020 0928     		cmp	r0, #9
+ 839 0022 03D0     		beq	.L135
+ 840              	.L130:
+ 841 0024 10BD     		pop	{r4, pc}
+ 842              	.L133:
+ 843 0026 4FF44073 		mov	r3, #768
+ 844 002a F9E7     		b	.L129
+ 845              	.L135:
+ 846 002c 0B4C     		ldr	r4, .L136
+ 847 002e 2269     		ldr	r2, [r4, #16]
+ 848 0030 22F44072 		bic	r2, r2, #768
+ 849 0034 2261     		str	r2, [r4, #16]
+ 850 0036 2269     		ldr	r2, [r4, #16]
+ 851 0038 1343     		orrs	r3, r3, r2
+ 852 003a 2361     		str	r3, [r4, #16]
+ 853 003c 2369     		ldr	r3, [r4, #16]
+ 854 003e 43F40043 		orr	r3, r3, #32768
+ 855 0042 2361     		str	r3, [r4, #16]
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s 			page 15
+
+
+ 856 0044 2369     		ldr	r3, [r4, #16]
+ 857 0046 43F48033 		orr	r3, r3, #65536
+ 858 004a 2361     		str	r3, [r4, #16]
+ 859 004c FFF7FEFF 		bl	FLASH_WaitForLastOperation
+ 860 0050 2369     		ldr	r3, [r4, #16]
+ 861 0052 23F40043 		bic	r3, r3, #32768
+ 862 0056 2361     		str	r3, [r4, #16]
+ 863 0058 E4E7     		b	.L130
+ 864              	.L137:
+ 865 005a 00BF     		.align	2
+ 866              	.L136:
+ 867 005c 003C0240 		.word	1073888256
+ 869              		.section	.text.FLASH_ProgramDoubleWord,"ax",%progbits
+ 870              		.align	1
+ 871              		.global	FLASH_ProgramDoubleWord
+ 872              		.syntax unified
+ 873              		.thumb
+ 874              		.thumb_func
+ 876              	FLASH_ProgramDoubleWord:
+ 877              		@ args = 0, pretend = 0, frame = 0
+ 878              		@ frame_needed = 0, uses_anonymous_args = 0
+ 879 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+ 880 0002 0646     		mov	r6, r0
+ 881 0004 1446     		mov	r4, r2
+ 882 0006 1D46     		mov	r5, r3
+ 883 0008 FFF7FEFF 		bl	FLASH_WaitForLastOperation
+ 884 000c 0928     		cmp	r0, #9
+ 885 000e 00D0     		beq	.L141
+ 886              	.L139:
+ 887 0010 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 888              	.L141:
+ 889 0012 0B4F     		ldr	r7, .L142
+ 890 0014 3B69     		ldr	r3, [r7, #16]
+ 891 0016 23F44073 		bic	r3, r3, #768
+ 892 001a 3B61     		str	r3, [r7, #16]
+ 893 001c 3B69     		ldr	r3, [r7, #16]
+ 894 001e 43F44073 		orr	r3, r3, #768
+ 895 0022 3B61     		str	r3, [r7, #16]
+ 896 0024 3B69     		ldr	r3, [r7, #16]
+ 897 0026 43F00103 		orr	r3, r3, #1
+ 898 002a 3B61     		str	r3, [r7, #16]
+ 899 002c C6E90045 		strd	r4, [r6]
+ 900 0030 FFF7FEFF 		bl	FLASH_WaitForLastOperation
+ 901 0034 3B69     		ldr	r3, [r7, #16]
+ 902 0036 23F00103 		bic	r3, r3, #1
+ 903 003a 3B61     		str	r3, [r7, #16]
+ 904 003c E8E7     		b	.L139
+ 905              	.L143:
+ 906 003e 00BF     		.align	2
+ 907              	.L142:
+ 908 0040 003C0240 		.word	1073888256
+ 910              		.section	.text.FLASH_ProgramWord,"ax",%progbits
+ 911              		.align	1
+ 912              		.global	FLASH_ProgramWord
+ 913              		.syntax unified
+ 914              		.thumb
+ 915              		.thumb_func
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s 			page 16
+
+
+ 917              	FLASH_ProgramWord:
+ 918              		@ args = 0, pretend = 0, frame = 0
+ 919              		@ frame_needed = 0, uses_anonymous_args = 0
+ 920 0000 70B5     		push	{r4, r5, r6, lr}
+ 921 0002 0546     		mov	r5, r0
+ 922 0004 0C46     		mov	r4, r1
+ 923 0006 FFF7FEFF 		bl	FLASH_WaitForLastOperation
+ 924 000a 0928     		cmp	r0, #9
+ 925 000c 00D0     		beq	.L147
+ 926              	.L145:
+ 927 000e 70BD     		pop	{r4, r5, r6, pc}
+ 928              	.L147:
+ 929 0010 0A4E     		ldr	r6, .L148
+ 930 0012 3369     		ldr	r3, [r6, #16]
+ 931 0014 23F44073 		bic	r3, r3, #768
+ 932 0018 3361     		str	r3, [r6, #16]
+ 933 001a 3369     		ldr	r3, [r6, #16]
+ 934 001c 43F40073 		orr	r3, r3, #512
+ 935 0020 3361     		str	r3, [r6, #16]
+ 936 0022 3369     		ldr	r3, [r6, #16]
+ 937 0024 43F00103 		orr	r3, r3, #1
+ 938 0028 3361     		str	r3, [r6, #16]
+ 939 002a 2C60     		str	r4, [r5]
+ 940 002c FFF7FEFF 		bl	FLASH_WaitForLastOperation
+ 941 0030 3369     		ldr	r3, [r6, #16]
+ 942 0032 23F00103 		bic	r3, r3, #1
+ 943 0036 3361     		str	r3, [r6, #16]
+ 944 0038 E9E7     		b	.L145
+ 945              	.L149:
+ 946 003a 00BF     		.align	2
+ 947              	.L148:
+ 948 003c 003C0240 		.word	1073888256
+ 950              		.section	.text.FLASH_ProgramHalfWord,"ax",%progbits
+ 951              		.align	1
+ 952              		.global	FLASH_ProgramHalfWord
+ 953              		.syntax unified
+ 954              		.thumb
+ 955              		.thumb_func
+ 957              	FLASH_ProgramHalfWord:
+ 958              		@ args = 0, pretend = 0, frame = 0
+ 959              		@ frame_needed = 0, uses_anonymous_args = 0
+ 960 0000 70B5     		push	{r4, r5, r6, lr}
+ 961 0002 0546     		mov	r5, r0
+ 962 0004 0C46     		mov	r4, r1
+ 963 0006 FFF7FEFF 		bl	FLASH_WaitForLastOperation
+ 964 000a 0928     		cmp	r0, #9
+ 965 000c 00D0     		beq	.L153
+ 966              	.L151:
+ 967 000e 70BD     		pop	{r4, r5, r6, pc}
+ 968              	.L153:
+ 969 0010 0A4E     		ldr	r6, .L154
+ 970 0012 3369     		ldr	r3, [r6, #16]
+ 971 0014 23F44073 		bic	r3, r3, #768
+ 972 0018 3361     		str	r3, [r6, #16]
+ 973 001a 3369     		ldr	r3, [r6, #16]
+ 974 001c 43F48073 		orr	r3, r3, #256
+ 975 0020 3361     		str	r3, [r6, #16]
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s 			page 17
+
+
+ 976 0022 3369     		ldr	r3, [r6, #16]
+ 977 0024 43F00103 		orr	r3, r3, #1
+ 978 0028 3361     		str	r3, [r6, #16]
+ 979 002a 2C80     		strh	r4, [r5]	@ movhi
+ 980 002c FFF7FEFF 		bl	FLASH_WaitForLastOperation
+ 981 0030 3369     		ldr	r3, [r6, #16]
+ 982 0032 23F00103 		bic	r3, r3, #1
+ 983 0036 3361     		str	r3, [r6, #16]
+ 984 0038 E9E7     		b	.L151
+ 985              	.L155:
+ 986 003a 00BF     		.align	2
+ 987              	.L154:
+ 988 003c 003C0240 		.word	1073888256
+ 990              		.section	.text.FLASH_ProgramByte,"ax",%progbits
+ 991              		.align	1
+ 992              		.global	FLASH_ProgramByte
+ 993              		.syntax unified
+ 994              		.thumb
+ 995              		.thumb_func
+ 997              	FLASH_ProgramByte:
+ 998              		@ args = 0, pretend = 0, frame = 0
+ 999              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1000 0000 70B5     		push	{r4, r5, r6, lr}
+ 1001 0002 0546     		mov	r5, r0
+ 1002 0004 0C46     		mov	r4, r1
+ 1003 0006 FFF7FEFF 		bl	FLASH_WaitForLastOperation
+ 1004 000a 0928     		cmp	r0, #9
+ 1005 000c 00D0     		beq	.L159
+ 1006              	.L157:
+ 1007 000e 70BD     		pop	{r4, r5, r6, pc}
+ 1008              	.L159:
+ 1009 0010 094E     		ldr	r6, .L160
+ 1010 0012 3369     		ldr	r3, [r6, #16]
+ 1011 0014 23F44073 		bic	r3, r3, #768
+ 1012 0018 3361     		str	r3, [r6, #16]
+ 1013 001a 3369     		ldr	r3, [r6, #16]
+ 1014 001c 3361     		str	r3, [r6, #16]
+ 1015 001e 3369     		ldr	r3, [r6, #16]
+ 1016 0020 43F00103 		orr	r3, r3, #1
+ 1017 0024 3361     		str	r3, [r6, #16]
+ 1018 0026 2C70     		strb	r4, [r5]
+ 1019 0028 FFF7FEFF 		bl	FLASH_WaitForLastOperation
+ 1020 002c 3369     		ldr	r3, [r6, #16]
+ 1021 002e 23F00103 		bic	r3, r3, #1
+ 1022 0032 3361     		str	r3, [r6, #16]
+ 1023 0034 EBE7     		b	.L157
+ 1024              	.L161:
+ 1025 0036 00BF     		.align	2
+ 1026              	.L160:
+ 1027 0038 003C0240 		.word	1073888256
+ 1029              		.section	.text.FLASH_OB_WRPConfig,"ax",%progbits
+ 1030              		.align	1
+ 1031              		.global	FLASH_OB_WRPConfig
+ 1032              		.syntax unified
+ 1033              		.thumb
+ 1034              		.thumb_func
+ 1036              	FLASH_OB_WRPConfig:
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s 			page 18
+
+
+ 1037              		@ args = 0, pretend = 0, frame = 0
+ 1038              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1039 0000 38B5     		push	{r3, r4, r5, lr}
+ 1040 0002 0546     		mov	r5, r0
+ 1041 0004 0C46     		mov	r4, r1
+ 1042 0006 FFF7FEFF 		bl	FLASH_WaitForLastOperation
+ 1043 000a 0928     		cmp	r0, #9
+ 1044 000c 00D0     		beq	.L166
+ 1045              	.L162:
+ 1046 000e 38BD     		pop	{r3, r4, r5, pc}
+ 1047              	.L166:
+ 1048 0010 34B1     		cbz	r4, .L164
+ 1049 0012 074A     		ldr	r2, .L167
+ 1050 0014 D38A     		ldrh	r3, [r2, #22]
+ 1051 0016 9BB2     		uxth	r3, r3
+ 1052 0018 23EA0503 		bic	r3, r3, r5
+ 1053 001c D382     		strh	r3, [r2, #22]	@ movhi
+ 1054 001e F6E7     		b	.L162
+ 1055              	.L164:
+ 1056 0020 034A     		ldr	r2, .L167
+ 1057 0022 D38A     		ldrh	r3, [r2, #22]
+ 1058 0024 9BB2     		uxth	r3, r3
+ 1059 0026 A8B2     		uxth	r0, r5
+ 1060 0028 0343     		orrs	r3, r3, r0
+ 1061 002a D382     		strh	r3, [r2, #22]	@ movhi
+ 1062 002c EFE7     		b	.L162
+ 1063              	.L168:
+ 1064 002e 00BF     		.align	2
+ 1065              	.L167:
+ 1066 0030 003C0240 		.word	1073888256
+ 1068              		.section	.text.FLASH_OB_WRP1Config,"ax",%progbits
+ 1069              		.align	1
+ 1070              		.global	FLASH_OB_WRP1Config
+ 1071              		.syntax unified
+ 1072              		.thumb
+ 1073              		.thumb_func
+ 1075              	FLASH_OB_WRP1Config:
+ 1076              		@ args = 0, pretend = 0, frame = 0
+ 1077              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1078 0000 38B5     		push	{r3, r4, r5, lr}
+ 1079 0002 0546     		mov	r5, r0
+ 1080 0004 0C46     		mov	r4, r1
+ 1081 0006 FFF7FEFF 		bl	FLASH_WaitForLastOperation
+ 1082 000a 0928     		cmp	r0, #9
+ 1083 000c 00D0     		beq	.L173
+ 1084              	.L169:
+ 1085 000e 38BD     		pop	{r3, r4, r5, pc}
+ 1086              	.L173:
+ 1087 0010 34B1     		cbz	r4, .L171
+ 1088 0012 074A     		ldr	r2, .L174
+ 1089 0014 538B     		ldrh	r3, [r2, #26]
+ 1090 0016 9BB2     		uxth	r3, r3
+ 1091 0018 23EA0503 		bic	r3, r3, r5
+ 1092 001c 5383     		strh	r3, [r2, #26]	@ movhi
+ 1093 001e F6E7     		b	.L169
+ 1094              	.L171:
+ 1095 0020 034A     		ldr	r2, .L174
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s 			page 19
+
+
+ 1096 0022 538B     		ldrh	r3, [r2, #26]
+ 1097 0024 9BB2     		uxth	r3, r3
+ 1098 0026 A8B2     		uxth	r0, r5
+ 1099 0028 0343     		orrs	r3, r3, r0
+ 1100 002a 5383     		strh	r3, [r2, #26]	@ movhi
+ 1101 002c EFE7     		b	.L169
+ 1102              	.L175:
+ 1103 002e 00BF     		.align	2
+ 1104              	.L174:
+ 1105 0030 003C0240 		.word	1073888256
+ 1107              		.section	.text.FLASH_OB_PCROPConfig,"ax",%progbits
+ 1108              		.align	1
+ 1109              		.global	FLASH_OB_PCROPConfig
+ 1110              		.syntax unified
+ 1111              		.thumb
+ 1112              		.thumb_func
+ 1114              	FLASH_OB_PCROPConfig:
+ 1115              		@ args = 0, pretend = 0, frame = 0
+ 1116              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1117 0000 38B5     		push	{r3, r4, r5, lr}
+ 1118 0002 0546     		mov	r5, r0
+ 1119 0004 0C46     		mov	r4, r1
+ 1120 0006 FFF7FEFF 		bl	FLASH_WaitForLastOperation
+ 1121 000a 0928     		cmp	r0, #9
+ 1122 000c 00D0     		beq	.L180
+ 1123              	.L176:
+ 1124 000e 38BD     		pop	{r3, r4, r5, pc}
+ 1125              	.L180:
+ 1126 0010 34B1     		cbz	r4, .L178
+ 1127 0012 074A     		ldr	r2, .L181
+ 1128 0014 D38A     		ldrh	r3, [r2, #22]
+ 1129 0016 9BB2     		uxth	r3, r3
+ 1130 0018 A8B2     		uxth	r0, r5
+ 1131 001a 0343     		orrs	r3, r3, r0
+ 1132 001c D382     		strh	r3, [r2, #22]	@ movhi
+ 1133 001e F6E7     		b	.L176
+ 1134              	.L178:
+ 1135 0020 034A     		ldr	r2, .L181
+ 1136 0022 D38A     		ldrh	r3, [r2, #22]
+ 1137 0024 9BB2     		uxth	r3, r3
+ 1138 0026 23EA0503 		bic	r3, r3, r5
+ 1139 002a D382     		strh	r3, [r2, #22]	@ movhi
+ 1140 002c EFE7     		b	.L176
+ 1141              	.L182:
+ 1142 002e 00BF     		.align	2
+ 1143              	.L181:
+ 1144 0030 003C0240 		.word	1073888256
+ 1146              		.section	.text.FLASH_OB_PCROP1Config,"ax",%progbits
+ 1147              		.align	1
+ 1148              		.global	FLASH_OB_PCROP1Config
+ 1149              		.syntax unified
+ 1150              		.thumb
+ 1151              		.thumb_func
+ 1153              	FLASH_OB_PCROP1Config:
+ 1154              		@ args = 0, pretend = 0, frame = 0
+ 1155              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1156 0000 38B5     		push	{r3, r4, r5, lr}
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s 			page 20
+
+
+ 1157 0002 0546     		mov	r5, r0
+ 1158 0004 0C46     		mov	r4, r1
+ 1159 0006 FFF7FEFF 		bl	FLASH_WaitForLastOperation
+ 1160 000a 0928     		cmp	r0, #9
+ 1161 000c 00D0     		beq	.L187
+ 1162              	.L183:
+ 1163 000e 38BD     		pop	{r3, r4, r5, pc}
+ 1164              	.L187:
+ 1165 0010 34B1     		cbz	r4, .L185
+ 1166 0012 074A     		ldr	r2, .L188
+ 1167 0014 538B     		ldrh	r3, [r2, #26]
+ 1168 0016 9BB2     		uxth	r3, r3
+ 1169 0018 A8B2     		uxth	r0, r5
+ 1170 001a 0343     		orrs	r3, r3, r0
+ 1171 001c 5383     		strh	r3, [r2, #26]	@ movhi
+ 1172 001e F6E7     		b	.L183
+ 1173              	.L185:
+ 1174 0020 034A     		ldr	r2, .L188
+ 1175 0022 538B     		ldrh	r3, [r2, #26]
+ 1176 0024 9BB2     		uxth	r3, r3
+ 1177 0026 23EA0503 		bic	r3, r3, r5
+ 1178 002a 5383     		strh	r3, [r2, #26]	@ movhi
+ 1179 002c EFE7     		b	.L183
+ 1180              	.L189:
+ 1181 002e 00BF     		.align	2
+ 1182              	.L188:
+ 1183 0030 003C0240 		.word	1073888256
+ 1185              		.section	.text.FLASH_OB_RDPConfig,"ax",%progbits
+ 1186              		.align	1
+ 1187              		.global	FLASH_OB_RDPConfig
+ 1188              		.syntax unified
+ 1189              		.thumb
+ 1190              		.thumb_func
+ 1192              	FLASH_OB_RDPConfig:
+ 1193              		@ args = 0, pretend = 0, frame = 0
+ 1194              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1195 0000 10B5     		push	{r4, lr}
+ 1196 0002 0446     		mov	r4, r0
+ 1197 0004 FFF7FEFF 		bl	FLASH_WaitForLastOperation
+ 1198 0008 0928     		cmp	r0, #9
+ 1199 000a 00D0     		beq	.L193
+ 1200              	.L190:
+ 1201 000c 10BD     		pop	{r4, pc}
+ 1202              	.L193:
+ 1203 000e 014B     		ldr	r3, .L194
+ 1204 0010 5C75     		strb	r4, [r3, #21]
+ 1205 0012 FBE7     		b	.L190
+ 1206              	.L195:
+ 1207              		.align	2
+ 1208              	.L194:
+ 1209 0014 003C0240 		.word	1073888256
+ 1211              		.section	.text.FLASH_OB_UserConfig,"ax",%progbits
+ 1212              		.align	1
+ 1213              		.global	FLASH_OB_UserConfig
+ 1214              		.syntax unified
+ 1215              		.thumb
+ 1216              		.thumb_func
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s 			page 21
+
+
+ 1218              	FLASH_OB_UserConfig:
+ 1219              		@ args = 0, pretend = 0, frame = 0
+ 1220              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1221 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+ 1222 0002 0446     		mov	r4, r0
+ 1223 0004 0E46     		mov	r6, r1
+ 1224 0006 1546     		mov	r5, r2
+ 1225 0008 FFF7FEFF 		bl	FLASH_WaitForLastOperation
+ 1226 000c 0928     		cmp	r0, #9
+ 1227 000e 00D0     		beq	.L199
+ 1228              	.L196:
+ 1229 0010 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 1230              	.L199:
+ 1231 0012 064F     		ldr	r7, .L200
+ 1232 0014 3B7D     		ldrb	r3, [r7, #20]	@ zero_extendqisi2
+ 1233 0016 03F00F03 		and	r3, r3, #15
+ 1234 001a 43EA0601 		orr	r1, r3, r6
+ 1235 001e 41EA0502 		orr	r2, r1, r5
+ 1236 0022 42EA0400 		orr	r0, r2, r4
+ 1237 0026 3875     		strb	r0, [r7, #20]
+ 1238 0028 F2E7     		b	.L196
+ 1239              	.L201:
+ 1240 002a 00BF     		.align	2
+ 1241              	.L200:
+ 1242 002c 003C0240 		.word	1073888256
+ 1244              		.section	.text.FLASH_OB_Launch,"ax",%progbits
+ 1245              		.align	1
+ 1246              		.global	FLASH_OB_Launch
+ 1247              		.syntax unified
+ 1248              		.thumb
+ 1249              		.thumb_func
+ 1251              	FLASH_OB_Launch:
+ 1252              		@ args = 0, pretend = 0, frame = 0
+ 1253              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1254 0000 08B5     		push	{r3, lr}
+ 1255 0002 044A     		ldr	r2, .L204
+ 1256 0004 137D     		ldrb	r3, [r2, #20]	@ zero_extendqisi2
+ 1257 0006 43F00203 		orr	r3, r3, #2
+ 1258 000a 1375     		strb	r3, [r2, #20]
+ 1259 000c FFF7FEFF 		bl	FLASH_WaitForLastOperation
+ 1260 0010 08BD     		pop	{r3, pc}
+ 1261              	.L205:
+ 1262 0012 00BF     		.align	2
+ 1263              	.L204:
+ 1264 0014 003C0240 		.word	1073888256
+ 1266              		.ident	"GCC: (Arm GNU Toolchain 13.3.Rel1 (Build arm-13.24)) 13.3.1 20240614"
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s 			page 22
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 stm32f4xx_flash.c
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:18     .text.FLASH_SetLatency:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:24     .text.FLASH_SetLatency:00000000 FLASH_SetLatency
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:35     .text.FLASH_SetLatency:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:38     .text.FLASH_PrefetchBufferCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:44     .text.FLASH_PrefetchBufferCmd:00000000 FLASH_PrefetchBufferCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:63     .text.FLASH_PrefetchBufferCmd:0000001c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:66     .text.FLASH_InstructionCacheCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:72     .text.FLASH_InstructionCacheCmd:00000000 FLASH_InstructionCacheCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:91     .text.FLASH_InstructionCacheCmd:0000001c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:94     .text.FLASH_DataCacheCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:100    .text.FLASH_DataCacheCmd:00000000 FLASH_DataCacheCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:119    .text.FLASH_DataCacheCmd:0000001c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:122    .text.FLASH_InstructionCacheReset:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:128    .text.FLASH_InstructionCacheReset:00000000 FLASH_InstructionCacheReset
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:140    .text.FLASH_InstructionCacheReset:0000000c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:143    .text.FLASH_DataCacheReset:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:149    .text.FLASH_DataCacheReset:00000000 FLASH_DataCacheReset
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:161    .text.FLASH_DataCacheReset:0000000c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:164    .text.FLASH_Unlock:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:170    .text.FLASH_Unlock:00000000 FLASH_Unlock
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:190    .text.FLASH_Unlock:00000018 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:194    .text.FLASH_Lock:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:200    .text.FLASH_Lock:00000000 FLASH_Lock
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:212    .text.FLASH_Lock:0000000c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:215    .text.FLASH_OB_Unlock:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:221    .text.FLASH_OB_Unlock:00000000 FLASH_OB_Unlock
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:239    .text.FLASH_OB_Unlock:00000018 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:243    .text.FLASH_OB_Lock:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:249    .text.FLASH_OB_Lock:00000000 FLASH_OB_Lock
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:261    .text.FLASH_OB_Lock:0000000c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:264    .text.FLASH_OB_PCROPSelectionConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:270    .text.FLASH_OB_PCROPSelectionConfig:00000000 FLASH_OB_PCROPSelectionConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:283    .text.FLASH_OB_PCROPSelectionConfig:00000010 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:286    .text.FLASH_OB_BootConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:292    .text.FLASH_OB_BootConfig:00000000 FLASH_OB_BootConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:307    .text.FLASH_OB_BootConfig:00000014 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:310    .text.FLASH_OB_BORConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:316    .text.FLASH_OB_BORConfig:00000000 FLASH_OB_BORConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:331    .text.FLASH_OB_BORConfig:00000014 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:334    .text.FLASH_OB_GetUser:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:340    .text.FLASH_OB_GetUser:00000000 FLASH_OB_GetUser
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:351    .text.FLASH_OB_GetUser:0000000c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:354    .text.FLASH_OB_GetWRP:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:360    .text.FLASH_OB_GetWRP:00000000 FLASH_OB_GetWRP
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:371    .text.FLASH_OB_GetWRP:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:374    .text.FLASH_OB_GetWRP1:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:380    .text.FLASH_OB_GetWRP1:00000000 FLASH_OB_GetWRP1
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:391    .text.FLASH_OB_GetWRP1:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:394    .text.FLASH_OB_GetPCROP:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:400    .text.FLASH_OB_GetPCROP:00000000 FLASH_OB_GetPCROP
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:411    .text.FLASH_OB_GetPCROP:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:414    .text.FLASH_OB_GetPCROP1:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:420    .text.FLASH_OB_GetPCROP1:00000000 FLASH_OB_GetPCROP1
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:431    .text.FLASH_OB_GetPCROP1:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:434    .text.FLASH_OB_GetRDP:00000000 $t
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s 			page 23
+
+
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:440    .text.FLASH_OB_GetRDP:00000000 FLASH_OB_GetRDP
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:457    .text.FLASH_OB_GetRDP:00000014 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:460    .text.FLASH_OB_GetBOR:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:466    .text.FLASH_OB_GetBOR:00000000 FLASH_OB_GetBOR
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:477    .text.FLASH_OB_GetBOR:0000000c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:480    .text.FLASH_ITConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:486    .text.FLASH_ITConfig:00000000 FLASH_ITConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:505    .text.FLASH_ITConfig:00000018 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:508    .text.FLASH_GetFlagStatus:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:514    .text.FLASH_GetFlagStatus:00000000 FLASH_GetFlagStatus
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:530    .text.FLASH_GetFlagStatus:00000010 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:533    .text.FLASH_ClearFlag:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:539    .text.FLASH_ClearFlag:00000000 FLASH_ClearFlag
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:549    .text.FLASH_ClearFlag:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:552    .text.FLASH_GetStatus:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:558    .text.FLASH_GetStatus:00000000 FLASH_GetStatus
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:602    .text.FLASH_GetStatus:0000004c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:605    .text.FLASH_WaitForLastOperation:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:611    .text.FLASH_WaitForLastOperation:00000000 FLASH_WaitForLastOperation
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:635    .text.FLASH_EraseSector:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:641    .text.FLASH_EraseSector:00000000 FLASH_EraseSector
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:696    .text.FLASH_EraseSector:0000006c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:699    .text.FLASH_EraseAllSectors:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:705    .text.FLASH_EraseAllSectors:00000000 FLASH_EraseAllSectors
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:753    .text.FLASH_EraseAllSectors:0000005c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:756    .text.FLASH_EraseAllBank1Sectors:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:762    .text.FLASH_EraseAllBank1Sectors:00000000 FLASH_EraseAllBank1Sectors
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:810    .text.FLASH_EraseAllBank1Sectors:0000005c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:813    .text.FLASH_EraseAllBank2Sectors:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:819    .text.FLASH_EraseAllBank2Sectors:00000000 FLASH_EraseAllBank2Sectors
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:867    .text.FLASH_EraseAllBank2Sectors:0000005c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:870    .text.FLASH_ProgramDoubleWord:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:876    .text.FLASH_ProgramDoubleWord:00000000 FLASH_ProgramDoubleWord
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:908    .text.FLASH_ProgramDoubleWord:00000040 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:911    .text.FLASH_ProgramWord:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:917    .text.FLASH_ProgramWord:00000000 FLASH_ProgramWord
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:948    .text.FLASH_ProgramWord:0000003c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:951    .text.FLASH_ProgramHalfWord:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:957    .text.FLASH_ProgramHalfWord:00000000 FLASH_ProgramHalfWord
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:988    .text.FLASH_ProgramHalfWord:0000003c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:991    .text.FLASH_ProgramByte:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:997    .text.FLASH_ProgramByte:00000000 FLASH_ProgramByte
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:1027   .text.FLASH_ProgramByte:00000038 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:1030   .text.FLASH_OB_WRPConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:1036   .text.FLASH_OB_WRPConfig:00000000 FLASH_OB_WRPConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:1066   .text.FLASH_OB_WRPConfig:00000030 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:1069   .text.FLASH_OB_WRP1Config:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:1075   .text.FLASH_OB_WRP1Config:00000000 FLASH_OB_WRP1Config
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:1105   .text.FLASH_OB_WRP1Config:00000030 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:1108   .text.FLASH_OB_PCROPConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:1114   .text.FLASH_OB_PCROPConfig:00000000 FLASH_OB_PCROPConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:1144   .text.FLASH_OB_PCROPConfig:00000030 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:1147   .text.FLASH_OB_PCROP1Config:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:1153   .text.FLASH_OB_PCROP1Config:00000000 FLASH_OB_PCROP1Config
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:1183   .text.FLASH_OB_PCROP1Config:00000030 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:1186   .text.FLASH_OB_RDPConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:1192   .text.FLASH_OB_RDPConfig:00000000 FLASH_OB_RDPConfig
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s 			page 24
+
+
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:1209   .text.FLASH_OB_RDPConfig:00000014 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:1212   .text.FLASH_OB_UserConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:1218   .text.FLASH_OB_UserConfig:00000000 FLASH_OB_UserConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:1242   .text.FLASH_OB_UserConfig:0000002c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:1245   .text.FLASH_OB_Launch:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:1251   .text.FLASH_OB_Launch:00000000 FLASH_OB_Launch
+C:\Users\ktkuru\AppData\Local\Temp\ccbikFxH.s:1264   .text.FLASH_OB_Launch:00000014 $d
+
+NO UNDEFINED SYMBOLS

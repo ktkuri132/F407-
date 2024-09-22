@@ -1,0 +1,276 @@
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc3xOOG9.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"stm32f4xx_exti.c"
+  16              		.text
+  17              		.section	.text.EXTI_DeInit,"ax",%progbits
+  18              		.align	1
+  19              		.global	EXTI_DeInit
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  24              	EXTI_DeInit:
+  25              		@ args = 0, pretend = 0, frame = 0
+  26              		@ frame_needed = 0, uses_anonymous_args = 0
+  27              		@ link register save eliminated.
+  28 0000 044B     		ldr	r3, .L2
+  29 0002 0022     		movs	r2, #0
+  30 0004 1A60     		str	r2, [r3]
+  31 0006 5A60     		str	r2, [r3, #4]
+  32 0008 9A60     		str	r2, [r3, #8]
+  33 000a DA60     		str	r2, [r3, #12]
+  34 000c 024A     		ldr	r2, .L2+4
+  35 000e 5A61     		str	r2, [r3, #20]
+  36 0010 7047     		bx	lr
+  37              	.L3:
+  38 0012 00BF     		.align	2
+  39              	.L2:
+  40 0014 003C0140 		.word	1073822720
+  41 0018 FFFF7F00 		.word	8388607
+  43              		.section	.text.EXTI_Init,"ax",%progbits
+  44              		.align	1
+  45              		.global	EXTI_Init
+  46              		.syntax unified
+  47              		.thumb
+  48              		.thumb_func
+  50              	EXTI_Init:
+  51              		@ args = 0, pretend = 0, frame = 0
+  52              		@ frame_needed = 0, uses_anonymous_args = 0
+  53              		@ link register save eliminated.
+  54 0000 8379     		ldrb	r3, [r0, #6]	@ zero_extendqisi2
+  55 0002 002B     		cmp	r3, #0
+  56 0004 36D0     		beq	.L5
+  57 0006 10B4     		push	{r4}
+  58 0008 204B     		ldr	r3, .L13
+  59 000a 1A68     		ldr	r2, [r3]
+  60 000c 0168     		ldr	r1, [r0]
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc3xOOG9.s 			page 2
+
+
+  61 000e 22EA0102 		bic	r2, r2, r1
+  62 0012 1A60     		str	r2, [r3]
+  63 0014 5A68     		ldr	r2, [r3, #4]
+  64 0016 0168     		ldr	r1, [r0]
+  65 0018 22EA0102 		bic	r2, r2, r1
+  66 001c 5A60     		str	r2, [r3, #4]
+  67 001e 0279     		ldrb	r2, [r0, #4]	@ zero_extendqisi2
+  68 0020 02F18042 		add	r2, r2, #1073741824
+  69 0024 02F59E32 		add	r2, r2, #80896
+  70 0028 1168     		ldr	r1, [r2]
+  71 002a 0468     		ldr	r4, [r0]
+  72 002c 2143     		orrs	r1, r1, r4
+  73 002e 1160     		str	r1, [r2]
+  74 0030 9A68     		ldr	r2, [r3, #8]
+  75 0032 0168     		ldr	r1, [r0]
+  76 0034 22EA0102 		bic	r2, r2, r1
+  77 0038 9A60     		str	r2, [r3, #8]
+  78 003a DA68     		ldr	r2, [r3, #12]
+  79 003c 0168     		ldr	r1, [r0]
+  80 003e 22EA0102 		bic	r2, r2, r1
+  81 0042 DA60     		str	r2, [r3, #12]
+  82 0044 4379     		ldrb	r3, [r0, #5]	@ zero_extendqisi2
+  83 0046 102B     		cmp	r3, #16
+  84 0048 0AD0     		beq	.L12
+  85 004a 03F18043 		add	r3, r3, #1073741824
+  86 004e 03F59E33 		add	r3, r3, #80896
+  87 0052 1A68     		ldr	r2, [r3]
+  88 0054 0168     		ldr	r1, [r0]
+  89 0056 0A43     		orrs	r2, r2, r1
+  90 0058 1A60     		str	r2, [r3]
+  91              	.L4:
+  92 005a 5DF8044B 		ldr	r4, [sp], #4
+  93 005e 7047     		bx	lr
+  94              	.L12:
+  95 0060 0A4B     		ldr	r3, .L13
+  96 0062 9A68     		ldr	r2, [r3, #8]
+  97 0064 0168     		ldr	r1, [r0]
+  98 0066 0A43     		orrs	r2, r2, r1
+  99 0068 9A60     		str	r2, [r3, #8]
+ 100 006a DA68     		ldr	r2, [r3, #12]
+ 101 006c 0168     		ldr	r1, [r0]
+ 102 006e 0A43     		orrs	r2, r2, r1
+ 103 0070 DA60     		str	r2, [r3, #12]
+ 104 0072 F2E7     		b	.L4
+ 105              	.L5:
+ 106 0074 0379     		ldrb	r3, [r0, #4]	@ zero_extendqisi2
+ 107 0076 03F18043 		add	r3, r3, #1073741824
+ 108 007a 03F59E33 		add	r3, r3, #80896
+ 109 007e 1A68     		ldr	r2, [r3]
+ 110 0080 0168     		ldr	r1, [r0]
+ 111 0082 22EA0102 		bic	r2, r2, r1
+ 112 0086 1A60     		str	r2, [r3]
+ 113 0088 7047     		bx	lr
+ 114              	.L14:
+ 115 008a 00BF     		.align	2
+ 116              	.L13:
+ 117 008c 003C0140 		.word	1073822720
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc3xOOG9.s 			page 3
+
+
+ 119              		.section	.text.EXTI_StructInit,"ax",%progbits
+ 120              		.align	1
+ 121              		.global	EXTI_StructInit
+ 122              		.syntax unified
+ 123              		.thumb
+ 124              		.thumb_func
+ 126              	EXTI_StructInit:
+ 127              		@ args = 0, pretend = 0, frame = 0
+ 128              		@ frame_needed = 0, uses_anonymous_args = 0
+ 129              		@ link register save eliminated.
+ 130 0000 0023     		movs	r3, #0
+ 131 0002 0360     		str	r3, [r0]
+ 132 0004 0371     		strb	r3, [r0, #4]
+ 133 0006 0C22     		movs	r2, #12
+ 134 0008 4271     		strb	r2, [r0, #5]
+ 135 000a 8371     		strb	r3, [r0, #6]
+ 136 000c 7047     		bx	lr
+ 138              		.section	.text.EXTI_GenerateSWInterrupt,"ax",%progbits
+ 139              		.align	1
+ 140              		.global	EXTI_GenerateSWInterrupt
+ 141              		.syntax unified
+ 142              		.thumb
+ 143              		.thumb_func
+ 145              	EXTI_GenerateSWInterrupt:
+ 146              		@ args = 0, pretend = 0, frame = 0
+ 147              		@ frame_needed = 0, uses_anonymous_args = 0
+ 148              		@ link register save eliminated.
+ 149 0000 024A     		ldr	r2, .L17
+ 150 0002 1369     		ldr	r3, [r2, #16]
+ 151 0004 0343     		orrs	r3, r3, r0
+ 152 0006 1361     		str	r3, [r2, #16]
+ 153 0008 7047     		bx	lr
+ 154              	.L18:
+ 155 000a 00BF     		.align	2
+ 156              	.L17:
+ 157 000c 003C0140 		.word	1073822720
+ 159              		.section	.text.EXTI_GetFlagStatus,"ax",%progbits
+ 160              		.align	1
+ 161              		.global	EXTI_GetFlagStatus
+ 162              		.syntax unified
+ 163              		.thumb
+ 164              		.thumb_func
+ 166              	EXTI_GetFlagStatus:
+ 167              		@ args = 0, pretend = 0, frame = 0
+ 168              		@ frame_needed = 0, uses_anonymous_args = 0
+ 169              		@ link register save eliminated.
+ 170 0000 034B     		ldr	r3, .L22
+ 171 0002 5B69     		ldr	r3, [r3, #20]
+ 172 0004 0342     		tst	r3, r0
+ 173 0006 01D0     		beq	.L21
+ 174 0008 0120     		movs	r0, #1
+ 175 000a 7047     		bx	lr
+ 176              	.L21:
+ 177 000c 0020     		movs	r0, #0
+ 178 000e 7047     		bx	lr
+ 179              	.L23:
+ 180              		.align	2
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc3xOOG9.s 			page 4
+
+
+ 181              	.L22:
+ 182 0010 003C0140 		.word	1073822720
+ 184              		.section	.text.EXTI_ClearFlag,"ax",%progbits
+ 185              		.align	1
+ 186              		.global	EXTI_ClearFlag
+ 187              		.syntax unified
+ 188              		.thumb
+ 189              		.thumb_func
+ 191              	EXTI_ClearFlag:
+ 192              		@ args = 0, pretend = 0, frame = 0
+ 193              		@ frame_needed = 0, uses_anonymous_args = 0
+ 194              		@ link register save eliminated.
+ 195 0000 014B     		ldr	r3, .L25
+ 196 0002 5861     		str	r0, [r3, #20]
+ 197 0004 7047     		bx	lr
+ 198              	.L26:
+ 199 0006 00BF     		.align	2
+ 200              	.L25:
+ 201 0008 003C0140 		.word	1073822720
+ 203              		.section	.text.EXTI_GetITStatus,"ax",%progbits
+ 204              		.align	1
+ 205              		.global	EXTI_GetITStatus
+ 206              		.syntax unified
+ 207              		.thumb
+ 208              		.thumb_func
+ 210              	EXTI_GetITStatus:
+ 211              		@ args = 0, pretend = 0, frame = 0
+ 212              		@ frame_needed = 0, uses_anonymous_args = 0
+ 213              		@ link register save eliminated.
+ 214 0000 034B     		ldr	r3, .L30
+ 215 0002 5B69     		ldr	r3, [r3, #20]
+ 216 0004 0342     		tst	r3, r0
+ 217 0006 01D0     		beq	.L29
+ 218 0008 0120     		movs	r0, #1
+ 219 000a 7047     		bx	lr
+ 220              	.L29:
+ 221 000c 0020     		movs	r0, #0
+ 222 000e 7047     		bx	lr
+ 223              	.L31:
+ 224              		.align	2
+ 225              	.L30:
+ 226 0010 003C0140 		.word	1073822720
+ 228              		.section	.text.EXTI_ClearITPendingBit,"ax",%progbits
+ 229              		.align	1
+ 230              		.global	EXTI_ClearITPendingBit
+ 231              		.syntax unified
+ 232              		.thumb
+ 233              		.thumb_func
+ 235              	EXTI_ClearITPendingBit:
+ 236              		@ args = 0, pretend = 0, frame = 0
+ 237              		@ frame_needed = 0, uses_anonymous_args = 0
+ 238              		@ link register save eliminated.
+ 239 0000 014B     		ldr	r3, .L33
+ 240 0002 5861     		str	r0, [r3, #20]
+ 241 0004 7047     		bx	lr
+ 242              	.L34:
+ 243 0006 00BF     		.align	2
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc3xOOG9.s 			page 5
+
+
+ 244              	.L33:
+ 245 0008 003C0140 		.word	1073822720
+ 247              		.ident	"GCC: (Arm GNU Toolchain 13.3.Rel1 (Build arm-13.24)) 13.3.1 20240614"
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc3xOOG9.s 			page 6
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 stm32f4xx_exti.c
+C:\Users\ktkuru\AppData\Local\Temp\cc3xOOG9.s:18     .text.EXTI_DeInit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc3xOOG9.s:24     .text.EXTI_DeInit:00000000 EXTI_DeInit
+C:\Users\ktkuru\AppData\Local\Temp\cc3xOOG9.s:40     .text.EXTI_DeInit:00000014 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc3xOOG9.s:44     .text.EXTI_Init:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc3xOOG9.s:50     .text.EXTI_Init:00000000 EXTI_Init
+C:\Users\ktkuru\AppData\Local\Temp\cc3xOOG9.s:117    .text.EXTI_Init:0000008c $d
+C:\Users\ktkuru\AppData\Local\Temp\cc3xOOG9.s:120    .text.EXTI_StructInit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc3xOOG9.s:126    .text.EXTI_StructInit:00000000 EXTI_StructInit
+C:\Users\ktkuru\AppData\Local\Temp\cc3xOOG9.s:139    .text.EXTI_GenerateSWInterrupt:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc3xOOG9.s:145    .text.EXTI_GenerateSWInterrupt:00000000 EXTI_GenerateSWInterrupt
+C:\Users\ktkuru\AppData\Local\Temp\cc3xOOG9.s:157    .text.EXTI_GenerateSWInterrupt:0000000c $d
+C:\Users\ktkuru\AppData\Local\Temp\cc3xOOG9.s:160    .text.EXTI_GetFlagStatus:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc3xOOG9.s:166    .text.EXTI_GetFlagStatus:00000000 EXTI_GetFlagStatus
+C:\Users\ktkuru\AppData\Local\Temp\cc3xOOG9.s:182    .text.EXTI_GetFlagStatus:00000010 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc3xOOG9.s:185    .text.EXTI_ClearFlag:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc3xOOG9.s:191    .text.EXTI_ClearFlag:00000000 EXTI_ClearFlag
+C:\Users\ktkuru\AppData\Local\Temp\cc3xOOG9.s:201    .text.EXTI_ClearFlag:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc3xOOG9.s:204    .text.EXTI_GetITStatus:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc3xOOG9.s:210    .text.EXTI_GetITStatus:00000000 EXTI_GetITStatus
+C:\Users\ktkuru\AppData\Local\Temp\cc3xOOG9.s:226    .text.EXTI_GetITStatus:00000010 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc3xOOG9.s:229    .text.EXTI_ClearITPendingBit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc3xOOG9.s:235    .text.EXTI_ClearITPendingBit:00000000 EXTI_ClearITPendingBit
+C:\Users\ktkuru\AppData\Local\Temp\cc3xOOG9.s:245    .text.EXTI_ClearITPendingBit:00000008 $d
+
+NO UNDEFINED SYMBOLS

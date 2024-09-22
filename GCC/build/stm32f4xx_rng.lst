@@ -1,0 +1,229 @@
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccI1KrLQ.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"stm32f4xx_rng.c"
+  16              		.text
+  17              		.section	.text.RNG_DeInit,"ax",%progbits
+  18              		.align	1
+  19              		.global	RNG_DeInit
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  24              	RNG_DeInit:
+  25              		@ args = 0, pretend = 0, frame = 0
+  26              		@ frame_needed = 0, uses_anonymous_args = 0
+  27 0000 08B5     		push	{r3, lr}
+  28 0002 0121     		movs	r1, #1
+  29 0004 4020     		movs	r0, #64
+  30 0006 FFF7FEFF 		bl	RCC_AHB2PeriphResetCmd
+  31 000a 0021     		movs	r1, #0
+  32 000c 4020     		movs	r0, #64
+  33 000e FFF7FEFF 		bl	RCC_AHB2PeriphResetCmd
+  34 0012 08BD     		pop	{r3, pc}
+  36              		.section	.text.RNG_Cmd,"ax",%progbits
+  37              		.align	1
+  38              		.global	RNG_Cmd
+  39              		.syntax unified
+  40              		.thumb
+  41              		.thumb_func
+  43              	RNG_Cmd:
+  44              		@ args = 0, pretend = 0, frame = 0
+  45              		@ frame_needed = 0, uses_anonymous_args = 0
+  46              		@ link register save eliminated.
+  47 0000 28B1     		cbz	r0, .L4
+  48 0002 064A     		ldr	r2, .L6
+  49 0004 1368     		ldr	r3, [r2]
+  50 0006 43F00403 		orr	r3, r3, #4
+  51 000a 1360     		str	r3, [r2]
+  52 000c 7047     		bx	lr
+  53              	.L4:
+  54 000e 034A     		ldr	r2, .L6
+  55 0010 1368     		ldr	r3, [r2]
+  56 0012 23F00403 		bic	r3, r3, #4
+  57 0016 1360     		str	r3, [r2]
+  58 0018 7047     		bx	lr
+  59              	.L7:
+  60 001a 00BF     		.align	2
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccI1KrLQ.s 			page 2
+
+
+  61              	.L6:
+  62 001c 00080650 		.word	1342572544
+  64              		.section	.text.RNG_GetRandomNumber,"ax",%progbits
+  65              		.align	1
+  66              		.global	RNG_GetRandomNumber
+  67              		.syntax unified
+  68              		.thumb
+  69              		.thumb_func
+  71              	RNG_GetRandomNumber:
+  72              		@ args = 0, pretend = 0, frame = 0
+  73              		@ frame_needed = 0, uses_anonymous_args = 0
+  74              		@ link register save eliminated.
+  75 0000 014B     		ldr	r3, .L9
+  76 0002 9868     		ldr	r0, [r3, #8]
+  77 0004 7047     		bx	lr
+  78              	.L10:
+  79 0006 00BF     		.align	2
+  80              	.L9:
+  81 0008 00080650 		.word	1342572544
+  83              		.section	.text.RNG_ITConfig,"ax",%progbits
+  84              		.align	1
+  85              		.global	RNG_ITConfig
+  86              		.syntax unified
+  87              		.thumb
+  88              		.thumb_func
+  90              	RNG_ITConfig:
+  91              		@ args = 0, pretend = 0, frame = 0
+  92              		@ frame_needed = 0, uses_anonymous_args = 0
+  93              		@ link register save eliminated.
+  94 0000 28B1     		cbz	r0, .L12
+  95 0002 064A     		ldr	r2, .L14
+  96 0004 1368     		ldr	r3, [r2]
+  97 0006 43F00803 		orr	r3, r3, #8
+  98 000a 1360     		str	r3, [r2]
+  99 000c 7047     		bx	lr
+ 100              	.L12:
+ 101 000e 034A     		ldr	r2, .L14
+ 102 0010 1368     		ldr	r3, [r2]
+ 103 0012 23F00803 		bic	r3, r3, #8
+ 104 0016 1360     		str	r3, [r2]
+ 105 0018 7047     		bx	lr
+ 106              	.L15:
+ 107 001a 00BF     		.align	2
+ 108              	.L14:
+ 109 001c 00080650 		.word	1342572544
+ 111              		.section	.text.RNG_GetFlagStatus,"ax",%progbits
+ 112              		.align	1
+ 113              		.global	RNG_GetFlagStatus
+ 114              		.syntax unified
+ 115              		.thumb
+ 116              		.thumb_func
+ 118              	RNG_GetFlagStatus:
+ 119              		@ args = 0, pretend = 0, frame = 0
+ 120              		@ frame_needed = 0, uses_anonymous_args = 0
+ 121              		@ link register save eliminated.
+ 122 0000 034B     		ldr	r3, .L19
+ 123 0002 5B68     		ldr	r3, [r3, #4]
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccI1KrLQ.s 			page 3
+
+
+ 124 0004 1842     		tst	r0, r3
+ 125 0006 01D0     		beq	.L18
+ 126 0008 0120     		movs	r0, #1
+ 127 000a 7047     		bx	lr
+ 128              	.L18:
+ 129 000c 0020     		movs	r0, #0
+ 130 000e 7047     		bx	lr
+ 131              	.L20:
+ 132              		.align	2
+ 133              	.L19:
+ 134 0010 00080650 		.word	1342572544
+ 136              		.section	.text.RNG_ClearFlag,"ax",%progbits
+ 137              		.align	1
+ 138              		.global	RNG_ClearFlag
+ 139              		.syntax unified
+ 140              		.thumb
+ 141              		.thumb_func
+ 143              	RNG_ClearFlag:
+ 144              		@ args = 0, pretend = 0, frame = 0
+ 145              		@ frame_needed = 0, uses_anonymous_args = 0
+ 146              		@ link register save eliminated.
+ 147 0000 6FEA0010 		mvn	r0, r0, lsl #4
+ 148 0004 014B     		ldr	r3, .L22
+ 149 0006 5860     		str	r0, [r3, #4]
+ 150 0008 7047     		bx	lr
+ 151              	.L23:
+ 152 000a 00BF     		.align	2
+ 153              	.L22:
+ 154 000c 00080650 		.word	1342572544
+ 156              		.section	.text.RNG_GetITStatus,"ax",%progbits
+ 157              		.align	1
+ 158              		.global	RNG_GetITStatus
+ 159              		.syntax unified
+ 160              		.thumb
+ 161              		.thumb_func
+ 163              	RNG_GetITStatus:
+ 164              		@ args = 0, pretend = 0, frame = 0
+ 165              		@ frame_needed = 0, uses_anonymous_args = 0
+ 166              		@ link register save eliminated.
+ 167 0000 034B     		ldr	r3, .L27
+ 168 0002 5B68     		ldr	r3, [r3, #4]
+ 169 0004 1842     		tst	r0, r3
+ 170 0006 01D0     		beq	.L26
+ 171 0008 0120     		movs	r0, #1
+ 172 000a 7047     		bx	lr
+ 173              	.L26:
+ 174 000c 0020     		movs	r0, #0
+ 175 000e 7047     		bx	lr
+ 176              	.L28:
+ 177              		.align	2
+ 178              	.L27:
+ 179 0010 00080650 		.word	1342572544
+ 181              		.section	.text.RNG_ClearITPendingBit,"ax",%progbits
+ 182              		.align	1
+ 183              		.global	RNG_ClearITPendingBit
+ 184              		.syntax unified
+ 185              		.thumb
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccI1KrLQ.s 			page 4
+
+
+ 186              		.thumb_func
+ 188              	RNG_ClearITPendingBit:
+ 189              		@ args = 0, pretend = 0, frame = 0
+ 190              		@ frame_needed = 0, uses_anonymous_args = 0
+ 191              		@ link register save eliminated.
+ 192 0000 C043     		mvns	r0, r0
+ 193 0002 C0B2     		uxtb	r0, r0
+ 194 0004 014B     		ldr	r3, .L30
+ 195 0006 5860     		str	r0, [r3, #4]
+ 196 0008 7047     		bx	lr
+ 197              	.L31:
+ 198 000a 00BF     		.align	2
+ 199              	.L30:
+ 200 000c 00080650 		.word	1342572544
+ 202              		.ident	"GCC: (Arm GNU Toolchain 13.3.Rel1 (Build arm-13.24)) 13.3.1 20240614"
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccI1KrLQ.s 			page 5
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 stm32f4xx_rng.c
+C:\Users\ktkuru\AppData\Local\Temp\ccI1KrLQ.s:18     .text.RNG_DeInit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccI1KrLQ.s:24     .text.RNG_DeInit:00000000 RNG_DeInit
+C:\Users\ktkuru\AppData\Local\Temp\ccI1KrLQ.s:37     .text.RNG_Cmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccI1KrLQ.s:43     .text.RNG_Cmd:00000000 RNG_Cmd
+C:\Users\ktkuru\AppData\Local\Temp\ccI1KrLQ.s:62     .text.RNG_Cmd:0000001c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccI1KrLQ.s:65     .text.RNG_GetRandomNumber:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccI1KrLQ.s:71     .text.RNG_GetRandomNumber:00000000 RNG_GetRandomNumber
+C:\Users\ktkuru\AppData\Local\Temp\ccI1KrLQ.s:81     .text.RNG_GetRandomNumber:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccI1KrLQ.s:84     .text.RNG_ITConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccI1KrLQ.s:90     .text.RNG_ITConfig:00000000 RNG_ITConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccI1KrLQ.s:109    .text.RNG_ITConfig:0000001c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccI1KrLQ.s:112    .text.RNG_GetFlagStatus:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccI1KrLQ.s:118    .text.RNG_GetFlagStatus:00000000 RNG_GetFlagStatus
+C:\Users\ktkuru\AppData\Local\Temp\ccI1KrLQ.s:134    .text.RNG_GetFlagStatus:00000010 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccI1KrLQ.s:137    .text.RNG_ClearFlag:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccI1KrLQ.s:143    .text.RNG_ClearFlag:00000000 RNG_ClearFlag
+C:\Users\ktkuru\AppData\Local\Temp\ccI1KrLQ.s:154    .text.RNG_ClearFlag:0000000c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccI1KrLQ.s:157    .text.RNG_GetITStatus:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccI1KrLQ.s:163    .text.RNG_GetITStatus:00000000 RNG_GetITStatus
+C:\Users\ktkuru\AppData\Local\Temp\ccI1KrLQ.s:179    .text.RNG_GetITStatus:00000010 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccI1KrLQ.s:182    .text.RNG_ClearITPendingBit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccI1KrLQ.s:188    .text.RNG_ClearITPendingBit:00000000 RNG_ClearITPendingBit
+C:\Users\ktkuru\AppData\Local\Temp\ccI1KrLQ.s:200    .text.RNG_ClearITPendingBit:0000000c $d
+
+UNDEFINED SYMBOLS
+RCC_AHB2PeriphResetCmd

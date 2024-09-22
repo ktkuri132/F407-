@@ -1,0 +1,1317 @@
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"timers.c"
+  16              		.text
+  17              		.section	.text.prvGetNextExpireTime,"ax",%progbits
+  18              		.align	1
+  19              		.syntax unified
+  20              		.thumb
+  21              		.thumb_func
+  23              	prvGetNextExpireTime:
+  24              		@ args = 0, pretend = 0, frame = 0
+  25              		@ frame_needed = 0, uses_anonymous_args = 0
+  26              		@ link register save eliminated.
+  27 0000 064B     		ldr	r3, .L6
+  28 0002 1A68     		ldr	r2, [r3]
+  29 0004 1368     		ldr	r3, [r2]
+  30 0006 2BB9     		cbnz	r3, .L4
+  31 0008 0123     		movs	r3, #1
+  32              	.L2:
+  33 000a 0360     		str	r3, [r0]
+  34 000c 23B9     		cbnz	r3, .L5
+  35 000e D368     		ldr	r3, [r2, #12]
+  36 0010 1868     		ldr	r0, [r3]
+  37 0012 7047     		bx	lr
+  38              	.L4:
+  39 0014 0023     		movs	r3, #0
+  40 0016 F8E7     		b	.L2
+  41              	.L5:
+  42 0018 0020     		movs	r0, #0
+  43 001a 7047     		bx	lr
+  44              	.L7:
+  45              		.align	2
+  46              	.L6:
+  47 001c 00000000 		.word	pxCurrentTimerList
+  49              		.section	.text.prvInsertTimerInActiveList,"ax",%progbits
+  50              		.align	1
+  51              		.syntax unified
+  52              		.thumb
+  53              		.thumb_func
+  55              	prvInsertTimerInActiveList:
+  56              		@ args = 0, pretend = 0, frame = 0
+  57              		@ frame_needed = 0, uses_anonymous_args = 0
+  58 0000 08B5     		push	{r3, lr}
+  59 0002 4160     		str	r1, [r0, #4]
+  60 0004 0061     		str	r0, [r0, #16]
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s 			page 2
+
+
+  61 0006 9142     		cmp	r1, r2
+  62 0008 0CD8     		bhi	.L9
+  63 000a D21A     		subs	r2, r2, r3
+  64 000c 8369     		ldr	r3, [r0, #24]
+  65 000e 9A42     		cmp	r2, r3
+  66 0010 01D3     		bcc	.L15
+  67 0012 0120     		movs	r0, #1
+  68              	.L8:
+  69 0014 08BD     		pop	{r3, pc}
+  70              	.L15:
+  71 0016 011D     		adds	r1, r0, #4
+  72 0018 094B     		ldr	r3, .L16
+  73 001a 1868     		ldr	r0, [r3]
+  74 001c FFF7FEFF 		bl	vListInsert
+  75 0020 0020     		movs	r0, #0
+  76 0022 F7E7     		b	.L8
+  77              	.L9:
+  78 0024 9A42     		cmp	r2, r3
+  79 0026 01D2     		bcs	.L11
+  80 0028 9942     		cmp	r1, r3
+  81 002a 06D2     		bcs	.L13
+  82              	.L11:
+  83 002c 011D     		adds	r1, r0, #4
+  84 002e 054B     		ldr	r3, .L16+4
+  85 0030 1868     		ldr	r0, [r3]
+  86 0032 FFF7FEFF 		bl	vListInsert
+  87 0036 0020     		movs	r0, #0
+  88 0038 ECE7     		b	.L8
+  89              	.L13:
+  90 003a 0120     		movs	r0, #1
+  91 003c EAE7     		b	.L8
+  92              	.L17:
+  93 003e 00BF     		.align	2
+  94              	.L16:
+  95 0040 00000000 		.word	pxOverflowTimerList
+  96 0044 00000000 		.word	pxCurrentTimerList
+  98              		.section	.text.prvReloadTimer,"ax",%progbits
+  99              		.align	1
+ 100              		.syntax unified
+ 101              		.thumb
+ 102              		.thumb_func
+ 104              	prvReloadTimer:
+ 105              		@ args = 0, pretend = 0, frame = 0
+ 106              		@ frame_needed = 0, uses_anonymous_args = 0
+ 107 0000 70B5     		push	{r4, r5, r6, lr}
+ 108 0002 0446     		mov	r4, r0
+ 109 0004 0D46     		mov	r5, r1
+ 110 0006 1646     		mov	r6, r2
+ 111 0008 04E0     		b	.L19
+ 112              	.L20:
+ 113 000a A369     		ldr	r3, [r4, #24]
+ 114 000c 1D44     		add	r5, r5, r3
+ 115 000e 236A     		ldr	r3, [r4, #32]
+ 116 0010 2046     		mov	r0, r4
+ 117 0012 9847     		blx	r3
+ 118              	.L19:
+ 119 0014 A169     		ldr	r1, [r4, #24]
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s 			page 3
+
+
+ 120 0016 2B46     		mov	r3, r5
+ 121 0018 3246     		mov	r2, r6
+ 122 001a 2944     		add	r1, r1, r5
+ 123 001c 2046     		mov	r0, r4
+ 124 001e FFF7FEFF 		bl	prvInsertTimerInActiveList
+ 125 0022 0028     		cmp	r0, #0
+ 126 0024 F1D1     		bne	.L20
+ 127 0026 70BD     		pop	{r4, r5, r6, pc}
+ 129              		.section	.text.prvProcessExpiredTimer,"ax",%progbits
+ 130              		.align	1
+ 131              		.syntax unified
+ 132              		.thumb
+ 133              		.thumb_func
+ 135              	prvProcessExpiredTimer:
+ 136              		@ args = 0, pretend = 0, frame = 0
+ 137              		@ frame_needed = 0, uses_anonymous_args = 0
+ 138 0000 70B5     		push	{r4, r5, r6, lr}
+ 139 0002 0546     		mov	r5, r0
+ 140 0004 0E46     		mov	r6, r1
+ 141 0006 0D4B     		ldr	r3, .L27
+ 142 0008 1B68     		ldr	r3, [r3]
+ 143 000a DB68     		ldr	r3, [r3, #12]
+ 144 000c DC68     		ldr	r4, [r3, #12]
+ 145 000e 201D     		adds	r0, r4, #4
+ 146 0010 FFF7FEFF 		bl	uxListRemove
+ 147 0014 94F82830 		ldrb	r3, [r4, #40]	@ zero_extendqisi2
+ 148 0018 13F0040F 		tst	r3, #4
+ 149 001c 07D1     		bne	.L26
+ 150 001e 23F00103 		bic	r3, r3, #1
+ 151 0022 84F82830 		strb	r3, [r4, #40]
+ 152              	.L24:
+ 153 0026 236A     		ldr	r3, [r4, #32]
+ 154 0028 2046     		mov	r0, r4
+ 155 002a 9847     		blx	r3
+ 156 002c 70BD     		pop	{r4, r5, r6, pc}
+ 157              	.L26:
+ 158 002e 3246     		mov	r2, r6
+ 159 0030 2946     		mov	r1, r5
+ 160 0032 2046     		mov	r0, r4
+ 161 0034 FFF7FEFF 		bl	prvReloadTimer
+ 162 0038 F5E7     		b	.L24
+ 163              	.L28:
+ 164 003a 00BF     		.align	2
+ 165              	.L27:
+ 166 003c 00000000 		.word	pxCurrentTimerList
+ 168              		.section	.text.prvSwitchTimerLists,"ax",%progbits
+ 169              		.align	1
+ 170              		.syntax unified
+ 171              		.thumb
+ 172              		.thumb_func
+ 174              	prvSwitchTimerLists:
+ 175              		@ args = 0, pretend = 0, frame = 0
+ 176              		@ frame_needed = 0, uses_anonymous_args = 0
+ 177 0000 08B5     		push	{r3, lr}
+ 178 0002 05E0     		b	.L30
+ 179              	.L31:
+ 180 0004 DB68     		ldr	r3, [r3, #12]
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s 			page 4
+
+
+ 181 0006 4FF0FF31 		mov	r1, #-1
+ 182 000a 1868     		ldr	r0, [r3]
+ 183 000c FFF7FEFF 		bl	prvProcessExpiredTimer
+ 184              	.L30:
+ 185 0010 054B     		ldr	r3, .L33
+ 186 0012 1B68     		ldr	r3, [r3]
+ 187 0014 1A68     		ldr	r2, [r3]
+ 188 0016 002A     		cmp	r2, #0
+ 189 0018 F4D1     		bne	.L31
+ 190 001a 044A     		ldr	r2, .L33+4
+ 191 001c 1068     		ldr	r0, [r2]
+ 192 001e 0249     		ldr	r1, .L33
+ 193 0020 0860     		str	r0, [r1]
+ 194 0022 1360     		str	r3, [r2]
+ 195 0024 08BD     		pop	{r3, pc}
+ 196              	.L34:
+ 197 0026 00BF     		.align	2
+ 198              	.L33:
+ 199 0028 00000000 		.word	pxCurrentTimerList
+ 200 002c 00000000 		.word	pxOverflowTimerList
+ 202              		.section	.text.prvSampleTimeNow,"ax",%progbits
+ 203              		.align	1
+ 204              		.syntax unified
+ 205              		.thumb
+ 206              		.thumb_func
+ 208              	prvSampleTimeNow:
+ 209              		@ args = 0, pretend = 0, frame = 0
+ 210              		@ frame_needed = 0, uses_anonymous_args = 0
+ 211 0000 38B5     		push	{r3, r4, r5, lr}
+ 212 0002 0546     		mov	r5, r0
+ 213 0004 FFF7FEFF 		bl	xTaskGetTickCount
+ 214 0008 0446     		mov	r4, r0
+ 215 000a 074B     		ldr	r3, .L40
+ 216 000c 1B68     		ldr	r3, [r3]
+ 217 000e 8342     		cmp	r3, r0
+ 218 0010 05D8     		bhi	.L39
+ 219 0012 0023     		movs	r3, #0
+ 220 0014 2B60     		str	r3, [r5]
+ 221              	.L37:
+ 222 0016 044B     		ldr	r3, .L40
+ 223 0018 1C60     		str	r4, [r3]
+ 224 001a 2046     		mov	r0, r4
+ 225 001c 38BD     		pop	{r3, r4, r5, pc}
+ 226              	.L39:
+ 227 001e FFF7FEFF 		bl	prvSwitchTimerLists
+ 228 0022 0123     		movs	r3, #1
+ 229 0024 2B60     		str	r3, [r5]
+ 230 0026 F6E7     		b	.L37
+ 231              	.L41:
+ 232              		.align	2
+ 233              	.L40:
+ 234 0028 00000000 		.word	xLastTime.0
+ 236              		.section	.text.prvProcessTimerOrBlockTask,"ax",%progbits
+ 237              		.align	1
+ 238              		.syntax unified
+ 239              		.thumb
+ 240              		.thumb_func
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s 			page 5
+
+
+ 242              	prvProcessTimerOrBlockTask:
+ 243              		@ args = 0, pretend = 0, frame = 8
+ 244              		@ frame_needed = 0, uses_anonymous_args = 0
+ 245 0000 70B5     		push	{r4, r5, r6, lr}
+ 246 0002 82B0     		sub	sp, sp, #8
+ 247 0004 0646     		mov	r6, r0
+ 248 0006 0C46     		mov	r4, r1
+ 249 0008 FFF7FEFF 		bl	vTaskSuspendAll
+ 250 000c 01A8     		add	r0, sp, #4
+ 251 000e FFF7FEFF 		bl	prvSampleTimeNow
+ 252 0012 019B     		ldr	r3, [sp, #4]
+ 253 0014 33BB     		cbnz	r3, .L43
+ 254 0016 0546     		mov	r5, r0
+ 255 0018 E4B9     		cbnz	r4, .L44
+ 256 001a B042     		cmp	r0, r6
+ 257 001c 13D2     		bcs	.L49
+ 258              	.L45:
+ 259 001e 2246     		mov	r2, r4
+ 260 0020 711B     		subs	r1, r6, r5
+ 261 0022 124B     		ldr	r3, .L50
+ 262 0024 1868     		ldr	r0, [r3]
+ 263 0026 FFF7FEFF 		bl	vQueueWaitForMessageRestricted
+ 264 002a FFF7FEFF 		bl	xTaskResumeAll
+ 265 002e D8B9     		cbnz	r0, .L42
+ 266 0030 4FF0E023 		mov	r3, #-536813568
+ 267 0034 4FF08052 		mov	r2, #268435456
+ 268 0038 C3F8042D 		str	r2, [r3, #3332]
+ 269              		.syntax unified
+ 270              	@ 650 "RTOS/timers.c" 1
+ 271 003c BFF34F8F 		dsb
+ 272              	@ 0 "" 2
+ 273              	@ 650 "RTOS/timers.c" 1
+ 274 0040 BFF36F8F 		isb
+ 275              	@ 0 "" 2
+ 276              		.thumb
+ 277              		.syntax unified
+ 278 0044 10E0     		b	.L42
+ 279              	.L49:
+ 280 0046 FFF7FEFF 		bl	xTaskResumeAll
+ 281 004a 2946     		mov	r1, r5
+ 282 004c 3046     		mov	r0, r6
+ 283 004e FFF7FEFF 		bl	prvProcessExpiredTimer
+ 284 0052 09E0     		b	.L42
+ 285              	.L44:
+ 286 0054 064A     		ldr	r2, .L50+4
+ 287 0056 1268     		ldr	r2, [r2]
+ 288 0058 1268     		ldr	r2, [r2]
+ 289 005a 0AB9     		cbnz	r2, .L47
+ 290 005c 0124     		movs	r4, #1
+ 291 005e DEE7     		b	.L45
+ 292              	.L47:
+ 293 0060 1C46     		mov	r4, r3
+ 294 0062 DCE7     		b	.L45
+ 295              	.L43:
+ 296 0064 FFF7FEFF 		bl	xTaskResumeAll
+ 297              	.L42:
+ 298 0068 02B0     		add	sp, sp, #8
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s 			page 6
+
+
+ 299              		@ sp needed
+ 300 006a 70BD     		pop	{r4, r5, r6, pc}
+ 301              	.L51:
+ 302              		.align	2
+ 303              	.L50:
+ 304 006c 00000000 		.word	xTimerQueue
+ 305 0070 00000000 		.word	pxOverflowTimerList
+ 307              		.section	.rodata.prvProcessReceivedCommands.str1.4,"aMS",%progbits,1
+ 308              		.align	2
+ 309              	.LC0:
+ 310 0000 52544F53 		.ascii	"RTOS/timers.c\000"
+ 310      2F74696D 
+ 310      6572732E 
+ 310      6300
+ 311 000e 0000     		.align	2
+ 312              	.LC1:
+ 313 0010 4572726F 		.ascii	"Error:%s,%d\015\012\000"
+ 313      723A2573 
+ 313      2C25640D 
+ 313      0A00
+ 314              		.section	.text.prvProcessReceivedCommands,"ax",%progbits
+ 315              		.align	1
+ 316              		.syntax unified
+ 317              		.thumb
+ 318              		.thumb_func
+ 320              	prvProcessReceivedCommands:
+ 321              		@ args = 0, pretend = 0, frame = 24
+ 322              		@ frame_needed = 0, uses_anonymous_args = 0
+ 323 0000 30B5     		push	{r4, r5, lr}
+ 324 0002 87B0     		sub	sp, sp, #28
+ 325 0004 02E0     		b	.L55
+ 326              	.L54:
+ 327 0006 029B     		ldr	r3, [sp, #8]
+ 328 0008 002B     		cmp	r3, #0
+ 329 000a 0FDA     		bge	.L71
+ 330              	.L55:
+ 331 000c 0022     		movs	r2, #0
+ 332 000e 02A9     		add	r1, sp, #8
+ 333 0010 3A4B     		ldr	r3, .L76
+ 334 0012 1868     		ldr	r0, [r3]
+ 335 0014 FFF7FEFF 		bl	xQueueReceive
+ 336 0018 0028     		cmp	r0, #0
+ 337 001a 6DD0     		beq	.L72
+ 338 001c 029B     		ldr	r3, [sp, #8]
+ 339 001e 002B     		cmp	r3, #0
+ 340 0020 F1DA     		bge	.L54
+ 341 0022 0599     		ldr	r1, [sp, #20]
+ 342 0024 0498     		ldr	r0, [sp, #16]
+ 343 0026 039B     		ldr	r3, [sp, #12]
+ 344 0028 9847     		blx	r3
+ 345 002a ECE7     		b	.L54
+ 346              	.L71:
+ 347 002c 049C     		ldr	r4, [sp, #16]
+ 348 002e 6369     		ldr	r3, [r4, #20]
+ 349 0030 13B1     		cbz	r3, .L56
+ 350 0032 201D     		adds	r0, r4, #4
+ 351 0034 FFF7FEFF 		bl	uxListRemove
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s 			page 7
+
+
+ 352              	.L56:
+ 353 0038 01A8     		add	r0, sp, #4
+ 354 003a FFF7FEFF 		bl	prvSampleTimeNow
+ 355 003e 0546     		mov	r5, r0
+ 356 0040 029B     		ldr	r3, [sp, #8]
+ 357 0042 013B     		subs	r3, r3, #1
+ 358 0044 082B     		cmp	r3, #8
+ 359 0046 E1D8     		bhi	.L55
+ 360 0048 DFE803F0 		tbb	[pc, r3]
+ 361              	.L59:
+ 362 004c 05       		.byte	(.L61-.L59)/2
+ 363 004d 05       		.byte	(.L61-.L59)/2
+ 364 004e 29       		.byte	(.L60-.L59)/2
+ 365 004f 30       		.byte	(.L58-.L59)/2
+ 366 0050 48       		.byte	(.L62-.L59)/2
+ 367 0051 05       		.byte	(.L61-.L59)/2
+ 368 0052 05       		.byte	(.L61-.L59)/2
+ 369 0053 29       		.byte	(.L60-.L59)/2
+ 370 0054 30       		.byte	(.L58-.L59)/2
+ 371 0055 00       		.p2align 1
+ 372              	.L61:
+ 373 0056 94F82830 		ldrb	r3, [r4, #40]	@ zero_extendqisi2
+ 374 005a 43F00103 		orr	r3, r3, #1
+ 375 005e 84F82830 		strb	r3, [r4, #40]
+ 376 0062 039B     		ldr	r3, [sp, #12]
+ 377 0064 A169     		ldr	r1, [r4, #24]
+ 378 0066 0246     		mov	r2, r0
+ 379 0068 1944     		add	r1, r1, r3
+ 380 006a 2046     		mov	r0, r4
+ 381 006c FFF7FEFF 		bl	prvInsertTimerInActiveList
+ 382 0070 0028     		cmp	r0, #0
+ 383 0072 CBD0     		beq	.L55
+ 384 0074 94F82830 		ldrb	r3, [r4, #40]	@ zero_extendqisi2
+ 385 0078 13F0040F 		tst	r3, #4
+ 386 007c 07D1     		bne	.L73
+ 387 007e 23F00103 		bic	r3, r3, #1
+ 388 0082 84F82830 		strb	r3, [r4, #40]
+ 389              	.L65:
+ 390 0086 236A     		ldr	r3, [r4, #32]
+ 391 0088 2046     		mov	r0, r4
+ 392 008a 9847     		blx	r3
+ 393 008c BEE7     		b	.L55
+ 394              	.L73:
+ 395 008e A369     		ldr	r3, [r4, #24]
+ 396 0090 2A46     		mov	r2, r5
+ 397 0092 0399     		ldr	r1, [sp, #12]
+ 398 0094 1944     		add	r1, r1, r3
+ 399 0096 2046     		mov	r0, r4
+ 400 0098 FFF7FEFF 		bl	prvReloadTimer
+ 401 009c F3E7     		b	.L65
+ 402              	.L60:
+ 403 009e 94F82830 		ldrb	r3, [r4, #40]	@ zero_extendqisi2
+ 404 00a2 23F00103 		bic	r3, r3, #1
+ 405 00a6 84F82830 		strb	r3, [r4, #40]
+ 406 00aa AFE7     		b	.L55
+ 407              	.L58:
+ 408 00ac 94F82830 		ldrb	r3, [r4, #40]	@ zero_extendqisi2
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s 			page 8
+
+
+ 409 00b0 43F00103 		orr	r3, r3, #1
+ 410 00b4 84F82830 		strb	r3, [r4, #40]
+ 411 00b8 039B     		ldr	r3, [sp, #12]
+ 412 00ba A361     		str	r3, [r4, #24]
+ 413 00bc 3BB1     		cbz	r3, .L74
+ 414              	.L66:
+ 415 00be A169     		ldr	r1, [r4, #24]
+ 416 00c0 2B46     		mov	r3, r5
+ 417 00c2 2A46     		mov	r2, r5
+ 418 00c4 2944     		add	r1, r1, r5
+ 419 00c6 2046     		mov	r0, r4
+ 420 00c8 FFF7FEFF 		bl	prvInsertTimerInActiveList
+ 421 00cc 9EE7     		b	.L55
+ 422              	.L74:
+ 423 00ce 40F25E32 		movw	r2, #862
+ 424 00d2 0B49     		ldr	r1, .L76+4
+ 425 00d4 0B48     		ldr	r0, .L76+8
+ 426 00d6 FFF7FEFF 		bl	printf
+ 427 00da F0E7     		b	.L66
+ 428              	.L62:
+ 429 00dc 94F82830 		ldrb	r3, [r4, #40]	@ zero_extendqisi2
+ 430 00e0 13F0020F 		tst	r3, #2
+ 431 00e4 04D0     		beq	.L75
+ 432 00e6 23F00103 		bic	r3, r3, #1
+ 433 00ea 84F82830 		strb	r3, [r4, #40]
+ 434 00ee 8DE7     		b	.L55
+ 435              	.L75:
+ 436 00f0 2046     		mov	r0, r4
+ 437 00f2 FFF7FEFF 		bl	vPortFree
+ 438 00f6 89E7     		b	.L55
+ 439              	.L72:
+ 440 00f8 07B0     		add	sp, sp, #28
+ 441              		@ sp needed
+ 442 00fa 30BD     		pop	{r4, r5, pc}
+ 443              	.L77:
+ 444              		.align	2
+ 445              	.L76:
+ 446 00fc 00000000 		.word	xTimerQueue
+ 447 0100 00000000 		.word	.LC0
+ 448 0104 10000000 		.word	.LC1
+ 450              		.section	.text.prvTimerTask,"ax",%progbits
+ 451              		.align	1
+ 452              		.syntax unified
+ 453              		.thumb
+ 454              		.thumb_func
+ 456              	prvTimerTask:
+ 457              		@ args = 0, pretend = 0, frame = 8
+ 458              		@ frame_needed = 0, uses_anonymous_args = 0
+ 459 0000 00B5     		push	{lr}
+ 460 0002 83B0     		sub	sp, sp, #12
+ 461              	.L79:
+ 462 0004 01A8     		add	r0, sp, #4
+ 463 0006 FFF7FEFF 		bl	prvGetNextExpireTime
+ 464 000a 0199     		ldr	r1, [sp, #4]
+ 465 000c FFF7FEFF 		bl	prvProcessTimerOrBlockTask
+ 466 0010 FFF7FEFF 		bl	prvProcessReceivedCommands
+ 467 0014 F6E7     		b	.L79
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s 			page 9
+
+
+ 469              		.section	.rodata.prvCheckForValidListAndQueue.str1.4,"aMS",%progbits,1
+ 470              		.align	2
+ 471              	.LC2:
+ 472 0000 546D7251 		.ascii	"TmrQ\000"
+ 472      00
+ 473              		.section	.text.prvCheckForValidListAndQueue,"ax",%progbits
+ 474              		.align	1
+ 475              		.syntax unified
+ 476              		.thumb
+ 477              		.thumb_func
+ 479              	prvCheckForValidListAndQueue:
+ 480              		@ args = 0, pretend = 0, frame = 0
+ 481              		@ frame_needed = 0, uses_anonymous_args = 0
+ 482 0000 38B5     		push	{r3, r4, r5, lr}
+ 483 0002 FFF7FEFF 		bl	vPortEnterCritical
+ 484 0006 0F4B     		ldr	r3, .L85
+ 485 0008 1B68     		ldr	r3, [r3]
+ 486 000a 13B1     		cbz	r3, .L84
+ 487              	.L82:
+ 488 000c FFF7FEFF 		bl	vPortExitCritical
+ 489 0010 38BD     		pop	{r3, r4, r5, pc}
+ 490              	.L84:
+ 491 0012 0D4D     		ldr	r5, .L85+4
+ 492 0014 2846     		mov	r0, r5
+ 493 0016 FFF7FEFF 		bl	vListInitialise
+ 494 001a 0C4C     		ldr	r4, .L85+8
+ 495 001c 2046     		mov	r0, r4
+ 496 001e FFF7FEFF 		bl	vListInitialise
+ 497 0022 0B4B     		ldr	r3, .L85+12
+ 498 0024 1D60     		str	r5, [r3]
+ 499 0026 0B4B     		ldr	r3, .L85+16
+ 500 0028 1C60     		str	r4, [r3]
+ 501 002a 0022     		movs	r2, #0
+ 502 002c 1021     		movs	r1, #16
+ 503 002e 0520     		movs	r0, #5
+ 504 0030 FFF7FEFF 		bl	xQueueGenericCreate
+ 505 0034 034B     		ldr	r3, .L85
+ 506 0036 1860     		str	r0, [r3]
+ 507 0038 0028     		cmp	r0, #0
+ 508 003a E7D0     		beq	.L82
+ 509 003c 0649     		ldr	r1, .L85+20
+ 510 003e FFF7FEFF 		bl	vQueueAddToRegistry
+ 511 0042 E3E7     		b	.L82
+ 512              	.L86:
+ 513              		.align	2
+ 514              	.L85:
+ 515 0044 00000000 		.word	xTimerQueue
+ 516 0048 00000000 		.word	xActiveTimerList1
+ 517 004c 00000000 		.word	xActiveTimerList2
+ 518 0050 00000000 		.word	pxCurrentTimerList
+ 519 0054 00000000 		.word	pxOverflowTimerList
+ 520 0058 00000000 		.word	.LC2
+ 522              		.section	.text.prvInitialiseNewTimer,"ax",%progbits
+ 523              		.align	1
+ 524              		.syntax unified
+ 525              		.thumb
+ 526              		.thumb_func
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s 			page 10
+
+
+ 528              	prvInitialiseNewTimer:
+ 529              		@ args = 8, pretend = 0, frame = 0
+ 530              		@ frame_needed = 0, uses_anonymous_args = 0
+ 531 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+ 532 0004 0746     		mov	r7, r0
+ 533 0006 1546     		mov	r5, r2
+ 534 0008 1E46     		mov	r6, r3
+ 535 000a 079C     		ldr	r4, [sp, #28]
+ 536 000c 8846     		mov	r8, r1
+ 537 000e 99B1     		cbz	r1, .L91
+ 538              	.L88:
+ 539 0010 FFF7FEFF 		bl	prvCheckForValidListAndQueue
+ 540 0014 2760     		str	r7, [r4]
+ 541 0016 C4F81880 		str	r8, [r4, #24]
+ 542 001a E661     		str	r6, [r4, #28]
+ 543 001c 069B     		ldr	r3, [sp, #24]
+ 544 001e 2362     		str	r3, [r4, #32]
+ 545 0020 201D     		adds	r0, r4, #4
+ 546 0022 FFF7FEFF 		bl	vListInitialiseItem
+ 547 0026 2DB1     		cbz	r5, .L87
+ 548 0028 94F82830 		ldrb	r3, [r4, #40]	@ zero_extendqisi2
+ 549 002c 43F00403 		orr	r3, r3, #4
+ 550 0030 84F82830 		strb	r3, [r4, #40]
+ 551              	.L87:
+ 552 0034 BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 553              	.L91:
+ 554 0038 40F26B12 		movw	r2, #363
+ 555 003c 0249     		ldr	r1, .L92
+ 556 003e 0348     		ldr	r0, .L92+4
+ 557 0040 FFF7FEFF 		bl	printf
+ 558 0044 E4E7     		b	.L88
+ 559              	.L93:
+ 560 0046 00BF     		.align	2
+ 561              	.L92:
+ 562 0048 00000000 		.word	.LC0
+ 563 004c 10000000 		.word	.LC1
+ 565              		.section	.rodata.xTimerCreateTimerTask.str1.4,"aMS",%progbits,1
+ 566              		.align	2
+ 567              	.LC3:
+ 568 0000 546D7220 		.ascii	"Tmr Svc\000"
+ 568      53766300 
+ 569              		.section	.text.xTimerCreateTimerTask,"ax",%progbits
+ 570              		.align	1
+ 571              		.global	xTimerCreateTimerTask
+ 572              		.syntax unified
+ 573              		.thumb
+ 574              		.thumb_func
+ 576              	xTimerCreateTimerTask:
+ 577              		@ args = 0, pretend = 0, frame = 0
+ 578              		@ frame_needed = 0, uses_anonymous_args = 0
+ 579 0000 10B5     		push	{r4, lr}
+ 580 0002 82B0     		sub	sp, sp, #8
+ 581 0004 FFF7FEFF 		bl	prvCheckForValidListAndQueue
+ 582 0008 0D4B     		ldr	r3, .L99
+ 583 000a 1B68     		ldr	r3, [r3]
+ 584 000c ABB1     		cbz	r3, .L97
+ 585 000e 0D4B     		ldr	r3, .L99+4
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s 			page 11
+
+
+ 586 0010 0193     		str	r3, [sp, #4]
+ 587 0012 1F23     		movs	r3, #31
+ 588 0014 0093     		str	r3, [sp]
+ 589 0016 0023     		movs	r3, #0
+ 590 0018 4FF48272 		mov	r2, #260
+ 591 001c 0A49     		ldr	r1, .L99+8
+ 592 001e 0B48     		ldr	r0, .L99+12
+ 593 0020 FFF7FEFF 		bl	xTaskCreate
+ 594 0024 0446     		mov	r4, r0
+ 595 0026 28B9     		cbnz	r0, .L94
+ 596              	.L95:
+ 597 0028 40F21912 		movw	r2, #281
+ 598 002c 0849     		ldr	r1, .L99+16
+ 599 002e 0948     		ldr	r0, .L99+20
+ 600 0030 FFF7FEFF 		bl	printf
+ 601              	.L94:
+ 602 0034 2046     		mov	r0, r4
+ 603 0036 02B0     		add	sp, sp, #8
+ 604              		@ sp needed
+ 605 0038 10BD     		pop	{r4, pc}
+ 606              	.L97:
+ 607 003a 0024     		movs	r4, #0
+ 608 003c F4E7     		b	.L95
+ 609              	.L100:
+ 610 003e 00BF     		.align	2
+ 611              	.L99:
+ 612 0040 00000000 		.word	xTimerQueue
+ 613 0044 00000000 		.word	xTimerTaskHandle
+ 614 0048 00000000 		.word	.LC3
+ 615 004c 00000000 		.word	prvTimerTask
+ 616 0050 00000000 		.word	.LC0
+ 617 0054 10000000 		.word	.LC1
+ 619              		.section	.text.xTimerCreate,"ax",%progbits
+ 620              		.align	1
+ 621              		.global	xTimerCreate
+ 622              		.syntax unified
+ 623              		.thumb
+ 624              		.thumb_func
+ 626              	xTimerCreate:
+ 627              		@ args = 4, pretend = 0, frame = 0
+ 628              		@ frame_needed = 0, uses_anonymous_args = 0
+ 629 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+ 630 0004 82B0     		sub	sp, sp, #8
+ 631 0006 0446     		mov	r4, r0
+ 632 0008 8846     		mov	r8, r1
+ 633 000a 1746     		mov	r7, r2
+ 634 000c 1D46     		mov	r5, r3
+ 635 000e 2C20     		movs	r0, #44
+ 636 0010 FFF7FEFF 		bl	pvPortMalloc
+ 637 0014 0646     		mov	r6, r0
+ 638 0016 58B1     		cbz	r0, .L101
+ 639 0018 0023     		movs	r3, #0
+ 640 001a 80F82830 		strb	r3, [r0, #40]
+ 641 001e 0190     		str	r0, [sp, #4]
+ 642 0020 089B     		ldr	r3, [sp, #32]
+ 643 0022 0093     		str	r3, [sp]
+ 644 0024 2B46     		mov	r3, r5
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s 			page 12
+
+
+ 645 0026 3A46     		mov	r2, r7
+ 646 0028 4146     		mov	r1, r8
+ 647 002a 2046     		mov	r0, r4
+ 648 002c FFF7FEFF 		bl	prvInitialiseNewTimer
+ 649              	.L101:
+ 650 0030 3046     		mov	r0, r6
+ 651 0032 02B0     		add	sp, sp, #8
+ 652              		@ sp needed
+ 653 0034 BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 655              		.section	.text.xTimerGenericCommand,"ax",%progbits
+ 656              		.align	1
+ 657              		.global	xTimerGenericCommand
+ 658              		.syntax unified
+ 659              		.thumb
+ 660              		.thumb_func
+ 662              	xTimerGenericCommand:
+ 663              		@ args = 4, pretend = 0, frame = 16
+ 664              		@ frame_needed = 0, uses_anonymous_args = 0
+ 665 0000 F0B5     		push	{r4, r5, r6, r7, lr}
+ 666 0002 85B0     		sub	sp, sp, #20
+ 667 0004 0C46     		mov	r4, r1
+ 668 0006 1546     		mov	r5, r2
+ 669 0008 1E46     		mov	r6, r3
+ 670 000a 0746     		mov	r7, r0
+ 671 000c 98B1     		cbz	r0, .L111
+ 672              	.L105:
+ 673 000e 164B     		ldr	r3, .L113
+ 674 0010 1868     		ldr	r0, [r3]
+ 675 0012 30B3     		cbz	r0, .L109
+ 676 0014 0094     		str	r4, [sp]
+ 677 0016 0195     		str	r5, [sp, #4]
+ 678 0018 0297     		str	r7, [sp, #8]
+ 679 001a 052C     		cmp	r4, #5
+ 680 001c 1ADC     		bgt	.L107
+ 681 001e FFF7FEFF 		bl	xTaskGetSchedulerState
+ 682 0022 0228     		cmp	r0, #2
+ 683 0024 0ED0     		beq	.L112
+ 684 0026 0023     		movs	r3, #0
+ 685 0028 1A46     		mov	r2, r3
+ 686 002a 6946     		mov	r1, sp
+ 687 002c 0E48     		ldr	r0, .L113
+ 688 002e 0068     		ldr	r0, [r0]
+ 689 0030 FFF7FEFF 		bl	xQueueGenericSend
+ 690 0034 13E0     		b	.L104
+ 691              	.L111:
+ 692 0036 40F28B12 		movw	r2, #395
+ 693 003a 0C49     		ldr	r1, .L113+4
+ 694 003c 0C48     		ldr	r0, .L113+8
+ 695 003e FFF7FEFF 		bl	printf
+ 696 0042 E4E7     		b	.L105
+ 697              	.L112:
+ 698 0044 0023     		movs	r3, #0
+ 699 0046 0A9A     		ldr	r2, [sp, #40]
+ 700 0048 6946     		mov	r1, sp
+ 701 004a 0748     		ldr	r0, .L113
+ 702 004c 0068     		ldr	r0, [r0]
+ 703 004e FFF7FEFF 		bl	xQueueGenericSend
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s 			page 13
+
+
+ 704 0052 04E0     		b	.L104
+ 705              	.L107:
+ 706 0054 0023     		movs	r3, #0
+ 707 0056 3246     		mov	r2, r6
+ 708 0058 6946     		mov	r1, sp
+ 709 005a FFF7FEFF 		bl	xQueueGenericSendFromISR
+ 710              	.L104:
+ 711 005e 05B0     		add	sp, sp, #20
+ 712              		@ sp needed
+ 713 0060 F0BD     		pop	{r4, r5, r6, r7, pc}
+ 714              	.L109:
+ 715 0062 0020     		movs	r0, #0
+ 716 0064 FBE7     		b	.L104
+ 717              	.L114:
+ 718 0066 00BF     		.align	2
+ 719              	.L113:
+ 720 0068 00000000 		.word	xTimerQueue
+ 721 006c 00000000 		.word	.LC0
+ 722 0070 10000000 		.word	.LC1
+ 724              		.section	.text.xTimerGetTimerDaemonTaskHandle,"ax",%progbits
+ 725              		.align	1
+ 726              		.global	xTimerGetTimerDaemonTaskHandle
+ 727              		.syntax unified
+ 728              		.thumb
+ 729              		.thumb_func
+ 731              	xTimerGetTimerDaemonTaskHandle:
+ 732              		@ args = 0, pretend = 0, frame = 0
+ 733              		@ frame_needed = 0, uses_anonymous_args = 0
+ 734 0000 08B5     		push	{r3, lr}
+ 735 0002 064B     		ldr	r3, .L119
+ 736 0004 1B68     		ldr	r3, [r3]
+ 737 0006 13B1     		cbz	r3, .L118
+ 738              	.L116:
+ 739 0008 044B     		ldr	r3, .L119
+ 740 000a 1868     		ldr	r0, [r3]
+ 741 000c 08BD     		pop	{r3, pc}
+ 742              	.L118:
+ 743 000e 40F2B512 		movw	r2, #437
+ 744 0012 0349     		ldr	r1, .L119+4
+ 745 0014 0348     		ldr	r0, .L119+8
+ 746 0016 FFF7FEFF 		bl	printf
+ 747 001a F5E7     		b	.L116
+ 748              	.L120:
+ 749              		.align	2
+ 750              	.L119:
+ 751 001c 00000000 		.word	xTimerTaskHandle
+ 752 0020 00000000 		.word	.LC0
+ 753 0024 10000000 		.word	.LC1
+ 755              		.section	.text.xTimerGetPeriod,"ax",%progbits
+ 756              		.align	1
+ 757              		.global	xTimerGetPeriod
+ 758              		.syntax unified
+ 759              		.thumb
+ 760              		.thumb_func
+ 762              	xTimerGetPeriod:
+ 763              		@ args = 0, pretend = 0, frame = 0
+ 764              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s 			page 14
+
+
+ 765 0000 10B5     		push	{r4, lr}
+ 766 0002 0446     		mov	r4, r0
+ 767 0004 08B1     		cbz	r0, .L124
+ 768              	.L122:
+ 769 0006 A069     		ldr	r0, [r4, #24]
+ 770 0008 10BD     		pop	{r4, pc}
+ 771              	.L124:
+ 772 000a 4FF4DF72 		mov	r2, #446
+ 773 000e 0249     		ldr	r1, .L125
+ 774 0010 0248     		ldr	r0, .L125+4
+ 775 0012 FFF7FEFF 		bl	printf
+ 776 0016 F6E7     		b	.L122
+ 777              	.L126:
+ 778              		.align	2
+ 779              	.L125:
+ 780 0018 00000000 		.word	.LC0
+ 781 001c 10000000 		.word	.LC1
+ 783              		.section	.text.vTimerSetReloadMode,"ax",%progbits
+ 784              		.align	1
+ 785              		.global	vTimerSetReloadMode
+ 786              		.syntax unified
+ 787              		.thumb
+ 788              		.thumb_func
+ 790              	vTimerSetReloadMode:
+ 791              		@ args = 0, pretend = 0, frame = 0
+ 792              		@ frame_needed = 0, uses_anonymous_args = 0
+ 793 0000 38B5     		push	{r3, r4, r5, lr}
+ 794 0002 0C46     		mov	r4, r1
+ 795 0004 0546     		mov	r5, r0
+ 796 0006 58B1     		cbz	r0, .L132
+ 797              	.L128:
+ 798 0008 FFF7FEFF 		bl	vPortEnterCritical
+ 799 000c 7CB1     		cbz	r4, .L129
+ 800 000e 95F82830 		ldrb	r3, [r5, #40]	@ zero_extendqisi2
+ 801 0012 43F00403 		orr	r3, r3, #4
+ 802 0016 85F82830 		strb	r3, [r5, #40]
+ 803              	.L130:
+ 804 001a FFF7FEFF 		bl	vPortExitCritical
+ 805 001e 38BD     		pop	{r3, r4, r5, pc}
+ 806              	.L132:
+ 807 0020 4FF4E472 		mov	r2, #456
+ 808 0024 0549     		ldr	r1, .L133
+ 809 0026 0648     		ldr	r0, .L133+4
+ 810 0028 FFF7FEFF 		bl	printf
+ 811 002c ECE7     		b	.L128
+ 812              	.L129:
+ 813 002e 95F82830 		ldrb	r3, [r5, #40]	@ zero_extendqisi2
+ 814 0032 23F00403 		bic	r3, r3, #4
+ 815 0036 85F82830 		strb	r3, [r5, #40]
+ 816 003a EEE7     		b	.L130
+ 817              	.L134:
+ 818              		.align	2
+ 819              	.L133:
+ 820 003c 00000000 		.word	.LC0
+ 821 0040 10000000 		.word	.LC1
+ 823              		.section	.text.xTimerGetReloadMode,"ax",%progbits
+ 824              		.align	1
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s 			page 15
+
+
+ 825              		.global	xTimerGetReloadMode
+ 826              		.syntax unified
+ 827              		.thumb
+ 828              		.thumb_func
+ 830              	xTimerGetReloadMode:
+ 831              		@ args = 0, pretend = 0, frame = 0
+ 832              		@ frame_needed = 0, uses_anonymous_args = 0
+ 833 0000 10B5     		push	{r4, lr}
+ 834 0002 0446     		mov	r4, r0
+ 835 0004 58B1     		cbz	r0, .L140
+ 836              	.L136:
+ 837 0006 FFF7FEFF 		bl	vPortEnterCritical
+ 838 000a 94F82830 		ldrb	r3, [r4, #40]	@ zero_extendqisi2
+ 839 000e 13F0040F 		tst	r3, #4
+ 840 0012 0BD1     		bne	.L138
+ 841 0014 0024     		movs	r4, #0
+ 842              	.L137:
+ 843 0016 FFF7FEFF 		bl	vPortExitCritical
+ 844 001a 2046     		mov	r0, r4
+ 845 001c 10BD     		pop	{r4, pc}
+ 846              	.L140:
+ 847 001e 40F2DD12 		movw	r2, #477
+ 848 0022 0349     		ldr	r1, .L141
+ 849 0024 0348     		ldr	r0, .L141+4
+ 850 0026 FFF7FEFF 		bl	printf
+ 851 002a ECE7     		b	.L136
+ 852              	.L138:
+ 853 002c 0124     		movs	r4, #1
+ 854 002e F2E7     		b	.L137
+ 855              	.L142:
+ 856              		.align	2
+ 857              	.L141:
+ 858 0030 00000000 		.word	.LC0
+ 859 0034 10000000 		.word	.LC1
+ 861              		.section	.text.uxTimerGetReloadMode,"ax",%progbits
+ 862              		.align	1
+ 863              		.global	uxTimerGetReloadMode
+ 864              		.syntax unified
+ 865              		.thumb
+ 866              		.thumb_func
+ 868              	uxTimerGetReloadMode:
+ 869              		@ args = 0, pretend = 0, frame = 0
+ 870              		@ frame_needed = 0, uses_anonymous_args = 0
+ 871 0000 08B5     		push	{r3, lr}
+ 872 0002 FFF7FEFF 		bl	xTimerGetReloadMode
+ 873 0006 08BD     		pop	{r3, pc}
+ 875              		.section	.text.xTimerGetExpiryTime,"ax",%progbits
+ 876              		.align	1
+ 877              		.global	xTimerGetExpiryTime
+ 878              		.syntax unified
+ 879              		.thumb
+ 880              		.thumb_func
+ 882              	xTimerGetExpiryTime:
+ 883              		@ args = 0, pretend = 0, frame = 0
+ 884              		@ frame_needed = 0, uses_anonymous_args = 0
+ 885 0000 10B5     		push	{r4, lr}
+ 886 0002 0446     		mov	r4, r0
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s 			page 16
+
+
+ 887 0004 08B1     		cbz	r0, .L148
+ 888              	.L146:
+ 889 0006 6068     		ldr	r0, [r4, #4]
+ 890 0008 10BD     		pop	{r4, pc}
+ 891              	.L148:
+ 892 000a 40F2FB12 		movw	r2, #507
+ 893 000e 0249     		ldr	r1, .L149
+ 894 0010 0248     		ldr	r0, .L149+4
+ 895 0012 FFF7FEFF 		bl	printf
+ 896 0016 F6E7     		b	.L146
+ 897              	.L150:
+ 898              		.align	2
+ 899              	.L149:
+ 900 0018 00000000 		.word	.LC0
+ 901 001c 10000000 		.word	.LC1
+ 903              		.section	.text.pcTimerGetName,"ax",%progbits
+ 904              		.align	1
+ 905              		.global	pcTimerGetName
+ 906              		.syntax unified
+ 907              		.thumb
+ 908              		.thumb_func
+ 910              	pcTimerGetName:
+ 911              		@ args = 0, pretend = 0, frame = 0
+ 912              		@ frame_needed = 0, uses_anonymous_args = 0
+ 913 0000 10B5     		push	{r4, lr}
+ 914 0002 0446     		mov	r4, r0
+ 915 0004 08B1     		cbz	r0, .L154
+ 916              	.L152:
+ 917 0006 2068     		ldr	r0, [r4]
+ 918 0008 10BD     		pop	{r4, pc}
+ 919              	.L154:
+ 920 000a 40F20522 		movw	r2, #517
+ 921 000e 0249     		ldr	r1, .L155
+ 922 0010 0248     		ldr	r0, .L155+4
+ 923 0012 FFF7FEFF 		bl	printf
+ 924 0016 F6E7     		b	.L152
+ 925              	.L156:
+ 926              		.align	2
+ 927              	.L155:
+ 928 0018 00000000 		.word	.LC0
+ 929 001c 10000000 		.word	.LC1
+ 931              		.section	.text.xTimerIsTimerActive,"ax",%progbits
+ 932              		.align	1
+ 933              		.global	xTimerIsTimerActive
+ 934              		.syntax unified
+ 935              		.thumb
+ 936              		.thumb_func
+ 938              	xTimerIsTimerActive:
+ 939              		@ args = 0, pretend = 0, frame = 0
+ 940              		@ frame_needed = 0, uses_anonymous_args = 0
+ 941 0000 10B5     		push	{r4, lr}
+ 942 0002 0446     		mov	r4, r0
+ 943 0004 58B1     		cbz	r0, .L162
+ 944              	.L158:
+ 945 0006 FFF7FEFF 		bl	vPortEnterCritical
+ 946 000a 94F82830 		ldrb	r3, [r4, #40]	@ zero_extendqisi2
+ 947 000e 13F0010F 		tst	r3, #1
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s 			page 17
+
+
+ 948 0012 0BD1     		bne	.L160
+ 949 0014 0024     		movs	r4, #0
+ 950              	.L159:
+ 951 0016 FFF7FEFF 		bl	vPortExitCritical
+ 952 001a 2046     		mov	r0, r4
+ 953 001c 10BD     		pop	{r4, pc}
+ 954              	.L162:
+ 955 001e 40F2DD32 		movw	r2, #989
+ 956 0022 0349     		ldr	r1, .L163
+ 957 0024 0348     		ldr	r0, .L163+4
+ 958 0026 FFF7FEFF 		bl	printf
+ 959 002a ECE7     		b	.L158
+ 960              	.L160:
+ 961 002c 0124     		movs	r4, #1
+ 962 002e F2E7     		b	.L159
+ 963              	.L164:
+ 964              		.align	2
+ 965              	.L163:
+ 966 0030 00000000 		.word	.LC0
+ 967 0034 10000000 		.word	.LC1
+ 969              		.section	.text.pvTimerGetTimerID,"ax",%progbits
+ 970              		.align	1
+ 971              		.global	pvTimerGetTimerID
+ 972              		.syntax unified
+ 973              		.thumb
+ 974              		.thumb_func
+ 976              	pvTimerGetTimerID:
+ 977              		@ args = 0, pretend = 0, frame = 0
+ 978              		@ frame_needed = 0, uses_anonymous_args = 0
+ 979 0000 10B5     		push	{r4, lr}
+ 980 0002 0446     		mov	r4, r0
+ 981 0004 30B1     		cbz	r0, .L168
+ 982              	.L166:
+ 983 0006 FFF7FEFF 		bl	vPortEnterCritical
+ 984 000a E469     		ldr	r4, [r4, #28]
+ 985 000c FFF7FEFF 		bl	vPortExitCritical
+ 986 0010 2046     		mov	r0, r4
+ 987 0012 10BD     		pop	{r4, pc}
+ 988              	.L168:
+ 989 0014 40F2F632 		movw	r2, #1014
+ 990 0018 0249     		ldr	r1, .L169
+ 991 001a 0348     		ldr	r0, .L169+4
+ 992 001c FFF7FEFF 		bl	printf
+ 993 0020 F1E7     		b	.L166
+ 994              	.L170:
+ 995 0022 00BF     		.align	2
+ 996              	.L169:
+ 997 0024 00000000 		.word	.LC0
+ 998 0028 10000000 		.word	.LC1
+ 1000              		.section	.text.vTimerSetTimerID,"ax",%progbits
+ 1001              		.align	1
+ 1002              		.global	vTimerSetTimerID
+ 1003              		.syntax unified
+ 1004              		.thumb
+ 1005              		.thumb_func
+ 1007              	vTimerSetTimerID:
+ 1008              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s 			page 18
+
+
+ 1009              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1010 0000 38B5     		push	{r3, r4, r5, lr}
+ 1011 0002 0C46     		mov	r4, r1
+ 1012 0004 0546     		mov	r5, r0
+ 1013 0006 28B1     		cbz	r0, .L174
+ 1014              	.L172:
+ 1015 0008 FFF7FEFF 		bl	vPortEnterCritical
+ 1016 000c EC61     		str	r4, [r5, #28]
+ 1017 000e FFF7FEFF 		bl	vPortExitCritical
+ 1018 0012 38BD     		pop	{r3, r4, r5, pc}
+ 1019              	.L174:
+ 1020 0014 40F20742 		movw	r2, #1031
+ 1021 0018 0249     		ldr	r1, .L175
+ 1022 001a 0348     		ldr	r0, .L175+4
+ 1023 001c FFF7FEFF 		bl	printf
+ 1024 0020 F2E7     		b	.L172
+ 1025              	.L176:
+ 1026 0022 00BF     		.align	2
+ 1027              	.L175:
+ 1028 0024 00000000 		.word	.LC0
+ 1029 0028 10000000 		.word	.LC1
+ 1031              		.section	.text.xTimerPendFunctionCallFromISR,"ax",%progbits
+ 1032              		.align	1
+ 1033              		.global	xTimerPendFunctionCallFromISR
+ 1034              		.syntax unified
+ 1035              		.thumb
+ 1036              		.thumb_func
+ 1038              	xTimerPendFunctionCallFromISR:
+ 1039              		@ args = 0, pretend = 0, frame = 16
+ 1040              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1041 0000 10B5     		push	{r4, lr}
+ 1042 0002 84B0     		sub	sp, sp, #16
+ 1043 0004 1446     		mov	r4, r2
+ 1044 0006 1A46     		mov	r2, r3
+ 1045 0008 6FF00103 		mvn	r3, #1
+ 1046 000c 0093     		str	r3, [sp]
+ 1047 000e 0190     		str	r0, [sp, #4]
+ 1048 0010 0291     		str	r1, [sp, #8]
+ 1049 0012 0394     		str	r4, [sp, #12]
+ 1050 0014 0023     		movs	r3, #0
+ 1051 0016 6946     		mov	r1, sp
+ 1052 0018 0248     		ldr	r0, .L179
+ 1053 001a 0068     		ldr	r0, [r0]
+ 1054 001c FFF7FEFF 		bl	xQueueGenericSendFromISR
+ 1055 0020 04B0     		add	sp, sp, #16
+ 1056              		@ sp needed
+ 1057 0022 10BD     		pop	{r4, pc}
+ 1058              	.L180:
+ 1059              		.align	2
+ 1060              	.L179:
+ 1061 0024 00000000 		.word	xTimerQueue
+ 1063              		.section	.text.xTimerPendFunctionCall,"ax",%progbits
+ 1064              		.align	1
+ 1065              		.global	xTimerPendFunctionCall
+ 1066              		.syntax unified
+ 1067              		.thumb
+ 1068              		.thumb_func
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s 			page 19
+
+
+ 1070              	xTimerPendFunctionCall:
+ 1071              		@ args = 0, pretend = 0, frame = 16
+ 1072              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1073 0000 F0B5     		push	{r4, r5, r6, r7, lr}
+ 1074 0002 85B0     		sub	sp, sp, #20
+ 1075 0004 0746     		mov	r7, r0
+ 1076 0006 0E46     		mov	r6, r1
+ 1077 0008 1546     		mov	r5, r2
+ 1078 000a 1C46     		mov	r4, r3
+ 1079 000c 0C4B     		ldr	r3, .L185
+ 1080 000e 1B68     		ldr	r3, [r3]
+ 1081 0010 73B1     		cbz	r3, .L184
+ 1082              	.L182:
+ 1083 0012 4FF0FF33 		mov	r3, #-1
+ 1084 0016 0093     		str	r3, [sp]
+ 1085 0018 0197     		str	r7, [sp, #4]
+ 1086 001a 0296     		str	r6, [sp, #8]
+ 1087 001c 0395     		str	r5, [sp, #12]
+ 1088 001e 0023     		movs	r3, #0
+ 1089 0020 2246     		mov	r2, r4
+ 1090 0022 6946     		mov	r1, sp
+ 1091 0024 0648     		ldr	r0, .L185
+ 1092 0026 0068     		ldr	r0, [r0]
+ 1093 0028 FFF7FEFF 		bl	xQueueGenericSend
+ 1094 002c 05B0     		add	sp, sp, #20
+ 1095              		@ sp needed
+ 1096 002e F0BD     		pop	{r4, r5, r6, r7, pc}
+ 1097              	.L184:
+ 1098 0030 40F23942 		movw	r2, #1081
+ 1099 0034 0349     		ldr	r1, .L185+4
+ 1100 0036 0448     		ldr	r0, .L185+8
+ 1101 0038 FFF7FEFF 		bl	printf
+ 1102 003c E9E7     		b	.L182
+ 1103              	.L186:
+ 1104 003e 00BF     		.align	2
+ 1105              	.L185:
+ 1106 0040 00000000 		.word	xTimerQueue
+ 1107 0044 00000000 		.word	.LC0
+ 1108 0048 10000000 		.word	.LC1
+ 1110              		.section	.text.uxTimerGetTimerNumber,"ax",%progbits
+ 1111              		.align	1
+ 1112              		.global	uxTimerGetTimerNumber
+ 1113              		.syntax unified
+ 1114              		.thumb
+ 1115              		.thumb_func
+ 1117              	uxTimerGetTimerNumber:
+ 1118              		@ args = 0, pretend = 0, frame = 0
+ 1119              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1120              		@ link register save eliminated.
+ 1121 0000 406A     		ldr	r0, [r0, #36]
+ 1122 0002 7047     		bx	lr
+ 1124              		.section	.text.vTimerSetTimerNumber,"ax",%progbits
+ 1125              		.align	1
+ 1126              		.global	vTimerSetTimerNumber
+ 1127              		.syntax unified
+ 1128              		.thumb
+ 1129              		.thumb_func
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s 			page 20
+
+
+ 1131              	vTimerSetTimerNumber:
+ 1132              		@ args = 0, pretend = 0, frame = 0
+ 1133              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1134              		@ link register save eliminated.
+ 1135 0000 4162     		str	r1, [r0, #36]
+ 1136 0002 7047     		bx	lr
+ 1138              		.section	.bss.xLastTime.0,"aw",%nobits
+ 1139              		.align	2
+ 1142              	xLastTime.0:
+ 1143 0000 00000000 		.space	4
+ 1144              		.section	.bss.xTimerTaskHandle,"aw",%nobits
+ 1145              		.align	2
+ 1148              	xTimerTaskHandle:
+ 1149 0000 00000000 		.space	4
+ 1150              		.section	.bss.xTimerQueue,"aw",%nobits
+ 1151              		.align	2
+ 1154              	xTimerQueue:
+ 1155 0000 00000000 		.space	4
+ 1156              		.section	.bss.pxOverflowTimerList,"aw",%nobits
+ 1157              		.align	2
+ 1160              	pxOverflowTimerList:
+ 1161 0000 00000000 		.space	4
+ 1162              		.section	.bss.pxCurrentTimerList,"aw",%nobits
+ 1163              		.align	2
+ 1166              	pxCurrentTimerList:
+ 1167 0000 00000000 		.space	4
+ 1168              		.section	.bss.xActiveTimerList2,"aw",%nobits
+ 1169              		.align	2
+ 1172              	xActiveTimerList2:
+ 1173 0000 00000000 		.space	20
+ 1173      00000000 
+ 1173      00000000 
+ 1173      00000000 
+ 1173      00000000 
+ 1174              		.section	.bss.xActiveTimerList1,"aw",%nobits
+ 1175              		.align	2
+ 1178              	xActiveTimerList1:
+ 1179 0000 00000000 		.space	20
+ 1179      00000000 
+ 1179      00000000 
+ 1179      00000000 
+ 1179      00000000 
+ 1180              		.ident	"GCC: (Arm GNU Toolchain 13.3.Rel1 (Build arm-13.24)) 13.3.1 20240614"
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s 			page 21
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 timers.c
+C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s:18     .text.prvGetNextExpireTime:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s:23     .text.prvGetNextExpireTime:00000000 prvGetNextExpireTime
+C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s:47     .text.prvGetNextExpireTime:0000001c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s:1166   .bss.pxCurrentTimerList:00000000 pxCurrentTimerList
+C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s:50     .text.prvInsertTimerInActiveList:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s:55     .text.prvInsertTimerInActiveList:00000000 prvInsertTimerInActiveList
+C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s:95     .text.prvInsertTimerInActiveList:00000040 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s:1160   .bss.pxOverflowTimerList:00000000 pxOverflowTimerList
+C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s:99     .text.prvReloadTimer:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s:104    .text.prvReloadTimer:00000000 prvReloadTimer
+C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s:130    .text.prvProcessExpiredTimer:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s:135    .text.prvProcessExpiredTimer:00000000 prvProcessExpiredTimer
+C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s:166    .text.prvProcessExpiredTimer:0000003c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s:169    .text.prvSwitchTimerLists:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s:174    .text.prvSwitchTimerLists:00000000 prvSwitchTimerLists
+C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s:199    .text.prvSwitchTimerLists:00000028 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s:203    .text.prvSampleTimeNow:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s:208    .text.prvSampleTimeNow:00000000 prvSampleTimeNow
+C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s:234    .text.prvSampleTimeNow:00000028 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s:1142   .bss.xLastTime.0:00000000 xLastTime.0
+C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s:237    .text.prvProcessTimerOrBlockTask:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s:242    .text.prvProcessTimerOrBlockTask:00000000 prvProcessTimerOrBlockTask
+C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s:304    .text.prvProcessTimerOrBlockTask:0000006c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s:1154   .bss.xTimerQueue:00000000 xTimerQueue
+C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s:308    .rodata.prvProcessReceivedCommands.str1.4:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s:315    .text.prvProcessReceivedCommands:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s:320    .text.prvProcessReceivedCommands:00000000 prvProcessReceivedCommands
+C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s:362    .text.prvProcessReceivedCommands:0000004c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s:446    .text.prvProcessReceivedCommands:000000fc $d
+C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s:451    .text.prvTimerTask:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s:456    .text.prvTimerTask:00000000 prvTimerTask
+C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s:470    .rodata.prvCheckForValidListAndQueue.str1.4:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s:474    .text.prvCheckForValidListAndQueue:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s:479    .text.prvCheckForValidListAndQueue:00000000 prvCheckForValidListAndQueue
+C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s:515    .text.prvCheckForValidListAndQueue:00000044 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s:1178   .bss.xActiveTimerList1:00000000 xActiveTimerList1
+C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s:1172   .bss.xActiveTimerList2:00000000 xActiveTimerList2
+C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s:523    .text.prvInitialiseNewTimer:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s:528    .text.prvInitialiseNewTimer:00000000 prvInitialiseNewTimer
+C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s:562    .text.prvInitialiseNewTimer:00000048 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s:566    .rodata.xTimerCreateTimerTask.str1.4:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s:570    .text.xTimerCreateTimerTask:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s:576    .text.xTimerCreateTimerTask:00000000 xTimerCreateTimerTask
+C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s:612    .text.xTimerCreateTimerTask:00000040 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s:1148   .bss.xTimerTaskHandle:00000000 xTimerTaskHandle
+C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s:620    .text.xTimerCreate:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s:626    .text.xTimerCreate:00000000 xTimerCreate
+C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s:656    .text.xTimerGenericCommand:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s:662    .text.xTimerGenericCommand:00000000 xTimerGenericCommand
+C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s:720    .text.xTimerGenericCommand:00000068 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s:725    .text.xTimerGetTimerDaemonTaskHandle:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s:731    .text.xTimerGetTimerDaemonTaskHandle:00000000 xTimerGetTimerDaemonTaskHandle
+C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s:751    .text.xTimerGetTimerDaemonTaskHandle:0000001c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s:756    .text.xTimerGetPeriod:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s:762    .text.xTimerGetPeriod:00000000 xTimerGetPeriod
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s 			page 22
+
+
+C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s:780    .text.xTimerGetPeriod:00000018 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s:784    .text.vTimerSetReloadMode:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s:790    .text.vTimerSetReloadMode:00000000 vTimerSetReloadMode
+C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s:820    .text.vTimerSetReloadMode:0000003c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s:824    .text.xTimerGetReloadMode:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s:830    .text.xTimerGetReloadMode:00000000 xTimerGetReloadMode
+C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s:858    .text.xTimerGetReloadMode:00000030 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s:862    .text.uxTimerGetReloadMode:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s:868    .text.uxTimerGetReloadMode:00000000 uxTimerGetReloadMode
+C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s:876    .text.xTimerGetExpiryTime:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s:882    .text.xTimerGetExpiryTime:00000000 xTimerGetExpiryTime
+C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s:900    .text.xTimerGetExpiryTime:00000018 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s:904    .text.pcTimerGetName:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s:910    .text.pcTimerGetName:00000000 pcTimerGetName
+C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s:928    .text.pcTimerGetName:00000018 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s:932    .text.xTimerIsTimerActive:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s:938    .text.xTimerIsTimerActive:00000000 xTimerIsTimerActive
+C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s:966    .text.xTimerIsTimerActive:00000030 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s:970    .text.pvTimerGetTimerID:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s:976    .text.pvTimerGetTimerID:00000000 pvTimerGetTimerID
+C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s:997    .text.pvTimerGetTimerID:00000024 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s:1001   .text.vTimerSetTimerID:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s:1007   .text.vTimerSetTimerID:00000000 vTimerSetTimerID
+C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s:1028   .text.vTimerSetTimerID:00000024 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s:1032   .text.xTimerPendFunctionCallFromISR:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s:1038   .text.xTimerPendFunctionCallFromISR:00000000 xTimerPendFunctionCallFromISR
+C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s:1061   .text.xTimerPendFunctionCallFromISR:00000024 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s:1064   .text.xTimerPendFunctionCall:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s:1070   .text.xTimerPendFunctionCall:00000000 xTimerPendFunctionCall
+C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s:1106   .text.xTimerPendFunctionCall:00000040 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s:1111   .text.uxTimerGetTimerNumber:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s:1117   .text.uxTimerGetTimerNumber:00000000 uxTimerGetTimerNumber
+C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s:1125   .text.vTimerSetTimerNumber:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s:1131   .text.vTimerSetTimerNumber:00000000 vTimerSetTimerNumber
+C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s:1139   .bss.xLastTime.0:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s:1145   .bss.xTimerTaskHandle:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s:1151   .bss.xTimerQueue:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s:1157   .bss.pxOverflowTimerList:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s:1163   .bss.pxCurrentTimerList:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s:1169   .bss.xActiveTimerList2:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s:1175   .bss.xActiveTimerList1:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s:371    .text.prvProcessReceivedCommands:00000055 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s:371    .text.prvProcessReceivedCommands:00000056 $t
+
+UNDEFINED SYMBOLS
+vListInsert
+uxListRemove
+xTaskGetTickCount
+vTaskSuspendAll
+vQueueWaitForMessageRestricted
+xTaskResumeAll
+xQueueReceive
+printf
+vPortFree
+vPortEnterCritical
+vPortExitCritical
+vListInitialise
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccIYEuou.s 			page 23
+
+
+xQueueGenericCreate
+vQueueAddToRegistry
+vListInitialiseItem
+xTaskCreate
+pvPortMalloc
+xTaskGetSchedulerState
+xQueueGenericSend
+xQueueGenericSendFromISR

@@ -1,0 +1,2283 @@
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"stm32f4xx_rtc.c"
+  16              		.text
+  17              		.section	.text.RTC_ByteToBcd2,"ax",%progbits
+  18              		.align	1
+  19              		.syntax unified
+  20              		.thumb
+  21              		.thumb_func
+  23              	RTC_ByteToBcd2:
+  24              		@ args = 0, pretend = 0, frame = 0
+  25              		@ frame_needed = 0, uses_anonymous_args = 0
+  26              		@ link register save eliminated.
+  27 0000 0023     		movs	r3, #0
+  28 0002 03E0     		b	.L2
+  29              	.L3:
+  30 0004 0133     		adds	r3, r3, #1
+  31 0006 DBB2     		uxtb	r3, r3
+  32 0008 0A38     		subs	r0, r0, #10
+  33 000a C0B2     		uxtb	r0, r0
+  34              	.L2:
+  35 000c 0928     		cmp	r0, #9
+  36 000e F9D8     		bhi	.L3
+  37 0010 1B01     		lsls	r3, r3, #4
+  38 0012 DBB2     		uxtb	r3, r3
+  39 0014 1843     		orrs	r0, r0, r3
+  40 0016 7047     		bx	lr
+  42              		.section	.text.RTC_Bcd2ToByte,"ax",%progbits
+  43              		.align	1
+  44              		.syntax unified
+  45              		.thumb
+  46              		.thumb_func
+  48              	RTC_Bcd2ToByte:
+  49              		@ args = 0, pretend = 0, frame = 0
+  50              		@ frame_needed = 0, uses_anonymous_args = 0
+  51              		@ link register save eliminated.
+  52 0000 0309     		lsrs	r3, r0, #4
+  53 0002 03EB8303 		add	r3, r3, r3, lsl #2
+  54 0006 00F00F00 		and	r0, r0, #15
+  55 000a 00EB4300 		add	r0, r0, r3, lsl #1
+  56 000e C0B2     		uxtb	r0, r0
+  57 0010 7047     		bx	lr
+  59              		.section	.text.RTC_StructInit,"ax",%progbits
+  60              		.align	1
+  61              		.global	RTC_StructInit
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s 			page 2
+
+
+  62              		.syntax unified
+  63              		.thumb
+  64              		.thumb_func
+  66              	RTC_StructInit:
+  67              		@ args = 0, pretend = 0, frame = 0
+  68              		@ frame_needed = 0, uses_anonymous_args = 0
+  69              		@ link register save eliminated.
+  70 0000 0023     		movs	r3, #0
+  71 0002 0360     		str	r3, [r0]
+  72 0004 7F23     		movs	r3, #127
+  73 0006 4360     		str	r3, [r0, #4]
+  74 0008 FF23     		movs	r3, #255
+  75 000a 8360     		str	r3, [r0, #8]
+  76 000c 7047     		bx	lr
+  78              		.section	.text.RTC_WriteProtectionCmd,"ax",%progbits
+  79              		.align	1
+  80              		.global	RTC_WriteProtectionCmd
+  81              		.syntax unified
+  82              		.thumb
+  83              		.thumb_func
+  85              	RTC_WriteProtectionCmd:
+  86              		@ args = 0, pretend = 0, frame = 0
+  87              		@ frame_needed = 0, uses_anonymous_args = 0
+  88              		@ link register save eliminated.
+  89 0000 18B1     		cbz	r0, .L7
+  90 0002 054B     		ldr	r3, .L9
+  91 0004 FF22     		movs	r2, #255
+  92 0006 5A62     		str	r2, [r3, #36]
+  93 0008 7047     		bx	lr
+  94              	.L7:
+  95 000a 034B     		ldr	r3, .L9
+  96 000c CA22     		movs	r2, #202
+  97 000e 5A62     		str	r2, [r3, #36]
+  98 0010 5322     		movs	r2, #83
+  99 0012 5A62     		str	r2, [r3, #36]
+ 100 0014 7047     		bx	lr
+ 101              	.L10:
+ 102 0016 00BF     		.align	2
+ 103              	.L9:
+ 104 0018 00280040 		.word	1073752064
+ 106              		.section	.text.RTC_EnterInitMode,"ax",%progbits
+ 107              		.align	1
+ 108              		.global	RTC_EnterInitMode
+ 109              		.syntax unified
+ 110              		.thumb
+ 111              		.thumb_func
+ 113              	RTC_EnterInitMode:
+ 114              		@ args = 0, pretend = 0, frame = 8
+ 115              		@ frame_needed = 0, uses_anonymous_args = 0
+ 116              		@ link register save eliminated.
+ 117 0000 82B0     		sub	sp, sp, #8
+ 118 0002 0023     		movs	r3, #0
+ 119 0004 0193     		str	r3, [sp, #4]
+ 120 0006 114B     		ldr	r3, .L18
+ 121 0008 DB68     		ldr	r3, [r3, #12]
+ 122 000a 13F0400F 		tst	r3, #64
+ 123 000e 17D1     		bne	.L15
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s 			page 3
+
+
+ 124 0010 0E4B     		ldr	r3, .L18
+ 125 0012 4FF0FF32 		mov	r2, #-1
+ 126 0016 DA60     		str	r2, [r3, #12]
+ 127              	.L14:
+ 128 0018 0C4B     		ldr	r3, .L18
+ 129 001a DA68     		ldr	r2, [r3, #12]
+ 130 001c 02F04002 		and	r2, r2, #64
+ 131 0020 019B     		ldr	r3, [sp, #4]
+ 132 0022 0133     		adds	r3, r3, #1
+ 133 0024 0193     		str	r3, [sp, #4]
+ 134 0026 019B     		ldr	r3, [sp, #4]
+ 135 0028 B3F5803F 		cmp	r3, #65536
+ 136 002c 01D0     		beq	.L13
+ 137 002e 002A     		cmp	r2, #0
+ 138 0030 F2D0     		beq	.L14
+ 139              	.L13:
+ 140 0032 064B     		ldr	r3, .L18
+ 141 0034 DB68     		ldr	r3, [r3, #12]
+ 142 0036 13F0400F 		tst	r3, #64
+ 143 003a 04D0     		beq	.L16
+ 144 003c 0120     		movs	r0, #1
+ 145 003e 00E0     		b	.L12
+ 146              	.L15:
+ 147 0040 0120     		movs	r0, #1
+ 148              	.L12:
+ 149 0042 02B0     		add	sp, sp, #8
+ 150              		@ sp needed
+ 151 0044 7047     		bx	lr
+ 152              	.L16:
+ 153 0046 0020     		movs	r0, #0
+ 154 0048 FBE7     		b	.L12
+ 155              	.L19:
+ 156 004a 00BF     		.align	2
+ 157              	.L18:
+ 158 004c 00280040 		.word	1073752064
+ 160              		.section	.text.RTC_ExitInitMode,"ax",%progbits
+ 161              		.align	1
+ 162              		.global	RTC_ExitInitMode
+ 163              		.syntax unified
+ 164              		.thumb
+ 165              		.thumb_func
+ 167              	RTC_ExitInitMode:
+ 168              		@ args = 0, pretend = 0, frame = 0
+ 169              		@ frame_needed = 0, uses_anonymous_args = 0
+ 170              		@ link register save eliminated.
+ 171 0000 024A     		ldr	r2, .L21
+ 172 0002 D368     		ldr	r3, [r2, #12]
+ 173 0004 23F08003 		bic	r3, r3, #128
+ 174 0008 D360     		str	r3, [r2, #12]
+ 175 000a 7047     		bx	lr
+ 176              	.L22:
+ 177              		.align	2
+ 178              	.L21:
+ 179 000c 00280040 		.word	1073752064
+ 181              		.section	.text.RTC_Init,"ax",%progbits
+ 182              		.align	1
+ 183              		.global	RTC_Init
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s 			page 4
+
+
+ 184              		.syntax unified
+ 185              		.thumb
+ 186              		.thumb_func
+ 188              	RTC_Init:
+ 189              		@ args = 0, pretend = 0, frame = 0
+ 190              		@ frame_needed = 0, uses_anonymous_args = 0
+ 191 0000 10B5     		push	{r4, lr}
+ 192 0002 0446     		mov	r4, r0
+ 193 0004 0F4B     		ldr	r3, .L27
+ 194 0006 CA22     		movs	r2, #202
+ 195 0008 5A62     		str	r2, [r3, #36]
+ 196 000a 5322     		movs	r2, #83
+ 197 000c 5A62     		str	r2, [r3, #36]
+ 198 000e FFF7FEFF 		bl	RTC_EnterInitMode
+ 199 0012 18B9     		cbnz	r0, .L26
+ 200              	.L24:
+ 201 0014 0B4B     		ldr	r3, .L27
+ 202 0016 FF22     		movs	r2, #255
+ 203 0018 5A62     		str	r2, [r3, #36]
+ 204 001a 10BD     		pop	{r4, pc}
+ 205              	.L26:
+ 206 001c 094B     		ldr	r3, .L27
+ 207 001e 9A68     		ldr	r2, [r3, #8]
+ 208 0020 22F04002 		bic	r2, r2, #64
+ 209 0024 9A60     		str	r2, [r3, #8]
+ 210 0026 9A68     		ldr	r2, [r3, #8]
+ 211 0028 2168     		ldr	r1, [r4]
+ 212 002a 0A43     		orrs	r2, r2, r1
+ 213 002c 9A60     		str	r2, [r3, #8]
+ 214 002e A268     		ldr	r2, [r4, #8]
+ 215 0030 1A61     		str	r2, [r3, #16]
+ 216 0032 1A69     		ldr	r2, [r3, #16]
+ 217 0034 6168     		ldr	r1, [r4, #4]
+ 218 0036 42EA0142 		orr	r2, r2, r1, lsl #16
+ 219 003a 1A61     		str	r2, [r3, #16]
+ 220 003c FFF7FEFF 		bl	RTC_ExitInitMode
+ 221 0040 0120     		movs	r0, #1
+ 222 0042 E7E7     		b	.L24
+ 223              	.L28:
+ 224              		.align	2
+ 225              	.L27:
+ 226 0044 00280040 		.word	1073752064
+ 228              		.section	.text.RTC_WaitForSynchro,"ax",%progbits
+ 229              		.align	1
+ 230              		.global	RTC_WaitForSynchro
+ 231              		.syntax unified
+ 232              		.thumb
+ 233              		.thumb_func
+ 235              	RTC_WaitForSynchro:
+ 236              		@ args = 0, pretend = 0, frame = 8
+ 237              		@ frame_needed = 0, uses_anonymous_args = 0
+ 238              		@ link register save eliminated.
+ 239 0000 82B0     		sub	sp, sp, #8
+ 240 0002 0023     		movs	r3, #0
+ 241 0004 0193     		str	r3, [sp, #4]
+ 242 0006 114B     		ldr	r3, .L35
+ 243 0008 CA22     		movs	r2, #202
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s 			page 5
+
+
+ 244 000a 5A62     		str	r2, [r3, #36]
+ 245 000c 5322     		movs	r2, #83
+ 246 000e 5A62     		str	r2, [r3, #36]
+ 247 0010 DA68     		ldr	r2, [r3, #12]
+ 248 0012 22F0A002 		bic	r2, r2, #160
+ 249 0016 DA60     		str	r2, [r3, #12]
+ 250              	.L31:
+ 251 0018 0C4B     		ldr	r3, .L35
+ 252 001a DA68     		ldr	r2, [r3, #12]
+ 253 001c 02F02002 		and	r2, r2, #32
+ 254 0020 019B     		ldr	r3, [sp, #4]
+ 255 0022 0133     		adds	r3, r3, #1
+ 256 0024 0193     		str	r3, [sp, #4]
+ 257 0026 019B     		ldr	r3, [sp, #4]
+ 258 0028 B3F5003F 		cmp	r3, #131072
+ 259 002c 01D0     		beq	.L30
+ 260 002e 002A     		cmp	r2, #0
+ 261 0030 F2D0     		beq	.L31
+ 262              	.L30:
+ 263 0032 064B     		ldr	r3, .L35
+ 264 0034 DB68     		ldr	r3, [r3, #12]
+ 265 0036 13F0200F 		tst	r3, #32
+ 266 003a 05D0     		beq	.L33
+ 267 003c 0120     		movs	r0, #1
+ 268              	.L32:
+ 269 003e 034B     		ldr	r3, .L35
+ 270 0040 FF22     		movs	r2, #255
+ 271 0042 5A62     		str	r2, [r3, #36]
+ 272 0044 02B0     		add	sp, sp, #8
+ 273              		@ sp needed
+ 274 0046 7047     		bx	lr
+ 275              	.L33:
+ 276 0048 0020     		movs	r0, #0
+ 277 004a F8E7     		b	.L32
+ 278              	.L36:
+ 279              		.align	2
+ 280              	.L35:
+ 281 004c 00280040 		.word	1073752064
+ 283              		.section	.text.RTC_DeInit,"ax",%progbits
+ 284              		.align	1
+ 285              		.global	RTC_DeInit
+ 286              		.syntax unified
+ 287              		.thumb
+ 288              		.thumb_func
+ 290              	RTC_DeInit:
+ 291              		@ args = 0, pretend = 0, frame = 8
+ 292              		@ frame_needed = 0, uses_anonymous_args = 0
+ 293 0000 00B5     		push	{lr}
+ 294 0002 83B0     		sub	sp, sp, #12
+ 295 0004 0023     		movs	r3, #0
+ 296 0006 0193     		str	r3, [sp, #4]
+ 297 0008 214B     		ldr	r3, .L45
+ 298 000a CA22     		movs	r2, #202
+ 299 000c 5A62     		str	r2, [r3, #36]
+ 300 000e 5322     		movs	r2, #83
+ 301 0010 5A62     		str	r2, [r3, #36]
+ 302 0012 FFF7FEFF 		bl	RTC_EnterInitMode
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s 			page 6
+
+
+ 303 0016 E0B1     		cbz	r0, .L38
+ 304 0018 1D4B     		ldr	r3, .L45
+ 305 001a 0022     		movs	r2, #0
+ 306 001c 1A60     		str	r2, [r3]
+ 307 001e 42F20112 		movw	r2, #8449
+ 308 0022 5A60     		str	r2, [r3, #4]
+ 309 0024 9A68     		ldr	r2, [r3, #8]
+ 310 0026 02F00702 		and	r2, r2, #7
+ 311 002a 9A60     		str	r2, [r3, #8]
+ 312              	.L40:
+ 313 002c 184B     		ldr	r3, .L45
+ 314 002e DA68     		ldr	r2, [r3, #12]
+ 315 0030 02F00402 		and	r2, r2, #4
+ 316 0034 019B     		ldr	r3, [sp, #4]
+ 317 0036 0133     		adds	r3, r3, #1
+ 318 0038 0193     		str	r3, [sp, #4]
+ 319 003a 019B     		ldr	r3, [sp, #4]
+ 320 003c B3F5803F 		cmp	r3, #65536
+ 321 0040 01D0     		beq	.L39
+ 322 0042 002A     		cmp	r2, #0
+ 323 0044 F2D0     		beq	.L40
+ 324              	.L39:
+ 325 0046 124B     		ldr	r3, .L45
+ 326 0048 DB68     		ldr	r3, [r3, #12]
+ 327 004a 13F0040F 		tst	r3, #4
+ 328 004e 06D1     		bne	.L44
+ 329 0050 0020     		movs	r0, #0
+ 330              	.L38:
+ 331 0052 0F4B     		ldr	r3, .L45
+ 332 0054 FF22     		movs	r2, #255
+ 333 0056 5A62     		str	r2, [r3, #36]
+ 334 0058 03B0     		add	sp, sp, #12
+ 335              		@ sp needed
+ 336 005a 5DF804FB 		ldr	pc, [sp], #4
+ 337              	.L44:
+ 338 005e 0C4B     		ldr	r3, .L45
+ 339 0060 9A68     		ldr	r2, [r3, #8]
+ 340 0062 0022     		movs	r2, #0
+ 341 0064 9A60     		str	r2, [r3, #8]
+ 342 0066 4FF6FF71 		movw	r1, #65535
+ 343 006a 5961     		str	r1, [r3, #20]
+ 344 006c 0949     		ldr	r1, .L45+4
+ 345 006e 1961     		str	r1, [r3, #16]
+ 346 0070 9A61     		str	r2, [r3, #24]
+ 347 0072 DA61     		str	r2, [r3, #28]
+ 348 0074 1A62     		str	r2, [r3, #32]
+ 349 0076 DA62     		str	r2, [r3, #44]
+ 350 0078 DA63     		str	r2, [r3, #60]
+ 351 007a 5A64     		str	r2, [r3, #68]
+ 352 007c 9A64     		str	r2, [r3, #72]
+ 353 007e DA60     		str	r2, [r3, #12]
+ 354 0080 1A64     		str	r2, [r3, #64]
+ 355 0082 FFF7FEFF 		bl	RTC_WaitForSynchro
+ 356 0086 0028     		cmp	r0, #0
+ 357 0088 E3D0     		beq	.L38
+ 358 008a 0120     		movs	r0, #1
+ 359 008c E1E7     		b	.L38
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s 			page 7
+
+
+ 360              	.L46:
+ 361 008e 00BF     		.align	2
+ 362              	.L45:
+ 363 0090 00280040 		.word	1073752064
+ 364 0094 FF007F00 		.word	8323327
+ 366              		.section	.text.RTC_RefClockCmd,"ax",%progbits
+ 367              		.align	1
+ 368              		.global	RTC_RefClockCmd
+ 369              		.syntax unified
+ 370              		.thumb
+ 371              		.thumb_func
+ 373              	RTC_RefClockCmd:
+ 374              		@ args = 0, pretend = 0, frame = 0
+ 375              		@ frame_needed = 0, uses_anonymous_args = 0
+ 376 0000 10B5     		push	{r4, lr}
+ 377 0002 0446     		mov	r4, r0
+ 378 0004 0D4B     		ldr	r3, .L52
+ 379 0006 CA22     		movs	r2, #202
+ 380 0008 5A62     		str	r2, [r3, #36]
+ 381 000a 5322     		movs	r2, #83
+ 382 000c 5A62     		str	r2, [r3, #36]
+ 383 000e FFF7FEFF 		bl	RTC_EnterInitMode
+ 384 0012 40B1     		cbz	r0, .L48
+ 385 0014 5CB1     		cbz	r4, .L49
+ 386 0016 094A     		ldr	r2, .L52
+ 387 0018 9368     		ldr	r3, [r2, #8]
+ 388 001a 43F01003 		orr	r3, r3, #16
+ 389 001e 9360     		str	r3, [r2, #8]
+ 390              	.L50:
+ 391 0020 FFF7FEFF 		bl	RTC_ExitInitMode
+ 392 0024 0120     		movs	r0, #1
+ 393              	.L48:
+ 394 0026 054B     		ldr	r3, .L52
+ 395 0028 FF22     		movs	r2, #255
+ 396 002a 5A62     		str	r2, [r3, #36]
+ 397 002c 10BD     		pop	{r4, pc}
+ 398              	.L49:
+ 399 002e 034A     		ldr	r2, .L52
+ 400 0030 9368     		ldr	r3, [r2, #8]
+ 401 0032 23F01003 		bic	r3, r3, #16
+ 402 0036 9360     		str	r3, [r2, #8]
+ 403 0038 F2E7     		b	.L50
+ 404              	.L53:
+ 405 003a 00BF     		.align	2
+ 406              	.L52:
+ 407 003c 00280040 		.word	1073752064
+ 409              		.section	.text.RTC_BypassShadowCmd,"ax",%progbits
+ 410              		.align	1
+ 411              		.global	RTC_BypassShadowCmd
+ 412              		.syntax unified
+ 413              		.thumb
+ 414              		.thumb_func
+ 416              	RTC_BypassShadowCmd:
+ 417              		@ args = 0, pretend = 0, frame = 0
+ 418              		@ frame_needed = 0, uses_anonymous_args = 0
+ 419              		@ link register save eliminated.
+ 420 0000 0A4B     		ldr	r3, .L57
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s 			page 8
+
+
+ 421 0002 CA22     		movs	r2, #202
+ 422 0004 5A62     		str	r2, [r3, #36]
+ 423 0006 5322     		movs	r2, #83
+ 424 0008 5A62     		str	r2, [r3, #36]
+ 425 000a 40B1     		cbz	r0, .L55
+ 426 000c 1A46     		mov	r2, r3
+ 427 000e 9B68     		ldr	r3, [r3, #8]
+ 428 0010 43F02003 		orr	r3, r3, #32
+ 429 0014 9360     		str	r3, [r2, #8]
+ 430              	.L56:
+ 431 0016 054B     		ldr	r3, .L57
+ 432 0018 FF22     		movs	r2, #255
+ 433 001a 5A62     		str	r2, [r3, #36]
+ 434 001c 7047     		bx	lr
+ 435              	.L55:
+ 436 001e 034A     		ldr	r2, .L57
+ 437 0020 9368     		ldr	r3, [r2, #8]
+ 438 0022 03F0DF03 		and	r3, r3, #223
+ 439 0026 9360     		str	r3, [r2, #8]
+ 440 0028 F5E7     		b	.L56
+ 441              	.L58:
+ 442 002a 00BF     		.align	2
+ 443              	.L57:
+ 444 002c 00280040 		.word	1073752064
+ 446              		.section	.text.RTC_SetTime,"ax",%progbits
+ 447              		.align	1
+ 448              		.global	RTC_SetTime
+ 449              		.syntax unified
+ 450              		.thumb
+ 451              		.thumb_func
+ 453              	RTC_SetTime:
+ 454              		@ args = 0, pretend = 0, frame = 0
+ 455              		@ frame_needed = 0, uses_anonymous_args = 0
+ 456 0000 38B5     		push	{r3, r4, r5, lr}
+ 457 0002 0D46     		mov	r5, r1
+ 458 0004 0346     		mov	r3, r0
+ 459 0006 E8B9     		cbnz	r0, .L60
+ 460 0008 254A     		ldr	r2, .L70
+ 461 000a 9268     		ldr	r2, [r2, #8]
+ 462 000c 12F0400F 		tst	r2, #64
+ 463 0010 01D1     		bne	.L61
+ 464 0012 0022     		movs	r2, #0
+ 465 0014 CA70     		strb	r2, [r1, #3]
+ 466              	.L61:
+ 467 0016 EBB1     		cbz	r3, .L62
+ 468 0018 2B78     		ldrb	r3, [r5]	@ zero_extendqisi2
+ 469 001a 6C78     		ldrb	r4, [r5, #1]	@ zero_extendqisi2
+ 470 001c 2402     		lsls	r4, r4, #8
+ 471 001e 44EA0344 		orr	r4, r4, r3, lsl #16
+ 472 0022 AB78     		ldrb	r3, [r5, #2]	@ zero_extendqisi2
+ 473 0024 1C43     		orrs	r4, r4, r3
+ 474 0026 EB78     		ldrb	r3, [r5, #3]	@ zero_extendqisi2
+ 475 0028 44EA0344 		orr	r4, r4, r3, lsl #16
+ 476              	.L63:
+ 477 002c 1C4B     		ldr	r3, .L70
+ 478 002e CA22     		movs	r2, #202
+ 479 0030 5A62     		str	r2, [r3, #36]
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s 			page 9
+
+
+ 480 0032 5322     		movs	r2, #83
+ 481 0034 5A62     		str	r2, [r3, #36]
+ 482 0036 FFF7FEFF 		bl	RTC_EnterInitMode
+ 483 003a E0B9     		cbnz	r0, .L68
+ 484              	.L64:
+ 485 003c 184B     		ldr	r3, .L70
+ 486 003e FF22     		movs	r2, #255
+ 487 0040 5A62     		str	r2, [r3, #36]
+ 488 0042 38BD     		pop	{r3, r4, r5, pc}
+ 489              	.L60:
+ 490 0044 164A     		ldr	r2, .L70
+ 491 0046 9268     		ldr	r2, [r2, #8]
+ 492 0048 12F0400F 		tst	r2, #64
+ 493 004c E3D1     		bne	.L61
+ 494 004e 0022     		movs	r2, #0
+ 495 0050 CA70     		strb	r2, [r1, #3]
+ 496 0052 E0E7     		b	.L61
+ 497              	.L62:
+ 498 0054 2878     		ldrb	r0, [r5]	@ zero_extendqisi2
+ 499 0056 FFF7FEFF 		bl	RTC_ByteToBcd2
+ 500 005a 0404     		lsls	r4, r0, #16
+ 501 005c 6878     		ldrb	r0, [r5, #1]	@ zero_extendqisi2
+ 502 005e FFF7FEFF 		bl	RTC_ByteToBcd2
+ 503 0062 44EA0024 		orr	r4, r4, r0, lsl #8
+ 504 0066 A878     		ldrb	r0, [r5, #2]	@ zero_extendqisi2
+ 505 0068 FFF7FEFF 		bl	RTC_ByteToBcd2
+ 506 006c 0443     		orrs	r4, r4, r0
+ 507 006e EB78     		ldrb	r3, [r5, #3]	@ zero_extendqisi2
+ 508 0070 44EA0344 		orr	r4, r4, r3, lsl #16
+ 509 0074 DAE7     		b	.L63
+ 510              	.L68:
+ 511 0076 04F07F34 		and	r4, r4, #2139062143
+ 512 007a 24F0FE44 		bic	r4, r4, #2130706432
+ 513 007e 084D     		ldr	r5, .L70
+ 514 0080 2C60     		str	r4, [r5]
+ 515 0082 FFF7FEFF 		bl	RTC_ExitInitMode
+ 516 0086 AB68     		ldr	r3, [r5, #8]
+ 517 0088 13F0200F 		tst	r3, #32
+ 518 008c 01D0     		beq	.L69
+ 519 008e 0120     		movs	r0, #1
+ 520 0090 D4E7     		b	.L64
+ 521              	.L69:
+ 522 0092 FFF7FEFF 		bl	RTC_WaitForSynchro
+ 523 0096 0028     		cmp	r0, #0
+ 524 0098 D0D0     		beq	.L64
+ 525 009a 0120     		movs	r0, #1
+ 526 009c CEE7     		b	.L64
+ 527              	.L71:
+ 528 009e 00BF     		.align	2
+ 529              	.L70:
+ 530 00a0 00280040 		.word	1073752064
+ 532              		.section	.text.RTC_TimeStructInit,"ax",%progbits
+ 533              		.align	1
+ 534              		.global	RTC_TimeStructInit
+ 535              		.syntax unified
+ 536              		.thumb
+ 537              		.thumb_func
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s 			page 10
+
+
+ 539              	RTC_TimeStructInit:
+ 540              		@ args = 0, pretend = 0, frame = 0
+ 541              		@ frame_needed = 0, uses_anonymous_args = 0
+ 542              		@ link register save eliminated.
+ 543 0000 0023     		movs	r3, #0
+ 544 0002 C370     		strb	r3, [r0, #3]
+ 545 0004 0370     		strb	r3, [r0]
+ 546 0006 4370     		strb	r3, [r0, #1]
+ 547 0008 8370     		strb	r3, [r0, #2]
+ 548 000a 7047     		bx	lr
+ 550              		.section	.text.RTC_GetTime,"ax",%progbits
+ 551              		.align	1
+ 552              		.global	RTC_GetTime
+ 553              		.syntax unified
+ 554              		.thumb
+ 555              		.thumb_func
+ 557              	RTC_GetTime:
+ 558              		@ args = 0, pretend = 0, frame = 0
+ 559              		@ frame_needed = 0, uses_anonymous_args = 0
+ 560 0000 70B5     		push	{r4, r5, r6, lr}
+ 561 0002 0C46     		mov	r4, r1
+ 562 0004 0E4B     		ldr	r3, .L76
+ 563 0006 1D68     		ldr	r5, [r3]
+ 564 0008 C5F30642 		ubfx	r2, r5, #16, #7
+ 565 000c C5F30541 		ubfx	r1, r5, #16, #6
+ 566 0010 2170     		strb	r1, [r4]
+ 567 0012 C5F30626 		ubfx	r6, r5, #8, #7
+ 568 0016 6670     		strb	r6, [r4, #1]
+ 569 0018 05F07F05 		and	r5, r5, #127
+ 570 001c A570     		strb	r5, [r4, #2]
+ 571 001e 02F04003 		and	r3, r2, #64
+ 572 0022 E370     		strb	r3, [r4, #3]
+ 573 0024 58B9     		cbnz	r0, .L73
+ 574 0026 0846     		mov	r0, r1
+ 575 0028 FFF7FEFF 		bl	RTC_Bcd2ToByte
+ 576 002c 2070     		strb	r0, [r4]
+ 577 002e 3046     		mov	r0, r6
+ 578 0030 FFF7FEFF 		bl	RTC_Bcd2ToByte
+ 579 0034 6070     		strb	r0, [r4, #1]
+ 580 0036 2846     		mov	r0, r5
+ 581 0038 FFF7FEFF 		bl	RTC_Bcd2ToByte
+ 582 003c A070     		strb	r0, [r4, #2]
+ 583              	.L73:
+ 584 003e 70BD     		pop	{r4, r5, r6, pc}
+ 585              	.L77:
+ 586              		.align	2
+ 587              	.L76:
+ 588 0040 00280040 		.word	1073752064
+ 590              		.section	.text.RTC_GetSubSecond,"ax",%progbits
+ 591              		.align	1
+ 592              		.global	RTC_GetSubSecond
+ 593              		.syntax unified
+ 594              		.thumb
+ 595              		.thumb_func
+ 597              	RTC_GetSubSecond:
+ 598              		@ args = 0, pretend = 0, frame = 0
+ 599              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s 			page 11
+
+
+ 600              		@ link register save eliminated.
+ 601 0000 014B     		ldr	r3, .L79
+ 602 0002 986A     		ldr	r0, [r3, #40]
+ 603 0004 5B68     		ldr	r3, [r3, #4]
+ 604 0006 7047     		bx	lr
+ 605              	.L80:
+ 606              		.align	2
+ 607              	.L79:
+ 608 0008 00280040 		.word	1073752064
+ 610              		.section	.text.RTC_SetDate,"ax",%progbits
+ 611              		.align	1
+ 612              		.global	RTC_SetDate
+ 613              		.syntax unified
+ 614              		.thumb
+ 615              		.thumb_func
+ 617              	RTC_SetDate:
+ 618              		@ args = 0, pretend = 0, frame = 0
+ 619              		@ frame_needed = 0, uses_anonymous_args = 0
+ 620 0000 38B5     		push	{r3, r4, r5, lr}
+ 621 0002 0D46     		mov	r5, r1
+ 622 0004 A8B1     		cbz	r0, .L82
+ 623 0006 4C78     		ldrb	r4, [r1, #1]	@ zero_extendqisi2
+ 624 0008 8B78     		ldrb	r3, [r1, #2]	@ zero_extendqisi2
+ 625 000a CA78     		ldrb	r2, [r1, #3]	@ zero_extendqisi2
+ 626 000c 2402     		lsls	r4, r4, #8
+ 627 000e 44EA0244 		orr	r4, r4, r2, lsl #16
+ 628 0012 1C43     		orrs	r4, r4, r3
+ 629 0014 0B78     		ldrb	r3, [r1]	@ zero_extendqisi2
+ 630 0016 44EA4334 		orr	r4, r4, r3, lsl #13
+ 631              	.L83:
+ 632 001a 1C4B     		ldr	r3, .L91
+ 633 001c CA22     		movs	r2, #202
+ 634 001e 5A62     		str	r2, [r3, #36]
+ 635 0020 5322     		movs	r2, #83
+ 636 0022 5A62     		str	r2, [r3, #36]
+ 637 0024 FFF7FEFF 		bl	RTC_EnterInitMode
+ 638 0028 E0B9     		cbnz	r0, .L89
+ 639              	.L85:
+ 640 002a 184B     		ldr	r3, .L91
+ 641 002c FF22     		movs	r2, #255
+ 642 002e 5A62     		str	r2, [r3, #36]
+ 643 0030 38BD     		pop	{r3, r4, r5, pc}
+ 644              	.L82:
+ 645 0032 4B78     		ldrb	r3, [r1, #1]	@ zero_extendqisi2
+ 646 0034 13F0100F 		tst	r3, #16
+ 647 0038 03D0     		beq	.L84
+ 648 003a 03F0EF03 		and	r3, r3, #239
+ 649 003e 0A33     		adds	r3, r3, #10
+ 650 0040 4B70     		strb	r3, [r1, #1]
+ 651              	.L84:
+ 652 0042 E878     		ldrb	r0, [r5, #3]	@ zero_extendqisi2
+ 653 0044 FFF7FEFF 		bl	RTC_ByteToBcd2
+ 654 0048 0404     		lsls	r4, r0, #16
+ 655 004a 6878     		ldrb	r0, [r5, #1]	@ zero_extendqisi2
+ 656 004c FFF7FEFF 		bl	RTC_ByteToBcd2
+ 657 0050 44EA0024 		orr	r4, r4, r0, lsl #8
+ 658 0054 A878     		ldrb	r0, [r5, #2]	@ zero_extendqisi2
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s 			page 12
+
+
+ 659 0056 FFF7FEFF 		bl	RTC_ByteToBcd2
+ 660 005a 0443     		orrs	r4, r4, r0
+ 661 005c 2B78     		ldrb	r3, [r5]	@ zero_extendqisi2
+ 662 005e 44EA4334 		orr	r4, r4, r3, lsl #13
+ 663 0062 DAE7     		b	.L83
+ 664              	.L89:
+ 665 0064 24F07F44 		bic	r4, r4, #-16777216
+ 666 0068 24F0C004 		bic	r4, r4, #192
+ 667 006c 074D     		ldr	r5, .L91
+ 668 006e 6C60     		str	r4, [r5, #4]
+ 669 0070 FFF7FEFF 		bl	RTC_ExitInitMode
+ 670 0074 AB68     		ldr	r3, [r5, #8]
+ 671 0076 13F0200F 		tst	r3, #32
+ 672 007a 01D0     		beq	.L90
+ 673 007c 0120     		movs	r0, #1
+ 674 007e D4E7     		b	.L85
+ 675              	.L90:
+ 676 0080 FFF7FEFF 		bl	RTC_WaitForSynchro
+ 677 0084 0028     		cmp	r0, #0
+ 678 0086 D0D0     		beq	.L85
+ 679 0088 0120     		movs	r0, #1
+ 680 008a CEE7     		b	.L85
+ 681              	.L92:
+ 682              		.align	2
+ 683              	.L91:
+ 684 008c 00280040 		.word	1073752064
+ 686              		.section	.text.RTC_DateStructInit,"ax",%progbits
+ 687              		.align	1
+ 688              		.global	RTC_DateStructInit
+ 689              		.syntax unified
+ 690              		.thumb
+ 691              		.thumb_func
+ 693              	RTC_DateStructInit:
+ 694              		@ args = 0, pretend = 0, frame = 0
+ 695              		@ frame_needed = 0, uses_anonymous_args = 0
+ 696              		@ link register save eliminated.
+ 697 0000 0123     		movs	r3, #1
+ 698 0002 0370     		strb	r3, [r0]
+ 699 0004 8370     		strb	r3, [r0, #2]
+ 700 0006 4370     		strb	r3, [r0, #1]
+ 701 0008 0023     		movs	r3, #0
+ 702 000a C370     		strb	r3, [r0, #3]
+ 703 000c 7047     		bx	lr
+ 705              		.section	.text.RTC_GetDate,"ax",%progbits
+ 706              		.align	1
+ 707              		.global	RTC_GetDate
+ 708              		.syntax unified
+ 709              		.thumb
+ 710              		.thumb_func
+ 712              	RTC_GetDate:
+ 713              		@ args = 0, pretend = 0, frame = 0
+ 714              		@ frame_needed = 0, uses_anonymous_args = 0
+ 715 0000 70B5     		push	{r4, r5, r6, lr}
+ 716 0002 0E4B     		ldr	r3, .L97
+ 717 0004 5B68     		ldr	r3, [r3, #4]
+ 718 0006 C3F30742 		ubfx	r2, r3, #16, #8
+ 719 000a CA70     		strb	r2, [r1, #3]
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s 			page 13
+
+
+ 720 000c C3F30426 		ubfx	r6, r3, #8, #5
+ 721 0010 4E70     		strb	r6, [r1, #1]
+ 722 0012 03F03F05 		and	r5, r3, #63
+ 723 0016 8D70     		strb	r5, [r1, #2]
+ 724 0018 C3F34233 		ubfx	r3, r3, #13, #3
+ 725 001c 0B70     		strb	r3, [r1]
+ 726 001e 60B9     		cbnz	r0, .L94
+ 727 0020 0C46     		mov	r4, r1
+ 728 0022 1046     		mov	r0, r2
+ 729 0024 FFF7FEFF 		bl	RTC_Bcd2ToByte
+ 730 0028 E070     		strb	r0, [r4, #3]
+ 731 002a 3046     		mov	r0, r6
+ 732 002c FFF7FEFF 		bl	RTC_Bcd2ToByte
+ 733 0030 6070     		strb	r0, [r4, #1]
+ 734 0032 2846     		mov	r0, r5
+ 735 0034 FFF7FEFF 		bl	RTC_Bcd2ToByte
+ 736 0038 A070     		strb	r0, [r4, #2]
+ 737              	.L94:
+ 738 003a 70BD     		pop	{r4, r5, r6, pc}
+ 739              	.L98:
+ 740              		.align	2
+ 741              	.L97:
+ 742 003c 00280040 		.word	1073752064
+ 744              		.section	.text.RTC_SetAlarm,"ax",%progbits
+ 745              		.align	1
+ 746              		.global	RTC_SetAlarm
+ 747              		.syntax unified
+ 748              		.thumb
+ 749              		.thumb_func
+ 751              	RTC_SetAlarm:
+ 752              		@ args = 0, pretend = 0, frame = 0
+ 753              		@ frame_needed = 0, uses_anonymous_args = 0
+ 754 0000 70B5     		push	{r4, r5, r6, lr}
+ 755 0002 0D46     		mov	r5, r1
+ 756 0004 1646     		mov	r6, r2
+ 757 0006 0346     		mov	r3, r0
+ 758 0008 30BB     		cbnz	r0, .L100
+ 759 000a 254A     		ldr	r2, .L110
+ 760 000c 9268     		ldr	r2, [r2, #8]
+ 761 000e 12F0400F 		tst	r2, #64
+ 762 0012 01D1     		bne	.L102
+ 763 0014 0022     		movs	r2, #0
+ 764 0016 F270     		strb	r2, [r6, #3]
+ 765              	.L102:
+ 766 0018 33B3     		cbz	r3, .L104
+ 767 001a 3378     		ldrb	r3, [r6]	@ zero_extendqisi2
+ 768 001c 7078     		ldrb	r0, [r6, #1]	@ zero_extendqisi2
+ 769 001e 0002     		lsls	r0, r0, #8
+ 770 0020 40EA0340 		orr	r0, r0, r3, lsl #16
+ 771 0024 B378     		ldrb	r3, [r6, #2]	@ zero_extendqisi2
+ 772 0026 1843     		orrs	r0, r0, r3
+ 773 0028 F378     		ldrb	r3, [r6, #3]	@ zero_extendqisi2
+ 774 002a 40EA0340 		orr	r0, r0, r3, lsl #16
+ 775 002e 337B     		ldrb	r3, [r6, #12]	@ zero_extendqisi2
+ 776 0030 40EA0360 		orr	r0, r0, r3, lsl #24
+ 777 0034 B368     		ldr	r3, [r6, #8]
+ 778 0036 1843     		orrs	r0, r0, r3
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s 			page 14
+
+
+ 779 0038 7368     		ldr	r3, [r6, #4]
+ 780 003a 1843     		orrs	r0, r0, r3
+ 781              	.L105:
+ 782 003c 184B     		ldr	r3, .L110
+ 783 003e CA22     		movs	r2, #202
+ 784 0040 5A62     		str	r2, [r3, #36]
+ 785 0042 5322     		movs	r2, #83
+ 786 0044 5A62     		str	r2, [r3, #36]
+ 787 0046 B5F5807F 		cmp	r5, #256
+ 788 004a 27D0     		beq	.L109
+ 789 004c 144B     		ldr	r3, .L110
+ 790 004e 1862     		str	r0, [r3, #32]
+ 791              	.L107:
+ 792 0050 134B     		ldr	r3, .L110
+ 793 0052 FF22     		movs	r2, #255
+ 794 0054 5A62     		str	r2, [r3, #36]
+ 795 0056 70BD     		pop	{r4, r5, r6, pc}
+ 796              	.L100:
+ 797 0058 114A     		ldr	r2, .L110
+ 798 005a 9268     		ldr	r2, [r2, #8]
+ 799 005c 12F0400F 		tst	r2, #64
+ 800 0060 DAD1     		bne	.L102
+ 801 0062 0022     		movs	r2, #0
+ 802 0064 F270     		strb	r2, [r6, #3]
+ 803 0066 D7E7     		b	.L102
+ 804              	.L104:
+ 805 0068 3078     		ldrb	r0, [r6]	@ zero_extendqisi2
+ 806 006a FFF7FEFF 		bl	RTC_ByteToBcd2
+ 807 006e 0404     		lsls	r4, r0, #16
+ 808 0070 7078     		ldrb	r0, [r6, #1]	@ zero_extendqisi2
+ 809 0072 FFF7FEFF 		bl	RTC_ByteToBcd2
+ 810 0076 44EA0024 		orr	r4, r4, r0, lsl #8
+ 811 007a B078     		ldrb	r0, [r6, #2]	@ zero_extendqisi2
+ 812 007c FFF7FEFF 		bl	RTC_ByteToBcd2
+ 813 0080 0443     		orrs	r4, r4, r0
+ 814 0082 F378     		ldrb	r3, [r6, #3]	@ zero_extendqisi2
+ 815 0084 44EA0344 		orr	r4, r4, r3, lsl #16
+ 816 0088 307B     		ldrb	r0, [r6, #12]	@ zero_extendqisi2
+ 817 008a FFF7FEFF 		bl	RTC_ByteToBcd2
+ 818 008e 44EA0060 		orr	r0, r4, r0, lsl #24
+ 819 0092 B368     		ldr	r3, [r6, #8]
+ 820 0094 1843     		orrs	r0, r0, r3
+ 821 0096 7368     		ldr	r3, [r6, #4]
+ 822 0098 1843     		orrs	r0, r0, r3
+ 823 009a CFE7     		b	.L105
+ 824              	.L109:
+ 825 009c D861     		str	r0, [r3, #28]
+ 826 009e D7E7     		b	.L107
+ 827              	.L111:
+ 828              		.align	2
+ 829              	.L110:
+ 830 00a0 00280040 		.word	1073752064
+ 832              		.section	.text.RTC_AlarmStructInit,"ax",%progbits
+ 833              		.align	1
+ 834              		.global	RTC_AlarmStructInit
+ 835              		.syntax unified
+ 836              		.thumb
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s 			page 15
+
+
+ 837              		.thumb_func
+ 839              	RTC_AlarmStructInit:
+ 840              		@ args = 0, pretend = 0, frame = 0
+ 841              		@ frame_needed = 0, uses_anonymous_args = 0
+ 842              		@ link register save eliminated.
+ 843 0000 0023     		movs	r3, #0
+ 844 0002 C370     		strb	r3, [r0, #3]
+ 845 0004 0370     		strb	r3, [r0]
+ 846 0006 4370     		strb	r3, [r0, #1]
+ 847 0008 8370     		strb	r3, [r0, #2]
+ 848 000a 8360     		str	r3, [r0, #8]
+ 849 000c 0122     		movs	r2, #1
+ 850 000e 0273     		strb	r2, [r0, #12]
+ 851 0010 4360     		str	r3, [r0, #4]
+ 852 0012 7047     		bx	lr
+ 854              		.section	.text.RTC_GetAlarm,"ax",%progbits
+ 855              		.align	1
+ 856              		.global	RTC_GetAlarm
+ 857              		.syntax unified
+ 858              		.thumb
+ 859              		.thumb_func
+ 861              	RTC_GetAlarm:
+ 862              		@ args = 0, pretend = 0, frame = 0
+ 863              		@ frame_needed = 0, uses_anonymous_args = 0
+ 864 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+ 865 0004 0546     		mov	r5, r0
+ 866 0006 1446     		mov	r4, r2
+ 867 0008 B1F5807F 		cmp	r1, #256
+ 868 000c 2BD0     		beq	.L118
+ 869 000e 174B     		ldr	r3, .L119
+ 870 0010 1B6A     		ldr	r3, [r3, #32]
+ 871              	.L115:
+ 872 0012 C3F30742 		ubfx	r2, r3, #16, #8
+ 873 0016 C3F30540 		ubfx	r0, r3, #16, #6
+ 874 001a 2070     		strb	r0, [r4]
+ 875 001c C3F30627 		ubfx	r7, r3, #8, #7
+ 876 0020 6770     		strb	r7, [r4, #1]
+ 877 0022 03F07F06 		and	r6, r3, #127
+ 878 0026 A670     		strb	r6, [r4, #2]
+ 879 0028 02F04002 		and	r2, r2, #64
+ 880 002c E270     		strb	r2, [r4, #3]
+ 881 002e C3F30568 		ubfx	r8, r3, #24, #6
+ 882 0032 84F80C80 		strb	r8, [r4, #12]
+ 883 0036 03F08042 		and	r2, r3, #1073741824
+ 884 003a A260     		str	r2, [r4, #8]
+ 885 003c 03F08033 		and	r3, r3, #-2139062144
+ 886 0040 6360     		str	r3, [r4, #4]
+ 887 0042 75B9     		cbnz	r5, .L113
+ 888 0044 FFF7FEFF 		bl	RTC_Bcd2ToByte
+ 889 0048 2070     		strb	r0, [r4]
+ 890 004a 3846     		mov	r0, r7
+ 891 004c FFF7FEFF 		bl	RTC_Bcd2ToByte
+ 892 0050 6070     		strb	r0, [r4, #1]
+ 893 0052 3046     		mov	r0, r6
+ 894 0054 FFF7FEFF 		bl	RTC_Bcd2ToByte
+ 895 0058 A070     		strb	r0, [r4, #2]
+ 896 005a 4046     		mov	r0, r8
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s 			page 16
+
+
+ 897 005c FFF7FEFF 		bl	RTC_Bcd2ToByte
+ 898 0060 2073     		strb	r0, [r4, #12]
+ 899              	.L113:
+ 900 0062 BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 901              	.L118:
+ 902 0066 014B     		ldr	r3, .L119
+ 903 0068 DB69     		ldr	r3, [r3, #28]
+ 904 006a D2E7     		b	.L115
+ 905              	.L120:
+ 906              		.align	2
+ 907              	.L119:
+ 908 006c 00280040 		.word	1073752064
+ 910              		.section	.text.RTC_AlarmCmd,"ax",%progbits
+ 911              		.align	1
+ 912              		.global	RTC_AlarmCmd
+ 913              		.syntax unified
+ 914              		.thumb
+ 915              		.thumb_func
+ 917              	RTC_AlarmCmd:
+ 918              		@ args = 0, pretend = 0, frame = 8
+ 919              		@ frame_needed = 0, uses_anonymous_args = 0
+ 920              		@ link register save eliminated.
+ 921 0000 82B0     		sub	sp, sp, #8
+ 922 0002 0023     		movs	r3, #0
+ 923 0004 0193     		str	r3, [sp, #4]
+ 924 0006 164B     		ldr	r3, .L128
+ 925 0008 CA22     		movs	r2, #202
+ 926 000a 5A62     		str	r2, [r3, #36]
+ 927 000c 5322     		movs	r2, #83
+ 928 000e 5A62     		str	r2, [r3, #36]
+ 929 0010 49B1     		cbz	r1, .L122
+ 930 0012 1A46     		mov	r2, r3
+ 931 0014 9B68     		ldr	r3, [r3, #8]
+ 932 0016 0343     		orrs	r3, r3, r0
+ 933 0018 9360     		str	r3, [r2, #8]
+ 934 001a 0120     		movs	r0, #1
+ 935              	.L123:
+ 936 001c 104B     		ldr	r3, .L128
+ 937 001e FF22     		movs	r2, #255
+ 938 0020 5A62     		str	r2, [r3, #36]
+ 939 0022 02B0     		add	sp, sp, #8
+ 940              		@ sp needed
+ 941 0024 7047     		bx	lr
+ 942              	.L122:
+ 943 0026 8C46     		mov	ip, r1
+ 944 0028 0D4A     		ldr	r2, .L128
+ 945 002a 9368     		ldr	r3, [r2, #8]
+ 946 002c 23EA0003 		bic	r3, r3, r0
+ 947 0030 9360     		str	r3, [r2, #8]
+ 948              	.L125:
+ 949 0032 0B4B     		ldr	r3, .L128
+ 950 0034 DA68     		ldr	r2, [r3, #12]
+ 951 0036 010A     		lsrs	r1, r0, #8
+ 952 0038 02EA1022 		and	r2, r2, r0, lsr #8
+ 953 003c 019B     		ldr	r3, [sp, #4]
+ 954 003e 0133     		adds	r3, r3, #1
+ 955 0040 0193     		str	r3, [sp, #4]
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s 			page 17
+
+
+ 956 0042 019B     		ldr	r3, [sp, #4]
+ 957 0044 B3F5803F 		cmp	r3, #65536
+ 958 0048 01D0     		beq	.L124
+ 959 004a 002A     		cmp	r2, #0
+ 960 004c F1D0     		beq	.L125
+ 961              	.L124:
+ 962 004e 044B     		ldr	r3, .L128
+ 963 0050 DB68     		ldr	r3, [r3, #12]
+ 964 0052 1942     		tst	r1, r3
+ 965 0054 01D1     		bne	.L126
+ 966 0056 6046     		mov	r0, ip
+ 967 0058 E0E7     		b	.L123
+ 968              	.L126:
+ 969 005a 0120     		movs	r0, #1
+ 970 005c DEE7     		b	.L123
+ 971              	.L129:
+ 972 005e 00BF     		.align	2
+ 973              	.L128:
+ 974 0060 00280040 		.word	1073752064
+ 976              		.section	.text.RTC_AlarmSubSecondConfig,"ax",%progbits
+ 977              		.align	1
+ 978              		.global	RTC_AlarmSubSecondConfig
+ 979              		.syntax unified
+ 980              		.thumb
+ 981              		.thumb_func
+ 983              	RTC_AlarmSubSecondConfig:
+ 984              		@ args = 0, pretend = 0, frame = 0
+ 985              		@ frame_needed = 0, uses_anonymous_args = 0
+ 986              		@ link register save eliminated.
+ 987 0000 10B4     		push	{r4}
+ 988 0002 094B     		ldr	r3, .L135
+ 989 0004 CA24     		movs	r4, #202
+ 990 0006 5C62     		str	r4, [r3, #36]
+ 991 0008 5324     		movs	r4, #83
+ 992 000a 5C62     		str	r4, [r3, #36]
+ 993 000c 1143     		orrs	r1, r1, r2
+ 994 000e B0F5807F 		cmp	r0, #256
+ 995 0012 07D0     		beq	.L134
+ 996 0014 044B     		ldr	r3, .L135
+ 997 0016 9964     		str	r1, [r3, #72]
+ 998              	.L132:
+ 999 0018 034B     		ldr	r3, .L135
+ 1000 001a FF22     		movs	r2, #255
+ 1001 001c 5A62     		str	r2, [r3, #36]
+ 1002 001e 5DF8044B 		ldr	r4, [sp], #4
+ 1003 0022 7047     		bx	lr
+ 1004              	.L134:
+ 1005 0024 5964     		str	r1, [r3, #68]
+ 1006 0026 F7E7     		b	.L132
+ 1007              	.L136:
+ 1008              		.align	2
+ 1009              	.L135:
+ 1010 0028 00280040 		.word	1073752064
+ 1012              		.section	.text.RTC_GetAlarmSubSecond,"ax",%progbits
+ 1013              		.align	1
+ 1014              		.global	RTC_GetAlarmSubSecond
+ 1015              		.syntax unified
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s 			page 18
+
+
+ 1016              		.thumb
+ 1017              		.thumb_func
+ 1019              	RTC_GetAlarmSubSecond:
+ 1020              		@ args = 0, pretend = 0, frame = 0
+ 1021              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1022              		@ link register save eliminated.
+ 1023 0000 B0F5807F 		cmp	r0, #256
+ 1024 0004 04D0     		beq	.L140
+ 1025 0006 054B     		ldr	r3, .L141
+ 1026 0008 986C     		ldr	r0, [r3, #72]
+ 1027 000a C0F30E00 		ubfx	r0, r0, #0, #15
+ 1028 000e 7047     		bx	lr
+ 1029              	.L140:
+ 1030 0010 024B     		ldr	r3, .L141
+ 1031 0012 586C     		ldr	r0, [r3, #68]
+ 1032 0014 C0F30E00 		ubfx	r0, r0, #0, #15
+ 1033 0018 7047     		bx	lr
+ 1034              	.L142:
+ 1035 001a 00BF     		.align	2
+ 1036              	.L141:
+ 1037 001c 00280040 		.word	1073752064
+ 1039              		.section	.text.RTC_WakeUpClockConfig,"ax",%progbits
+ 1040              		.align	1
+ 1041              		.global	RTC_WakeUpClockConfig
+ 1042              		.syntax unified
+ 1043              		.thumb
+ 1044              		.thumb_func
+ 1046              	RTC_WakeUpClockConfig:
+ 1047              		@ args = 0, pretend = 0, frame = 0
+ 1048              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1049              		@ link register save eliminated.
+ 1050 0000 074B     		ldr	r3, .L144
+ 1051 0002 CA22     		movs	r2, #202
+ 1052 0004 5A62     		str	r2, [r3, #36]
+ 1053 0006 5322     		movs	r2, #83
+ 1054 0008 5A62     		str	r2, [r3, #36]
+ 1055 000a 9A68     		ldr	r2, [r3, #8]
+ 1056 000c 22F00702 		bic	r2, r2, #7
+ 1057 0010 9A60     		str	r2, [r3, #8]
+ 1058 0012 9A68     		ldr	r2, [r3, #8]
+ 1059 0014 0243     		orrs	r2, r2, r0
+ 1060 0016 9A60     		str	r2, [r3, #8]
+ 1061 0018 FF22     		movs	r2, #255
+ 1062 001a 5A62     		str	r2, [r3, #36]
+ 1063 001c 7047     		bx	lr
+ 1064              	.L145:
+ 1065 001e 00BF     		.align	2
+ 1066              	.L144:
+ 1067 0020 00280040 		.word	1073752064
+ 1069              		.section	.text.RTC_SetWakeUpCounter,"ax",%progbits
+ 1070              		.align	1
+ 1071              		.global	RTC_SetWakeUpCounter
+ 1072              		.syntax unified
+ 1073              		.thumb
+ 1074              		.thumb_func
+ 1076              	RTC_SetWakeUpCounter:
+ 1077              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s 			page 19
+
+
+ 1078              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1079              		@ link register save eliminated.
+ 1080 0000 044B     		ldr	r3, .L147
+ 1081 0002 CA22     		movs	r2, #202
+ 1082 0004 5A62     		str	r2, [r3, #36]
+ 1083 0006 5322     		movs	r2, #83
+ 1084 0008 5A62     		str	r2, [r3, #36]
+ 1085 000a 5861     		str	r0, [r3, #20]
+ 1086 000c FF22     		movs	r2, #255
+ 1087 000e 5A62     		str	r2, [r3, #36]
+ 1088 0010 7047     		bx	lr
+ 1089              	.L148:
+ 1090 0012 00BF     		.align	2
+ 1091              	.L147:
+ 1092 0014 00280040 		.word	1073752064
+ 1094              		.section	.text.RTC_GetWakeUpCounter,"ax",%progbits
+ 1095              		.align	1
+ 1096              		.global	RTC_GetWakeUpCounter
+ 1097              		.syntax unified
+ 1098              		.thumb
+ 1099              		.thumb_func
+ 1101              	RTC_GetWakeUpCounter:
+ 1102              		@ args = 0, pretend = 0, frame = 0
+ 1103              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1104              		@ link register save eliminated.
+ 1105 0000 014B     		ldr	r3, .L150
+ 1106 0002 5869     		ldr	r0, [r3, #20]
+ 1107 0004 80B2     		uxth	r0, r0
+ 1108 0006 7047     		bx	lr
+ 1109              	.L151:
+ 1110              		.align	2
+ 1111              	.L150:
+ 1112 0008 00280040 		.word	1073752064
+ 1114              		.section	.text.RTC_WakeUpCmd,"ax",%progbits
+ 1115              		.align	1
+ 1116              		.global	RTC_WakeUpCmd
+ 1117              		.syntax unified
+ 1118              		.thumb
+ 1119              		.thumb_func
+ 1121              	RTC_WakeUpCmd:
+ 1122              		@ args = 0, pretend = 0, frame = 8
+ 1123              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1124              		@ link register save eliminated.
+ 1125 0000 82B0     		sub	sp, sp, #8
+ 1126 0002 0023     		movs	r3, #0
+ 1127 0004 0193     		str	r3, [sp, #4]
+ 1128 0006 164B     		ldr	r3, .L159
+ 1129 0008 CA22     		movs	r2, #202
+ 1130 000a 5A62     		str	r2, [r3, #36]
+ 1131 000c 5322     		movs	r2, #83
+ 1132 000e 5A62     		str	r2, [r3, #36]
+ 1133 0010 50B1     		cbz	r0, .L153
+ 1134 0012 1A46     		mov	r2, r3
+ 1135 0014 9B68     		ldr	r3, [r3, #8]
+ 1136 0016 43F48063 		orr	r3, r3, #1024
+ 1137 001a 9360     		str	r3, [r2, #8]
+ 1138 001c 0120     		movs	r0, #1
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s 			page 20
+
+
+ 1139              	.L154:
+ 1140 001e 104B     		ldr	r3, .L159
+ 1141 0020 FF22     		movs	r2, #255
+ 1142 0022 5A62     		str	r2, [r3, #36]
+ 1143 0024 02B0     		add	sp, sp, #8
+ 1144              		@ sp needed
+ 1145 0026 7047     		bx	lr
+ 1146              	.L153:
+ 1147 0028 0146     		mov	r1, r0
+ 1148 002a 0D4A     		ldr	r2, .L159
+ 1149 002c 9368     		ldr	r3, [r2, #8]
+ 1150 002e 23F48063 		bic	r3, r3, #1024
+ 1151 0032 9360     		str	r3, [r2, #8]
+ 1152              	.L156:
+ 1153 0034 0A4B     		ldr	r3, .L159
+ 1154 0036 DA68     		ldr	r2, [r3, #12]
+ 1155 0038 02F00402 		and	r2, r2, #4
+ 1156 003c 019B     		ldr	r3, [sp, #4]
+ 1157 003e 0133     		adds	r3, r3, #1
+ 1158 0040 0193     		str	r3, [sp, #4]
+ 1159 0042 019B     		ldr	r3, [sp, #4]
+ 1160 0044 B3F5803F 		cmp	r3, #65536
+ 1161 0048 01D0     		beq	.L155
+ 1162 004a 002A     		cmp	r2, #0
+ 1163 004c F2D0     		beq	.L156
+ 1164              	.L155:
+ 1165 004e 044B     		ldr	r3, .L159
+ 1166 0050 DB68     		ldr	r3, [r3, #12]
+ 1167 0052 13F0040F 		tst	r3, #4
+ 1168 0056 01D1     		bne	.L157
+ 1169 0058 0846     		mov	r0, r1
+ 1170 005a E0E7     		b	.L154
+ 1171              	.L157:
+ 1172 005c 0120     		movs	r0, #1
+ 1173 005e DEE7     		b	.L154
+ 1174              	.L160:
+ 1175              		.align	2
+ 1176              	.L159:
+ 1177 0060 00280040 		.word	1073752064
+ 1179              		.section	.text.RTC_DayLightSavingConfig,"ax",%progbits
+ 1180              		.align	1
+ 1181              		.global	RTC_DayLightSavingConfig
+ 1182              		.syntax unified
+ 1183              		.thumb
+ 1184              		.thumb_func
+ 1186              	RTC_DayLightSavingConfig:
+ 1187              		@ args = 0, pretend = 0, frame = 0
+ 1188              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1189              		@ link register save eliminated.
+ 1190 0000 074B     		ldr	r3, .L162
+ 1191 0002 CA22     		movs	r2, #202
+ 1192 0004 5A62     		str	r2, [r3, #36]
+ 1193 0006 5322     		movs	r2, #83
+ 1194 0008 5A62     		str	r2, [r3, #36]
+ 1195 000a 9A68     		ldr	r2, [r3, #8]
+ 1196 000c 22F48022 		bic	r2, r2, #262144
+ 1197 0010 9A60     		str	r2, [r3, #8]
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s 			page 21
+
+
+ 1198 0012 9A68     		ldr	r2, [r3, #8]
+ 1199 0014 0843     		orrs	r0, r0, r1
+ 1200 0016 0243     		orrs	r2, r2, r0
+ 1201 0018 9A60     		str	r2, [r3, #8]
+ 1202 001a FF22     		movs	r2, #255
+ 1203 001c 5A62     		str	r2, [r3, #36]
+ 1204 001e 7047     		bx	lr
+ 1205              	.L163:
+ 1206              		.align	2
+ 1207              	.L162:
+ 1208 0020 00280040 		.word	1073752064
+ 1210              		.section	.text.RTC_GetStoreOperation,"ax",%progbits
+ 1211              		.align	1
+ 1212              		.global	RTC_GetStoreOperation
+ 1213              		.syntax unified
+ 1214              		.thumb
+ 1215              		.thumb_func
+ 1217              	RTC_GetStoreOperation:
+ 1218              		@ args = 0, pretend = 0, frame = 0
+ 1219              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1220              		@ link register save eliminated.
+ 1221 0000 024B     		ldr	r3, .L165
+ 1222 0002 9868     		ldr	r0, [r3, #8]
+ 1223 0004 00F48020 		and	r0, r0, #262144
+ 1224 0008 7047     		bx	lr
+ 1225              	.L166:
+ 1226 000a 00BF     		.align	2
+ 1227              	.L165:
+ 1228 000c 00280040 		.word	1073752064
+ 1230              		.section	.text.RTC_OutputConfig,"ax",%progbits
+ 1231              		.align	1
+ 1232              		.global	RTC_OutputConfig
+ 1233              		.syntax unified
+ 1234              		.thumb
+ 1235              		.thumb_func
+ 1237              	RTC_OutputConfig:
+ 1238              		@ args = 0, pretend = 0, frame = 0
+ 1239              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1240              		@ link register save eliminated.
+ 1241 0000 074B     		ldr	r3, .L168
+ 1242 0002 CA22     		movs	r2, #202
+ 1243 0004 5A62     		str	r2, [r3, #36]
+ 1244 0006 5322     		movs	r2, #83
+ 1245 0008 5A62     		str	r2, [r3, #36]
+ 1246 000a 9A68     		ldr	r2, [r3, #8]
+ 1247 000c 22F4E002 		bic	r2, r2, #7340032
+ 1248 0010 9A60     		str	r2, [r3, #8]
+ 1249 0012 9A68     		ldr	r2, [r3, #8]
+ 1250 0014 0843     		orrs	r0, r0, r1
+ 1251 0016 0243     		orrs	r2, r2, r0
+ 1252 0018 9A60     		str	r2, [r3, #8]
+ 1253 001a FF22     		movs	r2, #255
+ 1254 001c 5A62     		str	r2, [r3, #36]
+ 1255 001e 7047     		bx	lr
+ 1256              	.L169:
+ 1257              		.align	2
+ 1258              	.L168:
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s 			page 22
+
+
+ 1259 0020 00280040 		.word	1073752064
+ 1261              		.section	.text.RTC_CoarseCalibConfig,"ax",%progbits
+ 1262              		.align	1
+ 1263              		.global	RTC_CoarseCalibConfig
+ 1264              		.syntax unified
+ 1265              		.thumb
+ 1266              		.thumb_func
+ 1268              	RTC_CoarseCalibConfig:
+ 1269              		@ args = 0, pretend = 0, frame = 0
+ 1270              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1271 0000 38B5     		push	{r3, r4, r5, lr}
+ 1272 0002 0446     		mov	r4, r0
+ 1273 0004 0D46     		mov	r5, r1
+ 1274 0006 094B     		ldr	r3, .L174
+ 1275 0008 CA22     		movs	r2, #202
+ 1276 000a 5A62     		str	r2, [r3, #36]
+ 1277 000c 5322     		movs	r2, #83
+ 1278 000e 5A62     		str	r2, [r3, #36]
+ 1279 0010 FFF7FEFF 		bl	RTC_EnterInitMode
+ 1280 0014 18B9     		cbnz	r0, .L173
+ 1281              	.L171:
+ 1282 0016 054B     		ldr	r3, .L174
+ 1283 0018 FF22     		movs	r2, #255
+ 1284 001a 5A62     		str	r2, [r3, #36]
+ 1285 001c 38BD     		pop	{r3, r4, r5, pc}
+ 1286              	.L173:
+ 1287 001e 2C43     		orrs	r4, r4, r5
+ 1288 0020 024B     		ldr	r3, .L174
+ 1289 0022 9C61     		str	r4, [r3, #24]
+ 1290 0024 FFF7FEFF 		bl	RTC_ExitInitMode
+ 1291 0028 0120     		movs	r0, #1
+ 1292 002a F4E7     		b	.L171
+ 1293              	.L175:
+ 1294              		.align	2
+ 1295              	.L174:
+ 1296 002c 00280040 		.word	1073752064
+ 1298              		.section	.text.RTC_CoarseCalibCmd,"ax",%progbits
+ 1299              		.align	1
+ 1300              		.global	RTC_CoarseCalibCmd
+ 1301              		.syntax unified
+ 1302              		.thumb
+ 1303              		.thumb_func
+ 1305              	RTC_CoarseCalibCmd:
+ 1306              		@ args = 0, pretend = 0, frame = 0
+ 1307              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1308 0000 10B5     		push	{r4, lr}
+ 1309 0002 0446     		mov	r4, r0
+ 1310 0004 0D4B     		ldr	r3, .L181
+ 1311 0006 CA22     		movs	r2, #202
+ 1312 0008 5A62     		str	r2, [r3, #36]
+ 1313 000a 5322     		movs	r2, #83
+ 1314 000c 5A62     		str	r2, [r3, #36]
+ 1315 000e FFF7FEFF 		bl	RTC_EnterInitMode
+ 1316 0012 40B1     		cbz	r0, .L177
+ 1317 0014 5CB1     		cbz	r4, .L178
+ 1318 0016 094A     		ldr	r2, .L181
+ 1319 0018 9368     		ldr	r3, [r2, #8]
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s 			page 23
+
+
+ 1320 001a 43F08003 		orr	r3, r3, #128
+ 1321 001e 9360     		str	r3, [r2, #8]
+ 1322              	.L179:
+ 1323 0020 FFF7FEFF 		bl	RTC_ExitInitMode
+ 1324 0024 0120     		movs	r0, #1
+ 1325              	.L177:
+ 1326 0026 054B     		ldr	r3, .L181
+ 1327 0028 FF22     		movs	r2, #255
+ 1328 002a 5A62     		str	r2, [r3, #36]
+ 1329 002c 10BD     		pop	{r4, pc}
+ 1330              	.L178:
+ 1331 002e 034A     		ldr	r2, .L181
+ 1332 0030 9368     		ldr	r3, [r2, #8]
+ 1333 0032 23F08003 		bic	r3, r3, #128
+ 1334 0036 9360     		str	r3, [r2, #8]
+ 1335 0038 F2E7     		b	.L179
+ 1336              	.L182:
+ 1337 003a 00BF     		.align	2
+ 1338              	.L181:
+ 1339 003c 00280040 		.word	1073752064
+ 1341              		.section	.text.RTC_CalibOutputCmd,"ax",%progbits
+ 1342              		.align	1
+ 1343              		.global	RTC_CalibOutputCmd
+ 1344              		.syntax unified
+ 1345              		.thumb
+ 1346              		.thumb_func
+ 1348              	RTC_CalibOutputCmd:
+ 1349              		@ args = 0, pretend = 0, frame = 0
+ 1350              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1351              		@ link register save eliminated.
+ 1352 0000 0A4B     		ldr	r3, .L186
+ 1353 0002 CA22     		movs	r2, #202
+ 1354 0004 5A62     		str	r2, [r3, #36]
+ 1355 0006 5322     		movs	r2, #83
+ 1356 0008 5A62     		str	r2, [r3, #36]
+ 1357 000a 40B1     		cbz	r0, .L184
+ 1358 000c 1A46     		mov	r2, r3
+ 1359 000e 9B68     		ldr	r3, [r3, #8]
+ 1360 0010 43F40003 		orr	r3, r3, #8388608
+ 1361 0014 9360     		str	r3, [r2, #8]
+ 1362              	.L185:
+ 1363 0016 054B     		ldr	r3, .L186
+ 1364 0018 FF22     		movs	r2, #255
+ 1365 001a 5A62     		str	r2, [r3, #36]
+ 1366 001c 7047     		bx	lr
+ 1367              	.L184:
+ 1368 001e 034A     		ldr	r2, .L186
+ 1369 0020 9368     		ldr	r3, [r2, #8]
+ 1370 0022 23F40003 		bic	r3, r3, #8388608
+ 1371 0026 9360     		str	r3, [r2, #8]
+ 1372 0028 F5E7     		b	.L185
+ 1373              	.L187:
+ 1374 002a 00BF     		.align	2
+ 1375              	.L186:
+ 1376 002c 00280040 		.word	1073752064
+ 1378              		.section	.text.RTC_CalibOutputConfig,"ax",%progbits
+ 1379              		.align	1
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s 			page 24
+
+
+ 1380              		.global	RTC_CalibOutputConfig
+ 1381              		.syntax unified
+ 1382              		.thumb
+ 1383              		.thumb_func
+ 1385              	RTC_CalibOutputConfig:
+ 1386              		@ args = 0, pretend = 0, frame = 0
+ 1387              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1388              		@ link register save eliminated.
+ 1389 0000 074B     		ldr	r3, .L189
+ 1390 0002 CA22     		movs	r2, #202
+ 1391 0004 5A62     		str	r2, [r3, #36]
+ 1392 0006 5322     		movs	r2, #83
+ 1393 0008 5A62     		str	r2, [r3, #36]
+ 1394 000a 9A68     		ldr	r2, [r3, #8]
+ 1395 000c 22F40022 		bic	r2, r2, #524288
+ 1396 0010 9A60     		str	r2, [r3, #8]
+ 1397 0012 9A68     		ldr	r2, [r3, #8]
+ 1398 0014 0243     		orrs	r2, r2, r0
+ 1399 0016 9A60     		str	r2, [r3, #8]
+ 1400 0018 FF22     		movs	r2, #255
+ 1401 001a 5A62     		str	r2, [r3, #36]
+ 1402 001c 7047     		bx	lr
+ 1403              	.L190:
+ 1404 001e 00BF     		.align	2
+ 1405              	.L189:
+ 1406 0020 00280040 		.word	1073752064
+ 1408              		.section	.text.RTC_SmoothCalibConfig,"ax",%progbits
+ 1409              		.align	1
+ 1410              		.global	RTC_SmoothCalibConfig
+ 1411              		.syntax unified
+ 1412              		.thumb
+ 1413              		.thumb_func
+ 1415              	RTC_SmoothCalibConfig:
+ 1416              		@ args = 0, pretend = 0, frame = 0
+ 1417              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1418              		@ link register save eliminated.
+ 1419 0000 10B4     		push	{r4}
+ 1420 0002 134B     		ldr	r3, .L199
+ 1421 0004 CA24     		movs	r4, #202
+ 1422 0006 5C62     		str	r4, [r3, #36]
+ 1423 0008 5324     		movs	r4, #83
+ 1424 000a 5C62     		str	r4, [r3, #36]
+ 1425 000c DB68     		ldr	r3, [r3, #12]
+ 1426 000e 13F4803F 		tst	r3, #65536
+ 1427 0012 0FD1     		bne	.L196
+ 1428              	.L193:
+ 1429 0014 0E4B     		ldr	r3, .L199
+ 1430 0016 DB68     		ldr	r3, [r3, #12]
+ 1431 0018 13F4803F 		tst	r3, #65536
+ 1432 001c 15D1     		bne	.L197
+ 1433 001e 0843     		orrs	r0, r0, r1
+ 1434 0020 1043     		orrs	r0, r0, r2
+ 1435 0022 0B4B     		ldr	r3, .L199
+ 1436 0024 D863     		str	r0, [r3, #60]
+ 1437 0026 0120     		movs	r0, #1
+ 1438              	.L195:
+ 1439 0028 094B     		ldr	r3, .L199
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s 			page 25
+
+
+ 1440 002a FF22     		movs	r2, #255
+ 1441 002c 5A62     		str	r2, [r3, #36]
+ 1442 002e 5DF8044B 		ldr	r4, [sp], #4
+ 1443 0032 7047     		bx	lr
+ 1444              	.L196:
+ 1445 0034 0023     		movs	r3, #0
+ 1446              	.L192:
+ 1447 0036 064C     		ldr	r4, .L199
+ 1448 0038 E468     		ldr	r4, [r4, #12]
+ 1449 003a 14F4803F 		tst	r4, #65536
+ 1450 003e E9D0     		beq	.L193
+ 1451 0040 B3F5003F 		cmp	r3, #131072
+ 1452 0044 E6D0     		beq	.L193
+ 1453 0046 0133     		adds	r3, r3, #1
+ 1454 0048 F5E7     		b	.L192
+ 1455              	.L197:
+ 1456 004a 0020     		movs	r0, #0
+ 1457 004c ECE7     		b	.L195
+ 1458              	.L200:
+ 1459 004e 00BF     		.align	2
+ 1460              	.L199:
+ 1461 0050 00280040 		.word	1073752064
+ 1463              		.section	.text.RTC_TimeStampCmd,"ax",%progbits
+ 1464              		.align	1
+ 1465              		.global	RTC_TimeStampCmd
+ 1466              		.syntax unified
+ 1467              		.thumb
+ 1468              		.thumb_func
+ 1470              	RTC_TimeStampCmd:
+ 1471              		@ args = 0, pretend = 0, frame = 0
+ 1472              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1473              		@ link register save eliminated.
+ 1474 0000 0A4B     		ldr	r3, .L204
+ 1475 0002 9B68     		ldr	r3, [r3, #8]
+ 1476 0004 23F40063 		bic	r3, r3, #2048
+ 1477 0008 23F00803 		bic	r3, r3, #8
+ 1478 000c 59B1     		cbz	r1, .L202
+ 1479 000e 0343     		orrs	r3, r3, r0
+ 1480 0010 43F40063 		orr	r3, r3, #2048
+ 1481              	.L203:
+ 1482 0014 054A     		ldr	r2, .L204
+ 1483 0016 CA21     		movs	r1, #202
+ 1484 0018 5162     		str	r1, [r2, #36]
+ 1485 001a 5321     		movs	r1, #83
+ 1486 001c 5162     		str	r1, [r2, #36]
+ 1487 001e 9360     		str	r3, [r2, #8]
+ 1488 0020 FF23     		movs	r3, #255
+ 1489 0022 5362     		str	r3, [r2, #36]
+ 1490 0024 7047     		bx	lr
+ 1491              	.L202:
+ 1492 0026 0343     		orrs	r3, r3, r0
+ 1493 0028 F4E7     		b	.L203
+ 1494              	.L205:
+ 1495 002a 00BF     		.align	2
+ 1496              	.L204:
+ 1497 002c 00280040 		.word	1073752064
+ 1499              		.section	.text.RTC_GetTimeStamp,"ax",%progbits
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s 			page 26
+
+
+ 1500              		.align	1
+ 1501              		.global	RTC_GetTimeStamp
+ 1502              		.syntax unified
+ 1503              		.thumb
+ 1504              		.thumb_func
+ 1506              	RTC_GetTimeStamp:
+ 1507              		@ args = 0, pretend = 0, frame = 0
+ 1508              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1509 0000 38B5     		push	{r3, r4, r5, lr}
+ 1510 0002 0D46     		mov	r5, r1
+ 1511 0004 1446     		mov	r4, r2
+ 1512 0006 1C4A     		ldr	r2, .L209
+ 1513 0008 136B     		ldr	r3, [r2, #48]
+ 1514 000a 526B     		ldr	r2, [r2, #52]
+ 1515 000c C3F30641 		ubfx	r1, r3, #16, #7
+ 1516 0010 C3F3054C 		ubfx	ip, r3, #16, #6
+ 1517 0014 85F800C0 		strb	ip, [r5]
+ 1518 0018 C3F3062C 		ubfx	ip, r3, #8, #7
+ 1519 001c 85F801C0 		strb	ip, [r5, #1]
+ 1520 0020 03F07F03 		and	r3, r3, #127
+ 1521 0024 AB70     		strb	r3, [r5, #2]
+ 1522 0026 01F04003 		and	r3, r1, #64
+ 1523 002a EB70     		strb	r3, [r5, #3]
+ 1524 002c 0023     		movs	r3, #0
+ 1525 002e E370     		strb	r3, [r4, #3]
+ 1526 0030 C2F30423 		ubfx	r3, r2, #8, #5
+ 1527 0034 6370     		strb	r3, [r4, #1]
+ 1528 0036 02F03F03 		and	r3, r2, #63
+ 1529 003a A370     		strb	r3, [r4, #2]
+ 1530 003c C2F34232 		ubfx	r2, r2, #13, #3
+ 1531 0040 2270     		strb	r2, [r4]
+ 1532 0042 B8B9     		cbnz	r0, .L206
+ 1533 0044 2878     		ldrb	r0, [r5]	@ zero_extendqisi2
+ 1534 0046 FFF7FEFF 		bl	RTC_Bcd2ToByte
+ 1535 004a 2870     		strb	r0, [r5]
+ 1536 004c 6878     		ldrb	r0, [r5, #1]	@ zero_extendqisi2
+ 1537 004e FFF7FEFF 		bl	RTC_Bcd2ToByte
+ 1538 0052 6870     		strb	r0, [r5, #1]
+ 1539 0054 A878     		ldrb	r0, [r5, #2]	@ zero_extendqisi2
+ 1540 0056 FFF7FEFF 		bl	RTC_Bcd2ToByte
+ 1541 005a A870     		strb	r0, [r5, #2]
+ 1542 005c 6078     		ldrb	r0, [r4, #1]	@ zero_extendqisi2
+ 1543 005e FFF7FEFF 		bl	RTC_Bcd2ToByte
+ 1544 0062 6070     		strb	r0, [r4, #1]
+ 1545 0064 A078     		ldrb	r0, [r4, #2]	@ zero_extendqisi2
+ 1546 0066 FFF7FEFF 		bl	RTC_Bcd2ToByte
+ 1547 006a A070     		strb	r0, [r4, #2]
+ 1548 006c 2078     		ldrb	r0, [r4]	@ zero_extendqisi2
+ 1549 006e FFF7FEFF 		bl	RTC_Bcd2ToByte
+ 1550 0072 2070     		strb	r0, [r4]
+ 1551              	.L206:
+ 1552 0074 38BD     		pop	{r3, r4, r5, pc}
+ 1553              	.L210:
+ 1554 0076 00BF     		.align	2
+ 1555              	.L209:
+ 1556 0078 00280040 		.word	1073752064
+ 1558              		.section	.text.RTC_GetTimeStampSubSecond,"ax",%progbits
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s 			page 27
+
+
+ 1559              		.align	1
+ 1560              		.global	RTC_GetTimeStampSubSecond
+ 1561              		.syntax unified
+ 1562              		.thumb
+ 1563              		.thumb_func
+ 1565              	RTC_GetTimeStampSubSecond:
+ 1566              		@ args = 0, pretend = 0, frame = 0
+ 1567              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1568              		@ link register save eliminated.
+ 1569 0000 014B     		ldr	r3, .L212
+ 1570 0002 986B     		ldr	r0, [r3, #56]
+ 1571 0004 7047     		bx	lr
+ 1572              	.L213:
+ 1573 0006 00BF     		.align	2
+ 1574              	.L212:
+ 1575 0008 00280040 		.word	1073752064
+ 1577              		.section	.text.RTC_TamperTriggerConfig,"ax",%progbits
+ 1578              		.align	1
+ 1579              		.global	RTC_TamperTriggerConfig
+ 1580              		.syntax unified
+ 1581              		.thumb
+ 1582              		.thumb_func
+ 1584              	RTC_TamperTriggerConfig:
+ 1585              		@ args = 0, pretend = 0, frame = 0
+ 1586              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1587              		@ link register save eliminated.
+ 1588 0000 29B9     		cbnz	r1, .L215
+ 1589 0002 064A     		ldr	r2, .L217
+ 1590 0004 136C     		ldr	r3, [r2, #64]
+ 1591 0006 23EA4003 		bic	r3, r3, r0, lsl #1
+ 1592 000a 1364     		str	r3, [r2, #64]
+ 1593 000c 7047     		bx	lr
+ 1594              	.L215:
+ 1595 000e 034A     		ldr	r2, .L217
+ 1596 0010 136C     		ldr	r3, [r2, #64]
+ 1597 0012 43EA4003 		orr	r3, r3, r0, lsl #1
+ 1598 0016 1364     		str	r3, [r2, #64]
+ 1599 0018 7047     		bx	lr
+ 1600              	.L218:
+ 1601 001a 00BF     		.align	2
+ 1602              	.L217:
+ 1603 001c 00280040 		.word	1073752064
+ 1605              		.section	.text.RTC_TamperCmd,"ax",%progbits
+ 1606              		.align	1
+ 1607              		.global	RTC_TamperCmd
+ 1608              		.syntax unified
+ 1609              		.thumb
+ 1610              		.thumb_func
+ 1612              	RTC_TamperCmd:
+ 1613              		@ args = 0, pretend = 0, frame = 0
+ 1614              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1615              		@ link register save eliminated.
+ 1616 0000 21B1     		cbz	r1, .L220
+ 1617 0002 054A     		ldr	r2, .L222
+ 1618 0004 136C     		ldr	r3, [r2, #64]
+ 1619 0006 0343     		orrs	r3, r3, r0
+ 1620 0008 1364     		str	r3, [r2, #64]
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s 			page 28
+
+
+ 1621 000a 7047     		bx	lr
+ 1622              	.L220:
+ 1623 000c 024A     		ldr	r2, .L222
+ 1624 000e 136C     		ldr	r3, [r2, #64]
+ 1625 0010 23EA0003 		bic	r3, r3, r0
+ 1626 0014 1364     		str	r3, [r2, #64]
+ 1627 0016 7047     		bx	lr
+ 1628              	.L223:
+ 1629              		.align	2
+ 1630              	.L222:
+ 1631 0018 00280040 		.word	1073752064
+ 1633              		.section	.text.RTC_TamperFilterConfig,"ax",%progbits
+ 1634              		.align	1
+ 1635              		.global	RTC_TamperFilterConfig
+ 1636              		.syntax unified
+ 1637              		.thumb
+ 1638              		.thumb_func
+ 1640              	RTC_TamperFilterConfig:
+ 1641              		@ args = 0, pretend = 0, frame = 0
+ 1642              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1643              		@ link register save eliminated.
+ 1644 0000 044B     		ldr	r3, .L225
+ 1645 0002 1A6C     		ldr	r2, [r3, #64]
+ 1646 0004 22F4C052 		bic	r2, r2, #6144
+ 1647 0008 1A64     		str	r2, [r3, #64]
+ 1648 000a 1A6C     		ldr	r2, [r3, #64]
+ 1649 000c 0243     		orrs	r2, r2, r0
+ 1650 000e 1A64     		str	r2, [r3, #64]
+ 1651 0010 7047     		bx	lr
+ 1652              	.L226:
+ 1653 0012 00BF     		.align	2
+ 1654              	.L225:
+ 1655 0014 00280040 		.word	1073752064
+ 1657              		.section	.text.RTC_TamperSamplingFreqConfig,"ax",%progbits
+ 1658              		.align	1
+ 1659              		.global	RTC_TamperSamplingFreqConfig
+ 1660              		.syntax unified
+ 1661              		.thumb
+ 1662              		.thumb_func
+ 1664              	RTC_TamperSamplingFreqConfig:
+ 1665              		@ args = 0, pretend = 0, frame = 0
+ 1666              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1667              		@ link register save eliminated.
+ 1668 0000 044B     		ldr	r3, .L228
+ 1669 0002 1A6C     		ldr	r2, [r3, #64]
+ 1670 0004 22F4E062 		bic	r2, r2, #1792
+ 1671 0008 1A64     		str	r2, [r3, #64]
+ 1672 000a 1A6C     		ldr	r2, [r3, #64]
+ 1673 000c 0243     		orrs	r2, r2, r0
+ 1674 000e 1A64     		str	r2, [r3, #64]
+ 1675 0010 7047     		bx	lr
+ 1676              	.L229:
+ 1677 0012 00BF     		.align	2
+ 1678              	.L228:
+ 1679 0014 00280040 		.word	1073752064
+ 1681              		.section	.text.RTC_TamperPinsPrechargeDuration,"ax",%progbits
+ 1682              		.align	1
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s 			page 29
+
+
+ 1683              		.global	RTC_TamperPinsPrechargeDuration
+ 1684              		.syntax unified
+ 1685              		.thumb
+ 1686              		.thumb_func
+ 1688              	RTC_TamperPinsPrechargeDuration:
+ 1689              		@ args = 0, pretend = 0, frame = 0
+ 1690              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1691              		@ link register save eliminated.
+ 1692 0000 044B     		ldr	r3, .L231
+ 1693 0002 1A6C     		ldr	r2, [r3, #64]
+ 1694 0004 22F4C042 		bic	r2, r2, #24576
+ 1695 0008 1A64     		str	r2, [r3, #64]
+ 1696 000a 1A6C     		ldr	r2, [r3, #64]
+ 1697 000c 0243     		orrs	r2, r2, r0
+ 1698 000e 1A64     		str	r2, [r3, #64]
+ 1699 0010 7047     		bx	lr
+ 1700              	.L232:
+ 1701 0012 00BF     		.align	2
+ 1702              	.L231:
+ 1703 0014 00280040 		.word	1073752064
+ 1705              		.section	.text.RTC_TimeStampOnTamperDetectionCmd,"ax",%progbits
+ 1706              		.align	1
+ 1707              		.global	RTC_TimeStampOnTamperDetectionCmd
+ 1708              		.syntax unified
+ 1709              		.thumb
+ 1710              		.thumb_func
+ 1712              	RTC_TimeStampOnTamperDetectionCmd:
+ 1713              		@ args = 0, pretend = 0, frame = 0
+ 1714              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1715              		@ link register save eliminated.
+ 1716 0000 28B1     		cbz	r0, .L234
+ 1717 0002 064A     		ldr	r2, .L236
+ 1718 0004 136C     		ldr	r3, [r2, #64]
+ 1719 0006 43F08003 		orr	r3, r3, #128
+ 1720 000a 1364     		str	r3, [r2, #64]
+ 1721 000c 7047     		bx	lr
+ 1722              	.L234:
+ 1723 000e 034A     		ldr	r2, .L236
+ 1724 0010 136C     		ldr	r3, [r2, #64]
+ 1725 0012 23F08003 		bic	r3, r3, #128
+ 1726 0016 1364     		str	r3, [r2, #64]
+ 1727 0018 7047     		bx	lr
+ 1728              	.L237:
+ 1729 001a 00BF     		.align	2
+ 1730              	.L236:
+ 1731 001c 00280040 		.word	1073752064
+ 1733              		.section	.text.RTC_TamperPullUpCmd,"ax",%progbits
+ 1734              		.align	1
+ 1735              		.global	RTC_TamperPullUpCmd
+ 1736              		.syntax unified
+ 1737              		.thumb
+ 1738              		.thumb_func
+ 1740              	RTC_TamperPullUpCmd:
+ 1741              		@ args = 0, pretend = 0, frame = 0
+ 1742              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1743              		@ link register save eliminated.
+ 1744 0000 28B1     		cbz	r0, .L239
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s 			page 30
+
+
+ 1745 0002 064A     		ldr	r2, .L241
+ 1746 0004 136C     		ldr	r3, [r2, #64]
+ 1747 0006 23F40043 		bic	r3, r3, #32768
+ 1748 000a 1364     		str	r3, [r2, #64]
+ 1749 000c 7047     		bx	lr
+ 1750              	.L239:
+ 1751 000e 034A     		ldr	r2, .L241
+ 1752 0010 136C     		ldr	r3, [r2, #64]
+ 1753 0012 43F40043 		orr	r3, r3, #32768
+ 1754 0016 1364     		str	r3, [r2, #64]
+ 1755 0018 7047     		bx	lr
+ 1756              	.L242:
+ 1757 001a 00BF     		.align	2
+ 1758              	.L241:
+ 1759 001c 00280040 		.word	1073752064
+ 1761              		.section	.text.RTC_WriteBackupRegister,"ax",%progbits
+ 1762              		.align	1
+ 1763              		.global	RTC_WriteBackupRegister
+ 1764              		.syntax unified
+ 1765              		.thumb
+ 1766              		.thumb_func
+ 1768              	RTC_WriteBackupRegister:
+ 1769              		@ args = 0, pretend = 0, frame = 8
+ 1770              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1771              		@ link register save eliminated.
+ 1772 0000 82B0     		sub	sp, sp, #8
+ 1773 0002 0023     		movs	r3, #0
+ 1774 0004 0193     		str	r3, [sp, #4]
+ 1775 0006 054B     		ldr	r3, .L245
+ 1776 0008 0193     		str	r3, [sp, #4]
+ 1777 000a 019B     		ldr	r3, [sp, #4]
+ 1778 000c 03EB8003 		add	r3, r3, r0, lsl #2
+ 1779 0010 0193     		str	r3, [sp, #4]
+ 1780 0012 019B     		ldr	r3, [sp, #4]
+ 1781 0014 1960     		str	r1, [r3]
+ 1782 0016 02B0     		add	sp, sp, #8
+ 1783              		@ sp needed
+ 1784 0018 7047     		bx	lr
+ 1785              	.L246:
+ 1786 001a 00BF     		.align	2
+ 1787              	.L245:
+ 1788 001c 50280040 		.word	1073752144
+ 1790              		.section	.text.RTC_ReadBackupRegister,"ax",%progbits
+ 1791              		.align	1
+ 1792              		.global	RTC_ReadBackupRegister
+ 1793              		.syntax unified
+ 1794              		.thumb
+ 1795              		.thumb_func
+ 1797              	RTC_ReadBackupRegister:
+ 1798              		@ args = 0, pretend = 0, frame = 8
+ 1799              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1800              		@ link register save eliminated.
+ 1801 0000 82B0     		sub	sp, sp, #8
+ 1802 0002 0023     		movs	r3, #0
+ 1803 0004 0193     		str	r3, [sp, #4]
+ 1804 0006 054B     		ldr	r3, .L249
+ 1805 0008 0193     		str	r3, [sp, #4]
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s 			page 31
+
+
+ 1806 000a 019B     		ldr	r3, [sp, #4]
+ 1807 000c 03EB8003 		add	r3, r3, r0, lsl #2
+ 1808 0010 0193     		str	r3, [sp, #4]
+ 1809 0012 019B     		ldr	r3, [sp, #4]
+ 1810 0014 1868     		ldr	r0, [r3]
+ 1811 0016 02B0     		add	sp, sp, #8
+ 1812              		@ sp needed
+ 1813 0018 7047     		bx	lr
+ 1814              	.L250:
+ 1815 001a 00BF     		.align	2
+ 1816              	.L249:
+ 1817 001c 50280040 		.word	1073752144
+ 1819              		.section	.text.RTC_TamperPinSelection,"ax",%progbits
+ 1820              		.align	1
+ 1821              		.global	RTC_TamperPinSelection
+ 1822              		.syntax unified
+ 1823              		.thumb
+ 1824              		.thumb_func
+ 1826              	RTC_TamperPinSelection:
+ 1827              		@ args = 0, pretend = 0, frame = 0
+ 1828              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1829              		@ link register save eliminated.
+ 1830 0000 044B     		ldr	r3, .L252
+ 1831 0002 1A6C     		ldr	r2, [r3, #64]
+ 1832 0004 22F48032 		bic	r2, r2, #65536
+ 1833 0008 1A64     		str	r2, [r3, #64]
+ 1834 000a 1A6C     		ldr	r2, [r3, #64]
+ 1835 000c 0243     		orrs	r2, r2, r0
+ 1836 000e 1A64     		str	r2, [r3, #64]
+ 1837 0010 7047     		bx	lr
+ 1838              	.L253:
+ 1839 0012 00BF     		.align	2
+ 1840              	.L252:
+ 1841 0014 00280040 		.word	1073752064
+ 1843              		.section	.text.RTC_TimeStampPinSelection,"ax",%progbits
+ 1844              		.align	1
+ 1845              		.global	RTC_TimeStampPinSelection
+ 1846              		.syntax unified
+ 1847              		.thumb
+ 1848              		.thumb_func
+ 1850              	RTC_TimeStampPinSelection:
+ 1851              		@ args = 0, pretend = 0, frame = 0
+ 1852              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1853              		@ link register save eliminated.
+ 1854 0000 044B     		ldr	r3, .L255
+ 1855 0002 1A6C     		ldr	r2, [r3, #64]
+ 1856 0004 22F40032 		bic	r2, r2, #131072
+ 1857 0008 1A64     		str	r2, [r3, #64]
+ 1858 000a 1A6C     		ldr	r2, [r3, #64]
+ 1859 000c 0243     		orrs	r2, r2, r0
+ 1860 000e 1A64     		str	r2, [r3, #64]
+ 1861 0010 7047     		bx	lr
+ 1862              	.L256:
+ 1863 0012 00BF     		.align	2
+ 1864              	.L255:
+ 1865 0014 00280040 		.word	1073752064
+ 1867              		.section	.text.RTC_OutputTypeConfig,"ax",%progbits
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s 			page 32
+
+
+ 1868              		.align	1
+ 1869              		.global	RTC_OutputTypeConfig
+ 1870              		.syntax unified
+ 1871              		.thumb
+ 1872              		.thumb_func
+ 1874              	RTC_OutputTypeConfig:
+ 1875              		@ args = 0, pretend = 0, frame = 0
+ 1876              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1877              		@ link register save eliminated.
+ 1878 0000 044B     		ldr	r3, .L258
+ 1879 0002 1A6C     		ldr	r2, [r3, #64]
+ 1880 0004 22F48022 		bic	r2, r2, #262144
+ 1881 0008 1A64     		str	r2, [r3, #64]
+ 1882 000a 1A6C     		ldr	r2, [r3, #64]
+ 1883 000c 0243     		orrs	r2, r2, r0
+ 1884 000e 1A64     		str	r2, [r3, #64]
+ 1885 0010 7047     		bx	lr
+ 1886              	.L259:
+ 1887 0012 00BF     		.align	2
+ 1888              	.L258:
+ 1889 0014 00280040 		.word	1073752064
+ 1891              		.section	.text.RTC_SynchroShiftConfig,"ax",%progbits
+ 1892              		.align	1
+ 1893              		.global	RTC_SynchroShiftConfig
+ 1894              		.syntax unified
+ 1895              		.thumb
+ 1896              		.thumb_func
+ 1898              	RTC_SynchroShiftConfig:
+ 1899              		@ args = 0, pretend = 0, frame = 0
+ 1900              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1901 0000 08B5     		push	{r3, lr}
+ 1902 0002 164B     		ldr	r3, .L271
+ 1903 0004 CA22     		movs	r2, #202
+ 1904 0006 5A62     		str	r2, [r3, #36]
+ 1905 0008 5322     		movs	r2, #83
+ 1906 000a 5A62     		str	r2, [r3, #36]
+ 1907 000c DB68     		ldr	r3, [r3, #12]
+ 1908 000e 13F0080F 		tst	r3, #8
+ 1909 0012 0BD1     		bne	.L265
+ 1910              	.L262:
+ 1911 0014 114B     		ldr	r3, .L271
+ 1912 0016 DB68     		ldr	r3, [r3, #12]
+ 1913 0018 13F0080F 		tst	r3, #8
+ 1914 001c 19D1     		bne	.L266
+ 1915 001e 0F4B     		ldr	r3, .L271
+ 1916 0020 9B68     		ldr	r3, [r3, #8]
+ 1917 0022 13F0100F 		tst	r3, #16
+ 1918 0026 0CD0     		beq	.L270
+ 1919 0028 0020     		movs	r0, #0
+ 1920 002a 13E0     		b	.L264
+ 1921              	.L265:
+ 1922 002c 0023     		movs	r3, #0
+ 1923              	.L261:
+ 1924 002e 0B4A     		ldr	r2, .L271
+ 1925 0030 D268     		ldr	r2, [r2, #12]
+ 1926 0032 12F0080F 		tst	r2, #8
+ 1927 0036 EDD0     		beq	.L262
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s 			page 33
+
+
+ 1928 0038 B3F5805F 		cmp	r3, #4096
+ 1929 003c EAD0     		beq	.L262
+ 1930 003e 0133     		adds	r3, r3, #1
+ 1931 0040 F5E7     		b	.L261
+ 1932              	.L270:
+ 1933 0042 0843     		orrs	r0, r0, r1
+ 1934 0044 054B     		ldr	r3, .L271
+ 1935 0046 D862     		str	r0, [r3, #44]
+ 1936 0048 FFF7FEFF 		bl	RTC_WaitForSynchro
+ 1937 004c 10B1     		cbz	r0, .L264
+ 1938 004e 0120     		movs	r0, #1
+ 1939 0050 00E0     		b	.L264
+ 1940              	.L266:
+ 1941 0052 0020     		movs	r0, #0
+ 1942              	.L264:
+ 1943 0054 014B     		ldr	r3, .L271
+ 1944 0056 FF22     		movs	r2, #255
+ 1945 0058 5A62     		str	r2, [r3, #36]
+ 1946 005a 08BD     		pop	{r3, pc}
+ 1947              	.L272:
+ 1948              		.align	2
+ 1949              	.L271:
+ 1950 005c 00280040 		.word	1073752064
+ 1952              		.section	.text.RTC_ITConfig,"ax",%progbits
+ 1953              		.align	1
+ 1954              		.global	RTC_ITConfig
+ 1955              		.syntax unified
+ 1956              		.thumb
+ 1957              		.thumb_func
+ 1959              	RTC_ITConfig:
+ 1960              		@ args = 0, pretend = 0, frame = 0
+ 1961              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1962              		@ link register save eliminated.
+ 1963 0000 104B     		ldr	r3, .L276
+ 1964 0002 CA22     		movs	r2, #202
+ 1965 0004 5A62     		str	r2, [r3, #36]
+ 1966 0006 5322     		movs	r2, #83
+ 1967 0008 5A62     		str	r2, [r3, #36]
+ 1968 000a 69B1     		cbz	r1, .L274
+ 1969 000c 9A68     		ldr	r2, [r3, #8]
+ 1970 000e 20F00401 		bic	r1, r0, #4
+ 1971 0012 0A43     		orrs	r2, r2, r1
+ 1972 0014 9A60     		str	r2, [r3, #8]
+ 1973 0016 1A6C     		ldr	r2, [r3, #64]
+ 1974 0018 00F00400 		and	r0, r0, #4
+ 1975 001c 1043     		orrs	r0, r0, r2
+ 1976 001e 1864     		str	r0, [r3, #64]
+ 1977              	.L275:
+ 1978 0020 084B     		ldr	r3, .L276
+ 1979 0022 FF22     		movs	r2, #255
+ 1980 0024 5A62     		str	r2, [r3, #36]
+ 1981 0026 7047     		bx	lr
+ 1982              	.L274:
+ 1983 0028 064B     		ldr	r3, .L276
+ 1984 002a 9A68     		ldr	r2, [r3, #8]
+ 1985 002c 20F00401 		bic	r1, r0, #4
+ 1986 0030 22EA0102 		bic	r2, r2, r1
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s 			page 34
+
+
+ 1987 0034 9A60     		str	r2, [r3, #8]
+ 1988 0036 1A6C     		ldr	r2, [r3, #64]
+ 1989 0038 00F00400 		and	r0, r0, #4
+ 1990 003c 22EA0002 		bic	r2, r2, r0
+ 1991 0040 1A64     		str	r2, [r3, #64]
+ 1992 0042 EDE7     		b	.L275
+ 1993              	.L277:
+ 1994              		.align	2
+ 1995              	.L276:
+ 1996 0044 00280040 		.word	1073752064
+ 1998              		.section	.text.RTC_GetFlagStatus,"ax",%progbits
+ 1999              		.align	1
+ 2000              		.global	RTC_GetFlagStatus
+ 2001              		.syntax unified
+ 2002              		.thumb
+ 2003              		.thumb_func
+ 2005              	RTC_GetFlagStatus:
+ 2006              		@ args = 0, pretend = 0, frame = 0
+ 2007              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2008              		@ link register save eliminated.
+ 2009 0000 074B     		ldr	r3, .L281
+ 2010 0002 DB68     		ldr	r3, [r3, #12]
+ 2011 0004 23F07F43 		bic	r3, r3, #-16777216
+ 2012 0008 23F47E03 		bic	r3, r3, #16646144
+ 2013 000c 23F44043 		bic	r3, r3, #49152
+ 2014 0010 23F08003 		bic	r3, r3, #128
+ 2015 0014 0342     		tst	r3, r0
+ 2016 0016 01D0     		beq	.L280
+ 2017 0018 0120     		movs	r0, #1
+ 2018 001a 7047     		bx	lr
+ 2019              	.L280:
+ 2020 001c 0020     		movs	r0, #0
+ 2021 001e 7047     		bx	lr
+ 2022              	.L282:
+ 2023              		.align	2
+ 2024              	.L281:
+ 2025 0020 00280040 		.word	1073752064
+ 2027              		.section	.text.RTC_ClearFlag,"ax",%progbits
+ 2028              		.align	1
+ 2029              		.global	RTC_ClearFlag
+ 2030              		.syntax unified
+ 2031              		.thumb
+ 2032              		.thumb_func
+ 2034              	RTC_ClearFlag:
+ 2035              		@ args = 0, pretend = 0, frame = 0
+ 2036              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2037              		@ link register save eliminated.
+ 2038 0000 80B2     		uxth	r0, r0
+ 2039 0002 40F08000 		orr	r0, r0, #128
+ 2040 0006 044A     		ldr	r2, .L284
+ 2041 0008 D368     		ldr	r3, [r2, #12]
+ 2042 000a 03F08003 		and	r3, r3, #128
+ 2043 000e 63EA0003 		orn	r3, r3, r0
+ 2044 0012 D360     		str	r3, [r2, #12]
+ 2045 0014 7047     		bx	lr
+ 2046              	.L285:
+ 2047 0016 00BF     		.align	2
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s 			page 35
+
+
+ 2048              	.L284:
+ 2049 0018 00280040 		.word	1073752064
+ 2051              		.section	.text.RTC_GetITStatus,"ax",%progbits
+ 2052              		.align	1
+ 2053              		.global	RTC_GetITStatus
+ 2054              		.syntax unified
+ 2055              		.thumb
+ 2056              		.thumb_func
+ 2058              	RTC_GetITStatus:
+ 2059              		@ args = 0, pretend = 0, frame = 0
+ 2060              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2061              		@ link register save eliminated.
+ 2062 0000 0A49     		ldr	r1, .L290
+ 2063 0002 0B6C     		ldr	r3, [r1, #64]
+ 2064 0004 03F00403 		and	r3, r3, #4
+ 2065 0008 8A68     		ldr	r2, [r1, #8]
+ 2066 000a 0240     		ands	r2, r2, r0
+ 2067 000c 03EAD033 		and	r3, r3, r0, lsr #15
+ 2068 0010 C968     		ldr	r1, [r1, #12]
+ 2069 0012 01EA1011 		and	r1, r1, r0, lsr #4
+ 2070 0016 1A43     		orrs	r2, r2, r3
+ 2071 0018 03D0     		beq	.L288
+ 2072 001a 89B2     		uxth	r1, r1
+ 2073 001c 19B9     		cbnz	r1, .L289
+ 2074 001e 0020     		movs	r0, #0
+ 2075 0020 7047     		bx	lr
+ 2076              	.L288:
+ 2077 0022 0020     		movs	r0, #0
+ 2078 0024 7047     		bx	lr
+ 2079              	.L289:
+ 2080 0026 0120     		movs	r0, #1
+ 2081 0028 7047     		bx	lr
+ 2082              	.L291:
+ 2083 002a 00BF     		.align	2
+ 2084              	.L290:
+ 2085 002c 00280040 		.word	1073752064
+ 2087              		.section	.text.RTC_ClearITPendingBit,"ax",%progbits
+ 2088              		.align	1
+ 2089              		.global	RTC_ClearITPendingBit
+ 2090              		.syntax unified
+ 2091              		.thumb
+ 2092              		.thumb_func
+ 2094              	RTC_ClearITPendingBit:
+ 2095              		@ args = 0, pretend = 0, frame = 0
+ 2096              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2097              		@ link register save eliminated.
+ 2098 0000 C0F30F10 		ubfx	r0, r0, #4, #16
+ 2099 0004 40F08000 		orr	r0, r0, #128
+ 2100 0008 034A     		ldr	r2, .L293
+ 2101 000a D368     		ldr	r3, [r2, #12]
+ 2102 000c 03F08003 		and	r3, r3, #128
+ 2103 0010 63EA0003 		orn	r3, r3, r0
+ 2104 0014 D360     		str	r3, [r2, #12]
+ 2105 0016 7047     		bx	lr
+ 2106              	.L294:
+ 2107              		.align	2
+ 2108              	.L293:
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s 			page 36
+
+
+ 2109 0018 00280040 		.word	1073752064
+ 2111              		.ident	"GCC: (Arm GNU Toolchain 13.3.Rel1 (Build arm-13.24)) 13.3.1 20240614"
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s 			page 37
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 stm32f4xx_rtc.c
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:18     .text.RTC_ByteToBcd2:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:23     .text.RTC_ByteToBcd2:00000000 RTC_ByteToBcd2
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:43     .text.RTC_Bcd2ToByte:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:48     .text.RTC_Bcd2ToByte:00000000 RTC_Bcd2ToByte
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:60     .text.RTC_StructInit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:66     .text.RTC_StructInit:00000000 RTC_StructInit
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:79     .text.RTC_WriteProtectionCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:85     .text.RTC_WriteProtectionCmd:00000000 RTC_WriteProtectionCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:104    .text.RTC_WriteProtectionCmd:00000018 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:107    .text.RTC_EnterInitMode:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:113    .text.RTC_EnterInitMode:00000000 RTC_EnterInitMode
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:158    .text.RTC_EnterInitMode:0000004c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:161    .text.RTC_ExitInitMode:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:167    .text.RTC_ExitInitMode:00000000 RTC_ExitInitMode
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:179    .text.RTC_ExitInitMode:0000000c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:182    .text.RTC_Init:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:188    .text.RTC_Init:00000000 RTC_Init
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:226    .text.RTC_Init:00000044 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:229    .text.RTC_WaitForSynchro:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:235    .text.RTC_WaitForSynchro:00000000 RTC_WaitForSynchro
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:281    .text.RTC_WaitForSynchro:0000004c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:284    .text.RTC_DeInit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:290    .text.RTC_DeInit:00000000 RTC_DeInit
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:363    .text.RTC_DeInit:00000090 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:367    .text.RTC_RefClockCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:373    .text.RTC_RefClockCmd:00000000 RTC_RefClockCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:407    .text.RTC_RefClockCmd:0000003c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:410    .text.RTC_BypassShadowCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:416    .text.RTC_BypassShadowCmd:00000000 RTC_BypassShadowCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:444    .text.RTC_BypassShadowCmd:0000002c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:447    .text.RTC_SetTime:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:453    .text.RTC_SetTime:00000000 RTC_SetTime
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:530    .text.RTC_SetTime:000000a0 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:533    .text.RTC_TimeStructInit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:539    .text.RTC_TimeStructInit:00000000 RTC_TimeStructInit
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:551    .text.RTC_GetTime:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:557    .text.RTC_GetTime:00000000 RTC_GetTime
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:588    .text.RTC_GetTime:00000040 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:591    .text.RTC_GetSubSecond:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:597    .text.RTC_GetSubSecond:00000000 RTC_GetSubSecond
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:608    .text.RTC_GetSubSecond:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:611    .text.RTC_SetDate:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:617    .text.RTC_SetDate:00000000 RTC_SetDate
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:684    .text.RTC_SetDate:0000008c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:687    .text.RTC_DateStructInit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:693    .text.RTC_DateStructInit:00000000 RTC_DateStructInit
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:706    .text.RTC_GetDate:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:712    .text.RTC_GetDate:00000000 RTC_GetDate
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:742    .text.RTC_GetDate:0000003c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:745    .text.RTC_SetAlarm:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:751    .text.RTC_SetAlarm:00000000 RTC_SetAlarm
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:830    .text.RTC_SetAlarm:000000a0 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:833    .text.RTC_AlarmStructInit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:839    .text.RTC_AlarmStructInit:00000000 RTC_AlarmStructInit
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:855    .text.RTC_GetAlarm:00000000 $t
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s 			page 38
+
+
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:861    .text.RTC_GetAlarm:00000000 RTC_GetAlarm
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:908    .text.RTC_GetAlarm:0000006c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:911    .text.RTC_AlarmCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:917    .text.RTC_AlarmCmd:00000000 RTC_AlarmCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:974    .text.RTC_AlarmCmd:00000060 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:977    .text.RTC_AlarmSubSecondConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:983    .text.RTC_AlarmSubSecondConfig:00000000 RTC_AlarmSubSecondConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:1010   .text.RTC_AlarmSubSecondConfig:00000028 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:1013   .text.RTC_GetAlarmSubSecond:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:1019   .text.RTC_GetAlarmSubSecond:00000000 RTC_GetAlarmSubSecond
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:1037   .text.RTC_GetAlarmSubSecond:0000001c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:1040   .text.RTC_WakeUpClockConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:1046   .text.RTC_WakeUpClockConfig:00000000 RTC_WakeUpClockConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:1067   .text.RTC_WakeUpClockConfig:00000020 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:1070   .text.RTC_SetWakeUpCounter:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:1076   .text.RTC_SetWakeUpCounter:00000000 RTC_SetWakeUpCounter
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:1092   .text.RTC_SetWakeUpCounter:00000014 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:1095   .text.RTC_GetWakeUpCounter:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:1101   .text.RTC_GetWakeUpCounter:00000000 RTC_GetWakeUpCounter
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:1112   .text.RTC_GetWakeUpCounter:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:1115   .text.RTC_WakeUpCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:1121   .text.RTC_WakeUpCmd:00000000 RTC_WakeUpCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:1177   .text.RTC_WakeUpCmd:00000060 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:1180   .text.RTC_DayLightSavingConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:1186   .text.RTC_DayLightSavingConfig:00000000 RTC_DayLightSavingConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:1208   .text.RTC_DayLightSavingConfig:00000020 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:1211   .text.RTC_GetStoreOperation:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:1217   .text.RTC_GetStoreOperation:00000000 RTC_GetStoreOperation
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:1228   .text.RTC_GetStoreOperation:0000000c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:1231   .text.RTC_OutputConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:1237   .text.RTC_OutputConfig:00000000 RTC_OutputConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:1259   .text.RTC_OutputConfig:00000020 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:1262   .text.RTC_CoarseCalibConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:1268   .text.RTC_CoarseCalibConfig:00000000 RTC_CoarseCalibConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:1296   .text.RTC_CoarseCalibConfig:0000002c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:1299   .text.RTC_CoarseCalibCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:1305   .text.RTC_CoarseCalibCmd:00000000 RTC_CoarseCalibCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:1339   .text.RTC_CoarseCalibCmd:0000003c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:1342   .text.RTC_CalibOutputCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:1348   .text.RTC_CalibOutputCmd:00000000 RTC_CalibOutputCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:1376   .text.RTC_CalibOutputCmd:0000002c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:1379   .text.RTC_CalibOutputConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:1385   .text.RTC_CalibOutputConfig:00000000 RTC_CalibOutputConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:1406   .text.RTC_CalibOutputConfig:00000020 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:1409   .text.RTC_SmoothCalibConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:1415   .text.RTC_SmoothCalibConfig:00000000 RTC_SmoothCalibConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:1461   .text.RTC_SmoothCalibConfig:00000050 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:1464   .text.RTC_TimeStampCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:1470   .text.RTC_TimeStampCmd:00000000 RTC_TimeStampCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:1497   .text.RTC_TimeStampCmd:0000002c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:1500   .text.RTC_GetTimeStamp:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:1506   .text.RTC_GetTimeStamp:00000000 RTC_GetTimeStamp
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:1556   .text.RTC_GetTimeStamp:00000078 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:1559   .text.RTC_GetTimeStampSubSecond:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:1565   .text.RTC_GetTimeStampSubSecond:00000000 RTC_GetTimeStampSubSecond
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:1575   .text.RTC_GetTimeStampSubSecond:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:1578   .text.RTC_TamperTriggerConfig:00000000 $t
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s 			page 39
+
+
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:1584   .text.RTC_TamperTriggerConfig:00000000 RTC_TamperTriggerConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:1603   .text.RTC_TamperTriggerConfig:0000001c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:1606   .text.RTC_TamperCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:1612   .text.RTC_TamperCmd:00000000 RTC_TamperCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:1631   .text.RTC_TamperCmd:00000018 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:1634   .text.RTC_TamperFilterConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:1640   .text.RTC_TamperFilterConfig:00000000 RTC_TamperFilterConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:1655   .text.RTC_TamperFilterConfig:00000014 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:1658   .text.RTC_TamperSamplingFreqConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:1664   .text.RTC_TamperSamplingFreqConfig:00000000 RTC_TamperSamplingFreqConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:1679   .text.RTC_TamperSamplingFreqConfig:00000014 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:1682   .text.RTC_TamperPinsPrechargeDuration:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:1688   .text.RTC_TamperPinsPrechargeDuration:00000000 RTC_TamperPinsPrechargeDuration
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:1703   .text.RTC_TamperPinsPrechargeDuration:00000014 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:1706   .text.RTC_TimeStampOnTamperDetectionCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:1712   .text.RTC_TimeStampOnTamperDetectionCmd:00000000 RTC_TimeStampOnTamperDetectionCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:1731   .text.RTC_TimeStampOnTamperDetectionCmd:0000001c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:1734   .text.RTC_TamperPullUpCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:1740   .text.RTC_TamperPullUpCmd:00000000 RTC_TamperPullUpCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:1759   .text.RTC_TamperPullUpCmd:0000001c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:1762   .text.RTC_WriteBackupRegister:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:1768   .text.RTC_WriteBackupRegister:00000000 RTC_WriteBackupRegister
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:1788   .text.RTC_WriteBackupRegister:0000001c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:1791   .text.RTC_ReadBackupRegister:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:1797   .text.RTC_ReadBackupRegister:00000000 RTC_ReadBackupRegister
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:1817   .text.RTC_ReadBackupRegister:0000001c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:1820   .text.RTC_TamperPinSelection:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:1826   .text.RTC_TamperPinSelection:00000000 RTC_TamperPinSelection
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:1841   .text.RTC_TamperPinSelection:00000014 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:1844   .text.RTC_TimeStampPinSelection:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:1850   .text.RTC_TimeStampPinSelection:00000000 RTC_TimeStampPinSelection
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:1865   .text.RTC_TimeStampPinSelection:00000014 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:1868   .text.RTC_OutputTypeConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:1874   .text.RTC_OutputTypeConfig:00000000 RTC_OutputTypeConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:1889   .text.RTC_OutputTypeConfig:00000014 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:1892   .text.RTC_SynchroShiftConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:1898   .text.RTC_SynchroShiftConfig:00000000 RTC_SynchroShiftConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:1950   .text.RTC_SynchroShiftConfig:0000005c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:1953   .text.RTC_ITConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:1959   .text.RTC_ITConfig:00000000 RTC_ITConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:1996   .text.RTC_ITConfig:00000044 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:1999   .text.RTC_GetFlagStatus:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:2005   .text.RTC_GetFlagStatus:00000000 RTC_GetFlagStatus
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:2025   .text.RTC_GetFlagStatus:00000020 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:2028   .text.RTC_ClearFlag:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:2034   .text.RTC_ClearFlag:00000000 RTC_ClearFlag
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:2049   .text.RTC_ClearFlag:00000018 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:2052   .text.RTC_GetITStatus:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:2058   .text.RTC_GetITStatus:00000000 RTC_GetITStatus
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:2085   .text.RTC_GetITStatus:0000002c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:2088   .text.RTC_ClearITPendingBit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:2094   .text.RTC_ClearITPendingBit:00000000 RTC_ClearITPendingBit
+C:\Users\ktkuru\AppData\Local\Temp\ccX4HVhT.s:2109   .text.RTC_ClearITPendingBit:00000018 $d
+
+NO UNDEFINED SYMBOLS

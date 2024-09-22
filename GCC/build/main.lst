@@ -1,0 +1,120 @@
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccFUAxYp.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"main.c"
+  16              		.text
+  17              		.section	.rodata.main.str1.4,"aMS",%progbits,1
+  18              		.align	2
+  19              	.LC0:
+  20 0000 70657269 		.ascii	"peripheral init failed\000"
+  20      70686572 
+  20      616C2069 
+  20      6E697420 
+  20      6661696C 
+  21 0017 00       		.align	2
+  22              	.LC1:
+  23 0018 70657269 		.ascii	"peripheral init done\000"
+  23      70686572 
+  23      616C2069 
+  23      6E697420 
+  23      646F6E65 
+  24 002d 000000   		.align	2
+  25              	.LC2:
+  26 0030 70697463 		.ascii	"pitch:%f\000"
+  26      683A2566 
+  26      00
+  27              		.global	__aeabi_f2d
+  28              		.section	.text.main,"ax",%progbits
+  29              		.align	1
+  30              		.global	main
+  31              		.syntax unified
+  32              		.thumb
+  33              		.thumb_func
+  35              	main:
+  36              		@ Volatile: function does not return.
+  37              		@ args = 0, pretend = 0, frame = 0
+  38              		@ frame_needed = 0, uses_anonymous_args = 0
+  39 0000 00B5     		push	{lr}
+  40 0002 83B0     		sub	sp, sp, #12
+  41 0004 FFF7FEFF 		bl	BSP_Init
+  42 0008 88B1     		cbz	r0, .L2
+  43 000a 0B48     		ldr	r0, .L6
+  44 000c FFF7FEFF 		bl	puts
+  45              	.L3:
+  46 0010 0A4B     		ldr	r3, .L6+4
+  47 0012 1868     		ldr	r0, [r3]	@ float
+  48 0014 FFF7FEFF 		bl	__aeabi_f2d
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccFUAxYp.s 			page 2
+
+
+  49 0018 CDE90001 		strd	r0, [sp]
+  50 001c 084B     		ldr	r3, .L6+8
+  51 001e 0622     		movs	r2, #6
+  52 0020 0021     		movs	r1, #0
+  53 0022 0846     		mov	r0, r1
+  54 0024 FFF7FEFF 		bl	OLED_Printf
+  55 0028 FFF7FEFF 		bl	OLED_Update
+  56 002c F0E7     		b	.L3
+  57              	.L2:
+  58 002e 0548     		ldr	r0, .L6+12
+  59 0030 FFF7FEFF 		bl	puts
+  60 0034 ECE7     		b	.L3
+  61              	.L7:
+  62 0036 00BF     		.align	2
+  63              	.L6:
+  64 0038 00000000 		.word	.LC0
+  65 003c 00000000 		.word	pitch
+  66 0040 30000000 		.word	.LC2
+  67 0044 18000000 		.word	.LC1
+  69              		.global	yaw
+  70              		.section	.bss.yaw,"aw",%nobits
+  71              		.align	2
+  74              	yaw:
+  75 0000 00000000 		.space	4
+  76              		.global	roll
+  77              		.section	.bss.roll,"aw",%nobits
+  78              		.align	2
+  81              	roll:
+  82 0000 00000000 		.space	4
+  83              		.global	pitch
+  84              		.section	.bss.pitch,"aw",%nobits
+  85              		.align	2
+  88              	pitch:
+  89 0000 00000000 		.space	4
+  90              		.ident	"GCC: (Arm GNU Toolchain 13.3.Rel1 (Build arm-13.24)) 13.3.1 20240614"
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccFUAxYp.s 			page 3
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 main.c
+C:\Users\ktkuru\AppData\Local\Temp\ccFUAxYp.s:18     .rodata.main.str1.4:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccFUAxYp.s:29     .text.main:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccFUAxYp.s:35     .text.main:00000000 main
+C:\Users\ktkuru\AppData\Local\Temp\ccFUAxYp.s:64     .text.main:00000038 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccFUAxYp.s:88     .bss.pitch:00000000 pitch
+C:\Users\ktkuru\AppData\Local\Temp\ccFUAxYp.s:74     .bss.yaw:00000000 yaw
+C:\Users\ktkuru\AppData\Local\Temp\ccFUAxYp.s:71     .bss.yaw:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccFUAxYp.s:81     .bss.roll:00000000 roll
+C:\Users\ktkuru\AppData\Local\Temp\ccFUAxYp.s:78     .bss.roll:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccFUAxYp.s:85     .bss.pitch:00000000 $d
+
+UNDEFINED SYMBOLS
+__aeabi_f2d
+BSP_Init
+puts
+OLED_Printf
+OLED_Update

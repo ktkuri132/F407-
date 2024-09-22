@@ -1,0 +1,502 @@
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccdJCyHg.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"stm32f4xx_gpio.c"
+  16              		.text
+  17              		.section	.text.GPIO_DeInit,"ax",%progbits
+  18              		.align	1
+  19              		.global	GPIO_DeInit
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  24              	GPIO_DeInit:
+  25              		@ args = 0, pretend = 0, frame = 0
+  26              		@ frame_needed = 0, uses_anonymous_args = 0
+  27 0000 08B5     		push	{r3, lr}
+  28 0002 454B     		ldr	r3, .L24
+  29 0004 9842     		cmp	r0, r3
+  30 0006 28D0     		beq	.L14
+  31 0008 444B     		ldr	r3, .L24+4
+  32 000a 9842     		cmp	r0, r3
+  33 000c 2ED0     		beq	.L15
+  34 000e 444B     		ldr	r3, .L24+8
+  35 0010 9842     		cmp	r0, r3
+  36 0012 34D0     		beq	.L16
+  37 0014 434B     		ldr	r3, .L24+12
+  38 0016 9842     		cmp	r0, r3
+  39 0018 3AD0     		beq	.L17
+  40 001a 434B     		ldr	r3, .L24+16
+  41 001c 9842     		cmp	r0, r3
+  42 001e 40D0     		beq	.L18
+  43 0020 424B     		ldr	r3, .L24+20
+  44 0022 9842     		cmp	r0, r3
+  45 0024 46D0     		beq	.L19
+  46 0026 424B     		ldr	r3, .L24+24
+  47 0028 9842     		cmp	r0, r3
+  48 002a 4CD0     		beq	.L20
+  49 002c 414B     		ldr	r3, .L24+28
+  50 002e 9842     		cmp	r0, r3
+  51 0030 52D0     		beq	.L21
+  52 0032 414B     		ldr	r3, .L24+32
+  53 0034 9842     		cmp	r0, r3
+  54 0036 58D0     		beq	.L22
+  55 0038 404B     		ldr	r3, .L24+36
+  56 003a 9842     		cmp	r0, r3
+  57 003c 60D0     		beq	.L23
+  58 003e 404B     		ldr	r3, .L24+40
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccdJCyHg.s 			page 2
+
+
+  59 0040 9842     		cmp	r0, r3
+  60 0042 12D1     		bne	.L1
+  61 0044 0121     		movs	r1, #1
+  62 0046 4FF48060 		mov	r0, #1024
+  63 004a FFF7FEFF 		bl	RCC_AHB1PeriphResetCmd
+  64 004e 0021     		movs	r1, #0
+  65 0050 4FF48060 		mov	r0, #1024
+  66 0054 FFF7FEFF 		bl	RCC_AHB1PeriphResetCmd
+  67 0058 07E0     		b	.L1
+  68              	.L14:
+  69 005a 0121     		movs	r1, #1
+  70 005c 0846     		mov	r0, r1
+  71 005e FFF7FEFF 		bl	RCC_AHB1PeriphResetCmd
+  72 0062 0021     		movs	r1, #0
+  73 0064 0120     		movs	r0, #1
+  74 0066 FFF7FEFF 		bl	RCC_AHB1PeriphResetCmd
+  75              	.L1:
+  76 006a 08BD     		pop	{r3, pc}
+  77              	.L15:
+  78 006c 0121     		movs	r1, #1
+  79 006e 0220     		movs	r0, #2
+  80 0070 FFF7FEFF 		bl	RCC_AHB1PeriphResetCmd
+  81 0074 0021     		movs	r1, #0
+  82 0076 0220     		movs	r0, #2
+  83 0078 FFF7FEFF 		bl	RCC_AHB1PeriphResetCmd
+  84 007c F5E7     		b	.L1
+  85              	.L16:
+  86 007e 0121     		movs	r1, #1
+  87 0080 0420     		movs	r0, #4
+  88 0082 FFF7FEFF 		bl	RCC_AHB1PeriphResetCmd
+  89 0086 0021     		movs	r1, #0
+  90 0088 0420     		movs	r0, #4
+  91 008a FFF7FEFF 		bl	RCC_AHB1PeriphResetCmd
+  92 008e ECE7     		b	.L1
+  93              	.L17:
+  94 0090 0121     		movs	r1, #1
+  95 0092 0820     		movs	r0, #8
+  96 0094 FFF7FEFF 		bl	RCC_AHB1PeriphResetCmd
+  97 0098 0021     		movs	r1, #0
+  98 009a 0820     		movs	r0, #8
+  99 009c FFF7FEFF 		bl	RCC_AHB1PeriphResetCmd
+ 100 00a0 E3E7     		b	.L1
+ 101              	.L18:
+ 102 00a2 0121     		movs	r1, #1
+ 103 00a4 1020     		movs	r0, #16
+ 104 00a6 FFF7FEFF 		bl	RCC_AHB1PeriphResetCmd
+ 105 00aa 0021     		movs	r1, #0
+ 106 00ac 1020     		movs	r0, #16
+ 107 00ae FFF7FEFF 		bl	RCC_AHB1PeriphResetCmd
+ 108 00b2 DAE7     		b	.L1
+ 109              	.L19:
+ 110 00b4 0121     		movs	r1, #1
+ 111 00b6 2020     		movs	r0, #32
+ 112 00b8 FFF7FEFF 		bl	RCC_AHB1PeriphResetCmd
+ 113 00bc 0021     		movs	r1, #0
+ 114 00be 2020     		movs	r0, #32
+ 115 00c0 FFF7FEFF 		bl	RCC_AHB1PeriphResetCmd
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccdJCyHg.s 			page 3
+
+
+ 116 00c4 D1E7     		b	.L1
+ 117              	.L20:
+ 118 00c6 0121     		movs	r1, #1
+ 119 00c8 4020     		movs	r0, #64
+ 120 00ca FFF7FEFF 		bl	RCC_AHB1PeriphResetCmd
+ 121 00ce 0021     		movs	r1, #0
+ 122 00d0 4020     		movs	r0, #64
+ 123 00d2 FFF7FEFF 		bl	RCC_AHB1PeriphResetCmd
+ 124 00d6 C8E7     		b	.L1
+ 125              	.L21:
+ 126 00d8 0121     		movs	r1, #1
+ 127 00da 8020     		movs	r0, #128
+ 128 00dc FFF7FEFF 		bl	RCC_AHB1PeriphResetCmd
+ 129 00e0 0021     		movs	r1, #0
+ 130 00e2 8020     		movs	r0, #128
+ 131 00e4 FFF7FEFF 		bl	RCC_AHB1PeriphResetCmd
+ 132 00e8 BFE7     		b	.L1
+ 133              	.L22:
+ 134 00ea 0121     		movs	r1, #1
+ 135 00ec 4FF48070 		mov	r0, #256
+ 136 00f0 FFF7FEFF 		bl	RCC_AHB1PeriphResetCmd
+ 137 00f4 0021     		movs	r1, #0
+ 138 00f6 4FF48070 		mov	r0, #256
+ 139 00fa FFF7FEFF 		bl	RCC_AHB1PeriphResetCmd
+ 140 00fe B4E7     		b	.L1
+ 141              	.L23:
+ 142 0100 0121     		movs	r1, #1
+ 143 0102 4FF40070 		mov	r0, #512
+ 144 0106 FFF7FEFF 		bl	RCC_AHB1PeriphResetCmd
+ 145 010a 0021     		movs	r1, #0
+ 146 010c 4FF40070 		mov	r0, #512
+ 147 0110 FFF7FEFF 		bl	RCC_AHB1PeriphResetCmd
+ 148 0114 A9E7     		b	.L1
+ 149              	.L25:
+ 150 0116 00BF     		.align	2
+ 151              	.L24:
+ 152 0118 00000240 		.word	1073872896
+ 153 011c 00040240 		.word	1073873920
+ 154 0120 00080240 		.word	1073874944
+ 155 0124 000C0240 		.word	1073875968
+ 156 0128 00100240 		.word	1073876992
+ 157 012c 00140240 		.word	1073878016
+ 158 0130 00180240 		.word	1073879040
+ 159 0134 001C0240 		.word	1073880064
+ 160 0138 00200240 		.word	1073881088
+ 161 013c 00240240 		.word	1073882112
+ 162 0140 00280240 		.word	1073883136
+ 164              		.section	.text.GPIO_Init,"ax",%progbits
+ 165              		.align	1
+ 166              		.global	GPIO_Init
+ 167              		.syntax unified
+ 168              		.thumb
+ 169              		.thumb_func
+ 171              	GPIO_Init:
+ 172              		@ args = 0, pretend = 0, frame = 0
+ 173              		@ frame_needed = 0, uses_anonymous_args = 0
+ 174 0000 0022     		movs	r2, #0
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccdJCyHg.s 			page 4
+
+
+ 175 0002 0F2A     		cmp	r2, #15
+ 176 0004 4DD8     		bhi	.L34
+ 177 0006 10B5     		push	{r4, lr}
+ 178 0008 14E0     		b	.L30
+ 179              	.L29:
+ 180 000a C368     		ldr	r3, [r0, #12]
+ 181 000c 94B2     		uxth	r4, r2
+ 182 000e 6400     		lsls	r4, r4, #1
+ 183 0010 4FF0030E 		mov	lr, #3
+ 184 0014 0EFA04FE 		lsl	lr, lr, r4
+ 185 0018 23EA0E03 		bic	r3, r3, lr
+ 186 001c C360     		str	r3, [r0, #12]
+ 187 001e C368     		ldr	r3, [r0, #12]
+ 188 0020 91F807E0 		ldrb	lr, [r1, #7]	@ zero_extendqisi2
+ 189 0024 0EFA0CFC 		lsl	ip, lr, ip
+ 190 0028 43EA0C03 		orr	r3, r3, ip
+ 191 002c C360     		str	r3, [r0, #12]
+ 192              	.L28:
+ 193 002e 0132     		adds	r2, r2, #1
+ 194 0030 0F2A     		cmp	r2, #15
+ 195 0032 35D8     		bhi	.L35
+ 196              	.L30:
+ 197 0034 0123     		movs	r3, #1
+ 198 0036 9340     		lsls	r3, r3, r2
+ 199 0038 0C68     		ldr	r4, [r1]
+ 200 003a A343     		bics	r3, r3, r4
+ 201 003c F7D1     		bne	.L28
+ 202 003e 0468     		ldr	r4, [r0]
+ 203 0040 4FEA420C 		lsl	ip, r2, #1
+ 204 0044 0323     		movs	r3, #3
+ 205 0046 03FA0CF3 		lsl	r3, r3, ip
+ 206 004a 6FEA030E 		mvn	lr, r3
+ 207 004e 24EA0303 		bic	r3, r4, r3
+ 208 0052 0360     		str	r3, [r0]
+ 209 0054 0368     		ldr	r3, [r0]
+ 210 0056 0C79     		ldrb	r4, [r1, #4]	@ zero_extendqisi2
+ 211 0058 04FA0CF4 		lsl	r4, r4, ip
+ 212 005c 2343     		orrs	r3, r3, r4
+ 213 005e 0360     		str	r3, [r0]
+ 214 0060 0B79     		ldrb	r3, [r1, #4]	@ zero_extendqisi2
+ 215 0062 013B     		subs	r3, r3, #1
+ 216 0064 DBB2     		uxtb	r3, r3
+ 217 0066 012B     		cmp	r3, #1
+ 218 0068 CFD8     		bhi	.L29
+ 219 006a 8368     		ldr	r3, [r0, #8]
+ 220 006c 0EEA0303 		and	r3, lr, r3
+ 221 0070 8360     		str	r3, [r0, #8]
+ 222 0072 8368     		ldr	r3, [r0, #8]
+ 223 0074 4C79     		ldrb	r4, [r1, #5]	@ zero_extendqisi2
+ 224 0076 04FA0CF4 		lsl	r4, r4, ip
+ 225 007a 2343     		orrs	r3, r3, r4
+ 226 007c 8360     		str	r3, [r0, #8]
+ 227 007e 4368     		ldr	r3, [r0, #4]
+ 228 0080 1FFA82FE 		uxth	lr, r2
+ 229 0084 0124     		movs	r4, #1
+ 230 0086 04FA0EF4 		lsl	r4, r4, lr
+ 231 008a 23EA0403 		bic	r3, r3, r4
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccdJCyHg.s 			page 5
+
+
+ 232 008e 4360     		str	r3, [r0, #4]
+ 233 0090 4468     		ldr	r4, [r0, #4]
+ 234 0092 8B79     		ldrb	r3, [r1, #6]	@ zero_extendqisi2
+ 235 0094 03FA0EF3 		lsl	r3, r3, lr
+ 236 0098 9BB2     		uxth	r3, r3
+ 237 009a 2343     		orrs	r3, r3, r4
+ 238 009c 4360     		str	r3, [r0, #4]
+ 239 009e B4E7     		b	.L29
+ 240              	.L35:
+ 241 00a0 10BD     		pop	{r4, pc}
+ 242              	.L34:
+ 243 00a2 7047     		bx	lr
+ 245              		.section	.text.GPIO_StructInit,"ax",%progbits
+ 246              		.align	1
+ 247              		.global	GPIO_StructInit
+ 248              		.syntax unified
+ 249              		.thumb
+ 250              		.thumb_func
+ 252              	GPIO_StructInit:
+ 253              		@ args = 0, pretend = 0, frame = 0
+ 254              		@ frame_needed = 0, uses_anonymous_args = 0
+ 255              		@ link register save eliminated.
+ 256 0000 4FF6FF73 		movw	r3, #65535
+ 257 0004 0360     		str	r3, [r0]
+ 258 0006 0023     		movs	r3, #0
+ 259 0008 0371     		strb	r3, [r0, #4]
+ 260 000a 4371     		strb	r3, [r0, #5]
+ 261 000c 8371     		strb	r3, [r0, #6]
+ 262 000e C371     		strb	r3, [r0, #7]
+ 263 0010 7047     		bx	lr
+ 265              		.section	.text.GPIO_PinLockConfig,"ax",%progbits
+ 266              		.align	1
+ 267              		.global	GPIO_PinLockConfig
+ 268              		.syntax unified
+ 269              		.thumb
+ 270              		.thumb_func
+ 272              	GPIO_PinLockConfig:
+ 273              		@ args = 0, pretend = 0, frame = 8
+ 274              		@ frame_needed = 0, uses_anonymous_args = 0
+ 275              		@ link register save eliminated.
+ 276 0000 82B0     		sub	sp, sp, #8
+ 277 0002 4FF48033 		mov	r3, #65536
+ 278 0006 0193     		str	r3, [sp, #4]
+ 279 0008 019B     		ldr	r3, [sp, #4]
+ 280 000a 0B43     		orrs	r3, r3, r1
+ 281 000c 0193     		str	r3, [sp, #4]
+ 282 000e 019B     		ldr	r3, [sp, #4]
+ 283 0010 C361     		str	r3, [r0, #28]
+ 284 0012 C161     		str	r1, [r0, #28]
+ 285 0014 019B     		ldr	r3, [sp, #4]
+ 286 0016 C361     		str	r3, [r0, #28]
+ 287 0018 C369     		ldr	r3, [r0, #28]
+ 288 001a 0193     		str	r3, [sp, #4]
+ 289 001c C369     		ldr	r3, [r0, #28]
+ 290 001e 0193     		str	r3, [sp, #4]
+ 291 0020 02B0     		add	sp, sp, #8
+ 292              		@ sp needed
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccdJCyHg.s 			page 6
+
+
+ 293 0022 7047     		bx	lr
+ 295              		.section	.text.GPIO_ReadInputDataBit,"ax",%progbits
+ 296              		.align	1
+ 297              		.global	GPIO_ReadInputDataBit
+ 298              		.syntax unified
+ 299              		.thumb
+ 300              		.thumb_func
+ 302              	GPIO_ReadInputDataBit:
+ 303              		@ args = 0, pretend = 0, frame = 0
+ 304              		@ frame_needed = 0, uses_anonymous_args = 0
+ 305              		@ link register save eliminated.
+ 306 0000 0369     		ldr	r3, [r0, #16]
+ 307 0002 1942     		tst	r1, r3
+ 308 0004 01D0     		beq	.L41
+ 309 0006 0120     		movs	r0, #1
+ 310 0008 7047     		bx	lr
+ 311              	.L41:
+ 312 000a 0020     		movs	r0, #0
+ 313 000c 7047     		bx	lr
+ 315              		.section	.text.GPIO_ReadInputData,"ax",%progbits
+ 316              		.align	1
+ 317              		.global	GPIO_ReadInputData
+ 318              		.syntax unified
+ 319              		.thumb
+ 320              		.thumb_func
+ 322              	GPIO_ReadInputData:
+ 323              		@ args = 0, pretend = 0, frame = 0
+ 324              		@ frame_needed = 0, uses_anonymous_args = 0
+ 325              		@ link register save eliminated.
+ 326 0000 0069     		ldr	r0, [r0, #16]
+ 327 0002 80B2     		uxth	r0, r0
+ 328 0004 7047     		bx	lr
+ 330              		.section	.text.GPIO_ReadOutputDataBit,"ax",%progbits
+ 331              		.align	1
+ 332              		.global	GPIO_ReadOutputDataBit
+ 333              		.syntax unified
+ 334              		.thumb
+ 335              		.thumb_func
+ 337              	GPIO_ReadOutputDataBit:
+ 338              		@ args = 0, pretend = 0, frame = 0
+ 339              		@ frame_needed = 0, uses_anonymous_args = 0
+ 340              		@ link register save eliminated.
+ 341 0000 4369     		ldr	r3, [r0, #20]
+ 342 0002 1942     		tst	r1, r3
+ 343 0004 01D0     		beq	.L45
+ 344 0006 0120     		movs	r0, #1
+ 345 0008 7047     		bx	lr
+ 346              	.L45:
+ 347 000a 0020     		movs	r0, #0
+ 348 000c 7047     		bx	lr
+ 350              		.section	.text.GPIO_ReadOutputData,"ax",%progbits
+ 351              		.align	1
+ 352              		.global	GPIO_ReadOutputData
+ 353              		.syntax unified
+ 354              		.thumb
+ 355              		.thumb_func
+ 357              	GPIO_ReadOutputData:
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccdJCyHg.s 			page 7
+
+
+ 358              		@ args = 0, pretend = 0, frame = 0
+ 359              		@ frame_needed = 0, uses_anonymous_args = 0
+ 360              		@ link register save eliminated.
+ 361 0000 4069     		ldr	r0, [r0, #20]
+ 362 0002 80B2     		uxth	r0, r0
+ 363 0004 7047     		bx	lr
+ 365              		.section	.text.GPIO_SetBits,"ax",%progbits
+ 366              		.align	1
+ 367              		.global	GPIO_SetBits
+ 368              		.syntax unified
+ 369              		.thumb
+ 370              		.thumb_func
+ 372              	GPIO_SetBits:
+ 373              		@ args = 0, pretend = 0, frame = 0
+ 374              		@ frame_needed = 0, uses_anonymous_args = 0
+ 375              		@ link register save eliminated.
+ 376 0000 0183     		strh	r1, [r0, #24]	@ movhi
+ 377 0002 7047     		bx	lr
+ 379              		.section	.text.GPIO_ResetBits,"ax",%progbits
+ 380              		.align	1
+ 381              		.global	GPIO_ResetBits
+ 382              		.syntax unified
+ 383              		.thumb
+ 384              		.thumb_func
+ 386              	GPIO_ResetBits:
+ 387              		@ args = 0, pretend = 0, frame = 0
+ 388              		@ frame_needed = 0, uses_anonymous_args = 0
+ 389              		@ link register save eliminated.
+ 390 0000 4183     		strh	r1, [r0, #26]	@ movhi
+ 391 0002 7047     		bx	lr
+ 393              		.section	.text.GPIO_WriteBit,"ax",%progbits
+ 394              		.align	1
+ 395              		.global	GPIO_WriteBit
+ 396              		.syntax unified
+ 397              		.thumb
+ 398              		.thumb_func
+ 400              	GPIO_WriteBit:
+ 401              		@ args = 0, pretend = 0, frame = 0
+ 402              		@ frame_needed = 0, uses_anonymous_args = 0
+ 403              		@ link register save eliminated.
+ 404 0000 0AB1     		cbz	r2, .L50
+ 405 0002 0183     		strh	r1, [r0, #24]	@ movhi
+ 406 0004 7047     		bx	lr
+ 407              	.L50:
+ 408 0006 4183     		strh	r1, [r0, #26]	@ movhi
+ 409 0008 7047     		bx	lr
+ 411              		.section	.text.GPIO_Write,"ax",%progbits
+ 412              		.align	1
+ 413              		.global	GPIO_Write
+ 414              		.syntax unified
+ 415              		.thumb
+ 416              		.thumb_func
+ 418              	GPIO_Write:
+ 419              		@ args = 0, pretend = 0, frame = 0
+ 420              		@ frame_needed = 0, uses_anonymous_args = 0
+ 421              		@ link register save eliminated.
+ 422 0000 4161     		str	r1, [r0, #20]
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccdJCyHg.s 			page 8
+
+
+ 423 0002 7047     		bx	lr
+ 425              		.section	.text.GPIO_ToggleBits,"ax",%progbits
+ 426              		.align	1
+ 427              		.global	GPIO_ToggleBits
+ 428              		.syntax unified
+ 429              		.thumb
+ 430              		.thumb_func
+ 432              	GPIO_ToggleBits:
+ 433              		@ args = 0, pretend = 0, frame = 0
+ 434              		@ frame_needed = 0, uses_anonymous_args = 0
+ 435              		@ link register save eliminated.
+ 436 0000 4369     		ldr	r3, [r0, #20]
+ 437 0002 5940     		eors	r1, r1, r3
+ 438 0004 4161     		str	r1, [r0, #20]
+ 439 0006 7047     		bx	lr
+ 441              		.section	.text.GPIO_PinAFConfig,"ax",%progbits
+ 442              		.align	1
+ 443              		.global	GPIO_PinAFConfig
+ 444              		.syntax unified
+ 445              		.thumb
+ 446              		.thumb_func
+ 448              	GPIO_PinAFConfig:
+ 449              		@ args = 0, pretend = 0, frame = 0
+ 450              		@ frame_needed = 0, uses_anonymous_args = 0
+ 451              		@ link register save eliminated.
+ 452 0000 10B4     		push	{r4}
+ 453 0002 01F00703 		and	r3, r1, #7
+ 454 0006 9B00     		lsls	r3, r3, #2
+ 455 0008 9A40     		lsls	r2, r2, r3
+ 456 000a C908     		lsrs	r1, r1, #3
+ 457 000c 0831     		adds	r1, r1, #8
+ 458 000e 50F82140 		ldr	r4, [r0, r1, lsl #2]
+ 459 0012 4FF00F0C 		mov	ip, #15
+ 460 0016 0CFA03F3 		lsl	r3, ip, r3
+ 461 001a 24EA0303 		bic	r3, r4, r3
+ 462 001e 40F82130 		str	r3, [r0, r1, lsl #2]
+ 463 0022 50F82130 		ldr	r3, [r0, r1, lsl #2]
+ 464 0026 1343     		orrs	r3, r3, r2
+ 465 0028 40F82130 		str	r3, [r0, r1, lsl #2]
+ 466 002c 5DF8044B 		ldr	r4, [sp], #4
+ 467 0030 7047     		bx	lr
+ 469              		.ident	"GCC: (Arm GNU Toolchain 13.3.Rel1 (Build arm-13.24)) 13.3.1 20240614"
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccdJCyHg.s 			page 9
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 stm32f4xx_gpio.c
+C:\Users\ktkuru\AppData\Local\Temp\ccdJCyHg.s:18     .text.GPIO_DeInit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccdJCyHg.s:24     .text.GPIO_DeInit:00000000 GPIO_DeInit
+C:\Users\ktkuru\AppData\Local\Temp\ccdJCyHg.s:152    .text.GPIO_DeInit:00000118 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccdJCyHg.s:165    .text.GPIO_Init:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccdJCyHg.s:171    .text.GPIO_Init:00000000 GPIO_Init
+C:\Users\ktkuru\AppData\Local\Temp\ccdJCyHg.s:246    .text.GPIO_StructInit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccdJCyHg.s:252    .text.GPIO_StructInit:00000000 GPIO_StructInit
+C:\Users\ktkuru\AppData\Local\Temp\ccdJCyHg.s:266    .text.GPIO_PinLockConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccdJCyHg.s:272    .text.GPIO_PinLockConfig:00000000 GPIO_PinLockConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccdJCyHg.s:296    .text.GPIO_ReadInputDataBit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccdJCyHg.s:302    .text.GPIO_ReadInputDataBit:00000000 GPIO_ReadInputDataBit
+C:\Users\ktkuru\AppData\Local\Temp\ccdJCyHg.s:316    .text.GPIO_ReadInputData:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccdJCyHg.s:322    .text.GPIO_ReadInputData:00000000 GPIO_ReadInputData
+C:\Users\ktkuru\AppData\Local\Temp\ccdJCyHg.s:331    .text.GPIO_ReadOutputDataBit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccdJCyHg.s:337    .text.GPIO_ReadOutputDataBit:00000000 GPIO_ReadOutputDataBit
+C:\Users\ktkuru\AppData\Local\Temp\ccdJCyHg.s:351    .text.GPIO_ReadOutputData:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccdJCyHg.s:357    .text.GPIO_ReadOutputData:00000000 GPIO_ReadOutputData
+C:\Users\ktkuru\AppData\Local\Temp\ccdJCyHg.s:366    .text.GPIO_SetBits:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccdJCyHg.s:372    .text.GPIO_SetBits:00000000 GPIO_SetBits
+C:\Users\ktkuru\AppData\Local\Temp\ccdJCyHg.s:380    .text.GPIO_ResetBits:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccdJCyHg.s:386    .text.GPIO_ResetBits:00000000 GPIO_ResetBits
+C:\Users\ktkuru\AppData\Local\Temp\ccdJCyHg.s:394    .text.GPIO_WriteBit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccdJCyHg.s:400    .text.GPIO_WriteBit:00000000 GPIO_WriteBit
+C:\Users\ktkuru\AppData\Local\Temp\ccdJCyHg.s:412    .text.GPIO_Write:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccdJCyHg.s:418    .text.GPIO_Write:00000000 GPIO_Write
+C:\Users\ktkuru\AppData\Local\Temp\ccdJCyHg.s:426    .text.GPIO_ToggleBits:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccdJCyHg.s:432    .text.GPIO_ToggleBits:00000000 GPIO_ToggleBits
+C:\Users\ktkuru\AppData\Local\Temp\ccdJCyHg.s:442    .text.GPIO_PinAFConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccdJCyHg.s:448    .text.GPIO_PinAFConfig:00000000 GPIO_PinAFConfig
+
+UNDEFINED SYMBOLS
+RCC_AHB1PeriphResetCmd

@@ -1,0 +1,2702 @@
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"queue.c"
+  16              		.text
+  17              		.section	.text.prvGetDisinheritPriorityAfterTimeout,"ax",%progbits
+  18              		.align	1
+  19              		.syntax unified
+  20              		.thumb
+  21              		.thumb_func
+  23              	prvGetDisinheritPriorityAfterTimeout:
+  24              		@ args = 0, pretend = 0, frame = 0
+  25              		@ frame_needed = 0, uses_anonymous_args = 0
+  26              		@ link register save eliminated.
+  27 0000 0346     		mov	r3, r0
+  28 0002 406A     		ldr	r0, [r0, #36]
+  29 0004 18B1     		cbz	r0, .L1
+  30 0006 1B6B     		ldr	r3, [r3, #48]
+  31 0008 1868     		ldr	r0, [r3]
+  32 000a C0F12000 		rsb	r0, r0, #32
+  33              	.L1:
+  34 000e 7047     		bx	lr
+  36              		.section	.text.prvIsQueueFull,"ax",%progbits
+  37              		.align	1
+  38              		.syntax unified
+  39              		.thumb
+  40              		.thumb_func
+  42              	prvIsQueueFull:
+  43              		@ args = 0, pretend = 0, frame = 0
+  44              		@ frame_needed = 0, uses_anonymous_args = 0
+  45 0000 10B5     		push	{r4, lr}
+  46 0002 0446     		mov	r4, r0
+  47 0004 FFF7FEFF 		bl	vPortEnterCritical
+  48 0008 A26B     		ldr	r2, [r4, #56]
+  49 000a E36B     		ldr	r3, [r4, #60]
+  50 000c 9A42     		cmp	r2, r3
+  51 000e 04D0     		beq	.L7
+  52 0010 0024     		movs	r4, #0
+  53              	.L4:
+  54 0012 FFF7FEFF 		bl	vPortExitCritical
+  55 0016 2046     		mov	r0, r4
+  56 0018 10BD     		pop	{r4, pc}
+  57              	.L7:
+  58 001a 0124     		movs	r4, #1
+  59 001c F9E7     		b	.L4
+  61              		.section	.text.prvIsQueueEmpty,"ax",%progbits
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s 			page 2
+
+
+  62              		.align	1
+  63              		.syntax unified
+  64              		.thumb
+  65              		.thumb_func
+  67              	prvIsQueueEmpty:
+  68              		@ args = 0, pretend = 0, frame = 0
+  69              		@ frame_needed = 0, uses_anonymous_args = 0
+  70 0000 10B5     		push	{r4, lr}
+  71 0002 0446     		mov	r4, r0
+  72 0004 FFF7FEFF 		bl	vPortEnterCritical
+  73 0008 A36B     		ldr	r3, [r4, #56]
+  74 000a 23B9     		cbnz	r3, .L10
+  75 000c 0124     		movs	r4, #1
+  76              	.L9:
+  77 000e FFF7FEFF 		bl	vPortExitCritical
+  78 0012 2046     		mov	r0, r4
+  79 0014 10BD     		pop	{r4, pc}
+  80              	.L10:
+  81 0016 0024     		movs	r4, #0
+  82 0018 F9E7     		b	.L9
+  84              		.section	.text.prvCopyDataToQueue,"ax",%progbits
+  85              		.align	1
+  86              		.syntax unified
+  87              		.thumb
+  88              		.thumb_func
+  90              	prvCopyDataToQueue:
+  91              		@ args = 0, pretend = 0, frame = 0
+  92              		@ frame_needed = 0, uses_anonymous_args = 0
+  93 0000 70B5     		push	{r4, r5, r6, lr}
+  94 0002 0446     		mov	r4, r0
+  95 0004 1546     		mov	r5, r2
+  96 0006 866B     		ldr	r6, [r0, #56]
+  97 0008 026C     		ldr	r2, [r0, #64]
+  98 000a 5AB9     		cbnz	r2, .L13
+  99 000c 0368     		ldr	r3, [r0]
+ 100 000e 1BB1     		cbz	r3, .L22
+ 101 0010 0020     		movs	r0, #0
+ 102              	.L14:
+ 103 0012 0136     		adds	r6, r6, #1
+ 104 0014 A663     		str	r6, [r4, #56]
+ 105 0016 70BD     		pop	{r4, r5, r6, pc}
+ 106              	.L22:
+ 107 0018 8068     		ldr	r0, [r0, #8]
+ 108 001a FFF7FEFF 		bl	xTaskPriorityDisinherit
+ 109 001e 0023     		movs	r3, #0
+ 110 0020 A360     		str	r3, [r4, #8]
+ 111 0022 F6E7     		b	.L14
+ 112              	.L13:
+ 113 0024 6DB9     		cbnz	r5, .L15
+ 114 0026 4068     		ldr	r0, [r0, #4]
+ 115 0028 FFF7FEFF 		bl	memcpy
+ 116 002c 6368     		ldr	r3, [r4, #4]
+ 117 002e 226C     		ldr	r2, [r4, #64]
+ 118 0030 1344     		add	r3, r3, r2
+ 119 0032 6360     		str	r3, [r4, #4]
+ 120 0034 A268     		ldr	r2, [r4, #8]
+ 121 0036 9342     		cmp	r3, r2
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s 			page 3
+
+
+ 122 0038 19D3     		bcc	.L18
+ 123 003a 2368     		ldr	r3, [r4]
+ 124 003c 6360     		str	r3, [r4, #4]
+ 125 003e 2846     		mov	r0, r5
+ 126 0040 E7E7     		b	.L14
+ 127              	.L15:
+ 128 0042 C068     		ldr	r0, [r0, #12]
+ 129 0044 FFF7FEFF 		bl	memcpy
+ 130 0048 E368     		ldr	r3, [r4, #12]
+ 131 004a 226C     		ldr	r2, [r4, #64]
+ 132 004c 5142     		rsbs	r1, r2, #0
+ 133 004e 9B1A     		subs	r3, r3, r2
+ 134 0050 E360     		str	r3, [r4, #12]
+ 135 0052 2268     		ldr	r2, [r4]
+ 136 0054 9342     		cmp	r3, r2
+ 137 0056 02D2     		bcs	.L16
+ 138 0058 A368     		ldr	r3, [r4, #8]
+ 139 005a 0B44     		add	r3, r3, r1
+ 140 005c E360     		str	r3, [r4, #12]
+ 141              	.L16:
+ 142 005e 022D     		cmp	r5, #2
+ 143 0060 01D0     		beq	.L23
+ 144 0062 0020     		movs	r0, #0
+ 145 0064 D5E7     		b	.L14
+ 146              	.L23:
+ 147 0066 26B1     		cbz	r6, .L20
+ 148 0068 013E     		subs	r6, r6, #1
+ 149 006a 0020     		movs	r0, #0
+ 150 006c D1E7     		b	.L14
+ 151              	.L18:
+ 152 006e 2846     		mov	r0, r5
+ 153 0070 CFE7     		b	.L14
+ 154              	.L20:
+ 155 0072 0020     		movs	r0, #0
+ 156 0074 CDE7     		b	.L14
+ 158              		.section	.text.prvCopyDataFromQueue,"ax",%progbits
+ 159              		.align	1
+ 160              		.syntax unified
+ 161              		.thumb
+ 162              		.thumb_func
+ 164              	prvCopyDataFromQueue:
+ 165              		@ args = 0, pretend = 0, frame = 0
+ 166              		@ frame_needed = 0, uses_anonymous_args = 0
+ 167 0000 0346     		mov	r3, r0
+ 168 0002 026C     		ldr	r2, [r0, #64]
+ 169 0004 6AB1     		cbz	r2, .L28
+ 170 0006 10B5     		push	{r4, lr}
+ 171 0008 0846     		mov	r0, r1
+ 172 000a D968     		ldr	r1, [r3, #12]
+ 173 000c 1144     		add	r1, r1, r2
+ 174 000e D960     		str	r1, [r3, #12]
+ 175 0010 9C68     		ldr	r4, [r3, #8]
+ 176 0012 A142     		cmp	r1, r4
+ 177 0014 01D3     		bcc	.L26
+ 178 0016 1968     		ldr	r1, [r3]
+ 179 0018 D960     		str	r1, [r3, #12]
+ 180              	.L26:
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s 			page 4
+
+
+ 181 001a D968     		ldr	r1, [r3, #12]
+ 182 001c FFF7FEFF 		bl	memcpy
+ 183 0020 10BD     		pop	{r4, pc}
+ 184              	.L28:
+ 185 0022 7047     		bx	lr
+ 187              		.section	.rodata.prvNotifyQueueSetContainer.str1.4,"aMS",%progbits,1
+ 188              		.align	2
+ 189              	.LC0:
+ 190 0000 52544F53 		.ascii	"RTOS/queue.c\000"
+ 190      2F717565 
+ 190      75652E63 
+ 190      00
+ 191 000d 000000   		.align	2
+ 192              	.LC1:
+ 193 0010 4572726F 		.ascii	"Error:%s,%d\015\012\000"
+ 193      723A2573 
+ 193      2C25640D 
+ 193      0A00
+ 194              		.section	.text.prvNotifyQueueSetContainer,"ax",%progbits
+ 195              		.align	1
+ 196              		.syntax unified
+ 197              		.thumb
+ 198              		.thumb_func
+ 200              	prvNotifyQueueSetContainer:
+ 201              		@ args = 0, pretend = 0, frame = 8
+ 202              		@ frame_needed = 0, uses_anonymous_args = 0
+ 203 0000 70B5     		push	{r4, r5, r6, lr}
+ 204 0002 82B0     		sub	sp, sp, #8
+ 205 0004 0190     		str	r0, [sp, #4]
+ 206 0006 846C     		ldr	r4, [r0, #72]
+ 207 0008 5CB1     		cbz	r4, .L40
+ 208              	.L32:
+ 209 000a A26B     		ldr	r2, [r4, #56]
+ 210 000c E36B     		ldr	r3, [r4, #60]
+ 211 000e 9A42     		cmp	r2, r3
+ 212 0010 0ED2     		bcs	.L41
+ 213              	.L33:
+ 214 0012 A26B     		ldr	r2, [r4, #56]
+ 215 0014 E36B     		ldr	r3, [r4, #60]
+ 216 0016 9A42     		cmp	r2, r3
+ 217 0018 11D3     		bcc	.L42
+ 218 001a 0025     		movs	r5, #0
+ 219              	.L31:
+ 220 001c 2846     		mov	r0, r5
+ 221 001e 02B0     		add	sp, sp, #8
+ 222              		@ sp needed
+ 223 0020 70BD     		pop	{r4, r5, r6, pc}
+ 224              	.L40:
+ 225 0022 40F6E332 		movw	r2, #3043
+ 226 0026 1A49     		ldr	r1, .L44
+ 227 0028 1A48     		ldr	r0, .L44+4
+ 228 002a FFF7FEFF 		bl	printf
+ 229 002e ECE7     		b	.L32
+ 230              	.L41:
+ 231 0030 40F6E432 		movw	r2, #3044
+ 232 0034 1649     		ldr	r1, .L44
+ 233 0036 1748     		ldr	r0, .L44+4
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s 			page 5
+
+
+ 234 0038 FFF7FEFF 		bl	printf
+ 235 003c E9E7     		b	.L33
+ 236              	.L42:
+ 237 003e 94F84560 		ldrb	r6, [r4, #69]	@ zero_extendqisi2
+ 238 0042 76B2     		sxtb	r6, r6
+ 239 0044 0022     		movs	r2, #0
+ 240 0046 01A9     		add	r1, sp, #4
+ 241 0048 2046     		mov	r0, r4
+ 242 004a FFF7FEFF 		bl	prvCopyDataToQueue
+ 243 004e 0546     		mov	r5, r0
+ 244 0050 B6F1FF3F 		cmp	r6, #-1
+ 245 0054 0AD1     		bne	.L35
+ 246 0056 636A     		ldr	r3, [r4, #36]
+ 247 0058 002B     		cmp	r3, #0
+ 248 005a DFD0     		beq	.L31
+ 249 005c 04F12400 		add	r0, r4, #36
+ 250 0060 FFF7FEFF 		bl	xTaskRemoveFromEventList
+ 251 0064 0028     		cmp	r0, #0
+ 252 0066 D9D0     		beq	.L31
+ 253 0068 0125     		movs	r5, #1
+ 254 006a D7E7     		b	.L31
+ 255              	.L35:
+ 256 006c FFF7FEFF 		bl	uxTaskGetNumberOfTasks
+ 257 0070 8642     		cmp	r6, r0
+ 258 0072 D3D2     		bcs	.L31
+ 259 0074 7F2E     		cmp	r6, #127
+ 260 0076 04D0     		beq	.L43
+ 261              	.L36:
+ 262 0078 0136     		adds	r6, r6, #1
+ 263 007a 76B2     		sxtb	r6, r6
+ 264 007c 84F84560 		strb	r6, [r4, #69]
+ 265 0080 CCE7     		b	.L31
+ 266              	.L43:
+ 267 0082 40F60442 		movw	r2, #3076
+ 268 0086 0249     		ldr	r1, .L44
+ 269 0088 0248     		ldr	r0, .L44+4
+ 270 008a FFF7FEFF 		bl	printf
+ 271 008e F3E7     		b	.L36
+ 272              	.L45:
+ 273              		.align	2
+ 274              	.L44:
+ 275 0090 00000000 		.word	.LC0
+ 276 0094 10000000 		.word	.LC1
+ 278              		.section	.text.prvUnlockQueue,"ax",%progbits
+ 279              		.align	1
+ 280              		.syntax unified
+ 281              		.thumb
+ 282              		.thumb_func
+ 284              	prvUnlockQueue:
+ 285              		@ args = 0, pretend = 0, frame = 0
+ 286              		@ frame_needed = 0, uses_anonymous_args = 0
+ 287 0000 38B5     		push	{r3, r4, r5, lr}
+ 288 0002 0546     		mov	r5, r0
+ 289 0004 FFF7FEFF 		bl	vPortEnterCritical
+ 290 0008 95F84540 		ldrb	r4, [r5, #69]	@ zero_extendqisi2
+ 291 000c 64B2     		sxtb	r4, r4
+ 292 000e 08E0     		b	.L47
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s 			page 6
+
+
+ 293              	.L48:
+ 294 0010 6B6A     		ldr	r3, [r5, #36]
+ 295 0012 B3B1     		cbz	r3, .L50
+ 296 0014 05F12400 		add	r0, r5, #36
+ 297 0018 FFF7FEFF 		bl	xTaskRemoveFromEventList
+ 298 001c 70B9     		cbnz	r0, .L57
+ 299              	.L49:
+ 300 001e 013C     		subs	r4, r4, #1
+ 301 0020 64B2     		sxtb	r4, r4
+ 302              	.L47:
+ 303 0022 002C     		cmp	r4, #0
+ 304 0024 0DDD     		ble	.L50
+ 305 0026 AB6C     		ldr	r3, [r5, #72]
+ 306 0028 002B     		cmp	r3, #0
+ 307 002a F1D0     		beq	.L48
+ 308 002c 2846     		mov	r0, r5
+ 309 002e FFF7FEFF 		bl	prvNotifyQueueSetContainer
+ 310 0032 0028     		cmp	r0, #0
+ 311 0034 F3D0     		beq	.L49
+ 312 0036 FFF7FEFF 		bl	vTaskMissedYield
+ 313 003a F0E7     		b	.L49
+ 314              	.L57:
+ 315 003c FFF7FEFF 		bl	vTaskMissedYield
+ 316 0040 EDE7     		b	.L49
+ 317              	.L50:
+ 318 0042 FF23     		movs	r3, #255
+ 319 0044 85F84530 		strb	r3, [r5, #69]
+ 320 0048 FFF7FEFF 		bl	vPortExitCritical
+ 321 004c FFF7FEFF 		bl	vPortEnterCritical
+ 322 0050 95F84440 		ldrb	r4, [r5, #68]	@ zero_extendqisi2
+ 323 0054 64B2     		sxtb	r4, r4
+ 324 0056 01E0     		b	.L52
+ 325              	.L54:
+ 326 0058 013C     		subs	r4, r4, #1
+ 327 005a 64B2     		sxtb	r4, r4
+ 328              	.L52:
+ 329 005c 002C     		cmp	r4, #0
+ 330 005e 0ADD     		ble	.L53
+ 331 0060 2B69     		ldr	r3, [r5, #16]
+ 332 0062 43B1     		cbz	r3, .L53
+ 333 0064 05F11000 		add	r0, r5, #16
+ 334 0068 FFF7FEFF 		bl	xTaskRemoveFromEventList
+ 335 006c 0028     		cmp	r0, #0
+ 336 006e F3D0     		beq	.L54
+ 337 0070 FFF7FEFF 		bl	vTaskMissedYield
+ 338 0074 F0E7     		b	.L54
+ 339              	.L53:
+ 340 0076 FF23     		movs	r3, #255
+ 341 0078 85F84430 		strb	r3, [r5, #68]
+ 342 007c FFF7FEFF 		bl	vPortExitCritical
+ 343 0080 38BD     		pop	{r3, r4, r5, pc}
+ 345              		.section	.text.xQueueGenericReset,"ax",%progbits
+ 346              		.align	1
+ 347              		.global	xQueueGenericReset
+ 348              		.syntax unified
+ 349              		.thumb
+ 350              		.thumb_func
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s 			page 7
+
+
+ 352              	xQueueGenericReset:
+ 353              		@ args = 0, pretend = 0, frame = 0
+ 354              		@ frame_needed = 0, uses_anonymous_args = 0
+ 355 0000 38B5     		push	{r3, r4, r5, lr}
+ 356 0002 58B1     		cbz	r0, .L59
+ 357 0004 0D46     		mov	r5, r1
+ 358 0006 0446     		mov	r4, r0
+ 359 0008 C36B     		ldr	r3, [r0, #60]
+ 360 000a 73B9     		cbnz	r3, .L60
+ 361              	.L61:
+ 362 000c 40F26312 		movw	r2, #355
+ 363 0010 2549     		ldr	r1, .L70
+ 364 0012 2648     		ldr	r0, .L70+4
+ 365 0014 FFF7FEFF 		bl	printf
+ 366 0018 0020     		movs	r0, #0
+ 367              	.L58:
+ 368 001a 38BD     		pop	{r3, r4, r5, pc}
+ 369              	.L59:
+ 370 001c 4FF49772 		mov	r2, #302
+ 371 0020 2149     		ldr	r1, .L70
+ 372 0022 2248     		ldr	r0, .L70+4
+ 373 0024 FFF7FEFF 		bl	printf
+ 374 0028 F0E7     		b	.L61
+ 375              	.L60:
+ 376 002a 026C     		ldr	r2, [r0, #64]
+ 377 002c 0021     		movs	r1, #0
+ 378 002e A2FB0323 		umull	r2, r3, r2, r3
+ 379 0032 E3B9     		cbnz	r3, .L68
+ 380              	.L62:
+ 381 0034 0029     		cmp	r1, #0
+ 382 0036 E9D1     		bne	.L61
+ 383 0038 FFF7FEFF 		bl	vPortEnterCritical
+ 384 003c 2368     		ldr	r3, [r4]
+ 385 003e E26B     		ldr	r2, [r4, #60]
+ 386 0040 216C     		ldr	r1, [r4, #64]
+ 387 0042 01FB0230 		mla	r0, r1, r2, r3
+ 388 0046 A060     		str	r0, [r4, #8]
+ 389 0048 0020     		movs	r0, #0
+ 390 004a A063     		str	r0, [r4, #56]
+ 391 004c 6360     		str	r3, [r4, #4]
+ 392 004e 013A     		subs	r2, r2, #1
+ 393 0050 02FB0133 		mla	r3, r2, r1, r3
+ 394 0054 E360     		str	r3, [r4, #12]
+ 395 0056 FF23     		movs	r3, #255
+ 396 0058 84F84430 		strb	r3, [r4, #68]
+ 397 005c 84F84530 		strb	r3, [r4, #69]
+ 398 0060 C5B9     		cbnz	r5, .L64
+ 399 0062 2369     		ldr	r3, [r4, #16]
+ 400 0064 2BB9     		cbnz	r3, .L69
+ 401              	.L65:
+ 402 0066 FFF7FEFF 		bl	vPortExitCritical
+ 403 006a 0120     		movs	r0, #1
+ 404 006c D5E7     		b	.L58
+ 405              	.L68:
+ 406 006e 0121     		movs	r1, #1
+ 407 0070 E0E7     		b	.L62
+ 408              	.L69:
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s 			page 8
+
+
+ 409 0072 04F11000 		add	r0, r4, #16
+ 410 0076 FFF7FEFF 		bl	xTaskRemoveFromEventList
+ 411 007a 0028     		cmp	r0, #0
+ 412 007c F3D0     		beq	.L65
+ 413 007e 4FF0E023 		mov	r3, #-536813568
+ 414 0082 4FF08052 		mov	r2, #268435456
+ 415 0086 C3F8042D 		str	r2, [r3, #3332]
+ 416              		.syntax unified
+ 417              	@ 329 "RTOS/queue.c" 1
+ 418 008a BFF34F8F 		dsb
+ 419              	@ 0 "" 2
+ 420              	@ 329 "RTOS/queue.c" 1
+ 421 008e BFF36F8F 		isb
+ 422              	@ 0 "" 2
+ 423              		.thumb
+ 424              		.syntax unified
+ 425 0092 E8E7     		b	.L65
+ 426              	.L64:
+ 427 0094 04F11000 		add	r0, r4, #16
+ 428 0098 FFF7FEFF 		bl	vListInitialise
+ 429 009c 04F12400 		add	r0, r4, #36
+ 430 00a0 FFF7FEFF 		bl	vListInitialise
+ 431 00a4 DFE7     		b	.L65
+ 432              	.L71:
+ 433 00a6 00BF     		.align	2
+ 434              	.L70:
+ 435 00a8 00000000 		.word	.LC0
+ 436 00ac 10000000 		.word	.LC1
+ 438              		.section	.text.prvInitialiseNewQueue,"ax",%progbits
+ 439              		.align	1
+ 440              		.syntax unified
+ 441              		.thumb
+ 442              		.thumb_func
+ 444              	prvInitialiseNewQueue:
+ 445              		@ args = 4, pretend = 0, frame = 0
+ 446              		@ frame_needed = 0, uses_anonymous_args = 0
+ 447 0000 38B5     		push	{r3, r4, r5, lr}
+ 448 0002 1D46     		mov	r5, r3
+ 449 0004 049C     		ldr	r4, [sp, #16]
+ 450 0006 0B46     		mov	r3, r1
+ 451 0008 59B9     		cbnz	r1, .L73
+ 452 000a 2460     		str	r4, [r4]
+ 453              	.L74:
+ 454 000c E063     		str	r0, [r4, #60]
+ 455 000e 2364     		str	r3, [r4, #64]
+ 456 0010 0121     		movs	r1, #1
+ 457 0012 2046     		mov	r0, r4
+ 458 0014 FFF7FEFF 		bl	xQueueGenericReset
+ 459 0018 84F85050 		strb	r5, [r4, #80]
+ 460 001c 0023     		movs	r3, #0
+ 461 001e A364     		str	r3, [r4, #72]
+ 462 0020 38BD     		pop	{r3, r4, r5, pc}
+ 463              	.L73:
+ 464 0022 2260     		str	r2, [r4]
+ 465 0024 F2E7     		b	.L74
+ 467              		.section	.text.xQueueGenericCreate,"ax",%progbits
+ 468              		.align	1
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s 			page 9
+
+
+ 469              		.global	xQueueGenericCreate
+ 470              		.syntax unified
+ 471              		.thumb
+ 472              		.thumb_func
+ 474              	xQueueGenericCreate:
+ 475              		@ args = 0, pretend = 0, frame = 0
+ 476              		@ frame_needed = 0, uses_anonymous_args = 0
+ 477 0000 F0B5     		push	{r4, r5, r6, r7, lr}
+ 478 0002 83B0     		sub	sp, sp, #12
+ 479 0004 E0B1     		cbz	r0, .L77
+ 480 0006 0C46     		mov	r4, r1
+ 481 0008 1746     		mov	r7, r2
+ 482 000a 0546     		mov	r5, r0
+ 483 000c 0023     		movs	r3, #0
+ 484 000e A4FB0012 		umull	r1, r2, r4, r0
+ 485 0012 9AB9     		cbnz	r2, .L82
+ 486              	.L78:
+ 487 0014 A3B9     		cbnz	r3, .L77
+ 488 0016 04FB05F0 		mul	r0, r4, r5
+ 489 001a 10F1550F 		cmn	r0, #85
+ 490 001e 0FD8     		bhi	.L77
+ 491 0020 5430     		adds	r0, r0, #84
+ 492 0022 FFF7FEFF 		bl	pvPortMalloc
+ 493 0026 0646     		mov	r6, r0
+ 494 0028 88B1     		cbz	r0, .L76
+ 495 002a 0090     		str	r0, [sp]
+ 496 002c 3B46     		mov	r3, r7
+ 497 002e 00F15402 		add	r2, r0, #84
+ 498 0032 2146     		mov	r1, r4
+ 499 0034 2846     		mov	r0, r5
+ 500 0036 FFF7FEFF 		bl	prvInitialiseNewQueue
+ 501 003a 08E0     		b	.L76
+ 502              	.L82:
+ 503 003c 0123     		movs	r3, #1
+ 504 003e E9E7     		b	.L78
+ 505              	.L77:
+ 506 0040 4FF4F272 		mov	r2, #484
+ 507 0044 0349     		ldr	r1, .L83
+ 508 0046 0448     		ldr	r0, .L83+4
+ 509 0048 FFF7FEFF 		bl	printf
+ 510 004c 0026     		movs	r6, #0
+ 511              	.L76:
+ 512 004e 3046     		mov	r0, r6
+ 513 0050 03B0     		add	sp, sp, #12
+ 514              		@ sp needed
+ 515 0052 F0BD     		pop	{r4, r5, r6, r7, pc}
+ 516              	.L84:
+ 517              		.align	2
+ 518              	.L83:
+ 519 0054 00000000 		.word	.LC0
+ 520 0058 10000000 		.word	.LC1
+ 522              		.section	.text.xQueueCreateCountingSemaphore,"ax",%progbits
+ 523              		.align	1
+ 524              		.global	xQueueCreateCountingSemaphore
+ 525              		.syntax unified
+ 526              		.thumb
+ 527              		.thumb_func
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s 			page 10
+
+
+ 529              	xQueueCreateCountingSemaphore:
+ 530              		@ args = 0, pretend = 0, frame = 0
+ 531              		@ frame_needed = 0, uses_anonymous_args = 0
+ 532 0000 10B5     		push	{r4, lr}
+ 533 0002 48B1     		cbz	r0, .L86
+ 534 0004 0C46     		mov	r4, r1
+ 535 0006 8842     		cmp	r0, r1
+ 536 0008 06D3     		bcc	.L86
+ 537 000a 0222     		movs	r2, #2
+ 538 000c 0021     		movs	r1, #0
+ 539 000e FFF7FEFF 		bl	xQueueGenericCreate
+ 540 0012 40B1     		cbz	r0, .L85
+ 541 0014 8463     		str	r4, [r0, #56]
+ 542 0016 06E0     		b	.L85
+ 543              	.L86:
+ 544 0018 40F23932 		movw	r2, #825
+ 545 001c 0249     		ldr	r1, .L89
+ 546 001e 0348     		ldr	r0, .L89+4
+ 547 0020 FFF7FEFF 		bl	printf
+ 548 0024 0020     		movs	r0, #0
+ 549              	.L85:
+ 550 0026 10BD     		pop	{r4, pc}
+ 551              	.L90:
+ 552              		.align	2
+ 553              	.L89:
+ 554 0028 00000000 		.word	.LC0
+ 555 002c 10000000 		.word	.LC1
+ 557              		.section	.text.xQueueGenericSend,"ax",%progbits
+ 558              		.align	1
+ 559              		.global	xQueueGenericSend
+ 560              		.syntax unified
+ 561              		.thumb
+ 562              		.thumb_func
+ 564              	xQueueGenericSend:
+ 565              		@ args = 0, pretend = 0, frame = 16
+ 566              		@ frame_needed = 0, uses_anonymous_args = 0
+ 567 0000 F0B5     		push	{r4, r5, r6, r7, lr}
+ 568 0002 85B0     		sub	sp, sp, #20
+ 569 0004 0F46     		mov	r7, r1
+ 570 0006 0192     		str	r2, [sp, #4]
+ 571 0008 1D46     		mov	r5, r3
+ 572 000a 0446     		mov	r4, r0
+ 573 000c 48B1     		cbz	r0, .L112
+ 574              	.L92:
+ 575 000e 7FB1     		cbz	r7, .L113
+ 576              	.L93:
+ 577 0010 022D     		cmp	r5, #2
+ 578 0012 17D0     		beq	.L114
+ 579              	.L94:
+ 580 0014 FFF7FEFF 		bl	xTaskGetSchedulerState
+ 581 0018 08B9     		cbnz	r0, .L95
+ 582 001a 019B     		ldr	r3, [sp, #4]
+ 583 001c E3B9     		cbnz	r3, .L115
+ 584              	.L95:
+ 585 001e 0026     		movs	r6, #0
+ 586 0020 75E0     		b	.L96
+ 587              	.L112:
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s 			page 11
+
+
+ 588 0022 4FF45372 		mov	r2, #844
+ 589 0026 5E49     		ldr	r1, .L121
+ 590 0028 5E48     		ldr	r0, .L121+4
+ 591 002a FFF7FEFF 		bl	printf
+ 592 002e EEE7     		b	.L92
+ 593              	.L113:
+ 594 0030 236C     		ldr	r3, [r4, #64]
+ 595 0032 002B     		cmp	r3, #0
+ 596 0034 ECD0     		beq	.L93
+ 597 0036 40F24D32 		movw	r2, #845
+ 598 003a 5949     		ldr	r1, .L121
+ 599 003c 5948     		ldr	r0, .L121+4
+ 600 003e FFF7FEFF 		bl	printf
+ 601 0042 E5E7     		b	.L93
+ 602              	.L114:
+ 603 0044 E36B     		ldr	r3, [r4, #60]
+ 604 0046 012B     		cmp	r3, #1
+ 605 0048 E4D0     		beq	.L94
+ 606 004a 40F24E32 		movw	r2, #846
+ 607 004e 5449     		ldr	r1, .L121
+ 608 0050 5448     		ldr	r0, .L121+4
+ 609 0052 FFF7FEFF 		bl	printf
+ 610 0056 DDE7     		b	.L94
+ 611              	.L115:
+ 612 0058 40F25132 		movw	r2, #849
+ 613 005c 5049     		ldr	r1, .L121
+ 614 005e 5148     		ldr	r0, .L121+4
+ 615 0060 FFF7FEFF 		bl	printf
+ 616 0064 DBE7     		b	.L95
+ 617              	.L97:
+ 618 0066 A66B     		ldr	r6, [r4, #56]
+ 619 0068 2A46     		mov	r2, r5
+ 620 006a 3946     		mov	r1, r7
+ 621 006c 2046     		mov	r0, r4
+ 622 006e FFF7FEFF 		bl	prvCopyDataToQueue
+ 623 0072 A36C     		ldr	r3, [r4, #72]
+ 624 0074 ABB1     		cbz	r3, .L99
+ 625 0076 022D     		cmp	r5, #2
+ 626 0078 00D1     		bne	.L100
+ 627 007a 6EB9     		cbnz	r6, .L101
+ 628              	.L100:
+ 629 007c 2046     		mov	r0, r4
+ 630 007e FFF7FEFF 		bl	prvNotifyQueueSetContainer
+ 631 0082 48B1     		cbz	r0, .L101
+ 632 0084 4FF0E023 		mov	r3, #-536813568
+ 633 0088 4FF08052 		mov	r2, #268435456
+ 634 008c C3F8042D 		str	r2, [r3, #3332]
+ 635              		.syntax unified
+ 636              	@ 888 "RTOS/queue.c" 1
+ 637 0090 BFF34F8F 		dsb
+ 638              	@ 0 "" 2
+ 639              	@ 888 "RTOS/queue.c" 1
+ 640 0094 BFF36F8F 		isb
+ 641              	@ 0 "" 2
+ 642              		.thumb
+ 643              		.syntax unified
+ 644              	.L101:
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s 			page 12
+
+
+ 645 0098 FFF7FEFF 		bl	vPortExitCritical
+ 646 009c 0120     		movs	r0, #1
+ 647              	.L91:
+ 648 009e 05B0     		add	sp, sp, #20
+ 649              		@ sp needed
+ 650 00a0 F0BD     		pop	{r4, r5, r6, r7, pc}
+ 651              	.L99:
+ 652 00a2 636A     		ldr	r3, [r4, #36]
+ 653 00a4 63B9     		cbnz	r3, .L116
+ 654 00a6 0028     		cmp	r0, #0
+ 655 00a8 F6D0     		beq	.L101
+ 656 00aa 4FF0E023 		mov	r3, #-536813568
+ 657 00ae 4FF08052 		mov	r2, #268435456
+ 658 00b2 C3F8042D 		str	r2, [r3, #3332]
+ 659              		.syntax unified
+ 660              	@ 920 "RTOS/queue.c" 1
+ 661 00b6 BFF34F8F 		dsb
+ 662              	@ 0 "" 2
+ 663              	@ 920 "RTOS/queue.c" 1
+ 664 00ba BFF36F8F 		isb
+ 665              	@ 0 "" 2
+ 666              		.thumb
+ 667              		.syntax unified
+ 668 00be EBE7     		b	.L101
+ 669              	.L116:
+ 670 00c0 04F12400 		add	r0, r4, #36
+ 671 00c4 FFF7FEFF 		bl	xTaskRemoveFromEventList
+ 672 00c8 0028     		cmp	r0, #0
+ 673 00ca E5D0     		beq	.L101
+ 674 00cc 4FF0E023 		mov	r3, #-536813568
+ 675 00d0 4FF08052 		mov	r2, #268435456
+ 676 00d4 C3F8042D 		str	r2, [r3, #3332]
+ 677              		.syntax unified
+ 678              	@ 907 "RTOS/queue.c" 1
+ 679 00d8 BFF34F8F 		dsb
+ 680              	@ 0 "" 2
+ 681              	@ 907 "RTOS/queue.c" 1
+ 682 00dc BFF36F8F 		isb
+ 683              	@ 0 "" 2
+ 684              		.thumb
+ 685              		.syntax unified
+ 686 00e0 DAE7     		b	.L101
+ 687              	.L117:
+ 688 00e2 FFF7FEFF 		bl	vPortExitCritical
+ 689 00e6 0020     		movs	r0, #0
+ 690 00e8 D9E7     		b	.L91
+ 691              	.L118:
+ 692 00ea 02A8     		add	r0, sp, #8
+ 693 00ec FFF7FEFF 		bl	vTaskInternalSetTimeOutState
+ 694 00f0 0126     		movs	r6, #1
+ 695 00f2 19E0     		b	.L105
+ 696              	.L119:
+ 697 00f4 0023     		movs	r3, #0
+ 698 00f6 84F84430 		strb	r3, [r4, #68]
+ 699 00fa 21E0     		b	.L106
+ 700              	.L120:
+ 701 00fc 0023     		movs	r3, #0
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s 			page 13
+
+
+ 702 00fe 84F84530 		strb	r3, [r4, #69]
+ 703 0102 23E0     		b	.L107
+ 704              	.L109:
+ 705 0104 2046     		mov	r0, r4
+ 706 0106 FFF7FEFF 		bl	prvUnlockQueue
+ 707 010a FFF7FEFF 		bl	xTaskResumeAll
+ 708              	.L96:
+ 709 010e FFF7FEFF 		bl	vPortEnterCritical
+ 710 0112 A26B     		ldr	r2, [r4, #56]
+ 711 0114 E36B     		ldr	r3, [r4, #60]
+ 712 0116 9A42     		cmp	r2, r3
+ 713 0118 A5D3     		bcc	.L97
+ 714 011a 022D     		cmp	r5, #2
+ 715 011c A3D0     		beq	.L97
+ 716 011e 019B     		ldr	r3, [sp, #4]
+ 717 0120 002B     		cmp	r3, #0
+ 718 0122 DED0     		beq	.L117
+ 719 0124 002E     		cmp	r6, #0
+ 720 0126 E0D0     		beq	.L118
+ 721              	.L105:
+ 722 0128 FFF7FEFF 		bl	vPortExitCritical
+ 723 012c FFF7FEFF 		bl	vTaskSuspendAll
+ 724 0130 FFF7FEFF 		bl	vPortEnterCritical
+ 725 0134 94F84420 		ldrb	r2, [r4, #68]	@ zero_extendqisi2
+ 726 0138 52B2     		sxtb	r2, r2
+ 727 013a B2F1FF3F 		cmp	r2, #-1
+ 728 013e D9D0     		beq	.L119
+ 729              	.L106:
+ 730 0140 94F84520 		ldrb	r2, [r4, #69]	@ zero_extendqisi2
+ 731 0144 52B2     		sxtb	r2, r2
+ 732 0146 B2F1FF3F 		cmp	r2, #-1
+ 733 014a D7D0     		beq	.L120
+ 734              	.L107:
+ 735 014c FFF7FEFF 		bl	vPortExitCritical
+ 736 0150 01A9     		add	r1, sp, #4
+ 737 0152 02A8     		add	r0, sp, #8
+ 738 0154 FFF7FEFF 		bl	xTaskCheckForTimeOut
+ 739 0158 D8B9     		cbnz	r0, .L108
+ 740 015a 2046     		mov	r0, r4
+ 741 015c FFF7FEFF 		bl	prvIsQueueFull
+ 742 0160 0028     		cmp	r0, #0
+ 743 0162 CFD0     		beq	.L109
+ 744 0164 0199     		ldr	r1, [sp, #4]
+ 745 0166 04F11000 		add	r0, r4, #16
+ 746 016a FFF7FEFF 		bl	vTaskPlaceOnEventList
+ 747 016e 2046     		mov	r0, r4
+ 748 0170 FFF7FEFF 		bl	prvUnlockQueue
+ 749 0174 FFF7FEFF 		bl	xTaskResumeAll
+ 750 0178 0028     		cmp	r0, #0
+ 751 017a C8D1     		bne	.L96
+ 752 017c 4FF0E023 		mov	r3, #-536813568
+ 753 0180 4FF08052 		mov	r2, #268435456
+ 754 0184 C3F8042D 		str	r2, [r3, #3332]
+ 755              		.syntax unified
+ 756              	@ 1024 "RTOS/queue.c" 1
+ 757 0188 BFF34F8F 		dsb
+ 758              	@ 0 "" 2
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s 			page 14
+
+
+ 759              	@ 1024 "RTOS/queue.c" 1
+ 760 018c BFF36F8F 		isb
+ 761              	@ 0 "" 2
+ 762              		.thumb
+ 763              		.syntax unified
+ 764 0190 BDE7     		b	.L96
+ 765              	.L108:
+ 766 0192 2046     		mov	r0, r4
+ 767 0194 FFF7FEFF 		bl	prvUnlockQueue
+ 768 0198 FFF7FEFF 		bl	xTaskResumeAll
+ 769 019c 0020     		movs	r0, #0
+ 770 019e 7EE7     		b	.L91
+ 771              	.L122:
+ 772              		.align	2
+ 773              	.L121:
+ 774 01a0 00000000 		.word	.LC0
+ 775 01a4 10000000 		.word	.LC1
+ 777              		.section	.text.prvInitialiseMutex,"ax",%progbits
+ 778              		.align	1
+ 779              		.syntax unified
+ 780              		.thumb
+ 781              		.thumb_func
+ 783              	prvInitialiseMutex:
+ 784              		@ args = 0, pretend = 0, frame = 0
+ 785              		@ frame_needed = 0, uses_anonymous_args = 0
+ 786 0000 48B1     		cbz	r0, .L126
+ 787 0002 08B5     		push	{r3, lr}
+ 788 0004 0021     		movs	r1, #0
+ 789 0006 8160     		str	r1, [r0, #8]
+ 790 0008 0160     		str	r1, [r0]
+ 791 000a C160     		str	r1, [r0, #12]
+ 792 000c 0B46     		mov	r3, r1
+ 793 000e 0A46     		mov	r2, r1
+ 794 0010 FFF7FEFF 		bl	xQueueGenericSend
+ 795 0014 08BD     		pop	{r3, pc}
+ 796              	.L126:
+ 797 0016 7047     		bx	lr
+ 799              		.section	.text.xQueueCreateMutex,"ax",%progbits
+ 800              		.align	1
+ 801              		.global	xQueueCreateMutex
+ 802              		.syntax unified
+ 803              		.thumb
+ 804              		.thumb_func
+ 806              	xQueueCreateMutex:
+ 807              		@ args = 0, pretend = 0, frame = 0
+ 808              		@ frame_needed = 0, uses_anonymous_args = 0
+ 809 0000 10B5     		push	{r4, lr}
+ 810 0002 0246     		mov	r2, r0
+ 811 0004 0021     		movs	r1, #0
+ 812 0006 0120     		movs	r0, #1
+ 813 0008 FFF7FEFF 		bl	xQueueGenericCreate
+ 814 000c 0446     		mov	r4, r0
+ 815 000e FFF7FEFF 		bl	prvInitialiseMutex
+ 816 0012 2046     		mov	r0, r4
+ 817 0014 10BD     		pop	{r4, pc}
+ 819              		.section	.text.xQueueGiveMutexRecursive,"ax",%progbits
+ 820              		.align	1
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s 			page 15
+
+
+ 821              		.global	xQueueGiveMutexRecursive
+ 822              		.syntax unified
+ 823              		.thumb
+ 824              		.thumb_func
+ 826              	xQueueGiveMutexRecursive:
+ 827              		@ args = 0, pretend = 0, frame = 0
+ 828              		@ frame_needed = 0, uses_anonymous_args = 0
+ 829 0000 38B5     		push	{r3, r4, r5, lr}
+ 830 0002 0446     		mov	r4, r0
+ 831 0004 30B1     		cbz	r0, .L137
+ 832              	.L132:
+ 833 0006 A568     		ldr	r5, [r4, #8]
+ 834 0008 FFF7FEFF 		bl	xTaskGetCurrentTaskHandle
+ 835 000c 8542     		cmp	r5, r0
+ 836 000e 08D0     		beq	.L138
+ 837 0010 0020     		movs	r0, #0
+ 838              	.L131:
+ 839 0012 38BD     		pop	{r3, r4, r5, pc}
+ 840              	.L137:
+ 841 0014 40F2A122 		movw	r2, #673
+ 842 0018 0849     		ldr	r1, .L140
+ 843 001a 0948     		ldr	r0, .L140+4
+ 844 001c FFF7FEFF 		bl	printf
+ 845 0020 F1E7     		b	.L132
+ 846              	.L138:
+ 847 0022 E368     		ldr	r3, [r4, #12]
+ 848 0024 013B     		subs	r3, r3, #1
+ 849 0026 E360     		str	r3, [r4, #12]
+ 850 0028 0BB1     		cbz	r3, .L139
+ 851 002a 0120     		movs	r0, #1
+ 852 002c F1E7     		b	.L131
+ 853              	.L139:
+ 854 002e 1A46     		mov	r2, r3
+ 855 0030 1946     		mov	r1, r3
+ 856 0032 2046     		mov	r0, r4
+ 857 0034 FFF7FEFF 		bl	xQueueGenericSend
+ 858 0038 0120     		movs	r0, #1
+ 859 003a EAE7     		b	.L131
+ 860              	.L141:
+ 861              		.align	2
+ 862              	.L140:
+ 863 003c 00000000 		.word	.LC0
+ 864 0040 10000000 		.word	.LC1
+ 866              		.section	.text.xQueueGenericSendFromISR,"ax",%progbits
+ 867              		.align	1
+ 868              		.global	xQueueGenericSendFromISR
+ 869              		.syntax unified
+ 870              		.thumb
+ 871              		.thumb_func
+ 873              	xQueueGenericSendFromISR:
+ 874              		@ args = 0, pretend = 0, frame = 0
+ 875              		@ frame_needed = 0, uses_anonymous_args = 0
+ 876 0000 2DE9F047 		push	{r4, r5, r6, r7, r8, r9, r10, lr}
+ 877 0004 0E46     		mov	r6, r1
+ 878 0006 9146     		mov	r9, r2
+ 879 0008 1D46     		mov	r5, r3
+ 880 000a 0446     		mov	r4, r0
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s 			page 16
+
+
+ 881 000c C8B1     		cbz	r0, .L161
+ 882              	.L143:
+ 883 000e FEB1     		cbz	r6, .L162
+ 884              	.L144:
+ 885 0010 022D     		cmp	r5, #2
+ 886 0012 27D0     		beq	.L163
+ 887              	.L145:
+ 888 0014 FFF7FEFF 		bl	vPortValidateInterruptPriority
+ 889              		.syntax unified
+ 890              	@ 214 "RTOS/portable/GCC/ARM_CM4F/portmacro.h" 1
+ 891 0018 EFF31187 			mrs r7, basepri											
+ 892 001c 4FF05003 		mov r3, #80												
+ 893 0020 83F31188 		msr basepri, r3											
+ 894 0024 BFF36F8F 		isb														
+ 895 0028 BFF34F8F 		dsb														
+ 896              	
+ 897              	@ 0 "" 2
+ 898              		.thumb
+ 899              		.syntax unified
+ 900 002c A26B     		ldr	r2, [r4, #56]
+ 901 002e E36B     		ldr	r3, [r4, #60]
+ 902 0030 9A42     		cmp	r2, r3
+ 903 0032 21D3     		bcc	.L146
+ 904 0034 022D     		cmp	r5, #2
+ 905 0036 1FD0     		beq	.L146
+ 906 0038 0020     		movs	r0, #0
+ 907              	.L147:
+ 908              		.syntax unified
+ 909              	@ 232 "RTOS/portable/GCC/ARM_CM4F/portmacro.h" 1
+ 910 003a 87F31188 			msr basepri, r7	
+ 911              	@ 0 "" 2
+ 912              		.thumb
+ 913              		.syntax unified
+ 914 003e BDE8F087 		pop	{r4, r5, r6, r7, r8, r9, r10, pc}
+ 915              	.L161:
+ 916 0042 4FF48462 		mov	r2, #1056
+ 917 0046 3549     		ldr	r1, .L166
+ 918 0048 3548     		ldr	r0, .L166+4
+ 919 004a FFF7FEFF 		bl	printf
+ 920 004e DEE7     		b	.L143
+ 921              	.L162:
+ 922 0050 236C     		ldr	r3, [r4, #64]
+ 923 0052 002B     		cmp	r3, #0
+ 924 0054 DCD0     		beq	.L144
+ 925 0056 40F22142 		movw	r2, #1057
+ 926 005a 3049     		ldr	r1, .L166
+ 927 005c 3048     		ldr	r0, .L166+4
+ 928 005e FFF7FEFF 		bl	printf
+ 929 0062 D5E7     		b	.L144
+ 930              	.L163:
+ 931 0064 E36B     		ldr	r3, [r4, #60]
+ 932 0066 012B     		cmp	r3, #1
+ 933 0068 D4D0     		beq	.L145
+ 934 006a 40F22242 		movw	r2, #1058
+ 935 006e 2B49     		ldr	r1, .L166
+ 936 0070 2B48     		ldr	r0, .L166+4
+ 937 0072 FFF7FEFF 		bl	printf
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s 			page 17
+
+
+ 938 0076 CDE7     		b	.L145
+ 939              	.L146:
+ 940 0078 94F84580 		ldrb	r8, [r4, #69]	@ zero_extendqisi2
+ 941 007c 4FFA88F8 		sxtb	r8, r8
+ 942 0080 D4F838A0 		ldr	r10, [r4, #56]
+ 943 0084 2A46     		mov	r2, r5
+ 944 0086 3146     		mov	r1, r6
+ 945 0088 2046     		mov	r0, r4
+ 946 008a FFF7FEFF 		bl	prvCopyDataToQueue
+ 947 008e B8F1FF3F 		cmp	r8, #-1
+ 948 0092 21D1     		bne	.L148
+ 949 0094 A36C     		ldr	r3, [r4, #72]
+ 950 0096 7BB1     		cbz	r3, .L149
+ 951 0098 022D     		cmp	r5, #2
+ 952 009a 02D1     		bne	.L150
+ 953 009c BAF1000F 		cmp	r10, #0
+ 954 00a0 30D1     		bne	.L153
+ 955              	.L150:
+ 956 00a2 2046     		mov	r0, r4
+ 957 00a4 FFF7FEFF 		bl	prvNotifyQueueSetContainer
+ 958 00a8 70B3     		cbz	r0, .L154
+ 959 00aa B9F1000F 		cmp	r9, #0
+ 960 00ae 2DD0     		beq	.L155
+ 961 00b0 0120     		movs	r0, #1
+ 962 00b2 C9F80000 		str	r0, [r9]
+ 963 00b6 C0E7     		b	.L147
+ 964              	.L149:
+ 965 00b8 636A     		ldr	r3, [r4, #36]
+ 966 00ba 0BB9     		cbnz	r3, .L164
+ 967 00bc 0120     		movs	r0, #1
+ 968 00be BCE7     		b	.L147
+ 969              	.L164:
+ 970 00c0 04F12400 		add	r0, r4, #36
+ 971 00c4 FFF7FEFF 		bl	xTaskRemoveFromEventList
+ 972 00c8 10B3     		cbz	r0, .L157
+ 973 00ca B9F1000F 		cmp	r9, #0
+ 974 00ce 21D0     		beq	.L158
+ 975 00d0 0120     		movs	r0, #1
+ 976 00d2 C9F80000 		str	r0, [r9]
+ 977 00d6 B0E7     		b	.L147
+ 978              	.L148:
+ 979 00d8 FFF7FEFF 		bl	uxTaskGetNumberOfTasks
+ 980 00dc 8045     		cmp	r8, r0
+ 981 00de 1BD2     		bcs	.L159
+ 982 00e0 B8F17F0F 		cmp	r8, #127
+ 983 00e4 07D0     		beq	.L165
+ 984              	.L151:
+ 985 00e6 08F10108 		add	r8, r8, #1
+ 986 00ea 4FFA88F8 		sxtb	r8, r8
+ 987 00ee 84F84580 		strb	r8, [r4, #69]
+ 988 00f2 0120     		movs	r0, #1
+ 989 00f4 A1E7     		b	.L147
+ 990              	.L165:
+ 991 00f6 40F2AB42 		movw	r2, #1195
+ 992 00fa 0849     		ldr	r1, .L166
+ 993 00fc 0848     		ldr	r0, .L166+4
+ 994 00fe FFF7FEFF 		bl	printf
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s 			page 18
+
+
+ 995 0102 F0E7     		b	.L151
+ 996              	.L153:
+ 997 0104 0120     		movs	r0, #1
+ 998 0106 98E7     		b	.L147
+ 999              	.L154:
+ 1000 0108 0120     		movs	r0, #1
+ 1001 010a 96E7     		b	.L147
+ 1002              	.L155:
+ 1003 010c 0120     		movs	r0, #1
+ 1004 010e 94E7     		b	.L147
+ 1005              	.L157:
+ 1006 0110 0120     		movs	r0, #1
+ 1007 0112 92E7     		b	.L147
+ 1008              	.L158:
+ 1009 0114 0120     		movs	r0, #1
+ 1010 0116 90E7     		b	.L147
+ 1011              	.L159:
+ 1012 0118 0120     		movs	r0, #1
+ 1013 011a 8EE7     		b	.L147
+ 1014              	.L167:
+ 1015              		.align	2
+ 1016              	.L166:
+ 1017 011c 00000000 		.word	.LC0
+ 1018 0120 10000000 		.word	.LC1
+ 1020              		.section	.text.xQueueGiveFromISR,"ax",%progbits
+ 1021              		.align	1
+ 1022              		.global	xQueueGiveFromISR
+ 1023              		.syntax unified
+ 1024              		.thumb
+ 1025              		.thumb_func
+ 1027              	xQueueGiveFromISR:
+ 1028              		@ args = 0, pretend = 0, frame = 0
+ 1029              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1030 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+ 1031 0002 0E46     		mov	r6, r1
+ 1032 0004 0446     		mov	r4, r0
+ 1033 0006 40B3     		cbz	r0, .L184
+ 1034              	.L169:
+ 1035 0008 236C     		ldr	r3, [r4, #64]
+ 1036 000a 6BBB     		cbnz	r3, .L185
+ 1037              	.L170:
+ 1038 000c 2368     		ldr	r3, [r4]
+ 1039 000e 002B     		cmp	r3, #0
+ 1040 0010 31D0     		beq	.L186
+ 1041              	.L171:
+ 1042 0012 FFF7FEFF 		bl	vPortValidateInterruptPriority
+ 1043              		.syntax unified
+ 1044              	@ 214 "RTOS/portable/GCC/ARM_CM4F/portmacro.h" 1
+ 1045 0016 EFF31185 			mrs r5, basepri											
+ 1046 001a 4FF05003 		mov r3, #80												
+ 1047 001e 83F31188 		msr basepri, r3											
+ 1048 0022 BFF36F8F 		isb														
+ 1049 0026 BFF34F8F 		dsb														
+ 1050              	
+ 1051              	@ 0 "" 2
+ 1052              		.thumb
+ 1053              		.syntax unified
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s 			page 19
+
+
+ 1054 002a A36B     		ldr	r3, [r4, #56]
+ 1055 002c E26B     		ldr	r2, [r4, #60]
+ 1056 002e 9A42     		cmp	r2, r3
+ 1057 0030 4BD9     		bls	.L176
+ 1058 0032 94F84570 		ldrb	r7, [r4, #69]	@ zero_extendqisi2
+ 1059 0036 7FB2     		sxtb	r7, r7
+ 1060 0038 0133     		adds	r3, r3, #1
+ 1061 003a A363     		str	r3, [r4, #56]
+ 1062 003c B7F1FF3F 		cmp	r7, #-1
+ 1063 0040 30D1     		bne	.L173
+ 1064 0042 A36C     		ldr	r3, [r4, #72]
+ 1065 0044 0BB3     		cbz	r3, .L174
+ 1066 0046 2046     		mov	r0, r4
+ 1067 0048 FFF7FEFF 		bl	prvNotifyQueueSetContainer
+ 1068 004c 0028     		cmp	r0, #0
+ 1069 004e 40D0     		beq	.L177
+ 1070 0050 002E     		cmp	r6, #0
+ 1071 0052 40D0     		beq	.L178
+ 1072 0054 0120     		movs	r0, #1
+ 1073 0056 3060     		str	r0, [r6]
+ 1074 0058 38E0     		b	.L172
+ 1075              	.L184:
+ 1076 005a 40F2C942 		movw	r2, #1225
+ 1077 005e 2249     		ldr	r1, .L189
+ 1078 0060 2248     		ldr	r0, .L189+4
+ 1079 0062 FFF7FEFF 		bl	printf
+ 1080 0066 CFE7     		b	.L169
+ 1081              	.L185:
+ 1082 0068 40F2CD42 		movw	r2, #1229
+ 1083 006c 1E49     		ldr	r1, .L189
+ 1084 006e 1F48     		ldr	r0, .L189+4
+ 1085 0070 FFF7FEFF 		bl	printf
+ 1086 0074 CAE7     		b	.L170
+ 1087              	.L186:
+ 1088 0076 A368     		ldr	r3, [r4, #8]
+ 1089 0078 002B     		cmp	r3, #0
+ 1090 007a CAD0     		beq	.L171
+ 1091 007c 40F2D242 		movw	r2, #1234
+ 1092 0080 1949     		ldr	r1, .L189
+ 1093 0082 1A48     		ldr	r0, .L189+4
+ 1094 0084 FFF7FEFF 		bl	printf
+ 1095 0088 C3E7     		b	.L171
+ 1096              	.L174:
+ 1097 008a 636A     		ldr	r3, [r4, #36]
+ 1098 008c 0BB9     		cbnz	r3, .L187
+ 1099 008e 0120     		movs	r0, #1
+ 1100 0090 1CE0     		b	.L172
+ 1101              	.L187:
+ 1102 0092 04F12400 		add	r0, r4, #36
+ 1103 0096 FFF7FEFF 		bl	xTaskRemoveFromEventList
+ 1104 009a F0B1     		cbz	r0, .L180
+ 1105 009c FEB1     		cbz	r6, .L181
+ 1106 009e 0120     		movs	r0, #1
+ 1107 00a0 3060     		str	r0, [r6]
+ 1108 00a2 13E0     		b	.L172
+ 1109              	.L173:
+ 1110 00a4 FFF7FEFF 		bl	uxTaskGetNumberOfTasks
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s 			page 20
+
+
+ 1111 00a8 8742     		cmp	r7, r0
+ 1112 00aa 1AD2     		bcs	.L182
+ 1113 00ac 7F2F     		cmp	r7, #127
+ 1114 00ae 05D0     		beq	.L188
+ 1115              	.L175:
+ 1116 00b0 0137     		adds	r7, r7, #1
+ 1117 00b2 7FB2     		sxtb	r7, r7
+ 1118 00b4 84F84570 		strb	r7, [r4, #69]
+ 1119 00b8 0120     		movs	r0, #1
+ 1120 00ba 07E0     		b	.L172
+ 1121              	.L188:
+ 1122 00bc 40F25152 		movw	r2, #1361
+ 1123 00c0 0949     		ldr	r1, .L189
+ 1124 00c2 0A48     		ldr	r0, .L189+4
+ 1125 00c4 FFF7FEFF 		bl	printf
+ 1126 00c8 F2E7     		b	.L175
+ 1127              	.L176:
+ 1128 00ca 0020     		movs	r0, #0
+ 1129              	.L172:
+ 1130              		.syntax unified
+ 1131              	@ 232 "RTOS/portable/GCC/ARM_CM4F/portmacro.h" 1
+ 1132 00cc 85F31188 			msr basepri, r5	
+ 1133              	@ 0 "" 2
+ 1134              		.thumb
+ 1135              		.syntax unified
+ 1136 00d0 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 1137              	.L177:
+ 1138 00d2 0120     		movs	r0, #1
+ 1139 00d4 FAE7     		b	.L172
+ 1140              	.L178:
+ 1141 00d6 0120     		movs	r0, #1
+ 1142 00d8 F8E7     		b	.L172
+ 1143              	.L180:
+ 1144 00da 0120     		movs	r0, #1
+ 1145 00dc F6E7     		b	.L172
+ 1146              	.L181:
+ 1147 00de 0120     		movs	r0, #1
+ 1148 00e0 F4E7     		b	.L172
+ 1149              	.L182:
+ 1150 00e2 0120     		movs	r0, #1
+ 1151 00e4 F2E7     		b	.L172
+ 1152              	.L190:
+ 1153 00e6 00BF     		.align	2
+ 1154              	.L189:
+ 1155 00e8 00000000 		.word	.LC0
+ 1156 00ec 10000000 		.word	.LC1
+ 1158              		.section	.text.xQueueReceive,"ax",%progbits
+ 1159              		.align	1
+ 1160              		.global	xQueueReceive
+ 1161              		.syntax unified
+ 1162              		.thumb
+ 1163              		.thumb_func
+ 1165              	xQueueReceive:
+ 1166              		@ args = 0, pretend = 0, frame = 16
+ 1167              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1168 0000 F0B5     		push	{r4, r5, r6, r7, lr}
+ 1169 0002 85B0     		sub	sp, sp, #20
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s 			page 21
+
+
+ 1170 0004 0F46     		mov	r7, r1
+ 1171 0006 0192     		str	r2, [sp, #4]
+ 1172 0008 0446     		mov	r4, r0
+ 1173 000a 38B1     		cbz	r0, .L207
+ 1174              	.L192:
+ 1175 000c 6FB1     		cbz	r7, .L208
+ 1176              	.L193:
+ 1177 000e FFF7FEFF 		bl	xTaskGetSchedulerState
+ 1178 0012 08B9     		cbnz	r0, .L194
+ 1179 0014 019B     		ldr	r3, [sp, #4]
+ 1180 0016 93B9     		cbnz	r3, .L209
+ 1181              	.L194:
+ 1182 0018 0026     		movs	r6, #0
+ 1183 001a 56E0     		b	.L195
+ 1184              	.L207:
+ 1185 001c 40F26B52 		movw	r2, #1387
+ 1186 0020 4B49     		ldr	r1, .L217
+ 1187 0022 4C48     		ldr	r0, .L217+4
+ 1188 0024 FFF7FEFF 		bl	printf
+ 1189 0028 F0E7     		b	.L192
+ 1190              	.L208:
+ 1191 002a 236C     		ldr	r3, [r4, #64]
+ 1192 002c 002B     		cmp	r3, #0
+ 1193 002e EED0     		beq	.L193
+ 1194 0030 40F26F52 		movw	r2, #1391
+ 1195 0034 4649     		ldr	r1, .L217
+ 1196 0036 4748     		ldr	r0, .L217+4
+ 1197 0038 FFF7FEFF 		bl	printf
+ 1198 003c E7E7     		b	.L193
+ 1199              	.L209:
+ 1200 003e 40F27452 		movw	r2, #1396
+ 1201 0042 4349     		ldr	r1, .L217
+ 1202 0044 4348     		ldr	r0, .L217+4
+ 1203 0046 FFF7FEFF 		bl	printf
+ 1204 004a E5E7     		b	.L194
+ 1205              	.L212:
+ 1206 004c 3946     		mov	r1, r7
+ 1207 004e 2046     		mov	r0, r4
+ 1208 0050 FFF7FEFF 		bl	prvCopyDataFromQueue
+ 1209 0054 013D     		subs	r5, r5, #1
+ 1210 0056 A563     		str	r5, [r4, #56]
+ 1211 0058 2369     		ldr	r3, [r4, #16]
+ 1212 005a 23B9     		cbnz	r3, .L210
+ 1213              	.L197:
+ 1214 005c FFF7FEFF 		bl	vPortExitCritical
+ 1215 0060 0120     		movs	r0, #1
+ 1216              	.L191:
+ 1217 0062 05B0     		add	sp, sp, #20
+ 1218              		@ sp needed
+ 1219 0064 F0BD     		pop	{r4, r5, r6, r7, pc}
+ 1220              	.L210:
+ 1221 0066 04F11000 		add	r0, r4, #16
+ 1222 006a FFF7FEFF 		bl	xTaskRemoveFromEventList
+ 1223 006e 0028     		cmp	r0, #0
+ 1224 0070 F4D0     		beq	.L197
+ 1225 0072 4FF0E023 		mov	r3, #-536813568
+ 1226 0076 4FF08052 		mov	r2, #268435456
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s 			page 22
+
+
+ 1227 007a C3F8042D 		str	r2, [r3, #3332]
+ 1228              		.syntax unified
+ 1229              	@ 1425 "RTOS/queue.c" 1
+ 1230 007e BFF34F8F 		dsb
+ 1231              	@ 0 "" 2
+ 1232              	@ 1425 "RTOS/queue.c" 1
+ 1233 0082 BFF36F8F 		isb
+ 1234              	@ 0 "" 2
+ 1235              		.thumb
+ 1236              		.syntax unified
+ 1237 0086 E9E7     		b	.L197
+ 1238              	.L213:
+ 1239 0088 FFF7FEFF 		bl	vPortExitCritical
+ 1240 008c 0020     		movs	r0, #0
+ 1241 008e E8E7     		b	.L191
+ 1242              	.L214:
+ 1243 0090 02A8     		add	r0, sp, #8
+ 1244 0092 FFF7FEFF 		bl	vTaskInternalSetTimeOutState
+ 1245 0096 0126     		movs	r6, #1
+ 1246 0098 21E0     		b	.L200
+ 1247              	.L215:
+ 1248 009a 0023     		movs	r3, #0
+ 1249 009c 84F84430 		strb	r3, [r4, #68]
+ 1250 00a0 29E0     		b	.L201
+ 1251              	.L216:
+ 1252 00a2 0023     		movs	r3, #0
+ 1253 00a4 84F84530 		strb	r3, [r4, #69]
+ 1254 00a8 2BE0     		b	.L202
+ 1255              	.L204:
+ 1256 00aa 2046     		mov	r0, r4
+ 1257 00ac FFF7FEFF 		bl	prvUnlockQueue
+ 1258 00b0 FFF7FEFF 		bl	xTaskResumeAll
+ 1259 00b4 09E0     		b	.L195
+ 1260              	.L203:
+ 1261 00b6 2046     		mov	r0, r4
+ 1262 00b8 FFF7FEFF 		bl	prvUnlockQueue
+ 1263 00bc FFF7FEFF 		bl	xTaskResumeAll
+ 1264 00c0 2046     		mov	r0, r4
+ 1265 00c2 FFF7FEFF 		bl	prvIsQueueEmpty
+ 1266 00c6 0028     		cmp	r0, #0
+ 1267 00c8 3FD1     		bne	.L211
+ 1268              	.L195:
+ 1269 00ca FFF7FEFF 		bl	vPortEnterCritical
+ 1270 00ce A56B     		ldr	r5, [r4, #56]
+ 1271 00d0 002D     		cmp	r5, #0
+ 1272 00d2 BBD1     		bne	.L212
+ 1273 00d4 019B     		ldr	r3, [sp, #4]
+ 1274 00d6 002B     		cmp	r3, #0
+ 1275 00d8 D6D0     		beq	.L213
+ 1276 00da 002E     		cmp	r6, #0
+ 1277 00dc D8D0     		beq	.L214
+ 1278              	.L200:
+ 1279 00de FFF7FEFF 		bl	vPortExitCritical
+ 1280 00e2 FFF7FEFF 		bl	vTaskSuspendAll
+ 1281 00e6 FFF7FEFF 		bl	vPortEnterCritical
+ 1282 00ea 94F84430 		ldrb	r3, [r4, #68]	@ zero_extendqisi2
+ 1283 00ee 5BB2     		sxtb	r3, r3
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s 			page 23
+
+
+ 1284 00f0 B3F1FF3F 		cmp	r3, #-1
+ 1285 00f4 D1D0     		beq	.L215
+ 1286              	.L201:
+ 1287 00f6 94F84530 		ldrb	r3, [r4, #69]	@ zero_extendqisi2
+ 1288 00fa 5BB2     		sxtb	r3, r3
+ 1289 00fc B3F1FF3F 		cmp	r3, #-1
+ 1290 0100 CFD0     		beq	.L216
+ 1291              	.L202:
+ 1292 0102 FFF7FEFF 		bl	vPortExitCritical
+ 1293 0106 01A9     		add	r1, sp, #4
+ 1294 0108 02A8     		add	r0, sp, #8
+ 1295 010a FFF7FEFF 		bl	xTaskCheckForTimeOut
+ 1296 010e 0028     		cmp	r0, #0
+ 1297 0110 D1D1     		bne	.L203
+ 1298 0112 2046     		mov	r0, r4
+ 1299 0114 FFF7FEFF 		bl	prvIsQueueEmpty
+ 1300 0118 0028     		cmp	r0, #0
+ 1301 011a C6D0     		beq	.L204
+ 1302 011c 0199     		ldr	r1, [sp, #4]
+ 1303 011e 04F12400 		add	r0, r4, #36
+ 1304 0122 FFF7FEFF 		bl	vTaskPlaceOnEventList
+ 1305 0126 2046     		mov	r0, r4
+ 1306 0128 FFF7FEFF 		bl	prvUnlockQueue
+ 1307 012c FFF7FEFF 		bl	xTaskResumeAll
+ 1308 0130 0028     		cmp	r0, #0
+ 1309 0132 CAD1     		bne	.L195
+ 1310 0134 4FF0E023 		mov	r3, #-536813568
+ 1311 0138 4FF08052 		mov	r2, #268435456
+ 1312 013c C3F8042D 		str	r2, [r3, #3332]
+ 1313              		.syntax unified
+ 1314              	@ 1485 "RTOS/queue.c" 1
+ 1315 0140 BFF34F8F 		dsb
+ 1316              	@ 0 "" 2
+ 1317              	@ 1485 "RTOS/queue.c" 1
+ 1318 0144 BFF36F8F 		isb
+ 1319              	@ 0 "" 2
+ 1320              		.thumb
+ 1321              		.syntax unified
+ 1322 0148 BFE7     		b	.L195
+ 1323              	.L211:
+ 1324 014a 0020     		movs	r0, #0
+ 1325 014c 89E7     		b	.L191
+ 1326              	.L218:
+ 1327 014e 00BF     		.align	2
+ 1328              	.L217:
+ 1329 0150 00000000 		.word	.LC0
+ 1330 0154 10000000 		.word	.LC1
+ 1332              		.section	.text.xQueueSemaphoreTake,"ax",%progbits
+ 1333              		.align	1
+ 1334              		.global	xQueueSemaphoreTake
+ 1335              		.syntax unified
+ 1336              		.thumb
+ 1337              		.thumb_func
+ 1339              	xQueueSemaphoreTake:
+ 1340              		@ args = 0, pretend = 0, frame = 16
+ 1341              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1342 0000 70B5     		push	{r4, r5, r6, lr}
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s 			page 24
+
+
+ 1343 0002 84B0     		sub	sp, sp, #16
+ 1344 0004 0191     		str	r1, [sp, #4]
+ 1345 0006 0446     		mov	r4, r0
+ 1346 0008 48B1     		cbz	r0, .L238
+ 1347              	.L220:
+ 1348 000a 236C     		ldr	r3, [r4, #64]
+ 1349 000c 73B9     		cbnz	r3, .L239
+ 1350              	.L221:
+ 1351 000e FFF7FEFF 		bl	xTaskGetSchedulerState
+ 1352 0012 08B9     		cbnz	r0, .L222
+ 1353 0014 019B     		ldr	r3, [sp, #4]
+ 1354 0016 83B9     		cbnz	r3, .L240
+ 1355              	.L222:
+ 1356 0018 0026     		movs	r6, #0
+ 1357 001a 3546     		mov	r5, r6
+ 1358 001c 5EE0     		b	.L223
+ 1359              	.L238:
+ 1360 001e 40F2FD52 		movw	r2, #1533
+ 1361 0022 5749     		ldr	r1, .L251
+ 1362 0024 5748     		ldr	r0, .L251+4
+ 1363 0026 FFF7FEFF 		bl	printf
+ 1364 002a EEE7     		b	.L220
+ 1365              	.L239:
+ 1366 002c 40F20162 		movw	r2, #1537
+ 1367 0030 5349     		ldr	r1, .L251
+ 1368 0032 5448     		ldr	r0, .L251+4
+ 1369 0034 FFF7FEFF 		bl	printf
+ 1370 0038 E9E7     		b	.L221
+ 1371              	.L240:
+ 1372 003a 40F20662 		movw	r2, #1542
+ 1373 003e 5049     		ldr	r1, .L251
+ 1374 0040 5048     		ldr	r0, .L251+4
+ 1375 0042 FFF7FEFF 		bl	printf
+ 1376 0046 E7E7     		b	.L222
+ 1377              	.L244:
+ 1378 0048 013B     		subs	r3, r3, #1
+ 1379 004a A363     		str	r3, [r4, #56]
+ 1380 004c 2368     		ldr	r3, [r4]
+ 1381 004e 33B1     		cbz	r3, .L241
+ 1382              	.L225:
+ 1383 0050 2369     		ldr	r3, [r4, #16]
+ 1384 0052 43B9     		cbnz	r3, .L242
+ 1385              	.L226:
+ 1386 0054 FFF7FEFF 		bl	vPortExitCritical
+ 1387 0058 0120     		movs	r0, #1
+ 1388              	.L219:
+ 1389 005a 04B0     		add	sp, sp, #16
+ 1390              		@ sp needed
+ 1391 005c 70BD     		pop	{r4, r5, r6, pc}
+ 1392              	.L241:
+ 1393 005e FFF7FEFF 		bl	pvTaskIncrementMutexHeldCount
+ 1394 0062 A060     		str	r0, [r4, #8]
+ 1395 0064 F4E7     		b	.L225
+ 1396              	.L242:
+ 1397 0066 04F11000 		add	r0, r4, #16
+ 1398 006a FFF7FEFF 		bl	xTaskRemoveFromEventList
+ 1399 006e 0028     		cmp	r0, #0
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s 			page 25
+
+
+ 1400 0070 F0D0     		beq	.L226
+ 1401 0072 4FF0E023 		mov	r3, #-536813568
+ 1402 0076 4FF08052 		mov	r2, #268435456
+ 1403 007a C3F8042D 		str	r2, [r3, #3332]
+ 1404              		.syntax unified
+ 1405              	@ 1588 "RTOS/queue.c" 1
+ 1406 007e BFF34F8F 		dsb
+ 1407              	@ 0 "" 2
+ 1408              	@ 1588 "RTOS/queue.c" 1
+ 1409 0082 BFF36F8F 		isb
+ 1410              	@ 0 "" 2
+ 1411              		.thumb
+ 1412              		.syntax unified
+ 1413 0086 E5E7     		b	.L226
+ 1414              	.L245:
+ 1415 0088 FFF7FEFF 		bl	vPortExitCritical
+ 1416 008c 0020     		movs	r0, #0
+ 1417 008e E4E7     		b	.L219
+ 1418              	.L246:
+ 1419 0090 02A8     		add	r0, sp, #8
+ 1420 0092 FFF7FEFF 		bl	vTaskInternalSetTimeOutState
+ 1421 0096 0125     		movs	r5, #1
+ 1422 0098 2AE0     		b	.L229
+ 1423              	.L247:
+ 1424 009a 0023     		movs	r3, #0
+ 1425 009c 84F84430 		strb	r3, [r4, #68]
+ 1426 00a0 32E0     		b	.L230
+ 1427              	.L248:
+ 1428 00a2 0023     		movs	r3, #0
+ 1429 00a4 84F84530 		strb	r3, [r4, #69]
+ 1430 00a8 34E0     		b	.L231
+ 1431              	.L249:
+ 1432 00aa FFF7FEFF 		bl	vPortEnterCritical
+ 1433 00ae A068     		ldr	r0, [r4, #8]
+ 1434 00b0 FFF7FEFF 		bl	xTaskPriorityInherit
+ 1435 00b4 0646     		mov	r6, r0
+ 1436 00b6 FFF7FEFF 		bl	vPortExitCritical
+ 1437 00ba 3BE0     		b	.L234
+ 1438              	.L233:
+ 1439 00bc 2046     		mov	r0, r4
+ 1440 00be FFF7FEFF 		bl	prvUnlockQueue
+ 1441 00c2 FFF7FEFF 		bl	xTaskResumeAll
+ 1442 00c6 09E0     		b	.L223
+ 1443              	.L232:
+ 1444 00c8 2046     		mov	r0, r4
+ 1445 00ca FFF7FEFF 		bl	prvUnlockQueue
+ 1446 00ce FFF7FEFF 		bl	xTaskResumeAll
+ 1447 00d2 2046     		mov	r0, r4
+ 1448 00d4 FFF7FEFF 		bl	prvIsQueueEmpty
+ 1449 00d8 0028     		cmp	r0, #0
+ 1450 00da 42D1     		bne	.L243
+ 1451              	.L223:
+ 1452 00dc FFF7FEFF 		bl	vPortEnterCritical
+ 1453 00e0 A36B     		ldr	r3, [r4, #56]
+ 1454 00e2 002B     		cmp	r3, #0
+ 1455 00e4 B0D1     		bne	.L244
+ 1456 00e6 019B     		ldr	r3, [sp, #4]
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s 			page 26
+
+
+ 1457 00e8 002B     		cmp	r3, #0
+ 1458 00ea CDD0     		beq	.L245
+ 1459 00ec 002D     		cmp	r5, #0
+ 1460 00ee CFD0     		beq	.L246
+ 1461              	.L229:
+ 1462 00f0 FFF7FEFF 		bl	vPortExitCritical
+ 1463 00f4 FFF7FEFF 		bl	vTaskSuspendAll
+ 1464 00f8 FFF7FEFF 		bl	vPortEnterCritical
+ 1465 00fc 94F84430 		ldrb	r3, [r4, #68]	@ zero_extendqisi2
+ 1466 0100 5BB2     		sxtb	r3, r3
+ 1467 0102 B3F1FF3F 		cmp	r3, #-1
+ 1468 0106 C8D0     		beq	.L247
+ 1469              	.L230:
+ 1470 0108 94F84530 		ldrb	r3, [r4, #69]	@ zero_extendqisi2
+ 1471 010c 5BB2     		sxtb	r3, r3
+ 1472 010e B3F1FF3F 		cmp	r3, #-1
+ 1473 0112 C6D0     		beq	.L248
+ 1474              	.L231:
+ 1475 0114 FFF7FEFF 		bl	vPortExitCritical
+ 1476 0118 01A9     		add	r1, sp, #4
+ 1477 011a 02A8     		add	r0, sp, #8
+ 1478 011c FFF7FEFF 		bl	xTaskCheckForTimeOut
+ 1479 0120 0028     		cmp	r0, #0
+ 1480 0122 D1D1     		bne	.L232
+ 1481 0124 2046     		mov	r0, r4
+ 1482 0126 FFF7FEFF 		bl	prvIsQueueEmpty
+ 1483 012a 0028     		cmp	r0, #0
+ 1484 012c C6D0     		beq	.L233
+ 1485 012e 2368     		ldr	r3, [r4]
+ 1486 0130 002B     		cmp	r3, #0
+ 1487 0132 BAD0     		beq	.L249
+ 1488              	.L234:
+ 1489 0134 0199     		ldr	r1, [sp, #4]
+ 1490 0136 04F12400 		add	r0, r4, #36
+ 1491 013a FFF7FEFF 		bl	vTaskPlaceOnEventList
+ 1492 013e 2046     		mov	r0, r4
+ 1493 0140 FFF7FEFF 		bl	prvUnlockQueue
+ 1494 0144 FFF7FEFF 		bl	xTaskResumeAll
+ 1495 0148 0028     		cmp	r0, #0
+ 1496 014a C7D1     		bne	.L223
+ 1497 014c 4FF0E023 		mov	r3, #-536813568
+ 1498 0150 4FF08052 		mov	r2, #268435456
+ 1499 0154 C3F8042D 		str	r2, [r3, #3332]
+ 1500              		.syntax unified
+ 1501              	@ 1668 "RTOS/queue.c" 1
+ 1502 0158 BFF34F8F 		dsb
+ 1503              	@ 0 "" 2
+ 1504              	@ 1668 "RTOS/queue.c" 1
+ 1505 015c BFF36F8F 		isb
+ 1506              	@ 0 "" 2
+ 1507              		.thumb
+ 1508              		.syntax unified
+ 1509 0160 BCE7     		b	.L223
+ 1510              	.L243:
+ 1511 0162 0EB9     		cbnz	r6, .L250
+ 1512              	.L236:
+ 1513 0164 0020     		movs	r0, #0
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s 			page 27
+
+
+ 1514 0166 78E7     		b	.L219
+ 1515              	.L250:
+ 1516 0168 FFF7FEFF 		bl	vPortEnterCritical
+ 1517 016c 2046     		mov	r0, r4
+ 1518 016e FFF7FEFF 		bl	prvGetDisinheritPriorityAfterTimeout
+ 1519 0172 0146     		mov	r1, r0
+ 1520 0174 A068     		ldr	r0, [r4, #8]
+ 1521 0176 FFF7FEFF 		bl	vTaskPriorityDisinheritAfterTimeout
+ 1522 017a FFF7FEFF 		bl	vPortExitCritical
+ 1523 017e F1E7     		b	.L236
+ 1524              	.L252:
+ 1525              		.align	2
+ 1526              	.L251:
+ 1527 0180 00000000 		.word	.LC0
+ 1528 0184 10000000 		.word	.LC1
+ 1530              		.section	.text.xQueueTakeMutexRecursive,"ax",%progbits
+ 1531              		.align	1
+ 1532              		.global	xQueueTakeMutexRecursive
+ 1533              		.syntax unified
+ 1534              		.thumb
+ 1535              		.thumb_func
+ 1537              	xQueueTakeMutexRecursive:
+ 1538              		@ args = 0, pretend = 0, frame = 0
+ 1539              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1540 0000 70B5     		push	{r4, r5, r6, lr}
+ 1541 0002 0D46     		mov	r5, r1
+ 1542 0004 0446     		mov	r4, r0
+ 1543 0006 68B1     		cbz	r0, .L258
+ 1544              	.L254:
+ 1545 0008 A668     		ldr	r6, [r4, #8]
+ 1546 000a FFF7FEFF 		bl	xTaskGetCurrentTaskHandle
+ 1547 000e 8642     		cmp	r6, r0
+ 1548 0010 0FD0     		beq	.L259
+ 1549 0012 2946     		mov	r1, r5
+ 1550 0014 2046     		mov	r0, r4
+ 1551 0016 FFF7FEFF 		bl	xQueueSemaphoreTake
+ 1552 001a 70B1     		cbz	r0, .L253
+ 1553 001c E368     		ldr	r3, [r4, #12]
+ 1554 001e 0133     		adds	r3, r3, #1
+ 1555 0020 E360     		str	r3, [r4, #12]
+ 1556 0022 0AE0     		b	.L253
+ 1557              	.L258:
+ 1558 0024 40F2D922 		movw	r2, #729
+ 1559 0028 0449     		ldr	r1, .L260
+ 1560 002a 0548     		ldr	r0, .L260+4
+ 1561 002c FFF7FEFF 		bl	printf
+ 1562 0030 EAE7     		b	.L254
+ 1563              	.L259:
+ 1564 0032 E368     		ldr	r3, [r4, #12]
+ 1565 0034 0133     		adds	r3, r3, #1
+ 1566 0036 E360     		str	r3, [r4, #12]
+ 1567 0038 0120     		movs	r0, #1
+ 1568              	.L253:
+ 1569 003a 70BD     		pop	{r4, r5, r6, pc}
+ 1570              	.L261:
+ 1571              		.align	2
+ 1572              	.L260:
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s 			page 28
+
+
+ 1573 003c 00000000 		.word	.LC0
+ 1574 0040 10000000 		.word	.LC1
+ 1576              		.section	.text.xQueuePeek,"ax",%progbits
+ 1577              		.align	1
+ 1578              		.global	xQueuePeek
+ 1579              		.syntax unified
+ 1580              		.thumb
+ 1581              		.thumb_func
+ 1583              	xQueuePeek:
+ 1584              		@ args = 0, pretend = 0, frame = 16
+ 1585              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1586 0000 70B5     		push	{r4, r5, r6, lr}
+ 1587 0002 84B0     		sub	sp, sp, #16
+ 1588 0004 0E46     		mov	r6, r1
+ 1589 0006 0192     		str	r2, [sp, #4]
+ 1590 0008 0446     		mov	r4, r0
+ 1591 000a 38B1     		cbz	r0, .L278
+ 1592              	.L263:
+ 1593 000c 6EB1     		cbz	r6, .L279
+ 1594              	.L264:
+ 1595 000e FFF7FEFF 		bl	xTaskGetSchedulerState
+ 1596 0012 08B9     		cbnz	r0, .L265
+ 1597 0014 019B     		ldr	r3, [sp, #4]
+ 1598 0016 93B9     		cbnz	r3, .L280
+ 1599              	.L265:
+ 1600 0018 0025     		movs	r5, #0
+ 1601 001a 56E0     		b	.L266
+ 1602              	.L278:
+ 1603 001c 40F2CD62 		movw	r2, #1741
+ 1604 0020 4B49     		ldr	r1, .L288
+ 1605 0022 4C48     		ldr	r0, .L288+4
+ 1606 0024 FFF7FEFF 		bl	printf
+ 1607 0028 F0E7     		b	.L263
+ 1608              	.L279:
+ 1609 002a 236C     		ldr	r3, [r4, #64]
+ 1610 002c 002B     		cmp	r3, #0
+ 1611 002e EED0     		beq	.L264
+ 1612 0030 40F2D162 		movw	r2, #1745
+ 1613 0034 4649     		ldr	r1, .L288
+ 1614 0036 4748     		ldr	r0, .L288+4
+ 1615 0038 FFF7FEFF 		bl	printf
+ 1616 003c E7E7     		b	.L264
+ 1617              	.L280:
+ 1618 003e 40F2D662 		movw	r2, #1750
+ 1619 0042 4349     		ldr	r1, .L288
+ 1620 0044 4348     		ldr	r0, .L288+4
+ 1621 0046 FFF7FEFF 		bl	printf
+ 1622 004a E5E7     		b	.L265
+ 1623              	.L283:
+ 1624 004c E568     		ldr	r5, [r4, #12]
+ 1625 004e 3146     		mov	r1, r6
+ 1626 0050 2046     		mov	r0, r4
+ 1627 0052 FFF7FEFF 		bl	prvCopyDataFromQueue
+ 1628 0056 E560     		str	r5, [r4, #12]
+ 1629 0058 636A     		ldr	r3, [r4, #36]
+ 1630 005a 23B9     		cbnz	r3, .L281
+ 1631              	.L268:
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s 			page 29
+
+
+ 1632 005c FFF7FEFF 		bl	vPortExitCritical
+ 1633 0060 0120     		movs	r0, #1
+ 1634              	.L262:
+ 1635 0062 04B0     		add	sp, sp, #16
+ 1636              		@ sp needed
+ 1637 0064 70BD     		pop	{r4, r5, r6, pc}
+ 1638              	.L281:
+ 1639 0066 04F12400 		add	r0, r4, #36
+ 1640 006a FFF7FEFF 		bl	xTaskRemoveFromEventList
+ 1641 006e 0028     		cmp	r0, #0
+ 1642 0070 F4D0     		beq	.L268
+ 1643 0072 4FF0E023 		mov	r3, #-536813568
+ 1644 0076 4FF08052 		mov	r2, #268435456
+ 1645 007a C3F8042D 		str	r2, [r3, #3332]
+ 1646              		.syntax unified
+ 1647              	@ 1785 "RTOS/queue.c" 1
+ 1648 007e BFF34F8F 		dsb
+ 1649              	@ 0 "" 2
+ 1650              	@ 1785 "RTOS/queue.c" 1
+ 1651 0082 BFF36F8F 		isb
+ 1652              	@ 0 "" 2
+ 1653              		.thumb
+ 1654              		.syntax unified
+ 1655 0086 E9E7     		b	.L268
+ 1656              	.L284:
+ 1657 0088 FFF7FEFF 		bl	vPortExitCritical
+ 1658 008c 0020     		movs	r0, #0
+ 1659 008e E8E7     		b	.L262
+ 1660              	.L285:
+ 1661 0090 02A8     		add	r0, sp, #8
+ 1662 0092 FFF7FEFF 		bl	vTaskInternalSetTimeOutState
+ 1663 0096 0125     		movs	r5, #1
+ 1664 0098 21E0     		b	.L271
+ 1665              	.L286:
+ 1666 009a 0023     		movs	r3, #0
+ 1667 009c 84F84430 		strb	r3, [r4, #68]
+ 1668 00a0 29E0     		b	.L272
+ 1669              	.L287:
+ 1670 00a2 0023     		movs	r3, #0
+ 1671 00a4 84F84530 		strb	r3, [r4, #69]
+ 1672 00a8 2BE0     		b	.L273
+ 1673              	.L275:
+ 1674 00aa 2046     		mov	r0, r4
+ 1675 00ac FFF7FEFF 		bl	prvUnlockQueue
+ 1676 00b0 FFF7FEFF 		bl	xTaskResumeAll
+ 1677 00b4 09E0     		b	.L266
+ 1678              	.L274:
+ 1679 00b6 2046     		mov	r0, r4
+ 1680 00b8 FFF7FEFF 		bl	prvUnlockQueue
+ 1681 00bc FFF7FEFF 		bl	xTaskResumeAll
+ 1682 00c0 2046     		mov	r0, r4
+ 1683 00c2 FFF7FEFF 		bl	prvIsQueueEmpty
+ 1684 00c6 0028     		cmp	r0, #0
+ 1685 00c8 3FD1     		bne	.L282
+ 1686              	.L266:
+ 1687 00ca FFF7FEFF 		bl	vPortEnterCritical
+ 1688 00ce A36B     		ldr	r3, [r4, #56]
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s 			page 30
+
+
+ 1689 00d0 002B     		cmp	r3, #0
+ 1690 00d2 BBD1     		bne	.L283
+ 1691 00d4 019B     		ldr	r3, [sp, #4]
+ 1692 00d6 002B     		cmp	r3, #0
+ 1693 00d8 D6D0     		beq	.L284
+ 1694 00da 002D     		cmp	r5, #0
+ 1695 00dc D8D0     		beq	.L285
+ 1696              	.L271:
+ 1697 00de FFF7FEFF 		bl	vPortExitCritical
+ 1698 00e2 FFF7FEFF 		bl	vTaskSuspendAll
+ 1699 00e6 FFF7FEFF 		bl	vPortEnterCritical
+ 1700 00ea 94F84430 		ldrb	r3, [r4, #68]	@ zero_extendqisi2
+ 1701 00ee 5BB2     		sxtb	r3, r3
+ 1702 00f0 B3F1FF3F 		cmp	r3, #-1
+ 1703 00f4 D1D0     		beq	.L286
+ 1704              	.L272:
+ 1705 00f6 94F84530 		ldrb	r3, [r4, #69]	@ zero_extendqisi2
+ 1706 00fa 5BB2     		sxtb	r3, r3
+ 1707 00fc B3F1FF3F 		cmp	r3, #-1
+ 1708 0100 CFD0     		beq	.L287
+ 1709              	.L273:
+ 1710 0102 FFF7FEFF 		bl	vPortExitCritical
+ 1711 0106 01A9     		add	r1, sp, #4
+ 1712 0108 02A8     		add	r0, sp, #8
+ 1713 010a FFF7FEFF 		bl	xTaskCheckForTimeOut
+ 1714 010e 0028     		cmp	r0, #0
+ 1715 0110 D1D1     		bne	.L274
+ 1716 0112 2046     		mov	r0, r4
+ 1717 0114 FFF7FEFF 		bl	prvIsQueueEmpty
+ 1718 0118 0028     		cmp	r0, #0
+ 1719 011a C6D0     		beq	.L275
+ 1720 011c 0199     		ldr	r1, [sp, #4]
+ 1721 011e 04F12400 		add	r0, r4, #36
+ 1722 0122 FFF7FEFF 		bl	vTaskPlaceOnEventList
+ 1723 0126 2046     		mov	r0, r4
+ 1724 0128 FFF7FEFF 		bl	prvUnlockQueue
+ 1725 012c FFF7FEFF 		bl	xTaskResumeAll
+ 1726 0130 0028     		cmp	r0, #0
+ 1727 0132 CAD1     		bne	.L266
+ 1728 0134 4FF0E023 		mov	r3, #-536813568
+ 1729 0138 4FF08052 		mov	r2, #268435456
+ 1730 013c C3F8042D 		str	r2, [r3, #3332]
+ 1731              		.syntax unified
+ 1732              	@ 1846 "RTOS/queue.c" 1
+ 1733 0140 BFF34F8F 		dsb
+ 1734              	@ 0 "" 2
+ 1735              	@ 1846 "RTOS/queue.c" 1
+ 1736 0144 BFF36F8F 		isb
+ 1737              	@ 0 "" 2
+ 1738              		.thumb
+ 1739              		.syntax unified
+ 1740 0148 BFE7     		b	.L266
+ 1741              	.L282:
+ 1742 014a 0020     		movs	r0, #0
+ 1743 014c 89E7     		b	.L262
+ 1744              	.L289:
+ 1745 014e 00BF     		.align	2
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s 			page 31
+
+
+ 1746              	.L288:
+ 1747 0150 00000000 		.word	.LC0
+ 1748 0154 10000000 		.word	.LC1
+ 1750              		.section	.text.xQueueReceiveFromISR,"ax",%progbits
+ 1751              		.align	1
+ 1752              		.global	xQueueReceiveFromISR
+ 1753              		.syntax unified
+ 1754              		.thumb
+ 1755              		.thumb_func
+ 1757              	xQueueReceiveFromISR:
+ 1758              		@ args = 0, pretend = 0, frame = 0
+ 1759              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1760 0000 2DE9F843 		push	{r3, r4, r5, r6, r7, r8, r9, lr}
+ 1761 0004 0C46     		mov	r4, r1
+ 1762 0006 1746     		mov	r7, r2
+ 1763 0008 8046     		mov	r8, r0
+ 1764 000a A0B1     		cbz	r0, .L302
+ 1765              	.L291:
+ 1766 000c D4B1     		cbz	r4, .L303
+ 1767              	.L292:
+ 1768 000e FFF7FEFF 		bl	vPortValidateInterruptPriority
+ 1769              		.syntax unified
+ 1770              	@ 214 "RTOS/portable/GCC/ARM_CM4F/portmacro.h" 1
+ 1771 0012 EFF31185 			mrs r5, basepri											
+ 1772 0016 4FF05003 		mov r3, #80												
+ 1773 001a 83F31188 		msr basepri, r3											
+ 1774 001e BFF36F8F 		isb														
+ 1775 0022 BFF34F8F 		dsb														
+ 1776              	
+ 1777              	@ 0 "" 2
+ 1778              		.thumb
+ 1779              		.syntax unified
+ 1780 0026 D8F83860 		ldr	r6, [r8, #56]
+ 1781 002a B6B9     		cbnz	r6, .L304
+ 1782 002c 0020     		movs	r0, #0
+ 1783              	.L293:
+ 1784              		.syntax unified
+ 1785              	@ 232 "RTOS/portable/GCC/ARM_CM4F/portmacro.h" 1
+ 1786 002e 85F31188 			msr basepri, r5	
+ 1787              	@ 0 "" 2
+ 1788              		.thumb
+ 1789              		.syntax unified
+ 1790 0032 BDE8F883 		pop	{r3, r4, r5, r6, r7, r8, r9, pc}
+ 1791              	.L302:
+ 1792 0036 40F26272 		movw	r2, #1890
+ 1793 003a 2449     		ldr	r1, .L307
+ 1794 003c 2448     		ldr	r0, .L307+4
+ 1795 003e FFF7FEFF 		bl	printf
+ 1796 0042 E3E7     		b	.L291
+ 1797              	.L303:
+ 1798 0044 D8F84030 		ldr	r3, [r8, #64]
+ 1799 0048 002B     		cmp	r3, #0
+ 1800 004a E0D0     		beq	.L292
+ 1801 004c 40F26372 		movw	r2, #1891
+ 1802 0050 1E49     		ldr	r1, .L307
+ 1803 0052 1F48     		ldr	r0, .L307+4
+ 1804 0054 FFF7FEFF 		bl	printf
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s 			page 32
+
+
+ 1805 0058 D9E7     		b	.L292
+ 1806              	.L304:
+ 1807 005a 98F84490 		ldrb	r9, [r8, #68]	@ zero_extendqisi2
+ 1808 005e 4FFA89F9 		sxtb	r9, r9
+ 1809 0062 2146     		mov	r1, r4
+ 1810 0064 4046     		mov	r0, r8
+ 1811 0066 FFF7FEFF 		bl	prvCopyDataFromQueue
+ 1812 006a 013E     		subs	r6, r6, #1
+ 1813 006c C8F83860 		str	r6, [r8, #56]
+ 1814 0070 B9F1FF3F 		cmp	r9, #-1
+ 1815 0074 0DD1     		bne	.L294
+ 1816 0076 D8F81030 		ldr	r3, [r8, #16]
+ 1817 007a 0BB9     		cbnz	r3, .L305
+ 1818 007c 0120     		movs	r0, #1
+ 1819 007e D6E7     		b	.L293
+ 1820              	.L305:
+ 1821 0080 08F11000 		add	r0, r8, #16
+ 1822 0084 FFF7FEFF 		bl	xTaskRemoveFromEventList
+ 1823 0088 C8B1     		cbz	r0, .L298
+ 1824 008a D7B1     		cbz	r7, .L299
+ 1825 008c 0120     		movs	r0, #1
+ 1826 008e 3860     		str	r0, [r7]
+ 1827 0090 CDE7     		b	.L293
+ 1828              	.L294:
+ 1829 0092 FFF7FEFF 		bl	uxTaskGetNumberOfTasks
+ 1830 0096 8145     		cmp	r9, r0
+ 1831 0098 15D2     		bcs	.L300
+ 1832 009a B9F17F0F 		cmp	r9, #127
+ 1833 009e 07D0     		beq	.L306
+ 1834              	.L295:
+ 1835 00a0 09F10109 		add	r9, r9, #1
+ 1836 00a4 4FFA89F9 		sxtb	r9, r9
+ 1837 00a8 88F84490 		strb	r9, [r8, #68]
+ 1838 00ac 0120     		movs	r0, #1
+ 1839 00ae BEE7     		b	.L293
+ 1840              	.L306:
+ 1841 00b0 40F2A672 		movw	r2, #1958
+ 1842 00b4 0549     		ldr	r1, .L307
+ 1843 00b6 0648     		ldr	r0, .L307+4
+ 1844 00b8 FFF7FEFF 		bl	printf
+ 1845 00bc F0E7     		b	.L295
+ 1846              	.L298:
+ 1847 00be 0120     		movs	r0, #1
+ 1848 00c0 B5E7     		b	.L293
+ 1849              	.L299:
+ 1850 00c2 0120     		movs	r0, #1
+ 1851 00c4 B3E7     		b	.L293
+ 1852              	.L300:
+ 1853 00c6 0120     		movs	r0, #1
+ 1854 00c8 B1E7     		b	.L293
+ 1855              	.L308:
+ 1856 00ca 00BF     		.align	2
+ 1857              	.L307:
+ 1858 00cc 00000000 		.word	.LC0
+ 1859 00d0 10000000 		.word	.LC1
+ 1861              		.section	.text.xQueuePeekFromISR,"ax",%progbits
+ 1862              		.align	1
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s 			page 33
+
+
+ 1863              		.global	xQueuePeekFromISR
+ 1864              		.syntax unified
+ 1865              		.thumb
+ 1866              		.thumb_func
+ 1868              	xQueuePeekFromISR:
+ 1869              		@ args = 0, pretend = 0, frame = 0
+ 1870              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1871 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+ 1872 0002 0C46     		mov	r4, r1
+ 1873 0004 0546     		mov	r5, r0
+ 1874 0006 A0B1     		cbz	r0, .L316
+ 1875              	.L310:
+ 1876 0008 D4B1     		cbz	r4, .L317
+ 1877              	.L311:
+ 1878 000a 2B6C     		ldr	r3, [r5, #64]
+ 1879 000c 13B3     		cbz	r3, .L318
+ 1880              	.L312:
+ 1881 000e FFF7FEFF 		bl	vPortValidateInterruptPriority
+ 1882              		.syntax unified
+ 1883              	@ 214 "RTOS/portable/GCC/ARM_CM4F/portmacro.h" 1
+ 1884 0012 EFF31186 			mrs r6, basepri											
+ 1885 0016 4FF05003 		mov r3, #80												
+ 1886 001a 83F31188 		msr basepri, r3											
+ 1887 001e BFF36F8F 		isb														
+ 1888 0022 BFF34F8F 		dsb														
+ 1889              	
+ 1890              	@ 0 "" 2
+ 1891              		.thumb
+ 1892              		.syntax unified
+ 1893 0026 AB6B     		ldr	r3, [r5, #56]
+ 1894 0028 DBB9     		cbnz	r3, .L319
+ 1895 002a 0020     		movs	r0, #0
+ 1896              	.L313:
+ 1897              		.syntax unified
+ 1898              	@ 232 "RTOS/portable/GCC/ARM_CM4F/portmacro.h" 1
+ 1899 002c 86F31188 			msr basepri, r6	
+ 1900              	@ 0 "" 2
+ 1901              		.thumb
+ 1902              		.syntax unified
+ 1903 0030 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 1904              	.L316:
+ 1905 0032 40F2BF72 		movw	r2, #1983
+ 1906 0036 0F49     		ldr	r1, .L320
+ 1907 0038 0F48     		ldr	r0, .L320+4
+ 1908 003a FFF7FEFF 		bl	printf
+ 1909 003e E3E7     		b	.L310
+ 1910              	.L317:
+ 1911 0040 2B6C     		ldr	r3, [r5, #64]
+ 1912 0042 002B     		cmp	r3, #0
+ 1913 0044 E1D0     		beq	.L311
+ 1914 0046 4FF4F862 		mov	r2, #1984
+ 1915 004a 0A49     		ldr	r1, .L320
+ 1916 004c 0A48     		ldr	r0, .L320+4
+ 1917 004e FFF7FEFF 		bl	printf
+ 1918 0052 DAE7     		b	.L311
+ 1919              	.L318:
+ 1920 0054 40F2C172 		movw	r2, #1985
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s 			page 34
+
+
+ 1921 0058 0649     		ldr	r1, .L320
+ 1922 005a 0748     		ldr	r0, .L320+4
+ 1923 005c FFF7FEFF 		bl	printf
+ 1924 0060 D5E7     		b	.L312
+ 1925              	.L319:
+ 1926 0062 EF68     		ldr	r7, [r5, #12]
+ 1927 0064 2146     		mov	r1, r4
+ 1928 0066 2846     		mov	r0, r5
+ 1929 0068 FFF7FEFF 		bl	prvCopyDataFromQueue
+ 1930 006c EF60     		str	r7, [r5, #12]
+ 1931 006e 0120     		movs	r0, #1
+ 1932 0070 DCE7     		b	.L313
+ 1933              	.L321:
+ 1934 0072 00BF     		.align	2
+ 1935              	.L320:
+ 1936 0074 00000000 		.word	.LC0
+ 1937 0078 10000000 		.word	.LC1
+ 1939              		.section	.text.uxQueueMessagesWaiting,"ax",%progbits
+ 1940              		.align	1
+ 1941              		.global	uxQueueMessagesWaiting
+ 1942              		.syntax unified
+ 1943              		.thumb
+ 1944              		.thumb_func
+ 1946              	uxQueueMessagesWaiting:
+ 1947              		@ args = 0, pretend = 0, frame = 0
+ 1948              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1949 0000 10B5     		push	{r4, lr}
+ 1950 0002 0446     		mov	r4, r0
+ 1951 0004 30B1     		cbz	r0, .L325
+ 1952              	.L323:
+ 1953 0006 FFF7FEFF 		bl	vPortEnterCritical
+ 1954 000a A46B     		ldr	r4, [r4, #56]
+ 1955 000c FFF7FEFF 		bl	vPortExitCritical
+ 1956 0010 2046     		mov	r0, r4
+ 1957 0012 10BD     		pop	{r4, pc}
+ 1958              	.L325:
+ 1959 0014 40F2F272 		movw	r2, #2034
+ 1960 0018 0249     		ldr	r1, .L326
+ 1961 001a 0348     		ldr	r0, .L326+4
+ 1962 001c FFF7FEFF 		bl	printf
+ 1963 0020 F1E7     		b	.L323
+ 1964              	.L327:
+ 1965 0022 00BF     		.align	2
+ 1966              	.L326:
+ 1967 0024 00000000 		.word	.LC0
+ 1968 0028 10000000 		.word	.LC1
+ 1970              		.section	.text.uxQueueSpacesAvailable,"ax",%progbits
+ 1971              		.align	1
+ 1972              		.global	uxQueueSpacesAvailable
+ 1973              		.syntax unified
+ 1974              		.thumb
+ 1975              		.thumb_func
+ 1977              	uxQueueSpacesAvailable:
+ 1978              		@ args = 0, pretend = 0, frame = 0
+ 1979              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1980 0000 38B5     		push	{r3, r4, r5, lr}
+ 1981 0002 0546     		mov	r5, r0
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s 			page 35
+
+
+ 1982 0004 40B1     		cbz	r0, .L331
+ 1983              	.L329:
+ 1984 0006 FFF7FEFF 		bl	vPortEnterCritical
+ 1985 000a EC6B     		ldr	r4, [r5, #60]
+ 1986 000c AB6B     		ldr	r3, [r5, #56]
+ 1987 000e E41A     		subs	r4, r4, r3
+ 1988 0010 FFF7FEFF 		bl	vPortExitCritical
+ 1989 0014 2046     		mov	r0, r4
+ 1990 0016 38BD     		pop	{r3, r4, r5, pc}
+ 1991              	.L331:
+ 1992 0018 40F60302 		movw	r2, #2051
+ 1993 001c 0249     		ldr	r1, .L332
+ 1994 001e 0348     		ldr	r0, .L332+4
+ 1995 0020 FFF7FEFF 		bl	printf
+ 1996 0024 EFE7     		b	.L329
+ 1997              	.L333:
+ 1998 0026 00BF     		.align	2
+ 1999              	.L332:
+ 2000 0028 00000000 		.word	.LC0
+ 2001 002c 10000000 		.word	.LC1
+ 2003              		.section	.text.uxQueueMessagesWaitingFromISR,"ax",%progbits
+ 2004              		.align	1
+ 2005              		.global	uxQueueMessagesWaitingFromISR
+ 2006              		.syntax unified
+ 2007              		.thumb
+ 2008              		.thumb_func
+ 2010              	uxQueueMessagesWaitingFromISR:
+ 2011              		@ args = 0, pretend = 0, frame = 0
+ 2012              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2013 0000 10B5     		push	{r4, lr}
+ 2014 0002 0446     		mov	r4, r0
+ 2015 0004 08B1     		cbz	r0, .L337
+ 2016              	.L335:
+ 2017 0006 A06B     		ldr	r0, [r4, #56]
+ 2018 0008 10BD     		pop	{r4, pc}
+ 2019              	.L337:
+ 2020 000a 40F61402 		movw	r2, #2068
+ 2021 000e 0249     		ldr	r1, .L338
+ 2022 0010 0248     		ldr	r0, .L338+4
+ 2023 0012 FFF7FEFF 		bl	printf
+ 2024 0016 F6E7     		b	.L335
+ 2025              	.L339:
+ 2026              		.align	2
+ 2027              	.L338:
+ 2028 0018 00000000 		.word	.LC0
+ 2029 001c 10000000 		.word	.LC1
+ 2031              		.section	.text.uxQueueGetQueueNumber,"ax",%progbits
+ 2032              		.align	1
+ 2033              		.global	uxQueueGetQueueNumber
+ 2034              		.syntax unified
+ 2035              		.thumb
+ 2036              		.thumb_func
+ 2038              	uxQueueGetQueueNumber:
+ 2039              		@ args = 0, pretend = 0, frame = 0
+ 2040              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2041              		@ link register save eliminated.
+ 2042 0000 C06C     		ldr	r0, [r0, #76]
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s 			page 36
+
+
+ 2043 0002 7047     		bx	lr
+ 2045              		.section	.text.vQueueSetQueueNumber,"ax",%progbits
+ 2046              		.align	1
+ 2047              		.global	vQueueSetQueueNumber
+ 2048              		.syntax unified
+ 2049              		.thumb
+ 2050              		.thumb_func
+ 2052              	vQueueSetQueueNumber:
+ 2053              		@ args = 0, pretend = 0, frame = 0
+ 2054              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2055              		@ link register save eliminated.
+ 2056 0000 C164     		str	r1, [r0, #76]
+ 2057 0002 7047     		bx	lr
+ 2059              		.section	.text.ucQueueGetQueueType,"ax",%progbits
+ 2060              		.align	1
+ 2061              		.global	ucQueueGetQueueType
+ 2062              		.syntax unified
+ 2063              		.thumb
+ 2064              		.thumb_func
+ 2066              	ucQueueGetQueueType:
+ 2067              		@ args = 0, pretend = 0, frame = 0
+ 2068              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2069              		@ link register save eliminated.
+ 2070 0000 90F85000 		ldrb	r0, [r0, #80]	@ zero_extendqisi2
+ 2071 0004 7047     		bx	lr
+ 2073              		.section	.text.xQueueIsQueueEmptyFromISR,"ax",%progbits
+ 2074              		.align	1
+ 2075              		.global	xQueueIsQueueEmptyFromISR
+ 2076              		.syntax unified
+ 2077              		.thumb
+ 2078              		.thumb_func
+ 2080              	xQueueIsQueueEmptyFromISR:
+ 2081              		@ args = 0, pretend = 0, frame = 0
+ 2082              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2083 0000 10B5     		push	{r4, lr}
+ 2084 0002 0446     		mov	r4, r0
+ 2085 0004 18B1     		cbz	r0, .L348
+ 2086              	.L344:
+ 2087 0006 A36B     		ldr	r3, [r4, #56]
+ 2088 0008 43B9     		cbnz	r3, .L346
+ 2089 000a 0120     		movs	r0, #1
+ 2090              	.L343:
+ 2091 000c 10BD     		pop	{r4, pc}
+ 2092              	.L348:
+ 2093 000e 40F67912 		movw	r2, #2425
+ 2094 0012 0349     		ldr	r1, .L349
+ 2095 0014 0348     		ldr	r0, .L349+4
+ 2096 0016 FFF7FEFF 		bl	printf
+ 2097 001a F4E7     		b	.L344
+ 2098              	.L346:
+ 2099 001c 0020     		movs	r0, #0
+ 2100 001e F5E7     		b	.L343
+ 2101              	.L350:
+ 2102              		.align	2
+ 2103              	.L349:
+ 2104 0020 00000000 		.word	.LC0
+ 2105 0024 10000000 		.word	.LC1
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s 			page 37
+
+
+ 2107              		.section	.text.xQueueIsQueueFullFromISR,"ax",%progbits
+ 2108              		.align	1
+ 2109              		.global	xQueueIsQueueFullFromISR
+ 2110              		.syntax unified
+ 2111              		.thumb
+ 2112              		.thumb_func
+ 2114              	xQueueIsQueueFullFromISR:
+ 2115              		@ args = 0, pretend = 0, frame = 0
+ 2116              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2117 0000 10B5     		push	{r4, lr}
+ 2118 0002 0446     		mov	r4, r0
+ 2119 0004 28B1     		cbz	r0, .L356
+ 2120              	.L352:
+ 2121 0006 A26B     		ldr	r2, [r4, #56]
+ 2122 0008 E36B     		ldr	r3, [r4, #60]
+ 2123 000a 9A42     		cmp	r2, r3
+ 2124 000c 08D0     		beq	.L357
+ 2125 000e 0020     		movs	r0, #0
+ 2126              	.L351:
+ 2127 0010 10BD     		pop	{r4, pc}
+ 2128              	.L356:
+ 2129 0012 40F6A212 		movw	r2, #2466
+ 2130 0016 0349     		ldr	r1, .L358
+ 2131 0018 0348     		ldr	r0, .L358+4
+ 2132 001a FFF7FEFF 		bl	printf
+ 2133 001e F2E7     		b	.L352
+ 2134              	.L357:
+ 2135 0020 0120     		movs	r0, #1
+ 2136 0022 F5E7     		b	.L351
+ 2137              	.L359:
+ 2138              		.align	2
+ 2139              	.L358:
+ 2140 0024 00000000 		.word	.LC0
+ 2141 0028 10000000 		.word	.LC1
+ 2143              		.section	.text.vQueueAddToRegistry,"ax",%progbits
+ 2144              		.align	1
+ 2145              		.global	vQueueAddToRegistry
+ 2146              		.syntax unified
+ 2147              		.thumb
+ 2148              		.thumb_func
+ 2150              	vQueueAddToRegistry:
+ 2151              		@ args = 0, pretend = 0, frame = 0
+ 2152              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2153 0000 38B5     		push	{r3, r4, r5, lr}
+ 2154 0002 0D46     		mov	r5, r1
+ 2155 0004 0446     		mov	r4, r0
+ 2156 0006 18B1     		cbz	r0, .L370
+ 2157              	.L361:
+ 2158 0008 25B3     		cbz	r5, .L360
+ 2159 000a 0020     		movs	r0, #0
+ 2160 000c 0346     		mov	r3, r0
+ 2161 000e 0BE0     		b	.L362
+ 2162              	.L370:
+ 2163 0010 40F6D822 		movw	r2, #2776
+ 2164 0014 1049     		ldr	r1, .L373
+ 2165 0016 1148     		ldr	r0, .L373+4
+ 2166 0018 FFF7FEFF 		bl	printf
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s 			page 38
+
+
+ 2167 001c F4E7     		b	.L361
+ 2168              	.L372:
+ 2169 001e 1048     		ldr	r0, .L373+8
+ 2170 0020 00EBC300 		add	r0, r0, r3, lsl #3
+ 2171 0024 14E0     		b	.L365
+ 2172              	.L366:
+ 2173 0026 0133     		adds	r3, r3, #1
+ 2174              	.L362:
+ 2175 0028 072B     		cmp	r3, #7
+ 2176 002a 10D8     		bhi	.L371
+ 2177 002c 0C4A     		ldr	r2, .L373+8
+ 2178 002e 02EBC302 		add	r2, r2, r3, lsl #3
+ 2179 0032 5268     		ldr	r2, [r2, #4]
+ 2180 0034 A242     		cmp	r2, r4
+ 2181 0036 F2D0     		beq	.L372
+ 2182 0038 0028     		cmp	r0, #0
+ 2183 003a F4D1     		bne	.L366
+ 2184 003c 084A     		ldr	r2, .L373+8
+ 2185 003e 52F83320 		ldr	r2, [r2, r3, lsl #3]
+ 2186 0042 002A     		cmp	r2, #0
+ 2187 0044 EFD1     		bne	.L366
+ 2188 0046 0648     		ldr	r0, .L373+8
+ 2189 0048 00EBC300 		add	r0, r0, r3, lsl #3
+ 2190 004c EBE7     		b	.L366
+ 2191              	.L371:
+ 2192 004e 08B1     		cbz	r0, .L360
+ 2193              	.L365:
+ 2194 0050 0560     		str	r5, [r0]
+ 2195 0052 4460     		str	r4, [r0, #4]
+ 2196              	.L360:
+ 2197 0054 38BD     		pop	{r3, r4, r5, pc}
+ 2198              	.L374:
+ 2199 0056 00BF     		.align	2
+ 2200              	.L373:
+ 2201 0058 00000000 		.word	.LC0
+ 2202 005c 10000000 		.word	.LC1
+ 2203 0060 00000000 		.word	xQueueRegistry
+ 2205              		.section	.text.pcQueueGetName,"ax",%progbits
+ 2206              		.align	1
+ 2207              		.global	pcQueueGetName
+ 2208              		.syntax unified
+ 2209              		.thumb
+ 2210              		.thumb_func
+ 2212              	pcQueueGetName:
+ 2213              		@ args = 0, pretend = 0, frame = 0
+ 2214              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2215 0000 10B5     		push	{r4, lr}
+ 2216 0002 0446     		mov	r4, r0
+ 2217 0004 50B1     		cbz	r0, .L382
+ 2218              	.L376:
+ 2219 0006 0023     		movs	r3, #0
+ 2220              	.L377:
+ 2221 0008 072B     		cmp	r3, #7
+ 2222 000a 12D8     		bhi	.L383
+ 2223 000c 0A4A     		ldr	r2, .L385
+ 2224 000e 02EBC302 		add	r2, r2, r3, lsl #3
+ 2225 0012 5268     		ldr	r2, [r2, #4]
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s 			page 39
+
+
+ 2226 0014 A242     		cmp	r2, r4
+ 2227 0016 08D0     		beq	.L384
+ 2228 0018 0133     		adds	r3, r3, #1
+ 2229 001a F5E7     		b	.L377
+ 2230              	.L382:
+ 2231 001c 40F60632 		movw	r2, #2822
+ 2232 0020 0649     		ldr	r1, .L385+4
+ 2233 0022 0748     		ldr	r0, .L385+8
+ 2234 0024 FFF7FEFF 		bl	printf
+ 2235 0028 EDE7     		b	.L376
+ 2236              	.L384:
+ 2237 002a 034A     		ldr	r2, .L385
+ 2238 002c 52F83300 		ldr	r0, [r2, r3, lsl #3]
+ 2239 0030 00E0     		b	.L375
+ 2240              	.L383:
+ 2241 0032 0020     		movs	r0, #0
+ 2242              	.L375:
+ 2243 0034 10BD     		pop	{r4, pc}
+ 2244              	.L386:
+ 2245 0036 00BF     		.align	2
+ 2246              	.L385:
+ 2247 0038 00000000 		.word	xQueueRegistry
+ 2248 003c 00000000 		.word	.LC0
+ 2249 0040 10000000 		.word	.LC1
+ 2251              		.section	.text.vQueueUnregisterQueue,"ax",%progbits
+ 2252              		.align	1
+ 2253              		.global	vQueueUnregisterQueue
+ 2254              		.syntax unified
+ 2255              		.thumb
+ 2256              		.thumb_func
+ 2258              	vQueueUnregisterQueue:
+ 2259              		@ args = 0, pretend = 0, frame = 0
+ 2260              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2261 0000 10B5     		push	{r4, lr}
+ 2262 0002 0446     		mov	r4, r0
+ 2263 0004 50B1     		cbz	r0, .L394
+ 2264              	.L388:
+ 2265 0006 0023     		movs	r3, #0
+ 2266              	.L389:
+ 2267 0008 072B     		cmp	r3, #7
+ 2268 000a 15D8     		bhi	.L387
+ 2269 000c 0B4A     		ldr	r2, .L396
+ 2270 000e 02EBC302 		add	r2, r2, r3, lsl #3
+ 2271 0012 5268     		ldr	r2, [r2, #4]
+ 2272 0014 A242     		cmp	r2, r4
+ 2273 0016 08D0     		beq	.L395
+ 2274 0018 0133     		adds	r3, r3, #1
+ 2275 001a F5E7     		b	.L389
+ 2276              	.L394:
+ 2277 001c 40F62432 		movw	r2, #2852
+ 2278 0020 0749     		ldr	r1, .L396+4
+ 2279 0022 0848     		ldr	r0, .L396+8
+ 2280 0024 FFF7FEFF 		bl	printf
+ 2281 0028 EDE7     		b	.L388
+ 2282              	.L395:
+ 2283 002a 044A     		ldr	r2, .L396
+ 2284 002c 0021     		movs	r1, #0
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s 			page 40
+
+
+ 2285 002e 42F83310 		str	r1, [r2, r3, lsl #3]
+ 2286 0032 02EBC302 		add	r2, r2, r3, lsl #3
+ 2287 0036 5160     		str	r1, [r2, #4]
+ 2288              	.L387:
+ 2289 0038 10BD     		pop	{r4, pc}
+ 2290              	.L397:
+ 2291 003a 00BF     		.align	2
+ 2292              	.L396:
+ 2293 003c 00000000 		.word	xQueueRegistry
+ 2294 0040 00000000 		.word	.LC0
+ 2295 0044 10000000 		.word	.LC1
+ 2297              		.section	.text.vQueueDelete,"ax",%progbits
+ 2298              		.align	1
+ 2299              		.global	vQueueDelete
+ 2300              		.syntax unified
+ 2301              		.thumb
+ 2302              		.thumb_func
+ 2304              	vQueueDelete:
+ 2305              		@ args = 0, pretend = 0, frame = 0
+ 2306              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2307 0000 10B5     		push	{r4, lr}
+ 2308 0002 0446     		mov	r4, r0
+ 2309 0004 30B1     		cbz	r0, .L401
+ 2310              	.L399:
+ 2311 0006 2046     		mov	r0, r4
+ 2312 0008 FFF7FEFF 		bl	vQueueUnregisterQueue
+ 2313 000c 2046     		mov	r0, r4
+ 2314 000e FFF7FEFF 		bl	vPortFree
+ 2315 0012 10BD     		pop	{r4, pc}
+ 2316              	.L401:
+ 2317 0014 40F61F02 		movw	r2, #2079
+ 2318 0018 0249     		ldr	r1, .L402
+ 2319 001a 0348     		ldr	r0, .L402+4
+ 2320 001c FFF7FEFF 		bl	printf
+ 2321 0020 F1E7     		b	.L399
+ 2322              	.L403:
+ 2323 0022 00BF     		.align	2
+ 2324              	.L402:
+ 2325 0024 00000000 		.word	.LC0
+ 2326 0028 10000000 		.word	.LC1
+ 2328              		.section	.text.vQueueWaitForMessageRestricted,"ax",%progbits
+ 2329              		.align	1
+ 2330              		.global	vQueueWaitForMessageRestricted
+ 2331              		.syntax unified
+ 2332              		.thumb
+ 2333              		.thumb_func
+ 2335              	vQueueWaitForMessageRestricted:
+ 2336              		@ args = 0, pretend = 0, frame = 0
+ 2337              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2338 0000 70B5     		push	{r4, r5, r6, lr}
+ 2339 0002 0446     		mov	r4, r0
+ 2340 0004 0D46     		mov	r5, r1
+ 2341 0006 1646     		mov	r6, r2
+ 2342 0008 FFF7FEFF 		bl	vPortEnterCritical
+ 2343 000c 94F84430 		ldrb	r3, [r4, #68]	@ zero_extendqisi2
+ 2344 0010 5BB2     		sxtb	r3, r3
+ 2345 0012 B3F1FF3F 		cmp	r3, #-1
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s 			page 41
+
+
+ 2346 0016 0DD0     		beq	.L409
+ 2347              	.L405:
+ 2348 0018 94F84530 		ldrb	r3, [r4, #69]	@ zero_extendqisi2
+ 2349 001c 5BB2     		sxtb	r3, r3
+ 2350 001e B3F1FF3F 		cmp	r3, #-1
+ 2351 0022 0BD0     		beq	.L410
+ 2352              	.L406:
+ 2353 0024 FFF7FEFF 		bl	vPortExitCritical
+ 2354 0028 A36B     		ldr	r3, [r4, #56]
+ 2355 002a 5BB1     		cbz	r3, .L411
+ 2356              	.L407:
+ 2357 002c 2046     		mov	r0, r4
+ 2358 002e FFF7FEFF 		bl	prvUnlockQueue
+ 2359 0032 70BD     		pop	{r4, r5, r6, pc}
+ 2360              	.L409:
+ 2361 0034 0023     		movs	r3, #0
+ 2362 0036 84F84430 		strb	r3, [r4, #68]
+ 2363 003a EDE7     		b	.L405
+ 2364              	.L410:
+ 2365 003c 0023     		movs	r3, #0
+ 2366 003e 84F84530 		strb	r3, [r4, #69]
+ 2367 0042 EFE7     		b	.L406
+ 2368              	.L411:
+ 2369 0044 3246     		mov	r2, r6
+ 2370 0046 2946     		mov	r1, r5
+ 2371 0048 04F12400 		add	r0, r4, #36
+ 2372 004c FFF7FEFF 		bl	vTaskPlaceOnEventListRestricted
+ 2373 0050 ECE7     		b	.L407
+ 2375              		.section	.text.xQueueCreateSet,"ax",%progbits
+ 2376              		.align	1
+ 2377              		.global	xQueueCreateSet
+ 2378              		.syntax unified
+ 2379              		.thumb
+ 2380              		.thumb_func
+ 2382              	xQueueCreateSet:
+ 2383              		@ args = 0, pretend = 0, frame = 0
+ 2384              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2385 0000 08B5     		push	{r3, lr}
+ 2386 0002 0022     		movs	r2, #0
+ 2387 0004 0421     		movs	r1, #4
+ 2388 0006 FFF7FEFF 		bl	xQueueGenericCreate
+ 2389 000a 08BD     		pop	{r3, pc}
+ 2391              		.section	.text.xQueueAddToSet,"ax",%progbits
+ 2392              		.align	1
+ 2393              		.global	xQueueAddToSet
+ 2394              		.syntax unified
+ 2395              		.thumb
+ 2396              		.thumb_func
+ 2398              	xQueueAddToSet:
+ 2399              		@ args = 0, pretend = 0, frame = 0
+ 2400              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2401 0000 38B5     		push	{r3, r4, r5, lr}
+ 2402 0002 0446     		mov	r4, r0
+ 2403 0004 0D46     		mov	r5, r1
+ 2404 0006 FFF7FEFF 		bl	vPortEnterCritical
+ 2405 000a A36C     		ldr	r3, [r4, #72]
+ 2406 000c 23B1     		cbz	r3, .L419
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s 			page 42
+
+
+ 2407 000e 0024     		movs	r4, #0
+ 2408              	.L415:
+ 2409 0010 FFF7FEFF 		bl	vPortExitCritical
+ 2410 0014 2046     		mov	r0, r4
+ 2411 0016 38BD     		pop	{r3, r4, r5, pc}
+ 2412              	.L419:
+ 2413 0018 A36B     		ldr	r3, [r4, #56]
+ 2414 001a 13B9     		cbnz	r3, .L417
+ 2415 001c A564     		str	r5, [r4, #72]
+ 2416 001e 0124     		movs	r4, #1
+ 2417 0020 F6E7     		b	.L415
+ 2418              	.L417:
+ 2419 0022 0024     		movs	r4, #0
+ 2420 0024 F4E7     		b	.L415
+ 2422              		.section	.text.xQueueRemoveFromSet,"ax",%progbits
+ 2423              		.align	1
+ 2424              		.global	xQueueRemoveFromSet
+ 2425              		.syntax unified
+ 2426              		.thumb
+ 2427              		.thumb_func
+ 2429              	xQueueRemoveFromSet:
+ 2430              		@ args = 0, pretend = 0, frame = 0
+ 2431              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2432 0000 836C     		ldr	r3, [r0, #72]
+ 2433 0002 8B42     		cmp	r3, r1
+ 2434 0004 01D0     		beq	.L428
+ 2435 0006 0020     		movs	r0, #0
+ 2436 0008 7047     		bx	lr
+ 2437              	.L428:
+ 2438 000a 10B5     		push	{r4, lr}
+ 2439 000c 0446     		mov	r4, r0
+ 2440 000e 836B     		ldr	r3, [r0, #56]
+ 2441 0010 0BB1     		cbz	r3, .L429
+ 2442 0012 0020     		movs	r0, #0
+ 2443              	.L420:
+ 2444 0014 10BD     		pop	{r4, pc}
+ 2445              	.L429:
+ 2446 0016 FFF7FEFF 		bl	vPortEnterCritical
+ 2447 001a 0023     		movs	r3, #0
+ 2448 001c A364     		str	r3, [r4, #72]
+ 2449 001e FFF7FEFF 		bl	vPortExitCritical
+ 2450 0022 0120     		movs	r0, #1
+ 2451 0024 F6E7     		b	.L420
+ 2453              		.section	.text.xQueueSelectFromSet,"ax",%progbits
+ 2454              		.align	1
+ 2455              		.global	xQueueSelectFromSet
+ 2456              		.syntax unified
+ 2457              		.thumb
+ 2458              		.thumb_func
+ 2460              	xQueueSelectFromSet:
+ 2461              		@ args = 0, pretend = 0, frame = 8
+ 2462              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2463 0000 00B5     		push	{lr}
+ 2464 0002 83B0     		sub	sp, sp, #12
+ 2465 0004 0A46     		mov	r2, r1
+ 2466 0006 0023     		movs	r3, #0
+ 2467 0008 0193     		str	r3, [sp, #4]
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s 			page 43
+
+
+ 2468 000a 01A9     		add	r1, sp, #4
+ 2469 000c FFF7FEFF 		bl	xQueueReceive
+ 2470 0010 0198     		ldr	r0, [sp, #4]
+ 2471 0012 03B0     		add	sp, sp, #12
+ 2472              		@ sp needed
+ 2473 0014 5DF804FB 		ldr	pc, [sp], #4
+ 2475              		.section	.text.xQueueSelectFromSetFromISR,"ax",%progbits
+ 2476              		.align	1
+ 2477              		.global	xQueueSelectFromSetFromISR
+ 2478              		.syntax unified
+ 2479              		.thumb
+ 2480              		.thumb_func
+ 2482              	xQueueSelectFromSetFromISR:
+ 2483              		@ args = 0, pretend = 0, frame = 8
+ 2484              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2485 0000 00B5     		push	{lr}
+ 2486 0002 83B0     		sub	sp, sp, #12
+ 2487 0004 0022     		movs	r2, #0
+ 2488 0006 0192     		str	r2, [sp, #4]
+ 2489 0008 01A9     		add	r1, sp, #4
+ 2490 000a FFF7FEFF 		bl	xQueueReceiveFromISR
+ 2491 000e 0198     		ldr	r0, [sp, #4]
+ 2492 0010 03B0     		add	sp, sp, #12
+ 2493              		@ sp needed
+ 2494 0012 5DF804FB 		ldr	pc, [sp], #4
+ 2496              		.global	xQueueRegistry
+ 2497              		.section	.bss.xQueueRegistry,"aw",%nobits
+ 2498              		.align	2
+ 2501              	xQueueRegistry:
+ 2502 0000 00000000 		.space	64
+ 2502      00000000 
+ 2502      00000000 
+ 2502      00000000 
+ 2502      00000000 
+ 2503              		.ident	"GCC: (Arm GNU Toolchain 13.3.Rel1 (Build arm-13.24)) 13.3.1 20240614"
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s 			page 44
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 queue.c
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:18     .text.prvGetDisinheritPriorityAfterTimeout:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:23     .text.prvGetDisinheritPriorityAfterTimeout:00000000 prvGetDisinheritPriorityAfterTimeout
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:37     .text.prvIsQueueFull:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:42     .text.prvIsQueueFull:00000000 prvIsQueueFull
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:62     .text.prvIsQueueEmpty:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:67     .text.prvIsQueueEmpty:00000000 prvIsQueueEmpty
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:85     .text.prvCopyDataToQueue:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:90     .text.prvCopyDataToQueue:00000000 prvCopyDataToQueue
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:159    .text.prvCopyDataFromQueue:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:164    .text.prvCopyDataFromQueue:00000000 prvCopyDataFromQueue
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:188    .rodata.prvNotifyQueueSetContainer.str1.4:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:195    .text.prvNotifyQueueSetContainer:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:200    .text.prvNotifyQueueSetContainer:00000000 prvNotifyQueueSetContainer
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:275    .text.prvNotifyQueueSetContainer:00000090 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:279    .text.prvUnlockQueue:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:284    .text.prvUnlockQueue:00000000 prvUnlockQueue
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:346    .text.xQueueGenericReset:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:352    .text.xQueueGenericReset:00000000 xQueueGenericReset
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:435    .text.xQueueGenericReset:000000a8 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:439    .text.prvInitialiseNewQueue:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:444    .text.prvInitialiseNewQueue:00000000 prvInitialiseNewQueue
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:468    .text.xQueueGenericCreate:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:474    .text.xQueueGenericCreate:00000000 xQueueGenericCreate
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:519    .text.xQueueGenericCreate:00000054 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:523    .text.xQueueCreateCountingSemaphore:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:529    .text.xQueueCreateCountingSemaphore:00000000 xQueueCreateCountingSemaphore
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:554    .text.xQueueCreateCountingSemaphore:00000028 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:558    .text.xQueueGenericSend:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:564    .text.xQueueGenericSend:00000000 xQueueGenericSend
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:774    .text.xQueueGenericSend:000001a0 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:778    .text.prvInitialiseMutex:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:783    .text.prvInitialiseMutex:00000000 prvInitialiseMutex
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:800    .text.xQueueCreateMutex:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:806    .text.xQueueCreateMutex:00000000 xQueueCreateMutex
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:820    .text.xQueueGiveMutexRecursive:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:826    .text.xQueueGiveMutexRecursive:00000000 xQueueGiveMutexRecursive
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:863    .text.xQueueGiveMutexRecursive:0000003c $d
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:867    .text.xQueueGenericSendFromISR:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:873    .text.xQueueGenericSendFromISR:00000000 xQueueGenericSendFromISR
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:1017   .text.xQueueGenericSendFromISR:0000011c $d
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:1021   .text.xQueueGiveFromISR:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:1027   .text.xQueueGiveFromISR:00000000 xQueueGiveFromISR
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:1155   .text.xQueueGiveFromISR:000000e8 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:1159   .text.xQueueReceive:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:1165   .text.xQueueReceive:00000000 xQueueReceive
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:1329   .text.xQueueReceive:00000150 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:1333   .text.xQueueSemaphoreTake:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:1339   .text.xQueueSemaphoreTake:00000000 xQueueSemaphoreTake
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:1527   .text.xQueueSemaphoreTake:00000180 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:1531   .text.xQueueTakeMutexRecursive:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:1537   .text.xQueueTakeMutexRecursive:00000000 xQueueTakeMutexRecursive
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:1573   .text.xQueueTakeMutexRecursive:0000003c $d
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:1577   .text.xQueuePeek:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:1583   .text.xQueuePeek:00000000 xQueuePeek
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:1747   .text.xQueuePeek:00000150 $d
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s 			page 45
+
+
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:1751   .text.xQueueReceiveFromISR:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:1757   .text.xQueueReceiveFromISR:00000000 xQueueReceiveFromISR
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:1858   .text.xQueueReceiveFromISR:000000cc $d
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:1862   .text.xQueuePeekFromISR:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:1868   .text.xQueuePeekFromISR:00000000 xQueuePeekFromISR
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:1936   .text.xQueuePeekFromISR:00000074 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:1940   .text.uxQueueMessagesWaiting:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:1946   .text.uxQueueMessagesWaiting:00000000 uxQueueMessagesWaiting
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:1967   .text.uxQueueMessagesWaiting:00000024 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:1971   .text.uxQueueSpacesAvailable:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:1977   .text.uxQueueSpacesAvailable:00000000 uxQueueSpacesAvailable
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:2000   .text.uxQueueSpacesAvailable:00000028 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:2004   .text.uxQueueMessagesWaitingFromISR:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:2010   .text.uxQueueMessagesWaitingFromISR:00000000 uxQueueMessagesWaitingFromISR
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:2028   .text.uxQueueMessagesWaitingFromISR:00000018 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:2032   .text.uxQueueGetQueueNumber:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:2038   .text.uxQueueGetQueueNumber:00000000 uxQueueGetQueueNumber
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:2046   .text.vQueueSetQueueNumber:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:2052   .text.vQueueSetQueueNumber:00000000 vQueueSetQueueNumber
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:2060   .text.ucQueueGetQueueType:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:2066   .text.ucQueueGetQueueType:00000000 ucQueueGetQueueType
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:2074   .text.xQueueIsQueueEmptyFromISR:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:2080   .text.xQueueIsQueueEmptyFromISR:00000000 xQueueIsQueueEmptyFromISR
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:2104   .text.xQueueIsQueueEmptyFromISR:00000020 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:2108   .text.xQueueIsQueueFullFromISR:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:2114   .text.xQueueIsQueueFullFromISR:00000000 xQueueIsQueueFullFromISR
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:2140   .text.xQueueIsQueueFullFromISR:00000024 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:2144   .text.vQueueAddToRegistry:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:2150   .text.vQueueAddToRegistry:00000000 vQueueAddToRegistry
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:2201   .text.vQueueAddToRegistry:00000058 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:2501   .bss.xQueueRegistry:00000000 xQueueRegistry
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:2206   .text.pcQueueGetName:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:2212   .text.pcQueueGetName:00000000 pcQueueGetName
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:2247   .text.pcQueueGetName:00000038 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:2252   .text.vQueueUnregisterQueue:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:2258   .text.vQueueUnregisterQueue:00000000 vQueueUnregisterQueue
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:2293   .text.vQueueUnregisterQueue:0000003c $d
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:2298   .text.vQueueDelete:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:2304   .text.vQueueDelete:00000000 vQueueDelete
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:2325   .text.vQueueDelete:00000024 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:2329   .text.vQueueWaitForMessageRestricted:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:2335   .text.vQueueWaitForMessageRestricted:00000000 vQueueWaitForMessageRestricted
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:2376   .text.xQueueCreateSet:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:2382   .text.xQueueCreateSet:00000000 xQueueCreateSet
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:2392   .text.xQueueAddToSet:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:2398   .text.xQueueAddToSet:00000000 xQueueAddToSet
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:2423   .text.xQueueRemoveFromSet:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:2429   .text.xQueueRemoveFromSet:00000000 xQueueRemoveFromSet
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:2454   .text.xQueueSelectFromSet:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:2460   .text.xQueueSelectFromSet:00000000 xQueueSelectFromSet
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:2476   .text.xQueueSelectFromSetFromISR:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:2482   .text.xQueueSelectFromSetFromISR:00000000 xQueueSelectFromSetFromISR
+C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s:2498   .bss.xQueueRegistry:00000000 $d
+
+UNDEFINED SYMBOLS
+vPortEnterCritical
+vPortExitCritical
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc4FhK9H.s 			page 46
+
+
+xTaskPriorityDisinherit
+memcpy
+printf
+xTaskRemoveFromEventList
+uxTaskGetNumberOfTasks
+vTaskMissedYield
+vListInitialise
+pvPortMalloc
+xTaskGetSchedulerState
+vTaskInternalSetTimeOutState
+xTaskResumeAll
+vTaskSuspendAll
+xTaskCheckForTimeOut
+vTaskPlaceOnEventList
+xTaskGetCurrentTaskHandle
+vPortValidateInterruptPriority
+pvTaskIncrementMutexHeldCount
+xTaskPriorityInherit
+vTaskPriorityDisinheritAfterTimeout
+vPortFree
+vTaskPlaceOnEventListRestricted

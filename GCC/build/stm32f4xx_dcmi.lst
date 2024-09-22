@@ -1,0 +1,461 @@
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccM1Hs9W.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"stm32f4xx_dcmi.c"
+  16              		.text
+  17              		.section	.text.DCMI_DeInit,"ax",%progbits
+  18              		.align	1
+  19              		.global	DCMI_DeInit
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  24              	DCMI_DeInit:
+  25              		@ args = 0, pretend = 0, frame = 0
+  26              		@ frame_needed = 0, uses_anonymous_args = 0
+  27              		@ link register save eliminated.
+  28 0000 054B     		ldr	r3, .L2
+  29 0002 0022     		movs	r2, #0
+  30 0004 1A60     		str	r2, [r3]
+  31 0006 DA60     		str	r2, [r3, #12]
+  32 0008 1F21     		movs	r1, #31
+  33 000a 5961     		str	r1, [r3, #20]
+  34 000c 9A61     		str	r2, [r3, #24]
+  35 000e DA61     		str	r2, [r3, #28]
+  36 0010 1A62     		str	r2, [r3, #32]
+  37 0012 5A62     		str	r2, [r3, #36]
+  38 0014 7047     		bx	lr
+  39              	.L3:
+  40 0016 00BF     		.align	2
+  41              	.L2:
+  42 0018 00000550 		.word	1342504960
+  44              		.section	.text.DCMI_Init,"ax",%progbits
+  45              		.align	1
+  46              		.global	DCMI_Init
+  47              		.syntax unified
+  48              		.thumb
+  49              		.thumb_func
+  51              	DCMI_Init:
+  52              		@ args = 0, pretend = 0, frame = 0
+  53              		@ frame_needed = 0, uses_anonymous_args = 0
+  54 0000 F0B5     		push	{r4, r5, r6, r7, lr}
+  55 0002 1049     		ldr	r1, .L6
+  56 0004 0B68     		ldr	r3, [r1]
+  57 0006 23F48043 		bic	r3, r3, #16384
+  58 000a 23F00103 		bic	r3, r3, #1
+  59 000e 0B60     		str	r3, [r1]
+  60 0010 0A68     		ldr	r2, [r1]
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccM1Hs9W.s 			page 2
+
+
+  61 0012 22F47F62 		bic	r2, r2, #4080
+  62 0016 22F00202 		bic	r2, r2, #2
+  63 001a 0688     		ldrh	r6, [r0]
+  64 001c 4788     		ldrh	r7, [r0, #2]
+  65 001e 8588     		ldrh	r5, [r0, #4]
+  66 0020 C488     		ldrh	r4, [r0, #6]
+  67 0022 B0F808E0 		ldrh	lr, [r0, #8]
+  68 0026 B0F80AC0 		ldrh	ip, [r0, #10]
+  69 002a 8389     		ldrh	r3, [r0, #12]
+  70 002c 46EA0700 		orr	r0, r6, r7
+  71 0030 2843     		orrs	r0, r0, r5
+  72 0032 2043     		orrs	r0, r0, r4
+  73 0034 4EEA0000 		orr	r0, lr, r0
+  74 0038 4CEA0000 		orr	r0, ip, r0
+  75 003c 0343     		orrs	r3, r3, r0
+  76 003e 1343     		orrs	r3, r3, r2
+  77 0040 0B60     		str	r3, [r1]
+  78 0042 F0BD     		pop	{r4, r5, r6, r7, pc}
+  79              	.L7:
+  80              		.align	2
+  81              	.L6:
+  82 0044 00000550 		.word	1342504960
+  84              		.section	.text.DCMI_StructInit,"ax",%progbits
+  85              		.align	1
+  86              		.global	DCMI_StructInit
+  87              		.syntax unified
+  88              		.thumb
+  89              		.thumb_func
+  91              	DCMI_StructInit:
+  92              		@ args = 0, pretend = 0, frame = 0
+  93              		@ frame_needed = 0, uses_anonymous_args = 0
+  94              		@ link register save eliminated.
+  95 0000 0023     		movs	r3, #0
+  96 0002 0380     		strh	r3, [r0]	@ movhi
+  97 0004 4380     		strh	r3, [r0, #2]	@ movhi
+  98 0006 8380     		strh	r3, [r0, #4]	@ movhi
+  99 0008 C380     		strh	r3, [r0, #6]	@ movhi
+ 100 000a 0381     		strh	r3, [r0, #8]	@ movhi
+ 101 000c 4381     		strh	r3, [r0, #10]	@ movhi
+ 102 000e 8381     		strh	r3, [r0, #12]	@ movhi
+ 103 0010 7047     		bx	lr
+ 105              		.section	.text.DCMI_CROPConfig,"ax",%progbits
+ 106              		.align	1
+ 107              		.global	DCMI_CROPConfig
+ 108              		.syntax unified
+ 109              		.thumb
+ 110              		.thumb_func
+ 112              	DCMI_CROPConfig:
+ 113              		@ args = 0, pretend = 0, frame = 0
+ 114              		@ frame_needed = 0, uses_anonymous_args = 0
+ 115              		@ link register save eliminated.
+ 116 0000 4388     		ldrh	r3, [r0, #2]
+ 117 0002 0288     		ldrh	r2, [r0]
+ 118 0004 43EA0243 		orr	r3, r3, r2, lsl #16
+ 119 0008 034A     		ldr	r2, .L10
+ 120 000a 1362     		str	r3, [r2, #32]
+ 121 000c C388     		ldrh	r3, [r0, #6]
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccM1Hs9W.s 			page 3
+
+
+ 122 000e 8188     		ldrh	r1, [r0, #4]
+ 123 0010 43EA0143 		orr	r3, r3, r1, lsl #16
+ 124 0014 5362     		str	r3, [r2, #36]
+ 125 0016 7047     		bx	lr
+ 126              	.L11:
+ 127              		.align	2
+ 128              	.L10:
+ 129 0018 00000550 		.word	1342504960
+ 131              		.section	.text.DCMI_CROPCmd,"ax",%progbits
+ 132              		.align	1
+ 133              		.global	DCMI_CROPCmd
+ 134              		.syntax unified
+ 135              		.thumb
+ 136              		.thumb_func
+ 138              	DCMI_CROPCmd:
+ 139              		@ args = 0, pretend = 0, frame = 0
+ 140              		@ frame_needed = 0, uses_anonymous_args = 0
+ 141              		@ link register save eliminated.
+ 142 0000 28B1     		cbz	r0, .L13
+ 143 0002 064A     		ldr	r2, .L15
+ 144 0004 1368     		ldr	r3, [r2]
+ 145 0006 43F00403 		orr	r3, r3, #4
+ 146 000a 1360     		str	r3, [r2]
+ 147 000c 7047     		bx	lr
+ 148              	.L13:
+ 149 000e 034A     		ldr	r2, .L15
+ 150 0010 1368     		ldr	r3, [r2]
+ 151 0012 23F00403 		bic	r3, r3, #4
+ 152 0016 1360     		str	r3, [r2]
+ 153 0018 7047     		bx	lr
+ 154              	.L16:
+ 155 001a 00BF     		.align	2
+ 156              	.L15:
+ 157 001c 00000550 		.word	1342504960
+ 159              		.section	.text.DCMI_SetEmbeddedSynchroCodes,"ax",%progbits
+ 160              		.align	1
+ 161              		.global	DCMI_SetEmbeddedSynchroCodes
+ 162              		.syntax unified
+ 163              		.thumb
+ 164              		.thumb_func
+ 166              	DCMI_SetEmbeddedSynchroCodes:
+ 167              		@ args = 0, pretend = 0, frame = 0
+ 168              		@ frame_needed = 0, uses_anonymous_args = 0
+ 169              		@ link register save eliminated.
+ 170 0000 0378     		ldrb	r3, [r0]	@ zero_extendqisi2
+ 171 0002 4278     		ldrb	r2, [r0, #1]	@ zero_extendqisi2
+ 172 0004 43EA0223 		orr	r3, r3, r2, lsl #8
+ 173 0008 8278     		ldrb	r2, [r0, #2]	@ zero_extendqisi2
+ 174 000a 43EA0243 		orr	r3, r3, r2, lsl #16
+ 175 000e C278     		ldrb	r2, [r0, #3]	@ zero_extendqisi2
+ 176 0010 43EA0263 		orr	r3, r3, r2, lsl #24
+ 177 0014 014A     		ldr	r2, .L18
+ 178 0016 9361     		str	r3, [r2, #24]
+ 179 0018 7047     		bx	lr
+ 180              	.L19:
+ 181 001a 00BF     		.align	2
+ 182              	.L18:
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccM1Hs9W.s 			page 4
+
+
+ 183 001c 00000550 		.word	1342504960
+ 185              		.section	.text.DCMI_JPEGCmd,"ax",%progbits
+ 186              		.align	1
+ 187              		.global	DCMI_JPEGCmd
+ 188              		.syntax unified
+ 189              		.thumb
+ 190              		.thumb_func
+ 192              	DCMI_JPEGCmd:
+ 193              		@ args = 0, pretend = 0, frame = 0
+ 194              		@ frame_needed = 0, uses_anonymous_args = 0
+ 195              		@ link register save eliminated.
+ 196 0000 28B1     		cbz	r0, .L21
+ 197 0002 064A     		ldr	r2, .L23
+ 198 0004 1368     		ldr	r3, [r2]
+ 199 0006 43F00803 		orr	r3, r3, #8
+ 200 000a 1360     		str	r3, [r2]
+ 201 000c 7047     		bx	lr
+ 202              	.L21:
+ 203 000e 034A     		ldr	r2, .L23
+ 204 0010 1368     		ldr	r3, [r2]
+ 205 0012 23F00803 		bic	r3, r3, #8
+ 206 0016 1360     		str	r3, [r2]
+ 207 0018 7047     		bx	lr
+ 208              	.L24:
+ 209 001a 00BF     		.align	2
+ 210              	.L23:
+ 211 001c 00000550 		.word	1342504960
+ 213              		.section	.text.DCMI_Cmd,"ax",%progbits
+ 214              		.align	1
+ 215              		.global	DCMI_Cmd
+ 216              		.syntax unified
+ 217              		.thumb
+ 218              		.thumb_func
+ 220              	DCMI_Cmd:
+ 221              		@ args = 0, pretend = 0, frame = 0
+ 222              		@ frame_needed = 0, uses_anonymous_args = 0
+ 223              		@ link register save eliminated.
+ 224 0000 28B1     		cbz	r0, .L26
+ 225 0002 064A     		ldr	r2, .L28
+ 226 0004 1368     		ldr	r3, [r2]
+ 227 0006 43F48043 		orr	r3, r3, #16384
+ 228 000a 1360     		str	r3, [r2]
+ 229 000c 7047     		bx	lr
+ 230              	.L26:
+ 231 000e 034A     		ldr	r2, .L28
+ 232 0010 1368     		ldr	r3, [r2]
+ 233 0012 23F48043 		bic	r3, r3, #16384
+ 234 0016 1360     		str	r3, [r2]
+ 235 0018 7047     		bx	lr
+ 236              	.L29:
+ 237 001a 00BF     		.align	2
+ 238              	.L28:
+ 239 001c 00000550 		.word	1342504960
+ 241              		.section	.text.DCMI_CaptureCmd,"ax",%progbits
+ 242              		.align	1
+ 243              		.global	DCMI_CaptureCmd
+ 244              		.syntax unified
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccM1Hs9W.s 			page 5
+
+
+ 245              		.thumb
+ 246              		.thumb_func
+ 248              	DCMI_CaptureCmd:
+ 249              		@ args = 0, pretend = 0, frame = 0
+ 250              		@ frame_needed = 0, uses_anonymous_args = 0
+ 251              		@ link register save eliminated.
+ 252 0000 28B1     		cbz	r0, .L31
+ 253 0002 064A     		ldr	r2, .L33
+ 254 0004 1368     		ldr	r3, [r2]
+ 255 0006 43F00103 		orr	r3, r3, #1
+ 256 000a 1360     		str	r3, [r2]
+ 257 000c 7047     		bx	lr
+ 258              	.L31:
+ 259 000e 034A     		ldr	r2, .L33
+ 260 0010 1368     		ldr	r3, [r2]
+ 261 0012 23F00103 		bic	r3, r3, #1
+ 262 0016 1360     		str	r3, [r2]
+ 263 0018 7047     		bx	lr
+ 264              	.L34:
+ 265 001a 00BF     		.align	2
+ 266              	.L33:
+ 267 001c 00000550 		.word	1342504960
+ 269              		.section	.text.DCMI_ReadData,"ax",%progbits
+ 270              		.align	1
+ 271              		.global	DCMI_ReadData
+ 272              		.syntax unified
+ 273              		.thumb
+ 274              		.thumb_func
+ 276              	DCMI_ReadData:
+ 277              		@ args = 0, pretend = 0, frame = 0
+ 278              		@ frame_needed = 0, uses_anonymous_args = 0
+ 279              		@ link register save eliminated.
+ 280 0000 014B     		ldr	r3, .L36
+ 281 0002 986A     		ldr	r0, [r3, #40]
+ 282 0004 7047     		bx	lr
+ 283              	.L37:
+ 284 0006 00BF     		.align	2
+ 285              	.L36:
+ 286 0008 00000550 		.word	1342504960
+ 288              		.section	.text.DCMI_ITConfig,"ax",%progbits
+ 289              		.align	1
+ 290              		.global	DCMI_ITConfig
+ 291              		.syntax unified
+ 292              		.thumb
+ 293              		.thumb_func
+ 295              	DCMI_ITConfig:
+ 296              		@ args = 0, pretend = 0, frame = 0
+ 297              		@ frame_needed = 0, uses_anonymous_args = 0
+ 298              		@ link register save eliminated.
+ 299 0000 21B1     		cbz	r1, .L39
+ 300 0002 064B     		ldr	r3, .L41
+ 301 0004 DA68     		ldr	r2, [r3, #12]
+ 302 0006 1043     		orrs	r0, r0, r2
+ 303 0008 D860     		str	r0, [r3, #12]
+ 304 000a 7047     		bx	lr
+ 305              	.L39:
+ 306 000c 034A     		ldr	r2, .L41
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccM1Hs9W.s 			page 6
+
+
+ 307 000e D368     		ldr	r3, [r2, #12]
+ 308 0010 C043     		mvns	r0, r0
+ 309 0012 80B2     		uxth	r0, r0
+ 310 0014 0340     		ands	r3, r3, r0
+ 311 0016 D360     		str	r3, [r2, #12]
+ 312 0018 7047     		bx	lr
+ 313              	.L42:
+ 314 001a 00BF     		.align	2
+ 315              	.L41:
+ 316 001c 00000550 		.word	1342504960
+ 318              		.section	.text.DCMI_GetFlagStatus,"ax",%progbits
+ 319              		.align	1
+ 320              		.global	DCMI_GetFlagStatus
+ 321              		.syntax unified
+ 322              		.thumb
+ 323              		.thumb_func
+ 325              	DCMI_GetFlagStatus:
+ 326              		@ args = 0, pretend = 0, frame = 0
+ 327              		@ frame_needed = 0, uses_anonymous_args = 0
+ 328              		@ link register save eliminated.
+ 329 0000 030B     		lsrs	r3, r0, #12
+ 330 0002 05D1     		bne	.L44
+ 331 0004 074B     		ldr	r3, .L50
+ 332 0006 9B68     		ldr	r3, [r3, #8]
+ 333              	.L45:
+ 334 0008 1842     		tst	r0, r3
+ 335 000a 09D0     		beq	.L48
+ 336 000c 0120     		movs	r0, #1
+ 337 000e 7047     		bx	lr
+ 338              	.L44:
+ 339 0010 022B     		cmp	r3, #2
+ 340 0012 02D0     		beq	.L49
+ 341 0014 034B     		ldr	r3, .L50
+ 342 0016 1B69     		ldr	r3, [r3, #16]
+ 343 0018 F6E7     		b	.L45
+ 344              	.L49:
+ 345 001a 024B     		ldr	r3, .L50
+ 346 001c 5B68     		ldr	r3, [r3, #4]
+ 347 001e F3E7     		b	.L45
+ 348              	.L48:
+ 349 0020 0020     		movs	r0, #0
+ 350 0022 7047     		bx	lr
+ 351              	.L51:
+ 352              		.align	2
+ 353              	.L50:
+ 354 0024 00000550 		.word	1342504960
+ 356              		.section	.text.DCMI_ClearFlag,"ax",%progbits
+ 357              		.align	1
+ 358              		.global	DCMI_ClearFlag
+ 359              		.syntax unified
+ 360              		.thumb
+ 361              		.thumb_func
+ 363              	DCMI_ClearFlag:
+ 364              		@ args = 0, pretend = 0, frame = 0
+ 365              		@ frame_needed = 0, uses_anonymous_args = 0
+ 366              		@ link register save eliminated.
+ 367 0000 014B     		ldr	r3, .L53
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccM1Hs9W.s 			page 7
+
+
+ 368 0002 5861     		str	r0, [r3, #20]
+ 369 0004 7047     		bx	lr
+ 370              	.L54:
+ 371 0006 00BF     		.align	2
+ 372              	.L53:
+ 373 0008 00000550 		.word	1342504960
+ 375              		.section	.text.DCMI_GetITStatus,"ax",%progbits
+ 376              		.align	1
+ 377              		.global	DCMI_GetITStatus
+ 378              		.syntax unified
+ 379              		.thumb
+ 380              		.thumb_func
+ 382              	DCMI_GetITStatus:
+ 383              		@ args = 0, pretend = 0, frame = 0
+ 384              		@ frame_needed = 0, uses_anonymous_args = 0
+ 385              		@ link register save eliminated.
+ 386 0000 034B     		ldr	r3, .L58
+ 387 0002 1B69     		ldr	r3, [r3, #16]
+ 388 0004 0342     		tst	r3, r0
+ 389 0006 01D0     		beq	.L57
+ 390 0008 0120     		movs	r0, #1
+ 391 000a 7047     		bx	lr
+ 392              	.L57:
+ 393 000c 0020     		movs	r0, #0
+ 394 000e 7047     		bx	lr
+ 395              	.L59:
+ 396              		.align	2
+ 397              	.L58:
+ 398 0010 00000550 		.word	1342504960
+ 400              		.section	.text.DCMI_ClearITPendingBit,"ax",%progbits
+ 401              		.align	1
+ 402              		.global	DCMI_ClearITPendingBit
+ 403              		.syntax unified
+ 404              		.thumb
+ 405              		.thumb_func
+ 407              	DCMI_ClearITPendingBit:
+ 408              		@ args = 0, pretend = 0, frame = 0
+ 409              		@ frame_needed = 0, uses_anonymous_args = 0
+ 410              		@ link register save eliminated.
+ 411 0000 014B     		ldr	r3, .L61
+ 412 0002 5861     		str	r0, [r3, #20]
+ 413 0004 7047     		bx	lr
+ 414              	.L62:
+ 415 0006 00BF     		.align	2
+ 416              	.L61:
+ 417 0008 00000550 		.word	1342504960
+ 419              		.ident	"GCC: (Arm GNU Toolchain 13.3.Rel1 (Build arm-13.24)) 13.3.1 20240614"
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccM1Hs9W.s 			page 8
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 stm32f4xx_dcmi.c
+C:\Users\ktkuru\AppData\Local\Temp\ccM1Hs9W.s:18     .text.DCMI_DeInit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccM1Hs9W.s:24     .text.DCMI_DeInit:00000000 DCMI_DeInit
+C:\Users\ktkuru\AppData\Local\Temp\ccM1Hs9W.s:42     .text.DCMI_DeInit:00000018 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccM1Hs9W.s:45     .text.DCMI_Init:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccM1Hs9W.s:51     .text.DCMI_Init:00000000 DCMI_Init
+C:\Users\ktkuru\AppData\Local\Temp\ccM1Hs9W.s:82     .text.DCMI_Init:00000044 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccM1Hs9W.s:85     .text.DCMI_StructInit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccM1Hs9W.s:91     .text.DCMI_StructInit:00000000 DCMI_StructInit
+C:\Users\ktkuru\AppData\Local\Temp\ccM1Hs9W.s:106    .text.DCMI_CROPConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccM1Hs9W.s:112    .text.DCMI_CROPConfig:00000000 DCMI_CROPConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccM1Hs9W.s:129    .text.DCMI_CROPConfig:00000018 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccM1Hs9W.s:132    .text.DCMI_CROPCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccM1Hs9W.s:138    .text.DCMI_CROPCmd:00000000 DCMI_CROPCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccM1Hs9W.s:157    .text.DCMI_CROPCmd:0000001c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccM1Hs9W.s:160    .text.DCMI_SetEmbeddedSynchroCodes:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccM1Hs9W.s:166    .text.DCMI_SetEmbeddedSynchroCodes:00000000 DCMI_SetEmbeddedSynchroCodes
+C:\Users\ktkuru\AppData\Local\Temp\ccM1Hs9W.s:183    .text.DCMI_SetEmbeddedSynchroCodes:0000001c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccM1Hs9W.s:186    .text.DCMI_JPEGCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccM1Hs9W.s:192    .text.DCMI_JPEGCmd:00000000 DCMI_JPEGCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccM1Hs9W.s:211    .text.DCMI_JPEGCmd:0000001c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccM1Hs9W.s:214    .text.DCMI_Cmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccM1Hs9W.s:220    .text.DCMI_Cmd:00000000 DCMI_Cmd
+C:\Users\ktkuru\AppData\Local\Temp\ccM1Hs9W.s:239    .text.DCMI_Cmd:0000001c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccM1Hs9W.s:242    .text.DCMI_CaptureCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccM1Hs9W.s:248    .text.DCMI_CaptureCmd:00000000 DCMI_CaptureCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccM1Hs9W.s:267    .text.DCMI_CaptureCmd:0000001c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccM1Hs9W.s:270    .text.DCMI_ReadData:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccM1Hs9W.s:276    .text.DCMI_ReadData:00000000 DCMI_ReadData
+C:\Users\ktkuru\AppData\Local\Temp\ccM1Hs9W.s:286    .text.DCMI_ReadData:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccM1Hs9W.s:289    .text.DCMI_ITConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccM1Hs9W.s:295    .text.DCMI_ITConfig:00000000 DCMI_ITConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccM1Hs9W.s:316    .text.DCMI_ITConfig:0000001c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccM1Hs9W.s:319    .text.DCMI_GetFlagStatus:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccM1Hs9W.s:325    .text.DCMI_GetFlagStatus:00000000 DCMI_GetFlagStatus
+C:\Users\ktkuru\AppData\Local\Temp\ccM1Hs9W.s:354    .text.DCMI_GetFlagStatus:00000024 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccM1Hs9W.s:357    .text.DCMI_ClearFlag:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccM1Hs9W.s:363    .text.DCMI_ClearFlag:00000000 DCMI_ClearFlag
+C:\Users\ktkuru\AppData\Local\Temp\ccM1Hs9W.s:373    .text.DCMI_ClearFlag:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccM1Hs9W.s:376    .text.DCMI_GetITStatus:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccM1Hs9W.s:382    .text.DCMI_GetITStatus:00000000 DCMI_GetITStatus
+C:\Users\ktkuru\AppData\Local\Temp\ccM1Hs9W.s:398    .text.DCMI_GetITStatus:00000010 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccM1Hs9W.s:401    .text.DCMI_ClearITPendingBit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccM1Hs9W.s:407    .text.DCMI_ClearITPendingBit:00000000 DCMI_ClearITPendingBit
+C:\Users\ktkuru\AppData\Local\Temp\ccM1Hs9W.s:417    .text.DCMI_ClearITPendingBit:00000008 $d
+
+NO UNDEFINED SYMBOLS

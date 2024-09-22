@@ -1,0 +1,734 @@
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccEXreUU.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"stm32f4xx_cryp.c"
+  16              		.text
+  17              		.section	.text.CRYP_DeInit,"ax",%progbits
+  18              		.align	1
+  19              		.global	CRYP_DeInit
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  24              	CRYP_DeInit:
+  25              		@ args = 0, pretend = 0, frame = 0
+  26              		@ frame_needed = 0, uses_anonymous_args = 0
+  27 0000 08B5     		push	{r3, lr}
+  28 0002 0121     		movs	r1, #1
+  29 0004 1020     		movs	r0, #16
+  30 0006 FFF7FEFF 		bl	RCC_AHB2PeriphResetCmd
+  31 000a 0021     		movs	r1, #0
+  32 000c 1020     		movs	r0, #16
+  33 000e FFF7FEFF 		bl	RCC_AHB2PeriphResetCmd
+  34 0012 08BD     		pop	{r3, pc}
+  36              		.section	.text.CRYP_Init,"ax",%progbits
+  37              		.align	1
+  38              		.global	CRYP_Init
+  39              		.syntax unified
+  40              		.thumb
+  41              		.thumb_func
+  43              	CRYP_Init:
+  44              		@ args = 0, pretend = 0, frame = 0
+  45              		@ frame_needed = 0, uses_anonymous_args = 0
+  46              		@ link register save eliminated.
+  47 0000 174B     		ldr	r3, .L6
+  48 0002 1A68     		ldr	r2, [r3]
+  49 0004 22F40022 		bic	r2, r2, #524288
+  50 0008 22F03802 		bic	r2, r2, #56
+  51 000c 1A60     		str	r2, [r3]
+  52 000e 1A68     		ldr	r2, [r3]
+  53 0010 4168     		ldr	r1, [r0, #4]
+  54 0012 0A43     		orrs	r2, r2, r1
+  55 0014 1A60     		str	r2, [r3]
+  56 0016 1A68     		ldr	r2, [r3]
+  57 0018 22F0C002 		bic	r2, r2, #192
+  58 001c 1A60     		str	r2, [r3]
+  59 001e 1A68     		ldr	r2, [r3]
+  60 0020 8168     		ldr	r1, [r0, #8]
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccEXreUU.s 			page 2
+
+
+  61 0022 0A43     		orrs	r2, r2, r1
+  62 0024 1A60     		str	r2, [r3]
+  63 0026 4368     		ldr	r3, [r0, #4]
+  64 0028 83B1     		cbz	r3, .L4
+  65 002a 182B     		cmp	r3, #24
+  66 002c 05D8     		bhi	.L5
+  67 002e 0D4A     		ldr	r2, .L6+4
+  68 0030 22FA03F3 		lsr	r3, r2, r3
+  69 0034 13F0010F 		tst	r3, #1
+  70 0038 08D1     		bne	.L4
+  71              	.L5:
+  72 003a 094B     		ldr	r3, .L6
+  73 003c 1A68     		ldr	r2, [r3]
+  74 003e 22F44072 		bic	r2, r2, #768
+  75 0042 1A60     		str	r2, [r3]
+  76 0044 1A68     		ldr	r2, [r3]
+  77 0046 C168     		ldr	r1, [r0, #12]
+  78 0048 0A43     		orrs	r2, r2, r1
+  79 004a 1A60     		str	r2, [r3]
+  80              	.L4:
+  81 004c 044B     		ldr	r3, .L6
+  82 004e 1A68     		ldr	r2, [r3]
+  83 0050 22F00402 		bic	r2, r2, #4
+  84 0054 1A60     		str	r2, [r3]
+  85 0056 1A68     		ldr	r2, [r3]
+  86 0058 0168     		ldr	r1, [r0]
+  87 005a 0A43     		orrs	r2, r2, r1
+  88 005c 1A60     		str	r2, [r3]
+  89 005e 7047     		bx	lr
+  90              	.L7:
+  91              		.align	2
+  92              	.L6:
+  93 0060 00000650 		.word	1342570496
+  94 0064 00010101 		.word	16843008
+  96              		.section	.text.CRYP_StructInit,"ax",%progbits
+  97              		.align	1
+  98              		.global	CRYP_StructInit
+  99              		.syntax unified
+ 100              		.thumb
+ 101              		.thumb_func
+ 103              	CRYP_StructInit:
+ 104              		@ args = 0, pretend = 0, frame = 0
+ 105              		@ frame_needed = 0, uses_anonymous_args = 0
+ 106              		@ link register save eliminated.
+ 107 0000 0023     		movs	r3, #0
+ 108 0002 0360     		str	r3, [r0]
+ 109 0004 4360     		str	r3, [r0, #4]
+ 110 0006 8360     		str	r3, [r0, #8]
+ 111 0008 C360     		str	r3, [r0, #12]
+ 112 000a 7047     		bx	lr
+ 114              		.section	.text.CRYP_KeyInit,"ax",%progbits
+ 115              		.align	1
+ 116              		.global	CRYP_KeyInit
+ 117              		.syntax unified
+ 118              		.thumb
+ 119              		.thumb_func
+ 121              	CRYP_KeyInit:
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccEXreUU.s 			page 3
+
+
+ 122              		@ args = 0, pretend = 0, frame = 0
+ 123              		@ frame_needed = 0, uses_anonymous_args = 0
+ 124              		@ link register save eliminated.
+ 125 0000 0268     		ldr	r2, [r0]
+ 126 0002 084B     		ldr	r3, .L10
+ 127 0004 1A62     		str	r2, [r3, #32]
+ 128 0006 4268     		ldr	r2, [r0, #4]
+ 129 0008 5A62     		str	r2, [r3, #36]
+ 130 000a 8268     		ldr	r2, [r0, #8]
+ 131 000c 9A62     		str	r2, [r3, #40]
+ 132 000e C268     		ldr	r2, [r0, #12]
+ 133 0010 DA62     		str	r2, [r3, #44]
+ 134 0012 0269     		ldr	r2, [r0, #16]
+ 135 0014 1A63     		str	r2, [r3, #48]
+ 136 0016 4269     		ldr	r2, [r0, #20]
+ 137 0018 5A63     		str	r2, [r3, #52]
+ 138 001a 8269     		ldr	r2, [r0, #24]
+ 139 001c 9A63     		str	r2, [r3, #56]
+ 140 001e C269     		ldr	r2, [r0, #28]
+ 141 0020 DA63     		str	r2, [r3, #60]
+ 142 0022 7047     		bx	lr
+ 143              	.L11:
+ 144              		.align	2
+ 145              	.L10:
+ 146 0024 00000650 		.word	1342570496
+ 148              		.section	.text.CRYP_KeyStructInit,"ax",%progbits
+ 149              		.align	1
+ 150              		.global	CRYP_KeyStructInit
+ 151              		.syntax unified
+ 152              		.thumb
+ 153              		.thumb_func
+ 155              	CRYP_KeyStructInit:
+ 156              		@ args = 0, pretend = 0, frame = 0
+ 157              		@ frame_needed = 0, uses_anonymous_args = 0
+ 158              		@ link register save eliminated.
+ 159 0000 0023     		movs	r3, #0
+ 160 0002 0360     		str	r3, [r0]
+ 161 0004 4360     		str	r3, [r0, #4]
+ 162 0006 8360     		str	r3, [r0, #8]
+ 163 0008 C360     		str	r3, [r0, #12]
+ 164 000a 0361     		str	r3, [r0, #16]
+ 165 000c 4361     		str	r3, [r0, #20]
+ 166 000e 8361     		str	r3, [r0, #24]
+ 167 0010 C361     		str	r3, [r0, #28]
+ 168 0012 7047     		bx	lr
+ 170              		.section	.text.CRYP_IVInit,"ax",%progbits
+ 171              		.align	1
+ 172              		.global	CRYP_IVInit
+ 173              		.syntax unified
+ 174              		.thumb
+ 175              		.thumb_func
+ 177              	CRYP_IVInit:
+ 178              		@ args = 0, pretend = 0, frame = 0
+ 179              		@ frame_needed = 0, uses_anonymous_args = 0
+ 180              		@ link register save eliminated.
+ 181 0000 0268     		ldr	r2, [r0]
+ 182 0002 044B     		ldr	r3, .L14
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccEXreUU.s 			page 4
+
+
+ 183 0004 1A64     		str	r2, [r3, #64]
+ 184 0006 4268     		ldr	r2, [r0, #4]
+ 185 0008 5A64     		str	r2, [r3, #68]
+ 186 000a 8268     		ldr	r2, [r0, #8]
+ 187 000c 9A64     		str	r2, [r3, #72]
+ 188 000e C268     		ldr	r2, [r0, #12]
+ 189 0010 DA64     		str	r2, [r3, #76]
+ 190 0012 7047     		bx	lr
+ 191              	.L15:
+ 192              		.align	2
+ 193              	.L14:
+ 194 0014 00000650 		.word	1342570496
+ 196              		.section	.text.CRYP_IVStructInit,"ax",%progbits
+ 197              		.align	1
+ 198              		.global	CRYP_IVStructInit
+ 199              		.syntax unified
+ 200              		.thumb
+ 201              		.thumb_func
+ 203              	CRYP_IVStructInit:
+ 204              		@ args = 0, pretend = 0, frame = 0
+ 205              		@ frame_needed = 0, uses_anonymous_args = 0
+ 206              		@ link register save eliminated.
+ 207 0000 0023     		movs	r3, #0
+ 208 0002 0360     		str	r3, [r0]
+ 209 0004 4360     		str	r3, [r0, #4]
+ 210 0006 8360     		str	r3, [r0, #8]
+ 211 0008 C360     		str	r3, [r0, #12]
+ 212 000a 7047     		bx	lr
+ 214              		.section	.text.CRYP_PhaseConfig,"ax",%progbits
+ 215              		.align	1
+ 216              		.global	CRYP_PhaseConfig
+ 217              		.syntax unified
+ 218              		.thumb
+ 219              		.thumb_func
+ 221              	CRYP_PhaseConfig:
+ 222              		@ args = 0, pretend = 0, frame = 0
+ 223              		@ frame_needed = 0, uses_anonymous_args = 0
+ 224              		@ link register save eliminated.
+ 225 0000 034A     		ldr	r2, .L18
+ 226 0002 1368     		ldr	r3, [r2]
+ 227 0004 23F44033 		bic	r3, r3, #196608
+ 228 0008 0343     		orrs	r3, r3, r0
+ 229 000a 1360     		str	r3, [r2]
+ 230 000c 7047     		bx	lr
+ 231              	.L19:
+ 232 000e 00BF     		.align	2
+ 233              	.L18:
+ 234 0010 00000650 		.word	1342570496
+ 236              		.section	.text.CRYP_FIFOFlush,"ax",%progbits
+ 237              		.align	1
+ 238              		.global	CRYP_FIFOFlush
+ 239              		.syntax unified
+ 240              		.thumb
+ 241              		.thumb_func
+ 243              	CRYP_FIFOFlush:
+ 244              		@ args = 0, pretend = 0, frame = 0
+ 245              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccEXreUU.s 			page 5
+
+
+ 246              		@ link register save eliminated.
+ 247 0000 024A     		ldr	r2, .L21
+ 248 0002 1368     		ldr	r3, [r2]
+ 249 0004 43F48043 		orr	r3, r3, #16384
+ 250 0008 1360     		str	r3, [r2]
+ 251 000a 7047     		bx	lr
+ 252              	.L22:
+ 253              		.align	2
+ 254              	.L21:
+ 255 000c 00000650 		.word	1342570496
+ 257              		.section	.text.CRYP_Cmd,"ax",%progbits
+ 258              		.align	1
+ 259              		.global	CRYP_Cmd
+ 260              		.syntax unified
+ 261              		.thumb
+ 262              		.thumb_func
+ 264              	CRYP_Cmd:
+ 265              		@ args = 0, pretend = 0, frame = 0
+ 266              		@ frame_needed = 0, uses_anonymous_args = 0
+ 267              		@ link register save eliminated.
+ 268 0000 28B1     		cbz	r0, .L24
+ 269 0002 064A     		ldr	r2, .L26
+ 270 0004 1368     		ldr	r3, [r2]
+ 271 0006 43F40043 		orr	r3, r3, #32768
+ 272 000a 1360     		str	r3, [r2]
+ 273 000c 7047     		bx	lr
+ 274              	.L24:
+ 275 000e 034A     		ldr	r2, .L26
+ 276 0010 1368     		ldr	r3, [r2]
+ 277 0012 23F40043 		bic	r3, r3, #32768
+ 278 0016 1360     		str	r3, [r2]
+ 279 0018 7047     		bx	lr
+ 280              	.L27:
+ 281 001a 00BF     		.align	2
+ 282              	.L26:
+ 283 001c 00000650 		.word	1342570496
+ 285              		.section	.text.CRYP_DataIn,"ax",%progbits
+ 286              		.align	1
+ 287              		.global	CRYP_DataIn
+ 288              		.syntax unified
+ 289              		.thumb
+ 290              		.thumb_func
+ 292              	CRYP_DataIn:
+ 293              		@ args = 0, pretend = 0, frame = 0
+ 294              		@ frame_needed = 0, uses_anonymous_args = 0
+ 295              		@ link register save eliminated.
+ 296 0000 014B     		ldr	r3, .L29
+ 297 0002 9860     		str	r0, [r3, #8]
+ 298 0004 7047     		bx	lr
+ 299              	.L30:
+ 300 0006 00BF     		.align	2
+ 301              	.L29:
+ 302 0008 00000650 		.word	1342570496
+ 304              		.section	.text.CRYP_DataOut,"ax",%progbits
+ 305              		.align	1
+ 306              		.global	CRYP_DataOut
+ 307              		.syntax unified
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccEXreUU.s 			page 6
+
+
+ 308              		.thumb
+ 309              		.thumb_func
+ 311              	CRYP_DataOut:
+ 312              		@ args = 0, pretend = 0, frame = 0
+ 313              		@ frame_needed = 0, uses_anonymous_args = 0
+ 314              		@ link register save eliminated.
+ 315 0000 014B     		ldr	r3, .L32
+ 316 0002 D868     		ldr	r0, [r3, #12]
+ 317 0004 7047     		bx	lr
+ 318              	.L33:
+ 319 0006 00BF     		.align	2
+ 320              	.L32:
+ 321 0008 00000650 		.word	1342570496
+ 323              		.section	.text.CRYP_SaveContext,"ax",%progbits
+ 324              		.align	1
+ 325              		.global	CRYP_SaveContext
+ 326              		.syntax unified
+ 327              		.thumb
+ 328              		.thumb_func
+ 330              	CRYP_SaveContext:
+ 331              		@ args = 0, pretend = 0, frame = 8
+ 332              		@ frame_needed = 0, uses_anonymous_args = 0
+ 333              		@ link register save eliminated.
+ 334 0000 10B4     		push	{r4}
+ 335 0002 83B0     		sub	sp, sp, #12
+ 336 0004 0023     		movs	r3, #0
+ 337 0006 0193     		str	r3, [sp, #4]
+ 338 0008 3B4B     		ldr	r3, .L43
+ 339 000a 1A69     		ldr	r2, [r3, #16]
+ 340 000c 22F00102 		bic	r2, r2, #1
+ 341 0010 1A61     		str	r2, [r3, #16]
+ 342 0012 1B68     		ldr	r3, [r3]
+ 343 0014 13F0080F 		tst	r3, #8
+ 344 0018 1AD0     		beq	.L39
+ 345 001a 4FF0110C 		mov	ip, #17
+ 346              	.L37:
+ 347 001e 364B     		ldr	r3, .L43
+ 348 0020 5A68     		ldr	r2, [r3, #4]
+ 349 0022 02EA0C02 		and	r2, r2, ip
+ 350 0026 019B     		ldr	r3, [sp, #4]
+ 351 0028 0133     		adds	r3, r3, #1
+ 352 002a 0193     		str	r3, [sp, #4]
+ 353 002c 019C     		ldr	r4, [sp, #4]
+ 354 002e 4FF6FF73 		movw	r3, #65535
+ 355 0032 9C42     		cmp	r4, r3
+ 356 0034 01D0     		beq	.L36
+ 357 0036 012A     		cmp	r2, #1
+ 358 0038 F1D1     		bne	.L37
+ 359              	.L36:
+ 360 003a 2F4B     		ldr	r3, .L43
+ 361 003c 5B68     		ldr	r3, [r3, #4]
+ 362 003e 03EA0C03 		and	r3, r3, ip
+ 363 0042 012B     		cmp	r3, #1
+ 364 0044 07D0     		beq	.L42
+ 365 0046 0020     		movs	r0, #0
+ 366              	.L38:
+ 367 0048 03B0     		add	sp, sp, #12
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccEXreUU.s 			page 7
+
+
+ 368              		@ sp needed
+ 369 004a 5DF8044B 		ldr	r4, [sp], #4
+ 370 004e 7047     		bx	lr
+ 371              	.L39:
+ 372 0050 4FF0150C 		mov	ip, #21
+ 373 0054 E3E7     		b	.L37
+ 374              	.L42:
+ 375 0056 284B     		ldr	r3, .L43
+ 376 0058 1A69     		ldr	r2, [r3, #16]
+ 377 005a 22F00202 		bic	r2, r2, #2
+ 378 005e 1A61     		str	r2, [r3, #16]
+ 379 0060 1A68     		ldr	r2, [r3]
+ 380 0062 22F40042 		bic	r2, r2, #32768
+ 381 0066 1A60     		str	r2, [r3]
+ 382 0068 1A68     		ldr	r2, [r3]
+ 383 006a 22F07F42 		bic	r2, r2, #-16777216
+ 384 006e 22F47402 		bic	r2, r2, #15990784
+ 385 0072 22F47C42 		bic	r2, r2, #64512
+ 386 0076 22F00302 		bic	r2, r2, #3
+ 387 007a 0260     		str	r2, [r0]
+ 388 007c 1A6C     		ldr	r2, [r3, #64]
+ 389 007e 4260     		str	r2, [r0, #4]
+ 390 0080 5A6C     		ldr	r2, [r3, #68]
+ 391 0082 8260     		str	r2, [r0, #8]
+ 392 0084 9A6C     		ldr	r2, [r3, #72]
+ 393 0086 C260     		str	r2, [r0, #12]
+ 394 0088 DA6C     		ldr	r2, [r3, #76]
+ 395 008a 0261     		str	r2, [r0, #16]
+ 396 008c 0A68     		ldr	r2, [r1]
+ 397 008e 4261     		str	r2, [r0, #20]
+ 398 0090 4A68     		ldr	r2, [r1, #4]
+ 399 0092 8261     		str	r2, [r0, #24]
+ 400 0094 8A68     		ldr	r2, [r1, #8]
+ 401 0096 C261     		str	r2, [r0, #28]
+ 402 0098 CA68     		ldr	r2, [r1, #12]
+ 403 009a 0262     		str	r2, [r0, #32]
+ 404 009c 0A69     		ldr	r2, [r1, #16]
+ 405 009e 4262     		str	r2, [r0, #36]
+ 406 00a0 4A69     		ldr	r2, [r1, #20]
+ 407 00a2 8262     		str	r2, [r0, #40]
+ 408 00a4 8A69     		ldr	r2, [r1, #24]
+ 409 00a6 C262     		str	r2, [r0, #44]
+ 410 00a8 CA69     		ldr	r2, [r1, #28]
+ 411 00aa 0263     		str	r2, [r0, #48]
+ 412 00ac 1A6D     		ldr	r2, [r3, #80]
+ 413 00ae 4263     		str	r2, [r0, #52]
+ 414 00b0 5A6D     		ldr	r2, [r3, #84]
+ 415 00b2 8263     		str	r2, [r0, #56]
+ 416 00b4 9A6D     		ldr	r2, [r3, #88]
+ 417 00b6 C263     		str	r2, [r0, #60]
+ 418 00b8 DA6D     		ldr	r2, [r3, #92]
+ 419 00ba 0264     		str	r2, [r0, #64]
+ 420 00bc 1A6E     		ldr	r2, [r3, #96]
+ 421 00be 4264     		str	r2, [r0, #68]
+ 422 00c0 5A6E     		ldr	r2, [r3, #100]
+ 423 00c2 8264     		str	r2, [r0, #72]
+ 424 00c4 9A6E     		ldr	r2, [r3, #104]
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccEXreUU.s 			page 8
+
+
+ 425 00c6 C264     		str	r2, [r0, #76]
+ 426 00c8 DA6E     		ldr	r2, [r3, #108]
+ 427 00ca 0265     		str	r2, [r0, #80]
+ 428 00cc 1A6F     		ldr	r2, [r3, #112]
+ 429 00ce 4265     		str	r2, [r0, #84]
+ 430 00d0 5A6F     		ldr	r2, [r3, #116]
+ 431 00d2 8265     		str	r2, [r0, #88]
+ 432 00d4 9A6F     		ldr	r2, [r3, #120]
+ 433 00d6 C265     		str	r2, [r0, #92]
+ 434 00d8 DA6F     		ldr	r2, [r3, #124]
+ 435 00da 0266     		str	r2, [r0, #96]
+ 436 00dc D3F88020 		ldr	r2, [r3, #128]
+ 437 00e0 4266     		str	r2, [r0, #100]
+ 438 00e2 D3F88420 		ldr	r2, [r3, #132]
+ 439 00e6 8266     		str	r2, [r0, #104]
+ 440 00e8 D3F88820 		ldr	r2, [r3, #136]
+ 441 00ec C266     		str	r2, [r0, #108]
+ 442 00ee D3F88C30 		ldr	r3, [r3, #140]
+ 443 00f2 0367     		str	r3, [r0, #112]
+ 444 00f4 0120     		movs	r0, #1
+ 445 00f6 A7E7     		b	.L38
+ 446              	.L44:
+ 447              		.align	2
+ 448              	.L43:
+ 449 00f8 00000650 		.word	1342570496
+ 451              		.section	.text.CRYP_RestoreContext,"ax",%progbits
+ 452              		.align	1
+ 453              		.global	CRYP_RestoreContext
+ 454              		.syntax unified
+ 455              		.thumb
+ 456              		.thumb_func
+ 458              	CRYP_RestoreContext:
+ 459              		@ args = 0, pretend = 0, frame = 0
+ 460              		@ frame_needed = 0, uses_anonymous_args = 0
+ 461              		@ link register save eliminated.
+ 462 0000 0268     		ldr	r2, [r0]
+ 463 0002 214B     		ldr	r3, .L46
+ 464 0004 1A60     		str	r2, [r3]
+ 465 0006 4269     		ldr	r2, [r0, #20]
+ 466 0008 1A62     		str	r2, [r3, #32]
+ 467 000a 8269     		ldr	r2, [r0, #24]
+ 468 000c 5A62     		str	r2, [r3, #36]
+ 469 000e C269     		ldr	r2, [r0, #28]
+ 470 0010 9A62     		str	r2, [r3, #40]
+ 471 0012 026A     		ldr	r2, [r0, #32]
+ 472 0014 DA62     		str	r2, [r3, #44]
+ 473 0016 426A     		ldr	r2, [r0, #36]
+ 474 0018 1A63     		str	r2, [r3, #48]
+ 475 001a 826A     		ldr	r2, [r0, #40]
+ 476 001c 5A63     		str	r2, [r3, #52]
+ 477 001e C26A     		ldr	r2, [r0, #44]
+ 478 0020 9A63     		str	r2, [r3, #56]
+ 479 0022 026B     		ldr	r2, [r0, #48]
+ 480 0024 DA63     		str	r2, [r3, #60]
+ 481 0026 4268     		ldr	r2, [r0, #4]
+ 482 0028 1A64     		str	r2, [r3, #64]
+ 483 002a 8268     		ldr	r2, [r0, #8]
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccEXreUU.s 			page 9
+
+
+ 484 002c 5A64     		str	r2, [r3, #68]
+ 485 002e C268     		ldr	r2, [r0, #12]
+ 486 0030 9A64     		str	r2, [r3, #72]
+ 487 0032 0269     		ldr	r2, [r0, #16]
+ 488 0034 DA64     		str	r2, [r3, #76]
+ 489 0036 426B     		ldr	r2, [r0, #52]
+ 490 0038 1A65     		str	r2, [r3, #80]
+ 491 003a 826B     		ldr	r2, [r0, #56]
+ 492 003c 5A65     		str	r2, [r3, #84]
+ 493 003e C26B     		ldr	r2, [r0, #60]
+ 494 0040 9A65     		str	r2, [r3, #88]
+ 495 0042 026C     		ldr	r2, [r0, #64]
+ 496 0044 DA65     		str	r2, [r3, #92]
+ 497 0046 426C     		ldr	r2, [r0, #68]
+ 498 0048 1A66     		str	r2, [r3, #96]
+ 499 004a 826C     		ldr	r2, [r0, #72]
+ 500 004c 5A66     		str	r2, [r3, #100]
+ 501 004e C26C     		ldr	r2, [r0, #76]
+ 502 0050 9A66     		str	r2, [r3, #104]
+ 503 0052 026D     		ldr	r2, [r0, #80]
+ 504 0054 DA66     		str	r2, [r3, #108]
+ 505 0056 426D     		ldr	r2, [r0, #84]
+ 506 0058 1A67     		str	r2, [r3, #112]
+ 507 005a 826D     		ldr	r2, [r0, #88]
+ 508 005c 5A67     		str	r2, [r3, #116]
+ 509 005e C26D     		ldr	r2, [r0, #92]
+ 510 0060 9A67     		str	r2, [r3, #120]
+ 511 0062 026E     		ldr	r2, [r0, #96]
+ 512 0064 DA67     		str	r2, [r3, #124]
+ 513 0066 426E     		ldr	r2, [r0, #100]
+ 514 0068 C3F88020 		str	r2, [r3, #128]
+ 515 006c 826E     		ldr	r2, [r0, #104]
+ 516 006e C3F88420 		str	r2, [r3, #132]
+ 517 0072 C26E     		ldr	r2, [r0, #108]
+ 518 0074 C3F88820 		str	r2, [r3, #136]
+ 519 0078 026F     		ldr	r2, [r0, #112]
+ 520 007a C3F88C20 		str	r2, [r3, #140]
+ 521 007e 1A68     		ldr	r2, [r3]
+ 522 0080 42F40042 		orr	r2, r2, #32768
+ 523 0084 1A60     		str	r2, [r3]
+ 524 0086 7047     		bx	lr
+ 525              	.L47:
+ 526              		.align	2
+ 527              	.L46:
+ 528 0088 00000650 		.word	1342570496
+ 530              		.section	.text.CRYP_DMACmd,"ax",%progbits
+ 531              		.align	1
+ 532              		.global	CRYP_DMACmd
+ 533              		.syntax unified
+ 534              		.thumb
+ 535              		.thumb_func
+ 537              	CRYP_DMACmd:
+ 538              		@ args = 0, pretend = 0, frame = 0
+ 539              		@ frame_needed = 0, uses_anonymous_args = 0
+ 540              		@ link register save eliminated.
+ 541 0000 21B1     		cbz	r1, .L49
+ 542 0002 064B     		ldr	r3, .L51
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccEXreUU.s 			page 10
+
+
+ 543 0004 1A69     		ldr	r2, [r3, #16]
+ 544 0006 1043     		orrs	r0, r0, r2
+ 545 0008 1861     		str	r0, [r3, #16]
+ 546 000a 7047     		bx	lr
+ 547              	.L49:
+ 548 000c 034A     		ldr	r2, .L51
+ 549 000e 1369     		ldr	r3, [r2, #16]
+ 550 0010 C043     		mvns	r0, r0
+ 551 0012 C0B2     		uxtb	r0, r0
+ 552 0014 0340     		ands	r3, r3, r0
+ 553 0016 1361     		str	r3, [r2, #16]
+ 554 0018 7047     		bx	lr
+ 555              	.L52:
+ 556 001a 00BF     		.align	2
+ 557              	.L51:
+ 558 001c 00000650 		.word	1342570496
+ 560              		.section	.text.CRYP_ITConfig,"ax",%progbits
+ 561              		.align	1
+ 562              		.global	CRYP_ITConfig
+ 563              		.syntax unified
+ 564              		.thumb
+ 565              		.thumb_func
+ 567              	CRYP_ITConfig:
+ 568              		@ args = 0, pretend = 0, frame = 0
+ 569              		@ frame_needed = 0, uses_anonymous_args = 0
+ 570              		@ link register save eliminated.
+ 571 0000 21B1     		cbz	r1, .L54
+ 572 0002 064B     		ldr	r3, .L56
+ 573 0004 5A69     		ldr	r2, [r3, #20]
+ 574 0006 1043     		orrs	r0, r0, r2
+ 575 0008 5861     		str	r0, [r3, #20]
+ 576 000a 7047     		bx	lr
+ 577              	.L54:
+ 578 000c 034A     		ldr	r2, .L56
+ 579 000e 5369     		ldr	r3, [r2, #20]
+ 580 0010 C043     		mvns	r0, r0
+ 581 0012 C0B2     		uxtb	r0, r0
+ 582 0014 0340     		ands	r3, r3, r0
+ 583 0016 5361     		str	r3, [r2, #20]
+ 584 0018 7047     		bx	lr
+ 585              	.L57:
+ 586 001a 00BF     		.align	2
+ 587              	.L56:
+ 588 001c 00000650 		.word	1342570496
+ 590              		.section	.text.CRYP_GetITStatus,"ax",%progbits
+ 591              		.align	1
+ 592              		.global	CRYP_GetITStatus
+ 593              		.syntax unified
+ 594              		.thumb
+ 595              		.thumb_func
+ 597              	CRYP_GetITStatus:
+ 598              		@ args = 0, pretend = 0, frame = 0
+ 599              		@ frame_needed = 0, uses_anonymous_args = 0
+ 600              		@ link register save eliminated.
+ 601 0000 034B     		ldr	r3, .L61
+ 602 0002 DB69     		ldr	r3, [r3, #28]
+ 603 0004 1842     		tst	r0, r3
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccEXreUU.s 			page 11
+
+
+ 604 0006 01D0     		beq	.L60
+ 605 0008 0120     		movs	r0, #1
+ 606 000a 7047     		bx	lr
+ 607              	.L60:
+ 608 000c 0020     		movs	r0, #0
+ 609 000e 7047     		bx	lr
+ 610              	.L62:
+ 611              		.align	2
+ 612              	.L61:
+ 613 0010 00000650 		.word	1342570496
+ 615              		.section	.text.CRYP_GetCmdStatus,"ax",%progbits
+ 616              		.align	1
+ 617              		.global	CRYP_GetCmdStatus
+ 618              		.syntax unified
+ 619              		.thumb
+ 620              		.thumb_func
+ 622              	CRYP_GetCmdStatus:
+ 623              		@ args = 0, pretend = 0, frame = 0
+ 624              		@ frame_needed = 0, uses_anonymous_args = 0
+ 625              		@ link register save eliminated.
+ 626 0000 044B     		ldr	r3, .L66
+ 627 0002 1B68     		ldr	r3, [r3]
+ 628 0004 13F4004F 		tst	r3, #32768
+ 629 0008 01D0     		beq	.L65
+ 630 000a 0120     		movs	r0, #1
+ 631 000c 7047     		bx	lr
+ 632              	.L65:
+ 633 000e 0020     		movs	r0, #0
+ 634 0010 7047     		bx	lr
+ 635              	.L67:
+ 636 0012 00BF     		.align	2
+ 637              	.L66:
+ 638 0014 00000650 		.word	1342570496
+ 640              		.section	.text.CRYP_GetFlagStatus,"ax",%progbits
+ 641              		.align	1
+ 642              		.global	CRYP_GetFlagStatus
+ 643              		.syntax unified
+ 644              		.thumb
+ 645              		.thumb_func
+ 647              	CRYP_GetFlagStatus:
+ 648              		@ args = 0, pretend = 0, frame = 0
+ 649              		@ frame_needed = 0, uses_anonymous_args = 0
+ 650              		@ link register save eliminated.
+ 651 0000 10F0200F 		tst	r0, #32
+ 652 0004 05D0     		beq	.L69
+ 653 0006 054B     		ldr	r3, .L73
+ 654 0008 9B69     		ldr	r3, [r3, #24]
+ 655              	.L70:
+ 656 000a 1842     		tst	r0, r3
+ 657 000c 04D0     		beq	.L72
+ 658 000e 0120     		movs	r0, #1
+ 659 0010 7047     		bx	lr
+ 660              	.L69:
+ 661 0012 024B     		ldr	r3, .L73
+ 662 0014 5B68     		ldr	r3, [r3, #4]
+ 663 0016 F8E7     		b	.L70
+ 664              	.L72:
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccEXreUU.s 			page 12
+
+
+ 665 0018 0020     		movs	r0, #0
+ 666 001a 7047     		bx	lr
+ 667              	.L74:
+ 668              		.align	2
+ 669              	.L73:
+ 670 001c 00000650 		.word	1342570496
+ 672              		.ident	"GCC: (Arm GNU Toolchain 13.3.Rel1 (Build arm-13.24)) 13.3.1 20240614"
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccEXreUU.s 			page 13
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 stm32f4xx_cryp.c
+C:\Users\ktkuru\AppData\Local\Temp\ccEXreUU.s:18     .text.CRYP_DeInit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccEXreUU.s:24     .text.CRYP_DeInit:00000000 CRYP_DeInit
+C:\Users\ktkuru\AppData\Local\Temp\ccEXreUU.s:37     .text.CRYP_Init:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccEXreUU.s:43     .text.CRYP_Init:00000000 CRYP_Init
+C:\Users\ktkuru\AppData\Local\Temp\ccEXreUU.s:93     .text.CRYP_Init:00000060 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccEXreUU.s:97     .text.CRYP_StructInit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccEXreUU.s:103    .text.CRYP_StructInit:00000000 CRYP_StructInit
+C:\Users\ktkuru\AppData\Local\Temp\ccEXreUU.s:115    .text.CRYP_KeyInit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccEXreUU.s:121    .text.CRYP_KeyInit:00000000 CRYP_KeyInit
+C:\Users\ktkuru\AppData\Local\Temp\ccEXreUU.s:146    .text.CRYP_KeyInit:00000024 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccEXreUU.s:149    .text.CRYP_KeyStructInit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccEXreUU.s:155    .text.CRYP_KeyStructInit:00000000 CRYP_KeyStructInit
+C:\Users\ktkuru\AppData\Local\Temp\ccEXreUU.s:171    .text.CRYP_IVInit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccEXreUU.s:177    .text.CRYP_IVInit:00000000 CRYP_IVInit
+C:\Users\ktkuru\AppData\Local\Temp\ccEXreUU.s:194    .text.CRYP_IVInit:00000014 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccEXreUU.s:197    .text.CRYP_IVStructInit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccEXreUU.s:203    .text.CRYP_IVStructInit:00000000 CRYP_IVStructInit
+C:\Users\ktkuru\AppData\Local\Temp\ccEXreUU.s:215    .text.CRYP_PhaseConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccEXreUU.s:221    .text.CRYP_PhaseConfig:00000000 CRYP_PhaseConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccEXreUU.s:234    .text.CRYP_PhaseConfig:00000010 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccEXreUU.s:237    .text.CRYP_FIFOFlush:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccEXreUU.s:243    .text.CRYP_FIFOFlush:00000000 CRYP_FIFOFlush
+C:\Users\ktkuru\AppData\Local\Temp\ccEXreUU.s:255    .text.CRYP_FIFOFlush:0000000c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccEXreUU.s:258    .text.CRYP_Cmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccEXreUU.s:264    .text.CRYP_Cmd:00000000 CRYP_Cmd
+C:\Users\ktkuru\AppData\Local\Temp\ccEXreUU.s:283    .text.CRYP_Cmd:0000001c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccEXreUU.s:286    .text.CRYP_DataIn:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccEXreUU.s:292    .text.CRYP_DataIn:00000000 CRYP_DataIn
+C:\Users\ktkuru\AppData\Local\Temp\ccEXreUU.s:302    .text.CRYP_DataIn:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccEXreUU.s:305    .text.CRYP_DataOut:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccEXreUU.s:311    .text.CRYP_DataOut:00000000 CRYP_DataOut
+C:\Users\ktkuru\AppData\Local\Temp\ccEXreUU.s:321    .text.CRYP_DataOut:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccEXreUU.s:324    .text.CRYP_SaveContext:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccEXreUU.s:330    .text.CRYP_SaveContext:00000000 CRYP_SaveContext
+C:\Users\ktkuru\AppData\Local\Temp\ccEXreUU.s:449    .text.CRYP_SaveContext:000000f8 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccEXreUU.s:452    .text.CRYP_RestoreContext:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccEXreUU.s:458    .text.CRYP_RestoreContext:00000000 CRYP_RestoreContext
+C:\Users\ktkuru\AppData\Local\Temp\ccEXreUU.s:528    .text.CRYP_RestoreContext:00000088 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccEXreUU.s:531    .text.CRYP_DMACmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccEXreUU.s:537    .text.CRYP_DMACmd:00000000 CRYP_DMACmd
+C:\Users\ktkuru\AppData\Local\Temp\ccEXreUU.s:558    .text.CRYP_DMACmd:0000001c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccEXreUU.s:561    .text.CRYP_ITConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccEXreUU.s:567    .text.CRYP_ITConfig:00000000 CRYP_ITConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccEXreUU.s:588    .text.CRYP_ITConfig:0000001c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccEXreUU.s:591    .text.CRYP_GetITStatus:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccEXreUU.s:597    .text.CRYP_GetITStatus:00000000 CRYP_GetITStatus
+C:\Users\ktkuru\AppData\Local\Temp\ccEXreUU.s:613    .text.CRYP_GetITStatus:00000010 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccEXreUU.s:616    .text.CRYP_GetCmdStatus:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccEXreUU.s:622    .text.CRYP_GetCmdStatus:00000000 CRYP_GetCmdStatus
+C:\Users\ktkuru\AppData\Local\Temp\ccEXreUU.s:638    .text.CRYP_GetCmdStatus:00000014 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccEXreUU.s:641    .text.CRYP_GetFlagStatus:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccEXreUU.s:647    .text.CRYP_GetFlagStatus:00000000 CRYP_GetFlagStatus
+C:\Users\ktkuru\AppData\Local\Temp\ccEXreUU.s:670    .text.CRYP_GetFlagStatus:0000001c $d
+
+UNDEFINED SYMBOLS
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccEXreUU.s 			page 14
+
+
+RCC_AHB2PeriphResetCmd

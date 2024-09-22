@@ -1,0 +1,1823 @@
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccCOf8OS.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"stm32f4xx_cryp_aes.c"
+  16              		.text
+  17              		.section	.text.CRYP_AES_ECB,"ax",%progbits
+  18              		.align	1
+  19              		.global	CRYP_AES_ECB
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  24              	CRYP_AES_ECB:
+  25              		@ args = 8, pretend = 0, frame = 56
+  26              		@ frame_needed = 0, uses_anonymous_args = 0
+  27 0000 2DE9F043 		push	{r4, r5, r6, r7, r8, r9, lr}
+  28 0004 8FB0     		sub	sp, sp, #60
+  29 0006 0646     		mov	r6, r0
+  30 0008 0D46     		mov	r5, r1
+  31 000a 9146     		mov	r9, r2
+  32 000c DDF85880 		ldr	r8, [sp, #88]
+  33 0010 0022     		movs	r2, #0
+  34 0012 0192     		str	r2, [sp, #4]
+  35 0014 1C46     		mov	r4, r3
+  36 0016 179F     		ldr	r7, [sp, #92]
+  37 0018 02A8     		add	r0, sp, #8
+  38 001a FFF7FEFF 		bl	CRYP_KeyStructInit
+  39 001e B9F1C00F 		cmp	r9, #192
+  40 0022 38D0     		beq	.L2
+  41 0024 B9F5807F 		cmp	r9, #256
+  42 0028 4BD0     		beq	.L3
+  43 002a B9F1800F 		cmp	r9, #128
+  44 002e 0DD1     		bne	.L4
+  45 0030 0023     		movs	r3, #0
+  46 0032 0D93     		str	r3, [sp, #52]
+  47 0034 2B68     		ldr	r3, [r5]
+  48 0036 1BBA     		rev	r3, r3
+  49 0038 0693     		str	r3, [sp, #24]
+  50 003a 6B68     		ldr	r3, [r5, #4]
+  51 003c 1BBA     		rev	r3, r3
+  52 003e 0793     		str	r3, [sp, #28]
+  53 0040 AB68     		ldr	r3, [r5, #8]
+  54 0042 1BBA     		rev	r3, r3
+  55 0044 0893     		str	r3, [sp, #32]
+  56 0046 EB68     		ldr	r3, [r5, #12]
+  57 0048 1BBA     		rev	r3, r3
+  58 004a 0993     		str	r3, [sp, #36]
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccCOf8OS.s 			page 2
+
+
+  59              	.L4:
+  60 004c 002E     		cmp	r6, #0
+  61 004e 54D1     		bne	.L5
+  62 0050 FFF7FEFF 		bl	CRYP_FIFOFlush
+  63 0054 0423     		movs	r3, #4
+  64 0056 0A93     		str	r3, [sp, #40]
+  65 0058 3823     		movs	r3, #56
+  66 005a 0B93     		str	r3, [sp, #44]
+  67 005c 0023     		movs	r3, #0
+  68 005e 0C93     		str	r3, [sp, #48]
+  69 0060 0AA8     		add	r0, sp, #40
+  70 0062 FFF7FEFF 		bl	CRYP_Init
+  71 0066 02A8     		add	r0, sp, #8
+  72 0068 FFF7FEFF 		bl	CRYP_KeyInit
+  73 006c 0120     		movs	r0, #1
+  74 006e FFF7FEFF 		bl	CRYP_Cmd
+  75              	.L7:
+  76 0072 1020     		movs	r0, #16
+  77 0074 FFF7FEFF 		bl	CRYP_GetFlagStatus
+  78 0078 019B     		ldr	r3, [sp, #4]
+  79 007a 0133     		adds	r3, r3, #1
+  80 007c 0193     		str	r3, [sp, #4]
+  81 007e 019B     		ldr	r3, [sp, #4]
+  82 0080 B3F5803F 		cmp	r3, #65536
+  83 0084 01D0     		beq	.L6
+  84 0086 0028     		cmp	r0, #0
+  85 0088 F3D1     		bne	.L7
+  86              	.L6:
+  87 008a 0028     		cmp	r0, #0
+  88 008c 3BD1     		bne	.L8
+  89 008e 0423     		movs	r3, #4
+  90 0090 0A93     		str	r3, [sp, #40]
+  91 0092 0126     		movs	r6, #1
+  92 0094 37E0     		b	.L8
+  93              	.L2:
+  94 0096 4FF48073 		mov	r3, #256
+  95 009a 0D93     		str	r3, [sp, #52]
+  96 009c 2B68     		ldr	r3, [r5]
+  97 009e 1BBA     		rev	r3, r3
+  98 00a0 0493     		str	r3, [sp, #16]
+  99 00a2 6B68     		ldr	r3, [r5, #4]
+ 100 00a4 1BBA     		rev	r3, r3
+ 101 00a6 0593     		str	r3, [sp, #20]
+ 102 00a8 AB68     		ldr	r3, [r5, #8]
+ 103 00aa 1BBA     		rev	r3, r3
+ 104 00ac 0693     		str	r3, [sp, #24]
+ 105 00ae EB68     		ldr	r3, [r5, #12]
+ 106 00b0 1BBA     		rev	r3, r3
+ 107 00b2 0793     		str	r3, [sp, #28]
+ 108 00b4 2B69     		ldr	r3, [r5, #16]
+ 109 00b6 1BBA     		rev	r3, r3
+ 110 00b8 0893     		str	r3, [sp, #32]
+ 111 00ba 6B69     		ldr	r3, [r5, #20]
+ 112 00bc 1BBA     		rev	r3, r3
+ 113 00be 0993     		str	r3, [sp, #36]
+ 114 00c0 C4E7     		b	.L4
+ 115              	.L3:
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccCOf8OS.s 			page 3
+
+
+ 116 00c2 4FF40073 		mov	r3, #512
+ 117 00c6 0D93     		str	r3, [sp, #52]
+ 118 00c8 2B68     		ldr	r3, [r5]
+ 119 00ca 1BBA     		rev	r3, r3
+ 120 00cc 0293     		str	r3, [sp, #8]
+ 121 00ce 6B68     		ldr	r3, [r5, #4]
+ 122 00d0 1BBA     		rev	r3, r3
+ 123 00d2 0393     		str	r3, [sp, #12]
+ 124 00d4 AB68     		ldr	r3, [r5, #8]
+ 125 00d6 1BBA     		rev	r3, r3
+ 126 00d8 0493     		str	r3, [sp, #16]
+ 127 00da EB68     		ldr	r3, [r5, #12]
+ 128 00dc 1BBA     		rev	r3, r3
+ 129 00de 0593     		str	r3, [sp, #20]
+ 130 00e0 2B69     		ldr	r3, [r5, #16]
+ 131 00e2 1BBA     		rev	r3, r3
+ 132 00e4 0693     		str	r3, [sp, #24]
+ 133 00e6 6B69     		ldr	r3, [r5, #20]
+ 134 00e8 1BBA     		rev	r3, r3
+ 135 00ea 0793     		str	r3, [sp, #28]
+ 136 00ec AB69     		ldr	r3, [r5, #24]
+ 137 00ee 1BBA     		rev	r3, r3
+ 138 00f0 0893     		str	r3, [sp, #32]
+ 139 00f2 EB69     		ldr	r3, [r5, #28]
+ 140 00f4 1BBA     		rev	r3, r3
+ 141 00f6 0993     		str	r3, [sp, #36]
+ 142 00f8 A8E7     		b	.L4
+ 143              	.L5:
+ 144 00fa 02A8     		add	r0, sp, #8
+ 145 00fc FFF7FEFF 		bl	CRYP_KeyInit
+ 146 0100 0023     		movs	r3, #0
+ 147 0102 0A93     		str	r3, [sp, #40]
+ 148 0104 0126     		movs	r6, #1
+ 149              	.L8:
+ 150 0106 2023     		movs	r3, #32
+ 151 0108 0B93     		str	r3, [sp, #44]
+ 152 010a 8023     		movs	r3, #128
+ 153 010c 0C93     		str	r3, [sp, #48]
+ 154 010e 0AA8     		add	r0, sp, #40
+ 155 0110 FFF7FEFF 		bl	CRYP_Init
+ 156 0114 FFF7FEFF 		bl	CRYP_FIFOFlush
+ 157 0118 0120     		movs	r0, #1
+ 158 011a FFF7FEFF 		bl	CRYP_Cmd
+ 159 011e FFF7FEFF 		bl	CRYP_GetCmdStatus
+ 160 0122 0028     		cmp	r0, #0
+ 161 0124 35D0     		beq	.L9
+ 162 0126 0025     		movs	r5, #0
+ 163 0128 02E0     		b	.L10
+ 164              	.L11:
+ 165 012a 00B3     		cbz	r0, .L18
+ 166 012c 0026     		movs	r6, #0
+ 167              	.L13:
+ 168 012e 1035     		adds	r5, r5, #16
+ 169              	.L10:
+ 170 0130 4545     		cmp	r5, r8
+ 171 0132 2AD2     		bcs	.L14
+ 172 0134 4EB3     		cbz	r6, .L14
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccCOf8OS.s 			page 4
+
+
+ 173 0136 2068     		ldr	r0, [r4]
+ 174 0138 FFF7FEFF 		bl	CRYP_DataIn
+ 175 013c 6068     		ldr	r0, [r4, #4]
+ 176 013e FFF7FEFF 		bl	CRYP_DataIn
+ 177 0142 A068     		ldr	r0, [r4, #8]
+ 178 0144 FFF7FEFF 		bl	CRYP_DataIn
+ 179 0148 E068     		ldr	r0, [r4, #12]
+ 180 014a FFF7FEFF 		bl	CRYP_DataIn
+ 181 014e 1034     		adds	r4, r4, #16
+ 182 0150 0023     		movs	r3, #0
+ 183 0152 0193     		str	r3, [sp, #4]
+ 184              	.L12:
+ 185 0154 1020     		movs	r0, #16
+ 186 0156 FFF7FEFF 		bl	CRYP_GetFlagStatus
+ 187 015a 019A     		ldr	r2, [sp, #4]
+ 188 015c 0132     		adds	r2, r2, #1
+ 189 015e 0192     		str	r2, [sp, #4]
+ 190 0160 019B     		ldr	r3, [sp, #4]
+ 191 0162 B3F5803F 		cmp	r3, #65536
+ 192 0166 E0D0     		beq	.L11
+ 193 0168 0028     		cmp	r0, #0
+ 194 016a F3D1     		bne	.L12
+ 195 016c DDE7     		b	.L11
+ 196              	.L18:
+ 197 016e FFF7FEFF 		bl	CRYP_DataOut
+ 198 0172 3860     		str	r0, [r7]
+ 199 0174 FFF7FEFF 		bl	CRYP_DataOut
+ 200 0178 7860     		str	r0, [r7, #4]
+ 201 017a FFF7FEFF 		bl	CRYP_DataOut
+ 202 017e B860     		str	r0, [r7, #8]
+ 203 0180 FFF7FEFF 		bl	CRYP_DataOut
+ 204 0184 F860     		str	r0, [r7, #12]
+ 205 0186 1037     		adds	r7, r7, #16
+ 206 0188 D1E7     		b	.L13
+ 207              	.L14:
+ 208 018a 0020     		movs	r0, #0
+ 209 018c FFF7FEFF 		bl	CRYP_Cmd
+ 210 0190 3046     		mov	r0, r6
+ 211              	.L9:
+ 212 0192 0FB0     		add	sp, sp, #60
+ 213              		@ sp needed
+ 214 0194 BDE8F083 		pop	{r4, r5, r6, r7, r8, r9, pc}
+ 216              		.section	.text.CRYP_AES_CBC,"ax",%progbits
+ 217              		.align	1
+ 218              		.global	CRYP_AES_CBC
+ 219              		.syntax unified
+ 220              		.thumb
+ 221              		.thumb_func
+ 223              	CRYP_AES_CBC:
+ 224              		@ args = 12, pretend = 0, frame = 72
+ 225              		@ frame_needed = 0, uses_anonymous_args = 0
+ 226 0000 2DE9F047 		push	{r4, r5, r6, r7, r8, r9, r10, lr}
+ 227 0004 92B0     		sub	sp, sp, #72
+ 228 0006 0646     		mov	r6, r0
+ 229 0008 0D46     		mov	r5, r1
+ 230 000a 9146     		mov	r9, r2
+ 231 000c 9A46     		mov	r10, r3
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccCOf8OS.s 			page 5
+
+
+ 232 000e DDF86C80 		ldr	r8, [sp, #108]
+ 233 0012 0023     		movs	r3, #0
+ 234 0014 0193     		str	r3, [sp, #4]
+ 235 0016 1A9C     		ldr	r4, [sp, #104]
+ 236 0018 1C9F     		ldr	r7, [sp, #112]
+ 237 001a 06A8     		add	r0, sp, #24
+ 238 001c FFF7FEFF 		bl	CRYP_KeyStructInit
+ 239 0020 BAF1C00F 		cmp	r10, #192
+ 240 0024 48D0     		beq	.L20
+ 241 0026 BAF5807F 		cmp	r10, #256
+ 242 002a 61D0     		beq	.L21
+ 243 002c BAF1800F 		cmp	r10, #128
+ 244 0030 11D1     		bne	.L22
+ 245 0032 0023     		movs	r3, #0
+ 246 0034 1193     		str	r3, [sp, #68]
+ 247 0036 D9F80030 		ldr	r3, [r9]
+ 248 003a 1BBA     		rev	r3, r3
+ 249 003c 0A93     		str	r3, [sp, #40]
+ 250 003e D9F80430 		ldr	r3, [r9, #4]
+ 251 0042 1BBA     		rev	r3, r3
+ 252 0044 0B93     		str	r3, [sp, #44]
+ 253 0046 D9F80830 		ldr	r3, [r9, #8]
+ 254 004a 1BBA     		rev	r3, r3
+ 255 004c 0C93     		str	r3, [sp, #48]
+ 256 004e D9F80C30 		ldr	r3, [r9, #12]
+ 257 0052 1BBA     		rev	r3, r3
+ 258 0054 0D93     		str	r3, [sp, #52]
+ 259              	.L22:
+ 260 0056 2B68     		ldr	r3, [r5]
+ 261 0058 1BBA     		rev	r3, r3
+ 262 005a 0293     		str	r3, [sp, #8]
+ 263 005c 6B68     		ldr	r3, [r5, #4]
+ 264 005e 1BBA     		rev	r3, r3
+ 265 0060 0393     		str	r3, [sp, #12]
+ 266 0062 AB68     		ldr	r3, [r5, #8]
+ 267 0064 1BBA     		rev	r3, r3
+ 268 0066 0493     		str	r3, [sp, #16]
+ 269 0068 EB68     		ldr	r3, [r5, #12]
+ 270 006a 1BBA     		rev	r3, r3
+ 271 006c 0593     		str	r3, [sp, #20]
+ 272 006e 002E     		cmp	r6, #0
+ 273 0070 62D1     		bne	.L23
+ 274 0072 FFF7FEFF 		bl	CRYP_FIFOFlush
+ 275 0076 0423     		movs	r3, #4
+ 276 0078 0E93     		str	r3, [sp, #56]
+ 277 007a 3823     		movs	r3, #56
+ 278 007c 0F93     		str	r3, [sp, #60]
+ 279 007e 0023     		movs	r3, #0
+ 280 0080 1093     		str	r3, [sp, #64]
+ 281 0082 0EA8     		add	r0, sp, #56
+ 282 0084 FFF7FEFF 		bl	CRYP_Init
+ 283 0088 06A8     		add	r0, sp, #24
+ 284 008a FFF7FEFF 		bl	CRYP_KeyInit
+ 285 008e 0120     		movs	r0, #1
+ 286 0090 FFF7FEFF 		bl	CRYP_Cmd
+ 287              	.L25:
+ 288 0094 1020     		movs	r0, #16
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccCOf8OS.s 			page 6
+
+
+ 289 0096 FFF7FEFF 		bl	CRYP_GetFlagStatus
+ 290 009a 019B     		ldr	r3, [sp, #4]
+ 291 009c 0133     		adds	r3, r3, #1
+ 292 009e 0193     		str	r3, [sp, #4]
+ 293 00a0 019B     		ldr	r3, [sp, #4]
+ 294 00a2 B3F5803F 		cmp	r3, #65536
+ 295 00a6 01D0     		beq	.L24
+ 296 00a8 0028     		cmp	r0, #0
+ 297 00aa F3D1     		bne	.L25
+ 298              	.L24:
+ 299 00ac 0028     		cmp	r0, #0
+ 300 00ae 49D1     		bne	.L26
+ 301 00b0 0423     		movs	r3, #4
+ 302 00b2 0E93     		str	r3, [sp, #56]
+ 303 00b4 0126     		movs	r6, #1
+ 304 00b6 45E0     		b	.L26
+ 305              	.L20:
+ 306 00b8 4FF48073 		mov	r3, #256
+ 307 00bc 1193     		str	r3, [sp, #68]
+ 308 00be D9F80030 		ldr	r3, [r9]
+ 309 00c2 1BBA     		rev	r3, r3
+ 310 00c4 0893     		str	r3, [sp, #32]
+ 311 00c6 D9F80430 		ldr	r3, [r9, #4]
+ 312 00ca 1BBA     		rev	r3, r3
+ 313 00cc 0993     		str	r3, [sp, #36]
+ 314 00ce D9F80830 		ldr	r3, [r9, #8]
+ 315 00d2 1BBA     		rev	r3, r3
+ 316 00d4 0A93     		str	r3, [sp, #40]
+ 317 00d6 D9F80C30 		ldr	r3, [r9, #12]
+ 318 00da 1BBA     		rev	r3, r3
+ 319 00dc 0B93     		str	r3, [sp, #44]
+ 320 00de D9F81030 		ldr	r3, [r9, #16]
+ 321 00e2 1BBA     		rev	r3, r3
+ 322 00e4 0C93     		str	r3, [sp, #48]
+ 323 00e6 D9F81430 		ldr	r3, [r9, #20]
+ 324 00ea 1BBA     		rev	r3, r3
+ 325 00ec 0D93     		str	r3, [sp, #52]
+ 326 00ee B2E7     		b	.L22
+ 327              	.L21:
+ 328 00f0 4FF40073 		mov	r3, #512
+ 329 00f4 1193     		str	r3, [sp, #68]
+ 330 00f6 D9F80030 		ldr	r3, [r9]
+ 331 00fa 1BBA     		rev	r3, r3
+ 332 00fc 0693     		str	r3, [sp, #24]
+ 333 00fe D9F80430 		ldr	r3, [r9, #4]
+ 334 0102 1BBA     		rev	r3, r3
+ 335 0104 0793     		str	r3, [sp, #28]
+ 336 0106 D9F80830 		ldr	r3, [r9, #8]
+ 337 010a 1BBA     		rev	r3, r3
+ 338 010c 0893     		str	r3, [sp, #32]
+ 339 010e D9F80C30 		ldr	r3, [r9, #12]
+ 340 0112 1BBA     		rev	r3, r3
+ 341 0114 0993     		str	r3, [sp, #36]
+ 342 0116 D9F81030 		ldr	r3, [r9, #16]
+ 343 011a 1BBA     		rev	r3, r3
+ 344 011c 0A93     		str	r3, [sp, #40]
+ 345 011e D9F81430 		ldr	r3, [r9, #20]
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccCOf8OS.s 			page 7
+
+
+ 346 0122 1BBA     		rev	r3, r3
+ 347 0124 0B93     		str	r3, [sp, #44]
+ 348 0126 D9F81830 		ldr	r3, [r9, #24]
+ 349 012a 1BBA     		rev	r3, r3
+ 350 012c 0C93     		str	r3, [sp, #48]
+ 351 012e D9F81C30 		ldr	r3, [r9, #28]
+ 352 0132 1BBA     		rev	r3, r3
+ 353 0134 0D93     		str	r3, [sp, #52]
+ 354 0136 8EE7     		b	.L22
+ 355              	.L23:
+ 356 0138 06A8     		add	r0, sp, #24
+ 357 013a FFF7FEFF 		bl	CRYP_KeyInit
+ 358 013e 0023     		movs	r3, #0
+ 359 0140 0E93     		str	r3, [sp, #56]
+ 360 0142 0126     		movs	r6, #1
+ 361              	.L26:
+ 362 0144 2823     		movs	r3, #40
+ 363 0146 0F93     		str	r3, [sp, #60]
+ 364 0148 8023     		movs	r3, #128
+ 365 014a 1093     		str	r3, [sp, #64]
+ 366 014c 0EA8     		add	r0, sp, #56
+ 367 014e FFF7FEFF 		bl	CRYP_Init
+ 368 0152 02A8     		add	r0, sp, #8
+ 369 0154 FFF7FEFF 		bl	CRYP_IVInit
+ 370 0158 FFF7FEFF 		bl	CRYP_FIFOFlush
+ 371 015c 0120     		movs	r0, #1
+ 372 015e FFF7FEFF 		bl	CRYP_Cmd
+ 373 0162 FFF7FEFF 		bl	CRYP_GetCmdStatus
+ 374 0166 0028     		cmp	r0, #0
+ 375 0168 35D0     		beq	.L27
+ 376 016a 0025     		movs	r5, #0
+ 377 016c 02E0     		b	.L28
+ 378              	.L29:
+ 379 016e 00B3     		cbz	r0, .L36
+ 380 0170 0026     		movs	r6, #0
+ 381              	.L31:
+ 382 0172 1035     		adds	r5, r5, #16
+ 383              	.L28:
+ 384 0174 4545     		cmp	r5, r8
+ 385 0176 2AD2     		bcs	.L32
+ 386 0178 4EB3     		cbz	r6, .L32
+ 387 017a 2068     		ldr	r0, [r4]
+ 388 017c FFF7FEFF 		bl	CRYP_DataIn
+ 389 0180 6068     		ldr	r0, [r4, #4]
+ 390 0182 FFF7FEFF 		bl	CRYP_DataIn
+ 391 0186 A068     		ldr	r0, [r4, #8]
+ 392 0188 FFF7FEFF 		bl	CRYP_DataIn
+ 393 018c E068     		ldr	r0, [r4, #12]
+ 394 018e FFF7FEFF 		bl	CRYP_DataIn
+ 395 0192 1034     		adds	r4, r4, #16
+ 396 0194 0023     		movs	r3, #0
+ 397 0196 0193     		str	r3, [sp, #4]
+ 398              	.L30:
+ 399 0198 1020     		movs	r0, #16
+ 400 019a FFF7FEFF 		bl	CRYP_GetFlagStatus
+ 401 019e 019B     		ldr	r3, [sp, #4]
+ 402 01a0 0133     		adds	r3, r3, #1
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccCOf8OS.s 			page 8
+
+
+ 403 01a2 0193     		str	r3, [sp, #4]
+ 404 01a4 019B     		ldr	r3, [sp, #4]
+ 405 01a6 B3F5803F 		cmp	r3, #65536
+ 406 01aa E0D0     		beq	.L29
+ 407 01ac 0028     		cmp	r0, #0
+ 408 01ae F3D1     		bne	.L30
+ 409 01b0 DDE7     		b	.L29
+ 410              	.L36:
+ 411 01b2 FFF7FEFF 		bl	CRYP_DataOut
+ 412 01b6 3860     		str	r0, [r7]
+ 413 01b8 FFF7FEFF 		bl	CRYP_DataOut
+ 414 01bc 7860     		str	r0, [r7, #4]
+ 415 01be FFF7FEFF 		bl	CRYP_DataOut
+ 416 01c2 B860     		str	r0, [r7, #8]
+ 417 01c4 FFF7FEFF 		bl	CRYP_DataOut
+ 418 01c8 F860     		str	r0, [r7, #12]
+ 419 01ca 1037     		adds	r7, r7, #16
+ 420 01cc D1E7     		b	.L31
+ 421              	.L32:
+ 422 01ce 0020     		movs	r0, #0
+ 423 01d0 FFF7FEFF 		bl	CRYP_Cmd
+ 424 01d4 3046     		mov	r0, r6
+ 425              	.L27:
+ 426 01d6 12B0     		add	sp, sp, #72
+ 427              		@ sp needed
+ 428 01d8 BDE8F087 		pop	{r4, r5, r6, r7, r8, r9, r10, pc}
+ 430              		.section	.text.CRYP_AES_CTR,"ax",%progbits
+ 431              		.align	1
+ 432              		.global	CRYP_AES_CTR
+ 433              		.syntax unified
+ 434              		.thumb
+ 435              		.thumb_func
+ 437              	CRYP_AES_CTR:
+ 438              		@ args = 12, pretend = 0, frame = 72
+ 439              		@ frame_needed = 0, uses_anonymous_args = 0
+ 440 0000 2DE9F047 		push	{r4, r5, r6, r7, r8, r9, r10, lr}
+ 441 0004 92B0     		sub	sp, sp, #72
+ 442 0006 8246     		mov	r10, r0
+ 443 0008 0D46     		mov	r5, r1
+ 444 000a 1646     		mov	r6, r2
+ 445 000c 9946     		mov	r9, r3
+ 446 000e DDF86C80 		ldr	r8, [sp, #108]
+ 447 0012 0023     		movs	r3, #0
+ 448 0014 0193     		str	r3, [sp, #4]
+ 449 0016 1A9C     		ldr	r4, [sp, #104]
+ 450 0018 1C9F     		ldr	r7, [sp, #112]
+ 451 001a 06A8     		add	r0, sp, #24
+ 452 001c FFF7FEFF 		bl	CRYP_KeyStructInit
+ 453 0020 B9F1C00F 		cmp	r9, #192
+ 454 0024 3ED0     		beq	.L38
+ 455 0026 B9F5807F 		cmp	r9, #256
+ 456 002a 51D0     		beq	.L39
+ 457 002c B9F1800F 		cmp	r9, #128
+ 458 0030 0DD1     		bne	.L40
+ 459 0032 0023     		movs	r3, #0
+ 460 0034 1193     		str	r3, [sp, #68]
+ 461 0036 3368     		ldr	r3, [r6]
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccCOf8OS.s 			page 9
+
+
+ 462 0038 1BBA     		rev	r3, r3
+ 463 003a 0A93     		str	r3, [sp, #40]
+ 464 003c 7368     		ldr	r3, [r6, #4]
+ 465 003e 1BBA     		rev	r3, r3
+ 466 0040 0B93     		str	r3, [sp, #44]
+ 467 0042 B368     		ldr	r3, [r6, #8]
+ 468 0044 1BBA     		rev	r3, r3
+ 469 0046 0C93     		str	r3, [sp, #48]
+ 470 0048 F368     		ldr	r3, [r6, #12]
+ 471 004a 1BBA     		rev	r3, r3
+ 472 004c 0D93     		str	r3, [sp, #52]
+ 473              	.L40:
+ 474 004e 2B68     		ldr	r3, [r5]
+ 475 0050 1BBA     		rev	r3, r3
+ 476 0052 0293     		str	r3, [sp, #8]
+ 477 0054 6B68     		ldr	r3, [r5, #4]
+ 478 0056 1BBA     		rev	r3, r3
+ 479 0058 0393     		str	r3, [sp, #12]
+ 480 005a AB68     		ldr	r3, [r5, #8]
+ 481 005c 1BBA     		rev	r3, r3
+ 482 005e 0493     		str	r3, [sp, #16]
+ 483 0060 EB68     		ldr	r3, [r5, #12]
+ 484 0062 1BBA     		rev	r3, r3
+ 485 0064 0593     		str	r3, [sp, #20]
+ 486 0066 06A8     		add	r0, sp, #24
+ 487 0068 FFF7FEFF 		bl	CRYP_KeyInit
+ 488 006c BAF1000F 		cmp	r10, #0
+ 489 0070 4AD1     		bne	.L41
+ 490 0072 0423     		movs	r3, #4
+ 491 0074 0E93     		str	r3, [sp, #56]
+ 492              	.L42:
+ 493 0076 3023     		movs	r3, #48
+ 494 0078 0F93     		str	r3, [sp, #60]
+ 495 007a 8023     		movs	r3, #128
+ 496 007c 1093     		str	r3, [sp, #64]
+ 497 007e 0EA8     		add	r0, sp, #56
+ 498 0080 FFF7FEFF 		bl	CRYP_Init
+ 499 0084 02A8     		add	r0, sp, #8
+ 500 0086 FFF7FEFF 		bl	CRYP_IVInit
+ 501 008a FFF7FEFF 		bl	CRYP_FIFOFlush
+ 502 008e 0120     		movs	r0, #1
+ 503 0090 FFF7FEFF 		bl	CRYP_Cmd
+ 504 0094 FFF7FEFF 		bl	CRYP_GetCmdStatus
+ 505 0098 0646     		mov	r6, r0
+ 506 009a 0028     		cmp	r0, #0
+ 507 009c 6AD0     		beq	.L43
+ 508 009e 0025     		movs	r5, #0
+ 509 00a0 0126     		movs	r6, #1
+ 510 00a2 37E0     		b	.L44
+ 511              	.L38:
+ 512 00a4 4FF48073 		mov	r3, #256
+ 513 00a8 1193     		str	r3, [sp, #68]
+ 514 00aa 3368     		ldr	r3, [r6]
+ 515 00ac 1BBA     		rev	r3, r3
+ 516 00ae 0893     		str	r3, [sp, #32]
+ 517 00b0 7368     		ldr	r3, [r6, #4]
+ 518 00b2 1BBA     		rev	r3, r3
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccCOf8OS.s 			page 10
+
+
+ 519 00b4 0993     		str	r3, [sp, #36]
+ 520 00b6 B368     		ldr	r3, [r6, #8]
+ 521 00b8 1BBA     		rev	r3, r3
+ 522 00ba 0A93     		str	r3, [sp, #40]
+ 523 00bc F368     		ldr	r3, [r6, #12]
+ 524 00be 1BBA     		rev	r3, r3
+ 525 00c0 0B93     		str	r3, [sp, #44]
+ 526 00c2 3369     		ldr	r3, [r6, #16]
+ 527 00c4 1BBA     		rev	r3, r3
+ 528 00c6 0C93     		str	r3, [sp, #48]
+ 529 00c8 7369     		ldr	r3, [r6, #20]
+ 530 00ca 1BBA     		rev	r3, r3
+ 531 00cc 0D93     		str	r3, [sp, #52]
+ 532 00ce BEE7     		b	.L40
+ 533              	.L39:
+ 534 00d0 4FF40073 		mov	r3, #512
+ 535 00d4 1193     		str	r3, [sp, #68]
+ 536 00d6 3368     		ldr	r3, [r6]
+ 537 00d8 1BBA     		rev	r3, r3
+ 538 00da 0693     		str	r3, [sp, #24]
+ 539 00dc 7368     		ldr	r3, [r6, #4]
+ 540 00de 1BBA     		rev	r3, r3
+ 541 00e0 0793     		str	r3, [sp, #28]
+ 542 00e2 B368     		ldr	r3, [r6, #8]
+ 543 00e4 1BBA     		rev	r3, r3
+ 544 00e6 0893     		str	r3, [sp, #32]
+ 545 00e8 F368     		ldr	r3, [r6, #12]
+ 546 00ea 1BBA     		rev	r3, r3
+ 547 00ec 0993     		str	r3, [sp, #36]
+ 548 00ee 3369     		ldr	r3, [r6, #16]
+ 549 00f0 1BBA     		rev	r3, r3
+ 550 00f2 0A93     		str	r3, [sp, #40]
+ 551 00f4 7369     		ldr	r3, [r6, #20]
+ 552 00f6 1BBA     		rev	r3, r3
+ 553 00f8 0B93     		str	r3, [sp, #44]
+ 554 00fa B369     		ldr	r3, [r6, #24]
+ 555 00fc 1BBA     		rev	r3, r3
+ 556 00fe 0C93     		str	r3, [sp, #48]
+ 557 0100 F369     		ldr	r3, [r6, #28]
+ 558 0102 1BBA     		rev	r3, r3
+ 559 0104 0D93     		str	r3, [sp, #52]
+ 560 0106 A2E7     		b	.L40
+ 561              	.L41:
+ 562 0108 0023     		movs	r3, #0
+ 563 010a 0E93     		str	r3, [sp, #56]
+ 564 010c B3E7     		b	.L42
+ 565              	.L45:
+ 566 010e 00B3     		cbz	r0, .L52
+ 567 0110 0026     		movs	r6, #0
+ 568              	.L47:
+ 569 0112 1035     		adds	r5, r5, #16
+ 570              	.L44:
+ 571 0114 4545     		cmp	r5, r8
+ 572 0116 2AD2     		bcs	.L48
+ 573 0118 4EB3     		cbz	r6, .L48
+ 574 011a 2068     		ldr	r0, [r4]
+ 575 011c FFF7FEFF 		bl	CRYP_DataIn
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccCOf8OS.s 			page 11
+
+
+ 576 0120 6068     		ldr	r0, [r4, #4]
+ 577 0122 FFF7FEFF 		bl	CRYP_DataIn
+ 578 0126 A068     		ldr	r0, [r4, #8]
+ 579 0128 FFF7FEFF 		bl	CRYP_DataIn
+ 580 012c E068     		ldr	r0, [r4, #12]
+ 581 012e FFF7FEFF 		bl	CRYP_DataIn
+ 582 0132 1034     		adds	r4, r4, #16
+ 583 0134 0023     		movs	r3, #0
+ 584 0136 0193     		str	r3, [sp, #4]
+ 585              	.L46:
+ 586 0138 1020     		movs	r0, #16
+ 587 013a FFF7FEFF 		bl	CRYP_GetFlagStatus
+ 588 013e 019B     		ldr	r3, [sp, #4]
+ 589 0140 0133     		adds	r3, r3, #1
+ 590 0142 0193     		str	r3, [sp, #4]
+ 591 0144 019B     		ldr	r3, [sp, #4]
+ 592 0146 B3F5803F 		cmp	r3, #65536
+ 593 014a E0D0     		beq	.L45
+ 594 014c 0028     		cmp	r0, #0
+ 595 014e F3D1     		bne	.L46
+ 596 0150 DDE7     		b	.L45
+ 597              	.L52:
+ 598 0152 FFF7FEFF 		bl	CRYP_DataOut
+ 599 0156 3860     		str	r0, [r7]
+ 600 0158 FFF7FEFF 		bl	CRYP_DataOut
+ 601 015c 7860     		str	r0, [r7, #4]
+ 602 015e FFF7FEFF 		bl	CRYP_DataOut
+ 603 0162 B860     		str	r0, [r7, #8]
+ 604 0164 FFF7FEFF 		bl	CRYP_DataOut
+ 605 0168 F860     		str	r0, [r7, #12]
+ 606 016a 1037     		adds	r7, r7, #16
+ 607 016c D1E7     		b	.L47
+ 608              	.L48:
+ 609 016e 0020     		movs	r0, #0
+ 610 0170 FFF7FEFF 		bl	CRYP_Cmd
+ 611              	.L43:
+ 612 0174 3046     		mov	r0, r6
+ 613 0176 12B0     		add	sp, sp, #72
+ 614              		@ sp needed
+ 615 0178 BDE8F087 		pop	{r4, r5, r6, r7, r8, r9, r10, pc}
+ 617              		.section	.text.CRYP_AES_GCM,"ax",%progbits
+ 618              		.align	1
+ 619              		.global	CRYP_AES_GCM
+ 620              		.syntax unified
+ 621              		.thumb
+ 622              		.thumb_func
+ 624              	CRYP_AES_GCM:
+ 625              		@ args = 24, pretend = 0, frame = 88
+ 626              		@ frame_needed = 0, uses_anonymous_args = 0
+ 627 0000 2DE9F04F 		push	{r4, r5, r6, r7, r8, r9, r10, fp, lr}
+ 628 0004 97B0     		sub	sp, sp, #92
+ 629 0006 0190     		str	r0, [sp, #4]
+ 630 0008 0F46     		mov	r7, r1
+ 631 000a 1646     		mov	r6, r2
+ 632 000c 9946     		mov	r9, r3
+ 633 000e DDF88480 		ldr	r8, [sp, #132]
+ 634 0012 DDF88CA0 		ldr	r10, [sp, #140]
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccCOf8OS.s 			page 12
+
+
+ 635 0016 0023     		movs	r3, #0
+ 636 0018 0593     		str	r3, [sp, #20]
+ 637 001a 209C     		ldr	r4, [sp, #128]
+ 638 001c DDF890B0 		ldr	fp, [sp, #144]
+ 639 0020 229D     		ldr	r5, [sp, #136]
+ 640 0022 4FEACA03 		lsl	r3, r10, #3
+ 641 0026 0293     		str	r3, [sp, #8]
+ 642 0028 4FEAC803 		lsl	r3, r8, #3
+ 643 002c 0393     		str	r3, [sp, #12]
+ 644 002e 0AA8     		add	r0, sp, #40
+ 645 0030 FFF7FEFF 		bl	CRYP_KeyStructInit
+ 646 0034 B9F1C00F 		cmp	r9, #192
+ 647 0038 56D0     		beq	.L54
+ 648 003a B9F5807F 		cmp	r9, #256
+ 649 003e 69D0     		beq	.L55
+ 650 0040 B9F1800F 		cmp	r9, #128
+ 651 0044 0DD1     		bne	.L56
+ 652 0046 0023     		movs	r3, #0
+ 653 0048 1593     		str	r3, [sp, #84]
+ 654 004a 3368     		ldr	r3, [r6]
+ 655 004c 1BBA     		rev	r3, r3
+ 656 004e 0E93     		str	r3, [sp, #56]
+ 657 0050 7368     		ldr	r3, [r6, #4]
+ 658 0052 1BBA     		rev	r3, r3
+ 659 0054 0F93     		str	r3, [sp, #60]
+ 660 0056 B368     		ldr	r3, [r6, #8]
+ 661 0058 1BBA     		rev	r3, r3
+ 662 005a 1093     		str	r3, [sp, #64]
+ 663 005c F368     		ldr	r3, [r6, #12]
+ 664 005e 1BBA     		rev	r3, r3
+ 665 0060 1193     		str	r3, [sp, #68]
+ 666              	.L56:
+ 667 0062 3B68     		ldr	r3, [r7]
+ 668 0064 1BBA     		rev	r3, r3
+ 669 0066 0693     		str	r3, [sp, #24]
+ 670 0068 7B68     		ldr	r3, [r7, #4]
+ 671 006a 1BBA     		rev	r3, r3
+ 672 006c 0793     		str	r3, [sp, #28]
+ 673 006e BB68     		ldr	r3, [r7, #8]
+ 674 0070 1BBA     		rev	r3, r3
+ 675 0072 0893     		str	r3, [sp, #32]
+ 676 0074 FB68     		ldr	r3, [r7, #12]
+ 677 0076 1BBA     		rev	r3, r3
+ 678 0078 0993     		str	r3, [sp, #36]
+ 679 007a 019B     		ldr	r3, [sp, #4]
+ 680 007c 012B     		cmp	r3, #1
+ 681 007e 65D0     		beq	.L96
+ 682 0080 FFF7FEFF 		bl	CRYP_FIFOFlush
+ 683 0084 0AA8     		add	r0, sp, #40
+ 684 0086 FFF7FEFF 		bl	CRYP_KeyInit
+ 685 008a 06A8     		add	r0, sp, #24
+ 686 008c FFF7FEFF 		bl	CRYP_IVInit
+ 687 0090 0423     		movs	r3, #4
+ 688 0092 1293     		str	r3, [sp, #72]
+ 689 0094 4FF40023 		mov	r3, #524288
+ 690 0098 1393     		str	r3, [sp, #76]
+ 691 009a 8023     		movs	r3, #128
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccCOf8OS.s 			page 13
+
+
+ 692 009c 1493     		str	r3, [sp, #80]
+ 693 009e 12A8     		add	r0, sp, #72
+ 694 00a0 FFF7FEFF 		bl	CRYP_Init
+ 695 00a4 0020     		movs	r0, #0
+ 696 00a6 FFF7FEFF 		bl	CRYP_PhaseConfig
+ 697 00aa 0120     		movs	r0, #1
+ 698 00ac FFF7FEFF 		bl	CRYP_Cmd
+ 699              	.L74:
+ 700 00b0 FFF7FEFF 		bl	CRYP_GetCmdStatus
+ 701 00b4 0128     		cmp	r0, #1
+ 702 00b6 FBD0     		beq	.L74
+ 703 00b8 BAF1000F 		cmp	r10, #0
+ 704 00bc 40F02581 		bne	.L97
+ 705 00c0 0125     		movs	r5, #1
+ 706              	.L75:
+ 707 00c2 B8F1000F 		cmp	r8, #0
+ 708 00c6 00F09781 		beq	.L80
+ 709 00ca 4FF40030 		mov	r0, #131072
+ 710 00ce FFF7FEFF 		bl	CRYP_PhaseConfig
+ 711 00d2 0120     		movs	r0, #1
+ 712 00d4 FFF7FEFF 		bl	CRYP_Cmd
+ 713 00d8 FFF7FEFF 		bl	CRYP_GetCmdStatus
+ 714 00dc 0646     		mov	r6, r0
+ 715 00de 0028     		cmp	r0, #0
+ 716 00e0 00F0BC81 		beq	.L60
+ 717 00e4 0026     		movs	r6, #0
+ 718 00e6 4AE1     		b	.L81
+ 719              	.L54:
+ 720 00e8 4FF48073 		mov	r3, #256
+ 721 00ec 1593     		str	r3, [sp, #84]
+ 722 00ee 3368     		ldr	r3, [r6]
+ 723 00f0 1BBA     		rev	r3, r3
+ 724 00f2 0C93     		str	r3, [sp, #48]
+ 725 00f4 7368     		ldr	r3, [r6, #4]
+ 726 00f6 1BBA     		rev	r3, r3
+ 727 00f8 0D93     		str	r3, [sp, #52]
+ 728 00fa B368     		ldr	r3, [r6, #8]
+ 729 00fc 1BBA     		rev	r3, r3
+ 730 00fe 0E93     		str	r3, [sp, #56]
+ 731 0100 F368     		ldr	r3, [r6, #12]
+ 732 0102 1BBA     		rev	r3, r3
+ 733 0104 0F93     		str	r3, [sp, #60]
+ 734 0106 3369     		ldr	r3, [r6, #16]
+ 735 0108 1BBA     		rev	r3, r3
+ 736 010a 1093     		str	r3, [sp, #64]
+ 737 010c 7369     		ldr	r3, [r6, #20]
+ 738 010e 1BBA     		rev	r3, r3
+ 739 0110 1193     		str	r3, [sp, #68]
+ 740 0112 A6E7     		b	.L56
+ 741              	.L55:
+ 742 0114 4FF40073 		mov	r3, #512
+ 743 0118 1593     		str	r3, [sp, #84]
+ 744 011a 3368     		ldr	r3, [r6]
+ 745 011c 1BBA     		rev	r3, r3
+ 746 011e 0A93     		str	r3, [sp, #40]
+ 747 0120 7368     		ldr	r3, [r6, #4]
+ 748 0122 1BBA     		rev	r3, r3
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccCOf8OS.s 			page 14
+
+
+ 749 0124 0B93     		str	r3, [sp, #44]
+ 750 0126 B368     		ldr	r3, [r6, #8]
+ 751 0128 1BBA     		rev	r3, r3
+ 752 012a 0C93     		str	r3, [sp, #48]
+ 753 012c F368     		ldr	r3, [r6, #12]
+ 754 012e 1BBA     		rev	r3, r3
+ 755 0130 0D93     		str	r3, [sp, #52]
+ 756 0132 3369     		ldr	r3, [r6, #16]
+ 757 0134 1BBA     		rev	r3, r3
+ 758 0136 0E93     		str	r3, [sp, #56]
+ 759 0138 7369     		ldr	r3, [r6, #20]
+ 760 013a 1BBA     		rev	r3, r3
+ 761 013c 0F93     		str	r3, [sp, #60]
+ 762 013e B369     		ldr	r3, [r6, #24]
+ 763 0140 1BBA     		rev	r3, r3
+ 764 0142 1093     		str	r3, [sp, #64]
+ 765 0144 F369     		ldr	r3, [r6, #28]
+ 766 0146 1BBA     		rev	r3, r3
+ 767 0148 1193     		str	r3, [sp, #68]
+ 768 014a 8AE7     		b	.L56
+ 769              	.L96:
+ 770 014c FFF7FEFF 		bl	CRYP_FIFOFlush
+ 771 0150 0AA8     		add	r0, sp, #40
+ 772 0152 FFF7FEFF 		bl	CRYP_KeyInit
+ 773 0156 06A8     		add	r0, sp, #24
+ 774 0158 FFF7FEFF 		bl	CRYP_IVInit
+ 775 015c 0026     		movs	r6, #0
+ 776 015e 1296     		str	r6, [sp, #72]
+ 777 0160 4FF40023 		mov	r3, #524288
+ 778 0164 1393     		str	r3, [sp, #76]
+ 779 0166 8023     		movs	r3, #128
+ 780 0168 1493     		str	r3, [sp, #80]
+ 781 016a 12A8     		add	r0, sp, #72
+ 782 016c FFF7FEFF 		bl	CRYP_Init
+ 783 0170 3046     		mov	r0, r6
+ 784 0172 FFF7FEFF 		bl	CRYP_PhaseConfig
+ 785 0176 0120     		movs	r0, #1
+ 786 0178 FFF7FEFF 		bl	CRYP_Cmd
+ 787              	.L58:
+ 788 017c FFF7FEFF 		bl	CRYP_GetCmdStatus
+ 789 0180 0128     		cmp	r0, #1
+ 790 0182 FBD0     		beq	.L58
+ 791 0184 BAF1000F 		cmp	r10, #0
+ 792 0188 13D1     		bne	.L98
+ 793              	.L59:
+ 794 018a B8F1000F 		cmp	r8, #0
+ 795 018e 00F08A80 		beq	.L65
+ 796 0192 4FF40030 		mov	r0, #131072
+ 797 0196 FFF7FEFF 		bl	CRYP_PhaseConfig
+ 798 019a 0120     		movs	r0, #1
+ 799 019c FFF7FEFF 		bl	CRYP_Cmd
+ 800 01a0 FFF7FEFF 		bl	CRYP_GetCmdStatus
+ 801 01a4 0646     		mov	r6, r0
+ 802 01a6 0028     		cmp	r0, #0
+ 803 01a8 00F05881 		beq	.L60
+ 804 01ac 0025     		movs	r5, #0
+ 805 01ae 019E     		ldr	r6, [sp, #4]
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccCOf8OS.s 			page 15
+
+
+ 806 01b0 39E0     		b	.L66
+ 807              	.L98:
+ 808 01b2 4FF48030 		mov	r0, #65536
+ 809 01b6 FFF7FEFF 		bl	CRYP_PhaseConfig
+ 810 01ba 0120     		movs	r0, #1
+ 811 01bc FFF7FEFF 		bl	CRYP_Cmd
+ 812 01c0 FFF7FEFF 		bl	CRYP_GetCmdStatus
+ 813 01c4 0646     		mov	r6, r0
+ 814 01c6 0028     		cmp	r0, #0
+ 815 01c8 00F04881 		beq	.L60
+ 816 01cc 0026     		movs	r6, #0
+ 817 01ce 12E0     		b	.L61
+ 818              	.L62:
+ 819 01d0 0120     		movs	r0, #1
+ 820 01d2 FFF7FEFF 		bl	CRYP_GetFlagStatus
+ 821 01d6 0028     		cmp	r0, #0
+ 822 01d8 FAD0     		beq	.L62
+ 823 01da 2868     		ldr	r0, [r5]
+ 824 01dc FFF7FEFF 		bl	CRYP_DataIn
+ 825 01e0 6868     		ldr	r0, [r5, #4]
+ 826 01e2 FFF7FEFF 		bl	CRYP_DataIn
+ 827 01e6 A868     		ldr	r0, [r5, #8]
+ 828 01e8 FFF7FEFF 		bl	CRYP_DataIn
+ 829 01ec E868     		ldr	r0, [r5, #12]
+ 830 01ee FFF7FEFF 		bl	CRYP_DataIn
+ 831 01f2 1035     		adds	r5, r5, #16
+ 832 01f4 1036     		adds	r6, r6, #16
+ 833              	.L61:
+ 834 01f6 5645     		cmp	r6, r10
+ 835 01f8 EAD3     		bcc	.L62
+ 836 01fa 0023     		movs	r3, #0
+ 837 01fc 0593     		str	r3, [sp, #20]
+ 838              	.L64:
+ 839 01fe 1020     		movs	r0, #16
+ 840 0200 FFF7FEFF 		bl	CRYP_GetFlagStatus
+ 841 0204 059B     		ldr	r3, [sp, #20]
+ 842 0206 0133     		adds	r3, r3, #1
+ 843 0208 0593     		str	r3, [sp, #20]
+ 844 020a 059B     		ldr	r3, [sp, #20]
+ 845 020c B3F5803F 		cmp	r3, #65536
+ 846 0210 01D0     		beq	.L63
+ 847 0212 0028     		cmp	r0, #0
+ 848 0214 F3D1     		bne	.L64
+ 849              	.L63:
+ 850 0216 0028     		cmp	r0, #0
+ 851 0218 B7D0     		beq	.L59
+ 852 021a 0023     		movs	r3, #0
+ 853 021c 0193     		str	r3, [sp, #4]
+ 854 021e B4E7     		b	.L59
+ 855              	.L68:
+ 856 0220 30B3     		cbz	r0, .L71
+ 857 0222 0026     		movs	r6, #0
+ 858              	.L70:
+ 859 0224 1035     		adds	r5, r5, #16
+ 860              	.L66:
+ 861 0226 4545     		cmp	r5, r8
+ 862 0228 3CD2     		bcs	.L93
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccCOf8OS.s 			page 16
+
+
+ 863 022a 002E     		cmp	r6, #0
+ 864 022c 38D0     		beq	.L99
+ 865              	.L67:
+ 866 022e 0120     		movs	r0, #1
+ 867 0230 FFF7FEFF 		bl	CRYP_GetFlagStatus
+ 868 0234 0028     		cmp	r0, #0
+ 869 0236 FAD0     		beq	.L67
+ 870 0238 2068     		ldr	r0, [r4]
+ 871 023a FFF7FEFF 		bl	CRYP_DataIn
+ 872 023e 6068     		ldr	r0, [r4, #4]
+ 873 0240 FFF7FEFF 		bl	CRYP_DataIn
+ 874 0244 A068     		ldr	r0, [r4, #8]
+ 875 0246 FFF7FEFF 		bl	CRYP_DataIn
+ 876 024a E068     		ldr	r0, [r4, #12]
+ 877 024c FFF7FEFF 		bl	CRYP_DataIn
+ 878 0250 1034     		adds	r4, r4, #16
+ 879 0252 0023     		movs	r3, #0
+ 880 0254 0593     		str	r3, [sp, #20]
+ 881              	.L69:
+ 882 0256 1020     		movs	r0, #16
+ 883 0258 FFF7FEFF 		bl	CRYP_GetFlagStatus
+ 884 025c 059B     		ldr	r3, [sp, #20]
+ 885 025e 0133     		adds	r3, r3, #1
+ 886 0260 0593     		str	r3, [sp, #20]
+ 887 0262 059B     		ldr	r3, [sp, #20]
+ 888 0264 B3F5803F 		cmp	r3, #65536
+ 889 0268 DAD0     		beq	.L68
+ 890 026a 0028     		cmp	r0, #0
+ 891 026c F3D1     		bne	.L69
+ 892 026e D7E7     		b	.L68
+ 893              	.L71:
+ 894 0270 0420     		movs	r0, #4
+ 895 0272 FFF7FEFF 		bl	CRYP_GetFlagStatus
+ 896 0276 0028     		cmp	r0, #0
+ 897 0278 FAD0     		beq	.L71
+ 898 027a FFF7FEFF 		bl	CRYP_DataOut
+ 899 027e CBF80000 		str	r0, [fp]
+ 900 0282 FFF7FEFF 		bl	CRYP_DataOut
+ 901 0286 CBF80400 		str	r0, [fp, #4]
+ 902 028a FFF7FEFF 		bl	CRYP_DataOut
+ 903 028e CBF80800 		str	r0, [fp, #8]
+ 904 0292 FFF7FEFF 		bl	CRYP_DataOut
+ 905 0296 CBF80C00 		str	r0, [fp, #12]
+ 906 029a 0BF1100B 		add	fp, fp, #16
+ 907 029e C1E7     		b	.L70
+ 908              	.L99:
+ 909 02a0 0196     		str	r6, [sp, #4]
+ 910 02a2 00E0     		b	.L65
+ 911              	.L93:
+ 912 02a4 0196     		str	r6, [sp, #4]
+ 913              	.L65:
+ 914 02a6 4FF44030 		mov	r0, #196608
+ 915 02aa FFF7FEFF 		bl	CRYP_PhaseConfig
+ 916 02ae 0120     		movs	r0, #1
+ 917 02b0 FFF7FEFF 		bl	CRYP_Cmd
+ 918 02b4 FFF7FEFF 		bl	CRYP_GetCmdStatus
+ 919 02b8 0646     		mov	r6, r0
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccCOf8OS.s 			page 17
+
+
+ 920 02ba 0028     		cmp	r0, #0
+ 921 02bc 00F0CE80 		beq	.L60
+ 922 02c0 0020     		movs	r0, #0
+ 923 02c2 FFF7FEFF 		bl	CRYP_DataIn
+ 924 02c6 029B     		ldr	r3, [sp, #8]
+ 925 02c8 18BA     		rev	r0, r3
+ 926 02ca FFF7FEFF 		bl	CRYP_DataIn
+ 927 02ce 0020     		movs	r0, #0
+ 928 02d0 FFF7FEFF 		bl	CRYP_DataIn
+ 929 02d4 039B     		ldr	r3, [sp, #12]
+ 930 02d6 18BA     		rev	r0, r3
+ 931 02d8 FFF7FEFF 		bl	CRYP_DataIn
+ 932              	.L72:
+ 933 02dc 0420     		movs	r0, #4
+ 934 02de FFF7FEFF 		bl	CRYP_GetFlagStatus
+ 935 02e2 0028     		cmp	r0, #0
+ 936 02e4 FAD0     		beq	.L72
+ 937 02e6 FFF7FEFF 		bl	CRYP_DataOut
+ 938 02ea 259B     		ldr	r3, [sp, #148]
+ 939 02ec 1860     		str	r0, [r3]
+ 940 02ee FFF7FEFF 		bl	CRYP_DataOut
+ 941 02f2 259B     		ldr	r3, [sp, #148]
+ 942 02f4 5860     		str	r0, [r3, #4]
+ 943 02f6 FFF7FEFF 		bl	CRYP_DataOut
+ 944 02fa 259B     		ldr	r3, [sp, #148]
+ 945 02fc 9860     		str	r0, [r3, #8]
+ 946 02fe FFF7FEFF 		bl	CRYP_DataOut
+ 947 0302 259B     		ldr	r3, [sp, #148]
+ 948 0304 D860     		str	r0, [r3, #12]
+ 949 0306 019E     		ldr	r6, [sp, #4]
+ 950 0308 A5E0     		b	.L73
+ 951              	.L97:
+ 952 030a 4FF48030 		mov	r0, #65536
+ 953 030e FFF7FEFF 		bl	CRYP_PhaseConfig
+ 954 0312 0120     		movs	r0, #1
+ 955 0314 FFF7FEFF 		bl	CRYP_Cmd
+ 956 0318 FFF7FEFF 		bl	CRYP_GetCmdStatus
+ 957 031c 0646     		mov	r6, r0
+ 958 031e 0028     		cmp	r0, #0
+ 959 0320 00F09C80 		beq	.L60
+ 960 0324 0026     		movs	r6, #0
+ 961 0326 12E0     		b	.L76
+ 962              	.L77:
+ 963 0328 0120     		movs	r0, #1
+ 964 032a FFF7FEFF 		bl	CRYP_GetFlagStatus
+ 965 032e 0028     		cmp	r0, #0
+ 966 0330 FAD0     		beq	.L77
+ 967 0332 2868     		ldr	r0, [r5]
+ 968 0334 FFF7FEFF 		bl	CRYP_DataIn
+ 969 0338 6868     		ldr	r0, [r5, #4]
+ 970 033a FFF7FEFF 		bl	CRYP_DataIn
+ 971 033e A868     		ldr	r0, [r5, #8]
+ 972 0340 FFF7FEFF 		bl	CRYP_DataIn
+ 973 0344 E868     		ldr	r0, [r5, #12]
+ 974 0346 FFF7FEFF 		bl	CRYP_DataIn
+ 975 034a 1035     		adds	r5, r5, #16
+ 976 034c 1036     		adds	r6, r6, #16
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccCOf8OS.s 			page 18
+
+
+ 977              	.L76:
+ 978 034e 5645     		cmp	r6, r10
+ 979 0350 EAD3     		bcc	.L77
+ 980 0352 0023     		movs	r3, #0
+ 981 0354 0593     		str	r3, [sp, #20]
+ 982              	.L79:
+ 983 0356 1020     		movs	r0, #16
+ 984 0358 FFF7FEFF 		bl	CRYP_GetFlagStatus
+ 985 035c 059B     		ldr	r3, [sp, #20]
+ 986 035e 0133     		adds	r3, r3, #1
+ 987 0360 0593     		str	r3, [sp, #20]
+ 988 0362 059B     		ldr	r3, [sp, #20]
+ 989 0364 B3F5803F 		cmp	r3, #65536
+ 990 0368 01D0     		beq	.L78
+ 991 036a 0028     		cmp	r0, #0
+ 992 036c F3D1     		bne	.L79
+ 993              	.L78:
+ 994 036e 08B9     		cbnz	r0, .L91
+ 995 0370 0125     		movs	r5, #1
+ 996 0372 A6E6     		b	.L75
+ 997              	.L91:
+ 998 0374 0025     		movs	r5, #0
+ 999 0376 A4E6     		b	.L75
+ 1000              	.L83:
+ 1001 0378 30B3     		cbz	r0, .L86
+ 1002 037a 0025     		movs	r5, #0
+ 1003              	.L85:
+ 1004 037c 1036     		adds	r6, r6, #16
+ 1005              	.L81:
+ 1006 037e 4645     		cmp	r6, r8
+ 1007 0380 3AD2     		bcs	.L80
+ 1008 0382 002D     		cmp	r5, #0
+ 1009 0384 38D0     		beq	.L80
+ 1010              	.L82:
+ 1011 0386 0120     		movs	r0, #1
+ 1012 0388 FFF7FEFF 		bl	CRYP_GetFlagStatus
+ 1013 038c 0028     		cmp	r0, #0
+ 1014 038e FAD0     		beq	.L82
+ 1015 0390 2068     		ldr	r0, [r4]
+ 1016 0392 FFF7FEFF 		bl	CRYP_DataIn
+ 1017 0396 6068     		ldr	r0, [r4, #4]
+ 1018 0398 FFF7FEFF 		bl	CRYP_DataIn
+ 1019 039c A068     		ldr	r0, [r4, #8]
+ 1020 039e FFF7FEFF 		bl	CRYP_DataIn
+ 1021 03a2 E068     		ldr	r0, [r4, #12]
+ 1022 03a4 FFF7FEFF 		bl	CRYP_DataIn
+ 1023 03a8 1034     		adds	r4, r4, #16
+ 1024 03aa 0023     		movs	r3, #0
+ 1025 03ac 0593     		str	r3, [sp, #20]
+ 1026              	.L84:
+ 1027 03ae 1020     		movs	r0, #16
+ 1028 03b0 FFF7FEFF 		bl	CRYP_GetFlagStatus
+ 1029 03b4 059B     		ldr	r3, [sp, #20]
+ 1030 03b6 0133     		adds	r3, r3, #1
+ 1031 03b8 0593     		str	r3, [sp, #20]
+ 1032 03ba 059B     		ldr	r3, [sp, #20]
+ 1033 03bc B3F5803F 		cmp	r3, #65536
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccCOf8OS.s 			page 19
+
+
+ 1034 03c0 DAD0     		beq	.L83
+ 1035 03c2 0028     		cmp	r0, #0
+ 1036 03c4 F3D1     		bne	.L84
+ 1037 03c6 D7E7     		b	.L83
+ 1038              	.L86:
+ 1039 03c8 0420     		movs	r0, #4
+ 1040 03ca FFF7FEFF 		bl	CRYP_GetFlagStatus
+ 1041 03ce 0028     		cmp	r0, #0
+ 1042 03d0 FAD0     		beq	.L86
+ 1043 03d2 FFF7FEFF 		bl	CRYP_DataOut
+ 1044 03d6 CBF80000 		str	r0, [fp]
+ 1045 03da FFF7FEFF 		bl	CRYP_DataOut
+ 1046 03de CBF80400 		str	r0, [fp, #4]
+ 1047 03e2 FFF7FEFF 		bl	CRYP_DataOut
+ 1048 03e6 CBF80800 		str	r0, [fp, #8]
+ 1049 03ea FFF7FEFF 		bl	CRYP_DataOut
+ 1050 03ee CBF80C00 		str	r0, [fp, #12]
+ 1051 03f2 0BF1100B 		add	fp, fp, #16
+ 1052 03f6 C1E7     		b	.L85
+ 1053              	.L80:
+ 1054 03f8 4FF44030 		mov	r0, #196608
+ 1055 03fc FFF7FEFF 		bl	CRYP_PhaseConfig
+ 1056 0400 0120     		movs	r0, #1
+ 1057 0402 FFF7FEFF 		bl	CRYP_Cmd
+ 1058 0406 FFF7FEFF 		bl	CRYP_GetCmdStatus
+ 1059 040a 0646     		mov	r6, r0
+ 1060 040c 30B3     		cbz	r0, .L60
+ 1061 040e 0020     		movs	r0, #0
+ 1062 0410 FFF7FEFF 		bl	CRYP_DataIn
+ 1063 0414 029B     		ldr	r3, [sp, #8]
+ 1064 0416 18BA     		rev	r0, r3
+ 1065 0418 FFF7FEFF 		bl	CRYP_DataIn
+ 1066 041c 0020     		movs	r0, #0
+ 1067 041e FFF7FEFF 		bl	CRYP_DataIn
+ 1068 0422 039B     		ldr	r3, [sp, #12]
+ 1069 0424 18BA     		rev	r0, r3
+ 1070 0426 FFF7FEFF 		bl	CRYP_DataIn
+ 1071              	.L87:
+ 1072 042a 0420     		movs	r0, #4
+ 1073 042c FFF7FEFF 		bl	CRYP_GetFlagStatus
+ 1074 0430 0028     		cmp	r0, #0
+ 1075 0432 FAD0     		beq	.L87
+ 1076 0434 FFF7FEFF 		bl	CRYP_DataOut
+ 1077 0438 259B     		ldr	r3, [sp, #148]
+ 1078 043a 1860     		str	r0, [r3]
+ 1079 043c FFF7FEFF 		bl	CRYP_DataOut
+ 1080 0440 259B     		ldr	r3, [sp, #148]
+ 1081 0442 5860     		str	r0, [r3, #4]
+ 1082 0444 FFF7FEFF 		bl	CRYP_DataOut
+ 1083 0448 259B     		ldr	r3, [sp, #148]
+ 1084 044a 9860     		str	r0, [r3, #8]
+ 1085 044c FFF7FEFF 		bl	CRYP_DataOut
+ 1086 0450 259B     		ldr	r3, [sp, #148]
+ 1087 0452 D860     		str	r0, [r3, #12]
+ 1088 0454 2E46     		mov	r6, r5
+ 1089              	.L73:
+ 1090 0456 0020     		movs	r0, #0
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccCOf8OS.s 			page 20
+
+
+ 1091 0458 FFF7FEFF 		bl	CRYP_Cmd
+ 1092              	.L60:
+ 1093 045c 3046     		mov	r0, r6
+ 1094 045e 17B0     		add	sp, sp, #92
+ 1095              		@ sp needed
+ 1096 0460 BDE8F08F 		pop	{r4, r5, r6, r7, r8, r9, r10, fp, pc}
+ 1098              		.section	.text.CRYP_AES_CCM,"ax",%progbits
+ 1099              		.align	1
+ 1100              		.global	CRYP_AES_CCM
+ 1101              		.syntax unified
+ 1102              		.thumb
+ 1103              		.thumb_func
+ 1105              	CRYP_AES_CCM:
+ 1106              		@ args = 36, pretend = 0, frame = 128
+ 1107              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1108 0000 2DE9F04F 		push	{r4, r5, r6, r7, r8, r9, r10, fp, lr}
+ 1109 0004 A1B0     		sub	sp, sp, #132
+ 1110 0006 0190     		str	r0, [sp, #4]
+ 1111 0008 1F46     		mov	r7, r3
+ 1112 000a BDF8A8B0 		ldrh	fp, [sp, #168]
+ 1113 000e DDF8B080 		ldr	r8, [sp, #176]
+ 1114 0012 DDF8B4E0 		ldr	lr, [sp, #180]
+ 1115 0016 2E9D     		ldr	r5, [sp, #184]
+ 1116 0018 DDF8BCC0 		ldr	ip, [sp, #188]
+ 1117 001c DDF8C890 		ldr	r9, [sp, #200]
+ 1118 0020 0023     		movs	r3, #0
+ 1119 0022 0F93     		str	r3, [sp, #60]
+ 1120 0024 2B9C     		ldr	r4, [sp, #172]
+ 1121 0026 DDF8C0A0 		ldr	r10, [sp, #192]
+ 1122 002a 7646     		mov	r6, lr
+ 1123 002c 0B93     		str	r3, [sp, #44]
+ 1124 002e 0C93     		str	r3, [sp, #48]
+ 1125 0030 0D93     		str	r3, [sp, #52]
+ 1126 0032 0E93     		str	r3, [sp, #56]
+ 1127 0034 0793     		str	r3, [sp, #28]
+ 1128 0036 0893     		str	r3, [sp, #32]
+ 1129 0038 0993     		str	r3, [sp, #36]
+ 1130 003a 0A93     		str	r3, [sp, #40]
+ 1131 003c 0393     		str	r3, [sp, #12]
+ 1132 003e 0493     		str	r3, [sp, #16]
+ 1133 0040 0593     		str	r3, [sp, #20]
+ 1134 0042 0693     		str	r3, [sp, #24]
+ 1135 0044 75B3     		cbz	r5, .L101
+ 1136 0046 B5F57F4F 		cmp	r5, #65280
+ 1137 004a 09D2     		bcs	.L102
+ 1138 004c C5F30723 		ubfx	r3, r5, #8, #8
+ 1139 0050 8CF80030 		strb	r3, [ip]
+ 1140 0054 8CF80150 		strb	r5, [ip, #1]
+ 1141 0058 0235     		adds	r5, r5, #2
+ 1142 005a 0220     		movs	r0, #2
+ 1143              	.L103:
+ 1144 005c 0023     		movs	r3, #0
+ 1145 005e 17E0     		b	.L104
+ 1146              	.L102:
+ 1147 0060 FF23     		movs	r3, #255
+ 1148 0062 8CF80030 		strb	r3, [ip]
+ 1149 0066 FE23     		movs	r3, #254
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccCOf8OS.s 			page 21
+
+
+ 1150 0068 8CF80130 		strb	r3, [ip, #1]
+ 1151 006c 0023     		movs	r3, #0
+ 1152 006e 8CF80230 		strb	r3, [ip, #2]
+ 1153 0072 8CF80330 		strb	r3, [ip, #3]
+ 1154 0076 8CF80430 		strb	r3, [ip, #4]
+ 1155 007a 8CF80550 		strb	r5, [ip, #5]
+ 1156 007e 0635     		adds	r5, r5, #6
+ 1157 0080 0620     		movs	r0, #6
+ 1158 0082 EBE7     		b	.L103
+ 1159              	.L105:
+ 1160 0084 1EF80360 		ldrb	r6, [lr, r3]	@ zero_extendqisi2
+ 1161 0088 0CF80060 		strb	r6, [ip, r0]
+ 1162 008c 0133     		adds	r3, r3, #1
+ 1163 008e 0130     		adds	r0, r0, #1
+ 1164              	.L104:
+ 1165 0090 9D42     		cmp	r5, r3
+ 1166 0092 F7D8     		bhi	.L105
+ 1167 0094 15F00F0F 		tst	r5, #15
+ 1168 0098 26D1     		bne	.L151
+ 1169              	.L107:
+ 1170 009a 6646     		mov	r6, ip
+ 1171 009c 15B1     		cbz	r5, .L101
+ 1172 009e 4023     		movs	r3, #64
+ 1173 00a0 8DF82C30 		strb	r3, [sp, #44]
+ 1174              	.L101:
+ 1175 00a4 9DF82C00 		ldrb	r0, [sp, #44]	@ zero_extendqisi2
+ 1176 00a8 5FFA89F3 		uxtb	r3, r9
+ 1177 00ac 023B     		subs	r3, r3, #2
+ 1178 00ae 03EBD373 		add	r3, r3, r3, lsr #31
+ 1179 00b2 5B10     		asrs	r3, r3, #1
+ 1180 00b4 DB00     		lsls	r3, r3, #3
+ 1181 00b6 03F03803 		and	r3, r3, #56
+ 1182 00ba C2F10E0C 		rsb	ip, r2, #14
+ 1183 00be 0CF0070C 		and	ip, ip, #7
+ 1184 00c2 43EA0C03 		orr	r3, r3, ip
+ 1185 00c6 1843     		orrs	r0, r0, r3
+ 1186 00c8 8DF82C00 		strb	r0, [sp, #44]
+ 1187 00cc 0023     		movs	r3, #0
+ 1188 00ce 16E0     		b	.L109
+ 1189              	.L108:
+ 1190 00d0 0023     		movs	r3, #0
+ 1191 00d2 0CF80030 		strb	r3, [ip, r0]
+ 1192 00d6 0130     		adds	r0, r0, #1
+ 1193              	.L106:
+ 1194 00d8 2B09     		lsrs	r3, r5, #4
+ 1195 00da 0133     		adds	r3, r3, #1
+ 1196 00dc 1E01     		lsls	r6, r3, #4
+ 1197 00de B0EB031F 		cmp	r0, r3, lsl #4
+ 1198 00e2 F5D9     		bls	.L108
+ 1199 00e4 3546     		mov	r5, r6
+ 1200 00e6 D8E7     		b	.L107
+ 1201              	.L151:
+ 1202 00e8 2846     		mov	r0, r5
+ 1203 00ea F5E7     		b	.L106
+ 1204              	.L110:
+ 1205 00ec C818     		adds	r0, r1, r3
+ 1206 00ee 0133     		adds	r3, r3, #1
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccCOf8OS.s 			page 22
+
+
+ 1207 00f0 90F800C0 		ldrb	ip, [r0]	@ zero_extendqisi2
+ 1208 00f4 03F18000 		add	r0, r3, #128
+ 1209 00f8 6844     		add	r0, sp, r0
+ 1210 00fa 00F854CC 		strb	ip, [r0, #-84]
+ 1211              	.L109:
+ 1212 00fe 9342     		cmp	r3, r2
+ 1213 0100 F4D3     		bcc	.L110
+ 1214 0102 06E0     		b	.L111
+ 1215              	.L112:
+ 1216 0104 0133     		adds	r3, r3, #1
+ 1217 0106 03F18001 		add	r1, r3, #128
+ 1218 010a 6944     		add	r1, sp, r1
+ 1219 010c 0020     		movs	r0, #0
+ 1220 010e 01F8540C 		strb	r0, [r1, #-84]
+ 1221              	.L111:
+ 1222 0112 0C2B     		cmp	r3, #12
+ 1223 0114 F6D9     		bls	.L112
+ 1224 0116 4FEA1823 		lsr	r3, r8, #8
+ 1225 011a 8DF83A30 		strb	r3, [sp, #58]
+ 1226 011e 8DF83B80 		strb	r8, [sp, #59]
+ 1227 0122 9DF82C30 		ldrb	r3, [sp, #44]	@ zero_extendqisi2
+ 1228 0126 03F00703 		and	r3, r3, #7
+ 1229 012a 8DF81C30 		strb	r3, [sp, #28]
+ 1230 012e 0123     		movs	r3, #1
+ 1231 0130 07E0     		b	.L113
+ 1232              	.L114:
+ 1233 0132 03F18001 		add	r1, r3, #128
+ 1234 0136 6944     		add	r1, sp, r1
+ 1235 0138 11F8540C 		ldrb	r0, [r1, #-84]	@ zero_extendqisi2
+ 1236 013c 01F8640C 		strb	r0, [r1, #-100]
+ 1237 0140 0133     		adds	r3, r3, #1
+ 1238              	.L113:
+ 1239 0142 511C     		adds	r1, r2, #1
+ 1240 0144 9942     		cmp	r1, r3
+ 1241 0146 F4D8     		bhi	.L114
+ 1242 0148 9DF82B30 		ldrb	r3, [sp, #43]	@ zero_extendqisi2
+ 1243 014c 43F00103 		orr	r3, r3, #1
+ 1244 0150 8DF82B30 		strb	r3, [sp, #43]
+ 1245 0154 14A8     		add	r0, sp, #80
+ 1246 0156 FFF7FEFF 		bl	CRYP_KeyStructInit
+ 1247 015a BBF1C00F 		cmp	fp, #192
+ 1248 015e 61D0     		beq	.L115
+ 1249 0160 BBF5807F 		cmp	fp, #256
+ 1250 0164 74D0     		beq	.L116
+ 1251 0166 BBF1800F 		cmp	fp, #128
+ 1252 016a 0DD1     		bne	.L117
+ 1253 016c 0023     		movs	r3, #0
+ 1254 016e 1F93     		str	r3, [sp, #124]
+ 1255 0170 3B68     		ldr	r3, [r7]
+ 1256 0172 1BBA     		rev	r3, r3
+ 1257 0174 1893     		str	r3, [sp, #96]
+ 1258 0176 7B68     		ldr	r3, [r7, #4]
+ 1259 0178 1BBA     		rev	r3, r3
+ 1260 017a 1993     		str	r3, [sp, #100]
+ 1261 017c BB68     		ldr	r3, [r7, #8]
+ 1262 017e 1BBA     		rev	r3, r3
+ 1263 0180 1A93     		str	r3, [sp, #104]
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccCOf8OS.s 			page 23
+
+
+ 1264 0182 FB68     		ldr	r3, [r7, #12]
+ 1265 0184 1BBA     		rev	r3, r3
+ 1266 0186 1B93     		str	r3, [sp, #108]
+ 1267              	.L117:
+ 1268 0188 079B     		ldr	r3, [sp, #28]
+ 1269 018a 1BBA     		rev	r3, r3
+ 1270 018c 1093     		str	r3, [sp, #64]
+ 1271 018e 089B     		ldr	r3, [sp, #32]
+ 1272 0190 1BBA     		rev	r3, r3
+ 1273 0192 1193     		str	r3, [sp, #68]
+ 1274 0194 099B     		ldr	r3, [sp, #36]
+ 1275 0196 1BBA     		rev	r3, r3
+ 1276 0198 1293     		str	r3, [sp, #72]
+ 1277 019a 0A9B     		ldr	r3, [sp, #40]
+ 1278 019c 1BBA     		rev	r3, r3
+ 1279 019e 1393     		str	r3, [sp, #76]
+ 1280 01a0 019B     		ldr	r3, [sp, #4]
+ 1281 01a2 012B     		cmp	r3, #1
+ 1282 01a4 70D0     		beq	.L160
+ 1283 01a6 FFF7FEFF 		bl	CRYP_FIFOFlush
+ 1284 01aa 14A8     		add	r0, sp, #80
+ 1285 01ac FFF7FEFF 		bl	CRYP_KeyInit
+ 1286 01b0 10A8     		add	r0, sp, #64
+ 1287 01b2 FFF7FEFF 		bl	CRYP_IVInit
+ 1288 01b6 0423     		movs	r3, #4
+ 1289 01b8 1C93     		str	r3, [sp, #112]
+ 1290 01ba 4FF00813 		mov	r3, #524296
+ 1291 01be 1D93     		str	r3, [sp, #116]
+ 1292 01c0 8023     		movs	r3, #128
+ 1293 01c2 1E93     		str	r3, [sp, #120]
+ 1294 01c4 1CA8     		add	r0, sp, #112
+ 1295 01c6 FFF7FEFF 		bl	CRYP_Init
+ 1296 01ca 0020     		movs	r0, #0
+ 1297 01cc FFF7FEFF 		bl	CRYP_PhaseConfig
+ 1298 01d0 0B98     		ldr	r0, [sp, #44]
+ 1299 01d2 FFF7FEFF 		bl	CRYP_DataIn
+ 1300 01d6 0C98     		ldr	r0, [sp, #48]
+ 1301 01d8 FFF7FEFF 		bl	CRYP_DataIn
+ 1302 01dc 0D98     		ldr	r0, [sp, #52]
+ 1303 01de FFF7FEFF 		bl	CRYP_DataIn
+ 1304 01e2 0E98     		ldr	r0, [sp, #56]
+ 1305 01e4 FFF7FEFF 		bl	CRYP_DataIn
+ 1306 01e8 0120     		movs	r0, #1
+ 1307 01ea FFF7FEFF 		bl	CRYP_Cmd
+ 1308              	.L135:
+ 1309 01ee FFF7FEFF 		bl	CRYP_GetCmdStatus
+ 1310 01f2 0128     		cmp	r0, #1
+ 1311 01f4 FBD0     		beq	.L135
+ 1312 01f6 002D     		cmp	r5, #0
+ 1313 01f8 40F02B81 		bne	.L161
+ 1314 01fc 0125     		movs	r5, #1
+ 1315              	.L136:
+ 1316 01fe B8F1000F 		cmp	r8, #0
+ 1317 0202 00F09D81 		beq	.L141
+ 1318 0206 4FF40030 		mov	r0, #131072
+ 1319 020a FFF7FEFF 		bl	CRYP_PhaseConfig
+ 1320 020e 0120     		movs	r0, #1
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccCOf8OS.s 			page 24
+
+
+ 1321 0210 FFF7FEFF 		bl	CRYP_Cmd
+ 1322 0214 FFF7FEFF 		bl	CRYP_GetCmdStatus
+ 1323 0218 0746     		mov	r7, r0
+ 1324 021a 0028     		cmp	r0, #0
+ 1325 021c 00F0C781 		beq	.L121
+ 1326 0220 0026     		movs	r6, #0
+ 1327 0222 50E1     		b	.L142
+ 1328              	.L115:
+ 1329 0224 4FF48073 		mov	r3, #256
+ 1330 0228 1F93     		str	r3, [sp, #124]
+ 1331 022a 3B68     		ldr	r3, [r7]
+ 1332 022c 1BBA     		rev	r3, r3
+ 1333 022e 1693     		str	r3, [sp, #88]
+ 1334 0230 7B68     		ldr	r3, [r7, #4]
+ 1335 0232 1BBA     		rev	r3, r3
+ 1336 0234 1793     		str	r3, [sp, #92]
+ 1337 0236 BB68     		ldr	r3, [r7, #8]
+ 1338 0238 1BBA     		rev	r3, r3
+ 1339 023a 1893     		str	r3, [sp, #96]
+ 1340 023c FB68     		ldr	r3, [r7, #12]
+ 1341 023e 1BBA     		rev	r3, r3
+ 1342 0240 1993     		str	r3, [sp, #100]
+ 1343 0242 3B69     		ldr	r3, [r7, #16]
+ 1344 0244 1BBA     		rev	r3, r3
+ 1345 0246 1A93     		str	r3, [sp, #104]
+ 1346 0248 7B69     		ldr	r3, [r7, #20]
+ 1347 024a 1BBA     		rev	r3, r3
+ 1348 024c 1B93     		str	r3, [sp, #108]
+ 1349 024e 9BE7     		b	.L117
+ 1350              	.L116:
+ 1351 0250 4FF40073 		mov	r3, #512
+ 1352 0254 1F93     		str	r3, [sp, #124]
+ 1353 0256 3B68     		ldr	r3, [r7]
+ 1354 0258 1BBA     		rev	r3, r3
+ 1355 025a 1493     		str	r3, [sp, #80]
+ 1356 025c 7B68     		ldr	r3, [r7, #4]
+ 1357 025e 1BBA     		rev	r3, r3
+ 1358 0260 1593     		str	r3, [sp, #84]
+ 1359 0262 BB68     		ldr	r3, [r7, #8]
+ 1360 0264 1BBA     		rev	r3, r3
+ 1361 0266 1693     		str	r3, [sp, #88]
+ 1362 0268 FB68     		ldr	r3, [r7, #12]
+ 1363 026a 1BBA     		rev	r3, r3
+ 1364 026c 1793     		str	r3, [sp, #92]
+ 1365 026e 3B69     		ldr	r3, [r7, #16]
+ 1366 0270 1BBA     		rev	r3, r3
+ 1367 0272 1893     		str	r3, [sp, #96]
+ 1368 0274 7B69     		ldr	r3, [r7, #20]
+ 1369 0276 1BBA     		rev	r3, r3
+ 1370 0278 1993     		str	r3, [sp, #100]
+ 1371 027a BB69     		ldr	r3, [r7, #24]
+ 1372 027c 1BBA     		rev	r3, r3
+ 1373 027e 1A93     		str	r3, [sp, #104]
+ 1374 0280 FB69     		ldr	r3, [r7, #28]
+ 1375 0282 1BBA     		rev	r3, r3
+ 1376 0284 1B93     		str	r3, [sp, #108]
+ 1377 0286 7FE7     		b	.L117
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccCOf8OS.s 			page 25
+
+
+ 1378              	.L160:
+ 1379 0288 FFF7FEFF 		bl	CRYP_FIFOFlush
+ 1380 028c 14A8     		add	r0, sp, #80
+ 1381 028e FFF7FEFF 		bl	CRYP_KeyInit
+ 1382 0292 10A8     		add	r0, sp, #64
+ 1383 0294 FFF7FEFF 		bl	CRYP_IVInit
+ 1384 0298 0027     		movs	r7, #0
+ 1385 029a 1C97     		str	r7, [sp, #112]
+ 1386 029c 4FF00813 		mov	r3, #524296
+ 1387 02a0 1D93     		str	r3, [sp, #116]
+ 1388 02a2 8023     		movs	r3, #128
+ 1389 02a4 1E93     		str	r3, [sp, #120]
+ 1390 02a6 1CA8     		add	r0, sp, #112
+ 1391 02a8 FFF7FEFF 		bl	CRYP_Init
+ 1392 02ac 3846     		mov	r0, r7
+ 1393 02ae FFF7FEFF 		bl	CRYP_PhaseConfig
+ 1394 02b2 0B98     		ldr	r0, [sp, #44]
+ 1395 02b4 FFF7FEFF 		bl	CRYP_DataIn
+ 1396 02b8 0C98     		ldr	r0, [sp, #48]
+ 1397 02ba FFF7FEFF 		bl	CRYP_DataIn
+ 1398 02be 0D98     		ldr	r0, [sp, #52]
+ 1399 02c0 FFF7FEFF 		bl	CRYP_DataIn
+ 1400 02c4 0E98     		ldr	r0, [sp, #56]
+ 1401 02c6 FFF7FEFF 		bl	CRYP_DataIn
+ 1402 02ca 0120     		movs	r0, #1
+ 1403 02cc FFF7FEFF 		bl	CRYP_Cmd
+ 1404              	.L119:
+ 1405 02d0 FFF7FEFF 		bl	CRYP_GetCmdStatus
+ 1406 02d4 0128     		cmp	r0, #1
+ 1407 02d6 FBD0     		beq	.L119
+ 1408 02d8 9DB9     		cbnz	r5, .L162
+ 1409              	.L120:
+ 1410 02da B8F1000F 		cmp	r8, #0
+ 1411 02de 00F08A80 		beq	.L126
+ 1412 02e2 4FF40030 		mov	r0, #131072
+ 1413 02e6 FFF7FEFF 		bl	CRYP_PhaseConfig
+ 1414 02ea 0120     		movs	r0, #1
+ 1415 02ec FFF7FEFF 		bl	CRYP_Cmd
+ 1416 02f0 FFF7FEFF 		bl	CRYP_GetCmdStatus
+ 1417 02f4 0746     		mov	r7, r0
+ 1418 02f6 0028     		cmp	r0, #0
+ 1419 02f8 00F05981 		beq	.L121
+ 1420 02fc 0025     		movs	r5, #0
+ 1421 02fe 019E     		ldr	r6, [sp, #4]
+ 1422 0300 39E0     		b	.L127
+ 1423              	.L162:
+ 1424 0302 4FF48030 		mov	r0, #65536
+ 1425 0306 FFF7FEFF 		bl	CRYP_PhaseConfig
+ 1426 030a 0120     		movs	r0, #1
+ 1427 030c FFF7FEFF 		bl	CRYP_Cmd
+ 1428 0310 FFF7FEFF 		bl	CRYP_GetCmdStatus
+ 1429 0314 0746     		mov	r7, r0
+ 1430 0316 0028     		cmp	r0, #0
+ 1431 0318 00F04981 		beq	.L121
+ 1432 031c 0027     		movs	r7, #0
+ 1433 031e 12E0     		b	.L122
+ 1434              	.L123:
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccCOf8OS.s 			page 26
+
+
+ 1435 0320 0120     		movs	r0, #1
+ 1436 0322 FFF7FEFF 		bl	CRYP_GetFlagStatus
+ 1437 0326 0028     		cmp	r0, #0
+ 1438 0328 FAD0     		beq	.L123
+ 1439 032a 3068     		ldr	r0, [r6]
+ 1440 032c FFF7FEFF 		bl	CRYP_DataIn
+ 1441 0330 7068     		ldr	r0, [r6, #4]
+ 1442 0332 FFF7FEFF 		bl	CRYP_DataIn
+ 1443 0336 B068     		ldr	r0, [r6, #8]
+ 1444 0338 FFF7FEFF 		bl	CRYP_DataIn
+ 1445 033c F068     		ldr	r0, [r6, #12]
+ 1446 033e FFF7FEFF 		bl	CRYP_DataIn
+ 1447 0342 1036     		adds	r6, r6, #16
+ 1448 0344 1037     		adds	r7, r7, #16
+ 1449              	.L122:
+ 1450 0346 BD42     		cmp	r5, r7
+ 1451 0348 EAD8     		bhi	.L123
+ 1452 034a 0023     		movs	r3, #0
+ 1453 034c 0F93     		str	r3, [sp, #60]
+ 1454              	.L125:
+ 1455 034e 1020     		movs	r0, #16
+ 1456 0350 FFF7FEFF 		bl	CRYP_GetFlagStatus
+ 1457 0354 0F9B     		ldr	r3, [sp, #60]
+ 1458 0356 0133     		adds	r3, r3, #1
+ 1459 0358 0F93     		str	r3, [sp, #60]
+ 1460 035a 0F9B     		ldr	r3, [sp, #60]
+ 1461 035c B3F5803F 		cmp	r3, #65536
+ 1462 0360 01D0     		beq	.L124
+ 1463 0362 0028     		cmp	r0, #0
+ 1464 0364 F3D1     		bne	.L125
+ 1465              	.L124:
+ 1466 0366 0028     		cmp	r0, #0
+ 1467 0368 B7D0     		beq	.L120
+ 1468 036a 0023     		movs	r3, #0
+ 1469 036c 0193     		str	r3, [sp, #4]
+ 1470 036e B4E7     		b	.L120
+ 1471              	.L129:
+ 1472 0370 30B3     		cbz	r0, .L132
+ 1473 0372 0026     		movs	r6, #0
+ 1474              	.L131:
+ 1475 0374 1035     		adds	r5, r5, #16
+ 1476              	.L127:
+ 1477 0376 4545     		cmp	r5, r8
+ 1478 0378 3CD2     		bcs	.L157
+ 1479 037a 002E     		cmp	r6, #0
+ 1480 037c 38D0     		beq	.L163
+ 1481              	.L128:
+ 1482 037e 0120     		movs	r0, #1
+ 1483 0380 FFF7FEFF 		bl	CRYP_GetFlagStatus
+ 1484 0384 0028     		cmp	r0, #0
+ 1485 0386 FAD0     		beq	.L128
+ 1486 0388 2068     		ldr	r0, [r4]
+ 1487 038a FFF7FEFF 		bl	CRYP_DataIn
+ 1488 038e 6068     		ldr	r0, [r4, #4]
+ 1489 0390 FFF7FEFF 		bl	CRYP_DataIn
+ 1490 0394 A068     		ldr	r0, [r4, #8]
+ 1491 0396 FFF7FEFF 		bl	CRYP_DataIn
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccCOf8OS.s 			page 27
+
+
+ 1492 039a E068     		ldr	r0, [r4, #12]
+ 1493 039c FFF7FEFF 		bl	CRYP_DataIn
+ 1494 03a0 1034     		adds	r4, r4, #16
+ 1495 03a2 0023     		movs	r3, #0
+ 1496 03a4 0F93     		str	r3, [sp, #60]
+ 1497              	.L130:
+ 1498 03a6 1020     		movs	r0, #16
+ 1499 03a8 FFF7FEFF 		bl	CRYP_GetFlagStatus
+ 1500 03ac 0F9B     		ldr	r3, [sp, #60]
+ 1501 03ae 0133     		adds	r3, r3, #1
+ 1502 03b0 0F93     		str	r3, [sp, #60]
+ 1503 03b2 0F9B     		ldr	r3, [sp, #60]
+ 1504 03b4 B3F5803F 		cmp	r3, #65536
+ 1505 03b8 DAD0     		beq	.L129
+ 1506 03ba 0028     		cmp	r0, #0
+ 1507 03bc F3D1     		bne	.L130
+ 1508 03be D7E7     		b	.L129
+ 1509              	.L132:
+ 1510 03c0 0420     		movs	r0, #4
+ 1511 03c2 FFF7FEFF 		bl	CRYP_GetFlagStatus
+ 1512 03c6 0028     		cmp	r0, #0
+ 1513 03c8 FAD0     		beq	.L132
+ 1514 03ca FFF7FEFF 		bl	CRYP_DataOut
+ 1515 03ce CAF80000 		str	r0, [r10]
+ 1516 03d2 FFF7FEFF 		bl	CRYP_DataOut
+ 1517 03d6 CAF80400 		str	r0, [r10, #4]
+ 1518 03da FFF7FEFF 		bl	CRYP_DataOut
+ 1519 03de CAF80800 		str	r0, [r10, #8]
+ 1520 03e2 FFF7FEFF 		bl	CRYP_DataOut
+ 1521 03e6 CAF80C00 		str	r0, [r10, #12]
+ 1522 03ea 0AF1100A 		add	r10, r10, #16
+ 1523 03ee C1E7     		b	.L131
+ 1524              	.L163:
+ 1525 03f0 0196     		str	r6, [sp, #4]
+ 1526 03f2 00E0     		b	.L126
+ 1527              	.L157:
+ 1528 03f4 0196     		str	r6, [sp, #4]
+ 1529              	.L126:
+ 1530 03f6 4FF44030 		mov	r0, #196608
+ 1531 03fa FFF7FEFF 		bl	CRYP_PhaseConfig
+ 1532 03fe 0120     		movs	r0, #1
+ 1533 0400 FFF7FEFF 		bl	CRYP_Cmd
+ 1534 0404 FFF7FEFF 		bl	CRYP_GetCmdStatus
+ 1535 0408 0746     		mov	r7, r0
+ 1536 040a 0028     		cmp	r0, #0
+ 1537 040c 00F0CF80 		beq	.L121
+ 1538 0410 0798     		ldr	r0, [sp, #28]
+ 1539 0412 FFF7FEFF 		bl	CRYP_DataIn
+ 1540 0416 0898     		ldr	r0, [sp, #32]
+ 1541 0418 FFF7FEFF 		bl	CRYP_DataIn
+ 1542 041c 0998     		ldr	r0, [sp, #36]
+ 1543 041e FFF7FEFF 		bl	CRYP_DataIn
+ 1544 0422 0A98     		ldr	r0, [sp, #40]
+ 1545 0424 20F08070 		bic	r0, r0, #16777216
+ 1546 0428 FFF7FEFF 		bl	CRYP_DataIn
+ 1547              	.L133:
+ 1548 042c 0420     		movs	r0, #4
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccCOf8OS.s 			page 28
+
+
+ 1549 042e FFF7FEFF 		bl	CRYP_GetFlagStatus
+ 1550 0432 0028     		cmp	r0, #0
+ 1551 0434 FAD0     		beq	.L133
+ 1552 0436 FFF7FEFF 		bl	CRYP_DataOut
+ 1553 043a 0390     		str	r0, [sp, #12]
+ 1554 043c FFF7FEFF 		bl	CRYP_DataOut
+ 1555 0440 0490     		str	r0, [sp, #16]
+ 1556 0442 FFF7FEFF 		bl	CRYP_DataOut
+ 1557 0446 0590     		str	r0, [sp, #20]
+ 1558 0448 FFF7FEFF 		bl	CRYP_DataOut
+ 1559 044c 0690     		str	r0, [sp, #24]
+ 1560 044e 019F     		ldr	r7, [sp, #4]
+ 1561 0450 A1E0     		b	.L134
+ 1562              	.L161:
+ 1563 0452 4FF48030 		mov	r0, #65536
+ 1564 0456 FFF7FEFF 		bl	CRYP_PhaseConfig
+ 1565 045a 0120     		movs	r0, #1
+ 1566 045c FFF7FEFF 		bl	CRYP_Cmd
+ 1567 0460 FFF7FEFF 		bl	CRYP_GetCmdStatus
+ 1568 0464 0746     		mov	r7, r0
+ 1569 0466 0028     		cmp	r0, #0
+ 1570 0468 00F0A180 		beq	.L121
+ 1571 046c 0027     		movs	r7, #0
+ 1572 046e 12E0     		b	.L137
+ 1573              	.L138:
+ 1574 0470 0120     		movs	r0, #1
+ 1575 0472 FFF7FEFF 		bl	CRYP_GetFlagStatus
+ 1576 0476 0028     		cmp	r0, #0
+ 1577 0478 FAD0     		beq	.L138
+ 1578 047a 3068     		ldr	r0, [r6]
+ 1579 047c FFF7FEFF 		bl	CRYP_DataIn
+ 1580 0480 7068     		ldr	r0, [r6, #4]
+ 1581 0482 FFF7FEFF 		bl	CRYP_DataIn
+ 1582 0486 B068     		ldr	r0, [r6, #8]
+ 1583 0488 FFF7FEFF 		bl	CRYP_DataIn
+ 1584 048c F068     		ldr	r0, [r6, #12]
+ 1585 048e FFF7FEFF 		bl	CRYP_DataIn
+ 1586 0492 1036     		adds	r6, r6, #16
+ 1587 0494 1037     		adds	r7, r7, #16
+ 1588              	.L137:
+ 1589 0496 BD42     		cmp	r5, r7
+ 1590 0498 EAD8     		bhi	.L138
+ 1591 049a 0023     		movs	r3, #0
+ 1592 049c 0F93     		str	r3, [sp, #60]
+ 1593              	.L140:
+ 1594 049e 1020     		movs	r0, #16
+ 1595 04a0 FFF7FEFF 		bl	CRYP_GetFlagStatus
+ 1596 04a4 0F9B     		ldr	r3, [sp, #60]
+ 1597 04a6 0133     		adds	r3, r3, #1
+ 1598 04a8 0F93     		str	r3, [sp, #60]
+ 1599 04aa 0F9B     		ldr	r3, [sp, #60]
+ 1600 04ac B3F5803F 		cmp	r3, #65536
+ 1601 04b0 01D0     		beq	.L139
+ 1602 04b2 0028     		cmp	r0, #0
+ 1603 04b4 F3D1     		bne	.L140
+ 1604              	.L139:
+ 1605 04b6 08B9     		cbnz	r0, .L155
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccCOf8OS.s 			page 29
+
+
+ 1606 04b8 0125     		movs	r5, #1
+ 1607 04ba A0E6     		b	.L136
+ 1608              	.L155:
+ 1609 04bc 0025     		movs	r5, #0
+ 1610 04be 9EE6     		b	.L136
+ 1611              	.L144:
+ 1612 04c0 30B3     		cbz	r0, .L147
+ 1613 04c2 0025     		movs	r5, #0
+ 1614              	.L146:
+ 1615 04c4 1036     		adds	r6, r6, #16
+ 1616              	.L142:
+ 1617 04c6 4645     		cmp	r6, r8
+ 1618 04c8 3AD2     		bcs	.L141
+ 1619 04ca 002D     		cmp	r5, #0
+ 1620 04cc 38D0     		beq	.L141
+ 1621              	.L143:
+ 1622 04ce 0120     		movs	r0, #1
+ 1623 04d0 FFF7FEFF 		bl	CRYP_GetFlagStatus
+ 1624 04d4 0028     		cmp	r0, #0
+ 1625 04d6 FAD0     		beq	.L143
+ 1626 04d8 2068     		ldr	r0, [r4]
+ 1627 04da FFF7FEFF 		bl	CRYP_DataIn
+ 1628 04de 6068     		ldr	r0, [r4, #4]
+ 1629 04e0 FFF7FEFF 		bl	CRYP_DataIn
+ 1630 04e4 A068     		ldr	r0, [r4, #8]
+ 1631 04e6 FFF7FEFF 		bl	CRYP_DataIn
+ 1632 04ea E068     		ldr	r0, [r4, #12]
+ 1633 04ec FFF7FEFF 		bl	CRYP_DataIn
+ 1634 04f0 1034     		adds	r4, r4, #16
+ 1635 04f2 0023     		movs	r3, #0
+ 1636 04f4 0F93     		str	r3, [sp, #60]
+ 1637              	.L145:
+ 1638 04f6 1020     		movs	r0, #16
+ 1639 04f8 FFF7FEFF 		bl	CRYP_GetFlagStatus
+ 1640 04fc 0F9B     		ldr	r3, [sp, #60]
+ 1641 04fe 0133     		adds	r3, r3, #1
+ 1642 0500 0F93     		str	r3, [sp, #60]
+ 1643 0502 0F9B     		ldr	r3, [sp, #60]
+ 1644 0504 B3F5803F 		cmp	r3, #65536
+ 1645 0508 DAD0     		beq	.L144
+ 1646 050a 0028     		cmp	r0, #0
+ 1647 050c F3D1     		bne	.L145
+ 1648 050e D7E7     		b	.L144
+ 1649              	.L147:
+ 1650 0510 0420     		movs	r0, #4
+ 1651 0512 FFF7FEFF 		bl	CRYP_GetFlagStatus
+ 1652 0516 0028     		cmp	r0, #0
+ 1653 0518 FAD0     		beq	.L147
+ 1654 051a FFF7FEFF 		bl	CRYP_DataOut
+ 1655 051e CAF80000 		str	r0, [r10]
+ 1656 0522 FFF7FEFF 		bl	CRYP_DataOut
+ 1657 0526 CAF80400 		str	r0, [r10, #4]
+ 1658 052a FFF7FEFF 		bl	CRYP_DataOut
+ 1659 052e CAF80800 		str	r0, [r10, #8]
+ 1660 0532 FFF7FEFF 		bl	CRYP_DataOut
+ 1661 0536 CAF80C00 		str	r0, [r10, #12]
+ 1662 053a 0AF1100A 		add	r10, r10, #16
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccCOf8OS.s 			page 30
+
+
+ 1663 053e C1E7     		b	.L146
+ 1664              	.L141:
+ 1665 0540 4FF44030 		mov	r0, #196608
+ 1666 0544 FFF7FEFF 		bl	CRYP_PhaseConfig
+ 1667 0548 0120     		movs	r0, #1
+ 1668 054a FFF7FEFF 		bl	CRYP_Cmd
+ 1669 054e FFF7FEFF 		bl	CRYP_GetCmdStatus
+ 1670 0552 0746     		mov	r7, r0
+ 1671 0554 58B3     		cbz	r0, .L121
+ 1672 0556 0798     		ldr	r0, [sp, #28]
+ 1673 0558 FFF7FEFF 		bl	CRYP_DataIn
+ 1674 055c 0898     		ldr	r0, [sp, #32]
+ 1675 055e FFF7FEFF 		bl	CRYP_DataIn
+ 1676 0562 0998     		ldr	r0, [sp, #36]
+ 1677 0564 FFF7FEFF 		bl	CRYP_DataIn
+ 1678 0568 0A98     		ldr	r0, [sp, #40]
+ 1679 056a 20F08070 		bic	r0, r0, #16777216
+ 1680 056e FFF7FEFF 		bl	CRYP_DataIn
+ 1681              	.L148:
+ 1682 0572 0420     		movs	r0, #4
+ 1683 0574 FFF7FEFF 		bl	CRYP_GetFlagStatus
+ 1684 0578 0028     		cmp	r0, #0
+ 1685 057a FAD0     		beq	.L148
+ 1686 057c FFF7FEFF 		bl	CRYP_DataOut
+ 1687 0580 0390     		str	r0, [sp, #12]
+ 1688 0582 FFF7FEFF 		bl	CRYP_DataOut
+ 1689 0586 0490     		str	r0, [sp, #16]
+ 1690 0588 FFF7FEFF 		bl	CRYP_DataOut
+ 1691 058c 0590     		str	r0, [sp, #20]
+ 1692 058e FFF7FEFF 		bl	CRYP_DataOut
+ 1693 0592 0690     		str	r0, [sp, #24]
+ 1694 0594 2F46     		mov	r7, r5
+ 1695              	.L134:
+ 1696 0596 0023     		movs	r3, #0
+ 1697 0598 3199     		ldr	r1, [sp, #196]
+ 1698 059a 03E0     		b	.L149
+ 1699              	.L150:
+ 1700 059c 03AA     		add	r2, sp, #12
+ 1701 059e D25C     		ldrb	r2, [r2, r3]	@ zero_extendqisi2
+ 1702 05a0 CA54     		strb	r2, [r1, r3]
+ 1703 05a2 0133     		adds	r3, r3, #1
+ 1704              	.L149:
+ 1705 05a4 4B45     		cmp	r3, r9
+ 1706 05a6 F9D3     		bcc	.L150
+ 1707 05a8 0020     		movs	r0, #0
+ 1708 05aa FFF7FEFF 		bl	CRYP_Cmd
+ 1709              	.L121:
+ 1710 05ae 3846     		mov	r0, r7
+ 1711 05b0 21B0     		add	sp, sp, #132
+ 1712              		@ sp needed
+ 1713 05b2 BDE8F08F 		pop	{r4, r5, r6, r7, r8, r9, r10, fp, pc}
+ 1715              		.ident	"GCC: (Arm GNU Toolchain 13.3.Rel1 (Build arm-13.24)) 13.3.1 20240614"
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccCOf8OS.s 			page 31
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 stm32f4xx_cryp_aes.c
+C:\Users\ktkuru\AppData\Local\Temp\ccCOf8OS.s:18     .text.CRYP_AES_ECB:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccCOf8OS.s:24     .text.CRYP_AES_ECB:00000000 CRYP_AES_ECB
+C:\Users\ktkuru\AppData\Local\Temp\ccCOf8OS.s:217    .text.CRYP_AES_CBC:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccCOf8OS.s:223    .text.CRYP_AES_CBC:00000000 CRYP_AES_CBC
+C:\Users\ktkuru\AppData\Local\Temp\ccCOf8OS.s:431    .text.CRYP_AES_CTR:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccCOf8OS.s:437    .text.CRYP_AES_CTR:00000000 CRYP_AES_CTR
+C:\Users\ktkuru\AppData\Local\Temp\ccCOf8OS.s:618    .text.CRYP_AES_GCM:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccCOf8OS.s:624    .text.CRYP_AES_GCM:00000000 CRYP_AES_GCM
+C:\Users\ktkuru\AppData\Local\Temp\ccCOf8OS.s:1099   .text.CRYP_AES_CCM:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccCOf8OS.s:1105   .text.CRYP_AES_CCM:00000000 CRYP_AES_CCM
+
+UNDEFINED SYMBOLS
+CRYP_KeyStructInit
+CRYP_FIFOFlush
+CRYP_Init
+CRYP_KeyInit
+CRYP_Cmd
+CRYP_GetFlagStatus
+CRYP_GetCmdStatus
+CRYP_DataIn
+CRYP_DataOut
+CRYP_IVInit
+CRYP_PhaseConfig

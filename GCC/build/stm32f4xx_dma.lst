@@ -1,0 +1,751 @@
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc3H8CI5.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"stm32f4xx_dma.c"
+  16              		.text
+  17              		.section	.text.DMA_DeInit,"ax",%progbits
+  18              		.align	1
+  19              		.global	DMA_DeInit
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  24              	DMA_DeInit:
+  25              		@ args = 0, pretend = 0, frame = 0
+  26              		@ frame_needed = 0, uses_anonymous_args = 0
+  27              		@ link register save eliminated.
+  28 0000 0368     		ldr	r3, [r0]
+  29 0002 23F00103 		bic	r3, r3, #1
+  30 0006 0360     		str	r3, [r0]
+  31 0008 0023     		movs	r3, #0
+  32 000a 0360     		str	r3, [r0]
+  33 000c 4360     		str	r3, [r0, #4]
+  34 000e 8360     		str	r3, [r0, #8]
+  35 0010 C360     		str	r3, [r0, #12]
+  36 0012 0361     		str	r3, [r0, #16]
+  37 0014 2123     		movs	r3, #33
+  38 0016 4361     		str	r3, [r0, #20]
+  39 0018 3C4B     		ldr	r3, .L34
+  40 001a 9842     		cmp	r0, r3
+  41 001c 2DD0     		beq	.L18
+  42 001e 3C4B     		ldr	r3, .L34+4
+  43 0020 9842     		cmp	r0, r3
+  44 0022 2ED0     		beq	.L19
+  45 0024 3B4B     		ldr	r3, .L34+8
+  46 0026 9842     		cmp	r0, r3
+  47 0028 30D0     		beq	.L20
+  48 002a 3B4B     		ldr	r3, .L34+12
+  49 002c 9842     		cmp	r0, r3
+  50 002e 32D0     		beq	.L21
+  51 0030 3A4B     		ldr	r3, .L34+16
+  52 0032 9842     		cmp	r0, r3
+  53 0034 34D0     		beq	.L22
+  54 0036 3A4B     		ldr	r3, .L34+20
+  55 0038 9842     		cmp	r0, r3
+  56 003a 35D0     		beq	.L23
+  57 003c 394B     		ldr	r3, .L34+24
+  58 003e 9842     		cmp	r0, r3
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc3H8CI5.s 			page 2
+
+
+  59 0040 36D0     		beq	.L24
+  60 0042 394B     		ldr	r3, .L34+28
+  61 0044 9842     		cmp	r0, r3
+  62 0046 37D0     		beq	.L25
+  63 0048 384B     		ldr	r3, .L34+32
+  64 004a 9842     		cmp	r0, r3
+  65 004c 39D0     		beq	.L26
+  66 004e 384B     		ldr	r3, .L34+36
+  67 0050 9842     		cmp	r0, r3
+  68 0052 3AD0     		beq	.L27
+  69 0054 374B     		ldr	r3, .L34+40
+  70 0056 9842     		cmp	r0, r3
+  71 0058 3CD0     		beq	.L28
+  72 005a 374B     		ldr	r3, .L34+44
+  73 005c 9842     		cmp	r0, r3
+  74 005e 3ED0     		beq	.L29
+  75 0060 364B     		ldr	r3, .L34+48
+  76 0062 9842     		cmp	r0, r3
+  77 0064 40D0     		beq	.L30
+  78 0066 364B     		ldr	r3, .L34+52
+  79 0068 9842     		cmp	r0, r3
+  80 006a 41D0     		beq	.L31
+  81 006c 354B     		ldr	r3, .L34+56
+  82 006e 9842     		cmp	r0, r3
+  83 0070 42D0     		beq	.L32
+  84 0072 354B     		ldr	r3, .L34+60
+  85 0074 9842     		cmp	r0, r3
+  86 0076 43D0     		beq	.L33
+  87              	.L1:
+  88 0078 7047     		bx	lr
+  89              	.L18:
+  90 007a 103B     		subs	r3, r3, #16
+  91 007c 3D22     		movs	r2, #61
+  92 007e 9A60     		str	r2, [r3, #8]
+  93 0080 7047     		bx	lr
+  94              	.L19:
+  95 0082 283B     		subs	r3, r3, #40
+  96 0084 4FF47462 		mov	r2, #3904
+  97 0088 9A60     		str	r2, [r3, #8]
+  98 008a 7047     		bx	lr
+  99              	.L20:
+ 100 008c 403B     		subs	r3, r3, #64
+ 101 008e 4FF47412 		mov	r2, #3997696
+ 102 0092 9A60     		str	r2, [r3, #8]
+ 103 0094 7047     		bx	lr
+ 104              	.L21:
+ 105 0096 583B     		subs	r3, r3, #88
+ 106 0098 4FF07462 		mov	r2, #255852544
+ 107 009c 9A60     		str	r2, [r3, #8]
+ 108 009e 7047     		bx	lr
+ 109              	.L22:
+ 110 00a0 703B     		subs	r3, r3, #112
+ 111 00a2 2A4A     		ldr	r2, .L34+64
+ 112 00a4 DA60     		str	r2, [r3, #12]
+ 113 00a6 7047     		bx	lr
+ 114              	.L23:
+ 115 00a8 883B     		subs	r3, r3, #136
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc3H8CI5.s 			page 3
+
+
+ 116 00aa 294A     		ldr	r2, .L34+68
+ 117 00ac DA60     		str	r2, [r3, #12]
+ 118 00ae 7047     		bx	lr
+ 119              	.L24:
+ 120 00b0 A03B     		subs	r3, r3, #160
+ 121 00b2 284A     		ldr	r2, .L34+72
+ 122 00b4 DA60     		str	r2, [r3, #12]
+ 123 00b6 7047     		bx	lr
+ 124              	.L25:
+ 125 00b8 B83B     		subs	r3, r3, #184
+ 126 00ba 4FF03D52 		mov	r2, #792723456
+ 127 00be DA60     		str	r2, [r3, #12]
+ 128 00c0 7047     		bx	lr
+ 129              	.L26:
+ 130 00c2 103B     		subs	r3, r3, #16
+ 131 00c4 3D22     		movs	r2, #61
+ 132 00c6 9A60     		str	r2, [r3, #8]
+ 133 00c8 7047     		bx	lr
+ 134              	.L27:
+ 135 00ca 283B     		subs	r3, r3, #40
+ 136 00cc 4FF47462 		mov	r2, #3904
+ 137 00d0 9A60     		str	r2, [r3, #8]
+ 138 00d2 7047     		bx	lr
+ 139              	.L28:
+ 140 00d4 403B     		subs	r3, r3, #64
+ 141 00d6 4FF47412 		mov	r2, #3997696
+ 142 00da 9A60     		str	r2, [r3, #8]
+ 143 00dc 7047     		bx	lr
+ 144              	.L29:
+ 145 00de 583B     		subs	r3, r3, #88
+ 146 00e0 4FF07462 		mov	r2, #255852544
+ 147 00e4 9A60     		str	r2, [r3, #8]
+ 148 00e6 7047     		bx	lr
+ 149              	.L30:
+ 150 00e8 703B     		subs	r3, r3, #112
+ 151 00ea 184A     		ldr	r2, .L34+64
+ 152 00ec DA60     		str	r2, [r3, #12]
+ 153 00ee 7047     		bx	lr
+ 154              	.L31:
+ 155 00f0 883B     		subs	r3, r3, #136
+ 156 00f2 174A     		ldr	r2, .L34+68
+ 157 00f4 DA60     		str	r2, [r3, #12]
+ 158 00f6 7047     		bx	lr
+ 159              	.L32:
+ 160 00f8 A03B     		subs	r3, r3, #160
+ 161 00fa 164A     		ldr	r2, .L34+72
+ 162 00fc DA60     		str	r2, [r3, #12]
+ 163 00fe 7047     		bx	lr
+ 164              	.L33:
+ 165 0100 B83B     		subs	r3, r3, #184
+ 166 0102 4FF03D52 		mov	r2, #792723456
+ 167 0106 DA60     		str	r2, [r3, #12]
+ 168 0108 B6E7     		b	.L1
+ 169              	.L35:
+ 170 010a 00BF     		.align	2
+ 171              	.L34:
+ 172 010c 10600240 		.word	1073897488
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc3H8CI5.s 			page 4
+
+
+ 173 0110 28600240 		.word	1073897512
+ 174 0114 40600240 		.word	1073897536
+ 175 0118 58600240 		.word	1073897560
+ 176 011c 70600240 		.word	1073897584
+ 177 0120 88600240 		.word	1073897608
+ 178 0124 A0600240 		.word	1073897632
+ 179 0128 B8600240 		.word	1073897656
+ 180 012c 10640240 		.word	1073898512
+ 181 0130 28640240 		.word	1073898536
+ 182 0134 40640240 		.word	1073898560
+ 183 0138 58640240 		.word	1073898584
+ 184 013c 70640240 		.word	1073898608
+ 185 0140 88640240 		.word	1073898632
+ 186 0144 A0640240 		.word	1073898656
+ 187 0148 B8640240 		.word	1073898680
+ 188 014c 3D000020 		.word	536870973
+ 189 0150 400F0020 		.word	536874816
+ 190 0154 00003D20 		.word	540868608
+ 192              		.section	.text.DMA_Init,"ax",%progbits
+ 193              		.align	1
+ 194              		.global	DMA_Init
+ 195              		.syntax unified
+ 196              		.thumb
+ 197              		.thumb_func
+ 199              	DMA_Init:
+ 200              		@ args = 0, pretend = 0, frame = 0
+ 201              		@ frame_needed = 0, uses_anonymous_args = 0
+ 202              		@ link register save eliminated.
+ 203 0000 10B4     		push	{r4}
+ 204 0002 0368     		ldr	r3, [r0]
+ 205 0004 134A     		ldr	r2, .L38
+ 206 0006 1A40     		ands	r2, r2, r3
+ 207 0008 0B68     		ldr	r3, [r1]
+ 208 000a CC68     		ldr	r4, [r1, #12]
+ 209 000c 2343     		orrs	r3, r3, r4
+ 210 000e 4C69     		ldr	r4, [r1, #20]
+ 211 0010 2343     		orrs	r3, r3, r4
+ 212 0012 8C69     		ldr	r4, [r1, #24]
+ 213 0014 2343     		orrs	r3, r3, r4
+ 214 0016 CC69     		ldr	r4, [r1, #28]
+ 215 0018 2343     		orrs	r3, r3, r4
+ 216 001a 0C6A     		ldr	r4, [r1, #32]
+ 217 001c 2343     		orrs	r3, r3, r4
+ 218 001e 4C6A     		ldr	r4, [r1, #36]
+ 219 0020 2343     		orrs	r3, r3, r4
+ 220 0022 8C6A     		ldr	r4, [r1, #40]
+ 221 0024 2343     		orrs	r3, r3, r4
+ 222 0026 4C6B     		ldr	r4, [r1, #52]
+ 223 0028 2343     		orrs	r3, r3, r4
+ 224 002a 8C6B     		ldr	r4, [r1, #56]
+ 225 002c 2343     		orrs	r3, r3, r4
+ 226 002e 1343     		orrs	r3, r3, r2
+ 227 0030 0360     		str	r3, [r0]
+ 228 0032 4269     		ldr	r2, [r0, #20]
+ 229 0034 22F00702 		bic	r2, r2, #7
+ 230 0038 CB6A     		ldr	r3, [r1, #44]
+ 231 003a 0C6B     		ldr	r4, [r1, #48]
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc3H8CI5.s 			page 5
+
+
+ 232 003c 2343     		orrs	r3, r3, r4
+ 233 003e 1343     		orrs	r3, r3, r2
+ 234 0040 4361     		str	r3, [r0, #20]
+ 235 0042 0B69     		ldr	r3, [r1, #16]
+ 236 0044 4360     		str	r3, [r0, #4]
+ 237 0046 4B68     		ldr	r3, [r1, #4]
+ 238 0048 8360     		str	r3, [r0, #8]
+ 239 004a 8B68     		ldr	r3, [r1, #8]
+ 240 004c C360     		str	r3, [r0, #12]
+ 241 004e 5DF8044B 		ldr	r4, [sp], #4
+ 242 0052 7047     		bx	lr
+ 243              	.L39:
+ 244              		.align	2
+ 245              	.L38:
+ 246 0054 3F801CF0 		.word	-266567617
+ 248              		.section	.text.DMA_StructInit,"ax",%progbits
+ 249              		.align	1
+ 250              		.global	DMA_StructInit
+ 251              		.syntax unified
+ 252              		.thumb
+ 253              		.thumb_func
+ 255              	DMA_StructInit:
+ 256              		@ args = 0, pretend = 0, frame = 0
+ 257              		@ frame_needed = 0, uses_anonymous_args = 0
+ 258              		@ link register save eliminated.
+ 259 0000 0023     		movs	r3, #0
+ 260 0002 0360     		str	r3, [r0]
+ 261 0004 4360     		str	r3, [r0, #4]
+ 262 0006 8360     		str	r3, [r0, #8]
+ 263 0008 C360     		str	r3, [r0, #12]
+ 264 000a 0361     		str	r3, [r0, #16]
+ 265 000c 4361     		str	r3, [r0, #20]
+ 266 000e 8361     		str	r3, [r0, #24]
+ 267 0010 C361     		str	r3, [r0, #28]
+ 268 0012 0362     		str	r3, [r0, #32]
+ 269 0014 4362     		str	r3, [r0, #36]
+ 270 0016 8362     		str	r3, [r0, #40]
+ 271 0018 C362     		str	r3, [r0, #44]
+ 272 001a 0363     		str	r3, [r0, #48]
+ 273 001c 4363     		str	r3, [r0, #52]
+ 274 001e 8363     		str	r3, [r0, #56]
+ 275 0020 7047     		bx	lr
+ 277              		.section	.text.DMA_Cmd,"ax",%progbits
+ 278              		.align	1
+ 279              		.global	DMA_Cmd
+ 280              		.syntax unified
+ 281              		.thumb
+ 282              		.thumb_func
+ 284              	DMA_Cmd:
+ 285              		@ args = 0, pretend = 0, frame = 0
+ 286              		@ frame_needed = 0, uses_anonymous_args = 0
+ 287              		@ link register save eliminated.
+ 288 0000 21B1     		cbz	r1, .L42
+ 289 0002 0368     		ldr	r3, [r0]
+ 290 0004 43F00103 		orr	r3, r3, #1
+ 291 0008 0360     		str	r3, [r0]
+ 292 000a 7047     		bx	lr
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc3H8CI5.s 			page 6
+
+
+ 293              	.L42:
+ 294 000c 0368     		ldr	r3, [r0]
+ 295 000e 23F00103 		bic	r3, r3, #1
+ 296 0012 0360     		str	r3, [r0]
+ 297 0014 7047     		bx	lr
+ 299              		.section	.text.DMA_PeriphIncOffsetSizeConfig,"ax",%progbits
+ 300              		.align	1
+ 301              		.global	DMA_PeriphIncOffsetSizeConfig
+ 302              		.syntax unified
+ 303              		.thumb
+ 304              		.thumb_func
+ 306              	DMA_PeriphIncOffsetSizeConfig:
+ 307              		@ args = 0, pretend = 0, frame = 0
+ 308              		@ frame_needed = 0, uses_anonymous_args = 0
+ 309              		@ link register save eliminated.
+ 310 0000 21B1     		cbz	r1, .L45
+ 311 0002 0368     		ldr	r3, [r0]
+ 312 0004 43F40043 		orr	r3, r3, #32768
+ 313 0008 0360     		str	r3, [r0]
+ 314 000a 7047     		bx	lr
+ 315              	.L45:
+ 316 000c 0368     		ldr	r3, [r0]
+ 317 000e 23F40043 		bic	r3, r3, #32768
+ 318 0012 0360     		str	r3, [r0]
+ 319 0014 7047     		bx	lr
+ 321              		.section	.text.DMA_FlowControllerConfig,"ax",%progbits
+ 322              		.align	1
+ 323              		.global	DMA_FlowControllerConfig
+ 324              		.syntax unified
+ 325              		.thumb
+ 326              		.thumb_func
+ 328              	DMA_FlowControllerConfig:
+ 329              		@ args = 0, pretend = 0, frame = 0
+ 330              		@ frame_needed = 0, uses_anonymous_args = 0
+ 331              		@ link register save eliminated.
+ 332 0000 21B1     		cbz	r1, .L48
+ 333 0002 0368     		ldr	r3, [r0]
+ 334 0004 43F02003 		orr	r3, r3, #32
+ 335 0008 0360     		str	r3, [r0]
+ 336 000a 7047     		bx	lr
+ 337              	.L48:
+ 338 000c 0368     		ldr	r3, [r0]
+ 339 000e 23F02003 		bic	r3, r3, #32
+ 340 0012 0360     		str	r3, [r0]
+ 341 0014 7047     		bx	lr
+ 343              		.section	.text.DMA_SetCurrDataCounter,"ax",%progbits
+ 344              		.align	1
+ 345              		.global	DMA_SetCurrDataCounter
+ 346              		.syntax unified
+ 347              		.thumb
+ 348              		.thumb_func
+ 350              	DMA_SetCurrDataCounter:
+ 351              		@ args = 0, pretend = 0, frame = 0
+ 352              		@ frame_needed = 0, uses_anonymous_args = 0
+ 353              		@ link register save eliminated.
+ 354 0000 4160     		str	r1, [r0, #4]
+ 355 0002 7047     		bx	lr
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc3H8CI5.s 			page 7
+
+
+ 357              		.section	.text.DMA_GetCurrDataCounter,"ax",%progbits
+ 358              		.align	1
+ 359              		.global	DMA_GetCurrDataCounter
+ 360              		.syntax unified
+ 361              		.thumb
+ 362              		.thumb_func
+ 364              	DMA_GetCurrDataCounter:
+ 365              		@ args = 0, pretend = 0, frame = 0
+ 366              		@ frame_needed = 0, uses_anonymous_args = 0
+ 367              		@ link register save eliminated.
+ 368 0000 4068     		ldr	r0, [r0, #4]
+ 369 0002 80B2     		uxth	r0, r0
+ 370 0004 7047     		bx	lr
+ 372              		.section	.text.DMA_DoubleBufferModeConfig,"ax",%progbits
+ 373              		.align	1
+ 374              		.global	DMA_DoubleBufferModeConfig
+ 375              		.syntax unified
+ 376              		.thumb
+ 377              		.thumb_func
+ 379              	DMA_DoubleBufferModeConfig:
+ 380              		@ args = 0, pretend = 0, frame = 0
+ 381              		@ frame_needed = 0, uses_anonymous_args = 0
+ 382              		@ link register save eliminated.
+ 383 0000 2AB1     		cbz	r2, .L53
+ 384 0002 0368     		ldr	r3, [r0]
+ 385 0004 43F40023 		orr	r3, r3, #524288
+ 386 0008 0360     		str	r3, [r0]
+ 387              	.L54:
+ 388 000a 0161     		str	r1, [r0, #16]
+ 389 000c 7047     		bx	lr
+ 390              	.L53:
+ 391 000e 0368     		ldr	r3, [r0]
+ 392 0010 23F40023 		bic	r3, r3, #524288
+ 393 0014 0360     		str	r3, [r0]
+ 394 0016 F8E7     		b	.L54
+ 396              		.section	.text.DMA_DoubleBufferModeCmd,"ax",%progbits
+ 397              		.align	1
+ 398              		.global	DMA_DoubleBufferModeCmd
+ 399              		.syntax unified
+ 400              		.thumb
+ 401              		.thumb_func
+ 403              	DMA_DoubleBufferModeCmd:
+ 404              		@ args = 0, pretend = 0, frame = 0
+ 405              		@ frame_needed = 0, uses_anonymous_args = 0
+ 406              		@ link register save eliminated.
+ 407 0000 21B1     		cbz	r1, .L56
+ 408 0002 0368     		ldr	r3, [r0]
+ 409 0004 43F48023 		orr	r3, r3, #262144
+ 410 0008 0360     		str	r3, [r0]
+ 411 000a 7047     		bx	lr
+ 412              	.L56:
+ 413 000c 0368     		ldr	r3, [r0]
+ 414 000e 23F48023 		bic	r3, r3, #262144
+ 415 0012 0360     		str	r3, [r0]
+ 416 0014 7047     		bx	lr
+ 418              		.section	.text.DMA_MemoryTargetConfig,"ax",%progbits
+ 419              		.align	1
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc3H8CI5.s 			page 8
+
+
+ 420              		.global	DMA_MemoryTargetConfig
+ 421              		.syntax unified
+ 422              		.thumb
+ 423              		.thumb_func
+ 425              	DMA_MemoryTargetConfig:
+ 426              		@ args = 0, pretend = 0, frame = 0
+ 427              		@ frame_needed = 0, uses_anonymous_args = 0
+ 428              		@ link register save eliminated.
+ 429 0000 0AB1     		cbz	r2, .L59
+ 430 0002 0161     		str	r1, [r0, #16]
+ 431 0004 7047     		bx	lr
+ 432              	.L59:
+ 433 0006 C160     		str	r1, [r0, #12]
+ 434 0008 7047     		bx	lr
+ 436              		.section	.text.DMA_GetCurrentMemoryTarget,"ax",%progbits
+ 437              		.align	1
+ 438              		.global	DMA_GetCurrentMemoryTarget
+ 439              		.syntax unified
+ 440              		.thumb
+ 441              		.thumb_func
+ 443              	DMA_GetCurrentMemoryTarget:
+ 444              		@ args = 0, pretend = 0, frame = 0
+ 445              		@ frame_needed = 0, uses_anonymous_args = 0
+ 446              		@ link register save eliminated.
+ 447 0000 0068     		ldr	r0, [r0]
+ 448 0002 10F40020 		ands	r0, r0, #524288
+ 449 0006 00D0     		beq	.L61
+ 450 0008 0120     		movs	r0, #1
+ 451              	.L61:
+ 452 000a 7047     		bx	lr
+ 454              		.section	.text.DMA_GetCmdStatus,"ax",%progbits
+ 455              		.align	1
+ 456              		.global	DMA_GetCmdStatus
+ 457              		.syntax unified
+ 458              		.thumb
+ 459              		.thumb_func
+ 461              	DMA_GetCmdStatus:
+ 462              		@ args = 0, pretend = 0, frame = 0
+ 463              		@ frame_needed = 0, uses_anonymous_args = 0
+ 464              		@ link register save eliminated.
+ 465 0000 0368     		ldr	r3, [r0]
+ 466 0002 13F0010F 		tst	r3, #1
+ 467 0006 01D0     		beq	.L65
+ 468 0008 0120     		movs	r0, #1
+ 469 000a 7047     		bx	lr
+ 470              	.L65:
+ 471 000c 0020     		movs	r0, #0
+ 472 000e 7047     		bx	lr
+ 474              		.section	.text.DMA_GetFIFOStatus,"ax",%progbits
+ 475              		.align	1
+ 476              		.global	DMA_GetFIFOStatus
+ 477              		.syntax unified
+ 478              		.thumb
+ 479              		.thumb_func
+ 481              	DMA_GetFIFOStatus:
+ 482              		@ args = 0, pretend = 0, frame = 0
+ 483              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc3H8CI5.s 			page 9
+
+
+ 484              		@ link register save eliminated.
+ 485 0000 4069     		ldr	r0, [r0, #20]
+ 486 0002 00F03800 		and	r0, r0, #56
+ 487 0006 7047     		bx	lr
+ 489              		.section	.text.DMA_GetFlagStatus,"ax",%progbits
+ 490              		.align	1
+ 491              		.global	DMA_GetFlagStatus
+ 492              		.syntax unified
+ 493              		.thumb
+ 494              		.thumb_func
+ 496              	DMA_GetFlagStatus:
+ 497              		@ args = 0, pretend = 0, frame = 0
+ 498              		@ frame_needed = 0, uses_anonymous_args = 0
+ 499              		@ link register save eliminated.
+ 500 0000 0B4B     		ldr	r3, .L74
+ 501 0002 9842     		cmp	r0, r3
+ 502 0004 0DD8     		bhi	.L72
+ 503 0006 A3F20F43 		subw	r3, r3, #1039
+ 504              	.L68:
+ 505 000a 11F0005F 		tst	r1, #536870912
+ 506 000e 0AD0     		beq	.L69
+ 507 0010 5B68     		ldr	r3, [r3, #4]
+ 508              	.L70:
+ 509 0012 23F0F023 		bic	r3, r3, #-268374016
+ 510 0016 23F08213 		bic	r3, r3, #8519810
+ 511 001a 1942     		tst	r1, r3
+ 512 001c 05D0     		beq	.L73
+ 513 001e 0120     		movs	r0, #1
+ 514 0020 7047     		bx	lr
+ 515              	.L72:
+ 516 0022 044B     		ldr	r3, .L74+4
+ 517 0024 F1E7     		b	.L68
+ 518              	.L69:
+ 519 0026 1B68     		ldr	r3, [r3]
+ 520 0028 F3E7     		b	.L70
+ 521              	.L73:
+ 522 002a 0020     		movs	r0, #0
+ 523 002c 7047     		bx	lr
+ 524              	.L75:
+ 525 002e 00BF     		.align	2
+ 526              	.L74:
+ 527 0030 0F640240 		.word	1073898511
+ 528 0034 00640240 		.word	1073898496
+ 530              		.section	.text.DMA_ClearFlag,"ax",%progbits
+ 531              		.align	1
+ 532              		.global	DMA_ClearFlag
+ 533              		.syntax unified
+ 534              		.thumb
+ 535              		.thumb_func
+ 537              	DMA_ClearFlag:
+ 538              		@ args = 0, pretend = 0, frame = 0
+ 539              		@ frame_needed = 0, uses_anonymous_args = 0
+ 540              		@ link register save eliminated.
+ 541 0000 0A4B     		ldr	r3, .L81
+ 542 0002 9842     		cmp	r0, r3
+ 543 0004 0AD8     		bhi	.L80
+ 544 0006 A3F20F43 		subw	r3, r3, #1039
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc3H8CI5.s 			page 10
+
+
+ 545              	.L77:
+ 546 000a 11F0005F 		tst	r1, #536870912
+ 547 000e 07D0     		beq	.L78
+ 548 0010 21F0F021 		bic	r1, r1, #-268374016
+ 549 0014 21F08211 		bic	r1, r1, #8519810
+ 550 0018 D960     		str	r1, [r3, #12]
+ 551 001a 7047     		bx	lr
+ 552              	.L80:
+ 553 001c 044B     		ldr	r3, .L81+4
+ 554 001e F4E7     		b	.L77
+ 555              	.L78:
+ 556 0020 21F0F021 		bic	r1, r1, #-268374016
+ 557 0024 21F08211 		bic	r1, r1, #8519810
+ 558 0028 9960     		str	r1, [r3, #8]
+ 559 002a 7047     		bx	lr
+ 560              	.L82:
+ 561              		.align	2
+ 562              	.L81:
+ 563 002c 0F640240 		.word	1073898511
+ 564 0030 00640240 		.word	1073898496
+ 566              		.section	.text.DMA_ITConfig,"ax",%progbits
+ 567              		.align	1
+ 568              		.global	DMA_ITConfig
+ 569              		.syntax unified
+ 570              		.thumb
+ 571              		.thumb_func
+ 573              	DMA_ITConfig:
+ 574              		@ args = 0, pretend = 0, frame = 0
+ 575              		@ frame_needed = 0, uses_anonymous_args = 0
+ 576              		@ link register save eliminated.
+ 577 0000 11F0800F 		tst	r1, #128
+ 578 0004 04D0     		beq	.L84
+ 579 0006 62B1     		cbz	r2, .L85
+ 580 0008 4369     		ldr	r3, [r0, #20]
+ 581 000a 43F08003 		orr	r3, r3, #128
+ 582 000e 4361     		str	r3, [r0, #20]
+ 583              	.L84:
+ 584 0010 8029     		cmp	r1, #128
+ 585 0012 11D0     		beq	.L83
+ 586 0014 52B1     		cbz	r2, .L87
+ 587 0016 0368     		ldr	r3, [r0]
+ 588 0018 01F01E01 		and	r1, r1, #30
+ 589 001c 0B43     		orrs	r3, r3, r1
+ 590 001e 0360     		str	r3, [r0]
+ 591 0020 7047     		bx	lr
+ 592              	.L85:
+ 593 0022 4369     		ldr	r3, [r0, #20]
+ 594 0024 23F08003 		bic	r3, r3, #128
+ 595 0028 4361     		str	r3, [r0, #20]
+ 596 002a F1E7     		b	.L84
+ 597              	.L87:
+ 598 002c 0368     		ldr	r3, [r0]
+ 599 002e 01F01E01 		and	r1, r1, #30
+ 600 0032 23EA0103 		bic	r3, r3, r1
+ 601 0036 0360     		str	r3, [r0]
+ 602              	.L83:
+ 603 0038 7047     		bx	lr
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc3H8CI5.s 			page 11
+
+
+ 605              		.section	.text.DMA_GetITStatus,"ax",%progbits
+ 606              		.align	1
+ 607              		.global	DMA_GetITStatus
+ 608              		.syntax unified
+ 609              		.thumb
+ 610              		.thumb_func
+ 612              	DMA_GetITStatus:
+ 613              		@ args = 0, pretend = 0, frame = 0
+ 614              		@ frame_needed = 0, uses_anonymous_args = 0
+ 615              		@ link register save eliminated.
+ 616 0000 10B4     		push	{r4}
+ 617 0002 144B     		ldr	r3, .L99
+ 618 0004 9842     		cmp	r0, r3
+ 619 0006 17D8     		bhi	.L95
+ 620 0008 134C     		ldr	r4, .L99+4
+ 621              	.L89:
+ 622 000a 21F0F023 		bic	r3, r1, #-268374016
+ 623 000e 23F0C313 		bic	r3, r3, #12779715
+ 624 0012 9BB1     		cbz	r3, .L90
+ 625 0014 CB0A     		lsrs	r3, r1, #11
+ 626 0016 03F01E03 		and	r3, r3, #30
+ 627 001a 0268     		ldr	r2, [r0]
+ 628 001c 1A40     		ands	r2, r2, r3
+ 629              	.L91:
+ 630 001e 11F0005F 		tst	r1, #536870912
+ 631 0022 0FD0     		beq	.L92
+ 632 0024 6368     		ldr	r3, [r4, #4]
+ 633              	.L93:
+ 634 0026 23F0F023 		bic	r3, r3, #-268374016
+ 635 002a 23F08213 		bic	r3, r3, #8519810
+ 636 002e 1942     		tst	r1, r3
+ 637 0030 0AD0     		beq	.L96
+ 638 0032 6AB9     		cbnz	r2, .L97
+ 639 0034 0020     		movs	r0, #0
+ 640 0036 08E0     		b	.L94
+ 641              	.L95:
+ 642 0038 084C     		ldr	r4, .L99+8
+ 643 003a E6E7     		b	.L89
+ 644              	.L90:
+ 645 003c 4269     		ldr	r2, [r0, #20]
+ 646 003e 02F08002 		and	r2, r2, #128
+ 647 0042 ECE7     		b	.L91
+ 648              	.L92:
+ 649 0044 2368     		ldr	r3, [r4]
+ 650 0046 EEE7     		b	.L93
+ 651              	.L96:
+ 652 0048 0020     		movs	r0, #0
+ 653              	.L94:
+ 654 004a 5DF8044B 		ldr	r4, [sp], #4
+ 655 004e 7047     		bx	lr
+ 656              	.L97:
+ 657 0050 0120     		movs	r0, #1
+ 658 0052 FAE7     		b	.L94
+ 659              	.L100:
+ 660              		.align	2
+ 661              	.L99:
+ 662 0054 0F640240 		.word	1073898511
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc3H8CI5.s 			page 12
+
+
+ 663 0058 00600240 		.word	1073897472
+ 664 005c 00640240 		.word	1073898496
+ 666              		.section	.text.DMA_ClearITPendingBit,"ax",%progbits
+ 667              		.align	1
+ 668              		.global	DMA_ClearITPendingBit
+ 669              		.syntax unified
+ 670              		.thumb
+ 671              		.thumb_func
+ 673              	DMA_ClearITPendingBit:
+ 674              		@ args = 0, pretend = 0, frame = 0
+ 675              		@ frame_needed = 0, uses_anonymous_args = 0
+ 676              		@ link register save eliminated.
+ 677 0000 0A4B     		ldr	r3, .L106
+ 678 0002 9842     		cmp	r0, r3
+ 679 0004 0AD8     		bhi	.L105
+ 680 0006 A3F20F43 		subw	r3, r3, #1039
+ 681              	.L102:
+ 682 000a 11F0005F 		tst	r1, #536870912
+ 683 000e 07D0     		beq	.L103
+ 684 0010 21F0F021 		bic	r1, r1, #-268374016
+ 685 0014 21F08211 		bic	r1, r1, #8519810
+ 686 0018 D960     		str	r1, [r3, #12]
+ 687 001a 7047     		bx	lr
+ 688              	.L105:
+ 689 001c 044B     		ldr	r3, .L106+4
+ 690 001e F4E7     		b	.L102
+ 691              	.L103:
+ 692 0020 21F0F021 		bic	r1, r1, #-268374016
+ 693 0024 21F08211 		bic	r1, r1, #8519810
+ 694 0028 9960     		str	r1, [r3, #8]
+ 695 002a 7047     		bx	lr
+ 696              	.L107:
+ 697              		.align	2
+ 698              	.L106:
+ 699 002c 0F640240 		.word	1073898511
+ 700 0030 00640240 		.word	1073898496
+ 702              		.ident	"GCC: (Arm GNU Toolchain 13.3.Rel1 (Build arm-13.24)) 13.3.1 20240614"
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc3H8CI5.s 			page 13
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 stm32f4xx_dma.c
+C:\Users\ktkuru\AppData\Local\Temp\cc3H8CI5.s:18     .text.DMA_DeInit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc3H8CI5.s:24     .text.DMA_DeInit:00000000 DMA_DeInit
+C:\Users\ktkuru\AppData\Local\Temp\cc3H8CI5.s:172    .text.DMA_DeInit:0000010c $d
+C:\Users\ktkuru\AppData\Local\Temp\cc3H8CI5.s:193    .text.DMA_Init:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc3H8CI5.s:199    .text.DMA_Init:00000000 DMA_Init
+C:\Users\ktkuru\AppData\Local\Temp\cc3H8CI5.s:246    .text.DMA_Init:00000054 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc3H8CI5.s:249    .text.DMA_StructInit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc3H8CI5.s:255    .text.DMA_StructInit:00000000 DMA_StructInit
+C:\Users\ktkuru\AppData\Local\Temp\cc3H8CI5.s:278    .text.DMA_Cmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc3H8CI5.s:284    .text.DMA_Cmd:00000000 DMA_Cmd
+C:\Users\ktkuru\AppData\Local\Temp\cc3H8CI5.s:300    .text.DMA_PeriphIncOffsetSizeConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc3H8CI5.s:306    .text.DMA_PeriphIncOffsetSizeConfig:00000000 DMA_PeriphIncOffsetSizeConfig
+C:\Users\ktkuru\AppData\Local\Temp\cc3H8CI5.s:322    .text.DMA_FlowControllerConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc3H8CI5.s:328    .text.DMA_FlowControllerConfig:00000000 DMA_FlowControllerConfig
+C:\Users\ktkuru\AppData\Local\Temp\cc3H8CI5.s:344    .text.DMA_SetCurrDataCounter:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc3H8CI5.s:350    .text.DMA_SetCurrDataCounter:00000000 DMA_SetCurrDataCounter
+C:\Users\ktkuru\AppData\Local\Temp\cc3H8CI5.s:358    .text.DMA_GetCurrDataCounter:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc3H8CI5.s:364    .text.DMA_GetCurrDataCounter:00000000 DMA_GetCurrDataCounter
+C:\Users\ktkuru\AppData\Local\Temp\cc3H8CI5.s:373    .text.DMA_DoubleBufferModeConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc3H8CI5.s:379    .text.DMA_DoubleBufferModeConfig:00000000 DMA_DoubleBufferModeConfig
+C:\Users\ktkuru\AppData\Local\Temp\cc3H8CI5.s:397    .text.DMA_DoubleBufferModeCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc3H8CI5.s:403    .text.DMA_DoubleBufferModeCmd:00000000 DMA_DoubleBufferModeCmd
+C:\Users\ktkuru\AppData\Local\Temp\cc3H8CI5.s:419    .text.DMA_MemoryTargetConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc3H8CI5.s:425    .text.DMA_MemoryTargetConfig:00000000 DMA_MemoryTargetConfig
+C:\Users\ktkuru\AppData\Local\Temp\cc3H8CI5.s:437    .text.DMA_GetCurrentMemoryTarget:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc3H8CI5.s:443    .text.DMA_GetCurrentMemoryTarget:00000000 DMA_GetCurrentMemoryTarget
+C:\Users\ktkuru\AppData\Local\Temp\cc3H8CI5.s:455    .text.DMA_GetCmdStatus:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc3H8CI5.s:461    .text.DMA_GetCmdStatus:00000000 DMA_GetCmdStatus
+C:\Users\ktkuru\AppData\Local\Temp\cc3H8CI5.s:475    .text.DMA_GetFIFOStatus:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc3H8CI5.s:481    .text.DMA_GetFIFOStatus:00000000 DMA_GetFIFOStatus
+C:\Users\ktkuru\AppData\Local\Temp\cc3H8CI5.s:490    .text.DMA_GetFlagStatus:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc3H8CI5.s:496    .text.DMA_GetFlagStatus:00000000 DMA_GetFlagStatus
+C:\Users\ktkuru\AppData\Local\Temp\cc3H8CI5.s:527    .text.DMA_GetFlagStatus:00000030 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc3H8CI5.s:531    .text.DMA_ClearFlag:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc3H8CI5.s:537    .text.DMA_ClearFlag:00000000 DMA_ClearFlag
+C:\Users\ktkuru\AppData\Local\Temp\cc3H8CI5.s:563    .text.DMA_ClearFlag:0000002c $d
+C:\Users\ktkuru\AppData\Local\Temp\cc3H8CI5.s:567    .text.DMA_ITConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc3H8CI5.s:573    .text.DMA_ITConfig:00000000 DMA_ITConfig
+C:\Users\ktkuru\AppData\Local\Temp\cc3H8CI5.s:606    .text.DMA_GetITStatus:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc3H8CI5.s:612    .text.DMA_GetITStatus:00000000 DMA_GetITStatus
+C:\Users\ktkuru\AppData\Local\Temp\cc3H8CI5.s:662    .text.DMA_GetITStatus:00000054 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc3H8CI5.s:667    .text.DMA_ClearITPendingBit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc3H8CI5.s:673    .text.DMA_ClearITPendingBit:00000000 DMA_ClearITPendingBit
+C:\Users\ktkuru\AppData\Local\Temp\cc3H8CI5.s:699    .text.DMA_ClearITPendingBit:0000002c $d
+
+NO UNDEFINED SYMBOLS

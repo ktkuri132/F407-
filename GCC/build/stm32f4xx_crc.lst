@@ -1,0 +1,171 @@
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccg1JbIZ.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"stm32f4xx_crc.c"
+  16              		.text
+  17              		.section	.text.CRC_ResetDR,"ax",%progbits
+  18              		.align	1
+  19              		.global	CRC_ResetDR
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  24              	CRC_ResetDR:
+  25              		@ args = 0, pretend = 0, frame = 0
+  26              		@ frame_needed = 0, uses_anonymous_args = 0
+  27              		@ link register save eliminated.
+  28 0000 014B     		ldr	r3, .L2
+  29 0002 0122     		movs	r2, #1
+  30 0004 9A60     		str	r2, [r3, #8]
+  31 0006 7047     		bx	lr
+  32              	.L3:
+  33              		.align	2
+  34              	.L2:
+  35 0008 00300240 		.word	1073885184
+  37              		.section	.text.CRC_CalcCRC,"ax",%progbits
+  38              		.align	1
+  39              		.global	CRC_CalcCRC
+  40              		.syntax unified
+  41              		.thumb
+  42              		.thumb_func
+  44              	CRC_CalcCRC:
+  45              		@ args = 0, pretend = 0, frame = 0
+  46              		@ frame_needed = 0, uses_anonymous_args = 0
+  47              		@ link register save eliminated.
+  48 0000 014B     		ldr	r3, .L5
+  49 0002 1860     		str	r0, [r3]
+  50 0004 1868     		ldr	r0, [r3]
+  51 0006 7047     		bx	lr
+  52              	.L6:
+  53              		.align	2
+  54              	.L5:
+  55 0008 00300240 		.word	1073885184
+  57              		.section	.text.CRC_CalcBlockCRC,"ax",%progbits
+  58              		.align	1
+  59              		.global	CRC_CalcBlockCRC
+  60              		.syntax unified
+  61              		.thumb
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccg1JbIZ.s 			page 2
+
+
+  62              		.thumb_func
+  64              	CRC_CalcBlockCRC:
+  65              		@ args = 0, pretend = 0, frame = 0
+  66              		@ frame_needed = 0, uses_anonymous_args = 0
+  67              		@ link register save eliminated.
+  68 0000 0023     		movs	r3, #0
+  69 0002 8B42     		cmp	r3, r1
+  70 0004 0CD2     		bcs	.L14
+  71 0006 10B4     		push	{r4}
+  72              	.L9:
+  73 0008 074A     		ldr	r2, .L15
+  74 000a 50F82340 		ldr	r4, [r0, r3, lsl #2]
+  75 000e 1460     		str	r4, [r2]
+  76 0010 0133     		adds	r3, r3, #1
+  77 0012 8B42     		cmp	r3, r1
+  78 0014 F8D3     		bcc	.L9
+  79 0016 044B     		ldr	r3, .L15
+  80 0018 1868     		ldr	r0, [r3]
+  81 001a 5DF8044B 		ldr	r4, [sp], #4
+  82 001e 7047     		bx	lr
+  83              	.L14:
+  84 0020 014B     		ldr	r3, .L15
+  85 0022 1868     		ldr	r0, [r3]
+  86 0024 7047     		bx	lr
+  87              	.L16:
+  88 0026 00BF     		.align	2
+  89              	.L15:
+  90 0028 00300240 		.word	1073885184
+  92              		.section	.text.CRC_GetCRC,"ax",%progbits
+  93              		.align	1
+  94              		.global	CRC_GetCRC
+  95              		.syntax unified
+  96              		.thumb
+  97              		.thumb_func
+  99              	CRC_GetCRC:
+ 100              		@ args = 0, pretend = 0, frame = 0
+ 101              		@ frame_needed = 0, uses_anonymous_args = 0
+ 102              		@ link register save eliminated.
+ 103 0000 014B     		ldr	r3, .L18
+ 104 0002 1868     		ldr	r0, [r3]
+ 105 0004 7047     		bx	lr
+ 106              	.L19:
+ 107 0006 00BF     		.align	2
+ 108              	.L18:
+ 109 0008 00300240 		.word	1073885184
+ 111              		.section	.text.CRC_SetIDRegister,"ax",%progbits
+ 112              		.align	1
+ 113              		.global	CRC_SetIDRegister
+ 114              		.syntax unified
+ 115              		.thumb
+ 116              		.thumb_func
+ 118              	CRC_SetIDRegister:
+ 119              		@ args = 0, pretend = 0, frame = 0
+ 120              		@ frame_needed = 0, uses_anonymous_args = 0
+ 121              		@ link register save eliminated.
+ 122 0000 014B     		ldr	r3, .L21
+ 123 0002 1871     		strb	r0, [r3, #4]
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccg1JbIZ.s 			page 3
+
+
+ 124 0004 7047     		bx	lr
+ 125              	.L22:
+ 126 0006 00BF     		.align	2
+ 127              	.L21:
+ 128 0008 00300240 		.word	1073885184
+ 130              		.section	.text.CRC_GetIDRegister,"ax",%progbits
+ 131              		.align	1
+ 132              		.global	CRC_GetIDRegister
+ 133              		.syntax unified
+ 134              		.thumb
+ 135              		.thumb_func
+ 137              	CRC_GetIDRegister:
+ 138              		@ args = 0, pretend = 0, frame = 0
+ 139              		@ frame_needed = 0, uses_anonymous_args = 0
+ 140              		@ link register save eliminated.
+ 141 0000 014B     		ldr	r3, .L24
+ 142 0002 1879     		ldrb	r0, [r3, #4]	@ zero_extendqisi2
+ 143 0004 7047     		bx	lr
+ 144              	.L25:
+ 145 0006 00BF     		.align	2
+ 146              	.L24:
+ 147 0008 00300240 		.word	1073885184
+ 149              		.ident	"GCC: (Arm GNU Toolchain 13.3.Rel1 (Build arm-13.24)) 13.3.1 20240614"
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccg1JbIZ.s 			page 4
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 stm32f4xx_crc.c
+C:\Users\ktkuru\AppData\Local\Temp\ccg1JbIZ.s:18     .text.CRC_ResetDR:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccg1JbIZ.s:24     .text.CRC_ResetDR:00000000 CRC_ResetDR
+C:\Users\ktkuru\AppData\Local\Temp\ccg1JbIZ.s:35     .text.CRC_ResetDR:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccg1JbIZ.s:38     .text.CRC_CalcCRC:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccg1JbIZ.s:44     .text.CRC_CalcCRC:00000000 CRC_CalcCRC
+C:\Users\ktkuru\AppData\Local\Temp\ccg1JbIZ.s:55     .text.CRC_CalcCRC:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccg1JbIZ.s:58     .text.CRC_CalcBlockCRC:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccg1JbIZ.s:64     .text.CRC_CalcBlockCRC:00000000 CRC_CalcBlockCRC
+C:\Users\ktkuru\AppData\Local\Temp\ccg1JbIZ.s:90     .text.CRC_CalcBlockCRC:00000028 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccg1JbIZ.s:93     .text.CRC_GetCRC:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccg1JbIZ.s:99     .text.CRC_GetCRC:00000000 CRC_GetCRC
+C:\Users\ktkuru\AppData\Local\Temp\ccg1JbIZ.s:109    .text.CRC_GetCRC:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccg1JbIZ.s:112    .text.CRC_SetIDRegister:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccg1JbIZ.s:118    .text.CRC_SetIDRegister:00000000 CRC_SetIDRegister
+C:\Users\ktkuru\AppData\Local\Temp\ccg1JbIZ.s:128    .text.CRC_SetIDRegister:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccg1JbIZ.s:131    .text.CRC_GetIDRegister:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccg1JbIZ.s:137    .text.CRC_GetIDRegister:00000000 CRC_GetIDRegister
+C:\Users\ktkuru\AppData\Local\Temp\ccg1JbIZ.s:147    .text.CRC_GetIDRegister:00000008 $d
+
+NO UNDEFINED SYMBOLS

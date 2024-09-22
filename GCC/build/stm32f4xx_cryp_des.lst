@@ -1,0 +1,249 @@
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc6t9xFX.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"stm32f4xx_cryp_des.c"
+  16              		.text
+  17              		.section	.text.CRYP_DES_ECB,"ax",%progbits
+  18              		.align	1
+  19              		.global	CRYP_DES_ECB
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  24              	CRYP_DES_ECB:
+  25              		@ args = 4, pretend = 0, frame = 56
+  26              		@ frame_needed = 0, uses_anonymous_args = 0
+  27 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+  28 0004 8EB0     		sub	sp, sp, #56
+  29 0006 0646     		mov	r6, r0
+  30 0008 0D46     		mov	r5, r1
+  31 000a 1F46     		mov	r7, r3
+  32 000c 0023     		movs	r3, #0
+  33 000e 0193     		str	r3, [sp, #4]
+  34 0010 1446     		mov	r4, r2
+  35 0012 DDF85080 		ldr	r8, [sp, #80]
+  36 0016 02A8     		add	r0, sp, #8
+  37 0018 FFF7FEFF 		bl	CRYP_KeyStructInit
+  38 001c 012E     		cmp	r6, #1
+  39 001e 1DD0     		beq	.L13
+  40 0020 0423     		movs	r3, #4
+  41 0022 0A93     		str	r3, [sp, #40]
+  42              	.L3:
+  43 0024 1023     		movs	r3, #16
+  44 0026 0B93     		str	r3, [sp, #44]
+  45 0028 8023     		movs	r3, #128
+  46 002a 0C93     		str	r3, [sp, #48]
+  47 002c 0AA8     		add	r0, sp, #40
+  48 002e FFF7FEFF 		bl	CRYP_Init
+  49 0032 2B68     		ldr	r3, [r5]
+  50 0034 1BBA     		rev	r3, r3
+  51 0036 0493     		str	r3, [sp, #16]
+  52 0038 6B68     		ldr	r3, [r5, #4]
+  53 003a 1BBA     		rev	r3, r3
+  54 003c 0593     		str	r3, [sp, #20]
+  55 003e 02A8     		add	r0, sp, #8
+  56 0040 FFF7FEFF 		bl	CRYP_KeyInit
+  57 0044 FFF7FEFF 		bl	CRYP_FIFOFlush
+  58 0048 0120     		movs	r0, #1
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc6t9xFX.s 			page 2
+
+
+  59 004a FFF7FEFF 		bl	CRYP_Cmd
+  60 004e FFF7FEFF 		bl	CRYP_GetCmdStatus
+  61 0052 0646     		mov	r6, r0
+  62 0054 78B3     		cbz	r0, .L4
+  63 0056 0025     		movs	r5, #0
+  64 0058 0126     		movs	r6, #1
+  65 005a 05E0     		b	.L5
+  66              	.L13:
+  67 005c 0023     		movs	r3, #0
+  68 005e 0A93     		str	r3, [sp, #40]
+  69 0060 E0E7     		b	.L3
+  70              	.L6:
+  71 0062 D0B1     		cbz	r0, .L14
+  72 0064 0026     		movs	r6, #0
+  73              	.L8:
+  74 0066 0835     		adds	r5, r5, #8
+  75              	.L5:
+  76 0068 BD42     		cmp	r5, r7
+  77 006a 21D2     		bcs	.L9
+  78 006c 06B3     		cbz	r6, .L9
+  79 006e 2068     		ldr	r0, [r4]
+  80 0070 FFF7FEFF 		bl	CRYP_DataIn
+  81 0074 6068     		ldr	r0, [r4, #4]
+  82 0076 FFF7FEFF 		bl	CRYP_DataIn
+  83 007a 0834     		adds	r4, r4, #8
+  84 007c 0023     		movs	r3, #0
+  85 007e 0193     		str	r3, [sp, #4]
+  86              	.L7:
+  87 0080 1020     		movs	r0, #16
+  88 0082 FFF7FEFF 		bl	CRYP_GetFlagStatus
+  89 0086 0199     		ldr	r1, [sp, #4]
+  90 0088 0131     		adds	r1, r1, #1
+  91 008a 0191     		str	r1, [sp, #4]
+  92 008c 019B     		ldr	r3, [sp, #4]
+  93 008e B3F5803F 		cmp	r3, #65536
+  94 0092 E6D0     		beq	.L6
+  95 0094 0028     		cmp	r0, #0
+  96 0096 F3D1     		bne	.L7
+  97 0098 E3E7     		b	.L6
+  98              	.L14:
+  99 009a FFF7FEFF 		bl	CRYP_DataOut
+ 100 009e C8F80000 		str	r0, [r8]
+ 101 00a2 FFF7FEFF 		bl	CRYP_DataOut
+ 102 00a6 C8F80400 		str	r0, [r8, #4]
+ 103 00aa 08F10808 		add	r8, r8, #8
+ 104 00ae DAE7     		b	.L8
+ 105              	.L9:
+ 106 00b0 0020     		movs	r0, #0
+ 107 00b2 FFF7FEFF 		bl	CRYP_Cmd
+ 108              	.L4:
+ 109 00b6 3046     		mov	r0, r6
+ 110 00b8 0EB0     		add	sp, sp, #56
+ 111              		@ sp needed
+ 112 00ba BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 114              		.section	.text.CRYP_DES_CBC,"ax",%progbits
+ 115              		.align	1
+ 116              		.global	CRYP_DES_CBC
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc6t9xFX.s 			page 3
+
+
+ 117              		.syntax unified
+ 118              		.thumb
+ 119              		.thumb_func
+ 121              	CRYP_DES_CBC:
+ 122              		@ args = 8, pretend = 0, frame = 72
+ 123              		@ frame_needed = 0, uses_anonymous_args = 0
+ 124 0000 2DE9F043 		push	{r4, r5, r6, r7, r8, r9, lr}
+ 125 0004 93B0     		sub	sp, sp, #76
+ 126 0006 8146     		mov	r9, r0
+ 127 0008 0E46     		mov	r6, r1
+ 128 000a 1546     		mov	r5, r2
+ 129 000c DDF86880 		ldr	r8, [sp, #104]
+ 130 0010 0022     		movs	r2, #0
+ 131 0012 0192     		str	r2, [sp, #4]
+ 132 0014 1C46     		mov	r4, r3
+ 133 0016 1B9F     		ldr	r7, [sp, #108]
+ 134 0018 06A8     		add	r0, sp, #24
+ 135 001a FFF7FEFF 		bl	CRYP_KeyStructInit
+ 136 001e B9F1010F 		cmp	r9, #1
+ 137 0022 26D0     		beq	.L27
+ 138 0024 0423     		movs	r3, #4
+ 139 0026 0E93     		str	r3, [sp, #56]
+ 140              	.L17:
+ 141 0028 1823     		movs	r3, #24
+ 142 002a 0F93     		str	r3, [sp, #60]
+ 143 002c 8023     		movs	r3, #128
+ 144 002e 1093     		str	r3, [sp, #64]
+ 145 0030 0EA8     		add	r0, sp, #56
+ 146 0032 FFF7FEFF 		bl	CRYP_Init
+ 147 0036 3368     		ldr	r3, [r6]
+ 148 0038 1BBA     		rev	r3, r3
+ 149 003a 0893     		str	r3, [sp, #32]
+ 150 003c 7368     		ldr	r3, [r6, #4]
+ 151 003e 1BBA     		rev	r3, r3
+ 152 0040 0993     		str	r3, [sp, #36]
+ 153 0042 06A8     		add	r0, sp, #24
+ 154 0044 FFF7FEFF 		bl	CRYP_KeyInit
+ 155 0048 2B68     		ldr	r3, [r5]
+ 156 004a 1BBA     		rev	r3, r3
+ 157 004c 0293     		str	r3, [sp, #8]
+ 158 004e 6B68     		ldr	r3, [r5, #4]
+ 159 0050 1BBA     		rev	r3, r3
+ 160 0052 0393     		str	r3, [sp, #12]
+ 161 0054 02A8     		add	r0, sp, #8
+ 162 0056 FFF7FEFF 		bl	CRYP_IVInit
+ 163 005a FFF7FEFF 		bl	CRYP_FIFOFlush
+ 164 005e 0120     		movs	r0, #1
+ 165 0060 FFF7FEFF 		bl	CRYP_Cmd
+ 166 0064 FFF7FEFF 		bl	CRYP_GetCmdStatus
+ 167 0068 0646     		mov	r6, r0
+ 168 006a 60B3     		cbz	r0, .L18
+ 169 006c 0025     		movs	r5, #0
+ 170 006e 0126     		movs	r6, #1
+ 171 0070 05E0     		b	.L19
+ 172              	.L27:
+ 173 0072 0023     		movs	r3, #0
+ 174 0074 0E93     		str	r3, [sp, #56]
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc6t9xFX.s 			page 4
+
+
+ 175 0076 D7E7     		b	.L17
+ 176              	.L20:
+ 177 0078 D0B1     		cbz	r0, .L28
+ 178 007a 0026     		movs	r6, #0
+ 179              	.L22:
+ 180 007c 0835     		adds	r5, r5, #8
+ 181              	.L19:
+ 182 007e 4545     		cmp	r5, r8
+ 183 0080 1ED2     		bcs	.L23
+ 184 0082 EEB1     		cbz	r6, .L23
+ 185 0084 2068     		ldr	r0, [r4]
+ 186 0086 FFF7FEFF 		bl	CRYP_DataIn
+ 187 008a 6068     		ldr	r0, [r4, #4]
+ 188 008c FFF7FEFF 		bl	CRYP_DataIn
+ 189 0090 0834     		adds	r4, r4, #8
+ 190 0092 0023     		movs	r3, #0
+ 191 0094 0193     		str	r3, [sp, #4]
+ 192              	.L21:
+ 193 0096 1020     		movs	r0, #16
+ 194 0098 FFF7FEFF 		bl	CRYP_GetFlagStatus
+ 195 009c 019A     		ldr	r2, [sp, #4]
+ 196 009e 0132     		adds	r2, r2, #1
+ 197 00a0 0192     		str	r2, [sp, #4]
+ 198 00a2 019B     		ldr	r3, [sp, #4]
+ 199 00a4 B3F5803F 		cmp	r3, #65536
+ 200 00a8 E6D0     		beq	.L20
+ 201 00aa 0028     		cmp	r0, #0
+ 202 00ac F3D1     		bne	.L21
+ 203 00ae E3E7     		b	.L20
+ 204              	.L28:
+ 205 00b0 FFF7FEFF 		bl	CRYP_DataOut
+ 206 00b4 3860     		str	r0, [r7]
+ 207 00b6 FFF7FEFF 		bl	CRYP_DataOut
+ 208 00ba 7860     		str	r0, [r7, #4]
+ 209 00bc 0837     		adds	r7, r7, #8
+ 210 00be DDE7     		b	.L22
+ 211              	.L23:
+ 212 00c0 0020     		movs	r0, #0
+ 213 00c2 FFF7FEFF 		bl	CRYP_Cmd
+ 214              	.L18:
+ 215 00c6 3046     		mov	r0, r6
+ 216 00c8 13B0     		add	sp, sp, #76
+ 217              		@ sp needed
+ 218 00ca BDE8F083 		pop	{r4, r5, r6, r7, r8, r9, pc}
+ 220              		.ident	"GCC: (Arm GNU Toolchain 13.3.Rel1 (Build arm-13.24)) 13.3.1 20240614"
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc6t9xFX.s 			page 5
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 stm32f4xx_cryp_des.c
+C:\Users\ktkuru\AppData\Local\Temp\cc6t9xFX.s:18     .text.CRYP_DES_ECB:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc6t9xFX.s:24     .text.CRYP_DES_ECB:00000000 CRYP_DES_ECB
+C:\Users\ktkuru\AppData\Local\Temp\cc6t9xFX.s:115    .text.CRYP_DES_CBC:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc6t9xFX.s:121    .text.CRYP_DES_CBC:00000000 CRYP_DES_CBC
+
+UNDEFINED SYMBOLS
+CRYP_KeyStructInit
+CRYP_Init
+CRYP_KeyInit
+CRYP_FIFOFlush
+CRYP_Cmd
+CRYP_GetCmdStatus
+CRYP_DataIn
+CRYP_GetFlagStatus
+CRYP_DataOut
+CRYP_IVInit

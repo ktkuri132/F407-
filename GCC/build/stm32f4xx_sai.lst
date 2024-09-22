@@ -1,0 +1,592 @@
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccvuHvbb.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"stm32f4xx_sai.c"
+  16              		.text
+  17              		.section	.text.SAI_DeInit,"ax",%progbits
+  18              		.align	1
+  19              		.global	SAI_DeInit
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  24              	SAI_DeInit:
+  25              		@ args = 0, pretend = 0, frame = 0
+  26              		@ frame_needed = 0, uses_anonymous_args = 0
+  27 0000 08B5     		push	{r3, lr}
+  28 0002 0121     		movs	r1, #1
+  29 0004 4FF48000 		mov	r0, #4194304
+  30 0008 FFF7FEFF 		bl	RCC_APB2PeriphResetCmd
+  31 000c 0021     		movs	r1, #0
+  32 000e 4FF48000 		mov	r0, #4194304
+  33 0012 FFF7FEFF 		bl	RCC_APB2PeriphResetCmd
+  34 0016 08BD     		pop	{r3, pc}
+  36              		.section	.text.SAI_Init,"ax",%progbits
+  37              		.align	1
+  38              		.global	SAI_Init
+  39              		.syntax unified
+  40              		.thumb
+  41              		.thumb_func
+  43              	SAI_Init:
+  44              		@ args = 0, pretend = 0, frame = 0
+  45              		@ frame_needed = 0, uses_anonymous_args = 0
+  46              		@ link register save eliminated.
+  47 0000 10B4     		push	{r4}
+  48 0002 0368     		ldr	r3, [r0]
+  49 0004 0F4A     		ldr	r2, .L5
+  50 0006 1A40     		ands	r2, r2, r3
+  51 0008 0B68     		ldr	r3, [r1]
+  52 000a 4C68     		ldr	r4, [r1, #4]
+  53 000c 2343     		orrs	r3, r3, r4
+  54 000e 8C68     		ldr	r4, [r1, #8]
+  55 0010 2343     		orrs	r3, r3, r4
+  56 0012 CC68     		ldr	r4, [r1, #12]
+  57 0014 2343     		orrs	r3, r3, r4
+  58 0016 0C69     		ldr	r4, [r1, #16]
+  59 0018 2343     		orrs	r3, r3, r4
+  60 001a 4C69     		ldr	r4, [r1, #20]
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccvuHvbb.s 			page 2
+
+
+  61 001c 2343     		orrs	r3, r3, r4
+  62 001e 8C69     		ldr	r4, [r1, #24]
+  63 0020 2343     		orrs	r3, r3, r4
+  64 0022 CC69     		ldr	r4, [r1, #28]
+  65 0024 2343     		orrs	r3, r3, r4
+  66 0026 0C6A     		ldr	r4, [r1, #32]
+  67 0028 43EA0453 		orr	r3, r3, r4, lsl #20
+  68 002c 1343     		orrs	r3, r3, r2
+  69 002e 0360     		str	r3, [r0]
+  70 0030 4268     		ldr	r2, [r0, #4]
+  71 0032 22F00302 		bic	r2, r2, #3
+  72 0036 4B6A     		ldr	r3, [r1, #36]
+  73 0038 1343     		orrs	r3, r3, r2
+  74 003a 4360     		str	r3, [r0, #4]
+  75 003c 5DF8044B 		ldr	r4, [sp], #4
+  76 0040 7047     		bx	lr
+  77              	.L6:
+  78 0042 00BF     		.align	2
+  79              	.L5:
+  80 0044 10C007FF 		.word	-16269296
+  82              		.section	.text.SAI_FrameInit,"ax",%progbits
+  83              		.align	1
+  84              		.global	SAI_FrameInit
+  85              		.syntax unified
+  86              		.thumb
+  87              		.thumb_func
+  89              	SAI_FrameInit:
+  90              		@ args = 0, pretend = 0, frame = 0
+  91              		@ frame_needed = 0, uses_anonymous_args = 0
+  92              		@ link register save eliminated.
+  93 0000 10B4     		push	{r4}
+  94 0002 8368     		ldr	r3, [r0, #8]
+  95 0004 094A     		ldr	r2, .L9
+  96 0006 1A40     		ands	r2, r2, r3
+  97 0008 0B68     		ldr	r3, [r1]
+  98 000a 013B     		subs	r3, r3, #1
+  99 000c 0C69     		ldr	r4, [r1, #16]
+ 100 000e 2343     		orrs	r3, r3, r4
+ 101 0010 8C68     		ldr	r4, [r1, #8]
+ 102 0012 2343     		orrs	r3, r3, r4
+ 103 0014 CC68     		ldr	r4, [r1, #12]
+ 104 0016 2343     		orrs	r3, r3, r4
+ 105 0018 4968     		ldr	r1, [r1, #4]
+ 106 001a 0139     		subs	r1, r1, #1
+ 107 001c 43EA0123 		orr	r3, r3, r1, lsl #8
+ 108 0020 1343     		orrs	r3, r3, r2
+ 109 0022 8360     		str	r3, [r0, #8]
+ 110 0024 5DF8044B 		ldr	r4, [sp], #4
+ 111 0028 7047     		bx	lr
+ 112              	.L10:
+ 113 002a 00BF     		.align	2
+ 114              	.L9:
+ 115 002c 0080F8FF 		.word	-491520
+ 117              		.section	.text.SAI_SlotInit,"ax",%progbits
+ 118              		.align	1
+ 119              		.global	SAI_SlotInit
+ 120              		.syntax unified
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccvuHvbb.s 			page 3
+
+
+ 121              		.thumb
+ 122              		.thumb_func
+ 124              	SAI_SlotInit:
+ 125              		@ args = 0, pretend = 0, frame = 0
+ 126              		@ frame_needed = 0, uses_anonymous_args = 0
+ 127              		@ link register save eliminated.
+ 128 0000 10B4     		push	{r4}
+ 129 0002 C268     		ldr	r2, [r0, #12]
+ 130 0004 22F47D62 		bic	r2, r2, #4048
+ 131 0008 22F00F02 		bic	r2, r2, #15
+ 132 000c 1204     		lsls	r2, r2, #16
+ 133 000e 120C     		lsrs	r2, r2, #16
+ 134 0010 0B68     		ldr	r3, [r1]
+ 135 0012 4C68     		ldr	r4, [r1, #4]
+ 136 0014 2343     		orrs	r3, r3, r4
+ 137 0016 CC68     		ldr	r4, [r1, #12]
+ 138 0018 2343     		orrs	r3, r3, r4
+ 139 001a 8968     		ldr	r1, [r1, #8]
+ 140 001c 0139     		subs	r1, r1, #1
+ 141 001e 43EA0123 		orr	r3, r3, r1, lsl #8
+ 142 0022 1343     		orrs	r3, r3, r2
+ 143 0024 C360     		str	r3, [r0, #12]
+ 144 0026 5DF8044B 		ldr	r4, [sp], #4
+ 145 002a 7047     		bx	lr
+ 147              		.section	.text.SAI_StructInit,"ax",%progbits
+ 148              		.align	1
+ 149              		.global	SAI_StructInit
+ 150              		.syntax unified
+ 151              		.thumb
+ 152              		.thumb_func
+ 154              	SAI_StructInit:
+ 155              		@ args = 0, pretend = 0, frame = 0
+ 156              		@ frame_needed = 0, uses_anonymous_args = 0
+ 157              		@ link register save eliminated.
+ 158 0000 0023     		movs	r3, #0
+ 159 0002 0360     		str	r3, [r0]
+ 160 0004 4360     		str	r3, [r0, #4]
+ 161 0006 4022     		movs	r2, #64
+ 162 0008 8260     		str	r2, [r0, #8]
+ 163 000a C360     		str	r3, [r0, #12]
+ 164 000c 0361     		str	r3, [r0, #16]
+ 165 000e 4361     		str	r3, [r0, #20]
+ 166 0010 8361     		str	r3, [r0, #24]
+ 167 0012 C361     		str	r3, [r0, #28]
+ 168 0014 0362     		str	r3, [r0, #32]
+ 169 0016 4362     		str	r3, [r0, #36]
+ 170 0018 7047     		bx	lr
+ 172              		.section	.text.SAI_FrameStructInit,"ax",%progbits
+ 173              		.align	1
+ 174              		.global	SAI_FrameStructInit
+ 175              		.syntax unified
+ 176              		.thumb
+ 177              		.thumb_func
+ 179              	SAI_FrameStructInit:
+ 180              		@ args = 0, pretend = 0, frame = 0
+ 181              		@ frame_needed = 0, uses_anonymous_args = 0
+ 182              		@ link register save eliminated.
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccvuHvbb.s 			page 4
+
+
+ 183 0000 0823     		movs	r3, #8
+ 184 0002 0360     		str	r3, [r0]
+ 185 0004 0123     		movs	r3, #1
+ 186 0006 4360     		str	r3, [r0, #4]
+ 187 0008 0023     		movs	r3, #0
+ 188 000a 8360     		str	r3, [r0, #8]
+ 189 000c C360     		str	r3, [r0, #12]
+ 190 000e 0361     		str	r3, [r0, #16]
+ 191 0010 7047     		bx	lr
+ 193              		.section	.text.SAI_SlotStructInit,"ax",%progbits
+ 194              		.align	1
+ 195              		.global	SAI_SlotStructInit
+ 196              		.syntax unified
+ 197              		.thumb
+ 198              		.thumb_func
+ 200              	SAI_SlotStructInit:
+ 201              		@ args = 0, pretend = 0, frame = 0
+ 202              		@ frame_needed = 0, uses_anonymous_args = 0
+ 203              		@ link register save eliminated.
+ 204 0000 0023     		movs	r3, #0
+ 205 0002 0360     		str	r3, [r0]
+ 206 0004 4360     		str	r3, [r0, #4]
+ 207 0006 0122     		movs	r2, #1
+ 208 0008 8260     		str	r2, [r0, #8]
+ 209 000a C360     		str	r3, [r0, #12]
+ 210 000c 7047     		bx	lr
+ 212              		.section	.text.SAI_Cmd,"ax",%progbits
+ 213              		.align	1
+ 214              		.global	SAI_Cmd
+ 215              		.syntax unified
+ 216              		.thumb
+ 217              		.thumb_func
+ 219              	SAI_Cmd:
+ 220              		@ args = 0, pretend = 0, frame = 0
+ 221              		@ frame_needed = 0, uses_anonymous_args = 0
+ 222              		@ link register save eliminated.
+ 223 0000 21B1     		cbz	r1, .L17
+ 224 0002 0368     		ldr	r3, [r0]
+ 225 0004 43F48033 		orr	r3, r3, #65536
+ 226 0008 0360     		str	r3, [r0]
+ 227 000a 7047     		bx	lr
+ 228              	.L17:
+ 229 000c 0368     		ldr	r3, [r0]
+ 230 000e 23F48033 		bic	r3, r3, #65536
+ 231 0012 0360     		str	r3, [r0]
+ 232 0014 7047     		bx	lr
+ 234              		.section	.text.SAI_MonoModeConfig,"ax",%progbits
+ 235              		.align	1
+ 236              		.global	SAI_MonoModeConfig
+ 237              		.syntax unified
+ 238              		.thumb
+ 239              		.thumb_func
+ 241              	SAI_MonoModeConfig:
+ 242              		@ args = 0, pretend = 0, frame = 0
+ 243              		@ frame_needed = 0, uses_anonymous_args = 0
+ 244              		@ link register save eliminated.
+ 245 0000 0368     		ldr	r3, [r0]
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccvuHvbb.s 			page 5
+
+
+ 246 0002 23F48053 		bic	r3, r3, #4096
+ 247 0006 0360     		str	r3, [r0]
+ 248 0008 0368     		ldr	r3, [r0]
+ 249 000a 43F48053 		orr	r3, r3, #4096
+ 250 000e 0360     		str	r3, [r0]
+ 251 0010 7047     		bx	lr
+ 253              		.section	.text.SAI_TRIStateConfig,"ax",%progbits
+ 254              		.align	1
+ 255              		.global	SAI_TRIStateConfig
+ 256              		.syntax unified
+ 257              		.thumb
+ 258              		.thumb_func
+ 260              	SAI_TRIStateConfig:
+ 261              		@ args = 0, pretend = 0, frame = 0
+ 262              		@ frame_needed = 0, uses_anonymous_args = 0
+ 263              		@ link register save eliminated.
+ 264 0000 0368     		ldr	r3, [r0]
+ 265 0002 23F48053 		bic	r3, r3, #4096
+ 266 0006 0360     		str	r3, [r0]
+ 267 0008 0368     		ldr	r3, [r0]
+ 268 000a 43F48053 		orr	r3, r3, #4096
+ 269 000e 0360     		str	r3, [r0]
+ 270 0010 7047     		bx	lr
+ 272              		.section	.text.SAI_CompandingModeConfig,"ax",%progbits
+ 273              		.align	1
+ 274              		.global	SAI_CompandingModeConfig
+ 275              		.syntax unified
+ 276              		.thumb
+ 277              		.thumb_func
+ 279              	SAI_CompandingModeConfig:
+ 280              		@ args = 0, pretend = 0, frame = 0
+ 281              		@ frame_needed = 0, uses_anonymous_args = 0
+ 282              		@ link register save eliminated.
+ 283 0000 4368     		ldr	r3, [r0, #4]
+ 284 0002 23F44043 		bic	r3, r3, #49152
+ 285 0006 4360     		str	r3, [r0, #4]
+ 286 0008 4368     		ldr	r3, [r0, #4]
+ 287 000a 0B43     		orrs	r3, r3, r1
+ 288 000c 4360     		str	r3, [r0, #4]
+ 289 000e 7047     		bx	lr
+ 291              		.section	.text.SAI_MuteModeCmd,"ax",%progbits
+ 292              		.align	1
+ 293              		.global	SAI_MuteModeCmd
+ 294              		.syntax unified
+ 295              		.thumb
+ 296              		.thumb_func
+ 298              	SAI_MuteModeCmd:
+ 299              		@ args = 0, pretend = 0, frame = 0
+ 300              		@ frame_needed = 0, uses_anonymous_args = 0
+ 301              		@ link register save eliminated.
+ 302 0000 21B1     		cbz	r1, .L23
+ 303 0002 4368     		ldr	r3, [r0, #4]
+ 304 0004 43F02003 		orr	r3, r3, #32
+ 305 0008 4360     		str	r3, [r0, #4]
+ 306 000a 7047     		bx	lr
+ 307              	.L23:
+ 308 000c 4368     		ldr	r3, [r0, #4]
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccvuHvbb.s 			page 6
+
+
+ 309 000e 23F02003 		bic	r3, r3, #32
+ 310 0012 4360     		str	r3, [r0, #4]
+ 311 0014 7047     		bx	lr
+ 313              		.section	.text.SAI_MuteValueConfig,"ax",%progbits
+ 314              		.align	1
+ 315              		.global	SAI_MuteValueConfig
+ 316              		.syntax unified
+ 317              		.thumb
+ 318              		.thumb_func
+ 320              	SAI_MuteValueConfig:
+ 321              		@ args = 0, pretend = 0, frame = 0
+ 322              		@ frame_needed = 0, uses_anonymous_args = 0
+ 323              		@ link register save eliminated.
+ 324 0000 4368     		ldr	r3, [r0, #4]
+ 325 0002 23F04003 		bic	r3, r3, #64
+ 326 0006 4360     		str	r3, [r0, #4]
+ 327 0008 4368     		ldr	r3, [r0, #4]
+ 328 000a 0B43     		orrs	r3, r3, r1
+ 329 000c 4360     		str	r3, [r0, #4]
+ 330 000e 7047     		bx	lr
+ 332              		.section	.text.SAI_MuteFrameCounterConfig,"ax",%progbits
+ 333              		.align	1
+ 334              		.global	SAI_MuteFrameCounterConfig
+ 335              		.syntax unified
+ 336              		.thumb
+ 337              		.thumb_func
+ 339              	SAI_MuteFrameCounterConfig:
+ 340              		@ args = 0, pretend = 0, frame = 0
+ 341              		@ frame_needed = 0, uses_anonymous_args = 0
+ 342              		@ link register save eliminated.
+ 343 0000 4368     		ldr	r3, [r0, #4]
+ 344 0002 23F4FC53 		bic	r3, r3, #8064
+ 345 0006 4360     		str	r3, [r0, #4]
+ 346 0008 4368     		ldr	r3, [r0, #4]
+ 347 000a 43EAC113 		orr	r3, r3, r1, lsl #7
+ 348 000e 4360     		str	r3, [r0, #4]
+ 349 0010 7047     		bx	lr
+ 351              		.section	.text.SAI_FlushFIFO,"ax",%progbits
+ 352              		.align	1
+ 353              		.global	SAI_FlushFIFO
+ 354              		.syntax unified
+ 355              		.thumb
+ 356              		.thumb_func
+ 358              	SAI_FlushFIFO:
+ 359              		@ args = 0, pretend = 0, frame = 0
+ 360              		@ frame_needed = 0, uses_anonymous_args = 0
+ 361              		@ link register save eliminated.
+ 362 0000 4368     		ldr	r3, [r0, #4]
+ 363 0002 43F00803 		orr	r3, r3, #8
+ 364 0006 4360     		str	r3, [r0, #4]
+ 365 0008 7047     		bx	lr
+ 367              		.section	.text.SAI_ReceiveData,"ax",%progbits
+ 368              		.align	1
+ 369              		.global	SAI_ReceiveData
+ 370              		.syntax unified
+ 371              		.thumb
+ 372              		.thumb_func
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccvuHvbb.s 			page 7
+
+
+ 374              	SAI_ReceiveData:
+ 375              		@ args = 0, pretend = 0, frame = 0
+ 376              		@ frame_needed = 0, uses_anonymous_args = 0
+ 377              		@ link register save eliminated.
+ 378 0000 C069     		ldr	r0, [r0, #28]
+ 379 0002 7047     		bx	lr
+ 381              		.section	.text.SAI_SendData,"ax",%progbits
+ 382              		.align	1
+ 383              		.global	SAI_SendData
+ 384              		.syntax unified
+ 385              		.thumb
+ 386              		.thumb_func
+ 388              	SAI_SendData:
+ 389              		@ args = 0, pretend = 0, frame = 0
+ 390              		@ frame_needed = 0, uses_anonymous_args = 0
+ 391              		@ link register save eliminated.
+ 392 0000 C161     		str	r1, [r0, #28]
+ 393 0002 7047     		bx	lr
+ 395              		.section	.text.SAI_DMACmd,"ax",%progbits
+ 396              		.align	1
+ 397              		.global	SAI_DMACmd
+ 398              		.syntax unified
+ 399              		.thumb
+ 400              		.thumb_func
+ 402              	SAI_DMACmd:
+ 403              		@ args = 0, pretend = 0, frame = 0
+ 404              		@ frame_needed = 0, uses_anonymous_args = 0
+ 405              		@ link register save eliminated.
+ 406 0000 21B1     		cbz	r1, .L31
+ 407 0002 0368     		ldr	r3, [r0]
+ 408 0004 43F40033 		orr	r3, r3, #131072
+ 409 0008 0360     		str	r3, [r0]
+ 410 000a 7047     		bx	lr
+ 411              	.L31:
+ 412 000c 0368     		ldr	r3, [r0]
+ 413 000e 23F40033 		bic	r3, r3, #131072
+ 414 0012 0360     		str	r3, [r0]
+ 415 0014 7047     		bx	lr
+ 417              		.section	.text.SAI_ITConfig,"ax",%progbits
+ 418              		.align	1
+ 419              		.global	SAI_ITConfig
+ 420              		.syntax unified
+ 421              		.thumb
+ 422              		.thumb_func
+ 424              	SAI_ITConfig:
+ 425              		@ args = 0, pretend = 0, frame = 0
+ 426              		@ frame_needed = 0, uses_anonymous_args = 0
+ 427              		@ link register save eliminated.
+ 428 0000 1AB1     		cbz	r2, .L34
+ 429 0002 0369     		ldr	r3, [r0, #16]
+ 430 0004 0B43     		orrs	r3, r3, r1
+ 431 0006 0361     		str	r3, [r0, #16]
+ 432 0008 7047     		bx	lr
+ 433              	.L34:
+ 434 000a 0369     		ldr	r3, [r0, #16]
+ 435 000c 23EA0103 		bic	r3, r3, r1
+ 436 0010 0361     		str	r3, [r0, #16]
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccvuHvbb.s 			page 8
+
+
+ 437 0012 7047     		bx	lr
+ 439              		.section	.text.SAI_GetFlagStatus,"ax",%progbits
+ 440              		.align	1
+ 441              		.global	SAI_GetFlagStatus
+ 442              		.syntax unified
+ 443              		.thumb
+ 444              		.thumb_func
+ 446              	SAI_GetFlagStatus:
+ 447              		@ args = 0, pretend = 0, frame = 0
+ 448              		@ frame_needed = 0, uses_anonymous_args = 0
+ 449              		@ link register save eliminated.
+ 450 0000 4369     		ldr	r3, [r0, #20]
+ 451 0002 0B42     		tst	r3, r1
+ 452 0004 01D0     		beq	.L38
+ 453 0006 0120     		movs	r0, #1
+ 454 0008 7047     		bx	lr
+ 455              	.L38:
+ 456 000a 0020     		movs	r0, #0
+ 457 000c 7047     		bx	lr
+ 459              		.section	.text.SAI_ClearFlag,"ax",%progbits
+ 460              		.align	1
+ 461              		.global	SAI_ClearFlag
+ 462              		.syntax unified
+ 463              		.thumb
+ 464              		.thumb_func
+ 466              	SAI_ClearFlag:
+ 467              		@ args = 0, pretend = 0, frame = 0
+ 468              		@ frame_needed = 0, uses_anonymous_args = 0
+ 469              		@ link register save eliminated.
+ 470 0000 8369     		ldr	r3, [r0, #24]
+ 471 0002 0B43     		orrs	r3, r3, r1
+ 472 0004 8361     		str	r3, [r0, #24]
+ 473 0006 7047     		bx	lr
+ 475              		.section	.text.SAI_GetITStatus,"ax",%progbits
+ 476              		.align	1
+ 477              		.global	SAI_GetITStatus
+ 478              		.syntax unified
+ 479              		.thumb
+ 480              		.thumb_func
+ 482              	SAI_GetITStatus:
+ 483              		@ args = 0, pretend = 0, frame = 0
+ 484              		@ frame_needed = 0, uses_anonymous_args = 0
+ 485              		@ link register save eliminated.
+ 486 0000 0369     		ldr	r3, [r0, #16]
+ 487 0002 0B40     		ands	r3, r3, r1
+ 488 0004 4269     		ldr	r2, [r0, #20]
+ 489 0006 0A42     		tst	r2, r1
+ 490 0008 02D0     		beq	.L42
+ 491 000a 1BB9     		cbnz	r3, .L43
+ 492 000c 0020     		movs	r0, #0
+ 493 000e 7047     		bx	lr
+ 494              	.L42:
+ 495 0010 0020     		movs	r0, #0
+ 496 0012 7047     		bx	lr
+ 497              	.L43:
+ 498 0014 0120     		movs	r0, #1
+ 499 0016 7047     		bx	lr
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccvuHvbb.s 			page 9
+
+
+ 501              		.section	.text.SAI_ClearITPendingBit,"ax",%progbits
+ 502              		.align	1
+ 503              		.global	SAI_ClearITPendingBit
+ 504              		.syntax unified
+ 505              		.thumb
+ 506              		.thumb_func
+ 508              	SAI_ClearITPendingBit:
+ 509              		@ args = 0, pretend = 0, frame = 0
+ 510              		@ frame_needed = 0, uses_anonymous_args = 0
+ 511              		@ link register save eliminated.
+ 512 0000 8369     		ldr	r3, [r0, #24]
+ 513 0002 0B43     		orrs	r3, r3, r1
+ 514 0004 8361     		str	r3, [r0, #24]
+ 515 0006 7047     		bx	lr
+ 517              		.section	.text.SAI_GetCmdStatus,"ax",%progbits
+ 518              		.align	1
+ 519              		.global	SAI_GetCmdStatus
+ 520              		.syntax unified
+ 521              		.thumb
+ 522              		.thumb_func
+ 524              	SAI_GetCmdStatus:
+ 525              		@ args = 0, pretend = 0, frame = 0
+ 526              		@ frame_needed = 0, uses_anonymous_args = 0
+ 527              		@ link register save eliminated.
+ 528 0000 0368     		ldr	r3, [r0]
+ 529 0002 13F4803F 		tst	r3, #65536
+ 530 0006 01D0     		beq	.L47
+ 531 0008 0120     		movs	r0, #1
+ 532 000a 7047     		bx	lr
+ 533              	.L47:
+ 534 000c 0020     		movs	r0, #0
+ 535 000e 7047     		bx	lr
+ 537              		.section	.text.SAI_GetFIFOStatus,"ax",%progbits
+ 538              		.align	1
+ 539              		.global	SAI_GetFIFOStatus
+ 540              		.syntax unified
+ 541              		.thumb
+ 542              		.thumb_func
+ 544              	SAI_GetFIFOStatus:
+ 545              		@ args = 0, pretend = 0, frame = 0
+ 546              		@ frame_needed = 0, uses_anonymous_args = 0
+ 547              		@ link register save eliminated.
+ 548 0000 4069     		ldr	r0, [r0, #20]
+ 549 0002 00F4E020 		and	r0, r0, #458752
+ 550 0006 7047     		bx	lr
+ 552              		.ident	"GCC: (Arm GNU Toolchain 13.3.Rel1 (Build arm-13.24)) 13.3.1 20240614"
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccvuHvbb.s 			page 10
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 stm32f4xx_sai.c
+C:\Users\ktkuru\AppData\Local\Temp\ccvuHvbb.s:18     .text.SAI_DeInit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccvuHvbb.s:24     .text.SAI_DeInit:00000000 SAI_DeInit
+C:\Users\ktkuru\AppData\Local\Temp\ccvuHvbb.s:37     .text.SAI_Init:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccvuHvbb.s:43     .text.SAI_Init:00000000 SAI_Init
+C:\Users\ktkuru\AppData\Local\Temp\ccvuHvbb.s:80     .text.SAI_Init:00000044 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccvuHvbb.s:83     .text.SAI_FrameInit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccvuHvbb.s:89     .text.SAI_FrameInit:00000000 SAI_FrameInit
+C:\Users\ktkuru\AppData\Local\Temp\ccvuHvbb.s:115    .text.SAI_FrameInit:0000002c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccvuHvbb.s:118    .text.SAI_SlotInit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccvuHvbb.s:124    .text.SAI_SlotInit:00000000 SAI_SlotInit
+C:\Users\ktkuru\AppData\Local\Temp\ccvuHvbb.s:148    .text.SAI_StructInit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccvuHvbb.s:154    .text.SAI_StructInit:00000000 SAI_StructInit
+C:\Users\ktkuru\AppData\Local\Temp\ccvuHvbb.s:173    .text.SAI_FrameStructInit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccvuHvbb.s:179    .text.SAI_FrameStructInit:00000000 SAI_FrameStructInit
+C:\Users\ktkuru\AppData\Local\Temp\ccvuHvbb.s:194    .text.SAI_SlotStructInit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccvuHvbb.s:200    .text.SAI_SlotStructInit:00000000 SAI_SlotStructInit
+C:\Users\ktkuru\AppData\Local\Temp\ccvuHvbb.s:213    .text.SAI_Cmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccvuHvbb.s:219    .text.SAI_Cmd:00000000 SAI_Cmd
+C:\Users\ktkuru\AppData\Local\Temp\ccvuHvbb.s:235    .text.SAI_MonoModeConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccvuHvbb.s:241    .text.SAI_MonoModeConfig:00000000 SAI_MonoModeConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccvuHvbb.s:254    .text.SAI_TRIStateConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccvuHvbb.s:260    .text.SAI_TRIStateConfig:00000000 SAI_TRIStateConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccvuHvbb.s:273    .text.SAI_CompandingModeConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccvuHvbb.s:279    .text.SAI_CompandingModeConfig:00000000 SAI_CompandingModeConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccvuHvbb.s:292    .text.SAI_MuteModeCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccvuHvbb.s:298    .text.SAI_MuteModeCmd:00000000 SAI_MuteModeCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccvuHvbb.s:314    .text.SAI_MuteValueConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccvuHvbb.s:320    .text.SAI_MuteValueConfig:00000000 SAI_MuteValueConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccvuHvbb.s:333    .text.SAI_MuteFrameCounterConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccvuHvbb.s:339    .text.SAI_MuteFrameCounterConfig:00000000 SAI_MuteFrameCounterConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccvuHvbb.s:352    .text.SAI_FlushFIFO:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccvuHvbb.s:358    .text.SAI_FlushFIFO:00000000 SAI_FlushFIFO
+C:\Users\ktkuru\AppData\Local\Temp\ccvuHvbb.s:368    .text.SAI_ReceiveData:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccvuHvbb.s:374    .text.SAI_ReceiveData:00000000 SAI_ReceiveData
+C:\Users\ktkuru\AppData\Local\Temp\ccvuHvbb.s:382    .text.SAI_SendData:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccvuHvbb.s:388    .text.SAI_SendData:00000000 SAI_SendData
+C:\Users\ktkuru\AppData\Local\Temp\ccvuHvbb.s:396    .text.SAI_DMACmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccvuHvbb.s:402    .text.SAI_DMACmd:00000000 SAI_DMACmd
+C:\Users\ktkuru\AppData\Local\Temp\ccvuHvbb.s:418    .text.SAI_ITConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccvuHvbb.s:424    .text.SAI_ITConfig:00000000 SAI_ITConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccvuHvbb.s:440    .text.SAI_GetFlagStatus:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccvuHvbb.s:446    .text.SAI_GetFlagStatus:00000000 SAI_GetFlagStatus
+C:\Users\ktkuru\AppData\Local\Temp\ccvuHvbb.s:460    .text.SAI_ClearFlag:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccvuHvbb.s:466    .text.SAI_ClearFlag:00000000 SAI_ClearFlag
+C:\Users\ktkuru\AppData\Local\Temp\ccvuHvbb.s:476    .text.SAI_GetITStatus:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccvuHvbb.s:482    .text.SAI_GetITStatus:00000000 SAI_GetITStatus
+C:\Users\ktkuru\AppData\Local\Temp\ccvuHvbb.s:502    .text.SAI_ClearITPendingBit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccvuHvbb.s:508    .text.SAI_ClearITPendingBit:00000000 SAI_ClearITPendingBit
+C:\Users\ktkuru\AppData\Local\Temp\ccvuHvbb.s:518    .text.SAI_GetCmdStatus:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccvuHvbb.s:524    .text.SAI_GetCmdStatus:00000000 SAI_GetCmdStatus
+C:\Users\ktkuru\AppData\Local\Temp\ccvuHvbb.s:538    .text.SAI_GetFIFOStatus:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccvuHvbb.s:544    .text.SAI_GetFIFOStatus:00000000 SAI_GetFIFOStatus
+
+UNDEFINED SYMBOLS
+RCC_APB2PeriphResetCmd
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccvuHvbb.s 			page 11
+
+

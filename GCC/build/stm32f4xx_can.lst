@@ -1,0 +1,1524 @@
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccP2eaOW.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"stm32f4xx_can.c"
+  16              		.text
+  17              		.section	.text.CheckITStatus,"ax",%progbits
+  18              		.align	1
+  19              		.syntax unified
+  20              		.thumb
+  21              		.thumb_func
+  23              	CheckITStatus:
+  24              		@ args = 0, pretend = 0, frame = 0
+  25              		@ frame_needed = 0, uses_anonymous_args = 0
+  26              		@ link register save eliminated.
+  27 0000 0842     		tst	r0, r1
+  28 0002 01D0     		beq	.L3
+  29 0004 0120     		movs	r0, #1
+  30 0006 7047     		bx	lr
+  31              	.L3:
+  32 0008 0020     		movs	r0, #0
+  33 000a 7047     		bx	lr
+  35              		.section	.text.CAN_DeInit,"ax",%progbits
+  36              		.align	1
+  37              		.global	CAN_DeInit
+  38              		.syntax unified
+  39              		.thumb
+  40              		.thumb_func
+  42              	CAN_DeInit:
+  43              		@ args = 0, pretend = 0, frame = 0
+  44              		@ frame_needed = 0, uses_anonymous_args = 0
+  45 0000 08B5     		push	{r3, lr}
+  46 0002 0C4B     		ldr	r3, .L9
+  47 0004 9842     		cmp	r0, r3
+  48 0006 0AD0     		beq	.L8
+  49 0008 0121     		movs	r1, #1
+  50 000a 4FF08060 		mov	r0, #67108864
+  51 000e FFF7FEFF 		bl	RCC_APB1PeriphResetCmd
+  52 0012 0021     		movs	r1, #0
+  53 0014 4FF08060 		mov	r0, #67108864
+  54 0018 FFF7FEFF 		bl	RCC_APB1PeriphResetCmd
+  55              	.L4:
+  56 001c 08BD     		pop	{r3, pc}
+  57              	.L8:
+  58 001e 0121     		movs	r1, #1
+  59 0020 4FF00070 		mov	r0, #33554432
+  60 0024 FFF7FEFF 		bl	RCC_APB1PeriphResetCmd
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccP2eaOW.s 			page 2
+
+
+  61 0028 0021     		movs	r1, #0
+  62 002a 4FF00070 		mov	r0, #33554432
+  63 002e FFF7FEFF 		bl	RCC_APB1PeriphResetCmd
+  64 0032 F3E7     		b	.L4
+  65              	.L10:
+  66              		.align	2
+  67              	.L9:
+  68 0034 00640040 		.word	1073767424
+  70              		.section	.text.CAN_Init,"ax",%progbits
+  71              		.align	1
+  72              		.global	CAN_Init
+  73              		.syntax unified
+  74              		.thumb
+  75              		.thumb_func
+  77              	CAN_Init:
+  78              		@ args = 0, pretend = 0, frame = 0
+  79              		@ frame_needed = 0, uses_anonymous_args = 0
+  80              		@ link register save eliminated.
+  81 0000 0368     		ldr	r3, [r0]
+  82 0002 23F00203 		bic	r3, r3, #2
+  83 0006 0360     		str	r3, [r0]
+  84 0008 0368     		ldr	r3, [r0]
+  85 000a 43F00103 		orr	r3, r3, #1
+  86 000e 0360     		str	r3, [r0]
+  87 0010 0023     		movs	r3, #0
+  88              	.L12:
+  89 0012 4268     		ldr	r2, [r0, #4]
+  90 0014 12F0010F 		tst	r2, #1
+  91 0018 05D1     		bne	.L13
+  92 001a 4FF6FF72 		movw	r2, #65535
+  93 001e 9342     		cmp	r3, r2
+  94 0020 01D0     		beq	.L13
+  95 0022 0133     		adds	r3, r3, #1
+  96 0024 F5E7     		b	.L12
+  97              	.L13:
+  98 0026 4368     		ldr	r3, [r0, #4]
+  99 0028 13F0010F 		tst	r3, #1
+ 100 002c 6BD0     		beq	.L31
+ 101 002e 8B79     		ldrb	r3, [r1, #6]	@ zero_extendqisi2
+ 102 0030 012B     		cmp	r3, #1
+ 103 0032 3BD0     		beq	.L33
+ 104 0034 0368     		ldr	r3, [r0]
+ 105 0036 23F08003 		bic	r3, r3, #128
+ 106 003a 0360     		str	r3, [r0]
+ 107              	.L17:
+ 108 003c CB79     		ldrb	r3, [r1, #7]	@ zero_extendqisi2
+ 109 003e 012B     		cmp	r3, #1
+ 110 0040 39D0     		beq	.L34
+ 111 0042 0368     		ldr	r3, [r0]
+ 112 0044 23F04003 		bic	r3, r3, #64
+ 113 0048 0360     		str	r3, [r0]
+ 114              	.L19:
+ 115 004a 0B7A     		ldrb	r3, [r1, #8]	@ zero_extendqisi2
+ 116 004c 012B     		cmp	r3, #1
+ 117 004e 37D0     		beq	.L35
+ 118 0050 0368     		ldr	r3, [r0]
+ 119 0052 23F02003 		bic	r3, r3, #32
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccP2eaOW.s 			page 3
+
+
+ 120 0056 0360     		str	r3, [r0]
+ 121              	.L21:
+ 122 0058 4B7A     		ldrb	r3, [r1, #9]	@ zero_extendqisi2
+ 123 005a 012B     		cmp	r3, #1
+ 124 005c 35D0     		beq	.L36
+ 125 005e 0368     		ldr	r3, [r0]
+ 126 0060 23F01003 		bic	r3, r3, #16
+ 127 0064 0360     		str	r3, [r0]
+ 128              	.L23:
+ 129 0066 8B7A     		ldrb	r3, [r1, #10]	@ zero_extendqisi2
+ 130 0068 012B     		cmp	r3, #1
+ 131 006a 33D0     		beq	.L37
+ 132 006c 0368     		ldr	r3, [r0]
+ 133 006e 23F00803 		bic	r3, r3, #8
+ 134 0072 0360     		str	r3, [r0]
+ 135              	.L25:
+ 136 0074 CB7A     		ldrb	r3, [r1, #11]	@ zero_extendqisi2
+ 137 0076 012B     		cmp	r3, #1
+ 138 0078 31D0     		beq	.L38
+ 139 007a 0368     		ldr	r3, [r0]
+ 140 007c 23F00403 		bic	r3, r3, #4
+ 141 0080 0360     		str	r3, [r0]
+ 142              	.L27:
+ 143 0082 8A78     		ldrb	r2, [r1, #2]	@ zero_extendqisi2
+ 144 0084 CB78     		ldrb	r3, [r1, #3]	@ zero_extendqisi2
+ 145 0086 1B06     		lsls	r3, r3, #24
+ 146 0088 43EA8273 		orr	r3, r3, r2, lsl #30
+ 147 008c 0A79     		ldrb	r2, [r1, #4]	@ zero_extendqisi2
+ 148 008e 43EA0243 		orr	r3, r3, r2, lsl #16
+ 149 0092 4A79     		ldrb	r2, [r1, #5]	@ zero_extendqisi2
+ 150 0094 43EA0253 		orr	r3, r3, r2, lsl #20
+ 151 0098 0A88     		ldrh	r2, [r1]
+ 152 009a 013A     		subs	r2, r2, #1
+ 153 009c 1343     		orrs	r3, r3, r2
+ 154 009e C361     		str	r3, [r0, #28]
+ 155 00a0 0368     		ldr	r3, [r0]
+ 156 00a2 23F00103 		bic	r3, r3, #1
+ 157 00a6 0360     		str	r3, [r0]
+ 158 00a8 0023     		movs	r3, #0
+ 159 00aa 1EE0     		b	.L28
+ 160              	.L33:
+ 161 00ac 0368     		ldr	r3, [r0]
+ 162 00ae 43F08003 		orr	r3, r3, #128
+ 163 00b2 0360     		str	r3, [r0]
+ 164 00b4 C2E7     		b	.L17
+ 165              	.L34:
+ 166 00b6 0368     		ldr	r3, [r0]
+ 167 00b8 43F04003 		orr	r3, r3, #64
+ 168 00bc 0360     		str	r3, [r0]
+ 169 00be C4E7     		b	.L19
+ 170              	.L35:
+ 171 00c0 0368     		ldr	r3, [r0]
+ 172 00c2 43F02003 		orr	r3, r3, #32
+ 173 00c6 0360     		str	r3, [r0]
+ 174 00c8 C6E7     		b	.L21
+ 175              	.L36:
+ 176 00ca 0368     		ldr	r3, [r0]
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccP2eaOW.s 			page 4
+
+
+ 177 00cc 43F01003 		orr	r3, r3, #16
+ 178 00d0 0360     		str	r3, [r0]
+ 179 00d2 C8E7     		b	.L23
+ 180              	.L37:
+ 181 00d4 0368     		ldr	r3, [r0]
+ 182 00d6 43F00803 		orr	r3, r3, #8
+ 183 00da 0360     		str	r3, [r0]
+ 184 00dc CAE7     		b	.L25
+ 185              	.L38:
+ 186 00de 0368     		ldr	r3, [r0]
+ 187 00e0 43F00403 		orr	r3, r3, #4
+ 188 00e4 0360     		str	r3, [r0]
+ 189 00e6 CCE7     		b	.L27
+ 190              	.L30:
+ 191 00e8 0133     		adds	r3, r3, #1
+ 192              	.L28:
+ 193 00ea 4268     		ldr	r2, [r0, #4]
+ 194 00ec 12F0010F 		tst	r2, #1
+ 195 00f0 03D0     		beq	.L29
+ 196 00f2 4FF6FF72 		movw	r2, #65535
+ 197 00f6 9342     		cmp	r3, r2
+ 198 00f8 F6D1     		bne	.L30
+ 199              	.L29:
+ 200 00fa 4368     		ldr	r3, [r0, #4]
+ 201 00fc 13F0010F 		tst	r3, #1
+ 202 0100 03D0     		beq	.L32
+ 203 0102 0020     		movs	r0, #0
+ 204 0104 7047     		bx	lr
+ 205              	.L31:
+ 206 0106 0020     		movs	r0, #0
+ 207 0108 7047     		bx	lr
+ 208              	.L32:
+ 209 010a 0120     		movs	r0, #1
+ 210 010c 7047     		bx	lr
+ 212              		.section	.text.CAN_FilterInit,"ax",%progbits
+ 213              		.align	1
+ 214              		.global	CAN_FilterInit
+ 215              		.syntax unified
+ 216              		.thumb
+ 217              		.thumb_func
+ 219              	CAN_FilterInit:
+ 220              		@ args = 0, pretend = 0, frame = 0
+ 221              		@ frame_needed = 0, uses_anonymous_args = 0
+ 222 0000 10B5     		push	{r4, lr}
+ 223 0002 827A     		ldrb	r2, [r0, #10]	@ zero_extendqisi2
+ 224 0004 0123     		movs	r3, #1
+ 225 0006 9340     		lsls	r3, r3, r2
+ 226 0008 3F4A     		ldr	r2, .L51
+ 227 000a D2F80012 		ldr	r1, [r2, #512]
+ 228 000e 41F00101 		orr	r1, r1, #1
+ 229 0012 C2F80012 		str	r1, [r2, #512]
+ 230 0016 D2F81C12 		ldr	r1, [r2, #540]
+ 231 001a 6FEA030C 		mvn	ip, r3
+ 232 001e 21EA0301 		bic	r1, r1, r3
+ 233 0022 C2F81C12 		str	r1, [r2, #540]
+ 234 0026 027B     		ldrb	r2, [r0, #12]	@ zero_extendqisi2
+ 235 0028 D2B9     		cbnz	r2, .L40
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccP2eaOW.s 			page 5
+
+
+ 236 002a 374A     		ldr	r2, .L51
+ 237 002c D2F80C12 		ldr	r1, [r2, #524]
+ 238 0030 0CEA0101 		and	r1, ip, r1
+ 239 0034 C2F80C12 		str	r1, [r2, #524]
+ 240 0038 B0F806E0 		ldrh	lr, [r0, #6]
+ 241 003c 4488     		ldrh	r4, [r0, #2]
+ 242 003e 817A     		ldrb	r1, [r0, #10]	@ zero_extendqisi2
+ 243 0040 44EA0E44 		orr	r4, r4, lr, lsl #16
+ 244 0044 4831     		adds	r1, r1, #72
+ 245 0046 42F83140 		str	r4, [r2, r1, lsl #3]
+ 246 004a 8488     		ldrh	r4, [r0, #4]
+ 247 004c 0188     		ldrh	r1, [r0]
+ 248 004e 90F80AE0 		ldrb	lr, [r0, #10]	@ zero_extendqisi2
+ 249 0052 41EA0441 		orr	r1, r1, r4, lsl #16
+ 250 0056 0EF1480E 		add	lr, lr, #72
+ 251 005a 02EBCE02 		add	r2, r2, lr, lsl #3
+ 252 005e 5160     		str	r1, [r2, #4]
+ 253              	.L40:
+ 254 0060 027B     		ldrb	r2, [r0, #12]	@ zero_extendqisi2
+ 255 0062 012A     		cmp	r2, #1
+ 256 0064 20D0     		beq	.L48
+ 257              	.L41:
+ 258 0066 C27A     		ldrb	r2, [r0, #11]	@ zero_extendqisi2
+ 259 0068 002A     		cmp	r2, #0
+ 260 006a 37D1     		bne	.L42
+ 261 006c 2649     		ldr	r1, .L51
+ 262 006e D1F80422 		ldr	r2, [r1, #516]
+ 263 0072 0CEA0202 		and	r2, ip, r2
+ 264 0076 C1F80422 		str	r2, [r1, #516]
+ 265              	.L43:
+ 266 007a 0289     		ldrh	r2, [r0, #8]
+ 267 007c 32B9     		cbnz	r2, .L44
+ 268 007e 2249     		ldr	r1, .L51
+ 269 0080 D1F81422 		ldr	r2, [r1, #532]
+ 270 0084 0CEA0202 		and	r2, ip, r2
+ 271 0088 C1F81422 		str	r2, [r1, #532]
+ 272              	.L44:
+ 273 008c 0289     		ldrh	r2, [r0, #8]
+ 274 008e 012A     		cmp	r2, #1
+ 275 0090 2BD0     		beq	.L49
+ 276              	.L45:
+ 277 0092 427B     		ldrb	r2, [r0, #13]	@ zero_extendqisi2
+ 278 0094 012A     		cmp	r2, #1
+ 279 0096 2FD0     		beq	.L50
+ 280              	.L46:
+ 281 0098 1B4A     		ldr	r2, .L51
+ 282 009a D2F80032 		ldr	r3, [r2, #512]
+ 283 009e 23F00103 		bic	r3, r3, #1
+ 284 00a2 C2F80032 		str	r3, [r2, #512]
+ 285 00a6 10BD     		pop	{r4, pc}
+ 286              	.L48:
+ 287 00a8 174A     		ldr	r2, .L51
+ 288 00aa D2F80C12 		ldr	r1, [r2, #524]
+ 289 00ae 1943     		orrs	r1, r1, r3
+ 290 00b0 C2F80C12 		str	r1, [r2, #524]
+ 291 00b4 B0F800E0 		ldrh	lr, [r0]
+ 292 00b8 4488     		ldrh	r4, [r0, #2]
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccP2eaOW.s 			page 6
+
+
+ 293 00ba 817A     		ldrb	r1, [r0, #10]	@ zero_extendqisi2
+ 294 00bc 44EA0E44 		orr	r4, r4, lr, lsl #16
+ 295 00c0 4831     		adds	r1, r1, #72
+ 296 00c2 42F83140 		str	r4, [r2, r1, lsl #3]
+ 297 00c6 B0F804E0 		ldrh	lr, [r0, #4]
+ 298 00ca C188     		ldrh	r1, [r0, #6]
+ 299 00cc 847A     		ldrb	r4, [r0, #10]	@ zero_extendqisi2
+ 300 00ce 41EA0E41 		orr	r1, r1, lr, lsl #16
+ 301 00d2 4834     		adds	r4, r4, #72
+ 302 00d4 02EBC402 		add	r2, r2, r4, lsl #3
+ 303 00d8 5160     		str	r1, [r2, #4]
+ 304 00da C4E7     		b	.L41
+ 305              	.L42:
+ 306 00dc 0A49     		ldr	r1, .L51
+ 307 00de D1F80422 		ldr	r2, [r1, #516]
+ 308 00e2 1A43     		orrs	r2, r2, r3
+ 309 00e4 C1F80422 		str	r2, [r1, #516]
+ 310 00e8 C7E7     		b	.L43
+ 311              	.L49:
+ 312 00ea 0749     		ldr	r1, .L51
+ 313 00ec D1F81422 		ldr	r2, [r1, #532]
+ 314 00f0 1A43     		orrs	r2, r2, r3
+ 315 00f2 C1F81422 		str	r2, [r1, #532]
+ 316 00f6 CCE7     		b	.L45
+ 317              	.L50:
+ 318 00f8 0349     		ldr	r1, .L51
+ 319 00fa D1F81C22 		ldr	r2, [r1, #540]
+ 320 00fe 1343     		orrs	r3, r3, r2
+ 321 0100 C1F81C32 		str	r3, [r1, #540]
+ 322 0104 C8E7     		b	.L46
+ 323              	.L52:
+ 324 0106 00BF     		.align	2
+ 325              	.L51:
+ 326 0108 00640040 		.word	1073767424
+ 328              		.section	.text.CAN_StructInit,"ax",%progbits
+ 329              		.align	1
+ 330              		.global	CAN_StructInit
+ 331              		.syntax unified
+ 332              		.thumb
+ 333              		.thumb_func
+ 335              	CAN_StructInit:
+ 336              		@ args = 0, pretend = 0, frame = 0
+ 337              		@ frame_needed = 0, uses_anonymous_args = 0
+ 338              		@ link register save eliminated.
+ 339 0000 0023     		movs	r3, #0
+ 340 0002 8371     		strb	r3, [r0, #6]
+ 341 0004 C371     		strb	r3, [r0, #7]
+ 342 0006 0372     		strb	r3, [r0, #8]
+ 343 0008 4372     		strb	r3, [r0, #9]
+ 344 000a 8372     		strb	r3, [r0, #10]
+ 345 000c C372     		strb	r3, [r0, #11]
+ 346 000e 8370     		strb	r3, [r0, #2]
+ 347 0010 C370     		strb	r3, [r0, #3]
+ 348 0012 0323     		movs	r3, #3
+ 349 0014 0371     		strb	r3, [r0, #4]
+ 350 0016 0223     		movs	r3, #2
+ 351 0018 4371     		strb	r3, [r0, #5]
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccP2eaOW.s 			page 7
+
+
+ 352 001a 0123     		movs	r3, #1
+ 353 001c 0380     		strh	r3, [r0]	@ movhi
+ 354 001e 7047     		bx	lr
+ 356              		.section	.text.CAN_SlaveStartBank,"ax",%progbits
+ 357              		.align	1
+ 358              		.global	CAN_SlaveStartBank
+ 359              		.syntax unified
+ 360              		.thumb
+ 361              		.thumb_func
+ 363              	CAN_SlaveStartBank:
+ 364              		@ args = 0, pretend = 0, frame = 0
+ 365              		@ frame_needed = 0, uses_anonymous_args = 0
+ 366              		@ link register save eliminated.
+ 367 0000 0D4B     		ldr	r3, .L55
+ 368 0002 D3F80022 		ldr	r2, [r3, #512]
+ 369 0006 42F00102 		orr	r2, r2, #1
+ 370 000a C3F80022 		str	r2, [r3, #512]
+ 371 000e D3F80022 		ldr	r2, [r3, #512]
+ 372 0012 22F47C52 		bic	r2, r2, #16128
+ 373 0016 22F00E02 		bic	r2, r2, #14
+ 374 001a C3F80022 		str	r2, [r3, #512]
+ 375 001e D3F80022 		ldr	r2, [r3, #512]
+ 376 0022 42EA0022 		orr	r2, r2, r0, lsl #8
+ 377 0026 C3F80022 		str	r2, [r3, #512]
+ 378 002a D3F80022 		ldr	r2, [r3, #512]
+ 379 002e 22F00102 		bic	r2, r2, #1
+ 380 0032 C3F80022 		str	r2, [r3, #512]
+ 381 0036 7047     		bx	lr
+ 382              	.L56:
+ 383              		.align	2
+ 384              	.L55:
+ 385 0038 00640040 		.word	1073767424
+ 387              		.section	.text.CAN_DBGFreeze,"ax",%progbits
+ 388              		.align	1
+ 389              		.global	CAN_DBGFreeze
+ 390              		.syntax unified
+ 391              		.thumb
+ 392              		.thumb_func
+ 394              	CAN_DBGFreeze:
+ 395              		@ args = 0, pretend = 0, frame = 0
+ 396              		@ frame_needed = 0, uses_anonymous_args = 0
+ 397              		@ link register save eliminated.
+ 398 0000 21B1     		cbz	r1, .L58
+ 399 0002 0368     		ldr	r3, [r0]
+ 400 0004 43F48033 		orr	r3, r3, #65536
+ 401 0008 0360     		str	r3, [r0]
+ 402 000a 7047     		bx	lr
+ 403              	.L58:
+ 404 000c 0368     		ldr	r3, [r0]
+ 405 000e 23F48033 		bic	r3, r3, #65536
+ 406 0012 0360     		str	r3, [r0]
+ 407 0014 7047     		bx	lr
+ 409              		.section	.text.CAN_TTComModeCmd,"ax",%progbits
+ 410              		.align	1
+ 411              		.global	CAN_TTComModeCmd
+ 412              		.syntax unified
+ 413              		.thumb
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccP2eaOW.s 			page 8
+
+
+ 414              		.thumb_func
+ 416              	CAN_TTComModeCmd:
+ 417              		@ args = 0, pretend = 0, frame = 0
+ 418              		@ frame_needed = 0, uses_anonymous_args = 0
+ 419              		@ link register save eliminated.
+ 420 0000 B1B1     		cbz	r1, .L61
+ 421 0002 0368     		ldr	r3, [r0]
+ 422 0004 43F08003 		orr	r3, r3, #128
+ 423 0008 0360     		str	r3, [r0]
+ 424 000a D0F88431 		ldr	r3, [r0, #388]
+ 425 000e 43F48073 		orr	r3, r3, #256
+ 426 0012 C0F88431 		str	r3, [r0, #388]
+ 427 0016 D0F89431 		ldr	r3, [r0, #404]
+ 428 001a 43F48073 		orr	r3, r3, #256
+ 429 001e C0F89431 		str	r3, [r0, #404]
+ 430 0022 D0F8A431 		ldr	r3, [r0, #420]
+ 431 0026 43F48073 		orr	r3, r3, #256
+ 432 002a C0F8A431 		str	r3, [r0, #420]
+ 433 002e 7047     		bx	lr
+ 434              	.L61:
+ 435 0030 0368     		ldr	r3, [r0]
+ 436 0032 23F08003 		bic	r3, r3, #128
+ 437 0036 0360     		str	r3, [r0]
+ 438 0038 D0F88431 		ldr	r3, [r0, #388]
+ 439 003c 23F48073 		bic	r3, r3, #256
+ 440 0040 C0F88431 		str	r3, [r0, #388]
+ 441 0044 D0F89431 		ldr	r3, [r0, #404]
+ 442 0048 23F48073 		bic	r3, r3, #256
+ 443 004c C0F89431 		str	r3, [r0, #404]
+ 444 0050 D0F8A431 		ldr	r3, [r0, #420]
+ 445 0054 23F48073 		bic	r3, r3, #256
+ 446 0058 C0F8A431 		str	r3, [r0, #420]
+ 447 005c 7047     		bx	lr
+ 449              		.section	.text.CAN_Transmit,"ax",%progbits
+ 450              		.align	1
+ 451              		.global	CAN_Transmit
+ 452              		.syntax unified
+ 453              		.thumb
+ 454              		.thumb_func
+ 456              	CAN_Transmit:
+ 457              		@ args = 0, pretend = 0, frame = 0
+ 458              		@ frame_needed = 0, uses_anonymous_args = 0
+ 459 0000 0346     		mov	r3, r0
+ 460 0002 8268     		ldr	r2, [r0, #8]
+ 461 0004 12F0806F 		tst	r2, #67108864
+ 462 0008 09D1     		bne	.L68
+ 463 000a 8268     		ldr	r2, [r0, #8]
+ 464 000c 12F0006F 		tst	r2, #134217728
+ 465 0010 4FD1     		bne	.L69
+ 466 0012 8268     		ldr	r2, [r0, #8]
+ 467 0014 12F0805F 		tst	r2, #268435456
+ 468 0018 5BD0     		beq	.L70
+ 469 001a 0220     		movs	r0, #2
+ 470 001c 00E0     		b	.L64
+ 471              	.L68:
+ 472 001e 0020     		movs	r0, #0
+ 473              	.L64:
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccP2eaOW.s 			page 9
+
+
+ 474 0020 70B5     		push	{r4, r5, r6, lr}
+ 475 0022 8646     		mov	lr, r0
+ 476 0024 00F11802 		add	r2, r0, #24
+ 477 0028 1201     		lsls	r2, r2, #4
+ 478 002a 9C58     		ldr	r4, [r3, r2]
+ 479 002c 04F00104 		and	r4, r4, #1
+ 480 0030 9C50     		str	r4, [r3, r2]
+ 481 0032 0A7A     		ldrb	r2, [r1, #8]	@ zero_extendqisi2
+ 482 0034 002A     		cmp	r2, #0
+ 483 0036 3ED1     		bne	.L66
+ 484 0038 00F11802 		add	r2, r0, #24
+ 485 003c 1201     		lsls	r2, r2, #4
+ 486 003e 9C58     		ldr	r4, [r3, r2]
+ 487 0040 4D7A     		ldrb	r5, [r1, #9]	@ zero_extendqisi2
+ 488 0042 0E68     		ldr	r6, [r1]
+ 489 0044 45EA4655 		orr	r5, r5, r6, lsl #21
+ 490 0048 2C43     		orrs	r4, r4, r5
+ 491 004a 9C50     		str	r4, [r3, r2]
+ 492              	.L67:
+ 493 004c 8A7A     		ldrb	r2, [r1, #10]	@ zero_extendqisi2
+ 494 004e 02F00F02 		and	r2, r2, #15
+ 495 0052 8A72     		strb	r2, [r1, #10]
+ 496 0054 0EF11802 		add	r2, lr, #24
+ 497 0058 4FEA021C 		lsl	ip, r2, #4
+ 498 005c 03EB0212 		add	r2, r3, r2, lsl #4
+ 499 0060 5468     		ldr	r4, [r2, #4]
+ 500 0062 24F00F04 		bic	r4, r4, #15
+ 501 0066 5460     		str	r4, [r2, #4]
+ 502 0068 5468     		ldr	r4, [r2, #4]
+ 503 006a 8D7A     		ldrb	r5, [r1, #10]	@ zero_extendqisi2
+ 504 006c 2C43     		orrs	r4, r4, r5
+ 505 006e 5460     		str	r4, [r2, #4]
+ 506 0070 8C7B     		ldrb	r4, [r1, #14]	@ zero_extendqisi2
+ 507 0072 4A7B     		ldrb	r2, [r1, #13]	@ zero_extendqisi2
+ 508 0074 1204     		lsls	r2, r2, #16
+ 509 0076 42EA0462 		orr	r2, r2, r4, lsl #24
+ 510 007a 0C7B     		ldrb	r4, [r1, #12]	@ zero_extendqisi2
+ 511 007c 42EA0422 		orr	r2, r2, r4, lsl #8
+ 512 0080 CC7A     		ldrb	r4, [r1, #11]	@ zero_extendqisi2
+ 513 0082 2243     		orrs	r2, r2, r4
+ 514 0084 03EB0E1E 		add	lr, r3, lr, lsl #4
+ 515 0088 CEF88821 		str	r2, [lr, #392]
+ 516 008c 8C7C     		ldrb	r4, [r1, #18]	@ zero_extendqisi2
+ 517 008e 4A7C     		ldrb	r2, [r1, #17]	@ zero_extendqisi2
+ 518 0090 1204     		lsls	r2, r2, #16
+ 519 0092 42EA0462 		orr	r2, r2, r4, lsl #24
+ 520 0096 0C7C     		ldrb	r4, [r1, #16]	@ zero_extendqisi2
+ 521 0098 42EA0422 		orr	r2, r2, r4, lsl #8
+ 522 009c C97B     		ldrb	r1, [r1, #15]	@ zero_extendqisi2
+ 523 009e 0A43     		orrs	r2, r2, r1
+ 524 00a0 CEF88C21 		str	r2, [lr, #396]
+ 525 00a4 53F80C20 		ldr	r2, [r3, ip]
+ 526 00a8 42F00102 		orr	r2, r2, #1
+ 527 00ac 43F80C20 		str	r2, [r3, ip]
+ 528 00b0 70BD     		pop	{r4, r5, r6, pc}
+ 529              	.L69:
+ 530 00b2 0120     		movs	r0, #1
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccP2eaOW.s 			page 10
+
+
+ 531 00b4 B4E7     		b	.L64
+ 532              	.L66:
+ 533 00b6 00F11804 		add	r4, r0, #24
+ 534 00ba 2401     		lsls	r4, r4, #4
+ 535 00bc 1D59     		ldr	r5, [r3, r4]
+ 536 00be 4E68     		ldr	r6, [r1, #4]
+ 537 00c0 42EAC602 		orr	r2, r2, r6, lsl #3
+ 538 00c4 91F809C0 		ldrb	ip, [r1, #9]	@ zero_extendqisi2
+ 539 00c8 42EA0C02 		orr	r2, r2, ip
+ 540 00cc 2A43     		orrs	r2, r2, r5
+ 541 00ce 1A51     		str	r2, [r3, r4]
+ 542 00d0 BCE7     		b	.L67
+ 543              	.L70:
+ 544 00d2 0420     		movs	r0, #4
+ 545 00d4 7047     		bx	lr
+ 547              		.section	.text.CAN_TransmitStatus,"ax",%progbits
+ 548              		.align	1
+ 549              		.global	CAN_TransmitStatus
+ 550              		.syntax unified
+ 551              		.thumb
+ 552              		.thumb_func
+ 554              	CAN_TransmitStatus:
+ 555              		@ args = 0, pretend = 0, frame = 0
+ 556              		@ frame_needed = 0, uses_anonymous_args = 0
+ 557              		@ link register save eliminated.
+ 558 0000 0129     		cmp	r1, #1
+ 559 0002 18D0     		beq	.L75
+ 560 0004 0229     		cmp	r1, #2
+ 561 0006 1AD0     		beq	.L76
+ 562 0008 69BB     		cbnz	r1, .L80
+ 563 000a 8368     		ldr	r3, [r0, #8]
+ 564 000c 23F07B43 		bic	r3, r3, #-83886080
+ 565 0010 23F47F03 		bic	r3, r3, #16711680
+ 566 0014 23F47F43 		bic	r3, r3, #65280
+ 567 0018 23F0FC03 		bic	r3, r3, #252
+ 568              	.L78:
+ 569 001c 1A4A     		ldr	r2, .L88
+ 570 001e 9342     		cmp	r3, r2
+ 571 0020 23D0     		beq	.L81
+ 572 0022 14D8     		bhi	.L79
+ 573 0024 194A     		ldr	r2, .L88+4
+ 574 0026 9342     		cmp	r3, r2
+ 575 0028 21D0     		beq	.L82
+ 576 002a 0232     		adds	r2, r2, #2
+ 577 002c 9342     		cmp	r3, r2
+ 578 002e 20D0     		beq	.L83
+ 579 0030 0BBB     		cbnz	r3, .L84
+ 580 0032 0220     		movs	r0, #2
+ 581 0034 7047     		bx	lr
+ 582              	.L75:
+ 583 0036 8268     		ldr	r2, [r0, #8]
+ 584 0038 154B     		ldr	r3, .L88+8
+ 585 003a 1340     		ands	r3, r3, r2
+ 586 003c EEE7     		b	.L78
+ 587              	.L76:
+ 588 003e 8368     		ldr	r3, [r0, #8]
+ 589 0040 23F06F43 		bic	r3, r3, #-285212672
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccP2eaOW.s 			page 11
+
+
+ 590 0044 23F47C03 		bic	r3, r3, #16515072
+ 591 0048 1B0C     		lsrs	r3, r3, #16
+ 592 004a 1B04     		lsls	r3, r3, #16
+ 593 004c E6E7     		b	.L78
+ 594              	.L79:
+ 595 004e 114A     		ldr	r2, .L88+12
+ 596 0050 9342     		cmp	r3, r2
+ 597 0052 12D0     		beq	.L85
+ 598 0054 02F50032 		add	r2, r2, #131072
+ 599 0058 9342     		cmp	r3, r2
+ 600 005a 10D0     		beq	.L86
+ 601 005c 0C4A     		ldr	r2, .L88+8
+ 602 005e 9342     		cmp	r3, r2
+ 603 0060 0FD1     		bne	.L87
+ 604 0062 0120     		movs	r0, #1
+ 605 0064 7047     		bx	lr
+ 606              	.L80:
+ 607 0066 0220     		movs	r0, #2
+ 608 0068 7047     		bx	lr
+ 609              	.L81:
+ 610 006a 0020     		movs	r0, #0
+ 611 006c 7047     		bx	lr
+ 612              	.L82:
+ 613 006e 0020     		movs	r0, #0
+ 614 0070 7047     		bx	lr
+ 615              	.L83:
+ 616 0072 0120     		movs	r0, #1
+ 617 0074 7047     		bx	lr
+ 618              	.L84:
+ 619 0076 0020     		movs	r0, #0
+ 620 0078 7047     		bx	lr
+ 621              	.L85:
+ 622 007a 0020     		movs	r0, #0
+ 623 007c 7047     		bx	lr
+ 624              	.L86:
+ 625 007e 0120     		movs	r0, #1
+ 626 0080 7047     		bx	lr
+ 627              	.L87:
+ 628 0082 0020     		movs	r0, #0
+ 629 0084 7047     		bx	lr
+ 630              	.L89:
+ 631 0086 00BF     		.align	2
+ 632              	.L88:
+ 633 0088 00010008 		.word	134217984
+ 634 008c 01000004 		.word	67108865
+ 635 0090 00030008 		.word	134218496
+ 636 0094 00000110 		.word	268500992
+ 638              		.section	.text.CAN_CancelTransmit,"ax",%progbits
+ 639              		.align	1
+ 640              		.global	CAN_CancelTransmit
+ 641              		.syntax unified
+ 642              		.thumb
+ 643              		.thumb_func
+ 645              	CAN_CancelTransmit:
+ 646              		@ args = 0, pretend = 0, frame = 0
+ 647              		@ frame_needed = 0, uses_anonymous_args = 0
+ 648              		@ link register save eliminated.
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccP2eaOW.s 			page 12
+
+
+ 649 0000 0129     		cmp	r1, #1
+ 650 0002 07D0     		beq	.L91
+ 651 0004 0229     		cmp	r1, #2
+ 652 0006 0AD0     		beq	.L92
+ 653 0008 69B9     		cbnz	r1, .L90
+ 654 000a 8368     		ldr	r3, [r0, #8]
+ 655 000c 43F08003 		orr	r3, r3, #128
+ 656 0010 8360     		str	r3, [r0, #8]
+ 657 0012 7047     		bx	lr
+ 658              	.L91:
+ 659 0014 8368     		ldr	r3, [r0, #8]
+ 660 0016 43F40043 		orr	r3, r3, #32768
+ 661 001a 8360     		str	r3, [r0, #8]
+ 662 001c 7047     		bx	lr
+ 663              	.L92:
+ 664 001e 8368     		ldr	r3, [r0, #8]
+ 665 0020 43F40003 		orr	r3, r3, #8388608
+ 666 0024 8360     		str	r3, [r0, #8]
+ 667              	.L90:
+ 668 0026 7047     		bx	lr
+ 670              		.section	.text.CAN_Receive,"ax",%progbits
+ 671              		.align	1
+ 672              		.global	CAN_Receive
+ 673              		.syntax unified
+ 674              		.thumb
+ 675              		.thumb_func
+ 677              	CAN_Receive:
+ 678              		@ args = 0, pretend = 0, frame = 0
+ 679              		@ frame_needed = 0, uses_anonymous_args = 0
+ 680              		@ link register save eliminated.
+ 681 0000 10B4     		push	{r4}
+ 682 0002 01F11B03 		add	r3, r1, #27
+ 683 0006 1B01     		lsls	r3, r3, #4
+ 684 0008 C358     		ldr	r3, [r0, r3]
+ 685 000a 03F00403 		and	r3, r3, #4
+ 686 000e 1372     		strb	r3, [r2, #8]
+ 687 0010 002B     		cmp	r3, #0
+ 688 0012 3FD1     		bne	.L95
+ 689 0014 01F11B03 		add	r3, r1, #27
+ 690 0018 1B01     		lsls	r3, r3, #4
+ 691 001a C358     		ldr	r3, [r0, r3]
+ 692 001c 5B0D     		lsrs	r3, r3, #21
+ 693 001e 1360     		str	r3, [r2]
+ 694              	.L96:
+ 695 0020 01F11B03 		add	r3, r1, #27
+ 696 0024 1C01     		lsls	r4, r3, #4
+ 697 0026 00EB0313 		add	r3, r0, r3, lsl #4
+ 698 002a 0459     		ldr	r4, [r0, r4]
+ 699 002c 04F00204 		and	r4, r4, #2
+ 700 0030 5472     		strb	r4, [r2, #9]
+ 701 0032 5C68     		ldr	r4, [r3, #4]
+ 702 0034 04F00F04 		and	r4, r4, #15
+ 703 0038 9472     		strb	r4, [r2, #10]
+ 704 003a 5B68     		ldr	r3, [r3, #4]
+ 705 003c 1B0A     		lsrs	r3, r3, #8
+ 706 003e D374     		strb	r3, [r2, #19]
+ 707 0040 00EB0113 		add	r3, r0, r1, lsl #4
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccP2eaOW.s 			page 13
+
+
+ 708 0044 D3F8B841 		ldr	r4, [r3, #440]
+ 709 0048 D472     		strb	r4, [r2, #11]
+ 710 004a D3F8B841 		ldr	r4, [r3, #440]
+ 711 004e 240A     		lsrs	r4, r4, #8
+ 712 0050 1473     		strb	r4, [r2, #12]
+ 713 0052 D3F8B841 		ldr	r4, [r3, #440]
+ 714 0056 240C     		lsrs	r4, r4, #16
+ 715 0058 5473     		strb	r4, [r2, #13]
+ 716 005a D3F8B841 		ldr	r4, [r3, #440]
+ 717 005e 240E     		lsrs	r4, r4, #24
+ 718 0060 9473     		strb	r4, [r2, #14]
+ 719 0062 D3F8BC41 		ldr	r4, [r3, #444]
+ 720 0066 D473     		strb	r4, [r2, #15]
+ 721 0068 D3F8BC41 		ldr	r4, [r3, #444]
+ 722 006c 240A     		lsrs	r4, r4, #8
+ 723 006e 1474     		strb	r4, [r2, #16]
+ 724 0070 D3F8BC41 		ldr	r4, [r3, #444]
+ 725 0074 4FEA144C 		lsr	ip, r4, #16
+ 726 0078 82F811C0 		strb	ip, [r2, #17]
+ 727 007c D3F8BC31 		ldr	r3, [r3, #444]
+ 728 0080 1B0E     		lsrs	r3, r3, #24
+ 729 0082 9374     		strb	r3, [r2, #18]
+ 730 0084 69B9     		cbnz	r1, .L97
+ 731 0086 C368     		ldr	r3, [r0, #12]
+ 732 0088 43F02003 		orr	r3, r3, #32
+ 733 008c C360     		str	r3, [r0, #12]
+ 734              	.L94:
+ 735 008e 5DF8044B 		ldr	r4, [sp], #4
+ 736 0092 7047     		bx	lr
+ 737              	.L95:
+ 738 0094 01F11B03 		add	r3, r1, #27
+ 739 0098 1B01     		lsls	r3, r3, #4
+ 740 009a C358     		ldr	r3, [r0, r3]
+ 741 009c DB08     		lsrs	r3, r3, #3
+ 742 009e 5360     		str	r3, [r2, #4]
+ 743 00a0 BEE7     		b	.L96
+ 744              	.L97:
+ 745 00a2 0369     		ldr	r3, [r0, #16]
+ 746 00a4 43F02003 		orr	r3, r3, #32
+ 747 00a8 0361     		str	r3, [r0, #16]
+ 748 00aa F0E7     		b	.L94
+ 750              		.section	.text.CAN_FIFORelease,"ax",%progbits
+ 751              		.align	1
+ 752              		.global	CAN_FIFORelease
+ 753              		.syntax unified
+ 754              		.thumb
+ 755              		.thumb_func
+ 757              	CAN_FIFORelease:
+ 758              		@ args = 0, pretend = 0, frame = 0
+ 759              		@ frame_needed = 0, uses_anonymous_args = 0
+ 760              		@ link register save eliminated.
+ 761 0000 21B9     		cbnz	r1, .L101
+ 762 0002 C368     		ldr	r3, [r0, #12]
+ 763 0004 43F02003 		orr	r3, r3, #32
+ 764 0008 C360     		str	r3, [r0, #12]
+ 765 000a 7047     		bx	lr
+ 766              	.L101:
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccP2eaOW.s 			page 14
+
+
+ 767 000c 0369     		ldr	r3, [r0, #16]
+ 768 000e 43F02003 		orr	r3, r3, #32
+ 769 0012 0361     		str	r3, [r0, #16]
+ 770 0014 7047     		bx	lr
+ 772              		.section	.text.CAN_MessagePending,"ax",%progbits
+ 773              		.align	1
+ 774              		.global	CAN_MessagePending
+ 775              		.syntax unified
+ 776              		.thumb
+ 777              		.thumb_func
+ 779              	CAN_MessagePending:
+ 780              		@ args = 0, pretend = 0, frame = 0
+ 781              		@ frame_needed = 0, uses_anonymous_args = 0
+ 782              		@ link register save eliminated.
+ 783 0000 19B9     		cbnz	r1, .L104
+ 784 0002 C068     		ldr	r0, [r0, #12]
+ 785 0004 00F00300 		and	r0, r0, #3
+ 786 0008 7047     		bx	lr
+ 787              	.L104:
+ 788 000a 0129     		cmp	r1, #1
+ 789 000c 01D0     		beq	.L107
+ 790 000e 0020     		movs	r0, #0
+ 791 0010 7047     		bx	lr
+ 792              	.L107:
+ 793 0012 0069     		ldr	r0, [r0, #16]
+ 794 0014 00F00300 		and	r0, r0, #3
+ 795 0018 7047     		bx	lr
+ 797              		.section	.text.CAN_OperatingModeRequest,"ax",%progbits
+ 798              		.align	1
+ 799              		.global	CAN_OperatingModeRequest
+ 800              		.syntax unified
+ 801              		.thumb
+ 802              		.thumb_func
+ 804              	CAN_OperatingModeRequest:
+ 805              		@ args = 0, pretend = 0, frame = 0
+ 806              		@ frame_needed = 0, uses_anonymous_args = 0
+ 807              		@ link register save eliminated.
+ 808 0000 8C46     		mov	ip, r1
+ 809 0002 B1B9     		cbnz	r1, .L109
+ 810 0004 0368     		ldr	r3, [r0]
+ 811 0006 23F00303 		bic	r3, r3, #3
+ 812 000a 43F00103 		orr	r3, r3, #1
+ 813 000e 0360     		str	r3, [r0]
+ 814 0010 4FF6FF72 		movw	r2, #65535
+ 815              	.L110:
+ 816 0014 4368     		ldr	r3, [r0, #4]
+ 817 0016 03F00303 		and	r3, r3, #3
+ 818 001a 012B     		cmp	r3, #1
+ 819 001c 02D0     		beq	.L111
+ 820 001e 0AB1     		cbz	r2, .L111
+ 821 0020 013A     		subs	r2, r2, #1
+ 822 0022 F7E7     		b	.L110
+ 823              	.L111:
+ 824 0024 4368     		ldr	r3, [r0, #4]
+ 825 0026 03F00303 		and	r3, r3, #3
+ 826 002a 012B     		cmp	r3, #1
+ 827 002c 33D0     		beq	.L121
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccP2eaOW.s 			page 15
+
+
+ 828 002e 6046     		mov	r0, ip
+ 829 0030 7047     		bx	lr
+ 830              	.L109:
+ 831 0032 0129     		cmp	r1, #1
+ 832 0034 03D0     		beq	.L125
+ 833 0036 0229     		cmp	r1, #2
+ 834 0038 15D0     		beq	.L126
+ 835 003a 0020     		movs	r0, #0
+ 836 003c 7047     		bx	lr
+ 837              	.L125:
+ 838 003e 0368     		ldr	r3, [r0]
+ 839 0040 23F00303 		bic	r3, r3, #3
+ 840 0044 0360     		str	r3, [r0]
+ 841 0046 4FF6FF73 		movw	r3, #65535
+ 842 004a 00E0     		b	.L115
+ 843              	.L117:
+ 844 004c 013B     		subs	r3, r3, #1
+ 845              	.L115:
+ 846 004e 4268     		ldr	r2, [r0, #4]
+ 847 0050 12F0030F 		tst	r2, #3
+ 848 0054 01D0     		beq	.L116
+ 849 0056 002B     		cmp	r3, #0
+ 850 0058 F8D1     		bne	.L117
+ 851              	.L116:
+ 852 005a 4368     		ldr	r3, [r0, #4]
+ 853 005c 13F0030F 		tst	r3, #3
+ 854 0060 1BD0     		beq	.L122
+ 855 0062 0020     		movs	r0, #0
+ 856 0064 7047     		bx	lr
+ 857              	.L126:
+ 858 0066 0368     		ldr	r3, [r0]
+ 859 0068 23F00303 		bic	r3, r3, #3
+ 860 006c 43F00203 		orr	r3, r3, #2
+ 861 0070 0360     		str	r3, [r0]
+ 862 0072 4FF6FF72 		movw	r2, #65535
+ 863 0076 00E0     		b	.L118
+ 864              	.L120:
+ 865 0078 013A     		subs	r2, r2, #1
+ 866              	.L118:
+ 867 007a 4368     		ldr	r3, [r0, #4]
+ 868 007c 03F00303 		and	r3, r3, #3
+ 869 0080 022B     		cmp	r3, #2
+ 870 0082 01D0     		beq	.L119
+ 871 0084 002A     		cmp	r2, #0
+ 872 0086 F7D1     		bne	.L120
+ 873              	.L119:
+ 874 0088 4368     		ldr	r3, [r0, #4]
+ 875 008a 03F00303 		and	r3, r3, #3
+ 876 008e 022B     		cmp	r3, #2
+ 877 0090 05D0     		beq	.L124
+ 878 0092 0020     		movs	r0, #0
+ 879 0094 7047     		bx	lr
+ 880              	.L121:
+ 881 0096 0120     		movs	r0, #1
+ 882 0098 7047     		bx	lr
+ 883              	.L122:
+ 884 009a 6046     		mov	r0, ip
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccP2eaOW.s 			page 16
+
+
+ 885 009c 7047     		bx	lr
+ 886              	.L124:
+ 887 009e 0120     		movs	r0, #1
+ 888 00a0 7047     		bx	lr
+ 890              		.section	.text.CAN_Sleep,"ax",%progbits
+ 891              		.align	1
+ 892              		.global	CAN_Sleep
+ 893              		.syntax unified
+ 894              		.thumb
+ 895              		.thumb_func
+ 897              	CAN_Sleep:
+ 898              		@ args = 0, pretend = 0, frame = 0
+ 899              		@ frame_needed = 0, uses_anonymous_args = 0
+ 900              		@ link register save eliminated.
+ 901 0000 0368     		ldr	r3, [r0]
+ 902 0002 23F00303 		bic	r3, r3, #3
+ 903 0006 43F00203 		orr	r3, r3, #2
+ 904 000a 0360     		str	r3, [r0]
+ 905 000c 4368     		ldr	r3, [r0, #4]
+ 906 000e 03F00303 		and	r3, r3, #3
+ 907 0012 022B     		cmp	r3, #2
+ 908 0014 01D0     		beq	.L129
+ 909 0016 0020     		movs	r0, #0
+ 910 0018 7047     		bx	lr
+ 911              	.L129:
+ 912 001a 0120     		movs	r0, #1
+ 913 001c 7047     		bx	lr
+ 915              		.section	.text.CAN_WakeUp,"ax",%progbits
+ 916              		.align	1
+ 917              		.global	CAN_WakeUp
+ 918              		.syntax unified
+ 919              		.thumb
+ 920              		.thumb_func
+ 922              	CAN_WakeUp:
+ 923              		@ args = 0, pretend = 0, frame = 0
+ 924              		@ frame_needed = 0, uses_anonymous_args = 0
+ 925              		@ link register save eliminated.
+ 926 0000 0368     		ldr	r3, [r0]
+ 927 0002 23F00203 		bic	r3, r3, #2
+ 928 0006 0360     		str	r3, [r0]
+ 929 0008 4FF6FF73 		movw	r3, #65535
+ 930              	.L131:
+ 931 000c 4268     		ldr	r2, [r0, #4]
+ 932 000e 12F0020F 		tst	r2, #2
+ 933 0012 02D0     		beq	.L132
+ 934 0014 0BB1     		cbz	r3, .L132
+ 935 0016 013B     		subs	r3, r3, #1
+ 936 0018 F8E7     		b	.L131
+ 937              	.L132:
+ 938 001a 4368     		ldr	r3, [r0, #4]
+ 939 001c 13F0020F 		tst	r3, #2
+ 940 0020 01D0     		beq	.L135
+ 941 0022 0020     		movs	r0, #0
+ 942 0024 7047     		bx	lr
+ 943              	.L135:
+ 944 0026 0120     		movs	r0, #1
+ 945 0028 7047     		bx	lr
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccP2eaOW.s 			page 17
+
+
+ 947              		.section	.text.CAN_GetLastErrorCode,"ax",%progbits
+ 948              		.align	1
+ 949              		.global	CAN_GetLastErrorCode
+ 950              		.syntax unified
+ 951              		.thumb
+ 952              		.thumb_func
+ 954              	CAN_GetLastErrorCode:
+ 955              		@ args = 0, pretend = 0, frame = 0
+ 956              		@ frame_needed = 0, uses_anonymous_args = 0
+ 957              		@ link register save eliminated.
+ 958 0000 8069     		ldr	r0, [r0, #24]
+ 959 0002 00F07000 		and	r0, r0, #112
+ 960 0006 7047     		bx	lr
+ 962              		.section	.text.CAN_GetReceiveErrorCounter,"ax",%progbits
+ 963              		.align	1
+ 964              		.global	CAN_GetReceiveErrorCounter
+ 965              		.syntax unified
+ 966              		.thumb
+ 967              		.thumb_func
+ 969              	CAN_GetReceiveErrorCounter:
+ 970              		@ args = 0, pretend = 0, frame = 0
+ 971              		@ frame_needed = 0, uses_anonymous_args = 0
+ 972              		@ link register save eliminated.
+ 973 0000 8069     		ldr	r0, [r0, #24]
+ 974 0002 000E     		lsrs	r0, r0, #24
+ 975 0004 7047     		bx	lr
+ 977              		.section	.text.CAN_GetLSBTransmitErrorCounter,"ax",%progbits
+ 978              		.align	1
+ 979              		.global	CAN_GetLSBTransmitErrorCounter
+ 980              		.syntax unified
+ 981              		.thumb
+ 982              		.thumb_func
+ 984              	CAN_GetLSBTransmitErrorCounter:
+ 985              		@ args = 0, pretend = 0, frame = 0
+ 986              		@ frame_needed = 0, uses_anonymous_args = 0
+ 987              		@ link register save eliminated.
+ 988 0000 8069     		ldr	r0, [r0, #24]
+ 989 0002 C0F30740 		ubfx	r0, r0, #16, #8
+ 990 0006 7047     		bx	lr
+ 992              		.section	.text.CAN_ITConfig,"ax",%progbits
+ 993              		.align	1
+ 994              		.global	CAN_ITConfig
+ 995              		.syntax unified
+ 996              		.thumb
+ 997              		.thumb_func
+ 999              	CAN_ITConfig:
+ 1000              		@ args = 0, pretend = 0, frame = 0
+ 1001              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1002              		@ link register save eliminated.
+ 1003 0000 1AB1     		cbz	r2, .L140
+ 1004 0002 4369     		ldr	r3, [r0, #20]
+ 1005 0004 0B43     		orrs	r3, r3, r1
+ 1006 0006 4361     		str	r3, [r0, #20]
+ 1007 0008 7047     		bx	lr
+ 1008              	.L140:
+ 1009 000a 4369     		ldr	r3, [r0, #20]
+ 1010 000c 23EA0103 		bic	r3, r3, r1
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccP2eaOW.s 			page 18
+
+
+ 1011 0010 4361     		str	r3, [r0, #20]
+ 1012 0012 7047     		bx	lr
+ 1014              		.section	.text.CAN_GetFlagStatus,"ax",%progbits
+ 1015              		.align	1
+ 1016              		.global	CAN_GetFlagStatus
+ 1017              		.syntax unified
+ 1018              		.thumb
+ 1019              		.thumb_func
+ 1021              	CAN_GetFlagStatus:
+ 1022              		@ args = 0, pretend = 0, frame = 0
+ 1023              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1024              		@ link register save eliminated.
+ 1025 0000 11F4700F 		tst	r1, #15728640
+ 1026 0004 06D0     		beq	.L143
+ 1027 0006 8369     		ldr	r3, [r0, #24]
+ 1028 0008 0B40     		ands	r3, r3, r1
+ 1029 000a C3F31303 		ubfx	r3, r3, #0, #20
+ 1030 000e 33B3     		cbz	r3, .L148
+ 1031 0010 0120     		movs	r0, #1
+ 1032 0012 7047     		bx	lr
+ 1033              	.L143:
+ 1034 0014 11F0807F 		tst	r1, #16777216
+ 1035 0018 06D0     		beq	.L145
+ 1036 001a 4368     		ldr	r3, [r0, #4]
+ 1037 001c 0B40     		ands	r3, r3, r1
+ 1038 001e C3F31303 		ubfx	r3, r3, #0, #20
+ 1039 0022 F3B1     		cbz	r3, .L149
+ 1040 0024 0120     		movs	r0, #1
+ 1041 0026 7047     		bx	lr
+ 1042              	.L145:
+ 1043 0028 11F0006F 		tst	r1, #134217728
+ 1044 002c 06D0     		beq	.L146
+ 1045 002e 8368     		ldr	r3, [r0, #8]
+ 1046 0030 0B40     		ands	r3, r3, r1
+ 1047 0032 C3F31303 		ubfx	r3, r3, #0, #20
+ 1048 0036 B3B1     		cbz	r3, .L150
+ 1049 0038 0120     		movs	r0, #1
+ 1050 003a 7047     		bx	lr
+ 1051              	.L146:
+ 1052 003c 11F0007F 		tst	r1, #33554432
+ 1053 0040 06D0     		beq	.L147
+ 1054 0042 C368     		ldr	r3, [r0, #12]
+ 1055 0044 0B40     		ands	r3, r3, r1
+ 1056 0046 C3F31303 		ubfx	r3, r3, #0, #20
+ 1057 004a 73B1     		cbz	r3, .L151
+ 1058 004c 0120     		movs	r0, #1
+ 1059 004e 7047     		bx	lr
+ 1060              	.L147:
+ 1061 0050 0369     		ldr	r3, [r0, #16]
+ 1062 0052 0B40     		ands	r3, r3, r1
+ 1063 0054 C3F31303 		ubfx	r3, r3, #0, #20
+ 1064 0058 4BB1     		cbz	r3, .L152
+ 1065 005a 0120     		movs	r0, #1
+ 1066 005c 7047     		bx	lr
+ 1067              	.L148:
+ 1068 005e 0020     		movs	r0, #0
+ 1069 0060 7047     		bx	lr
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccP2eaOW.s 			page 19
+
+
+ 1070              	.L149:
+ 1071 0062 0020     		movs	r0, #0
+ 1072 0064 7047     		bx	lr
+ 1073              	.L150:
+ 1074 0066 0020     		movs	r0, #0
+ 1075 0068 7047     		bx	lr
+ 1076              	.L151:
+ 1077 006a 0020     		movs	r0, #0
+ 1078 006c 7047     		bx	lr
+ 1079              	.L152:
+ 1080 006e 0020     		movs	r0, #0
+ 1081 0070 7047     		bx	lr
+ 1083              		.section	.text.CAN_ClearFlag,"ax",%progbits
+ 1084              		.align	1
+ 1085              		.global	CAN_ClearFlag
+ 1086              		.syntax unified
+ 1087              		.thumb
+ 1088              		.thumb_func
+ 1090              	CAN_ClearFlag:
+ 1091              		@ args = 0, pretend = 0, frame = 0
+ 1092              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1093              		@ link register save eliminated.
+ 1094 0000 0C4B     		ldr	r3, .L160
+ 1095 0002 9942     		cmp	r1, r3
+ 1096 0004 06D0     		beq	.L159
+ 1097 0006 C1F31303 		ubfx	r3, r1, #0, #20
+ 1098 000a 11F0007F 		tst	r1, #33554432
+ 1099 000e 04D0     		beq	.L156
+ 1100 0010 C360     		str	r3, [r0, #12]
+ 1101 0012 7047     		bx	lr
+ 1102              	.L159:
+ 1103 0014 0023     		movs	r3, #0
+ 1104 0016 8361     		str	r3, [r0, #24]
+ 1105 0018 7047     		bx	lr
+ 1106              	.L156:
+ 1107 001a 11F0806F 		tst	r1, #67108864
+ 1108 001e 01D0     		beq	.L157
+ 1109 0020 0361     		str	r3, [r0, #16]
+ 1110 0022 7047     		bx	lr
+ 1111              	.L157:
+ 1112 0024 11F0006F 		tst	r1, #134217728
+ 1113 0028 01D0     		beq	.L158
+ 1114 002a 8360     		str	r3, [r0, #8]
+ 1115 002c 7047     		bx	lr
+ 1116              	.L158:
+ 1117 002e 4360     		str	r3, [r0, #4]
+ 1118 0030 7047     		bx	lr
+ 1119              	.L161:
+ 1120 0032 00BF     		.align	2
+ 1121              	.L160:
+ 1122 0034 7000F030 		.word	821035120
+ 1124              		.section	.text.CAN_GetITStatus,"ax",%progbits
+ 1125              		.align	1
+ 1126              		.global	CAN_GetITStatus
+ 1127              		.syntax unified
+ 1128              		.thumb
+ 1129              		.thumb_func
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccP2eaOW.s 			page 20
+
+
+ 1131              	CAN_GetITStatus:
+ 1132              		@ args = 0, pretend = 0, frame = 0
+ 1133              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1134 0000 08B5     		push	{r3, lr}
+ 1135 0002 4369     		ldr	r3, [r0, #20]
+ 1136 0004 0B42     		tst	r3, r1
+ 1137 0006 7DD0     		beq	.L182
+ 1138 0008 B1F5807F 		cmp	r1, #256
+ 1139 000c 66D0     		beq	.L164
+ 1140 000e 21D8     		bhi	.L165
+ 1141 0010 2029     		cmp	r1, #32
+ 1142 0012 16D8     		bhi	.L166
+ 1143 0014 0029     		cmp	r1, #0
+ 1144 0016 77D0     		beq	.L183
+ 1145 0018 0139     		subs	r1, r1, #1
+ 1146 001a 1F29     		cmp	r1, #31
+ 1147 001c 76D8     		bhi	.L184
+ 1148 001e DFE801F0 		tbb	[pc, r1]
+ 1149              	.L168:
+ 1150 0022 3A       		.byte	(.L173-.L168)/2
+ 1151 0023 3F       		.byte	(.L172-.L168)/2
+ 1152 0024 75       		.byte	(.L184-.L168)/2
+ 1153 0025 44       		.byte	(.L171-.L168)/2
+ 1154 0026 75       		.byte	(.L184-.L168)/2
+ 1155 0027 75       		.byte	(.L184-.L168)/2
+ 1156 0028 75       		.byte	(.L184-.L168)/2
+ 1157 0029 49       		.byte	(.L170-.L168)/2
+ 1158 002a 75       		.byte	(.L184-.L168)/2
+ 1159 002b 75       		.byte	(.L184-.L168)/2
+ 1160 002c 75       		.byte	(.L184-.L168)/2
+ 1161 002d 75       		.byte	(.L184-.L168)/2
+ 1162 002e 75       		.byte	(.L184-.L168)/2
+ 1163 002f 75       		.byte	(.L184-.L168)/2
+ 1164 0030 75       		.byte	(.L184-.L168)/2
+ 1165 0031 4E       		.byte	(.L169-.L168)/2
+ 1166 0032 75       		.byte	(.L184-.L168)/2
+ 1167 0033 75       		.byte	(.L184-.L168)/2
+ 1168 0034 75       		.byte	(.L184-.L168)/2
+ 1169 0035 75       		.byte	(.L184-.L168)/2
+ 1170 0036 75       		.byte	(.L184-.L168)/2
+ 1171 0037 75       		.byte	(.L184-.L168)/2
+ 1172 0038 75       		.byte	(.L184-.L168)/2
+ 1173 0039 75       		.byte	(.L184-.L168)/2
+ 1174 003a 75       		.byte	(.L184-.L168)/2
+ 1175 003b 75       		.byte	(.L184-.L168)/2
+ 1176 003c 75       		.byte	(.L184-.L168)/2
+ 1177 003d 75       		.byte	(.L184-.L168)/2
+ 1178 003e 75       		.byte	(.L184-.L168)/2
+ 1179 003f 75       		.byte	(.L184-.L168)/2
+ 1180 0040 75       		.byte	(.L184-.L168)/2
+ 1181 0041 53       		.byte	(.L167-.L168)/2
+ 1182              		.p2align 1
+ 1183              	.L166:
+ 1184 0042 4029     		cmp	r1, #64
+ 1185 0044 04D1     		bne	.L186
+ 1186 0046 0069     		ldr	r0, [r0, #16]
+ 1187 0048 1021     		movs	r1, #16
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccP2eaOW.s 			page 21
+
+
+ 1188 004a FFF7FEFF 		bl	CheckITStatus
+ 1189 004e 5AE0     		b	.L163
+ 1190              	.L186:
+ 1191 0050 0020     		movs	r0, #0
+ 1192 0052 58E0     		b	.L163
+ 1193              	.L165:
+ 1194 0054 B1F5004F 		cmp	r1, #32768
+ 1195 0058 4FD0     		beq	.L175
+ 1196 005a 0FD8     		bhi	.L176
+ 1197 005c B1F5806F 		cmp	r1, #1024
+ 1198 0060 41D0     		beq	.L177
+ 1199 0062 B1F5006F 		cmp	r1, #2048
+ 1200 0066 43D0     		beq	.L178
+ 1201 0068 B1F5007F 		cmp	r1, #512
+ 1202 006c 04D1     		bne	.L187
+ 1203 006e 8069     		ldr	r0, [r0, #24]
+ 1204 0070 0221     		movs	r1, #2
+ 1205 0072 FFF7FEFF 		bl	CheckITStatus
+ 1206 0076 46E0     		b	.L163
+ 1207              	.L187:
+ 1208 0078 0020     		movs	r0, #0
+ 1209 007a 44E0     		b	.L163
+ 1210              	.L176:
+ 1211 007c B1F5803F 		cmp	r1, #65536
+ 1212 0080 27D0     		beq	.L180
+ 1213 0082 B1F5003F 		cmp	r1, #131072
+ 1214 0086 04D1     		bne	.L188
+ 1215 0088 4068     		ldr	r0, [r0, #4]
+ 1216 008a 1021     		movs	r1, #16
+ 1217 008c FFF7FEFF 		bl	CheckITStatus
+ 1218 0090 39E0     		b	.L163
+ 1219              	.L188:
+ 1220 0092 0020     		movs	r0, #0
+ 1221 0094 37E0     		b	.L163
+ 1222              	.L173:
+ 1223 0096 8068     		ldr	r0, [r0, #8]
+ 1224 0098 1D49     		ldr	r1, .L189
+ 1225 009a FFF7FEFF 		bl	CheckITStatus
+ 1226 009e 32E0     		b	.L163
+ 1227              	.L172:
+ 1228 00a0 C068     		ldr	r0, [r0, #12]
+ 1229 00a2 0321     		movs	r1, #3
+ 1230 00a4 FFF7FEFF 		bl	CheckITStatus
+ 1231 00a8 2DE0     		b	.L163
+ 1232              	.L171:
+ 1233 00aa C068     		ldr	r0, [r0, #12]
+ 1234 00ac 0821     		movs	r1, #8
+ 1235 00ae FFF7FEFF 		bl	CheckITStatus
+ 1236 00b2 28E0     		b	.L163
+ 1237              	.L170:
+ 1238 00b4 C068     		ldr	r0, [r0, #12]
+ 1239 00b6 1021     		movs	r1, #16
+ 1240 00b8 FFF7FEFF 		bl	CheckITStatus
+ 1241 00bc 23E0     		b	.L163
+ 1242              	.L169:
+ 1243 00be 0069     		ldr	r0, [r0, #16]
+ 1244 00c0 0321     		movs	r1, #3
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccP2eaOW.s 			page 22
+
+
+ 1245 00c2 FFF7FEFF 		bl	CheckITStatus
+ 1246 00c6 1EE0     		b	.L163
+ 1247              	.L167:
+ 1248 00c8 0069     		ldr	r0, [r0, #16]
+ 1249 00ca 0821     		movs	r1, #8
+ 1250 00cc FFF7FEFF 		bl	CheckITStatus
+ 1251 00d0 19E0     		b	.L163
+ 1252              	.L180:
+ 1253 00d2 4068     		ldr	r0, [r0, #4]
+ 1254 00d4 0821     		movs	r1, #8
+ 1255 00d6 FFF7FEFF 		bl	CheckITStatus
+ 1256 00da 14E0     		b	.L163
+ 1257              	.L164:
+ 1258 00dc 8069     		ldr	r0, [r0, #24]
+ 1259 00de 0121     		movs	r1, #1
+ 1260 00e0 FFF7FEFF 		bl	CheckITStatus
+ 1261 00e4 0FE0     		b	.L163
+ 1262              	.L177:
+ 1263 00e6 8069     		ldr	r0, [r0, #24]
+ 1264 00e8 0421     		movs	r1, #4
+ 1265 00ea FFF7FEFF 		bl	CheckITStatus
+ 1266 00ee 0AE0     		b	.L163
+ 1267              	.L178:
+ 1268 00f0 8069     		ldr	r0, [r0, #24]
+ 1269 00f2 7021     		movs	r1, #112
+ 1270 00f4 FFF7FEFF 		bl	CheckITStatus
+ 1271 00f8 05E0     		b	.L163
+ 1272              	.L175:
+ 1273 00fa 4068     		ldr	r0, [r0, #4]
+ 1274 00fc 0421     		movs	r1, #4
+ 1275 00fe FFF7FEFF 		bl	CheckITStatus
+ 1276 0102 00E0     		b	.L163
+ 1277              	.L182:
+ 1278 0104 0020     		movs	r0, #0
+ 1279              	.L163:
+ 1280 0106 08BD     		pop	{r3, pc}
+ 1281              	.L183:
+ 1282 0108 0020     		movs	r0, #0
+ 1283 010a FCE7     		b	.L163
+ 1284              	.L184:
+ 1285 010c 0020     		movs	r0, #0
+ 1286 010e FAE7     		b	.L163
+ 1287              	.L190:
+ 1288              		.align	2
+ 1289              	.L189:
+ 1290 0110 01010100 		.word	65793
+ 1292              		.section	.text.CAN_ClearITPendingBit,"ax",%progbits
+ 1293              		.align	1
+ 1294              		.global	CAN_ClearITPendingBit
+ 1295              		.syntax unified
+ 1296              		.thumb
+ 1297              		.thumb_func
+ 1299              	CAN_ClearITPendingBit:
+ 1300              		@ args = 0, pretend = 0, frame = 0
+ 1301              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1302              		@ link register save eliminated.
+ 1303 0000 B1F5007F 		cmp	r1, #512
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccP2eaOW.s 			page 23
+
+
+ 1304 0004 4ED0     		beq	.L192
+ 1305 0006 21D8     		bhi	.L193
+ 1306 0008 2029     		cmp	r1, #32
+ 1307 000a 16D8     		bhi	.L194
+ 1308 000c 0029     		cmp	r1, #0
+ 1309 000e 53D0     		beq	.L191
+ 1310 0010 0139     		subs	r1, r1, #1
+ 1311 0012 1F29     		cmp	r1, #31
+ 1312 0014 50D8     		bhi	.L191
+ 1313 0016 DFE801F0 		tbb	[pc, r1]
+ 1314              	.L197:
+ 1315 001a 33       		.byte	(.L200-.L197)/2
+ 1316 001b 4F       		.byte	(.L191-.L197)/2
+ 1317 001c 4F       		.byte	(.L191-.L197)/2
+ 1318 001d 36       		.byte	(.L199-.L197)/2
+ 1319 001e 4F       		.byte	(.L191-.L197)/2
+ 1320 001f 4F       		.byte	(.L191-.L197)/2
+ 1321 0020 4F       		.byte	(.L191-.L197)/2
+ 1322 0021 39       		.byte	(.L198-.L197)/2
+ 1323 0022 4F       		.byte	(.L191-.L197)/2
+ 1324 0023 4F       		.byte	(.L191-.L197)/2
+ 1325 0024 4F       		.byte	(.L191-.L197)/2
+ 1326 0025 4F       		.byte	(.L191-.L197)/2
+ 1327 0026 4F       		.byte	(.L191-.L197)/2
+ 1328 0027 4F       		.byte	(.L191-.L197)/2
+ 1329 0028 4F       		.byte	(.L191-.L197)/2
+ 1330 0029 4F       		.byte	(.L191-.L197)/2
+ 1331 002a 4F       		.byte	(.L191-.L197)/2
+ 1332 002b 4F       		.byte	(.L191-.L197)/2
+ 1333 002c 4F       		.byte	(.L191-.L197)/2
+ 1334 002d 4F       		.byte	(.L191-.L197)/2
+ 1335 002e 4F       		.byte	(.L191-.L197)/2
+ 1336 002f 4F       		.byte	(.L191-.L197)/2
+ 1337 0030 4F       		.byte	(.L191-.L197)/2
+ 1338 0031 4F       		.byte	(.L191-.L197)/2
+ 1339 0032 4F       		.byte	(.L191-.L197)/2
+ 1340 0033 4F       		.byte	(.L191-.L197)/2
+ 1341 0034 4F       		.byte	(.L191-.L197)/2
+ 1342 0035 4F       		.byte	(.L191-.L197)/2
+ 1343 0036 4F       		.byte	(.L191-.L197)/2
+ 1344 0037 4F       		.byte	(.L191-.L197)/2
+ 1345 0038 4F       		.byte	(.L191-.L197)/2
+ 1346 0039 3C       		.byte	(.L196-.L197)/2
+ 1347              		.p2align 1
+ 1348              	.L194:
+ 1349 003a 4029     		cmp	r1, #64
+ 1350 003c 2CD0     		beq	.L201
+ 1351 003e B1F5807F 		cmp	r1, #256
+ 1352 0042 02D1     		bne	.L210
+ 1353 0044 0423     		movs	r3, #4
+ 1354 0046 4360     		str	r3, [r0, #4]
+ 1355 0048 7047     		bx	lr
+ 1356              	.L210:
+ 1357 004a 7047     		bx	lr
+ 1358              	.L193:
+ 1359 004c B1F5004F 		cmp	r1, #32768
+ 1360 0050 2ED0     		beq	.L203
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccP2eaOW.s 			page 24
+
+
+ 1361 0052 08D9     		bls	.L211
+ 1362 0054 B1F5803F 		cmp	r1, #65536
+ 1363 0058 21D0     		beq	.L207
+ 1364 005a B1F5003F 		cmp	r1, #131072
+ 1365 005e 0ED1     		bne	.L212
+ 1366 0060 1023     		movs	r3, #16
+ 1367 0062 4360     		str	r3, [r0, #4]
+ 1368 0064 7047     		bx	lr
+ 1369              	.L211:
+ 1370 0066 B1F5806F 		cmp	r1, #1024
+ 1371 006a 1ED0     		beq	.L205
+ 1372 006c B1F5006F 		cmp	r1, #2048
+ 1373 0070 04D1     		bne	.L213
+ 1374 0072 0023     		movs	r3, #0
+ 1375 0074 8361     		str	r3, [r0, #24]
+ 1376 0076 0423     		movs	r3, #4
+ 1377 0078 4360     		str	r3, [r0, #4]
+ 1378 007a 7047     		bx	lr
+ 1379              	.L213:
+ 1380 007c 7047     		bx	lr
+ 1381              	.L212:
+ 1382 007e 7047     		bx	lr
+ 1383              	.L200:
+ 1384 0080 0E4B     		ldr	r3, .L214
+ 1385 0082 8360     		str	r3, [r0, #8]
+ 1386 0084 7047     		bx	lr
+ 1387              	.L199:
+ 1388 0086 0823     		movs	r3, #8
+ 1389 0088 C360     		str	r3, [r0, #12]
+ 1390 008a 7047     		bx	lr
+ 1391              	.L198:
+ 1392 008c 1023     		movs	r3, #16
+ 1393 008e C360     		str	r3, [r0, #12]
+ 1394 0090 7047     		bx	lr
+ 1395              	.L196:
+ 1396 0092 0823     		movs	r3, #8
+ 1397 0094 0361     		str	r3, [r0, #16]
+ 1398 0096 7047     		bx	lr
+ 1399              	.L201:
+ 1400 0098 1023     		movs	r3, #16
+ 1401 009a 0361     		str	r3, [r0, #16]
+ 1402 009c 7047     		bx	lr
+ 1403              	.L207:
+ 1404 009e 0823     		movs	r3, #8
+ 1405 00a0 4360     		str	r3, [r0, #4]
+ 1406 00a2 7047     		bx	lr
+ 1407              	.L192:
+ 1408 00a4 0423     		movs	r3, #4
+ 1409 00a6 4360     		str	r3, [r0, #4]
+ 1410 00a8 7047     		bx	lr
+ 1411              	.L205:
+ 1412 00aa 0423     		movs	r3, #4
+ 1413 00ac 4360     		str	r3, [r0, #4]
+ 1414 00ae 7047     		bx	lr
+ 1415              	.L203:
+ 1416 00b0 0023     		movs	r3, #0
+ 1417 00b2 8361     		str	r3, [r0, #24]
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccP2eaOW.s 			page 25
+
+
+ 1418 00b4 0423     		movs	r3, #4
+ 1419 00b6 4360     		str	r3, [r0, #4]
+ 1420              	.L191:
+ 1421 00b8 7047     		bx	lr
+ 1422              	.L215:
+ 1423 00ba 00BF     		.align	2
+ 1424              	.L214:
+ 1425 00bc 01010100 		.word	65793
+ 1427              		.ident	"GCC: (Arm GNU Toolchain 13.3.Rel1 (Build arm-13.24)) 13.3.1 20240614"
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccP2eaOW.s 			page 26
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 stm32f4xx_can.c
+C:\Users\ktkuru\AppData\Local\Temp\ccP2eaOW.s:18     .text.CheckITStatus:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccP2eaOW.s:23     .text.CheckITStatus:00000000 CheckITStatus
+C:\Users\ktkuru\AppData\Local\Temp\ccP2eaOW.s:36     .text.CAN_DeInit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccP2eaOW.s:42     .text.CAN_DeInit:00000000 CAN_DeInit
+C:\Users\ktkuru\AppData\Local\Temp\ccP2eaOW.s:68     .text.CAN_DeInit:00000034 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccP2eaOW.s:71     .text.CAN_Init:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccP2eaOW.s:77     .text.CAN_Init:00000000 CAN_Init
+C:\Users\ktkuru\AppData\Local\Temp\ccP2eaOW.s:213    .text.CAN_FilterInit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccP2eaOW.s:219    .text.CAN_FilterInit:00000000 CAN_FilterInit
+C:\Users\ktkuru\AppData\Local\Temp\ccP2eaOW.s:326    .text.CAN_FilterInit:00000108 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccP2eaOW.s:329    .text.CAN_StructInit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccP2eaOW.s:335    .text.CAN_StructInit:00000000 CAN_StructInit
+C:\Users\ktkuru\AppData\Local\Temp\ccP2eaOW.s:357    .text.CAN_SlaveStartBank:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccP2eaOW.s:363    .text.CAN_SlaveStartBank:00000000 CAN_SlaveStartBank
+C:\Users\ktkuru\AppData\Local\Temp\ccP2eaOW.s:385    .text.CAN_SlaveStartBank:00000038 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccP2eaOW.s:388    .text.CAN_DBGFreeze:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccP2eaOW.s:394    .text.CAN_DBGFreeze:00000000 CAN_DBGFreeze
+C:\Users\ktkuru\AppData\Local\Temp\ccP2eaOW.s:410    .text.CAN_TTComModeCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccP2eaOW.s:416    .text.CAN_TTComModeCmd:00000000 CAN_TTComModeCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccP2eaOW.s:450    .text.CAN_Transmit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccP2eaOW.s:456    .text.CAN_Transmit:00000000 CAN_Transmit
+C:\Users\ktkuru\AppData\Local\Temp\ccP2eaOW.s:548    .text.CAN_TransmitStatus:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccP2eaOW.s:554    .text.CAN_TransmitStatus:00000000 CAN_TransmitStatus
+C:\Users\ktkuru\AppData\Local\Temp\ccP2eaOW.s:633    .text.CAN_TransmitStatus:00000088 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccP2eaOW.s:639    .text.CAN_CancelTransmit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccP2eaOW.s:645    .text.CAN_CancelTransmit:00000000 CAN_CancelTransmit
+C:\Users\ktkuru\AppData\Local\Temp\ccP2eaOW.s:671    .text.CAN_Receive:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccP2eaOW.s:677    .text.CAN_Receive:00000000 CAN_Receive
+C:\Users\ktkuru\AppData\Local\Temp\ccP2eaOW.s:751    .text.CAN_FIFORelease:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccP2eaOW.s:757    .text.CAN_FIFORelease:00000000 CAN_FIFORelease
+C:\Users\ktkuru\AppData\Local\Temp\ccP2eaOW.s:773    .text.CAN_MessagePending:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccP2eaOW.s:779    .text.CAN_MessagePending:00000000 CAN_MessagePending
+C:\Users\ktkuru\AppData\Local\Temp\ccP2eaOW.s:798    .text.CAN_OperatingModeRequest:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccP2eaOW.s:804    .text.CAN_OperatingModeRequest:00000000 CAN_OperatingModeRequest
+C:\Users\ktkuru\AppData\Local\Temp\ccP2eaOW.s:891    .text.CAN_Sleep:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccP2eaOW.s:897    .text.CAN_Sleep:00000000 CAN_Sleep
+C:\Users\ktkuru\AppData\Local\Temp\ccP2eaOW.s:916    .text.CAN_WakeUp:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccP2eaOW.s:922    .text.CAN_WakeUp:00000000 CAN_WakeUp
+C:\Users\ktkuru\AppData\Local\Temp\ccP2eaOW.s:948    .text.CAN_GetLastErrorCode:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccP2eaOW.s:954    .text.CAN_GetLastErrorCode:00000000 CAN_GetLastErrorCode
+C:\Users\ktkuru\AppData\Local\Temp\ccP2eaOW.s:963    .text.CAN_GetReceiveErrorCounter:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccP2eaOW.s:969    .text.CAN_GetReceiveErrorCounter:00000000 CAN_GetReceiveErrorCounter
+C:\Users\ktkuru\AppData\Local\Temp\ccP2eaOW.s:978    .text.CAN_GetLSBTransmitErrorCounter:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccP2eaOW.s:984    .text.CAN_GetLSBTransmitErrorCounter:00000000 CAN_GetLSBTransmitErrorCounter
+C:\Users\ktkuru\AppData\Local\Temp\ccP2eaOW.s:993    .text.CAN_ITConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccP2eaOW.s:999    .text.CAN_ITConfig:00000000 CAN_ITConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccP2eaOW.s:1015   .text.CAN_GetFlagStatus:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccP2eaOW.s:1021   .text.CAN_GetFlagStatus:00000000 CAN_GetFlagStatus
+C:\Users\ktkuru\AppData\Local\Temp\ccP2eaOW.s:1084   .text.CAN_ClearFlag:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccP2eaOW.s:1090   .text.CAN_ClearFlag:00000000 CAN_ClearFlag
+C:\Users\ktkuru\AppData\Local\Temp\ccP2eaOW.s:1122   .text.CAN_ClearFlag:00000034 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccP2eaOW.s:1125   .text.CAN_GetITStatus:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccP2eaOW.s:1131   .text.CAN_GetITStatus:00000000 CAN_GetITStatus
+C:\Users\ktkuru\AppData\Local\Temp\ccP2eaOW.s:1150   .text.CAN_GetITStatus:00000022 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccP2eaOW.s:1182   .text.CAN_GetITStatus:00000042 $t
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccP2eaOW.s 			page 27
+
+
+C:\Users\ktkuru\AppData\Local\Temp\ccP2eaOW.s:1290   .text.CAN_GetITStatus:00000110 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccP2eaOW.s:1293   .text.CAN_ClearITPendingBit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccP2eaOW.s:1299   .text.CAN_ClearITPendingBit:00000000 CAN_ClearITPendingBit
+C:\Users\ktkuru\AppData\Local\Temp\ccP2eaOW.s:1315   .text.CAN_ClearITPendingBit:0000001a $d
+C:\Users\ktkuru\AppData\Local\Temp\ccP2eaOW.s:1347   .text.CAN_ClearITPendingBit:0000003a $t
+C:\Users\ktkuru\AppData\Local\Temp\ccP2eaOW.s:1425   .text.CAN_ClearITPendingBit:000000bc $d
+
+UNDEFINED SYMBOLS
+RCC_APB1PeriphResetCmd

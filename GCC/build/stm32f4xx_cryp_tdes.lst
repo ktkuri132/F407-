@@ -1,0 +1,276 @@
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccjCyAL4.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"stm32f4xx_cryp_tdes.c"
+  16              		.text
+  17              		.section	.text.CRYP_TDES_ECB,"ax",%progbits
+  18              		.align	1
+  19              		.global	CRYP_TDES_ECB
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  24              	CRYP_TDES_ECB:
+  25              		@ args = 4, pretend = 0, frame = 56
+  26              		@ frame_needed = 0, uses_anonymous_args = 0
+  27 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+  28 0004 8EB0     		sub	sp, sp, #56
+  29 0006 0646     		mov	r6, r0
+  30 0008 0D46     		mov	r5, r1
+  31 000a 1F46     		mov	r7, r3
+  32 000c 0023     		movs	r3, #0
+  33 000e 0193     		str	r3, [sp, #4]
+  34 0010 1446     		mov	r4, r2
+  35 0012 DDF85080 		ldr	r8, [sp, #80]
+  36 0016 02A8     		add	r0, sp, #8
+  37 0018 FFF7FEFF 		bl	CRYP_KeyStructInit
+  38 001c 012E     		cmp	r6, #1
+  39 001e 29D0     		beq	.L13
+  40 0020 0423     		movs	r3, #4
+  41 0022 0A93     		str	r3, [sp, #40]
+  42              	.L3:
+  43 0024 0023     		movs	r3, #0
+  44 0026 0B93     		str	r3, [sp, #44]
+  45 0028 8023     		movs	r3, #128
+  46 002a 0C93     		str	r3, [sp, #48]
+  47 002c 0AA8     		add	r0, sp, #40
+  48 002e FFF7FEFF 		bl	CRYP_Init
+  49 0032 2B68     		ldr	r3, [r5]
+  50 0034 1BBA     		rev	r3, r3
+  51 0036 0493     		str	r3, [sp, #16]
+  52 0038 6B68     		ldr	r3, [r5, #4]
+  53 003a 1BBA     		rev	r3, r3
+  54 003c 0593     		str	r3, [sp, #20]
+  55 003e AB68     		ldr	r3, [r5, #8]
+  56 0040 1BBA     		rev	r3, r3
+  57 0042 0693     		str	r3, [sp, #24]
+  58 0044 EB68     		ldr	r3, [r5, #12]
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccjCyAL4.s 			page 2
+
+
+  59 0046 1BBA     		rev	r3, r3
+  60 0048 0793     		str	r3, [sp, #28]
+  61 004a 2B69     		ldr	r3, [r5, #16]
+  62 004c 1BBA     		rev	r3, r3
+  63 004e 0893     		str	r3, [sp, #32]
+  64 0050 6B69     		ldr	r3, [r5, #20]
+  65 0052 1BBA     		rev	r3, r3
+  66 0054 0993     		str	r3, [sp, #36]
+  67 0056 02A8     		add	r0, sp, #8
+  68 0058 FFF7FEFF 		bl	CRYP_KeyInit
+  69 005c FFF7FEFF 		bl	CRYP_FIFOFlush
+  70 0060 0120     		movs	r0, #1
+  71 0062 FFF7FEFF 		bl	CRYP_Cmd
+  72 0066 FFF7FEFF 		bl	CRYP_GetCmdStatus
+  73 006a 0646     		mov	r6, r0
+  74 006c 78B3     		cbz	r0, .L4
+  75 006e 0025     		movs	r5, #0
+  76 0070 0126     		movs	r6, #1
+  77 0072 05E0     		b	.L5
+  78              	.L13:
+  79 0074 0023     		movs	r3, #0
+  80 0076 0A93     		str	r3, [sp, #40]
+  81 0078 D4E7     		b	.L3
+  82              	.L6:
+  83 007a D0B1     		cbz	r0, .L14
+  84 007c 0026     		movs	r6, #0
+  85              	.L8:
+  86 007e 0835     		adds	r5, r5, #8
+  87              	.L5:
+  88 0080 BD42     		cmp	r5, r7
+  89 0082 21D2     		bcs	.L9
+  90 0084 06B3     		cbz	r6, .L9
+  91 0086 2068     		ldr	r0, [r4]
+  92 0088 FFF7FEFF 		bl	CRYP_DataIn
+  93 008c 6068     		ldr	r0, [r4, #4]
+  94 008e FFF7FEFF 		bl	CRYP_DataIn
+  95 0092 0834     		adds	r4, r4, #8
+  96 0094 0023     		movs	r3, #0
+  97 0096 0193     		str	r3, [sp, #4]
+  98              	.L7:
+  99 0098 1020     		movs	r0, #16
+ 100 009a FFF7FEFF 		bl	CRYP_GetFlagStatus
+ 101 009e 0199     		ldr	r1, [sp, #4]
+ 102 00a0 0131     		adds	r1, r1, #1
+ 103 00a2 0191     		str	r1, [sp, #4]
+ 104 00a4 019B     		ldr	r3, [sp, #4]
+ 105 00a6 B3F5803F 		cmp	r3, #65536
+ 106 00aa E6D0     		beq	.L6
+ 107 00ac 0028     		cmp	r0, #0
+ 108 00ae F3D1     		bne	.L7
+ 109 00b0 E3E7     		b	.L6
+ 110              	.L14:
+ 111 00b2 FFF7FEFF 		bl	CRYP_DataOut
+ 112 00b6 C8F80000 		str	r0, [r8]
+ 113 00ba FFF7FEFF 		bl	CRYP_DataOut
+ 114 00be C8F80400 		str	r0, [r8, #4]
+ 115 00c2 08F10808 		add	r8, r8, #8
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccjCyAL4.s 			page 3
+
+
+ 116 00c6 DAE7     		b	.L8
+ 117              	.L9:
+ 118 00c8 0020     		movs	r0, #0
+ 119 00ca FFF7FEFF 		bl	CRYP_Cmd
+ 120              	.L4:
+ 121 00ce 3046     		mov	r0, r6
+ 122 00d0 0EB0     		add	sp, sp, #56
+ 123              		@ sp needed
+ 124 00d2 BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 126              		.section	.text.CRYP_TDES_CBC,"ax",%progbits
+ 127              		.align	1
+ 128              		.global	CRYP_TDES_CBC
+ 129              		.syntax unified
+ 130              		.thumb
+ 131              		.thumb_func
+ 133              	CRYP_TDES_CBC:
+ 134              		@ args = 8, pretend = 0, frame = 72
+ 135              		@ frame_needed = 0, uses_anonymous_args = 0
+ 136 0000 2DE9F043 		push	{r4, r5, r6, r7, r8, r9, lr}
+ 137 0004 93B0     		sub	sp, sp, #76
+ 138 0006 8146     		mov	r9, r0
+ 139 0008 0D46     		mov	r5, r1
+ 140 000a 1646     		mov	r6, r2
+ 141 000c DDF86880 		ldr	r8, [sp, #104]
+ 142 0010 0022     		movs	r2, #0
+ 143 0012 0192     		str	r2, [sp, #4]
+ 144 0014 1C46     		mov	r4, r3
+ 145 0016 1B9F     		ldr	r7, [sp, #108]
+ 146 0018 06A8     		add	r0, sp, #24
+ 147 001a FFF7FEFF 		bl	CRYP_KeyStructInit
+ 148 001e B9F1010F 		cmp	r9, #1
+ 149 0022 32D0     		beq	.L27
+ 150 0024 0423     		movs	r3, #4
+ 151 0026 0E93     		str	r3, [sp, #56]
+ 152              	.L17:
+ 153 0028 0823     		movs	r3, #8
+ 154 002a 0F93     		str	r3, [sp, #60]
+ 155 002c 8023     		movs	r3, #128
+ 156 002e 1093     		str	r3, [sp, #64]
+ 157 0030 0EA8     		add	r0, sp, #56
+ 158 0032 FFF7FEFF 		bl	CRYP_Init
+ 159 0036 2B68     		ldr	r3, [r5]
+ 160 0038 1BBA     		rev	r3, r3
+ 161 003a 0893     		str	r3, [sp, #32]
+ 162 003c 6B68     		ldr	r3, [r5, #4]
+ 163 003e 1BBA     		rev	r3, r3
+ 164 0040 0993     		str	r3, [sp, #36]
+ 165 0042 AB68     		ldr	r3, [r5, #8]
+ 166 0044 1BBA     		rev	r3, r3
+ 167 0046 0A93     		str	r3, [sp, #40]
+ 168 0048 EB68     		ldr	r3, [r5, #12]
+ 169 004a 1BBA     		rev	r3, r3
+ 170 004c 0B93     		str	r3, [sp, #44]
+ 171 004e 2B69     		ldr	r3, [r5, #16]
+ 172 0050 1BBA     		rev	r3, r3
+ 173 0052 0C93     		str	r3, [sp, #48]
+ 174 0054 6B69     		ldr	r3, [r5, #20]
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccjCyAL4.s 			page 4
+
+
+ 175 0056 1BBA     		rev	r3, r3
+ 176 0058 0D93     		str	r3, [sp, #52]
+ 177 005a 06A8     		add	r0, sp, #24
+ 178 005c FFF7FEFF 		bl	CRYP_KeyInit
+ 179 0060 3368     		ldr	r3, [r6]
+ 180 0062 1BBA     		rev	r3, r3
+ 181 0064 0293     		str	r3, [sp, #8]
+ 182 0066 7368     		ldr	r3, [r6, #4]
+ 183 0068 1BBA     		rev	r3, r3
+ 184 006a 0393     		str	r3, [sp, #12]
+ 185 006c 02A8     		add	r0, sp, #8
+ 186 006e FFF7FEFF 		bl	CRYP_IVInit
+ 187 0072 FFF7FEFF 		bl	CRYP_FIFOFlush
+ 188 0076 0120     		movs	r0, #1
+ 189 0078 FFF7FEFF 		bl	CRYP_Cmd
+ 190 007c FFF7FEFF 		bl	CRYP_GetCmdStatus
+ 191 0080 0646     		mov	r6, r0
+ 192 0082 60B3     		cbz	r0, .L18
+ 193 0084 0025     		movs	r5, #0
+ 194 0086 0126     		movs	r6, #1
+ 195 0088 05E0     		b	.L19
+ 196              	.L27:
+ 197 008a 0023     		movs	r3, #0
+ 198 008c 0E93     		str	r3, [sp, #56]
+ 199 008e CBE7     		b	.L17
+ 200              	.L20:
+ 201 0090 D0B1     		cbz	r0, .L28
+ 202 0092 0026     		movs	r6, #0
+ 203              	.L22:
+ 204 0094 0835     		adds	r5, r5, #8
+ 205              	.L19:
+ 206 0096 4545     		cmp	r5, r8
+ 207 0098 1ED2     		bcs	.L23
+ 208 009a EEB1     		cbz	r6, .L23
+ 209 009c 2068     		ldr	r0, [r4]
+ 210 009e FFF7FEFF 		bl	CRYP_DataIn
+ 211 00a2 6068     		ldr	r0, [r4, #4]
+ 212 00a4 FFF7FEFF 		bl	CRYP_DataIn
+ 213 00a8 0834     		adds	r4, r4, #8
+ 214 00aa 0023     		movs	r3, #0
+ 215 00ac 0193     		str	r3, [sp, #4]
+ 216              	.L21:
+ 217 00ae 1020     		movs	r0, #16
+ 218 00b0 FFF7FEFF 		bl	CRYP_GetFlagStatus
+ 219 00b4 019A     		ldr	r2, [sp, #4]
+ 220 00b6 0132     		adds	r2, r2, #1
+ 221 00b8 0192     		str	r2, [sp, #4]
+ 222 00ba 019B     		ldr	r3, [sp, #4]
+ 223 00bc B3F5803F 		cmp	r3, #65536
+ 224 00c0 E6D0     		beq	.L20
+ 225 00c2 0028     		cmp	r0, #0
+ 226 00c4 F3D1     		bne	.L21
+ 227 00c6 E3E7     		b	.L20
+ 228              	.L28:
+ 229 00c8 FFF7FEFF 		bl	CRYP_DataOut
+ 230 00cc 3860     		str	r0, [r7]
+ 231 00ce FFF7FEFF 		bl	CRYP_DataOut
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccjCyAL4.s 			page 5
+
+
+ 232 00d2 7860     		str	r0, [r7, #4]
+ 233 00d4 0837     		adds	r7, r7, #8
+ 234 00d6 DDE7     		b	.L22
+ 235              	.L23:
+ 236 00d8 0020     		movs	r0, #0
+ 237 00da FFF7FEFF 		bl	CRYP_Cmd
+ 238              	.L18:
+ 239 00de 3046     		mov	r0, r6
+ 240 00e0 13B0     		add	sp, sp, #76
+ 241              		@ sp needed
+ 242 00e2 BDE8F083 		pop	{r4, r5, r6, r7, r8, r9, pc}
+ 244              		.ident	"GCC: (Arm GNU Toolchain 13.3.Rel1 (Build arm-13.24)) 13.3.1 20240614"
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccjCyAL4.s 			page 6
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 stm32f4xx_cryp_tdes.c
+C:\Users\ktkuru\AppData\Local\Temp\ccjCyAL4.s:18     .text.CRYP_TDES_ECB:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccjCyAL4.s:24     .text.CRYP_TDES_ECB:00000000 CRYP_TDES_ECB
+C:\Users\ktkuru\AppData\Local\Temp\ccjCyAL4.s:127    .text.CRYP_TDES_CBC:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccjCyAL4.s:133    .text.CRYP_TDES_CBC:00000000 CRYP_TDES_CBC
+
+UNDEFINED SYMBOLS
+CRYP_KeyStructInit
+CRYP_Init
+CRYP_KeyInit
+CRYP_FIFOFlush
+CRYP_Cmd
+CRYP_GetCmdStatus
+CRYP_DataIn
+CRYP_GetFlagStatus
+CRYP_DataOut
+CRYP_IVInit

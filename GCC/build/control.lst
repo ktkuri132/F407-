@@ -1,0 +1,298 @@
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccTdFWXu.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"control.c"
+  16              		.text
+  17              		.section	.text.pidControl,"ax",%progbits
+  18              		.align	1
+  19              		.global	pidControl
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  24              	pidControl:
+  25              		@ args = 0, pretend = 0, frame = 0
+  26              		@ frame_needed = 0, uses_anonymous_args = 0
+  27              		@ link register save eliminated.
+  28 0000 70EE600A 		vsub.f32	s1, s0, s1
+  29 0004 1E4B     		ldr	r3, .L9
+  30 0006 C3ED000A 		vstr.32	s1, [r3]
+  31 000a 1E4B     		ldr	r3, .L9+4
+  32 000c D3ED007A 		vldr.32	s15, [r3]
+  33 0010 70EEA77A 		vadd.f32	s15, s1, s15
+  34 0014 C3ED007A 		vstr.32	s15, [r3]
+  35 0018 F5EEC07A 		vcmpe.f32	s15, #0
+  36 001c F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+  37 0020 25D5     		bpl	.L8
+  38 0022 0022     		movs	r2, #0
+  39 0024 1A60     		str	r2, [r3]	@ float
+  40              	.L4:
+  41 0026 184B     		ldr	r3, .L9+8
+  42 0028 D3ED007A 		vldr.32	s15, [r3]
+  43 002c 70EEE77A 		vsub.f32	s15, s1, s15
+  44 0030 164A     		ldr	r2, .L9+12
+  45 0032 C2ED007A 		vstr.32	s15, [r2]
+  46 0036 164A     		ldr	r2, .L9+16
+  47 0038 92ED000A 		vldr.32	s0, [r2]
+  48 003c 20EE800A 		vmul.f32	s0, s1, s0
+  49 0040 144A     		ldr	r2, .L9+20
+  50 0042 92ED007A 		vldr.32	s14, [r2]
+  51 0046 0F4A     		ldr	r2, .L9+4
+  52 0048 D2ED006A 		vldr.32	s13, [r2]
+  53 004c 27EE267A 		vmul.f32	s14, s14, s13
+  54 0050 30EE070A 		vadd.f32	s0, s0, s14
+  55 0054 104A     		ldr	r2, .L9+24
+  56 0056 92ED007A 		vldr.32	s14, [r2]
+  57 005a 67EE877A 		vmul.f32	s15, s15, s14
+  58 005e 30EE270A 		vadd.f32	s0, s0, s15
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccTdFWXu.s 			page 2
+
+
+  59 0062 0E4A     		ldr	r2, .L9+28
+  60 0064 82ED000A 		vstr.32	s0, [r2]
+  61 0068 C3ED000A 		vstr.32	s1, [r3]
+  62 006c 7047     		bx	lr
+  63              	.L8:
+  64 006e F5EEC07A 		vcmpe.f32	s15, #0
+  65 0072 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+  66 0076 D6DD     		ble	.L4
+  67 0078 024B     		ldr	r3, .L9+4
+  68 007a 0022     		movs	r2, #0
+  69 007c 1A60     		str	r2, [r3]	@ float
+  70 007e D2E7     		b	.L4
+  71              	.L10:
+  72              		.align	2
+  73              	.L9:
+  74 0080 00000000 		.word	error.6
+  75 0084 00000000 		.word	integral.5
+  76 0088 00000000 		.word	lastError.2
+  77 008c 00000000 		.word	derivative.1
+  78 0090 00000000 		.word	Kp
+  79 0094 00000000 		.word	Ki
+  80 0098 00000000 		.word	Kd
+  81 009c 00000000 		.word	output.0
+  83              		.section	.rodata.Motor_PWM_TIM8_Init.str1.4,"aMS",%progbits,1
+  84              		.align	2
+  85              	.LC0:
+  86 0000 2D3E4D6F 		.ascii	"->Motor->TIM8_OC1_OC2_OC3_OC4 Init  done\000"
+  86      746F722D 
+  86      3E54494D 
+  86      385F4F43 
+  86      315F4F43 
+  87 0029 000000   		.align	2
+  88              	.LC1:
+  89 002c 2D3E4D6F 		.ascii	"->Motor->TIM1_TIM8 Enable  done\000"
+  89      746F722D 
+  89      3E54494D 
+  89      315F5449 
+  89      4D382045 
+  90              		.section	.text.Motor_PWM_TIM8_Init,"ax",%progbits
+  91              		.align	1
+  92              		.global	Motor_PWM_TIM8_Init
+  93              		.syntax unified
+  94              		.thumb
+  95              		.thumb_func
+  97              	Motor_PWM_TIM8_Init:
+  98              		@ args = 0, pretend = 0, frame = 32
+  99              		@ frame_needed = 0, uses_anonymous_args = 0
+ 100 0000 70B5     		push	{r4, r5, r6, lr}
+ 101 0002 88B0     		sub	sp, sp, #32
+ 102 0004 0121     		movs	r1, #1
+ 103 0006 0220     		movs	r0, #2
+ 104 0008 FFF7FEFF 		bl	RCC_APB2PeriphClockCmd
+ 105 000c 0121     		movs	r1, #1
+ 106 000e 0420     		movs	r0, #4
+ 107 0010 FFF7FEFF 		bl	RCC_AHB1PeriphClockCmd
+ 108 0014 384C     		ldr	r4, .L13
+ 109 0016 0023     		movs	r3, #0
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccTdFWXu.s 			page 3
+
+
+ 110 0018 0222     		movs	r2, #2
+ 111 001a 4FF47071 		mov	r1, #960
+ 112 001e 2046     		mov	r0, r4
+ 113 0020 FFF7FEFF 		bl	GPIO_Config
+ 114 0024 0322     		movs	r2, #3
+ 115 0026 0621     		movs	r1, #6
+ 116 0028 2046     		mov	r0, r4
+ 117 002a FFF7FEFF 		bl	GPIO_PinAFConfig
+ 118 002e 0322     		movs	r2, #3
+ 119 0030 0721     		movs	r1, #7
+ 120 0032 2046     		mov	r0, r4
+ 121 0034 FFF7FEFF 		bl	GPIO_PinAFConfig
+ 122 0038 0322     		movs	r2, #3
+ 123 003a 0821     		movs	r1, #8
+ 124 003c 2046     		mov	r0, r4
+ 125 003e FFF7FEFF 		bl	GPIO_PinAFConfig
+ 126 0042 0322     		movs	r2, #3
+ 127 0044 0921     		movs	r1, #9
+ 128 0046 2046     		mov	r0, r4
+ 129 0048 FFF7FEFF 		bl	GPIO_PinAFConfig
+ 130 004c 42F2CF03 		movw	r3, #8399
+ 131 0050 0693     		str	r3, [sp, #24]
+ 132 0052 0126     		movs	r6, #1
+ 133 0054 ADF81460 		strh	r6, [sp, #20]	@ movhi
+ 134 0058 0025     		movs	r5, #0
+ 135 005a ADF81C50 		strh	r5, [sp, #28]	@ movhi
+ 136 005e ADF81650 		strh	r5, [sp, #22]	@ movhi
+ 137 0062 A4F58234 		sub	r4, r4, #66560
+ 138 0066 05A9     		add	r1, sp, #20
+ 139 0068 2046     		mov	r0, r4
+ 140 006a FFF7FEFF 		bl	TIM_TimeBaseInit
+ 141 006e 6023     		movs	r3, #96
+ 142 0070 ADF80030 		strh	r3, [sp]	@ movhi
+ 143 0074 ADF80260 		strh	r6, [sp, #2]	@ movhi
+ 144 0078 ADF80450 		strh	r5, [sp, #4]	@ movhi
+ 145 007c 0295     		str	r5, [sp, #8]
+ 146 007e ADF80C50 		strh	r5, [sp, #12]	@ movhi
+ 147 0082 ADF80E50 		strh	r5, [sp, #14]	@ movhi
+ 148 0086 ADF81050 		strh	r5, [sp, #16]	@ movhi
+ 149 008a ADF81250 		strh	r5, [sp, #18]	@ movhi
+ 150 008e 6946     		mov	r1, sp
+ 151 0090 2046     		mov	r0, r4
+ 152 0092 FFF7FEFF 		bl	TIM_OC1Init
+ 153 0096 6946     		mov	r1, sp
+ 154 0098 2046     		mov	r0, r4
+ 155 009a FFF7FEFF 		bl	TIM_OC2Init
+ 156 009e 6946     		mov	r1, sp
+ 157 00a0 2046     		mov	r0, r4
+ 158 00a2 FFF7FEFF 		bl	TIM_OC3Init
+ 159 00a6 6946     		mov	r1, sp
+ 160 00a8 2046     		mov	r0, r4
+ 161 00aa FFF7FEFF 		bl	TIM_OC4Init
+ 162 00ae 0821     		movs	r1, #8
+ 163 00b0 2046     		mov	r0, r4
+ 164 00b2 FFF7FEFF 		bl	TIM_OC1PreloadConfig
+ 165 00b6 0821     		movs	r1, #8
+ 166 00b8 2046     		mov	r0, r4
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccTdFWXu.s 			page 4
+
+
+ 167 00ba FFF7FEFF 		bl	TIM_OC2PreloadConfig
+ 168 00be 0821     		movs	r1, #8
+ 169 00c0 2046     		mov	r0, r4
+ 170 00c2 FFF7FEFF 		bl	TIM_OC3PreloadConfig
+ 171 00c6 0821     		movs	r1, #8
+ 172 00c8 2046     		mov	r0, r4
+ 173 00ca FFF7FEFF 		bl	TIM_OC4PreloadConfig
+ 174 00ce 3146     		mov	r1, r6
+ 175 00d0 2046     		mov	r0, r4
+ 176 00d2 FFF7FEFF 		bl	TIM_ARRPreloadConfig
+ 177 00d6 0948     		ldr	r0, .L13+4
+ 178 00d8 FFF7FEFF 		bl	puts
+ 179 00dc 3146     		mov	r1, r6
+ 180 00de 2046     		mov	r0, r4
+ 181 00e0 FFF7FEFF 		bl	TIM_CtrlPWMOutputs
+ 182 00e4 3146     		mov	r1, r6
+ 183 00e6 2046     		mov	r0, r4
+ 184 00e8 FFF7FEFF 		bl	TIM_Cmd
+ 185 00ec 0448     		ldr	r0, .L13+8
+ 186 00ee FFF7FEFF 		bl	puts
+ 187 00f2 08B0     		add	sp, sp, #32
+ 188              		@ sp needed
+ 189 00f4 70BD     		pop	{r4, r5, r6, pc}
+ 190              	.L14:
+ 191 00f6 00BF     		.align	2
+ 192              	.L13:
+ 193 00f8 00080240 		.word	1073874944
+ 194 00fc 00000000 		.word	.LC0
+ 195 0100 2C000000 		.word	.LC1
+ 197              		.section	.bss.output.0,"aw",%nobits
+ 198              		.align	2
+ 201              	output.0:
+ 202 0000 00000000 		.space	4
+ 203              		.section	.bss.derivative.1,"aw",%nobits
+ 204              		.align	2
+ 207              	derivative.1:
+ 208 0000 00000000 		.space	4
+ 209              		.section	.bss.lastError.2,"aw",%nobits
+ 210              		.align	2
+ 213              	lastError.2:
+ 214 0000 00000000 		.space	4
+ 215              		.section	.bss.integral.5,"aw",%nobits
+ 216              		.align	2
+ 219              	integral.5:
+ 220 0000 00000000 		.space	4
+ 221              		.section	.bss.error.6,"aw",%nobits
+ 222              		.align	2
+ 225              	error.6:
+ 226 0000 00000000 		.space	4
+ 227              		.global	Kd
+ 228              		.section	.bss.Kd,"aw",%nobits
+ 229              		.align	2
+ 232              	Kd:
+ 233 0000 00000000 		.space	4
+ 234              		.global	Ki
+ 235              		.section	.bss.Ki,"aw",%nobits
+ 236              		.align	2
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccTdFWXu.s 			page 5
+
+
+ 239              	Ki:
+ 240 0000 00000000 		.space	4
+ 241              		.global	Kp
+ 242              		.section	.bss.Kp,"aw",%nobits
+ 243              		.align	2
+ 246              	Kp:
+ 247 0000 00000000 		.space	4
+ 248              		.ident	"GCC: (Arm GNU Toolchain 13.3.Rel1 (Build arm-13.24)) 13.3.1 20240614"
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccTdFWXu.s 			page 6
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 control.c
+C:\Users\ktkuru\AppData\Local\Temp\ccTdFWXu.s:18     .text.pidControl:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccTdFWXu.s:24     .text.pidControl:00000000 pidControl
+C:\Users\ktkuru\AppData\Local\Temp\ccTdFWXu.s:74     .text.pidControl:00000080 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccTdFWXu.s:225    .bss.error.6:00000000 error.6
+C:\Users\ktkuru\AppData\Local\Temp\ccTdFWXu.s:219    .bss.integral.5:00000000 integral.5
+C:\Users\ktkuru\AppData\Local\Temp\ccTdFWXu.s:213    .bss.lastError.2:00000000 lastError.2
+C:\Users\ktkuru\AppData\Local\Temp\ccTdFWXu.s:207    .bss.derivative.1:00000000 derivative.1
+C:\Users\ktkuru\AppData\Local\Temp\ccTdFWXu.s:246    .bss.Kp:00000000 Kp
+C:\Users\ktkuru\AppData\Local\Temp\ccTdFWXu.s:239    .bss.Ki:00000000 Ki
+C:\Users\ktkuru\AppData\Local\Temp\ccTdFWXu.s:232    .bss.Kd:00000000 Kd
+C:\Users\ktkuru\AppData\Local\Temp\ccTdFWXu.s:201    .bss.output.0:00000000 output.0
+C:\Users\ktkuru\AppData\Local\Temp\ccTdFWXu.s:84     .rodata.Motor_PWM_TIM8_Init.str1.4:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccTdFWXu.s:91     .text.Motor_PWM_TIM8_Init:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccTdFWXu.s:97     .text.Motor_PWM_TIM8_Init:00000000 Motor_PWM_TIM8_Init
+C:\Users\ktkuru\AppData\Local\Temp\ccTdFWXu.s:193    .text.Motor_PWM_TIM8_Init:000000f8 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccTdFWXu.s:198    .bss.output.0:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccTdFWXu.s:204    .bss.derivative.1:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccTdFWXu.s:210    .bss.lastError.2:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccTdFWXu.s:216    .bss.integral.5:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccTdFWXu.s:222    .bss.error.6:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccTdFWXu.s:229    .bss.Kd:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccTdFWXu.s:236    .bss.Ki:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccTdFWXu.s:243    .bss.Kp:00000000 $d
+
+UNDEFINED SYMBOLS
+RCC_APB2PeriphClockCmd
+RCC_AHB1PeriphClockCmd
+GPIO_Config
+GPIO_PinAFConfig
+TIM_TimeBaseInit
+TIM_OC1Init
+TIM_OC2Init
+TIM_OC3Init
+TIM_OC4Init
+TIM_OC1PreloadConfig
+TIM_OC2PreloadConfig
+TIM_OC3PreloadConfig
+TIM_OC4PreloadConfig
+TIM_ARRPreloadConfig
+puts
+TIM_CtrlPWMOutputs
+TIM_Cmd

@@ -1,0 +1,606 @@
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"heap_4.c"
+  16              		.text
+  17              		.section	.text.prvHeapInit,"ax",%progbits
+  18              		.align	1
+  19              		.syntax unified
+  20              		.thumb
+  21              		.thumb_func
+  23              	prvHeapInit:
+  24              		@ args = 0, pretend = 0, frame = 0
+  25              		@ frame_needed = 0, uses_anonymous_args = 0
+  26              		@ link register save eliminated.
+  27 0000 104A     		ldr	r2, .L4
+  28 0002 12F0070F 		tst	r2, #7
+  29 0006 1AD0     		beq	.L3
+  30 0008 D11D     		adds	r1, r2, #7
+  31 000a 21F00701 		bic	r1, r1, #7
+  32 000e C1F5A043 		rsb	r3, r1, #20480
+  33 0012 1344     		add	r3, r3, r2
+  34 0014 0A46     		mov	r2, r1
+  35              	.L2:
+  36 0016 0C48     		ldr	r0, .L4+4
+  37 0018 0260     		str	r2, [r0]
+  38 001a 0021     		movs	r1, #0
+  39 001c 4160     		str	r1, [r0, #4]
+  40 001e 1344     		add	r3, r3, r2
+  41 0020 083B     		subs	r3, r3, #8
+  42 0022 23F00703 		bic	r3, r3, #7
+  43 0026 0948     		ldr	r0, .L4+8
+  44 0028 0360     		str	r3, [r0]
+  45 002a 5960     		str	r1, [r3, #4]
+  46 002c 1960     		str	r1, [r3]
+  47 002e 991A     		subs	r1, r3, r2
+  48 0030 5160     		str	r1, [r2, #4]
+  49 0032 1360     		str	r3, [r2]
+  50 0034 064B     		ldr	r3, .L4+12
+  51 0036 1960     		str	r1, [r3]
+  52 0038 064B     		ldr	r3, .L4+16
+  53 003a 1960     		str	r1, [r3]
+  54 003c 7047     		bx	lr
+  55              	.L3:
+  56 003e 4FF4A043 		mov	r3, #20480
+  57 0042 E8E7     		b	.L2
+  58              	.L5:
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s 			page 2
+
+
+  59              		.align	2
+  60              	.L4:
+  61 0044 00000000 		.word	ucHeap
+  62 0048 00000000 		.word	xStart
+  63 004c 00000000 		.word	pxEnd
+  64 0050 00000000 		.word	xMinimumEverFreeBytesRemaining
+  65 0054 00000000 		.word	xFreeBytesRemaining
+  67              		.section	.text.prvInsertBlockIntoFreeList,"ax",%progbits
+  68              		.align	1
+  69              		.syntax unified
+  70              		.thumb
+  71              		.thumb_func
+  73              	prvInsertBlockIntoFreeList:
+  74              		@ args = 0, pretend = 0, frame = 0
+  75              		@ frame_needed = 0, uses_anonymous_args = 0
+  76              		@ link register save eliminated.
+  77 0000 164B     		ldr	r3, .L21
+  78              	.L7:
+  79 0002 1A46     		mov	r2, r3
+  80 0004 1B68     		ldr	r3, [r3]
+  81 0006 8342     		cmp	r3, r0
+  82 0008 FBD3     		bcc	.L7
+  83 000a 5168     		ldr	r1, [r2, #4]
+  84 000c 02EB010C 		add	ip, r2, r1
+  85 0010 8445     		cmp	ip, r0
+  86 0012 09D0     		beq	.L19
+  87              	.L8:
+  88 0014 4168     		ldr	r1, [r0, #4]
+  89 0016 00EB010C 		add	ip, r0, r1
+  90 001a 6345     		cmp	r3, ip
+  91 001c 09D0     		beq	.L20
+  92 001e 0360     		str	r3, [r0]
+  93 0020 9042     		cmp	r0, r2
+  94 0022 19D0     		beq	.L16
+  95 0024 1060     		str	r0, [r2]
+  96 0026 7047     		bx	lr
+  97              	.L19:
+  98 0028 4068     		ldr	r0, [r0, #4]
+  99 002a 0144     		add	r1, r1, r0
+ 100 002c 5160     		str	r1, [r2, #4]
+ 101 002e 1046     		mov	r0, r2
+ 102 0030 F0E7     		b	.L8
+ 103              	.L20:
+ 104 0032 10B4     		push	{r4}
+ 105 0034 0A4C     		ldr	r4, .L21+4
+ 106 0036 2468     		ldr	r4, [r4]
+ 107 0038 A342     		cmp	r3, r4
+ 108 003a 0BD0     		beq	.L10
+ 109 003c 5B68     		ldr	r3, [r3, #4]
+ 110 003e 1944     		add	r1, r1, r3
+ 111 0040 4160     		str	r1, [r0, #4]
+ 112 0042 1368     		ldr	r3, [r2]
+ 113 0044 1B68     		ldr	r3, [r3]
+ 114 0046 0360     		str	r3, [r0]
+ 115              	.L11:
+ 116 0048 9042     		cmp	r0, r2
+ 117 004a 00D0     		beq	.L6
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s 			page 3
+
+
+ 118 004c 1060     		str	r0, [r2]
+ 119              	.L6:
+ 120 004e 5DF8044B 		ldr	r4, [sp], #4
+ 121 0052 7047     		bx	lr
+ 122              	.L10:
+ 123 0054 0460     		str	r4, [r0]
+ 124 0056 F7E7     		b	.L11
+ 125              	.L16:
+ 126 0058 7047     		bx	lr
+ 127              	.L22:
+ 128 005a 00BF     		.align	2
+ 129              	.L21:
+ 130 005c 00000000 		.word	xStart
+ 131 0060 00000000 		.word	pxEnd
+ 133              		.section	.rodata.pvPortMalloc.str1.4,"aMS",%progbits,1
+ 134              		.align	2
+ 135              	.LC0:
+ 136 0000 52544F53 		.ascii	"RTOS/portable/MemMang/heap_4.c\000"
+ 136      2F706F72 
+ 136      7461626C 
+ 136      652F4D65 
+ 136      6D4D616E 
+ 137 001f 00       		.align	2
+ 138              	.LC1:
+ 139 0020 4572726F 		.ascii	"Error:%s,%d\015\012\000"
+ 139      723A2573 
+ 139      2C25640D 
+ 139      0A00
+ 140              		.section	.text.pvPortMalloc,"ax",%progbits
+ 141              		.align	1
+ 142              		.global	pvPortMalloc
+ 143              		.syntax unified
+ 144              		.thumb
+ 145              		.thumb_func
+ 147              	pvPortMalloc:
+ 148              		@ args = 0, pretend = 0, frame = 0
+ 149              		@ frame_needed = 0, uses_anonymous_args = 0
+ 150 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+ 151 0002 0546     		mov	r5, r0
+ 152 0004 FFF7FEFF 		bl	vTaskSuspendAll
+ 153 0008 344B     		ldr	r3, .L43
+ 154 000a 1B68     		ldr	r3, [r3]
+ 155 000c 5BB1     		cbz	r3, .L40
+ 156              	.L24:
+ 157 000e 75B1     		cbz	r5, .L25
+ 158 0010 05F00703 		and	r3, r5, #7
+ 159 0014 C3F11002 		rsb	r2, r3, #16
+ 160 0018 113B     		subs	r3, r3, #17
+ 161 001a AB42     		cmp	r3, r5
+ 162 001c 06D3     		bcc	.L33
+ 163 001e AD18     		adds	r5, r5, r2
+ 164 0020 05D5     		bpl	.L25
+ 165 0022 0026     		movs	r6, #0
+ 166 0024 3FE0     		b	.L26
+ 167              	.L40:
+ 168 0026 FFF7FEFF 		bl	prvHeapInit
+ 169 002a F0E7     		b	.L24
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s 			page 4
+
+
+ 170              	.L33:
+ 171 002c 0025     		movs	r5, #0
+ 172              	.L25:
+ 173 002e 002D     		cmp	r5, #0
+ 174 0030 46D0     		beq	.L35
+ 175 0032 2B4B     		ldr	r3, .L43+4
+ 176 0034 1B68     		ldr	r3, [r3]
+ 177 0036 AB42     		cmp	r3, r5
+ 178 0038 44D3     		bcc	.L36
+ 179 003a 2A4A     		ldr	r2, .L43+8
+ 180 003c 1468     		ldr	r4, [r2]
+ 181 003e 01E0     		b	.L28
+ 182              	.L37:
+ 183 0040 2246     		mov	r2, r4
+ 184 0042 1C46     		mov	r4, r3
+ 185              	.L28:
+ 186 0044 6368     		ldr	r3, [r4, #4]
+ 187 0046 AB42     		cmp	r3, r5
+ 188 0048 02D2     		bcs	.L27
+ 189 004a 2368     		ldr	r3, [r4]
+ 190 004c 002B     		cmp	r3, #0
+ 191 004e F7D1     		bne	.L37
+ 192              	.L27:
+ 193 0050 224B     		ldr	r3, .L43
+ 194 0052 1B68     		ldr	r3, [r3]
+ 195 0054 A342     		cmp	r3, r4
+ 196 0056 37D0     		beq	.L38
+ 197 0058 1668     		ldr	r6, [r2]
+ 198 005a 0836     		adds	r6, r6, #8
+ 199 005c 2368     		ldr	r3, [r4]
+ 200 005e 1360     		str	r3, [r2]
+ 201 0060 6368     		ldr	r3, [r4, #4]
+ 202 0062 5B1B     		subs	r3, r3, r5
+ 203 0064 102B     		cmp	r3, #16
+ 204 0066 0AD9     		bls	.L29
+ 205 0068 6719     		adds	r7, r4, r5
+ 206 006a 17F0070F 		tst	r7, #7
+ 207 006e 21D1     		bne	.L41
+ 208              	.L30:
+ 209 0070 6368     		ldr	r3, [r4, #4]
+ 210 0072 5B1B     		subs	r3, r3, r5
+ 211 0074 7B60     		str	r3, [r7, #4]
+ 212 0076 6560     		str	r5, [r4, #4]
+ 213 0078 3846     		mov	r0, r7
+ 214 007a FFF7FEFF 		bl	prvInsertBlockIntoFreeList
+ 215              	.L29:
+ 216 007e 6268     		ldr	r2, [r4, #4]
+ 217 0080 1749     		ldr	r1, .L43+4
+ 218 0082 0B68     		ldr	r3, [r1]
+ 219 0084 9B1A     		subs	r3, r3, r2
+ 220 0086 0B60     		str	r3, [r1]
+ 221 0088 1749     		ldr	r1, .L43+12
+ 222 008a 0968     		ldr	r1, [r1]
+ 223 008c 8B42     		cmp	r3, r1
+ 224 008e 01D2     		bcs	.L31
+ 225 0090 1549     		ldr	r1, .L43+12
+ 226 0092 0B60     		str	r3, [r1]
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s 			page 5
+
+
+ 227              	.L31:
+ 228 0094 42F00042 		orr	r2, r2, #-2147483648
+ 229 0098 6260     		str	r2, [r4, #4]
+ 230 009a 0023     		movs	r3, #0
+ 231 009c 2360     		str	r3, [r4]
+ 232 009e 134A     		ldr	r2, .L43+16
+ 233 00a0 1368     		ldr	r3, [r2]
+ 234 00a2 0133     		adds	r3, r3, #1
+ 235 00a4 1360     		str	r3, [r2]
+ 236              	.L26:
+ 237 00a6 FFF7FEFF 		bl	xTaskResumeAll
+ 238 00aa 16F0070F 		tst	r6, #7
+ 239 00ae 0DD1     		bne	.L42
+ 240              	.L23:
+ 241 00b0 3046     		mov	r0, r6
+ 242 00b2 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 243              	.L41:
+ 244 00b4 DC22     		movs	r2, #220
+ 245 00b6 0E49     		ldr	r1, .L43+20
+ 246 00b8 0E48     		ldr	r0, .L43+24
+ 247 00ba FFF7FEFF 		bl	printf
+ 248 00be D7E7     		b	.L30
+ 249              	.L35:
+ 250 00c0 0026     		movs	r6, #0
+ 251 00c2 F0E7     		b	.L26
+ 252              	.L36:
+ 253 00c4 0026     		movs	r6, #0
+ 254 00c6 EEE7     		b	.L26
+ 255              	.L38:
+ 256 00c8 0026     		movs	r6, #0
+ 257 00ca ECE7     		b	.L26
+ 258              	.L42:
+ 259 00cc 4FF48E72 		mov	r2, #284
+ 260 00d0 0749     		ldr	r1, .L43+20
+ 261 00d2 0848     		ldr	r0, .L43+24
+ 262 00d4 FFF7FEFF 		bl	printf
+ 263 00d8 EAE7     		b	.L23
+ 264              	.L44:
+ 265 00da 00BF     		.align	2
+ 266              	.L43:
+ 267 00dc 00000000 		.word	pxEnd
+ 268 00e0 00000000 		.word	xFreeBytesRemaining
+ 269 00e4 00000000 		.word	xStart
+ 270 00e8 00000000 		.word	xMinimumEverFreeBytesRemaining
+ 271 00ec 00000000 		.word	xNumberOfSuccessfulAllocations
+ 272 00f0 00000000 		.word	.LC0
+ 273 00f4 20000000 		.word	.LC1
+ 275              		.section	.text.vPortFree,"ax",%progbits
+ 276              		.align	1
+ 277              		.global	vPortFree
+ 278              		.syntax unified
+ 279              		.thumb
+ 280              		.thumb_func
+ 282              	vPortFree:
+ 283              		@ args = 0, pretend = 0, frame = 0
+ 284              		@ frame_needed = 0, uses_anonymous_args = 0
+ 285 0000 0028     		cmp	r0, #0
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s 			page 6
+
+
+ 286 0002 36D0     		beq	.L50
+ 287 0004 38B5     		push	{r3, r4, r5, lr}
+ 288 0006 0446     		mov	r4, r0
+ 289 0008 A0F10805 		sub	r5, r0, #8
+ 290 000c 50F8043C 		ldr	r3, [r0, #-4]
+ 291 0010 002B     		cmp	r3, #0
+ 292 0012 0DDA     		bge	.L53
+ 293              	.L47:
+ 294 0014 54F8083C 		ldr	r3, [r4, #-8]
+ 295 0018 2BB1     		cbz	r3, .L48
+ 296 001a 4FF49872 		mov	r2, #304
+ 297 001e 1549     		ldr	r1, .L55
+ 298 0020 1548     		ldr	r0, .L55+4
+ 299 0022 FFF7FEFF 		bl	printf
+ 300              	.L48:
+ 301 0026 54F8043C 		ldr	r3, [r4, #-4]
+ 302 002a 002B     		cmp	r3, #0
+ 303 002c 07DB     		blt	.L54
+ 304              	.L45:
+ 305 002e 38BD     		pop	{r3, r4, r5, pc}
+ 306              	.L53:
+ 307 0030 40F22F12 		movw	r2, #303
+ 308 0034 0F49     		ldr	r1, .L55
+ 309 0036 1048     		ldr	r0, .L55+4
+ 310 0038 FFF7FEFF 		bl	printf
+ 311 003c EAE7     		b	.L47
+ 312              	.L54:
+ 313 003e 54F8082C 		ldr	r2, [r4, #-8]
+ 314 0042 002A     		cmp	r2, #0
+ 315 0044 F3D1     		bne	.L45
+ 316 0046 23F00043 		bic	r3, r3, #-2147483648
+ 317 004a 44F8043C 		str	r3, [r4, #-4]
+ 318 004e FFF7FEFF 		bl	vTaskSuspendAll
+ 319 0052 54F8041C 		ldr	r1, [r4, #-4]
+ 320 0056 094A     		ldr	r2, .L55+8
+ 321 0058 1368     		ldr	r3, [r2]
+ 322 005a 0B44     		add	r3, r3, r1
+ 323 005c 1360     		str	r3, [r2]
+ 324 005e 2846     		mov	r0, r5
+ 325 0060 FFF7FEFF 		bl	prvInsertBlockIntoFreeList
+ 326 0064 064A     		ldr	r2, .L55+12
+ 327 0066 1368     		ldr	r3, [r2]
+ 328 0068 0133     		adds	r3, r3, #1
+ 329 006a 1360     		str	r3, [r2]
+ 330 006c FFF7FEFF 		bl	xTaskResumeAll
+ 331 0070 DDE7     		b	.L45
+ 332              	.L50:
+ 333 0072 7047     		bx	lr
+ 334              	.L56:
+ 335              		.align	2
+ 336              	.L55:
+ 337 0074 00000000 		.word	.LC0
+ 338 0078 20000000 		.word	.LC1
+ 339 007c 00000000 		.word	xFreeBytesRemaining
+ 340 0080 00000000 		.word	xNumberOfSuccessfulFrees
+ 342              		.section	.text.xPortGetFreeHeapSize,"ax",%progbits
+ 343              		.align	1
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s 			page 7
+
+
+ 344              		.global	xPortGetFreeHeapSize
+ 345              		.syntax unified
+ 346              		.thumb
+ 347              		.thumb_func
+ 349              	xPortGetFreeHeapSize:
+ 350              		@ args = 0, pretend = 0, frame = 0
+ 351              		@ frame_needed = 0, uses_anonymous_args = 0
+ 352              		@ link register save eliminated.
+ 353 0000 014B     		ldr	r3, .L58
+ 354 0002 1868     		ldr	r0, [r3]
+ 355 0004 7047     		bx	lr
+ 356              	.L59:
+ 357 0006 00BF     		.align	2
+ 358              	.L58:
+ 359 0008 00000000 		.word	xFreeBytesRemaining
+ 361              		.section	.text.xPortGetMinimumEverFreeHeapSize,"ax",%progbits
+ 362              		.align	1
+ 363              		.global	xPortGetMinimumEverFreeHeapSize
+ 364              		.syntax unified
+ 365              		.thumb
+ 366              		.thumb_func
+ 368              	xPortGetMinimumEverFreeHeapSize:
+ 369              		@ args = 0, pretend = 0, frame = 0
+ 370              		@ frame_needed = 0, uses_anonymous_args = 0
+ 371              		@ link register save eliminated.
+ 372 0000 014B     		ldr	r3, .L61
+ 373 0002 1868     		ldr	r0, [r3]
+ 374 0004 7047     		bx	lr
+ 375              	.L62:
+ 376 0006 00BF     		.align	2
+ 377              	.L61:
+ 378 0008 00000000 		.word	xMinimumEverFreeBytesRemaining
+ 380              		.section	.text.vPortInitialiseBlocks,"ax",%progbits
+ 381              		.align	1
+ 382              		.global	vPortInitialiseBlocks
+ 383              		.syntax unified
+ 384              		.thumb
+ 385              		.thumb_func
+ 387              	vPortInitialiseBlocks:
+ 388              		@ args = 0, pretend = 0, frame = 0
+ 389              		@ frame_needed = 0, uses_anonymous_args = 0
+ 390              		@ link register save eliminated.
+ 391 0000 7047     		bx	lr
+ 393              		.section	.text.pvPortCalloc,"ax",%progbits
+ 394              		.align	1
+ 395              		.global	pvPortCalloc
+ 396              		.syntax unified
+ 397              		.thumb
+ 398              		.thumb_func
+ 400              	pvPortCalloc:
+ 401              		@ args = 0, pretend = 0, frame = 0
+ 402              		@ frame_needed = 0, uses_anonymous_args = 0
+ 403 0000 38B5     		push	{r3, r4, r5, lr}
+ 404 0002 0346     		mov	r3, r0
+ 405 0004 20B1     		cbz	r0, .L65
+ 406 0006 0022     		movs	r2, #0
+ 407 0008 A1FB0040 		umull	r4, r0, r1, r0
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s 			page 8
+
+
+ 408 000c 68B9     		cbnz	r0, .L71
+ 409              	.L66:
+ 410 000e 72B9     		cbnz	r2, .L69
+ 411              	.L65:
+ 412 0010 01FB03F4 		mul	r4, r1, r3
+ 413 0014 2046     		mov	r0, r4
+ 414 0016 FFF7FEFF 		bl	pvPortMalloc
+ 415 001a 0546     		mov	r5, r0
+ 416 001c 18B1     		cbz	r0, .L64
+ 417 001e 2246     		mov	r2, r4
+ 418 0020 0021     		movs	r1, #0
+ 419 0022 FFF7FEFF 		bl	memset
+ 420              	.L64:
+ 421 0026 2846     		mov	r0, r5
+ 422 0028 38BD     		pop	{r3, r4, r5, pc}
+ 423              	.L71:
+ 424 002a 0122     		movs	r2, #1
+ 425 002c EFE7     		b	.L66
+ 426              	.L69:
+ 427 002e 0025     		movs	r5, #0
+ 428 0030 F9E7     		b	.L64
+ 430              		.section	.text.vPortGetHeapStats,"ax",%progbits
+ 431              		.align	1
+ 432              		.global	vPortGetHeapStats
+ 433              		.syntax unified
+ 434              		.thumb
+ 435              		.thumb_func
+ 437              	vPortGetHeapStats:
+ 438              		@ args = 0, pretend = 0, frame = 0
+ 439              		@ frame_needed = 0, uses_anonymous_args = 0
+ 440 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+ 441 0002 0746     		mov	r7, r0
+ 442 0004 FFF7FEFF 		bl	vTaskSuspendAll
+ 443 0008 174B     		ldr	r3, .L83
+ 444 000a 1B68     		ldr	r3, [r3]
+ 445 000c 23B1     		cbz	r3, .L82
+ 446 000e 4FF0FF36 		mov	r6, #-1
+ 447 0012 0025     		movs	r5, #0
+ 448 0014 2C46     		mov	r4, r5
+ 449 0016 1AE0     		b	.L73
+ 450              	.L82:
+ 451 0018 4FF0FF36 		mov	r6, #-1
+ 452 001c 0025     		movs	r5, #0
+ 453 001e 2C46     		mov	r4, r5
+ 454              	.L74:
+ 455 0020 FFF7FEFF 		bl	xTaskResumeAll
+ 456 0024 7D60     		str	r5, [r7, #4]
+ 457 0026 BE60     		str	r6, [r7, #8]
+ 458 0028 FC60     		str	r4, [r7, #12]
+ 459 002a FFF7FEFF 		bl	vPortEnterCritical
+ 460 002e 0F4B     		ldr	r3, .L83+4
+ 461 0030 1B68     		ldr	r3, [r3]
+ 462 0032 3B60     		str	r3, [r7]
+ 463 0034 0E4B     		ldr	r3, .L83+8
+ 464 0036 1B68     		ldr	r3, [r3]
+ 465 0038 7B61     		str	r3, [r7, #20]
+ 466 003a 0E4B     		ldr	r3, .L83+12
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s 			page 9
+
+
+ 467 003c 1B68     		ldr	r3, [r3]
+ 468 003e BB61     		str	r3, [r7, #24]
+ 469 0040 0D4B     		ldr	r3, .L83+16
+ 470 0042 1B68     		ldr	r3, [r3]
+ 471 0044 3B61     		str	r3, [r7, #16]
+ 472 0046 FFF7FEFF 		bl	vPortExitCritical
+ 473 004a F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 474              	.L76:
+ 475 004c 1B68     		ldr	r3, [r3]
+ 476              	.L73:
+ 477 004e 0B4A     		ldr	r2, .L83+20
+ 478 0050 1268     		ldr	r2, [r2]
+ 479 0052 9A42     		cmp	r2, r3
+ 480 0054 E4D0     		beq	.L74
+ 481 0056 0134     		adds	r4, r4, #1
+ 482 0058 5A68     		ldr	r2, [r3, #4]
+ 483 005a AA42     		cmp	r2, r5
+ 484 005c 00D9     		bls	.L75
+ 485 005e 1546     		mov	r5, r2
+ 486              	.L75:
+ 487 0060 B242     		cmp	r2, r6
+ 488 0062 F3D2     		bcs	.L76
+ 489 0064 1646     		mov	r6, r2
+ 490 0066 F1E7     		b	.L76
+ 491              	.L84:
+ 492              		.align	2
+ 493              	.L83:
+ 494 0068 00000000 		.word	xStart
+ 495 006c 00000000 		.word	xFreeBytesRemaining
+ 496 0070 00000000 		.word	xNumberOfSuccessfulAllocations
+ 497 0074 00000000 		.word	xNumberOfSuccessfulFrees
+ 498 0078 00000000 		.word	xMinimumEverFreeBytesRemaining
+ 499 007c 00000000 		.word	pxEnd
+ 501              		.section	.bss.xNumberOfSuccessfulFrees,"aw",%nobits
+ 502              		.align	2
+ 505              	xNumberOfSuccessfulFrees:
+ 506 0000 00000000 		.space	4
+ 507              		.section	.bss.xNumberOfSuccessfulAllocations,"aw",%nobits
+ 508              		.align	2
+ 511              	xNumberOfSuccessfulAllocations:
+ 512 0000 00000000 		.space	4
+ 513              		.section	.bss.xMinimumEverFreeBytesRemaining,"aw",%nobits
+ 514              		.align	2
+ 517              	xMinimumEverFreeBytesRemaining:
+ 518 0000 00000000 		.space	4
+ 519              		.section	.bss.xFreeBytesRemaining,"aw",%nobits
+ 520              		.align	2
+ 523              	xFreeBytesRemaining:
+ 524 0000 00000000 		.space	4
+ 525              		.section	.bss.pxEnd,"aw",%nobits
+ 526              		.align	2
+ 529              	pxEnd:
+ 530 0000 00000000 		.space	4
+ 531              		.section	.bss.xStart,"aw",%nobits
+ 532              		.align	2
+ 535              	xStart:
+ 536 0000 00000000 		.space	8
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s 			page 10
+
+
+ 536      00000000 
+ 537              		.section	.bss.ucHeap,"aw",%nobits
+ 538              		.align	2
+ 541              	ucHeap:
+ 542 0000 00000000 		.space	20480
+ 542      00000000 
+ 542      00000000 
+ 542      00000000 
+ 542      00000000 
+ 543              		.ident	"GCC: (Arm GNU Toolchain 13.3.Rel1 (Build arm-13.24)) 13.3.1 20240614"
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s 			page 11
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 heap_4.c
+C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s:18     .text.prvHeapInit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s:23     .text.prvHeapInit:00000000 prvHeapInit
+C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s:61     .text.prvHeapInit:00000044 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s:541    .bss.ucHeap:00000000 ucHeap
+C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s:535    .bss.xStart:00000000 xStart
+C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s:529    .bss.pxEnd:00000000 pxEnd
+C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s:517    .bss.xMinimumEverFreeBytesRemaining:00000000 xMinimumEverFreeBytesRemaining
+C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s:523    .bss.xFreeBytesRemaining:00000000 xFreeBytesRemaining
+C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s:68     .text.prvInsertBlockIntoFreeList:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s:73     .text.prvInsertBlockIntoFreeList:00000000 prvInsertBlockIntoFreeList
+C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s:130    .text.prvInsertBlockIntoFreeList:0000005c $d
+C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s:134    .rodata.pvPortMalloc.str1.4:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s:141    .text.pvPortMalloc:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s:147    .text.pvPortMalloc:00000000 pvPortMalloc
+C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s:267    .text.pvPortMalloc:000000dc $d
+C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s:511    .bss.xNumberOfSuccessfulAllocations:00000000 xNumberOfSuccessfulAllocations
+C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s:276    .text.vPortFree:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s:282    .text.vPortFree:00000000 vPortFree
+C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s:337    .text.vPortFree:00000074 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s:505    .bss.xNumberOfSuccessfulFrees:00000000 xNumberOfSuccessfulFrees
+C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s:343    .text.xPortGetFreeHeapSize:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s:349    .text.xPortGetFreeHeapSize:00000000 xPortGetFreeHeapSize
+C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s:359    .text.xPortGetFreeHeapSize:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s:362    .text.xPortGetMinimumEverFreeHeapSize:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s:368    .text.xPortGetMinimumEverFreeHeapSize:00000000 xPortGetMinimumEverFreeHeapSize
+C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s:378    .text.xPortGetMinimumEverFreeHeapSize:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s:381    .text.vPortInitialiseBlocks:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s:387    .text.vPortInitialiseBlocks:00000000 vPortInitialiseBlocks
+C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s:394    .text.pvPortCalloc:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s:400    .text.pvPortCalloc:00000000 pvPortCalloc
+C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s:431    .text.vPortGetHeapStats:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s:437    .text.vPortGetHeapStats:00000000 vPortGetHeapStats
+C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s:494    .text.vPortGetHeapStats:00000068 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s:502    .bss.xNumberOfSuccessfulFrees:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s:508    .bss.xNumberOfSuccessfulAllocations:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s:514    .bss.xMinimumEverFreeBytesRemaining:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s:520    .bss.xFreeBytesRemaining:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s:526    .bss.pxEnd:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s:532    .bss.xStart:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s:538    .bss.ucHeap:00000000 $d
+
+UNDEFINED SYMBOLS
+vTaskSuspendAll
+xTaskResumeAll
+printf
+memset
+vPortEnterCritical
+vPortExitCritical

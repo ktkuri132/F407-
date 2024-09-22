@@ -1,0 +1,29 @@
+{
+    "configurations": [
+        {
+            "name": "build",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "${workspaceFolder}/STM32F4xx_FWLib/inc",
+                "${workspaceFolder}/SYSTEM/sys",
+                "${workspaceFolder}/USER",
+                "${workspaceFolder}/CORE",
+                "${workspaceFolder}/SYSTEM/delay",
+                "${workspaceFolder}/SYSTEM/usart",
+                "${workspaceFolder}/HARDWARE/OLED_SPI",
+                "${workspaceFolder}/HARDWARE/CONTROL",
+                "${workspaceFolder}/HARDWARE/IIC",
+                "${workspaceFolder}/HARDWARE/**"
+            ],
+            "defines": [
+                "STM32F40_41xxx",
+                "USE_STDPERIPH_DRIVER"
+            ],
+            "compilerPath": "C:\\Program Files (x86)\\Arm GNU Toolchain arm-none-eabi\\13.3 rel1\\bin\\arm-none-eabi-gcc.exe",
+            "intelliSenseMode": "gcc-arm",
+            "cStandard": "c99",
+            "cppStandard": "c++17"
+        }
+    ],
+    "version": 4
+}

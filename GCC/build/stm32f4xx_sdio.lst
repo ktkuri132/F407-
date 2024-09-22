@@ -1,0 +1,740 @@
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cccvQEVZ.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"stm32f4xx_sdio.c"
+  16              		.text
+  17              		.section	.text.SDIO_DeInit,"ax",%progbits
+  18              		.align	1
+  19              		.global	SDIO_DeInit
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  24              	SDIO_DeInit:
+  25              		@ args = 0, pretend = 0, frame = 0
+  26              		@ frame_needed = 0, uses_anonymous_args = 0
+  27 0000 08B5     		push	{r3, lr}
+  28 0002 0121     		movs	r1, #1
+  29 0004 4FF40060 		mov	r0, #2048
+  30 0008 FFF7FEFF 		bl	RCC_APB2PeriphResetCmd
+  31 000c 0021     		movs	r1, #0
+  32 000e 4FF40060 		mov	r0, #2048
+  33 0012 FFF7FEFF 		bl	RCC_APB2PeriphResetCmd
+  34 0016 08BD     		pop	{r3, pc}
+  36              		.section	.text.SDIO_Init,"ax",%progbits
+  37              		.align	1
+  38              		.global	SDIO_Init
+  39              		.syntax unified
+  40              		.thumb
+  41              		.thumb_func
+  43              	SDIO_Init:
+  44              		@ args = 0, pretend = 0, frame = 0
+  45              		@ frame_needed = 0, uses_anonymous_args = 0
+  46              		@ link register save eliminated.
+  47 0000 10B4     		push	{r4}
+  48 0002 0B49     		ldr	r1, .L5
+  49 0004 4A68     		ldr	r2, [r1, #4]
+  50 0006 22F4FD42 		bic	r2, r2, #32384
+  51 000a 22F07F02 		bic	r2, r2, #127
+  52 000e 037D     		ldrb	r3, [r0, #20]	@ zero_extendqisi2
+  53 0010 8468     		ldr	r4, [r0, #8]
+  54 0012 2343     		orrs	r3, r3, r4
+  55 0014 4468     		ldr	r4, [r0, #4]
+  56 0016 2343     		orrs	r3, r3, r4
+  57 0018 C468     		ldr	r4, [r0, #12]
+  58 001a 2343     		orrs	r3, r3, r4
+  59 001c 0468     		ldr	r4, [r0]
+  60 001e 2343     		orrs	r3, r3, r4
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cccvQEVZ.s 			page 2
+
+
+  61 0020 0069     		ldr	r0, [r0, #16]
+  62 0022 0343     		orrs	r3, r3, r0
+  63 0024 1343     		orrs	r3, r3, r2
+  64 0026 4B60     		str	r3, [r1, #4]
+  65 0028 5DF8044B 		ldr	r4, [sp], #4
+  66 002c 7047     		bx	lr
+  67              	.L6:
+  68 002e 00BF     		.align	2
+  69              	.L5:
+  70 0030 002C0140 		.word	1073818624
+  72              		.section	.text.SDIO_StructInit,"ax",%progbits
+  73              		.align	1
+  74              		.global	SDIO_StructInit
+  75              		.syntax unified
+  76              		.thumb
+  77              		.thumb_func
+  79              	SDIO_StructInit:
+  80              		@ args = 0, pretend = 0, frame = 0
+  81              		@ frame_needed = 0, uses_anonymous_args = 0
+  82              		@ link register save eliminated.
+  83 0000 0023     		movs	r3, #0
+  84 0002 0375     		strb	r3, [r0, #20]
+  85 0004 0360     		str	r3, [r0]
+  86 0006 4360     		str	r3, [r0, #4]
+  87 0008 8360     		str	r3, [r0, #8]
+  88 000a C360     		str	r3, [r0, #12]
+  89 000c 0361     		str	r3, [r0, #16]
+  90 000e 7047     		bx	lr
+  92              		.section	.text.SDIO_ClockCmd,"ax",%progbits
+  93              		.align	1
+  94              		.global	SDIO_ClockCmd
+  95              		.syntax unified
+  96              		.thumb
+  97              		.thumb_func
+  99              	SDIO_ClockCmd:
+ 100              		@ args = 0, pretend = 0, frame = 0
+ 101              		@ frame_needed = 0, uses_anonymous_args = 0
+ 102              		@ link register save eliminated.
+ 103 0000 014B     		ldr	r3, .L9
+ 104 0002 C3F8A000 		str	r0, [r3, #160]
+ 105 0006 7047     		bx	lr
+ 106              	.L10:
+ 107              		.align	2
+ 108              	.L9:
+ 109 0008 00802542 		.word	1109753856
+ 111              		.section	.text.SDIO_SetPowerState,"ax",%progbits
+ 112              		.align	1
+ 113              		.global	SDIO_SetPowerState
+ 114              		.syntax unified
+ 115              		.thumb
+ 116              		.thumb_func
+ 118              	SDIO_SetPowerState:
+ 119              		@ args = 0, pretend = 0, frame = 0
+ 120              		@ frame_needed = 0, uses_anonymous_args = 0
+ 121              		@ link register save eliminated.
+ 122 0000 014B     		ldr	r3, .L12
+ 123 0002 1860     		str	r0, [r3]
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cccvQEVZ.s 			page 3
+
+
+ 124 0004 7047     		bx	lr
+ 125              	.L13:
+ 126 0006 00BF     		.align	2
+ 127              	.L12:
+ 128 0008 002C0140 		.word	1073818624
+ 130              		.section	.text.SDIO_GetPowerState,"ax",%progbits
+ 131              		.align	1
+ 132              		.global	SDIO_GetPowerState
+ 133              		.syntax unified
+ 134              		.thumb
+ 135              		.thumb_func
+ 137              	SDIO_GetPowerState:
+ 138              		@ args = 0, pretend = 0, frame = 0
+ 139              		@ frame_needed = 0, uses_anonymous_args = 0
+ 140              		@ link register save eliminated.
+ 141 0000 024B     		ldr	r3, .L15
+ 142 0002 1868     		ldr	r0, [r3]
+ 143 0004 00F00300 		and	r0, r0, #3
+ 144 0008 7047     		bx	lr
+ 145              	.L16:
+ 146 000a 00BF     		.align	2
+ 147              	.L15:
+ 148 000c 002C0140 		.word	1073818624
+ 150              		.section	.text.SDIO_SendCommand,"ax",%progbits
+ 151              		.align	1
+ 152              		.global	SDIO_SendCommand
+ 153              		.syntax unified
+ 154              		.thumb
+ 155              		.thumb_func
+ 157              	SDIO_SendCommand:
+ 158              		@ args = 0, pretend = 0, frame = 0
+ 159              		@ frame_needed = 0, uses_anonymous_args = 0
+ 160              		@ link register save eliminated.
+ 161 0000 10B4     		push	{r4}
+ 162 0002 0368     		ldr	r3, [r0]
+ 163 0004 084A     		ldr	r2, .L19
+ 164 0006 9360     		str	r3, [r2, #8]
+ 165 0008 D168     		ldr	r1, [r2, #12]
+ 166 000a 6FF30A01 		bfc	r1, #0, #11
+ 167 000e 4368     		ldr	r3, [r0, #4]
+ 168 0010 8468     		ldr	r4, [r0, #8]
+ 169 0012 2343     		orrs	r3, r3, r4
+ 170 0014 C468     		ldr	r4, [r0, #12]
+ 171 0016 2343     		orrs	r3, r3, r4
+ 172 0018 0069     		ldr	r0, [r0, #16]
+ 173 001a 0343     		orrs	r3, r3, r0
+ 174 001c 0B43     		orrs	r3, r3, r1
+ 175 001e D360     		str	r3, [r2, #12]
+ 176 0020 5DF8044B 		ldr	r4, [sp], #4
+ 177 0024 7047     		bx	lr
+ 178              	.L20:
+ 179 0026 00BF     		.align	2
+ 180              	.L19:
+ 181 0028 002C0140 		.word	1073818624
+ 183              		.section	.text.SDIO_CmdStructInit,"ax",%progbits
+ 184              		.align	1
+ 185              		.global	SDIO_CmdStructInit
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cccvQEVZ.s 			page 4
+
+
+ 186              		.syntax unified
+ 187              		.thumb
+ 188              		.thumb_func
+ 190              	SDIO_CmdStructInit:
+ 191              		@ args = 0, pretend = 0, frame = 0
+ 192              		@ frame_needed = 0, uses_anonymous_args = 0
+ 193              		@ link register save eliminated.
+ 194 0000 0023     		movs	r3, #0
+ 195 0002 0360     		str	r3, [r0]
+ 196 0004 4360     		str	r3, [r0, #4]
+ 197 0006 8360     		str	r3, [r0, #8]
+ 198 0008 C360     		str	r3, [r0, #12]
+ 199 000a 0361     		str	r3, [r0, #16]
+ 200 000c 7047     		bx	lr
+ 202              		.section	.text.SDIO_GetCommandResponse,"ax",%progbits
+ 203              		.align	1
+ 204              		.global	SDIO_GetCommandResponse
+ 205              		.syntax unified
+ 206              		.thumb
+ 207              		.thumb_func
+ 209              	SDIO_GetCommandResponse:
+ 210              		@ args = 0, pretend = 0, frame = 0
+ 211              		@ frame_needed = 0, uses_anonymous_args = 0
+ 212              		@ link register save eliminated.
+ 213 0000 014B     		ldr	r3, .L23
+ 214 0002 1869     		ldr	r0, [r3, #16]
+ 215 0004 C0B2     		uxtb	r0, r0
+ 216 0006 7047     		bx	lr
+ 217              	.L24:
+ 218              		.align	2
+ 219              	.L23:
+ 220 0008 002C0140 		.word	1073818624
+ 222              		.section	.text.SDIO_GetResponse,"ax",%progbits
+ 223              		.align	1
+ 224              		.global	SDIO_GetResponse
+ 225              		.syntax unified
+ 226              		.thumb
+ 227              		.thumb_func
+ 229              	SDIO_GetResponse:
+ 230              		@ args = 0, pretend = 0, frame = 8
+ 231              		@ frame_needed = 0, uses_anonymous_args = 0
+ 232              		@ link register save eliminated.
+ 233 0000 82B0     		sub	sp, sp, #8
+ 234 0002 0023     		movs	r3, #0
+ 235 0004 0193     		str	r3, [sp, #4]
+ 236 0006 034B     		ldr	r3, .L27
+ 237 0008 0344     		add	r3, r3, r0
+ 238 000a 0193     		str	r3, [sp, #4]
+ 239 000c 019B     		ldr	r3, [sp, #4]
+ 240 000e 1868     		ldr	r0, [r3]
+ 241 0010 02B0     		add	sp, sp, #8
+ 242              		@ sp needed
+ 243 0012 7047     		bx	lr
+ 244              	.L28:
+ 245              		.align	2
+ 246              	.L27:
+ 247 0014 142C0140 		.word	1073818644
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cccvQEVZ.s 			page 5
+
+
+ 249              		.section	.text.SDIO_DataConfig,"ax",%progbits
+ 250              		.align	1
+ 251              		.global	SDIO_DataConfig
+ 252              		.syntax unified
+ 253              		.thumb
+ 254              		.thumb_func
+ 256              	SDIO_DataConfig:
+ 257              		@ args = 0, pretend = 0, frame = 0
+ 258              		@ frame_needed = 0, uses_anonymous_args = 0
+ 259              		@ link register save eliminated.
+ 260 0000 10B4     		push	{r4}
+ 261 0002 0368     		ldr	r3, [r0]
+ 262 0004 094A     		ldr	r2, .L31
+ 263 0006 5362     		str	r3, [r2, #36]
+ 264 0008 4368     		ldr	r3, [r0, #4]
+ 265 000a 9362     		str	r3, [r2, #40]
+ 266 000c D16A     		ldr	r1, [r2, #44]
+ 267 000e 21F0F701 		bic	r1, r1, #247
+ 268 0012 8368     		ldr	r3, [r0, #8]
+ 269 0014 C468     		ldr	r4, [r0, #12]
+ 270 0016 2343     		orrs	r3, r3, r4
+ 271 0018 0469     		ldr	r4, [r0, #16]
+ 272 001a 2343     		orrs	r3, r3, r4
+ 273 001c 4069     		ldr	r0, [r0, #20]
+ 274 001e 0343     		orrs	r3, r3, r0
+ 275 0020 0B43     		orrs	r3, r3, r1
+ 276 0022 D362     		str	r3, [r2, #44]
+ 277 0024 5DF8044B 		ldr	r4, [sp], #4
+ 278 0028 7047     		bx	lr
+ 279              	.L32:
+ 280 002a 00BF     		.align	2
+ 281              	.L31:
+ 282 002c 002C0140 		.word	1073818624
+ 284              		.section	.text.SDIO_DataStructInit,"ax",%progbits
+ 285              		.align	1
+ 286              		.global	SDIO_DataStructInit
+ 287              		.syntax unified
+ 288              		.thumb
+ 289              		.thumb_func
+ 291              	SDIO_DataStructInit:
+ 292              		@ args = 0, pretend = 0, frame = 0
+ 293              		@ frame_needed = 0, uses_anonymous_args = 0
+ 294              		@ link register save eliminated.
+ 295 0000 4FF0FF33 		mov	r3, #-1
+ 296 0004 0360     		str	r3, [r0]
+ 297 0006 0023     		movs	r3, #0
+ 298 0008 4360     		str	r3, [r0, #4]
+ 299 000a 8360     		str	r3, [r0, #8]
+ 300 000c C360     		str	r3, [r0, #12]
+ 301 000e 0361     		str	r3, [r0, #16]
+ 302 0010 4361     		str	r3, [r0, #20]
+ 303 0012 7047     		bx	lr
+ 305              		.section	.text.SDIO_GetDataCounter,"ax",%progbits
+ 306              		.align	1
+ 307              		.global	SDIO_GetDataCounter
+ 308              		.syntax unified
+ 309              		.thumb
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cccvQEVZ.s 			page 6
+
+
+ 310              		.thumb_func
+ 312              	SDIO_GetDataCounter:
+ 313              		@ args = 0, pretend = 0, frame = 0
+ 314              		@ frame_needed = 0, uses_anonymous_args = 0
+ 315              		@ link register save eliminated.
+ 316 0000 014B     		ldr	r3, .L35
+ 317 0002 186B     		ldr	r0, [r3, #48]
+ 318 0004 7047     		bx	lr
+ 319              	.L36:
+ 320 0006 00BF     		.align	2
+ 321              	.L35:
+ 322 0008 002C0140 		.word	1073818624
+ 324              		.section	.text.SDIO_ReadData,"ax",%progbits
+ 325              		.align	1
+ 326              		.global	SDIO_ReadData
+ 327              		.syntax unified
+ 328              		.thumb
+ 329              		.thumb_func
+ 331              	SDIO_ReadData:
+ 332              		@ args = 0, pretend = 0, frame = 0
+ 333              		@ frame_needed = 0, uses_anonymous_args = 0
+ 334              		@ link register save eliminated.
+ 335 0000 014B     		ldr	r3, .L38
+ 336 0002 D3F88000 		ldr	r0, [r3, #128]
+ 337 0006 7047     		bx	lr
+ 338              	.L39:
+ 339              		.align	2
+ 340              	.L38:
+ 341 0008 002C0140 		.word	1073818624
+ 343              		.section	.text.SDIO_WriteData,"ax",%progbits
+ 344              		.align	1
+ 345              		.global	SDIO_WriteData
+ 346              		.syntax unified
+ 347              		.thumb
+ 348              		.thumb_func
+ 350              	SDIO_WriteData:
+ 351              		@ args = 0, pretend = 0, frame = 0
+ 352              		@ frame_needed = 0, uses_anonymous_args = 0
+ 353              		@ link register save eliminated.
+ 354 0000 014B     		ldr	r3, .L41
+ 355 0002 C3F88000 		str	r0, [r3, #128]
+ 356 0006 7047     		bx	lr
+ 357              	.L42:
+ 358              		.align	2
+ 359              	.L41:
+ 360 0008 002C0140 		.word	1073818624
+ 362              		.section	.text.SDIO_GetFIFOCount,"ax",%progbits
+ 363              		.align	1
+ 364              		.global	SDIO_GetFIFOCount
+ 365              		.syntax unified
+ 366              		.thumb
+ 367              		.thumb_func
+ 369              	SDIO_GetFIFOCount:
+ 370              		@ args = 0, pretend = 0, frame = 0
+ 371              		@ frame_needed = 0, uses_anonymous_args = 0
+ 372              		@ link register save eliminated.
+ 373 0000 014B     		ldr	r3, .L44
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cccvQEVZ.s 			page 7
+
+
+ 374 0002 986C     		ldr	r0, [r3, #72]
+ 375 0004 7047     		bx	lr
+ 376              	.L45:
+ 377 0006 00BF     		.align	2
+ 378              	.L44:
+ 379 0008 002C0140 		.word	1073818624
+ 381              		.section	.text.SDIO_StartSDIOReadWait,"ax",%progbits
+ 382              		.align	1
+ 383              		.global	SDIO_StartSDIOReadWait
+ 384              		.syntax unified
+ 385              		.thumb
+ 386              		.thumb_func
+ 388              	SDIO_StartSDIOReadWait:
+ 389              		@ args = 0, pretend = 0, frame = 0
+ 390              		@ frame_needed = 0, uses_anonymous_args = 0
+ 391              		@ link register save eliminated.
+ 392 0000 014B     		ldr	r3, .L47
+ 393 0002 C3F8A005 		str	r0, [r3, #1440]
+ 394 0006 7047     		bx	lr
+ 395              	.L48:
+ 396              		.align	2
+ 397              	.L47:
+ 398 0008 00802542 		.word	1109753856
+ 400              		.section	.text.SDIO_StopSDIOReadWait,"ax",%progbits
+ 401              		.align	1
+ 402              		.global	SDIO_StopSDIOReadWait
+ 403              		.syntax unified
+ 404              		.thumb
+ 405              		.thumb_func
+ 407              	SDIO_StopSDIOReadWait:
+ 408              		@ args = 0, pretend = 0, frame = 0
+ 409              		@ frame_needed = 0, uses_anonymous_args = 0
+ 410              		@ link register save eliminated.
+ 411 0000 014B     		ldr	r3, .L50
+ 412 0002 C3F8A405 		str	r0, [r3, #1444]
+ 413 0006 7047     		bx	lr
+ 414              	.L51:
+ 415              		.align	2
+ 416              	.L50:
+ 417 0008 00802542 		.word	1109753856
+ 419              		.section	.text.SDIO_SetSDIOReadWaitMode,"ax",%progbits
+ 420              		.align	1
+ 421              		.global	SDIO_SetSDIOReadWaitMode
+ 422              		.syntax unified
+ 423              		.thumb
+ 424              		.thumb_func
+ 426              	SDIO_SetSDIOReadWaitMode:
+ 427              		@ args = 0, pretend = 0, frame = 0
+ 428              		@ frame_needed = 0, uses_anonymous_args = 0
+ 429              		@ link register save eliminated.
+ 430 0000 014B     		ldr	r3, .L53
+ 431 0002 C3F8A805 		str	r0, [r3, #1448]
+ 432 0006 7047     		bx	lr
+ 433              	.L54:
+ 434              		.align	2
+ 435              	.L53:
+ 436 0008 00802542 		.word	1109753856
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cccvQEVZ.s 			page 8
+
+
+ 438              		.section	.text.SDIO_SetSDIOOperation,"ax",%progbits
+ 439              		.align	1
+ 440              		.global	SDIO_SetSDIOOperation
+ 441              		.syntax unified
+ 442              		.thumb
+ 443              		.thumb_func
+ 445              	SDIO_SetSDIOOperation:
+ 446              		@ args = 0, pretend = 0, frame = 0
+ 447              		@ frame_needed = 0, uses_anonymous_args = 0
+ 448              		@ link register save eliminated.
+ 449 0000 014B     		ldr	r3, .L56
+ 450 0002 C3F8AC05 		str	r0, [r3, #1452]
+ 451 0006 7047     		bx	lr
+ 452              	.L57:
+ 453              		.align	2
+ 454              	.L56:
+ 455 0008 00802542 		.word	1109753856
+ 457              		.section	.text.SDIO_SendSDIOSuspendCmd,"ax",%progbits
+ 458              		.align	1
+ 459              		.global	SDIO_SendSDIOSuspendCmd
+ 460              		.syntax unified
+ 461              		.thumb
+ 462              		.thumb_func
+ 464              	SDIO_SendSDIOSuspendCmd:
+ 465              		@ args = 0, pretend = 0, frame = 0
+ 466              		@ frame_needed = 0, uses_anonymous_args = 0
+ 467              		@ link register save eliminated.
+ 468 0000 014B     		ldr	r3, .L59
+ 469 0002 C3F8AC01 		str	r0, [r3, #428]
+ 470 0006 7047     		bx	lr
+ 471              	.L60:
+ 472              		.align	2
+ 473              	.L59:
+ 474 0008 00802542 		.word	1109753856
+ 476              		.section	.text.SDIO_CommandCompletionCmd,"ax",%progbits
+ 477              		.align	1
+ 478              		.global	SDIO_CommandCompletionCmd
+ 479              		.syntax unified
+ 480              		.thumb
+ 481              		.thumb_func
+ 483              	SDIO_CommandCompletionCmd:
+ 484              		@ args = 0, pretend = 0, frame = 0
+ 485              		@ frame_needed = 0, uses_anonymous_args = 0
+ 486              		@ link register save eliminated.
+ 487 0000 014B     		ldr	r3, .L62
+ 488 0002 C3F8B001 		str	r0, [r3, #432]
+ 489 0006 7047     		bx	lr
+ 490              	.L63:
+ 491              		.align	2
+ 492              	.L62:
+ 493 0008 00802542 		.word	1109753856
+ 495              		.section	.text.SDIO_CEATAITCmd,"ax",%progbits
+ 496              		.align	1
+ 497              		.global	SDIO_CEATAITCmd
+ 498              		.syntax unified
+ 499              		.thumb
+ 500              		.thumb_func
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cccvQEVZ.s 			page 9
+
+
+ 502              	SDIO_CEATAITCmd:
+ 503              		@ args = 0, pretend = 0, frame = 0
+ 504              		@ frame_needed = 0, uses_anonymous_args = 0
+ 505              		@ link register save eliminated.
+ 506 0000 80F00100 		eor	r0, r0, #1
+ 507 0004 00F00100 		and	r0, r0, #1
+ 508 0008 014B     		ldr	r3, .L65
+ 509 000a C3F8B401 		str	r0, [r3, #436]
+ 510 000e 7047     		bx	lr
+ 511              	.L66:
+ 512              		.align	2
+ 513              	.L65:
+ 514 0010 00802542 		.word	1109753856
+ 516              		.section	.text.SDIO_SendCEATACmd,"ax",%progbits
+ 517              		.align	1
+ 518              		.global	SDIO_SendCEATACmd
+ 519              		.syntax unified
+ 520              		.thumb
+ 521              		.thumb_func
+ 523              	SDIO_SendCEATACmd:
+ 524              		@ args = 0, pretend = 0, frame = 0
+ 525              		@ frame_needed = 0, uses_anonymous_args = 0
+ 526              		@ link register save eliminated.
+ 527 0000 014B     		ldr	r3, .L68
+ 528 0002 C3F8B801 		str	r0, [r3, #440]
+ 529 0006 7047     		bx	lr
+ 530              	.L69:
+ 531              		.align	2
+ 532              	.L68:
+ 533 0008 00802542 		.word	1109753856
+ 535              		.section	.text.SDIO_DMACmd,"ax",%progbits
+ 536              		.align	1
+ 537              		.global	SDIO_DMACmd
+ 538              		.syntax unified
+ 539              		.thumb
+ 540              		.thumb_func
+ 542              	SDIO_DMACmd:
+ 543              		@ args = 0, pretend = 0, frame = 0
+ 544              		@ frame_needed = 0, uses_anonymous_args = 0
+ 545              		@ link register save eliminated.
+ 546 0000 014B     		ldr	r3, .L71
+ 547 0002 C3F88C05 		str	r0, [r3, #1420]
+ 548 0006 7047     		bx	lr
+ 549              	.L72:
+ 550              		.align	2
+ 551              	.L71:
+ 552 0008 00802542 		.word	1109753856
+ 554              		.section	.text.SDIO_ITConfig,"ax",%progbits
+ 555              		.align	1
+ 556              		.global	SDIO_ITConfig
+ 557              		.syntax unified
+ 558              		.thumb
+ 559              		.thumb_func
+ 561              	SDIO_ITConfig:
+ 562              		@ args = 0, pretend = 0, frame = 0
+ 563              		@ frame_needed = 0, uses_anonymous_args = 0
+ 564              		@ link register save eliminated.
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cccvQEVZ.s 			page 10
+
+
+ 565 0000 21B1     		cbz	r1, .L74
+ 566 0002 054A     		ldr	r2, .L76
+ 567 0004 D36B     		ldr	r3, [r2, #60]
+ 568 0006 0343     		orrs	r3, r3, r0
+ 569 0008 D363     		str	r3, [r2, #60]
+ 570 000a 7047     		bx	lr
+ 571              	.L74:
+ 572 000c 024A     		ldr	r2, .L76
+ 573 000e D36B     		ldr	r3, [r2, #60]
+ 574 0010 23EA0003 		bic	r3, r3, r0
+ 575 0014 D363     		str	r3, [r2, #60]
+ 576 0016 7047     		bx	lr
+ 577              	.L77:
+ 578              		.align	2
+ 579              	.L76:
+ 580 0018 002C0140 		.word	1073818624
+ 582              		.section	.text.SDIO_GetFlagStatus,"ax",%progbits
+ 583              		.align	1
+ 584              		.global	SDIO_GetFlagStatus
+ 585              		.syntax unified
+ 586              		.thumb
+ 587              		.thumb_func
+ 589              	SDIO_GetFlagStatus:
+ 590              		@ args = 0, pretend = 0, frame = 0
+ 591              		@ frame_needed = 0, uses_anonymous_args = 0
+ 592              		@ link register save eliminated.
+ 593 0000 034B     		ldr	r3, .L81
+ 594 0002 5B6B     		ldr	r3, [r3, #52]
+ 595 0004 0342     		tst	r3, r0
+ 596 0006 01D0     		beq	.L80
+ 597 0008 0120     		movs	r0, #1
+ 598 000a 7047     		bx	lr
+ 599              	.L80:
+ 600 000c 0020     		movs	r0, #0
+ 601 000e 7047     		bx	lr
+ 602              	.L82:
+ 603              		.align	2
+ 604              	.L81:
+ 605 0010 002C0140 		.word	1073818624
+ 607              		.section	.text.SDIO_ClearFlag,"ax",%progbits
+ 608              		.align	1
+ 609              		.global	SDIO_ClearFlag
+ 610              		.syntax unified
+ 611              		.thumb
+ 612              		.thumb_func
+ 614              	SDIO_ClearFlag:
+ 615              		@ args = 0, pretend = 0, frame = 0
+ 616              		@ frame_needed = 0, uses_anonymous_args = 0
+ 617              		@ link register save eliminated.
+ 618 0000 014B     		ldr	r3, .L84
+ 619 0002 9863     		str	r0, [r3, #56]
+ 620 0004 7047     		bx	lr
+ 621              	.L85:
+ 622 0006 00BF     		.align	2
+ 623              	.L84:
+ 624 0008 002C0140 		.word	1073818624
+ 626              		.section	.text.SDIO_GetITStatus,"ax",%progbits
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cccvQEVZ.s 			page 11
+
+
+ 627              		.align	1
+ 628              		.global	SDIO_GetITStatus
+ 629              		.syntax unified
+ 630              		.thumb
+ 631              		.thumb_func
+ 633              	SDIO_GetITStatus:
+ 634              		@ args = 0, pretend = 0, frame = 0
+ 635              		@ frame_needed = 0, uses_anonymous_args = 0
+ 636              		@ link register save eliminated.
+ 637 0000 034B     		ldr	r3, .L89
+ 638 0002 5B6B     		ldr	r3, [r3, #52]
+ 639 0004 0342     		tst	r3, r0
+ 640 0006 01D0     		beq	.L88
+ 641 0008 0120     		movs	r0, #1
+ 642 000a 7047     		bx	lr
+ 643              	.L88:
+ 644 000c 0020     		movs	r0, #0
+ 645 000e 7047     		bx	lr
+ 646              	.L90:
+ 647              		.align	2
+ 648              	.L89:
+ 649 0010 002C0140 		.word	1073818624
+ 651              		.section	.text.SDIO_ClearITPendingBit,"ax",%progbits
+ 652              		.align	1
+ 653              		.global	SDIO_ClearITPendingBit
+ 654              		.syntax unified
+ 655              		.thumb
+ 656              		.thumb_func
+ 658              	SDIO_ClearITPendingBit:
+ 659              		@ args = 0, pretend = 0, frame = 0
+ 660              		@ frame_needed = 0, uses_anonymous_args = 0
+ 661              		@ link register save eliminated.
+ 662 0000 014B     		ldr	r3, .L92
+ 663 0002 9863     		str	r0, [r3, #56]
+ 664 0004 7047     		bx	lr
+ 665              	.L93:
+ 666 0006 00BF     		.align	2
+ 667              	.L92:
+ 668 0008 002C0140 		.word	1073818624
+ 670              		.ident	"GCC: (Arm GNU Toolchain 13.3.Rel1 (Build arm-13.24)) 13.3.1 20240614"
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cccvQEVZ.s 			page 12
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 stm32f4xx_sdio.c
+C:\Users\ktkuru\AppData\Local\Temp\cccvQEVZ.s:18     .text.SDIO_DeInit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cccvQEVZ.s:24     .text.SDIO_DeInit:00000000 SDIO_DeInit
+C:\Users\ktkuru\AppData\Local\Temp\cccvQEVZ.s:37     .text.SDIO_Init:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cccvQEVZ.s:43     .text.SDIO_Init:00000000 SDIO_Init
+C:\Users\ktkuru\AppData\Local\Temp\cccvQEVZ.s:70     .text.SDIO_Init:00000030 $d
+C:\Users\ktkuru\AppData\Local\Temp\cccvQEVZ.s:73     .text.SDIO_StructInit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cccvQEVZ.s:79     .text.SDIO_StructInit:00000000 SDIO_StructInit
+C:\Users\ktkuru\AppData\Local\Temp\cccvQEVZ.s:93     .text.SDIO_ClockCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cccvQEVZ.s:99     .text.SDIO_ClockCmd:00000000 SDIO_ClockCmd
+C:\Users\ktkuru\AppData\Local\Temp\cccvQEVZ.s:109    .text.SDIO_ClockCmd:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\cccvQEVZ.s:112    .text.SDIO_SetPowerState:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cccvQEVZ.s:118    .text.SDIO_SetPowerState:00000000 SDIO_SetPowerState
+C:\Users\ktkuru\AppData\Local\Temp\cccvQEVZ.s:128    .text.SDIO_SetPowerState:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\cccvQEVZ.s:131    .text.SDIO_GetPowerState:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cccvQEVZ.s:137    .text.SDIO_GetPowerState:00000000 SDIO_GetPowerState
+C:\Users\ktkuru\AppData\Local\Temp\cccvQEVZ.s:148    .text.SDIO_GetPowerState:0000000c $d
+C:\Users\ktkuru\AppData\Local\Temp\cccvQEVZ.s:151    .text.SDIO_SendCommand:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cccvQEVZ.s:157    .text.SDIO_SendCommand:00000000 SDIO_SendCommand
+C:\Users\ktkuru\AppData\Local\Temp\cccvQEVZ.s:181    .text.SDIO_SendCommand:00000028 $d
+C:\Users\ktkuru\AppData\Local\Temp\cccvQEVZ.s:184    .text.SDIO_CmdStructInit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cccvQEVZ.s:190    .text.SDIO_CmdStructInit:00000000 SDIO_CmdStructInit
+C:\Users\ktkuru\AppData\Local\Temp\cccvQEVZ.s:203    .text.SDIO_GetCommandResponse:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cccvQEVZ.s:209    .text.SDIO_GetCommandResponse:00000000 SDIO_GetCommandResponse
+C:\Users\ktkuru\AppData\Local\Temp\cccvQEVZ.s:220    .text.SDIO_GetCommandResponse:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\cccvQEVZ.s:223    .text.SDIO_GetResponse:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cccvQEVZ.s:229    .text.SDIO_GetResponse:00000000 SDIO_GetResponse
+C:\Users\ktkuru\AppData\Local\Temp\cccvQEVZ.s:247    .text.SDIO_GetResponse:00000014 $d
+C:\Users\ktkuru\AppData\Local\Temp\cccvQEVZ.s:250    .text.SDIO_DataConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cccvQEVZ.s:256    .text.SDIO_DataConfig:00000000 SDIO_DataConfig
+C:\Users\ktkuru\AppData\Local\Temp\cccvQEVZ.s:282    .text.SDIO_DataConfig:0000002c $d
+C:\Users\ktkuru\AppData\Local\Temp\cccvQEVZ.s:285    .text.SDIO_DataStructInit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cccvQEVZ.s:291    .text.SDIO_DataStructInit:00000000 SDIO_DataStructInit
+C:\Users\ktkuru\AppData\Local\Temp\cccvQEVZ.s:306    .text.SDIO_GetDataCounter:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cccvQEVZ.s:312    .text.SDIO_GetDataCounter:00000000 SDIO_GetDataCounter
+C:\Users\ktkuru\AppData\Local\Temp\cccvQEVZ.s:322    .text.SDIO_GetDataCounter:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\cccvQEVZ.s:325    .text.SDIO_ReadData:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cccvQEVZ.s:331    .text.SDIO_ReadData:00000000 SDIO_ReadData
+C:\Users\ktkuru\AppData\Local\Temp\cccvQEVZ.s:341    .text.SDIO_ReadData:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\cccvQEVZ.s:344    .text.SDIO_WriteData:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cccvQEVZ.s:350    .text.SDIO_WriteData:00000000 SDIO_WriteData
+C:\Users\ktkuru\AppData\Local\Temp\cccvQEVZ.s:360    .text.SDIO_WriteData:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\cccvQEVZ.s:363    .text.SDIO_GetFIFOCount:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cccvQEVZ.s:369    .text.SDIO_GetFIFOCount:00000000 SDIO_GetFIFOCount
+C:\Users\ktkuru\AppData\Local\Temp\cccvQEVZ.s:379    .text.SDIO_GetFIFOCount:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\cccvQEVZ.s:382    .text.SDIO_StartSDIOReadWait:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cccvQEVZ.s:388    .text.SDIO_StartSDIOReadWait:00000000 SDIO_StartSDIOReadWait
+C:\Users\ktkuru\AppData\Local\Temp\cccvQEVZ.s:398    .text.SDIO_StartSDIOReadWait:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\cccvQEVZ.s:401    .text.SDIO_StopSDIOReadWait:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cccvQEVZ.s:407    .text.SDIO_StopSDIOReadWait:00000000 SDIO_StopSDIOReadWait
+C:\Users\ktkuru\AppData\Local\Temp\cccvQEVZ.s:417    .text.SDIO_StopSDIOReadWait:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\cccvQEVZ.s:420    .text.SDIO_SetSDIOReadWaitMode:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cccvQEVZ.s:426    .text.SDIO_SetSDIOReadWaitMode:00000000 SDIO_SetSDIOReadWaitMode
+C:\Users\ktkuru\AppData\Local\Temp\cccvQEVZ.s:436    .text.SDIO_SetSDIOReadWaitMode:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\cccvQEVZ.s:439    .text.SDIO_SetSDIOOperation:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cccvQEVZ.s:445    .text.SDIO_SetSDIOOperation:00000000 SDIO_SetSDIOOperation
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cccvQEVZ.s 			page 13
+
+
+C:\Users\ktkuru\AppData\Local\Temp\cccvQEVZ.s:455    .text.SDIO_SetSDIOOperation:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\cccvQEVZ.s:458    .text.SDIO_SendSDIOSuspendCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cccvQEVZ.s:464    .text.SDIO_SendSDIOSuspendCmd:00000000 SDIO_SendSDIOSuspendCmd
+C:\Users\ktkuru\AppData\Local\Temp\cccvQEVZ.s:474    .text.SDIO_SendSDIOSuspendCmd:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\cccvQEVZ.s:477    .text.SDIO_CommandCompletionCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cccvQEVZ.s:483    .text.SDIO_CommandCompletionCmd:00000000 SDIO_CommandCompletionCmd
+C:\Users\ktkuru\AppData\Local\Temp\cccvQEVZ.s:493    .text.SDIO_CommandCompletionCmd:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\cccvQEVZ.s:496    .text.SDIO_CEATAITCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cccvQEVZ.s:502    .text.SDIO_CEATAITCmd:00000000 SDIO_CEATAITCmd
+C:\Users\ktkuru\AppData\Local\Temp\cccvQEVZ.s:514    .text.SDIO_CEATAITCmd:00000010 $d
+C:\Users\ktkuru\AppData\Local\Temp\cccvQEVZ.s:517    .text.SDIO_SendCEATACmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cccvQEVZ.s:523    .text.SDIO_SendCEATACmd:00000000 SDIO_SendCEATACmd
+C:\Users\ktkuru\AppData\Local\Temp\cccvQEVZ.s:533    .text.SDIO_SendCEATACmd:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\cccvQEVZ.s:536    .text.SDIO_DMACmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cccvQEVZ.s:542    .text.SDIO_DMACmd:00000000 SDIO_DMACmd
+C:\Users\ktkuru\AppData\Local\Temp\cccvQEVZ.s:552    .text.SDIO_DMACmd:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\cccvQEVZ.s:555    .text.SDIO_ITConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cccvQEVZ.s:561    .text.SDIO_ITConfig:00000000 SDIO_ITConfig
+C:\Users\ktkuru\AppData\Local\Temp\cccvQEVZ.s:580    .text.SDIO_ITConfig:00000018 $d
+C:\Users\ktkuru\AppData\Local\Temp\cccvQEVZ.s:583    .text.SDIO_GetFlagStatus:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cccvQEVZ.s:589    .text.SDIO_GetFlagStatus:00000000 SDIO_GetFlagStatus
+C:\Users\ktkuru\AppData\Local\Temp\cccvQEVZ.s:605    .text.SDIO_GetFlagStatus:00000010 $d
+C:\Users\ktkuru\AppData\Local\Temp\cccvQEVZ.s:608    .text.SDIO_ClearFlag:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cccvQEVZ.s:614    .text.SDIO_ClearFlag:00000000 SDIO_ClearFlag
+C:\Users\ktkuru\AppData\Local\Temp\cccvQEVZ.s:624    .text.SDIO_ClearFlag:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\cccvQEVZ.s:627    .text.SDIO_GetITStatus:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cccvQEVZ.s:633    .text.SDIO_GetITStatus:00000000 SDIO_GetITStatus
+C:\Users\ktkuru\AppData\Local\Temp\cccvQEVZ.s:649    .text.SDIO_GetITStatus:00000010 $d
+C:\Users\ktkuru\AppData\Local\Temp\cccvQEVZ.s:652    .text.SDIO_ClearITPendingBit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cccvQEVZ.s:658    .text.SDIO_ClearITPendingBit:00000000 SDIO_ClearITPendingBit
+C:\Users\ktkuru\AppData\Local\Temp\cccvQEVZ.s:668    .text.SDIO_ClearITPendingBit:00000008 $d
+
+UNDEFINED SYMBOLS
+RCC_APB2PeriphResetCmd

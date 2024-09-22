@@ -1,0 +1,549 @@
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccUfkQv9.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"mpu6050.c"
+  16              		.text
+  17              		.section	.text.MPU_Write_Len,"ax",%progbits
+  18              		.align	1
+  19              		.global	MPU_Write_Len
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  24              	MPU_Write_Len:
+  25              		@ args = 0, pretend = 0, frame = 0
+  26              		@ frame_needed = 0, uses_anonymous_args = 0
+  27 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+  28 0004 0446     		mov	r4, r0
+  29 0006 0F46     		mov	r7, r1
+  30 0008 1546     		mov	r5, r2
+  31 000a 1E46     		mov	r6, r3
+  32 000c FFF7FEFF 		bl	IIC_Start
+  33 0010 6000     		lsls	r0, r4, #1
+  34 0012 00F0FE00 		and	r0, r0, #254
+  35 0016 FFF7FEFF 		bl	IIC_Send_Byte
+  36 001a FFF7FEFF 		bl	IIC_Wait_Ack
+  37 001e 88B9     		cbnz	r0, .L8
+  38 0020 8046     		mov	r8, r0
+  39 0022 3846     		mov	r0, r7
+  40 0024 FFF7FEFF 		bl	IIC_Send_Byte
+  41 0028 FFF7FEFF 		bl	IIC_Wait_Ack
+  42 002c 4446     		mov	r4, r8
+  43              	.L4:
+  44 002e AC42     		cmp	r4, r5
+  45 0030 14D2     		bcs	.L9
+  46 0032 305D     		ldrb	r0, [r6, r4]	@ zero_extendqisi2
+  47 0034 FFF7FEFF 		bl	IIC_Send_Byte
+  48 0038 FFF7FEFF 		bl	IIC_Wait_Ack
+  49 003c 48B9     		cbnz	r0, .L10
+  50 003e 0134     		adds	r4, r4, #1
+  51 0040 E4B2     		uxtb	r4, r4
+  52 0042 F4E7     		b	.L4
+  53              	.L8:
+  54 0044 FFF7FEFF 		bl	IIC_Stop
+  55 0048 4FF00108 		mov	r8, #1
+  56              	.L3:
+  57 004c 4046     		mov	r0, r8
+  58 004e BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccUfkQv9.s 			page 2
+
+
+  59              	.L10:
+  60 0052 FFF7FEFF 		bl	IIC_Stop
+  61 0056 4FF00108 		mov	r8, #1
+  62 005a F7E7     		b	.L3
+  63              	.L9:
+  64 005c FFF7FEFF 		bl	IIC_Stop
+  65 0060 F4E7     		b	.L3
+  67              		.section	.text.MPU_Read_Len,"ax",%progbits
+  68              		.align	1
+  69              		.global	MPU_Read_Len
+  70              		.syntax unified
+  71              		.thumb
+  72              		.thumb_func
+  74              	MPU_Read_Len:
+  75              		@ args = 0, pretend = 0, frame = 0
+  76              		@ frame_needed = 0, uses_anonymous_args = 0
+  77 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+  78 0002 0646     		mov	r6, r0
+  79 0004 0F46     		mov	r7, r1
+  80 0006 1446     		mov	r4, r2
+  81 0008 1D46     		mov	r5, r3
+  82 000a FFF7FEFF 		bl	IIC_Start
+  83 000e 7000     		lsls	r0, r6, #1
+  84 0010 00F0FE00 		and	r0, r0, #254
+  85 0014 FFF7FEFF 		bl	IIC_Send_Byte
+  86 0018 FFF7FEFF 		bl	IIC_Wait_Ack
+  87 001c 78B9     		cbnz	r0, .L19
+  88 001e 3846     		mov	r0, r7
+  89 0020 FFF7FEFF 		bl	IIC_Send_Byte
+  90 0024 FFF7FEFF 		bl	IIC_Wait_Ack
+  91 0028 FFF7FEFF 		bl	IIC_Start
+  92 002c 7000     		lsls	r0, r6, #1
+  93 002e 40F00100 		orr	r0, r0, #1
+  94 0032 C0B2     		uxtb	r0, r0
+  95 0034 FFF7FEFF 		bl	IIC_Send_Byte
+  96 0038 FFF7FEFF 		bl	IIC_Wait_Ack
+  97 003c 0AE0     		b	.L14
+  98              	.L19:
+  99 003e FFF7FEFF 		bl	IIC_Stop
+ 100 0042 0120     		movs	r0, #1
+ 101 0044 11E0     		b	.L13
+ 102              	.L21:
+ 103 0046 0020     		movs	r0, #0
+ 104 0048 FFF7FEFF 		bl	IIC_Read_Byte
+ 105 004c 2870     		strb	r0, [r5]
+ 106              	.L16:
+ 107 004e 013C     		subs	r4, r4, #1
+ 108 0050 E4B2     		uxtb	r4, r4
+ 109 0052 0135     		adds	r5, r5, #1
+ 110              	.L14:
+ 111 0054 34B1     		cbz	r4, .L20
+ 112 0056 012C     		cmp	r4, #1
+ 113 0058 F5D0     		beq	.L21
+ 114 005a 0120     		movs	r0, #1
+ 115 005c FFF7FEFF 		bl	IIC_Read_Byte
+ 116 0060 2870     		strb	r0, [r5]
+ 117 0062 F4E7     		b	.L16
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccUfkQv9.s 			page 3
+
+
+ 118              	.L20:
+ 119 0064 FFF7FEFF 		bl	IIC_Stop
+ 120 0068 2046     		mov	r0, r4
+ 121              	.L13:
+ 122 006a F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 124              		.global	__aeabi_i2d
+ 125              		.global	__aeabi_ddiv
+ 126              		.global	__aeabi_dadd
+ 127              		.global	__aeabi_d2f
+ 128              		.section	.text.MPU_Get_Temperature,"ax",%progbits
+ 129              		.align	1
+ 130              		.global	MPU_Get_Temperature
+ 131              		.syntax unified
+ 132              		.thumb
+ 133              		.thumb_func
+ 135              	MPU_Get_Temperature:
+ 136              		@ args = 0, pretend = 0, frame = 8
+ 137              		@ frame_needed = 0, uses_anonymous_args = 0
+ 138 0000 00B5     		push	{lr}
+ 139 0002 83B0     		sub	sp, sp, #12
+ 140 0004 01AB     		add	r3, sp, #4
+ 141 0006 0222     		movs	r2, #2
+ 142 0008 4121     		movs	r1, #65
+ 143 000a 6820     		movs	r0, #104
+ 144 000c FFF7FEFF 		bl	MPU_Read_Len
+ 145 0010 9DF80430 		ldrb	r3, [sp, #4]	@ zero_extendqisi2
+ 146 0014 1B02     		lsls	r3, r3, #8
+ 147 0016 1BB2     		sxth	r3, r3
+ 148 0018 9DF80500 		ldrb	r0, [sp, #5]	@ zero_extendqisi2
+ 149 001c 1843     		orrs	r0, r0, r3
+ 150 001e FFF7FEFF 		bl	__aeabi_i2d
+ 151 0022 0022     		movs	r2, #0
+ 152 0024 0E4B     		ldr	r3, .L24+8
+ 153 0026 FFF7FEFF 		bl	__aeabi_ddiv
+ 154 002a 0BA3     		adr	r3, .L24
+ 155 002c D3E90023 		ldrd	r2, [r3]
+ 156 0030 FFF7FEFF 		bl	__aeabi_dadd
+ 157 0034 FFF7FEFF 		bl	__aeabi_d2f
+ 158 0038 07EE900A 		vmov	s15, r0
+ 159 003c 9FED097A 		vldr.32	s14, .L24+12
+ 160 0040 67EE877A 		vmul.f32	s15, s15, s14
+ 161 0044 FDEEE77A 		vcvt.s32.f32	s15, s15
+ 162 0048 17EE903A 		vmov	r3, s15	@ int
+ 163 004c 18B2     		sxth	r0, r3
+ 164 004e 03B0     		add	sp, sp, #12
+ 165              		@ sp needed
+ 166 0050 5DF804FB 		ldr	pc, [sp], #4
+ 167              	.L25:
+ 168 0054 AFF30080 		.align	3
+ 169              	.L24:
+ 170 0058 A4703D0A 		.word	171798692
+ 171 005c D7434240 		.word	1078084567
+ 172 0060 00407540 		.word	1081425920
+ 173 0064 0000C842 		.word	1120403456
+ 175              		.section	.text.MPU_Get_Gyroscope,"ax",%progbits
+ 176              		.align	1
+ 177              		.global	MPU_Get_Gyroscope
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccUfkQv9.s 			page 4
+
+
+ 178              		.syntax unified
+ 179              		.thumb
+ 180              		.thumb_func
+ 182              	MPU_Get_Gyroscope:
+ 183              		@ args = 0, pretend = 0, frame = 8
+ 184              		@ frame_needed = 0, uses_anonymous_args = 0
+ 185 0000 70B5     		push	{r4, r5, r6, lr}
+ 186 0002 82B0     		sub	sp, sp, #8
+ 187 0004 0646     		mov	r6, r0
+ 188 0006 0D46     		mov	r5, r1
+ 189 0008 1446     		mov	r4, r2
+ 190 000a 6B46     		mov	r3, sp
+ 191 000c 0622     		movs	r2, #6
+ 192 000e 4321     		movs	r1, #67
+ 193 0010 6820     		movs	r0, #104
+ 194 0012 FFF7FEFF 		bl	MPU_Read_Len
+ 195 0016 A0B9     		cbnz	r0, .L27
+ 196 0018 9DF80020 		ldrb	r2, [sp]	@ zero_extendqisi2
+ 197 001c 9DF80130 		ldrb	r3, [sp, #1]	@ zero_extendqisi2
+ 198 0020 43EA0223 		orr	r3, r3, r2, lsl #8
+ 199 0024 3380     		strh	r3, [r6]	@ movhi
+ 200 0026 9DF80220 		ldrb	r2, [sp, #2]	@ zero_extendqisi2
+ 201 002a 9DF80330 		ldrb	r3, [sp, #3]	@ zero_extendqisi2
+ 202 002e 43EA0223 		orr	r3, r3, r2, lsl #8
+ 203 0032 2B80     		strh	r3, [r5]	@ movhi
+ 204 0034 9DF80420 		ldrb	r2, [sp, #4]	@ zero_extendqisi2
+ 205 0038 9DF80530 		ldrb	r3, [sp, #5]	@ zero_extendqisi2
+ 206 003c 43EA0223 		orr	r3, r3, r2, lsl #8
+ 207 0040 2380     		strh	r3, [r4]	@ movhi
+ 208              	.L27:
+ 209 0042 02B0     		add	sp, sp, #8
+ 210              		@ sp needed
+ 211 0044 70BD     		pop	{r4, r5, r6, pc}
+ 213              		.section	.text.MPU_Get_Accelerometer,"ax",%progbits
+ 214              		.align	1
+ 215              		.global	MPU_Get_Accelerometer
+ 216              		.syntax unified
+ 217              		.thumb
+ 218              		.thumb_func
+ 220              	MPU_Get_Accelerometer:
+ 221              		@ args = 0, pretend = 0, frame = 8
+ 222              		@ frame_needed = 0, uses_anonymous_args = 0
+ 223 0000 70B5     		push	{r4, r5, r6, lr}
+ 224 0002 82B0     		sub	sp, sp, #8
+ 225 0004 0646     		mov	r6, r0
+ 226 0006 0D46     		mov	r5, r1
+ 227 0008 1446     		mov	r4, r2
+ 228 000a 6B46     		mov	r3, sp
+ 229 000c 0622     		movs	r2, #6
+ 230 000e 3B21     		movs	r1, #59
+ 231 0010 6820     		movs	r0, #104
+ 232 0012 FFF7FEFF 		bl	MPU_Read_Len
+ 233 0016 A0B9     		cbnz	r0, .L30
+ 234 0018 9DF80020 		ldrb	r2, [sp]	@ zero_extendqisi2
+ 235 001c 9DF80130 		ldrb	r3, [sp, #1]	@ zero_extendqisi2
+ 236 0020 43EA0223 		orr	r3, r3, r2, lsl #8
+ 237 0024 3380     		strh	r3, [r6]	@ movhi
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccUfkQv9.s 			page 5
+
+
+ 238 0026 9DF80220 		ldrb	r2, [sp, #2]	@ zero_extendqisi2
+ 239 002a 9DF80330 		ldrb	r3, [sp, #3]	@ zero_extendqisi2
+ 240 002e 43EA0223 		orr	r3, r3, r2, lsl #8
+ 241 0032 2B80     		strh	r3, [r5]	@ movhi
+ 242 0034 9DF80420 		ldrb	r2, [sp, #4]	@ zero_extendqisi2
+ 243 0038 9DF80530 		ldrb	r3, [sp, #5]	@ zero_extendqisi2
+ 244 003c 43EA0223 		orr	r3, r3, r2, lsl #8
+ 245 0040 2380     		strh	r3, [r4]	@ movhi
+ 246              	.L30:
+ 247 0042 02B0     		add	sp, sp, #8
+ 248              		@ sp needed
+ 249 0044 70BD     		pop	{r4, r5, r6, pc}
+ 251              		.section	.text.MPU_Write_Byte,"ax",%progbits
+ 252              		.align	1
+ 253              		.global	MPU_Write_Byte
+ 254              		.syntax unified
+ 255              		.thumb
+ 256              		.thumb_func
+ 258              	MPU_Write_Byte:
+ 259              		@ args = 0, pretend = 0, frame = 0
+ 260              		@ frame_needed = 0, uses_anonymous_args = 0
+ 261 0000 38B5     		push	{r3, r4, r5, lr}
+ 262 0002 0546     		mov	r5, r0
+ 263 0004 0C46     		mov	r4, r1
+ 264 0006 FFF7FEFF 		bl	IIC_Start
+ 265 000a D020     		movs	r0, #208
+ 266 000c FFF7FEFF 		bl	IIC_Send_Byte
+ 267 0010 FFF7FEFF 		bl	IIC_Wait_Ack
+ 268 0014 78B9     		cbnz	r0, .L37
+ 269 0016 2846     		mov	r0, r5
+ 270 0018 FFF7FEFF 		bl	IIC_Send_Byte
+ 271 001c FFF7FEFF 		bl	IIC_Wait_Ack
+ 272 0020 2046     		mov	r0, r4
+ 273 0022 FFF7FEFF 		bl	IIC_Send_Byte
+ 274 0026 FFF7FEFF 		bl	IIC_Wait_Ack
+ 275 002a 0446     		mov	r4, r0
+ 276 002c 38B9     		cbnz	r0, .L38
+ 277 002e FFF7FEFF 		bl	IIC_Stop
+ 278              	.L34:
+ 279 0032 2046     		mov	r0, r4
+ 280 0034 38BD     		pop	{r3, r4, r5, pc}
+ 281              	.L37:
+ 282 0036 FFF7FEFF 		bl	IIC_Stop
+ 283 003a 0124     		movs	r4, #1
+ 284 003c F9E7     		b	.L34
+ 285              	.L38:
+ 286 003e FFF7FEFF 		bl	IIC_Stop
+ 287 0042 0124     		movs	r4, #1
+ 288 0044 F5E7     		b	.L34
+ 290              		.section	.text.MPU_Set_Gyro_Fsr,"ax",%progbits
+ 291              		.align	1
+ 292              		.global	MPU_Set_Gyro_Fsr
+ 293              		.syntax unified
+ 294              		.thumb
+ 295              		.thumb_func
+ 297              	MPU_Set_Gyro_Fsr:
+ 298              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccUfkQv9.s 			page 6
+
+
+ 299              		@ frame_needed = 0, uses_anonymous_args = 0
+ 300 0000 08B5     		push	{r3, lr}
+ 301 0002 C100     		lsls	r1, r0, #3
+ 302 0004 01F0F801 		and	r1, r1, #248
+ 303 0008 1B20     		movs	r0, #27
+ 304 000a FFF7FEFF 		bl	MPU_Write_Byte
+ 305 000e 08BD     		pop	{r3, pc}
+ 307              		.section	.text.MPU_Set_Accel_Fsr,"ax",%progbits
+ 308              		.align	1
+ 309              		.global	MPU_Set_Accel_Fsr
+ 310              		.syntax unified
+ 311              		.thumb
+ 312              		.thumb_func
+ 314              	MPU_Set_Accel_Fsr:
+ 315              		@ args = 0, pretend = 0, frame = 0
+ 316              		@ frame_needed = 0, uses_anonymous_args = 0
+ 317 0000 08B5     		push	{r3, lr}
+ 318 0002 C100     		lsls	r1, r0, #3
+ 319 0004 01F0F801 		and	r1, r1, #248
+ 320 0008 1C20     		movs	r0, #28
+ 321 000a FFF7FEFF 		bl	MPU_Write_Byte
+ 322 000e 08BD     		pop	{r3, pc}
+ 324              		.section	.text.MPU_Set_LPF,"ax",%progbits
+ 325              		.align	1
+ 326              		.global	MPU_Set_LPF
+ 327              		.syntax unified
+ 328              		.thumb
+ 329              		.thumb_func
+ 331              	MPU_Set_LPF:
+ 332              		@ args = 0, pretend = 0, frame = 0
+ 333              		@ frame_needed = 0, uses_anonymous_args = 0
+ 334 0000 08B5     		push	{r3, lr}
+ 335 0002 BB28     		cmp	r0, #187
+ 336 0004 09D8     		bhi	.L45
+ 337 0006 6128     		cmp	r0, #97
+ 338 0008 0CD8     		bhi	.L46
+ 339 000a 2928     		cmp	r0, #41
+ 340 000c 0CD8     		bhi	.L47
+ 341 000e 1328     		cmp	r0, #19
+ 342 0010 0CD8     		bhi	.L48
+ 343 0012 0928     		cmp	r0, #9
+ 344 0014 0CD9     		bls	.L49
+ 345 0016 0521     		movs	r1, #5
+ 346 0018 00E0     		b	.L44
+ 347              	.L45:
+ 348 001a 0121     		movs	r1, #1
+ 349              	.L44:
+ 350 001c 1A20     		movs	r0, #26
+ 351 001e FFF7FEFF 		bl	MPU_Write_Byte
+ 352 0022 08BD     		pop	{r3, pc}
+ 353              	.L46:
+ 354 0024 0221     		movs	r1, #2
+ 355 0026 F9E7     		b	.L44
+ 356              	.L47:
+ 357 0028 0321     		movs	r1, #3
+ 358 002a F7E7     		b	.L44
+ 359              	.L48:
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccUfkQv9.s 			page 7
+
+
+ 360 002c 0421     		movs	r1, #4
+ 361 002e F5E7     		b	.L44
+ 362              	.L49:
+ 363 0030 0621     		movs	r1, #6
+ 364 0032 F3E7     		b	.L44
+ 366              		.section	.text.MPU_Set_Rate,"ax",%progbits
+ 367              		.align	1
+ 368              		.global	MPU_Set_Rate
+ 369              		.syntax unified
+ 370              		.thumb
+ 371              		.thumb_func
+ 373              	MPU_Set_Rate:
+ 374              		@ args = 0, pretend = 0, frame = 0
+ 375              		@ frame_needed = 0, uses_anonymous_args = 0
+ 376 0000 10B5     		push	{r4, lr}
+ 377 0002 B0F57A7F 		cmp	r0, #1000
+ 378 0006 04D8     		bhi	.L53
+ 379 0008 0446     		mov	r4, r0
+ 380 000a 0328     		cmp	r0, #3
+ 381 000c 03D8     		bhi	.L52
+ 382 000e 0424     		movs	r4, #4
+ 383 0010 01E0     		b	.L52
+ 384              	.L53:
+ 385 0012 4FF47A74 		mov	r4, #1000
+ 386              	.L52:
+ 387 0016 4FF47A71 		mov	r1, #1000
+ 388 001a 91FBF4F1 		sdiv	r1, r1, r4
+ 389 001e C9B2     		uxtb	r1, r1
+ 390 0020 0139     		subs	r1, r1, #1
+ 391 0022 C9B2     		uxtb	r1, r1
+ 392 0024 1920     		movs	r0, #25
+ 393 0026 FFF7FEFF 		bl	MPU_Write_Byte
+ 394 002a 6008     		lsrs	r0, r4, #1
+ 395 002c FFF7FEFF 		bl	MPU_Set_LPF
+ 396 0030 10BD     		pop	{r4, pc}
+ 398              		.section	.text.MPU_Read_Byte,"ax",%progbits
+ 399              		.align	1
+ 400              		.global	MPU_Read_Byte
+ 401              		.syntax unified
+ 402              		.thumb
+ 403              		.thumb_func
+ 405              	MPU_Read_Byte:
+ 406              		@ args = 0, pretend = 0, frame = 0
+ 407              		@ frame_needed = 0, uses_anonymous_args = 0
+ 408 0000 10B5     		push	{r4, lr}
+ 409 0002 0446     		mov	r4, r0
+ 410 0004 FFF7FEFF 		bl	IIC_Start
+ 411 0008 D020     		movs	r0, #208
+ 412 000a FFF7FEFF 		bl	IIC_Send_Byte
+ 413 000e FFF7FEFF 		bl	IIC_Wait_Ack
+ 414 0012 2046     		mov	r0, r4
+ 415 0014 FFF7FEFF 		bl	IIC_Send_Byte
+ 416 0018 FFF7FEFF 		bl	IIC_Wait_Ack
+ 417 001c FFF7FEFF 		bl	IIC_Start
+ 418 0020 D120     		movs	r0, #209
+ 419 0022 FFF7FEFF 		bl	IIC_Send_Byte
+ 420 0026 FFF7FEFF 		bl	IIC_Wait_Ack
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccUfkQv9.s 			page 8
+
+
+ 421 002a 0020     		movs	r0, #0
+ 422 002c FFF7FEFF 		bl	IIC_Read_Byte
+ 423 0030 0446     		mov	r4, r0
+ 424 0032 FFF7FEFF 		bl	IIC_Stop
+ 425 0036 2046     		mov	r0, r4
+ 426 0038 10BD     		pop	{r4, pc}
+ 428              		.section	.rodata.MPU_Init.str1.4,"aMS",%progbits,1
+ 429              		.align	2
+ 430              	.LC0:
+ 431 0000 2D3E4D50 		.ascii	"->MPU6050 ID:%d\012\000"
+ 431      55363035 
+ 431      30204944 
+ 431      3A25640A 
+ 431      00
+ 432              		.section	.text.MPU_Init,"ax",%progbits
+ 433              		.align	1
+ 434              		.global	MPU_Init
+ 435              		.syntax unified
+ 436              		.thumb
+ 437              		.thumb_func
+ 439              	MPU_Init:
+ 440              		@ args = 0, pretend = 0, frame = 0
+ 441              		@ frame_needed = 0, uses_anonymous_args = 0
+ 442 0000 08B5     		push	{r3, lr}
+ 443 0002 FFF7FEFF 		bl	IIC_Init
+ 444 0006 8021     		movs	r1, #128
+ 445 0008 6B20     		movs	r0, #107
+ 446 000a FFF7FEFF 		bl	MPU_Write_Byte
+ 447 000e 6420     		movs	r0, #100
+ 448 0010 FFF7FEFF 		bl	delay_ms
+ 449 0014 0021     		movs	r1, #0
+ 450 0016 6B20     		movs	r0, #107
+ 451 0018 FFF7FEFF 		bl	MPU_Write_Byte
+ 452 001c 0320     		movs	r0, #3
+ 453 001e FFF7FEFF 		bl	MPU_Set_Gyro_Fsr
+ 454 0022 0020     		movs	r0, #0
+ 455 0024 FFF7FEFF 		bl	MPU_Set_Accel_Fsr
+ 456 0028 3220     		movs	r0, #50
+ 457 002a FFF7FEFF 		bl	MPU_Set_Rate
+ 458 002e 0021     		movs	r1, #0
+ 459 0030 3820     		movs	r0, #56
+ 460 0032 FFF7FEFF 		bl	MPU_Write_Byte
+ 461 0036 0021     		movs	r1, #0
+ 462 0038 6A20     		movs	r0, #106
+ 463 003a FFF7FEFF 		bl	MPU_Write_Byte
+ 464 003e 0021     		movs	r1, #0
+ 465 0040 2320     		movs	r0, #35
+ 466 0042 FFF7FEFF 		bl	MPU_Write_Byte
+ 467 0046 8021     		movs	r1, #128
+ 468 0048 3720     		movs	r0, #55
+ 469 004a FFF7FEFF 		bl	MPU_Write_Byte
+ 470 004e 7520     		movs	r0, #117
+ 471 0050 FFF7FEFF 		bl	MPU_Read_Byte
+ 472 0054 6828     		cmp	r0, #104
+ 473 0056 0CD1     		bne	.L59
+ 474 0058 0121     		movs	r1, #1
+ 475 005a 6B20     		movs	r0, #107
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccUfkQv9.s 			page 9
+
+
+ 476 005c FFF7FEFF 		bl	MPU_Write_Byte
+ 477 0060 0021     		movs	r1, #0
+ 478 0062 6C20     		movs	r0, #108
+ 479 0064 FFF7FEFF 		bl	MPU_Write_Byte
+ 480 0068 3220     		movs	r0, #50
+ 481 006a FFF7FEFF 		bl	MPU_Set_Rate
+ 482 006e 0020     		movs	r0, #0
+ 483              	.L60:
+ 484 0070 08BD     		pop	{r3, pc}
+ 485              	.L59:
+ 486 0072 0146     		mov	r1, r0
+ 487 0074 0248     		ldr	r0, .L62
+ 488 0076 FFF7FEFF 		bl	printf
+ 489 007a 0120     		movs	r0, #1
+ 490 007c F8E7     		b	.L60
+ 491              	.L63:
+ 492 007e 00BF     		.align	2
+ 493              	.L62:
+ 494 0080 00000000 		.word	.LC0
+ 496              		.ident	"GCC: (Arm GNU Toolchain 13.3.Rel1 (Build arm-13.24)) 13.3.1 20240614"
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccUfkQv9.s 			page 10
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 mpu6050.c
+C:\Users\ktkuru\AppData\Local\Temp\ccUfkQv9.s:18     .text.MPU_Write_Len:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccUfkQv9.s:24     .text.MPU_Write_Len:00000000 MPU_Write_Len
+C:\Users\ktkuru\AppData\Local\Temp\ccUfkQv9.s:68     .text.MPU_Read_Len:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccUfkQv9.s:74     .text.MPU_Read_Len:00000000 MPU_Read_Len
+C:\Users\ktkuru\AppData\Local\Temp\ccUfkQv9.s:129    .text.MPU_Get_Temperature:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccUfkQv9.s:135    .text.MPU_Get_Temperature:00000000 MPU_Get_Temperature
+C:\Users\ktkuru\AppData\Local\Temp\ccUfkQv9.s:170    .text.MPU_Get_Temperature:00000058 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccUfkQv9.s:176    .text.MPU_Get_Gyroscope:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccUfkQv9.s:182    .text.MPU_Get_Gyroscope:00000000 MPU_Get_Gyroscope
+C:\Users\ktkuru\AppData\Local\Temp\ccUfkQv9.s:214    .text.MPU_Get_Accelerometer:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccUfkQv9.s:220    .text.MPU_Get_Accelerometer:00000000 MPU_Get_Accelerometer
+C:\Users\ktkuru\AppData\Local\Temp\ccUfkQv9.s:252    .text.MPU_Write_Byte:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccUfkQv9.s:258    .text.MPU_Write_Byte:00000000 MPU_Write_Byte
+C:\Users\ktkuru\AppData\Local\Temp\ccUfkQv9.s:291    .text.MPU_Set_Gyro_Fsr:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccUfkQv9.s:297    .text.MPU_Set_Gyro_Fsr:00000000 MPU_Set_Gyro_Fsr
+C:\Users\ktkuru\AppData\Local\Temp\ccUfkQv9.s:308    .text.MPU_Set_Accel_Fsr:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccUfkQv9.s:314    .text.MPU_Set_Accel_Fsr:00000000 MPU_Set_Accel_Fsr
+C:\Users\ktkuru\AppData\Local\Temp\ccUfkQv9.s:325    .text.MPU_Set_LPF:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccUfkQv9.s:331    .text.MPU_Set_LPF:00000000 MPU_Set_LPF
+C:\Users\ktkuru\AppData\Local\Temp\ccUfkQv9.s:367    .text.MPU_Set_Rate:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccUfkQv9.s:373    .text.MPU_Set_Rate:00000000 MPU_Set_Rate
+C:\Users\ktkuru\AppData\Local\Temp\ccUfkQv9.s:399    .text.MPU_Read_Byte:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccUfkQv9.s:405    .text.MPU_Read_Byte:00000000 MPU_Read_Byte
+C:\Users\ktkuru\AppData\Local\Temp\ccUfkQv9.s:429    .rodata.MPU_Init.str1.4:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccUfkQv9.s:433    .text.MPU_Init:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccUfkQv9.s:439    .text.MPU_Init:00000000 MPU_Init
+C:\Users\ktkuru\AppData\Local\Temp\ccUfkQv9.s:494    .text.MPU_Init:00000080 $d
+
+UNDEFINED SYMBOLS
+IIC_Start
+IIC_Send_Byte
+IIC_Wait_Ack
+IIC_Stop
+IIC_Read_Byte
+__aeabi_i2d
+__aeabi_ddiv
+__aeabi_dadd
+__aeabi_d2f
+IIC_Init
+delay_ms
+printf

@@ -1,0 +1,562 @@
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccFpekn1.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"stm32f4xx_hash.c"
+  16              		.text
+  17              		.section	.text.HASH_DeInit,"ax",%progbits
+  18              		.align	1
+  19              		.global	HASH_DeInit
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  24              	HASH_DeInit:
+  25              		@ args = 0, pretend = 0, frame = 0
+  26              		@ frame_needed = 0, uses_anonymous_args = 0
+  27 0000 08B5     		push	{r3, lr}
+  28 0002 0121     		movs	r1, #1
+  29 0004 2020     		movs	r0, #32
+  30 0006 FFF7FEFF 		bl	RCC_AHB2PeriphResetCmd
+  31 000a 0021     		movs	r1, #0
+  32 000c 2020     		movs	r0, #32
+  33 000e FFF7FEFF 		bl	RCC_AHB2PeriphResetCmd
+  34 0012 08BD     		pop	{r3, pc}
+  36              		.section	.text.HASH_Init,"ax",%progbits
+  37              		.align	1
+  38              		.global	HASH_Init
+  39              		.syntax unified
+  40              		.thumb
+  41              		.thumb_func
+  43              	HASH_Init:
+  44              		@ args = 0, pretend = 0, frame = 0
+  45              		@ frame_needed = 0, uses_anonymous_args = 0
+  46              		@ link register save eliminated.
+  47 0000 10B4     		push	{r4}
+  48 0002 124A     		ldr	r2, .L7
+  49 0004 1368     		ldr	r3, [r2]
+  50 0006 23F48023 		bic	r3, r3, #262144
+  51 000a 23F0F003 		bic	r3, r3, #240
+  52 000e 1360     		str	r3, [r2]
+  53 0010 1168     		ldr	r1, [r2]
+  54 0012 0368     		ldr	r3, [r0]
+  55 0014 8468     		ldr	r4, [r0, #8]
+  56 0016 2343     		orrs	r3, r3, r4
+  57 0018 4468     		ldr	r4, [r0, #4]
+  58 001a 2343     		orrs	r3, r3, r4
+  59 001c 0B43     		orrs	r3, r3, r1
+  60 001e 1360     		str	r3, [r2]
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccFpekn1.s 			page 2
+
+
+  61 0020 4368     		ldr	r3, [r0, #4]
+  62 0022 402B     		cmp	r3, #64
+  63 0024 07D0     		beq	.L6
+  64              	.L4:
+  65 0026 094A     		ldr	r2, .L7
+  66 0028 1368     		ldr	r3, [r2]
+  67 002a 43F00403 		orr	r3, r3, #4
+  68 002e 1360     		str	r3, [r2]
+  69 0030 5DF8044B 		ldr	r4, [sp], #4
+  70 0034 7047     		bx	lr
+  71              	.L6:
+  72 0036 1346     		mov	r3, r2
+  73 0038 1268     		ldr	r2, [r2]
+  74 003a 22F48032 		bic	r2, r2, #65536
+  75 003e 1A60     		str	r2, [r3]
+  76 0040 1A68     		ldr	r2, [r3]
+  77 0042 C168     		ldr	r1, [r0, #12]
+  78 0044 0A43     		orrs	r2, r2, r1
+  79 0046 1A60     		str	r2, [r3]
+  80 0048 EDE7     		b	.L4
+  81              	.L8:
+  82 004a 00BF     		.align	2
+  83              	.L7:
+  84 004c 00040650 		.word	1342571520
+  86              		.section	.text.HASH_StructInit,"ax",%progbits
+  87              		.align	1
+  88              		.global	HASH_StructInit
+  89              		.syntax unified
+  90              		.thumb
+  91              		.thumb_func
+  93              	HASH_StructInit:
+  94              		@ args = 0, pretend = 0, frame = 0
+  95              		@ frame_needed = 0, uses_anonymous_args = 0
+  96              		@ link register save eliminated.
+  97 0000 0023     		movs	r3, #0
+  98 0002 0360     		str	r3, [r0]
+  99 0004 4360     		str	r3, [r0, #4]
+ 100 0006 8360     		str	r3, [r0, #8]
+ 101 0008 C360     		str	r3, [r0, #12]
+ 102 000a 7047     		bx	lr
+ 104              		.section	.text.HASH_Reset,"ax",%progbits
+ 105              		.align	1
+ 106              		.global	HASH_Reset
+ 107              		.syntax unified
+ 108              		.thumb
+ 109              		.thumb_func
+ 111              	HASH_Reset:
+ 112              		@ args = 0, pretend = 0, frame = 0
+ 113              		@ frame_needed = 0, uses_anonymous_args = 0
+ 114              		@ link register save eliminated.
+ 115 0000 024A     		ldr	r2, .L11
+ 116 0002 1368     		ldr	r3, [r2]
+ 117 0004 43F00403 		orr	r3, r3, #4
+ 118 0008 1360     		str	r3, [r2]
+ 119 000a 7047     		bx	lr
+ 120              	.L12:
+ 121              		.align	2
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccFpekn1.s 			page 3
+
+
+ 122              	.L11:
+ 123 000c 00040650 		.word	1342571520
+ 125              		.section	.text.HASH_SetLastWordValidBitsNbr,"ax",%progbits
+ 126              		.align	1
+ 127              		.global	HASH_SetLastWordValidBitsNbr
+ 128              		.syntax unified
+ 129              		.thumb
+ 130              		.thumb_func
+ 132              	HASH_SetLastWordValidBitsNbr:
+ 133              		@ args = 0, pretend = 0, frame = 0
+ 134              		@ frame_needed = 0, uses_anonymous_args = 0
+ 135              		@ link register save eliminated.
+ 136 0000 044B     		ldr	r3, .L14
+ 137 0002 9A68     		ldr	r2, [r3, #8]
+ 138 0004 22F01F02 		bic	r2, r2, #31
+ 139 0008 9A60     		str	r2, [r3, #8]
+ 140 000a 9A68     		ldr	r2, [r3, #8]
+ 141 000c 1043     		orrs	r0, r0, r2
+ 142 000e 9860     		str	r0, [r3, #8]
+ 143 0010 7047     		bx	lr
+ 144              	.L15:
+ 145 0012 00BF     		.align	2
+ 146              	.L14:
+ 147 0014 00040650 		.word	1342571520
+ 149              		.section	.text.HASH_DataIn,"ax",%progbits
+ 150              		.align	1
+ 151              		.global	HASH_DataIn
+ 152              		.syntax unified
+ 153              		.thumb
+ 154              		.thumb_func
+ 156              	HASH_DataIn:
+ 157              		@ args = 0, pretend = 0, frame = 0
+ 158              		@ frame_needed = 0, uses_anonymous_args = 0
+ 159              		@ link register save eliminated.
+ 160 0000 014B     		ldr	r3, .L17
+ 161 0002 5860     		str	r0, [r3, #4]
+ 162 0004 7047     		bx	lr
+ 163              	.L18:
+ 164 0006 00BF     		.align	2
+ 165              	.L17:
+ 166 0008 00040650 		.word	1342571520
+ 168              		.section	.text.HASH_GetInFIFOWordsNbr,"ax",%progbits
+ 169              		.align	1
+ 170              		.global	HASH_GetInFIFOWordsNbr
+ 171              		.syntax unified
+ 172              		.thumb
+ 173              		.thumb_func
+ 175              	HASH_GetInFIFOWordsNbr:
+ 176              		@ args = 0, pretend = 0, frame = 0
+ 177              		@ frame_needed = 0, uses_anonymous_args = 0
+ 178              		@ link register save eliminated.
+ 179 0000 024B     		ldr	r3, .L20
+ 180 0002 1868     		ldr	r0, [r3]
+ 181 0004 C0F30320 		ubfx	r0, r0, #8, #4
+ 182 0008 7047     		bx	lr
+ 183              	.L21:
+ 184 000a 00BF     		.align	2
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccFpekn1.s 			page 4
+
+
+ 185              	.L20:
+ 186 000c 00040650 		.word	1342571520
+ 188              		.section	.text.HASH_GetDigest,"ax",%progbits
+ 189              		.align	1
+ 190              		.global	HASH_GetDigest
+ 191              		.syntax unified
+ 192              		.thumb
+ 193              		.thumb_func
+ 195              	HASH_GetDigest:
+ 196              		@ args = 0, pretend = 0, frame = 0
+ 197              		@ frame_needed = 0, uses_anonymous_args = 0
+ 198              		@ link register save eliminated.
+ 199 0000 094B     		ldr	r3, .L23
+ 200 0002 DA68     		ldr	r2, [r3, #12]
+ 201 0004 0260     		str	r2, [r0]
+ 202 0006 1A69     		ldr	r2, [r3, #16]
+ 203 0008 4260     		str	r2, [r0, #4]
+ 204 000a 5A69     		ldr	r2, [r3, #20]
+ 205 000c 8260     		str	r2, [r0, #8]
+ 206 000e 9A69     		ldr	r2, [r3, #24]
+ 207 0010 C260     		str	r2, [r0, #12]
+ 208 0012 DB69     		ldr	r3, [r3, #28]
+ 209 0014 0361     		str	r3, [r0, #16]
+ 210 0016 054B     		ldr	r3, .L23+4
+ 211 0018 5A6A     		ldr	r2, [r3, #36]
+ 212 001a 4261     		str	r2, [r0, #20]
+ 213 001c 9A6A     		ldr	r2, [r3, #40]
+ 214 001e 8261     		str	r2, [r0, #24]
+ 215 0020 DB6A     		ldr	r3, [r3, #44]
+ 216 0022 C361     		str	r3, [r0, #28]
+ 217 0024 7047     		bx	lr
+ 218              	.L24:
+ 219 0026 00BF     		.align	2
+ 220              	.L23:
+ 221 0028 00040650 		.word	1342571520
+ 222 002c 00070650 		.word	1342572288
+ 224              		.section	.text.HASH_StartDigest,"ax",%progbits
+ 225              		.align	1
+ 226              		.global	HASH_StartDigest
+ 227              		.syntax unified
+ 228              		.thumb
+ 229              		.thumb_func
+ 231              	HASH_StartDigest:
+ 232              		@ args = 0, pretend = 0, frame = 0
+ 233              		@ frame_needed = 0, uses_anonymous_args = 0
+ 234              		@ link register save eliminated.
+ 235 0000 024A     		ldr	r2, .L26
+ 236 0002 9368     		ldr	r3, [r2, #8]
+ 237 0004 43F48073 		orr	r3, r3, #256
+ 238 0008 9360     		str	r3, [r2, #8]
+ 239 000a 7047     		bx	lr
+ 240              	.L27:
+ 241              		.align	2
+ 242              	.L26:
+ 243 000c 00040650 		.word	1342571520
+ 245              		.section	.text.HASH_SaveContext,"ax",%progbits
+ 246              		.align	1
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccFpekn1.s 			page 5
+
+
+ 247              		.global	HASH_SaveContext
+ 248              		.syntax unified
+ 249              		.thumb
+ 250              		.thumb_func
+ 252              	HASH_SaveContext:
+ 253              		@ args = 0, pretend = 0, frame = 0
+ 254              		@ frame_needed = 0, uses_anonymous_args = 0
+ 255              		@ link register save eliminated.
+ 256 0000 0B4B     		ldr	r3, .L31
+ 257 0002 1A6A     		ldr	r2, [r3, #32]
+ 258 0004 0260     		str	r2, [r0]
+ 259 0006 9A68     		ldr	r2, [r3, #8]
+ 260 0008 4260     		str	r2, [r0, #4]
+ 261 000a 1B68     		ldr	r3, [r3]
+ 262 000c 8360     		str	r3, [r0, #8]
+ 263 000e 0023     		movs	r3, #0
+ 264 0010 0AE0     		b	.L29
+ 265              	.L30:
+ 266 0012 03F13E01 		add	r1, r3, #62
+ 267 0016 064A     		ldr	r2, .L31
+ 268 0018 52F82110 		ldr	r1, [r2, r1, lsl #2]
+ 269 001c 9A1C     		adds	r2, r3, #2
+ 270 001e 00EB8202 		add	r2, r0, r2, lsl #2
+ 271 0022 5160     		str	r1, [r2, #4]
+ 272 0024 0133     		adds	r3, r3, #1
+ 273 0026 DBB2     		uxtb	r3, r3
+ 274              	.L29:
+ 275 0028 352B     		cmp	r3, #53
+ 276 002a F2D9     		bls	.L30
+ 277 002c 7047     		bx	lr
+ 278              	.L32:
+ 279 002e 00BF     		.align	2
+ 280              	.L31:
+ 281 0030 00040650 		.word	1342571520
+ 283              		.section	.text.HASH_RestoreContext,"ax",%progbits
+ 284              		.align	1
+ 285              		.global	HASH_RestoreContext
+ 286              		.syntax unified
+ 287              		.thumb
+ 288              		.thumb_func
+ 290              	HASH_RestoreContext:
+ 291              		@ args = 0, pretend = 0, frame = 0
+ 292              		@ frame_needed = 0, uses_anonymous_args = 0
+ 293              		@ link register save eliminated.
+ 294 0000 8446     		mov	ip, r0
+ 295 0002 0268     		ldr	r2, [r0]
+ 296 0004 0C4B     		ldr	r3, .L36
+ 297 0006 1A62     		str	r2, [r3, #32]
+ 298 0008 4268     		ldr	r2, [r0, #4]
+ 299 000a 9A60     		str	r2, [r3, #8]
+ 300 000c 8268     		ldr	r2, [r0, #8]
+ 301 000e 1A60     		str	r2, [r3]
+ 302 0010 1A68     		ldr	r2, [r3]
+ 303 0012 42F00402 		orr	r2, r2, #4
+ 304 0016 1A60     		str	r2, [r3]
+ 305 0018 0023     		movs	r3, #0
+ 306 001a 0AE0     		b	.L34
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccFpekn1.s 			page 6
+
+
+ 307              	.L35:
+ 308 001c 9A1C     		adds	r2, r3, #2
+ 309 001e 0CEB8202 		add	r2, ip, r2, lsl #2
+ 310 0022 5068     		ldr	r0, [r2, #4]
+ 311 0024 03F13E01 		add	r1, r3, #62
+ 312 0028 034A     		ldr	r2, .L36
+ 313 002a 42F82100 		str	r0, [r2, r1, lsl #2]
+ 314 002e 0133     		adds	r3, r3, #1
+ 315 0030 DBB2     		uxtb	r3, r3
+ 316              	.L34:
+ 317 0032 352B     		cmp	r3, #53
+ 318 0034 F2D9     		bls	.L35
+ 319 0036 7047     		bx	lr
+ 320              	.L37:
+ 321              		.align	2
+ 322              	.L36:
+ 323 0038 00040650 		.word	1342571520
+ 325              		.section	.text.HASH_AutoStartDigest,"ax",%progbits
+ 326              		.align	1
+ 327              		.global	HASH_AutoStartDigest
+ 328              		.syntax unified
+ 329              		.thumb
+ 330              		.thumb_func
+ 332              	HASH_AutoStartDigest:
+ 333              		@ args = 0, pretend = 0, frame = 0
+ 334              		@ frame_needed = 0, uses_anonymous_args = 0
+ 335              		@ link register save eliminated.
+ 336 0000 28B1     		cbz	r0, .L39
+ 337 0002 064A     		ldr	r2, .L41
+ 338 0004 1368     		ldr	r3, [r2]
+ 339 0006 23F40053 		bic	r3, r3, #8192
+ 340 000a 1360     		str	r3, [r2]
+ 341 000c 7047     		bx	lr
+ 342              	.L39:
+ 343 000e 034A     		ldr	r2, .L41
+ 344 0010 1368     		ldr	r3, [r2]
+ 345 0012 43F40053 		orr	r3, r3, #8192
+ 346 0016 1360     		str	r3, [r2]
+ 347 0018 7047     		bx	lr
+ 348              	.L42:
+ 349 001a 00BF     		.align	2
+ 350              	.L41:
+ 351 001c 00040650 		.word	1342571520
+ 353              		.section	.text.HASH_DMACmd,"ax",%progbits
+ 354              		.align	1
+ 355              		.global	HASH_DMACmd
+ 356              		.syntax unified
+ 357              		.thumb
+ 358              		.thumb_func
+ 360              	HASH_DMACmd:
+ 361              		@ args = 0, pretend = 0, frame = 0
+ 362              		@ frame_needed = 0, uses_anonymous_args = 0
+ 363              		@ link register save eliminated.
+ 364 0000 28B1     		cbz	r0, .L44
+ 365 0002 064A     		ldr	r2, .L46
+ 366 0004 1368     		ldr	r3, [r2]
+ 367 0006 43F00803 		orr	r3, r3, #8
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccFpekn1.s 			page 7
+
+
+ 368 000a 1360     		str	r3, [r2]
+ 369 000c 7047     		bx	lr
+ 370              	.L44:
+ 371 000e 034A     		ldr	r2, .L46
+ 372 0010 1368     		ldr	r3, [r2]
+ 373 0012 23F00803 		bic	r3, r3, #8
+ 374 0016 1360     		str	r3, [r2]
+ 375 0018 7047     		bx	lr
+ 376              	.L47:
+ 377 001a 00BF     		.align	2
+ 378              	.L46:
+ 379 001c 00040650 		.word	1342571520
+ 381              		.section	.text.HASH_ITConfig,"ax",%progbits
+ 382              		.align	1
+ 383              		.global	HASH_ITConfig
+ 384              		.syntax unified
+ 385              		.thumb
+ 386              		.thumb_func
+ 388              	HASH_ITConfig:
+ 389              		@ args = 0, pretend = 0, frame = 0
+ 390              		@ frame_needed = 0, uses_anonymous_args = 0
+ 391              		@ link register save eliminated.
+ 392 0000 21B1     		cbz	r1, .L49
+ 393 0002 054A     		ldr	r2, .L51
+ 394 0004 136A     		ldr	r3, [r2, #32]
+ 395 0006 0343     		orrs	r3, r3, r0
+ 396 0008 1362     		str	r3, [r2, #32]
+ 397 000a 7047     		bx	lr
+ 398              	.L49:
+ 399 000c 024A     		ldr	r2, .L51
+ 400 000e 136A     		ldr	r3, [r2, #32]
+ 401 0010 23EA0003 		bic	r3, r3, r0
+ 402 0014 1362     		str	r3, [r2, #32]
+ 403 0016 7047     		bx	lr
+ 404              	.L52:
+ 405              		.align	2
+ 406              	.L51:
+ 407 0018 00040650 		.word	1342571520
+ 409              		.section	.text.HASH_GetFlagStatus,"ax",%progbits
+ 410              		.align	1
+ 411              		.global	HASH_GetFlagStatus
+ 412              		.syntax unified
+ 413              		.thumb
+ 414              		.thumb_func
+ 416              	HASH_GetFlagStatus:
+ 417              		@ args = 0, pretend = 0, frame = 0
+ 418              		@ frame_needed = 0, uses_anonymous_args = 0
+ 419              		@ link register save eliminated.
+ 420 0000 10F4805F 		tst	r0, #4096
+ 421 0004 05D0     		beq	.L54
+ 422 0006 054B     		ldr	r3, .L58
+ 423 0008 1B68     		ldr	r3, [r3]
+ 424              	.L55:
+ 425 000a 0342     		tst	r3, r0
+ 426 000c 04D0     		beq	.L57
+ 427 000e 0120     		movs	r0, #1
+ 428 0010 7047     		bx	lr
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccFpekn1.s 			page 8
+
+
+ 429              	.L54:
+ 430 0012 024B     		ldr	r3, .L58
+ 431 0014 5B6A     		ldr	r3, [r3, #36]
+ 432 0016 F8E7     		b	.L55
+ 433              	.L57:
+ 434 0018 0020     		movs	r0, #0
+ 435 001a 7047     		bx	lr
+ 436              	.L59:
+ 437              		.align	2
+ 438              	.L58:
+ 439 001c 00040650 		.word	1342571520
+ 441              		.section	.text.HASH_ClearFlag,"ax",%progbits
+ 442              		.align	1
+ 443              		.global	HASH_ClearFlag
+ 444              		.syntax unified
+ 445              		.thumb
+ 446              		.thumb_func
+ 448              	HASH_ClearFlag:
+ 449              		@ args = 0, pretend = 0, frame = 0
+ 450              		@ frame_needed = 0, uses_anonymous_args = 0
+ 451              		@ link register save eliminated.
+ 452 0000 C043     		mvns	r0, r0
+ 453 0002 014B     		ldr	r3, .L61
+ 454 0004 5862     		str	r0, [r3, #36]
+ 455 0006 7047     		bx	lr
+ 456              	.L62:
+ 457              		.align	2
+ 458              	.L61:
+ 459 0008 00040650 		.word	1342571520
+ 461              		.section	.text.HASH_GetITStatus,"ax",%progbits
+ 462              		.align	1
+ 463              		.global	HASH_GetITStatus
+ 464              		.syntax unified
+ 465              		.thumb
+ 466              		.thumb_func
+ 468              	HASH_GetITStatus:
+ 469              		@ args = 0, pretend = 0, frame = 0
+ 470              		@ frame_needed = 0, uses_anonymous_args = 0
+ 471              		@ link register save eliminated.
+ 472 0000 044B     		ldr	r3, .L66
+ 473 0002 5A6A     		ldr	r2, [r3, #36]
+ 474 0004 1B6A     		ldr	r3, [r3, #32]
+ 475 0006 1340     		ands	r3, r3, r2
+ 476 0008 0342     		tst	r3, r0
+ 477 000a 01D0     		beq	.L65
+ 478 000c 0120     		movs	r0, #1
+ 479 000e 7047     		bx	lr
+ 480              	.L65:
+ 481 0010 0020     		movs	r0, #0
+ 482 0012 7047     		bx	lr
+ 483              	.L67:
+ 484              		.align	2
+ 485              	.L66:
+ 486 0014 00040650 		.word	1342571520
+ 488              		.section	.text.HASH_ClearITPendingBit,"ax",%progbits
+ 489              		.align	1
+ 490              		.global	HASH_ClearITPendingBit
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccFpekn1.s 			page 9
+
+
+ 491              		.syntax unified
+ 492              		.thumb
+ 493              		.thumb_func
+ 495              	HASH_ClearITPendingBit:
+ 496              		@ args = 0, pretend = 0, frame = 0
+ 497              		@ frame_needed = 0, uses_anonymous_args = 0
+ 498              		@ link register save eliminated.
+ 499 0000 C043     		mvns	r0, r0
+ 500 0002 014B     		ldr	r3, .L69
+ 501 0004 5862     		str	r0, [r3, #36]
+ 502 0006 7047     		bx	lr
+ 503              	.L70:
+ 504              		.align	2
+ 505              	.L69:
+ 506 0008 00040650 		.word	1342571520
+ 508              		.ident	"GCC: (Arm GNU Toolchain 13.3.Rel1 (Build arm-13.24)) 13.3.1 20240614"
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccFpekn1.s 			page 10
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 stm32f4xx_hash.c
+C:\Users\ktkuru\AppData\Local\Temp\ccFpekn1.s:18     .text.HASH_DeInit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccFpekn1.s:24     .text.HASH_DeInit:00000000 HASH_DeInit
+C:\Users\ktkuru\AppData\Local\Temp\ccFpekn1.s:37     .text.HASH_Init:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccFpekn1.s:43     .text.HASH_Init:00000000 HASH_Init
+C:\Users\ktkuru\AppData\Local\Temp\ccFpekn1.s:84     .text.HASH_Init:0000004c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccFpekn1.s:87     .text.HASH_StructInit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccFpekn1.s:93     .text.HASH_StructInit:00000000 HASH_StructInit
+C:\Users\ktkuru\AppData\Local\Temp\ccFpekn1.s:105    .text.HASH_Reset:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccFpekn1.s:111    .text.HASH_Reset:00000000 HASH_Reset
+C:\Users\ktkuru\AppData\Local\Temp\ccFpekn1.s:123    .text.HASH_Reset:0000000c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccFpekn1.s:126    .text.HASH_SetLastWordValidBitsNbr:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccFpekn1.s:132    .text.HASH_SetLastWordValidBitsNbr:00000000 HASH_SetLastWordValidBitsNbr
+C:\Users\ktkuru\AppData\Local\Temp\ccFpekn1.s:147    .text.HASH_SetLastWordValidBitsNbr:00000014 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccFpekn1.s:150    .text.HASH_DataIn:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccFpekn1.s:156    .text.HASH_DataIn:00000000 HASH_DataIn
+C:\Users\ktkuru\AppData\Local\Temp\ccFpekn1.s:166    .text.HASH_DataIn:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccFpekn1.s:169    .text.HASH_GetInFIFOWordsNbr:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccFpekn1.s:175    .text.HASH_GetInFIFOWordsNbr:00000000 HASH_GetInFIFOWordsNbr
+C:\Users\ktkuru\AppData\Local\Temp\ccFpekn1.s:186    .text.HASH_GetInFIFOWordsNbr:0000000c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccFpekn1.s:189    .text.HASH_GetDigest:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccFpekn1.s:195    .text.HASH_GetDigest:00000000 HASH_GetDigest
+C:\Users\ktkuru\AppData\Local\Temp\ccFpekn1.s:221    .text.HASH_GetDigest:00000028 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccFpekn1.s:225    .text.HASH_StartDigest:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccFpekn1.s:231    .text.HASH_StartDigest:00000000 HASH_StartDigest
+C:\Users\ktkuru\AppData\Local\Temp\ccFpekn1.s:243    .text.HASH_StartDigest:0000000c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccFpekn1.s:246    .text.HASH_SaveContext:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccFpekn1.s:252    .text.HASH_SaveContext:00000000 HASH_SaveContext
+C:\Users\ktkuru\AppData\Local\Temp\ccFpekn1.s:281    .text.HASH_SaveContext:00000030 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccFpekn1.s:284    .text.HASH_RestoreContext:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccFpekn1.s:290    .text.HASH_RestoreContext:00000000 HASH_RestoreContext
+C:\Users\ktkuru\AppData\Local\Temp\ccFpekn1.s:323    .text.HASH_RestoreContext:00000038 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccFpekn1.s:326    .text.HASH_AutoStartDigest:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccFpekn1.s:332    .text.HASH_AutoStartDigest:00000000 HASH_AutoStartDigest
+C:\Users\ktkuru\AppData\Local\Temp\ccFpekn1.s:351    .text.HASH_AutoStartDigest:0000001c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccFpekn1.s:354    .text.HASH_DMACmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccFpekn1.s:360    .text.HASH_DMACmd:00000000 HASH_DMACmd
+C:\Users\ktkuru\AppData\Local\Temp\ccFpekn1.s:379    .text.HASH_DMACmd:0000001c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccFpekn1.s:382    .text.HASH_ITConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccFpekn1.s:388    .text.HASH_ITConfig:00000000 HASH_ITConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccFpekn1.s:407    .text.HASH_ITConfig:00000018 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccFpekn1.s:410    .text.HASH_GetFlagStatus:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccFpekn1.s:416    .text.HASH_GetFlagStatus:00000000 HASH_GetFlagStatus
+C:\Users\ktkuru\AppData\Local\Temp\ccFpekn1.s:439    .text.HASH_GetFlagStatus:0000001c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccFpekn1.s:442    .text.HASH_ClearFlag:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccFpekn1.s:448    .text.HASH_ClearFlag:00000000 HASH_ClearFlag
+C:\Users\ktkuru\AppData\Local\Temp\ccFpekn1.s:459    .text.HASH_ClearFlag:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccFpekn1.s:462    .text.HASH_GetITStatus:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccFpekn1.s:468    .text.HASH_GetITStatus:00000000 HASH_GetITStatus
+C:\Users\ktkuru\AppData\Local\Temp\ccFpekn1.s:486    .text.HASH_GetITStatus:00000014 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccFpekn1.s:489    .text.HASH_ClearITPendingBit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccFpekn1.s:495    .text.HASH_ClearITPendingBit:00000000 HASH_ClearITPendingBit
+C:\Users\ktkuru\AppData\Local\Temp\ccFpekn1.s:506    .text.HASH_ClearITPendingBit:00000008 $d
+
+UNDEFINED SYMBOLS
+RCC_AHB2PeriphResetCmd
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccFpekn1.s 			page 11
+
+

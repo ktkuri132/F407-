@@ -1,0 +1,162 @@
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccBHXV3Z.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"stm32f4xx_dbgmcu.c"
+  16              		.text
+  17              		.section	.text.DBGMCU_GetREVID,"ax",%progbits
+  18              		.align	1
+  19              		.global	DBGMCU_GetREVID
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  24              	DBGMCU_GetREVID:
+  25              		@ args = 0, pretend = 0, frame = 0
+  26              		@ frame_needed = 0, uses_anonymous_args = 0
+  27              		@ link register save eliminated.
+  28 0000 014B     		ldr	r3, .L2
+  29 0002 1868     		ldr	r0, [r3]
+  30 0004 000C     		lsrs	r0, r0, #16
+  31 0006 7047     		bx	lr
+  32              	.L3:
+  33              		.align	2
+  34              	.L2:
+  35 0008 002004E0 		.word	-536600576
+  37              		.section	.text.DBGMCU_GetDEVID,"ax",%progbits
+  38              		.align	1
+  39              		.global	DBGMCU_GetDEVID
+  40              		.syntax unified
+  41              		.thumb
+  42              		.thumb_func
+  44              	DBGMCU_GetDEVID:
+  45              		@ args = 0, pretend = 0, frame = 0
+  46              		@ frame_needed = 0, uses_anonymous_args = 0
+  47              		@ link register save eliminated.
+  48 0000 024B     		ldr	r3, .L5
+  49 0002 1868     		ldr	r0, [r3]
+  50 0004 C0F30B00 		ubfx	r0, r0, #0, #12
+  51 0008 7047     		bx	lr
+  52              	.L6:
+  53 000a 00BF     		.align	2
+  54              	.L5:
+  55 000c 002004E0 		.word	-536600576
+  57              		.section	.text.DBGMCU_Config,"ax",%progbits
+  58              		.align	1
+  59              		.global	DBGMCU_Config
+  60              		.syntax unified
+  61              		.thumb
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccBHXV3Z.s 			page 2
+
+
+  62              		.thumb_func
+  64              	DBGMCU_Config:
+  65              		@ args = 0, pretend = 0, frame = 0
+  66              		@ frame_needed = 0, uses_anonymous_args = 0
+  67              		@ link register save eliminated.
+  68 0000 21B1     		cbz	r1, .L8
+  69 0002 054A     		ldr	r2, .L10
+  70 0004 5368     		ldr	r3, [r2, #4]
+  71 0006 0343     		orrs	r3, r3, r0
+  72 0008 5360     		str	r3, [r2, #4]
+  73 000a 7047     		bx	lr
+  74              	.L8:
+  75 000c 024A     		ldr	r2, .L10
+  76 000e 5368     		ldr	r3, [r2, #4]
+  77 0010 23EA0003 		bic	r3, r3, r0
+  78 0014 5360     		str	r3, [r2, #4]
+  79 0016 7047     		bx	lr
+  80              	.L11:
+  81              		.align	2
+  82              	.L10:
+  83 0018 002004E0 		.word	-536600576
+  85              		.section	.text.DBGMCU_APB1PeriphConfig,"ax",%progbits
+  86              		.align	1
+  87              		.global	DBGMCU_APB1PeriphConfig
+  88              		.syntax unified
+  89              		.thumb
+  90              		.thumb_func
+  92              	DBGMCU_APB1PeriphConfig:
+  93              		@ args = 0, pretend = 0, frame = 0
+  94              		@ frame_needed = 0, uses_anonymous_args = 0
+  95              		@ link register save eliminated.
+  96 0000 21B1     		cbz	r1, .L13
+  97 0002 054A     		ldr	r2, .L15
+  98 0004 9368     		ldr	r3, [r2, #8]
+  99 0006 0343     		orrs	r3, r3, r0
+ 100 0008 9360     		str	r3, [r2, #8]
+ 101 000a 7047     		bx	lr
+ 102              	.L13:
+ 103 000c 024A     		ldr	r2, .L15
+ 104 000e 9368     		ldr	r3, [r2, #8]
+ 105 0010 23EA0003 		bic	r3, r3, r0
+ 106 0014 9360     		str	r3, [r2, #8]
+ 107 0016 7047     		bx	lr
+ 108              	.L16:
+ 109              		.align	2
+ 110              	.L15:
+ 111 0018 002004E0 		.word	-536600576
+ 113              		.section	.text.DBGMCU_APB2PeriphConfig,"ax",%progbits
+ 114              		.align	1
+ 115              		.global	DBGMCU_APB2PeriphConfig
+ 116              		.syntax unified
+ 117              		.thumb
+ 118              		.thumb_func
+ 120              	DBGMCU_APB2PeriphConfig:
+ 121              		@ args = 0, pretend = 0, frame = 0
+ 122              		@ frame_needed = 0, uses_anonymous_args = 0
+ 123              		@ link register save eliminated.
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccBHXV3Z.s 			page 3
+
+
+ 124 0000 21B1     		cbz	r1, .L18
+ 125 0002 054A     		ldr	r2, .L20
+ 126 0004 D368     		ldr	r3, [r2, #12]
+ 127 0006 0343     		orrs	r3, r3, r0
+ 128 0008 D360     		str	r3, [r2, #12]
+ 129 000a 7047     		bx	lr
+ 130              	.L18:
+ 131 000c 024A     		ldr	r2, .L20
+ 132 000e D368     		ldr	r3, [r2, #12]
+ 133 0010 23EA0003 		bic	r3, r3, r0
+ 134 0014 D360     		str	r3, [r2, #12]
+ 135 0016 7047     		bx	lr
+ 136              	.L21:
+ 137              		.align	2
+ 138              	.L20:
+ 139 0018 002004E0 		.word	-536600576
+ 141              		.ident	"GCC: (Arm GNU Toolchain 13.3.Rel1 (Build arm-13.24)) 13.3.1 20240614"
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccBHXV3Z.s 			page 4
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 stm32f4xx_dbgmcu.c
+C:\Users\ktkuru\AppData\Local\Temp\ccBHXV3Z.s:18     .text.DBGMCU_GetREVID:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccBHXV3Z.s:24     .text.DBGMCU_GetREVID:00000000 DBGMCU_GetREVID
+C:\Users\ktkuru\AppData\Local\Temp\ccBHXV3Z.s:35     .text.DBGMCU_GetREVID:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccBHXV3Z.s:38     .text.DBGMCU_GetDEVID:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccBHXV3Z.s:44     .text.DBGMCU_GetDEVID:00000000 DBGMCU_GetDEVID
+C:\Users\ktkuru\AppData\Local\Temp\ccBHXV3Z.s:55     .text.DBGMCU_GetDEVID:0000000c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccBHXV3Z.s:58     .text.DBGMCU_Config:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccBHXV3Z.s:64     .text.DBGMCU_Config:00000000 DBGMCU_Config
+C:\Users\ktkuru\AppData\Local\Temp\ccBHXV3Z.s:83     .text.DBGMCU_Config:00000018 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccBHXV3Z.s:86     .text.DBGMCU_APB1PeriphConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccBHXV3Z.s:92     .text.DBGMCU_APB1PeriphConfig:00000000 DBGMCU_APB1PeriphConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccBHXV3Z.s:111    .text.DBGMCU_APB1PeriphConfig:00000018 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccBHXV3Z.s:114    .text.DBGMCU_APB2PeriphConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccBHXV3Z.s:120    .text.DBGMCU_APB2PeriphConfig:00000000 DBGMCU_APB2PeriphConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccBHXV3Z.s:139    .text.DBGMCU_APB2PeriphConfig:00000018 $d
+
+NO UNDEFINED SYMBOLS

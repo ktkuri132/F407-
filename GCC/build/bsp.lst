@@ -1,0 +1,524 @@
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccrMRlKB.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"bsp.c"
+  16              		.text
+  17              		.section	.text.LED_Init,"ax",%progbits
+  18              		.align	1
+  19              		.global	LED_Init
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  24              	LED_Init:
+  25              		@ args = 0, pretend = 0, frame = 0
+  26              		@ frame_needed = 0, uses_anonymous_args = 0
+  27              		@ link register save eliminated.
+  28 0000 084A     		ldr	r2, .L2
+  29 0002 136B     		ldr	r3, [r2, #48]
+  30 0004 43F02003 		orr	r3, r3, #32
+  31 0008 1363     		str	r3, [r2, #48]
+  32 000a 074B     		ldr	r3, .L2+4
+  33 000c 1A68     		ldr	r2, [r3]
+  34 000e 42F48022 		orr	r2, r2, #262144
+  35 0012 1A60     		str	r2, [r3]
+  36 0014 DA68     		ldr	r2, [r3, #12]
+  37 0016 DA60     		str	r2, [r3, #12]
+  38 0018 1A8B     		ldrh	r2, [r3, #24]
+  39 001a 92B2     		uxth	r2, r2
+  40 001c 42F40072 		orr	r2, r2, #512
+  41 0020 1A83     		strh	r2, [r3, #24]	@ movhi
+  42 0022 7047     		bx	lr
+  43              	.L3:
+  44              		.align	2
+  45              	.L2:
+  46 0024 00380240 		.word	1073887232
+  47 0028 00140240 		.word	1073878016
+  49              		.section	.text.GPIO_Config,"ax",%progbits
+  50              		.align	1
+  51              		.global	GPIO_Config
+  52              		.syntax unified
+  53              		.thumb
+  54              		.thumb_func
+  56              	GPIO_Config:
+  57              		@ args = 0, pretend = 0, frame = 8
+  58              		@ frame_needed = 0, uses_anonymous_args = 0
+  59 0000 00B5     		push	{lr}
+  60 0002 83B0     		sub	sp, sp, #12
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccrMRlKB.s 			page 2
+
+
+  61 0004 0091     		str	r1, [sp]
+  62 0006 8DF80420 		strb	r2, [sp, #4]
+  63 000a 8DF80730 		strb	r3, [sp, #7]
+  64 000e 0323     		movs	r3, #3
+  65 0010 8DF80530 		strb	r3, [sp, #5]
+  66 0014 0023     		movs	r3, #0
+  67 0016 8DF80630 		strb	r3, [sp, #6]
+  68 001a 6946     		mov	r1, sp
+  69 001c FFF7FEFF 		bl	GPIO_Init
+  70 0020 03B0     		add	sp, sp, #12
+  71              		@ sp needed
+  72 0022 5DF804FB 		ldr	pc, [sp], #4
+  74              		.section	.text.EXIT15_Init,"ax",%progbits
+  75              		.align	1
+  76              		.global	EXIT15_Init
+  77              		.syntax unified
+  78              		.thumb
+  79              		.thumb_func
+  81              	EXIT15_Init:
+  82              		@ args = 0, pretend = 0, frame = 16
+  83              		@ frame_needed = 0, uses_anonymous_args = 0
+  84 0000 70B5     		push	{r4, r5, r6, lr}
+  85 0002 84B0     		sub	sp, sp, #16
+  86 0004 0121     		movs	r1, #1
+  87 0006 4020     		movs	r0, #64
+  88 0008 FFF7FEFF 		bl	RCC_AHB1PeriphClockCmd
+  89 000c 0121     		movs	r1, #1
+  90 000e 4FF48040 		mov	r0, #16384
+  91 0012 FFF7FEFF 		bl	RCC_APB2PeriphClockCmd
+  92 0016 0F21     		movs	r1, #15
+  93 0018 0620     		movs	r0, #6
+  94 001a FFF7FEFF 		bl	SYSCFG_EXTILineConfig
+  95 001e 4FF40046 		mov	r6, #32768
+  96 0022 0296     		str	r6, [sp, #8]
+  97 0024 0025     		movs	r5, #0
+  98 0026 8DF80C50 		strb	r5, [sp, #12]
+  99 002a 0323     		movs	r3, #3
+ 100 002c 8DF80D30 		strb	r3, [sp, #13]
+ 101 0030 0124     		movs	r4, #1
+ 102 0032 8DF80F40 		strb	r4, [sp, #15]
+ 103 0036 02A9     		add	r1, sp, #8
+ 104 0038 0748     		ldr	r0, .L8
+ 105 003a FFF7FEFF 		bl	GPIO_Init
+ 106 003e 0096     		str	r6, [sp]
+ 107 0040 8DF80450 		strb	r5, [sp, #4]
+ 108 0044 0823     		movs	r3, #8
+ 109 0046 8DF80530 		strb	r3, [sp, #5]
+ 110 004a 8DF80640 		strb	r4, [sp, #6]
+ 111 004e 6846     		mov	r0, sp
+ 112 0050 FFF7FEFF 		bl	EXTI_Init
+ 113 0054 04B0     		add	sp, sp, #16
+ 114              		@ sp needed
+ 115 0056 70BD     		pop	{r4, r5, r6, pc}
+ 116              	.L9:
+ 117              		.align	2
+ 118              	.L8:
+ 119 0058 00180240 		.word	1073879040
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccrMRlKB.s 			page 3
+
+
+ 121              		.section	.rodata.BSP_Init.str1.4,"aMS",%progbits,1
+ 122              		.align	2
+ 123              	.LC0:
+ 124 0000 70657269 		.ascii	"peripheral init start......\000"
+ 124      70686572 
+ 124      616C2069 
+ 124      6E697420 
+ 124      73746172 
+ 125              		.align	2
+ 126              	.LC1:
+ 127 001c 2D3E4465 		.ascii	"->Delay Init done\000"
+ 127      6C617920 
+ 127      496E6974 
+ 127      20646F6E 
+ 127      6500
+ 128 002e 0000     		.align	2
+ 129              	.LC2:
+ 130 0030 2D3E4E56 		.ascii	"->NVIC Init  done\000"
+ 130      49432049 
+ 130      6E697420 
+ 130      20646F6E 
+ 130      6500
+ 131 0042 0000     		.align	2
+ 132              	.LC3:
+ 133 0044 2D3E4C45 		.ascii	"->LED Init  done\000"
+ 133      4420496E 
+ 133      69742020 
+ 133      646F6E65 
+ 133      00
+ 134 0055 000000   		.align	2
+ 135              	.LC4:
+ 136 0058 2D3E4D6F 		.ascii	"->Motor Init  done\000"
+ 136      746F7220 
+ 136      496E6974 
+ 136      2020646F 
+ 136      6E6500
+ 137 006b 00       		.align	2
+ 138              	.LC5:
+ 139 006c 2D3E4F4C 		.ascii	"->OLED Init done\000"
+ 139      45442049 
+ 139      6E697420 
+ 139      646F6E65 
+ 139      00
+ 140 007d 000000   		.align	2
+ 141              	.LC6:
+ 142 0080 2A2A2A2A 		.ascii	"****MPU6050 init failed return:%d\012\000"
+ 142      4D505536 
+ 142      30353020 
+ 142      696E6974 
+ 142      20666169 
+ 143 00a3 00       		.align	2
+ 144              	.LC7:
+ 145 00a4 2D3E4D50 		.ascii	"->MPU6050 init success\000"
+ 145      55363035 
+ 145      3020696E 
+ 145      69742073 
+ 145      75636365 
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccrMRlKB.s 			page 4
+
+
+ 146 00bb 00       		.align	2
+ 147              	.LC8:
+ 148 00bc 2A2A2A2A 		.ascii	"**************MPU6050 DMP init failed******>>Reset "
+ 148      2A2A2A2A 
+ 148      2A2A2A2A 
+ 148      2A2A4D50 
+ 148      55363035 
+ 149 00ef 616E6420 		.ascii	"and Retry or Cheak\000"
+ 149      52657472 
+ 149      79206F72 
+ 149      20436865 
+ 149      616B00
+ 150 0102 0000     		.align	2
+ 151              	.LC9:
+ 152 0104 2D3E4D50 		.ascii	"->MPU6050 DMP init success\000"
+ 152      55363035 
+ 152      3020444D 
+ 152      5020696E 
+ 152      69742073 
+ 153 011f 00       		.align	2
+ 154              	.LC10:
+ 155 0120 2D3E4554 		.ascii	"->ETIT15 Init done\000"
+ 155      49543135 
+ 155      20496E69 
+ 155      7420646F 
+ 155      6E6500
+ 156              		.section	.text.BSP_Init,"ax",%progbits
+ 157              		.align	1
+ 158              		.global	BSP_Init
+ 159              		.syntax unified
+ 160              		.thumb
+ 161              		.thumb_func
+ 163              	BSP_Init:
+ 164              		@ args = 0, pretend = 0, frame = 0
+ 165              		@ frame_needed = 0, uses_anonymous_args = 0
+ 166 0000 08B5     		push	{r3, lr}
+ 167 0002 4FF4E130 		mov	r0, #115200
+ 168 0006 FFF7FEFF 		bl	usart1_init
+ 169 000a 4FF41650 		mov	r0, #9600
+ 170 000e FFF7FEFF 		bl	usart2_init
+ 171 0012 2348     		ldr	r0, .L17
+ 172 0014 FFF7FEFF 		bl	puts
+ 173 0018 5420     		movs	r0, #84
+ 174 001a FFF7FEFF 		bl	delay_init
+ 175 001e 2148     		ldr	r0, .L17+4
+ 176 0020 FFF7FEFF 		bl	puts
+ 177 0024 FFF7FEFF 		bl	BSP_NVIC_IT_Config
+ 178 0028 1F48     		ldr	r0, .L17+8
+ 179 002a FFF7FEFF 		bl	puts
+ 180 002e FFF7FEFF 		bl	LED_Init
+ 181 0032 1E48     		ldr	r0, .L17+12
+ 182 0034 FFF7FEFF 		bl	puts
+ 183 0038 FFF7FEFF 		bl	Motor_PWM_TIM8_Init
+ 184 003c 1C48     		ldr	r0, .L17+16
+ 185 003e FFF7FEFF 		bl	puts
+ 186 0042 FFF7FEFF 		bl	OLED_Init
+ 187 0046 1B48     		ldr	r0, .L17+20
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccrMRlKB.s 			page 5
+
+
+ 188 0048 FFF7FEFF 		bl	puts
+ 189 004c 1A4B     		ldr	r3, .L17+24
+ 190 004e 4FF49662 		mov	r2, #1200
+ 191 0052 5A63     		str	r2, [r3, #52]
+ 192 0054 9A63     		str	r2, [r3, #56]
+ 193 0056 DA63     		str	r2, [r3, #60]
+ 194 0058 1A64     		str	r2, [r3, #64]
+ 195 005a 1420     		movs	r0, #20
+ 196 005c FFF7FEFF 		bl	delay_ms
+ 197 0060 FFF7FEFF 		bl	MPU_Init
+ 198 0064 78B9     		cbnz	r0, .L15
+ 199 0066 1548     		ldr	r0, .L17+28
+ 200 0068 FFF7FEFF 		bl	puts
+ 201 006c FFF7FEFF 		bl	mpu_dmp_init
+ 202 0070 88B9     		cbnz	r0, .L16
+ 203 0072 1348     		ldr	r0, .L17+32
+ 204 0074 FFF7FEFF 		bl	puts
+ 205 0078 FFF7FEFF 		bl	EXIT15_Init
+ 206 007c 1148     		ldr	r0, .L17+36
+ 207 007e FFF7FEFF 		bl	puts
+ 208 0082 0020     		movs	r0, #0
+ 209              	.L10:
+ 210 0084 08BD     		pop	{r3, pc}
+ 211              	.L15:
+ 212 0086 FFF7FEFF 		bl	MPU_Init
+ 213 008a 0146     		mov	r1, r0
+ 214 008c 0E48     		ldr	r0, .L17+40
+ 215 008e FFF7FEFF 		bl	printf
+ 216 0092 0120     		movs	r0, #1
+ 217 0094 F6E7     		b	.L10
+ 218              	.L16:
+ 219 0096 0D48     		ldr	r0, .L17+44
+ 220 0098 FFF7FEFF 		bl	puts
+ 221 009c 0220     		movs	r0, #2
+ 222 009e F1E7     		b	.L10
+ 223              	.L18:
+ 224              		.align	2
+ 225              	.L17:
+ 226 00a0 00000000 		.word	.LC0
+ 227 00a4 1C000000 		.word	.LC1
+ 228 00a8 30000000 		.word	.LC2
+ 229 00ac 44000000 		.word	.LC3
+ 230 00b0 58000000 		.word	.LC4
+ 231 00b4 6C000000 		.word	.LC5
+ 232 00b8 00040140 		.word	1073808384
+ 233 00bc A4000000 		.word	.LC7
+ 234 00c0 04010000 		.word	.LC9
+ 235 00c4 20010000 		.word	.LC10
+ 236 00c8 80000000 		.word	.LC6
+ 237 00cc BC000000 		.word	.LC8
+ 239              		.section	.text.ADC_Config,"ax",%progbits
+ 240              		.align	1
+ 241              		.global	ADC_Config
+ 242              		.syntax unified
+ 243              		.thumb
+ 244              		.thumb_func
+ 246              	ADC_Config:
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccrMRlKB.s 			page 6
+
+
+ 247              		@ args = 0, pretend = 0, frame = 56
+ 248              		@ frame_needed = 0, uses_anonymous_args = 0
+ 249 0000 70B5     		push	{r4, r5, r6, lr}
+ 250 0002 8EB0     		sub	sp, sp, #56
+ 251 0004 0121     		movs	r1, #1
+ 252 0006 4FF48070 		mov	r0, #256
+ 253 000a FFF7FEFF 		bl	RCC_APB2PeriphClockCmd
+ 254 000e 0121     		movs	r1, #1
+ 255 0010 0846     		mov	r0, r1
+ 256 0012 FFF7FEFF 		bl	RCC_AHB1PeriphClockCmd
+ 257 0016 0223     		movs	r3, #2
+ 258 0018 0293     		str	r3, [sp, #8]
+ 259 001a 0323     		movs	r3, #3
+ 260 001c 8DF80C30 		strb	r3, [sp, #12]
+ 261 0020 0025     		movs	r5, #0
+ 262 0022 8DF80F50 		strb	r5, [sp, #15]
+ 263 0026 02A9     		add	r1, sp, #8
+ 264 0028 1D48     		ldr	r0, .L21
+ 265 002a FFF7FEFF 		bl	GPIO_Init
+ 266 002e 0895     		str	r5, [sp, #32]
+ 267 0030 8DF82450 		strb	r5, [sp, #36]
+ 268 0034 0124     		movs	r4, #1
+ 269 0036 8DF82540 		strb	r4, [sp, #37]
+ 270 003a 0A95     		str	r5, [sp, #40]
+ 271 003c 0C95     		str	r5, [sp, #48]
+ 272 003e 8DF83440 		strb	r4, [sp, #52]
+ 273 0042 184E     		ldr	r6, .L21+4
+ 274 0044 08A9     		add	r1, sp, #32
+ 275 0046 3046     		mov	r0, r6
+ 276 0048 FFF7FEFF 		bl	ADC_Init
+ 277 004c 0723     		movs	r3, #7
+ 278 004e 2246     		mov	r2, r4
+ 279 0050 2146     		mov	r1, r4
+ 280 0052 3046     		mov	r0, r6
+ 281 0054 FFF7FEFF 		bl	ADC_RegularChannelConfig
+ 282 0058 0495     		str	r5, [sp, #16]
+ 283 005a 4FF48033 		mov	r3, #65536
+ 284 005e 0593     		str	r3, [sp, #20]
+ 285 0060 0695     		str	r5, [sp, #24]
+ 286 0062 0795     		str	r5, [sp, #28]
+ 287 0064 04A8     		add	r0, sp, #16
+ 288 0066 FFF7FEFF 		bl	ADC_CommonInit
+ 289 006a 2146     		mov	r1, r4
+ 290 006c 3046     		mov	r0, r6
+ 291 006e FFF7FEFF 		bl	ADC_Cmd
+ 292 0072 3046     		mov	r0, r6
+ 293 0074 FFF7FEFF 		bl	ADC_SoftwareStartConv
+ 294 0078 2246     		mov	r2, r4
+ 295 007a 40F20521 		movw	r1, #517
+ 296 007e 3046     		mov	r0, r6
+ 297 0080 FFF7FEFF 		bl	ADC_ITConfig
+ 298 0084 1223     		movs	r3, #18
+ 299 0086 8DF80430 		strb	r3, [sp, #4]
+ 300 008a 8DF80540 		strb	r4, [sp, #5]
+ 301 008e 8DF80640 		strb	r4, [sp, #6]
+ 302 0092 8DF80740 		strb	r4, [sp, #7]
+ 303 0096 01A8     		add	r0, sp, #4
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccrMRlKB.s 			page 7
+
+
+ 304 0098 FFF7FEFF 		bl	NVIC_Init
+ 305 009c 0EB0     		add	sp, sp, #56
+ 306              		@ sp needed
+ 307 009e 70BD     		pop	{r4, r5, r6, pc}
+ 308              	.L22:
+ 309              		.align	2
+ 310              	.L21:
+ 311 00a0 00000240 		.word	1073872896
+ 312 00a4 00200140 		.word	1073815552
+ 314              		.global	__aeabi_f2d
+ 315              		.global	__aeabi_ddiv
+ 316              		.global	__aeabi_dmul
+ 317              		.global	__aeabi_d2uiz
+ 318              		.section	.text.ADCvalue_convert,"ax",%progbits
+ 319              		.align	1
+ 320              		.global	ADCvalue_convert
+ 321              		.syntax unified
+ 322              		.thumb
+ 323              		.thumb_func
+ 325              	ADCvalue_convert:
+ 326              		@ args = 0, pretend = 0, frame = 0
+ 327              		@ frame_needed = 0, uses_anonymous_args = 0
+ 328 0000 08B5     		push	{r3, lr}
+ 329 0002 07EE900A 		vmov	s15, r0	@ int
+ 330 0006 F8EE677A 		vcvt.f32.u32	s15, s15
+ 331 000a 17EE900A 		vmov	r0, s15
+ 332 000e FFF7FEFF 		bl	__aeabi_f2d
+ 333 0012 08A3     		adr	r3, .L25+4
+ 334 0014 D3E90023 		ldrd	r2, [r3]
+ 335 0018 FFF7FEFF 		bl	__aeabi_ddiv
+ 336 001c 0022     		movs	r2, #0
+ 337 001e 044B     		ldr	r3, .L25
+ 338 0020 FFF7FEFF 		bl	__aeabi_dmul
+ 339 0024 FFF7FEFF 		bl	__aeabi_d2uiz
+ 340 0028 80B2     		uxth	r0, r0
+ 341 002a 08BD     		pop	{r3, pc}
+ 342              	.L26:
+ 343 002c AFF30080 		.align	3
+ 344              	.L25:
+ 345 0030 00807640 		.word	1081507840
+ 346 0034 00000000 		.word	0
+ 347 0038 004EA840 		.word	1084771840
+ 349              		.section	.rodata.ADC_IRQHandler.str1.4,"aMS",%progbits,1
+ 350              		.align	2
+ 351              	.LC11:
+ 352 0000 41444320 		.ascii	"ADC value: %d\012\000"
+ 352      76616C75 
+ 352      653A2025 
+ 352      640A00
+ 353              		.section	.text.ADC_IRQHandler,"ax",%progbits
+ 354              		.align	1
+ 355              		.global	ADC_IRQHandler
+ 356              		.syntax unified
+ 357              		.thumb
+ 358              		.thumb_func
+ 360              	ADC_IRQHandler:
+ 361              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccrMRlKB.s 			page 8
+
+
+ 362              		@ frame_needed = 0, uses_anonymous_args = 0
+ 363 0000 10B5     		push	{r4, lr}
+ 364 0002 40F20521 		movw	r1, #517
+ 365 0006 0D48     		ldr	r0, .L31
+ 366 0008 FFF7FEFF 		bl	ADC_GetITStatus
+ 367 000c 00B9     		cbnz	r0, .L30
+ 368              	.L27:
+ 369 000e 10BD     		pop	{r4, pc}
+ 370              	.L30:
+ 371 0010 0A4C     		ldr	r4, .L31
+ 372 0012 40F20521 		movw	r1, #517
+ 373 0016 2046     		mov	r0, r4
+ 374 0018 FFF7FEFF 		bl	ADC_ClearITPendingBit
+ 375 001c 2046     		mov	r0, r4
+ 376 001e FFF7FEFF 		bl	ADC_GetConversionValue
+ 377 0022 074B     		ldr	r3, .L31+4
+ 378 0024 1880     		strh	r0, [r3]	@ movhi
+ 379 0026 074B     		ldr	r3, .L31+8
+ 380 0028 4FF46162 		mov	r2, #3600
+ 381 002c 5A63     		str	r2, [r3, #52]
+ 382 002e FFF7FEFF 		bl	ADCvalue_convert
+ 383 0032 0146     		mov	r1, r0
+ 384 0034 0448     		ldr	r0, .L31+12
+ 385 0036 FFF7FEFF 		bl	printf
+ 386 003a E8E7     		b	.L27
+ 387              	.L32:
+ 388              		.align	2
+ 389              	.L31:
+ 390 003c 00200140 		.word	1073815552
+ 391 0040 00000000 		.word	adcValue.0
+ 392 0044 00000140 		.word	1073807360
+ 393 0048 00000000 		.word	.LC11
+ 395              		.section	.bss.adcValue.0,"aw",%nobits
+ 396              		.align	1
+ 399              	adcValue.0:
+ 400 0000 0000     		.space	2
+ 401              		.ident	"GCC: (Arm GNU Toolchain 13.3.Rel1 (Build arm-13.24)) 13.3.1 20240614"
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccrMRlKB.s 			page 9
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 bsp.c
+C:\Users\ktkuru\AppData\Local\Temp\ccrMRlKB.s:18     .text.LED_Init:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccrMRlKB.s:24     .text.LED_Init:00000000 LED_Init
+C:\Users\ktkuru\AppData\Local\Temp\ccrMRlKB.s:46     .text.LED_Init:00000024 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccrMRlKB.s:50     .text.GPIO_Config:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccrMRlKB.s:56     .text.GPIO_Config:00000000 GPIO_Config
+C:\Users\ktkuru\AppData\Local\Temp\ccrMRlKB.s:75     .text.EXIT15_Init:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccrMRlKB.s:81     .text.EXIT15_Init:00000000 EXIT15_Init
+C:\Users\ktkuru\AppData\Local\Temp\ccrMRlKB.s:119    .text.EXIT15_Init:00000058 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccrMRlKB.s:122    .rodata.BSP_Init.str1.4:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccrMRlKB.s:157    .text.BSP_Init:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccrMRlKB.s:163    .text.BSP_Init:00000000 BSP_Init
+C:\Users\ktkuru\AppData\Local\Temp\ccrMRlKB.s:226    .text.BSP_Init:000000a0 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccrMRlKB.s:240    .text.ADC_Config:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccrMRlKB.s:246    .text.ADC_Config:00000000 ADC_Config
+C:\Users\ktkuru\AppData\Local\Temp\ccrMRlKB.s:311    .text.ADC_Config:000000a0 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccrMRlKB.s:319    .text.ADCvalue_convert:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccrMRlKB.s:325    .text.ADCvalue_convert:00000000 ADCvalue_convert
+C:\Users\ktkuru\AppData\Local\Temp\ccrMRlKB.s:345    .text.ADCvalue_convert:00000030 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccrMRlKB.s:350    .rodata.ADC_IRQHandler.str1.4:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccrMRlKB.s:354    .text.ADC_IRQHandler:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccrMRlKB.s:360    .text.ADC_IRQHandler:00000000 ADC_IRQHandler
+C:\Users\ktkuru\AppData\Local\Temp\ccrMRlKB.s:390    .text.ADC_IRQHandler:0000003c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccrMRlKB.s:399    .bss.adcValue.0:00000000 adcValue.0
+C:\Users\ktkuru\AppData\Local\Temp\ccrMRlKB.s:396    .bss.adcValue.0:00000000 $d
+
+UNDEFINED SYMBOLS
+GPIO_Init
+RCC_AHB1PeriphClockCmd
+RCC_APB2PeriphClockCmd
+SYSCFG_EXTILineConfig
+EXTI_Init
+usart1_init
+usart2_init
+puts
+delay_init
+BSP_NVIC_IT_Config
+Motor_PWM_TIM8_Init
+OLED_Init
+delay_ms
+MPU_Init
+mpu_dmp_init
+printf
+ADC_Init
+ADC_RegularChannelConfig
+ADC_CommonInit
+ADC_Cmd
+ADC_SoftwareStartConv
+ADC_ITConfig
+NVIC_Init
+__aeabi_f2d
+__aeabi_ddiv
+__aeabi_dmul
+__aeabi_d2uiz
+ADC_GetITStatus
+ADC_ClearITPendingBit
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccrMRlKB.s 			page 10
+
+
+ADC_GetConversionValue

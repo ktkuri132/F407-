@@ -1,0 +1,924 @@
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccCU1N8V.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"stm32f4xx_usart.c"
+  16              		.text
+  17              		.section	.text.USART_DeInit,"ax",%progbits
+  18              		.align	1
+  19              		.global	USART_DeInit
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  24              	USART_DeInit:
+  25              		@ args = 0, pretend = 0, frame = 0
+  26              		@ frame_needed = 0, uses_anonymous_args = 0
+  27 0000 08B5     		push	{r3, lr}
+  28 0002 364B     		ldr	r3, .L19
+  29 0004 9842     		cmp	r0, r3
+  30 0006 15D0     		beq	.L11
+  31 0008 354B     		ldr	r3, .L19+4
+  32 000a 9842     		cmp	r0, r3
+  33 000c 1BD0     		beq	.L12
+  34 000e 354B     		ldr	r3, .L19+8
+  35 0010 9842     		cmp	r0, r3
+  36 0012 23D0     		beq	.L13
+  37 0014 344B     		ldr	r3, .L19+12
+  38 0016 9842     		cmp	r0, r3
+  39 0018 2BD0     		beq	.L14
+  40 001a 344B     		ldr	r3, .L19+16
+  41 001c 9842     		cmp	r0, r3
+  42 001e 33D0     		beq	.L15
+  43 0020 334B     		ldr	r3, .L19+20
+  44 0022 9842     		cmp	r0, r3
+  45 0024 3BD0     		beq	.L16
+  46 0026 334B     		ldr	r3, .L19+24
+  47 0028 9842     		cmp	r0, r3
+  48 002a 41D0     		beq	.L17
+  49 002c 324B     		ldr	r3, .L19+28
+  50 002e 9842     		cmp	r0, r3
+  51 0030 49D0     		beq	.L18
+  52              	.L1:
+  53 0032 08BD     		pop	{r3, pc}
+  54              	.L11:
+  55 0034 0121     		movs	r1, #1
+  56 0036 1020     		movs	r0, #16
+  57 0038 FFF7FEFF 		bl	RCC_APB2PeriphResetCmd
+  58 003c 0021     		movs	r1, #0
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccCU1N8V.s 			page 2
+
+
+  59 003e 1020     		movs	r0, #16
+  60 0040 FFF7FEFF 		bl	RCC_APB2PeriphResetCmd
+  61 0044 F5E7     		b	.L1
+  62              	.L12:
+  63 0046 0121     		movs	r1, #1
+  64 0048 4FF40030 		mov	r0, #131072
+  65 004c FFF7FEFF 		bl	RCC_APB1PeriphResetCmd
+  66 0050 0021     		movs	r1, #0
+  67 0052 4FF40030 		mov	r0, #131072
+  68 0056 FFF7FEFF 		bl	RCC_APB1PeriphResetCmd
+  69 005a EAE7     		b	.L1
+  70              	.L13:
+  71 005c 0121     		movs	r1, #1
+  72 005e 4FF48020 		mov	r0, #262144
+  73 0062 FFF7FEFF 		bl	RCC_APB1PeriphResetCmd
+  74 0066 0021     		movs	r1, #0
+  75 0068 4FF48020 		mov	r0, #262144
+  76 006c FFF7FEFF 		bl	RCC_APB1PeriphResetCmd
+  77 0070 DFE7     		b	.L1
+  78              	.L14:
+  79 0072 0121     		movs	r1, #1
+  80 0074 4FF40020 		mov	r0, #524288
+  81 0078 FFF7FEFF 		bl	RCC_APB1PeriphResetCmd
+  82 007c 0021     		movs	r1, #0
+  83 007e 4FF40020 		mov	r0, #524288
+  84 0082 FFF7FEFF 		bl	RCC_APB1PeriphResetCmd
+  85 0086 D4E7     		b	.L1
+  86              	.L15:
+  87 0088 0121     		movs	r1, #1
+  88 008a 4FF48010 		mov	r0, #1048576
+  89 008e FFF7FEFF 		bl	RCC_APB1PeriphResetCmd
+  90 0092 0021     		movs	r1, #0
+  91 0094 4FF48010 		mov	r0, #1048576
+  92 0098 FFF7FEFF 		bl	RCC_APB1PeriphResetCmd
+  93 009c C9E7     		b	.L1
+  94              	.L16:
+  95 009e 0121     		movs	r1, #1
+  96 00a0 2020     		movs	r0, #32
+  97 00a2 FFF7FEFF 		bl	RCC_APB2PeriphResetCmd
+  98 00a6 0021     		movs	r1, #0
+  99 00a8 2020     		movs	r0, #32
+ 100 00aa FFF7FEFF 		bl	RCC_APB2PeriphResetCmd
+ 101 00ae C0E7     		b	.L1
+ 102              	.L17:
+ 103 00b0 0121     		movs	r1, #1
+ 104 00b2 4FF08040 		mov	r0, #1073741824
+ 105 00b6 FFF7FEFF 		bl	RCC_APB1PeriphResetCmd
+ 106 00ba 0021     		movs	r1, #0
+ 107 00bc 4FF08040 		mov	r0, #1073741824
+ 108 00c0 FFF7FEFF 		bl	RCC_APB1PeriphResetCmd
+ 109 00c4 B5E7     		b	.L1
+ 110              	.L18:
+ 111 00c6 0121     		movs	r1, #1
+ 112 00c8 4FF00040 		mov	r0, #-2147483648
+ 113 00cc FFF7FEFF 		bl	RCC_APB1PeriphResetCmd
+ 114 00d0 0021     		movs	r1, #0
+ 115 00d2 4FF00040 		mov	r0, #-2147483648
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccCU1N8V.s 			page 3
+
+
+ 116 00d6 FFF7FEFF 		bl	RCC_APB1PeriphResetCmd
+ 117 00da AAE7     		b	.L1
+ 118              	.L20:
+ 119              		.align	2
+ 120              	.L19:
+ 121 00dc 00100140 		.word	1073811456
+ 122 00e0 00440040 		.word	1073759232
+ 123 00e4 00480040 		.word	1073760256
+ 124 00e8 004C0040 		.word	1073761280
+ 125 00ec 00500040 		.word	1073762304
+ 126 00f0 00140140 		.word	1073812480
+ 127 00f4 00780040 		.word	1073772544
+ 128 00f8 007C0040 		.word	1073773568
+ 130              		.section	.text.USART_Init,"ax",%progbits
+ 131              		.align	1
+ 132              		.global	USART_Init
+ 133              		.syntax unified
+ 134              		.thumb
+ 135              		.thumb_func
+ 137              	USART_Init:
+ 138              		@ args = 0, pretend = 0, frame = 16
+ 139              		@ frame_needed = 0, uses_anonymous_args = 0
+ 140 0000 30B5     		push	{r4, r5, lr}
+ 141 0002 85B0     		sub	sp, sp, #20
+ 142 0004 0446     		mov	r4, r0
+ 143 0006 0D46     		mov	r5, r1
+ 144 0008 038A     		ldrh	r3, [r0, #16]
+ 145 000a 9BB2     		uxth	r3, r3
+ 146 000c 23F44053 		bic	r3, r3, #12288
+ 147 0010 CA88     		ldrh	r2, [r1, #6]
+ 148 0012 1343     		orrs	r3, r3, r2
+ 149 0014 0382     		strh	r3, [r0, #16]	@ movhi
+ 150 0016 8389     		ldrh	r3, [r0, #12]
+ 151 0018 9BB2     		uxth	r3, r3
+ 152 001a 23F4B053 		bic	r3, r3, #5632
+ 153 001e 23F00C03 		bic	r3, r3, #12
+ 154 0022 8988     		ldrh	r1, [r1, #4]
+ 155 0024 2889     		ldrh	r0, [r5, #8]
+ 156 0026 6A89     		ldrh	r2, [r5, #10]
+ 157 0028 0143     		orrs	r1, r1, r0
+ 158 002a 0A43     		orrs	r2, r2, r1
+ 159 002c 1343     		orrs	r3, r3, r2
+ 160 002e A381     		strh	r3, [r4, #12]	@ movhi
+ 161 0030 A38A     		ldrh	r3, [r4, #20]
+ 162 0032 9BB2     		uxth	r3, r3
+ 163 0034 23F44073 		bic	r3, r3, #768
+ 164 0038 AA89     		ldrh	r2, [r5, #12]
+ 165 003a 1343     		orrs	r3, r3, r2
+ 166 003c A382     		strh	r3, [r4, #20]	@ movhi
+ 167 003e 6846     		mov	r0, sp
+ 168 0040 FFF7FEFF 		bl	RCC_GetClocksFreq
+ 169 0044 1F4B     		ldr	r3, .L32
+ 170 0046 9C42     		cmp	r4, r3
+ 171 0048 05D0     		beq	.L22
+ 172 004a 03F58063 		add	r3, r3, #1024
+ 173 004e 9C42     		cmp	r4, r3
+ 174 0050 01D0     		beq	.L22
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccCU1N8V.s 			page 4
+
+
+ 175 0052 029B     		ldr	r3, [sp, #8]
+ 176 0054 00E0     		b	.L24
+ 177              	.L22:
+ 178 0056 039B     		ldr	r3, [sp, #12]
+ 179              	.L24:
+ 180 0058 A289     		ldrh	r2, [r4, #12]
+ 181 005a 12F4004F 		tst	r2, #32768
+ 182 005e 1FD1     		bne	.L30
+ 183 0060 03EB8303 		add	r3, r3, r3, lsl #2
+ 184 0064 03EB8303 		add	r3, r3, r3, lsl #2
+ 185 0068 2A68     		ldr	r2, [r5]
+ 186 006a 9200     		lsls	r2, r2, #2
+ 187 006c B3FBF2F3 		udiv	r3, r3, r2
+ 188              	.L26:
+ 189 0070 154A     		ldr	r2, .L32+4
+ 190 0072 A2FB0312 		umull	r1, r2, r2, r3
+ 191 0076 5209     		lsrs	r2, r2, #5
+ 192 0078 1101     		lsls	r1, r2, #4
+ 193 007a 6420     		movs	r0, #100
+ 194 007c 02FB1033 		mls	r3, r2, r0, r3
+ 195 0080 A289     		ldrh	r2, [r4, #12]
+ 196 0082 12F4004F 		tst	r2, #32768
+ 197 0086 14D1     		bne	.L31
+ 198 0088 1B01     		lsls	r3, r3, #4
+ 199 008a 3233     		adds	r3, r3, #50
+ 200 008c 0E4A     		ldr	r2, .L32+4
+ 201 008e A2FB0323 		umull	r2, r3, r2, r3
+ 202 0092 C3F34313 		ubfx	r3, r3, #5, #4
+ 203 0096 0B43     		orrs	r3, r3, r1
+ 204              	.L28:
+ 205 0098 9BB2     		uxth	r3, r3
+ 206 009a 2381     		strh	r3, [r4, #8]	@ movhi
+ 207 009c 05B0     		add	sp, sp, #20
+ 208              		@ sp needed
+ 209 009e 30BD     		pop	{r4, r5, pc}
+ 210              	.L30:
+ 211 00a0 03EB8303 		add	r3, r3, r3, lsl #2
+ 212 00a4 03EB8303 		add	r3, r3, r3, lsl #2
+ 213 00a8 2A68     		ldr	r2, [r5]
+ 214 00aa 5200     		lsls	r2, r2, #1
+ 215 00ac B3FBF2F3 		udiv	r3, r3, r2
+ 216 00b0 DEE7     		b	.L26
+ 217              	.L31:
+ 218 00b2 DB00     		lsls	r3, r3, #3
+ 219 00b4 3233     		adds	r3, r3, #50
+ 220 00b6 044A     		ldr	r2, .L32+4
+ 221 00b8 A2FB0323 		umull	r2, r3, r2, r3
+ 222 00bc C3F34213 		ubfx	r3, r3, #5, #3
+ 223 00c0 0B43     		orrs	r3, r3, r1
+ 224 00c2 E9E7     		b	.L28
+ 225              	.L33:
+ 226              		.align	2
+ 227              	.L32:
+ 228 00c4 00100140 		.word	1073811456
+ 229 00c8 1F85EB51 		.word	1374389535
+ 231              		.section	.text.USART_StructInit,"ax",%progbits
+ 232              		.align	1
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccCU1N8V.s 			page 5
+
+
+ 233              		.global	USART_StructInit
+ 234              		.syntax unified
+ 235              		.thumb
+ 236              		.thumb_func
+ 238              	USART_StructInit:
+ 239              		@ args = 0, pretend = 0, frame = 0
+ 240              		@ frame_needed = 0, uses_anonymous_args = 0
+ 241              		@ link register save eliminated.
+ 242 0000 4FF41653 		mov	r3, #9600
+ 243 0004 0360     		str	r3, [r0]
+ 244 0006 0023     		movs	r3, #0
+ 245 0008 8380     		strh	r3, [r0, #4]	@ movhi
+ 246 000a C380     		strh	r3, [r0, #6]	@ movhi
+ 247 000c 0381     		strh	r3, [r0, #8]	@ movhi
+ 248 000e 0C22     		movs	r2, #12
+ 249 0010 4281     		strh	r2, [r0, #10]	@ movhi
+ 250 0012 8381     		strh	r3, [r0, #12]	@ movhi
+ 251 0014 7047     		bx	lr
+ 253              		.section	.text.USART_ClockInit,"ax",%progbits
+ 254              		.align	1
+ 255              		.global	USART_ClockInit
+ 256              		.syntax unified
+ 257              		.thumb
+ 258              		.thumb_func
+ 260              	USART_ClockInit:
+ 261              		@ args = 0, pretend = 0, frame = 0
+ 262              		@ frame_needed = 0, uses_anonymous_args = 0
+ 263 0000 10B5     		push	{r4, lr}
+ 264 0002 028A     		ldrh	r2, [r0, #16]
+ 265 0004 92B2     		uxth	r2, r2
+ 266 0006 22F47062 		bic	r2, r2, #3840
+ 267 000a B1F800E0 		ldrh	lr, [r1]
+ 268 000e 4C88     		ldrh	r4, [r1, #2]
+ 269 0010 B1F804C0 		ldrh	ip, [r1, #4]
+ 270 0014 CB88     		ldrh	r3, [r1, #6]
+ 271 0016 4EEA0401 		orr	r1, lr, r4
+ 272 001a 4CEA0101 		orr	r1, ip, r1
+ 273 001e 0B43     		orrs	r3, r3, r1
+ 274 0020 1343     		orrs	r3, r3, r2
+ 275 0022 0382     		strh	r3, [r0, #16]	@ movhi
+ 276 0024 10BD     		pop	{r4, pc}
+ 278              		.section	.text.USART_ClockStructInit,"ax",%progbits
+ 279              		.align	1
+ 280              		.global	USART_ClockStructInit
+ 281              		.syntax unified
+ 282              		.thumb
+ 283              		.thumb_func
+ 285              	USART_ClockStructInit:
+ 286              		@ args = 0, pretend = 0, frame = 0
+ 287              		@ frame_needed = 0, uses_anonymous_args = 0
+ 288              		@ link register save eliminated.
+ 289 0000 0023     		movs	r3, #0
+ 290 0002 0380     		strh	r3, [r0]	@ movhi
+ 291 0004 4380     		strh	r3, [r0, #2]	@ movhi
+ 292 0006 8380     		strh	r3, [r0, #4]	@ movhi
+ 293 0008 C380     		strh	r3, [r0, #6]	@ movhi
+ 294 000a 7047     		bx	lr
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccCU1N8V.s 			page 6
+
+
+ 296              		.section	.text.USART_Cmd,"ax",%progbits
+ 297              		.align	1
+ 298              		.global	USART_Cmd
+ 299              		.syntax unified
+ 300              		.thumb
+ 301              		.thumb_func
+ 303              	USART_Cmd:
+ 304              		@ args = 0, pretend = 0, frame = 0
+ 305              		@ frame_needed = 0, uses_anonymous_args = 0
+ 306              		@ link register save eliminated.
+ 307 0000 29B1     		cbz	r1, .L39
+ 308 0002 8389     		ldrh	r3, [r0, #12]
+ 309 0004 9BB2     		uxth	r3, r3
+ 310 0006 43F40053 		orr	r3, r3, #8192
+ 311 000a 8381     		strh	r3, [r0, #12]	@ movhi
+ 312 000c 7047     		bx	lr
+ 313              	.L39:
+ 314 000e 8389     		ldrh	r3, [r0, #12]
+ 315 0010 9BB2     		uxth	r3, r3
+ 316 0012 23F40053 		bic	r3, r3, #8192
+ 317 0016 9BB2     		uxth	r3, r3
+ 318 0018 8381     		strh	r3, [r0, #12]	@ movhi
+ 319 001a 7047     		bx	lr
+ 321              		.section	.text.USART_SetPrescaler,"ax",%progbits
+ 322              		.align	1
+ 323              		.global	USART_SetPrescaler
+ 324              		.syntax unified
+ 325              		.thumb
+ 326              		.thumb_func
+ 328              	USART_SetPrescaler:
+ 329              		@ args = 0, pretend = 0, frame = 0
+ 330              		@ frame_needed = 0, uses_anonymous_args = 0
+ 331              		@ link register save eliminated.
+ 332 0000 038B     		ldrh	r3, [r0, #24]
+ 333 0002 03F47F43 		and	r3, r3, #65280
+ 334 0006 0383     		strh	r3, [r0, #24]	@ movhi
+ 335 0008 038B     		ldrh	r3, [r0, #24]
+ 336 000a 9BB2     		uxth	r3, r3
+ 337 000c 1943     		orrs	r1, r1, r3
+ 338 000e 0183     		strh	r1, [r0, #24]	@ movhi
+ 339 0010 7047     		bx	lr
+ 341              		.section	.text.USART_OverSampling8Cmd,"ax",%progbits
+ 342              		.align	1
+ 343              		.global	USART_OverSampling8Cmd
+ 344              		.syntax unified
+ 345              		.thumb
+ 346              		.thumb_func
+ 348              	USART_OverSampling8Cmd:
+ 349              		@ args = 0, pretend = 0, frame = 0
+ 350              		@ frame_needed = 0, uses_anonymous_args = 0
+ 351              		@ link register save eliminated.
+ 352 0000 39B1     		cbz	r1, .L43
+ 353 0002 8389     		ldrh	r3, [r0, #12]
+ 354 0004 6FEA4343 		mvn	r3, r3, lsl #17
+ 355 0008 6FEA5343 		mvn	r3, r3, lsr #17
+ 356 000c 9BB2     		uxth	r3, r3
+ 357 000e 8381     		strh	r3, [r0, #12]	@ movhi
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccCU1N8V.s 			page 7
+
+
+ 358 0010 7047     		bx	lr
+ 359              	.L43:
+ 360 0012 8389     		ldrh	r3, [r0, #12]
+ 361 0014 C3F30E03 		ubfx	r3, r3, #0, #15
+ 362 0018 8381     		strh	r3, [r0, #12]	@ movhi
+ 363 001a 7047     		bx	lr
+ 365              		.section	.text.USART_OneBitMethodCmd,"ax",%progbits
+ 366              		.align	1
+ 367              		.global	USART_OneBitMethodCmd
+ 368              		.syntax unified
+ 369              		.thumb
+ 370              		.thumb_func
+ 372              	USART_OneBitMethodCmd:
+ 373              		@ args = 0, pretend = 0, frame = 0
+ 374              		@ frame_needed = 0, uses_anonymous_args = 0
+ 375              		@ link register save eliminated.
+ 376 0000 29B1     		cbz	r1, .L46
+ 377 0002 838A     		ldrh	r3, [r0, #20]
+ 378 0004 9BB2     		uxth	r3, r3
+ 379 0006 43F40063 		orr	r3, r3, #2048
+ 380 000a 8382     		strh	r3, [r0, #20]	@ movhi
+ 381 000c 7047     		bx	lr
+ 382              	.L46:
+ 383 000e 838A     		ldrh	r3, [r0, #20]
+ 384 0010 9BB2     		uxth	r3, r3
+ 385 0012 23F40063 		bic	r3, r3, #2048
+ 386 0016 9BB2     		uxth	r3, r3
+ 387 0018 8382     		strh	r3, [r0, #20]	@ movhi
+ 388 001a 7047     		bx	lr
+ 390              		.section	.text.USART_SendData,"ax",%progbits
+ 391              		.align	1
+ 392              		.global	USART_SendData
+ 393              		.syntax unified
+ 394              		.thumb
+ 395              		.thumb_func
+ 397              	USART_SendData:
+ 398              		@ args = 0, pretend = 0, frame = 0
+ 399              		@ frame_needed = 0, uses_anonymous_args = 0
+ 400              		@ link register save eliminated.
+ 401 0000 C1F30801 		ubfx	r1, r1, #0, #9
+ 402 0004 8180     		strh	r1, [r0, #4]	@ movhi
+ 403 0006 7047     		bx	lr
+ 405              		.section	.text.USART_ReceiveData,"ax",%progbits
+ 406              		.align	1
+ 407              		.global	USART_ReceiveData
+ 408              		.syntax unified
+ 409              		.thumb
+ 410              		.thumb_func
+ 412              	USART_ReceiveData:
+ 413              		@ args = 0, pretend = 0, frame = 0
+ 414              		@ frame_needed = 0, uses_anonymous_args = 0
+ 415              		@ link register save eliminated.
+ 416 0000 8088     		ldrh	r0, [r0, #4]
+ 417 0002 C0F30800 		ubfx	r0, r0, #0, #9
+ 418 0006 7047     		bx	lr
+ 420              		.section	.text.USART_SetAddress,"ax",%progbits
+ 421              		.align	1
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccCU1N8V.s 			page 8
+
+
+ 422              		.global	USART_SetAddress
+ 423              		.syntax unified
+ 424              		.thumb
+ 425              		.thumb_func
+ 427              	USART_SetAddress:
+ 428              		@ args = 0, pretend = 0, frame = 0
+ 429              		@ frame_needed = 0, uses_anonymous_args = 0
+ 430              		@ link register save eliminated.
+ 431 0000 038A     		ldrh	r3, [r0, #16]
+ 432 0002 9BB2     		uxth	r3, r3
+ 433 0004 23F00F03 		bic	r3, r3, #15
+ 434 0008 9BB2     		uxth	r3, r3
+ 435 000a 0382     		strh	r3, [r0, #16]	@ movhi
+ 436 000c 038A     		ldrh	r3, [r0, #16]
+ 437 000e 9BB2     		uxth	r3, r3
+ 438 0010 1943     		orrs	r1, r1, r3
+ 439 0012 0182     		strh	r1, [r0, #16]	@ movhi
+ 440 0014 7047     		bx	lr
+ 442              		.section	.text.USART_ReceiverWakeUpCmd,"ax",%progbits
+ 443              		.align	1
+ 444              		.global	USART_ReceiverWakeUpCmd
+ 445              		.syntax unified
+ 446              		.thumb
+ 447              		.thumb_func
+ 449              	USART_ReceiverWakeUpCmd:
+ 450              		@ args = 0, pretend = 0, frame = 0
+ 451              		@ frame_needed = 0, uses_anonymous_args = 0
+ 452              		@ link register save eliminated.
+ 453 0000 29B1     		cbz	r1, .L52
+ 454 0002 8389     		ldrh	r3, [r0, #12]
+ 455 0004 9BB2     		uxth	r3, r3
+ 456 0006 43F00203 		orr	r3, r3, #2
+ 457 000a 8381     		strh	r3, [r0, #12]	@ movhi
+ 458 000c 7047     		bx	lr
+ 459              	.L52:
+ 460 000e 8389     		ldrh	r3, [r0, #12]
+ 461 0010 9BB2     		uxth	r3, r3
+ 462 0012 23F00203 		bic	r3, r3, #2
+ 463 0016 9BB2     		uxth	r3, r3
+ 464 0018 8381     		strh	r3, [r0, #12]	@ movhi
+ 465 001a 7047     		bx	lr
+ 467              		.section	.text.USART_WakeUpConfig,"ax",%progbits
+ 468              		.align	1
+ 469              		.global	USART_WakeUpConfig
+ 470              		.syntax unified
+ 471              		.thumb
+ 472              		.thumb_func
+ 474              	USART_WakeUpConfig:
+ 475              		@ args = 0, pretend = 0, frame = 0
+ 476              		@ frame_needed = 0, uses_anonymous_args = 0
+ 477              		@ link register save eliminated.
+ 478 0000 8389     		ldrh	r3, [r0, #12]
+ 479 0002 9BB2     		uxth	r3, r3
+ 480 0004 23F40063 		bic	r3, r3, #2048
+ 481 0008 9BB2     		uxth	r3, r3
+ 482 000a 8381     		strh	r3, [r0, #12]	@ movhi
+ 483 000c 8389     		ldrh	r3, [r0, #12]
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccCU1N8V.s 			page 9
+
+
+ 484 000e 9BB2     		uxth	r3, r3
+ 485 0010 0B43     		orrs	r3, r3, r1
+ 486 0012 8381     		strh	r3, [r0, #12]	@ movhi
+ 487 0014 7047     		bx	lr
+ 489              		.section	.text.USART_LINBreakDetectLengthConfig,"ax",%progbits
+ 490              		.align	1
+ 491              		.global	USART_LINBreakDetectLengthConfig
+ 492              		.syntax unified
+ 493              		.thumb
+ 494              		.thumb_func
+ 496              	USART_LINBreakDetectLengthConfig:
+ 497              		@ args = 0, pretend = 0, frame = 0
+ 498              		@ frame_needed = 0, uses_anonymous_args = 0
+ 499              		@ link register save eliminated.
+ 500 0000 038A     		ldrh	r3, [r0, #16]
+ 501 0002 9BB2     		uxth	r3, r3
+ 502 0004 23F02003 		bic	r3, r3, #32
+ 503 0008 9BB2     		uxth	r3, r3
+ 504 000a 0382     		strh	r3, [r0, #16]	@ movhi
+ 505 000c 038A     		ldrh	r3, [r0, #16]
+ 506 000e 9BB2     		uxth	r3, r3
+ 507 0010 0B43     		orrs	r3, r3, r1
+ 508 0012 0382     		strh	r3, [r0, #16]	@ movhi
+ 509 0014 7047     		bx	lr
+ 511              		.section	.text.USART_LINCmd,"ax",%progbits
+ 512              		.align	1
+ 513              		.global	USART_LINCmd
+ 514              		.syntax unified
+ 515              		.thumb
+ 516              		.thumb_func
+ 518              	USART_LINCmd:
+ 519              		@ args = 0, pretend = 0, frame = 0
+ 520              		@ frame_needed = 0, uses_anonymous_args = 0
+ 521              		@ link register save eliminated.
+ 522 0000 29B1     		cbz	r1, .L57
+ 523 0002 038A     		ldrh	r3, [r0, #16]
+ 524 0004 9BB2     		uxth	r3, r3
+ 525 0006 43F48043 		orr	r3, r3, #16384
+ 526 000a 0382     		strh	r3, [r0, #16]	@ movhi
+ 527 000c 7047     		bx	lr
+ 528              	.L57:
+ 529 000e 038A     		ldrh	r3, [r0, #16]
+ 530 0010 9BB2     		uxth	r3, r3
+ 531 0012 23F48043 		bic	r3, r3, #16384
+ 532 0016 9BB2     		uxth	r3, r3
+ 533 0018 0382     		strh	r3, [r0, #16]	@ movhi
+ 534 001a 7047     		bx	lr
+ 536              		.section	.text.USART_SendBreak,"ax",%progbits
+ 537              		.align	1
+ 538              		.global	USART_SendBreak
+ 539              		.syntax unified
+ 540              		.thumb
+ 541              		.thumb_func
+ 543              	USART_SendBreak:
+ 544              		@ args = 0, pretend = 0, frame = 0
+ 545              		@ frame_needed = 0, uses_anonymous_args = 0
+ 546              		@ link register save eliminated.
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccCU1N8V.s 			page 10
+
+
+ 547 0000 8389     		ldrh	r3, [r0, #12]
+ 548 0002 9BB2     		uxth	r3, r3
+ 549 0004 43F00103 		orr	r3, r3, #1
+ 550 0008 8381     		strh	r3, [r0, #12]	@ movhi
+ 551 000a 7047     		bx	lr
+ 553              		.section	.text.USART_HalfDuplexCmd,"ax",%progbits
+ 554              		.align	1
+ 555              		.global	USART_HalfDuplexCmd
+ 556              		.syntax unified
+ 557              		.thumb
+ 558              		.thumb_func
+ 560              	USART_HalfDuplexCmd:
+ 561              		@ args = 0, pretend = 0, frame = 0
+ 562              		@ frame_needed = 0, uses_anonymous_args = 0
+ 563              		@ link register save eliminated.
+ 564 0000 29B1     		cbz	r1, .L61
+ 565 0002 838A     		ldrh	r3, [r0, #20]
+ 566 0004 9BB2     		uxth	r3, r3
+ 567 0006 43F00803 		orr	r3, r3, #8
+ 568 000a 8382     		strh	r3, [r0, #20]	@ movhi
+ 569 000c 7047     		bx	lr
+ 570              	.L61:
+ 571 000e 838A     		ldrh	r3, [r0, #20]
+ 572 0010 9BB2     		uxth	r3, r3
+ 573 0012 23F00803 		bic	r3, r3, #8
+ 574 0016 9BB2     		uxth	r3, r3
+ 575 0018 8382     		strh	r3, [r0, #20]	@ movhi
+ 576 001a 7047     		bx	lr
+ 578              		.section	.text.USART_SetGuardTime,"ax",%progbits
+ 579              		.align	1
+ 580              		.global	USART_SetGuardTime
+ 581              		.syntax unified
+ 582              		.thumb
+ 583              		.thumb_func
+ 585              	USART_SetGuardTime:
+ 586              		@ args = 0, pretend = 0, frame = 0
+ 587              		@ frame_needed = 0, uses_anonymous_args = 0
+ 588              		@ link register save eliminated.
+ 589 0000 038B     		ldrh	r3, [r0, #24]
+ 590 0002 DBB2     		uxtb	r3, r3
+ 591 0004 0383     		strh	r3, [r0, #24]	@ movhi
+ 592 0006 038B     		ldrh	r3, [r0, #24]
+ 593 0008 9BB2     		uxth	r3, r3
+ 594 000a 43EA0123 		orr	r3, r3, r1, lsl #8
+ 595 000e 0383     		strh	r3, [r0, #24]	@ movhi
+ 596 0010 7047     		bx	lr
+ 598              		.section	.text.USART_SmartCardCmd,"ax",%progbits
+ 599              		.align	1
+ 600              		.global	USART_SmartCardCmd
+ 601              		.syntax unified
+ 602              		.thumb
+ 603              		.thumb_func
+ 605              	USART_SmartCardCmd:
+ 606              		@ args = 0, pretend = 0, frame = 0
+ 607              		@ frame_needed = 0, uses_anonymous_args = 0
+ 608              		@ link register save eliminated.
+ 609 0000 29B1     		cbz	r1, .L65
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccCU1N8V.s 			page 11
+
+
+ 610 0002 838A     		ldrh	r3, [r0, #20]
+ 611 0004 9BB2     		uxth	r3, r3
+ 612 0006 43F02003 		orr	r3, r3, #32
+ 613 000a 8382     		strh	r3, [r0, #20]	@ movhi
+ 614 000c 7047     		bx	lr
+ 615              	.L65:
+ 616 000e 838A     		ldrh	r3, [r0, #20]
+ 617 0010 9BB2     		uxth	r3, r3
+ 618 0012 23F02003 		bic	r3, r3, #32
+ 619 0016 9BB2     		uxth	r3, r3
+ 620 0018 8382     		strh	r3, [r0, #20]	@ movhi
+ 621 001a 7047     		bx	lr
+ 623              		.section	.text.USART_SmartCardNACKCmd,"ax",%progbits
+ 624              		.align	1
+ 625              		.global	USART_SmartCardNACKCmd
+ 626              		.syntax unified
+ 627              		.thumb
+ 628              		.thumb_func
+ 630              	USART_SmartCardNACKCmd:
+ 631              		@ args = 0, pretend = 0, frame = 0
+ 632              		@ frame_needed = 0, uses_anonymous_args = 0
+ 633              		@ link register save eliminated.
+ 634 0000 29B1     		cbz	r1, .L68
+ 635 0002 838A     		ldrh	r3, [r0, #20]
+ 636 0004 9BB2     		uxth	r3, r3
+ 637 0006 43F01003 		orr	r3, r3, #16
+ 638 000a 8382     		strh	r3, [r0, #20]	@ movhi
+ 639 000c 7047     		bx	lr
+ 640              	.L68:
+ 641 000e 838A     		ldrh	r3, [r0, #20]
+ 642 0010 9BB2     		uxth	r3, r3
+ 643 0012 23F01003 		bic	r3, r3, #16
+ 644 0016 9BB2     		uxth	r3, r3
+ 645 0018 8382     		strh	r3, [r0, #20]	@ movhi
+ 646 001a 7047     		bx	lr
+ 648              		.section	.text.USART_IrDAConfig,"ax",%progbits
+ 649              		.align	1
+ 650              		.global	USART_IrDAConfig
+ 651              		.syntax unified
+ 652              		.thumb
+ 653              		.thumb_func
+ 655              	USART_IrDAConfig:
+ 656              		@ args = 0, pretend = 0, frame = 0
+ 657              		@ frame_needed = 0, uses_anonymous_args = 0
+ 658              		@ link register save eliminated.
+ 659 0000 838A     		ldrh	r3, [r0, #20]
+ 660 0002 9BB2     		uxth	r3, r3
+ 661 0004 23F00403 		bic	r3, r3, #4
+ 662 0008 9BB2     		uxth	r3, r3
+ 663 000a 8382     		strh	r3, [r0, #20]	@ movhi
+ 664 000c 838A     		ldrh	r3, [r0, #20]
+ 665 000e 9BB2     		uxth	r3, r3
+ 666 0010 0B43     		orrs	r3, r3, r1
+ 667 0012 8382     		strh	r3, [r0, #20]	@ movhi
+ 668 0014 7047     		bx	lr
+ 670              		.section	.text.USART_IrDACmd,"ax",%progbits
+ 671              		.align	1
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccCU1N8V.s 			page 12
+
+
+ 672              		.global	USART_IrDACmd
+ 673              		.syntax unified
+ 674              		.thumb
+ 675              		.thumb_func
+ 677              	USART_IrDACmd:
+ 678              		@ args = 0, pretend = 0, frame = 0
+ 679              		@ frame_needed = 0, uses_anonymous_args = 0
+ 680              		@ link register save eliminated.
+ 681 0000 29B1     		cbz	r1, .L72
+ 682 0002 838A     		ldrh	r3, [r0, #20]
+ 683 0004 9BB2     		uxth	r3, r3
+ 684 0006 43F00203 		orr	r3, r3, #2
+ 685 000a 8382     		strh	r3, [r0, #20]	@ movhi
+ 686 000c 7047     		bx	lr
+ 687              	.L72:
+ 688 000e 838A     		ldrh	r3, [r0, #20]
+ 689 0010 9BB2     		uxth	r3, r3
+ 690 0012 23F00203 		bic	r3, r3, #2
+ 691 0016 9BB2     		uxth	r3, r3
+ 692 0018 8382     		strh	r3, [r0, #20]	@ movhi
+ 693 001a 7047     		bx	lr
+ 695              		.section	.text.USART_DMACmd,"ax",%progbits
+ 696              		.align	1
+ 697              		.global	USART_DMACmd
+ 698              		.syntax unified
+ 699              		.thumb
+ 700              		.thumb_func
+ 702              	USART_DMACmd:
+ 703              		@ args = 0, pretend = 0, frame = 0
+ 704              		@ frame_needed = 0, uses_anonymous_args = 0
+ 705              		@ link register save eliminated.
+ 706 0000 22B1     		cbz	r2, .L75
+ 707 0002 838A     		ldrh	r3, [r0, #20]
+ 708 0004 9BB2     		uxth	r3, r3
+ 709 0006 0B43     		orrs	r3, r3, r1
+ 710 0008 8382     		strh	r3, [r0, #20]	@ movhi
+ 711 000a 7047     		bx	lr
+ 712              	.L75:
+ 713 000c 838A     		ldrh	r3, [r0, #20]
+ 714 000e C943     		mvns	r1, r1
+ 715 0010 89B2     		uxth	r1, r1
+ 716 0012 1940     		ands	r1, r1, r3
+ 717 0014 8182     		strh	r1, [r0, #20]	@ movhi
+ 718 0016 7047     		bx	lr
+ 720              		.section	.text.USART_ITConfig,"ax",%progbits
+ 721              		.align	1
+ 722              		.global	USART_ITConfig
+ 723              		.syntax unified
+ 724              		.thumb
+ 725              		.thumb_func
+ 727              	USART_ITConfig:
+ 728              		@ args = 0, pretend = 0, frame = 0
+ 729              		@ frame_needed = 0, uses_anonymous_args = 0
+ 730              		@ link register save eliminated.
+ 731 0000 C1F3421C 		ubfx	ip, r1, #5, #3
+ 732 0004 01F01F01 		and	r1, r1, #31
+ 733 0008 0123     		movs	r3, #1
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccCU1N8V.s 			page 13
+
+
+ 734 000a 8B40     		lsls	r3, r3, r1
+ 735 000c BCF1010F 		cmp	ip, #1
+ 736 0010 08D0     		beq	.L83
+ 737 0012 BCF1020F 		cmp	ip, #2
+ 738 0016 07D0     		beq	.L84
+ 739 0018 1430     		adds	r0, r0, #20
+ 740              	.L79:
+ 741 001a 3AB1     		cbz	r2, .L81
+ 742 001c 0268     		ldr	r2, [r0]
+ 743 001e 1343     		orrs	r3, r3, r2
+ 744 0020 0360     		str	r3, [r0]
+ 745 0022 7047     		bx	lr
+ 746              	.L83:
+ 747 0024 0C30     		adds	r0, r0, #12
+ 748 0026 F8E7     		b	.L79
+ 749              	.L84:
+ 750 0028 1030     		adds	r0, r0, #16
+ 751 002a F6E7     		b	.L79
+ 752              	.L81:
+ 753 002c 0268     		ldr	r2, [r0]
+ 754 002e 22EA0303 		bic	r3, r2, r3
+ 755 0032 0360     		str	r3, [r0]
+ 756 0034 7047     		bx	lr
+ 758              		.section	.text.USART_GetFlagStatus,"ax",%progbits
+ 759              		.align	1
+ 760              		.global	USART_GetFlagStatus
+ 761              		.syntax unified
+ 762              		.thumb
+ 763              		.thumb_func
+ 765              	USART_GetFlagStatus:
+ 766              		@ args = 0, pretend = 0, frame = 0
+ 767              		@ frame_needed = 0, uses_anonymous_args = 0
+ 768              		@ link register save eliminated.
+ 769 0000 0388     		ldrh	r3, [r0]
+ 770 0002 1942     		tst	r1, r3
+ 771 0004 01D0     		beq	.L87
+ 772 0006 0120     		movs	r0, #1
+ 773 0008 7047     		bx	lr
+ 774              	.L87:
+ 775 000a 0020     		movs	r0, #0
+ 776 000c 7047     		bx	lr
+ 778              		.section	.text.USART_ClearFlag,"ax",%progbits
+ 779              		.align	1
+ 780              		.global	USART_ClearFlag
+ 781              		.syntax unified
+ 782              		.thumb
+ 783              		.thumb_func
+ 785              	USART_ClearFlag:
+ 786              		@ args = 0, pretend = 0, frame = 0
+ 787              		@ frame_needed = 0, uses_anonymous_args = 0
+ 788              		@ link register save eliminated.
+ 789 0000 C943     		mvns	r1, r1
+ 790 0002 89B2     		uxth	r1, r1
+ 791 0004 0180     		strh	r1, [r0]	@ movhi
+ 792 0006 7047     		bx	lr
+ 794              		.section	.text.USART_GetITStatus,"ax",%progbits
+ 795              		.align	1
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccCU1N8V.s 			page 14
+
+
+ 796              		.global	USART_GetITStatus
+ 797              		.syntax unified
+ 798              		.thumb
+ 799              		.thumb_func
+ 801              	USART_GetITStatus:
+ 802              		@ args = 0, pretend = 0, frame = 0
+ 803              		@ frame_needed = 0, uses_anonymous_args = 0
+ 804              		@ link register save eliminated.
+ 805 0000 C1F34212 		ubfx	r2, r1, #5, #3
+ 806 0004 01F01F0C 		and	ip, r1, #31
+ 807 0008 0123     		movs	r3, #1
+ 808 000a 03FA0CF3 		lsl	r3, r3, ip
+ 809 000e 012A     		cmp	r2, #1
+ 810 0010 0FD0     		beq	.L96
+ 811 0012 022A     		cmp	r2, #2
+ 812 0014 11D0     		beq	.L97
+ 813 0016 828A     		ldrh	r2, [r0, #20]
+ 814 0018 92B2     		uxth	r2, r2
+ 815 001a 1340     		ands	r3, r3, r2
+ 816              	.L91:
+ 817 001c 090A     		lsrs	r1, r1, #8
+ 818 001e 0122     		movs	r2, #1
+ 819 0020 02FA01F1 		lsl	r1, r2, r1
+ 820 0024 0288     		ldrh	r2, [r0]
+ 821 0026 92B2     		uxth	r2, r2
+ 822 0028 0A40     		ands	r2, r2, r1
+ 823 002a 53B1     		cbz	r3, .L94
+ 824 002c 5AB9     		cbnz	r2, .L95
+ 825 002e 0020     		movs	r0, #0
+ 826 0030 7047     		bx	lr
+ 827              	.L96:
+ 828 0032 8289     		ldrh	r2, [r0, #12]
+ 829 0034 92B2     		uxth	r2, r2
+ 830 0036 1340     		ands	r3, r3, r2
+ 831 0038 F0E7     		b	.L91
+ 832              	.L97:
+ 833 003a 028A     		ldrh	r2, [r0, #16]
+ 834 003c 92B2     		uxth	r2, r2
+ 835 003e 1340     		ands	r3, r3, r2
+ 836 0040 ECE7     		b	.L91
+ 837              	.L94:
+ 838 0042 0020     		movs	r0, #0
+ 839 0044 7047     		bx	lr
+ 840              	.L95:
+ 841 0046 0120     		movs	r0, #1
+ 842 0048 7047     		bx	lr
+ 844              		.section	.text.USART_ClearITPendingBit,"ax",%progbits
+ 845              		.align	1
+ 846              		.global	USART_ClearITPendingBit
+ 847              		.syntax unified
+ 848              		.thumb
+ 849              		.thumb_func
+ 851              	USART_ClearITPendingBit:
+ 852              		@ args = 0, pretend = 0, frame = 0
+ 853              		@ frame_needed = 0, uses_anonymous_args = 0
+ 854              		@ link register save eliminated.
+ 855 0000 090A     		lsrs	r1, r1, #8
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccCU1N8V.s 			page 15
+
+
+ 856 0002 0123     		movs	r3, #1
+ 857 0004 8B40     		lsls	r3, r3, r1
+ 858 0006 9BB2     		uxth	r3, r3
+ 859 0008 DB43     		mvns	r3, r3
+ 860 000a 9BB2     		uxth	r3, r3
+ 861 000c 0380     		strh	r3, [r0]	@ movhi
+ 862 000e 7047     		bx	lr
+ 864              		.ident	"GCC: (Arm GNU Toolchain 13.3.Rel1 (Build arm-13.24)) 13.3.1 20240614"
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccCU1N8V.s 			page 16
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 stm32f4xx_usart.c
+C:\Users\ktkuru\AppData\Local\Temp\ccCU1N8V.s:18     .text.USART_DeInit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccCU1N8V.s:24     .text.USART_DeInit:00000000 USART_DeInit
+C:\Users\ktkuru\AppData\Local\Temp\ccCU1N8V.s:121    .text.USART_DeInit:000000dc $d
+C:\Users\ktkuru\AppData\Local\Temp\ccCU1N8V.s:131    .text.USART_Init:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccCU1N8V.s:137    .text.USART_Init:00000000 USART_Init
+C:\Users\ktkuru\AppData\Local\Temp\ccCU1N8V.s:228    .text.USART_Init:000000c4 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccCU1N8V.s:232    .text.USART_StructInit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccCU1N8V.s:238    .text.USART_StructInit:00000000 USART_StructInit
+C:\Users\ktkuru\AppData\Local\Temp\ccCU1N8V.s:254    .text.USART_ClockInit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccCU1N8V.s:260    .text.USART_ClockInit:00000000 USART_ClockInit
+C:\Users\ktkuru\AppData\Local\Temp\ccCU1N8V.s:279    .text.USART_ClockStructInit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccCU1N8V.s:285    .text.USART_ClockStructInit:00000000 USART_ClockStructInit
+C:\Users\ktkuru\AppData\Local\Temp\ccCU1N8V.s:297    .text.USART_Cmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccCU1N8V.s:303    .text.USART_Cmd:00000000 USART_Cmd
+C:\Users\ktkuru\AppData\Local\Temp\ccCU1N8V.s:322    .text.USART_SetPrescaler:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccCU1N8V.s:328    .text.USART_SetPrescaler:00000000 USART_SetPrescaler
+C:\Users\ktkuru\AppData\Local\Temp\ccCU1N8V.s:342    .text.USART_OverSampling8Cmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccCU1N8V.s:348    .text.USART_OverSampling8Cmd:00000000 USART_OverSampling8Cmd
+C:\Users\ktkuru\AppData\Local\Temp\ccCU1N8V.s:366    .text.USART_OneBitMethodCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccCU1N8V.s:372    .text.USART_OneBitMethodCmd:00000000 USART_OneBitMethodCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccCU1N8V.s:391    .text.USART_SendData:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccCU1N8V.s:397    .text.USART_SendData:00000000 USART_SendData
+C:\Users\ktkuru\AppData\Local\Temp\ccCU1N8V.s:406    .text.USART_ReceiveData:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccCU1N8V.s:412    .text.USART_ReceiveData:00000000 USART_ReceiveData
+C:\Users\ktkuru\AppData\Local\Temp\ccCU1N8V.s:421    .text.USART_SetAddress:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccCU1N8V.s:427    .text.USART_SetAddress:00000000 USART_SetAddress
+C:\Users\ktkuru\AppData\Local\Temp\ccCU1N8V.s:443    .text.USART_ReceiverWakeUpCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccCU1N8V.s:449    .text.USART_ReceiverWakeUpCmd:00000000 USART_ReceiverWakeUpCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccCU1N8V.s:468    .text.USART_WakeUpConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccCU1N8V.s:474    .text.USART_WakeUpConfig:00000000 USART_WakeUpConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccCU1N8V.s:490    .text.USART_LINBreakDetectLengthConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccCU1N8V.s:496    .text.USART_LINBreakDetectLengthConfig:00000000 USART_LINBreakDetectLengthConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccCU1N8V.s:512    .text.USART_LINCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccCU1N8V.s:518    .text.USART_LINCmd:00000000 USART_LINCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccCU1N8V.s:537    .text.USART_SendBreak:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccCU1N8V.s:543    .text.USART_SendBreak:00000000 USART_SendBreak
+C:\Users\ktkuru\AppData\Local\Temp\ccCU1N8V.s:554    .text.USART_HalfDuplexCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccCU1N8V.s:560    .text.USART_HalfDuplexCmd:00000000 USART_HalfDuplexCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccCU1N8V.s:579    .text.USART_SetGuardTime:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccCU1N8V.s:585    .text.USART_SetGuardTime:00000000 USART_SetGuardTime
+C:\Users\ktkuru\AppData\Local\Temp\ccCU1N8V.s:599    .text.USART_SmartCardCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccCU1N8V.s:605    .text.USART_SmartCardCmd:00000000 USART_SmartCardCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccCU1N8V.s:624    .text.USART_SmartCardNACKCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccCU1N8V.s:630    .text.USART_SmartCardNACKCmd:00000000 USART_SmartCardNACKCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccCU1N8V.s:649    .text.USART_IrDAConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccCU1N8V.s:655    .text.USART_IrDAConfig:00000000 USART_IrDAConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccCU1N8V.s:671    .text.USART_IrDACmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccCU1N8V.s:677    .text.USART_IrDACmd:00000000 USART_IrDACmd
+C:\Users\ktkuru\AppData\Local\Temp\ccCU1N8V.s:696    .text.USART_DMACmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccCU1N8V.s:702    .text.USART_DMACmd:00000000 USART_DMACmd
+C:\Users\ktkuru\AppData\Local\Temp\ccCU1N8V.s:721    .text.USART_ITConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccCU1N8V.s:727    .text.USART_ITConfig:00000000 USART_ITConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccCU1N8V.s:759    .text.USART_GetFlagStatus:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccCU1N8V.s:765    .text.USART_GetFlagStatus:00000000 USART_GetFlagStatus
+C:\Users\ktkuru\AppData\Local\Temp\ccCU1N8V.s:779    .text.USART_ClearFlag:00000000 $t
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccCU1N8V.s 			page 17
+
+
+C:\Users\ktkuru\AppData\Local\Temp\ccCU1N8V.s:785    .text.USART_ClearFlag:00000000 USART_ClearFlag
+C:\Users\ktkuru\AppData\Local\Temp\ccCU1N8V.s:795    .text.USART_GetITStatus:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccCU1N8V.s:801    .text.USART_GetITStatus:00000000 USART_GetITStatus
+C:\Users\ktkuru\AppData\Local\Temp\ccCU1N8V.s:845    .text.USART_ClearITPendingBit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccCU1N8V.s:851    .text.USART_ClearITPendingBit:00000000 USART_ClearITPendingBit
+
+UNDEFINED SYMBOLS
+RCC_APB2PeriphResetCmd
+RCC_APB1PeriphResetCmd
+RCC_GetClocksFreq

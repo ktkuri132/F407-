@@ -1,0 +1,521 @@
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"stm32f4xx_pwr.c"
+  16              		.text
+  17              		.section	.text.PWR_DeInit,"ax",%progbits
+  18              		.align	1
+  19              		.global	PWR_DeInit
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  24              	PWR_DeInit:
+  25              		@ args = 0, pretend = 0, frame = 0
+  26              		@ frame_needed = 0, uses_anonymous_args = 0
+  27 0000 08B5     		push	{r3, lr}
+  28 0002 0121     		movs	r1, #1
+  29 0004 4FF08050 		mov	r0, #268435456
+  30 0008 FFF7FEFF 		bl	RCC_APB1PeriphResetCmd
+  31 000c 0021     		movs	r1, #0
+  32 000e 4FF08050 		mov	r0, #268435456
+  33 0012 FFF7FEFF 		bl	RCC_APB1PeriphResetCmd
+  34 0016 08BD     		pop	{r3, pc}
+  36              		.section	.text.PWR_BackupAccessCmd,"ax",%progbits
+  37              		.align	1
+  38              		.global	PWR_BackupAccessCmd
+  39              		.syntax unified
+  40              		.thumb
+  41              		.thumb_func
+  43              	PWR_BackupAccessCmd:
+  44              		@ args = 0, pretend = 0, frame = 0
+  45              		@ frame_needed = 0, uses_anonymous_args = 0
+  46              		@ link register save eliminated.
+  47 0000 014B     		ldr	r3, .L4
+  48 0002 1862     		str	r0, [r3, #32]
+  49 0004 7047     		bx	lr
+  50              	.L5:
+  51 0006 00BF     		.align	2
+  52              	.L4:
+  53 0008 00000E42 		.word	1108213760
+  55              		.section	.text.PWR_PVDLevelConfig,"ax",%progbits
+  56              		.align	1
+  57              		.global	PWR_PVDLevelConfig
+  58              		.syntax unified
+  59              		.thumb
+  60              		.thumb_func
+  62              	PWR_PVDLevelConfig:
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s 			page 2
+
+
+  63              		@ args = 0, pretend = 0, frame = 0
+  64              		@ frame_needed = 0, uses_anonymous_args = 0
+  65              		@ link register save eliminated.
+  66 0000 034A     		ldr	r2, .L7
+  67 0002 1368     		ldr	r3, [r2]
+  68 0004 23F0E003 		bic	r3, r3, #224
+  69 0008 0343     		orrs	r3, r3, r0
+  70 000a 1360     		str	r3, [r2]
+  71 000c 7047     		bx	lr
+  72              	.L8:
+  73 000e 00BF     		.align	2
+  74              	.L7:
+  75 0010 00700040 		.word	1073770496
+  77              		.section	.text.PWR_PVDCmd,"ax",%progbits
+  78              		.align	1
+  79              		.global	PWR_PVDCmd
+  80              		.syntax unified
+  81              		.thumb
+  82              		.thumb_func
+  84              	PWR_PVDCmd:
+  85              		@ args = 0, pretend = 0, frame = 0
+  86              		@ frame_needed = 0, uses_anonymous_args = 0
+  87              		@ link register save eliminated.
+  88 0000 014B     		ldr	r3, .L10
+  89 0002 1861     		str	r0, [r3, #16]
+  90 0004 7047     		bx	lr
+  91              	.L11:
+  92 0006 00BF     		.align	2
+  93              	.L10:
+  94 0008 00000E42 		.word	1108213760
+  96              		.section	.text.PWR_WakeUpPinCmd,"ax",%progbits
+  97              		.align	1
+  98              		.global	PWR_WakeUpPinCmd
+  99              		.syntax unified
+ 100              		.thumb
+ 101              		.thumb_func
+ 103              	PWR_WakeUpPinCmd:
+ 104              		@ args = 0, pretend = 0, frame = 0
+ 105              		@ frame_needed = 0, uses_anonymous_args = 0
+ 106              		@ link register save eliminated.
+ 107 0000 014B     		ldr	r3, .L13
+ 108 0002 C3F8A000 		str	r0, [r3, #160]
+ 109 0006 7047     		bx	lr
+ 110              	.L14:
+ 111              		.align	2
+ 112              	.L13:
+ 113 0008 00000E42 		.word	1108213760
+ 115              		.section	.text.PWR_BackupRegulatorCmd,"ax",%progbits
+ 116              		.align	1
+ 117              		.global	PWR_BackupRegulatorCmd
+ 118              		.syntax unified
+ 119              		.thumb
+ 120              		.thumb_func
+ 122              	PWR_BackupRegulatorCmd:
+ 123              		@ args = 0, pretend = 0, frame = 0
+ 124              		@ frame_needed = 0, uses_anonymous_args = 0
+ 125              		@ link register save eliminated.
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s 			page 3
+
+
+ 126 0000 014B     		ldr	r3, .L16
+ 127 0002 C3F8A400 		str	r0, [r3, #164]
+ 128 0006 7047     		bx	lr
+ 129              	.L17:
+ 130              		.align	2
+ 131              	.L16:
+ 132 0008 00000E42 		.word	1108213760
+ 134              		.section	.text.PWR_MainRegulatorModeConfig,"ax",%progbits
+ 135              		.align	1
+ 136              		.global	PWR_MainRegulatorModeConfig
+ 137              		.syntax unified
+ 138              		.thumb
+ 139              		.thumb_func
+ 141              	PWR_MainRegulatorModeConfig:
+ 142              		@ args = 0, pretend = 0, frame = 0
+ 143              		@ frame_needed = 0, uses_anonymous_args = 0
+ 144              		@ link register save eliminated.
+ 145 0000 034A     		ldr	r2, .L19
+ 146 0002 1368     		ldr	r3, [r2]
+ 147 0004 23F44043 		bic	r3, r3, #49152
+ 148 0008 0343     		orrs	r3, r3, r0
+ 149 000a 1360     		str	r3, [r2]
+ 150 000c 7047     		bx	lr
+ 151              	.L20:
+ 152 000e 00BF     		.align	2
+ 153              	.L19:
+ 154 0010 00700040 		.word	1073770496
+ 156              		.section	.text.PWR_OverDriveCmd,"ax",%progbits
+ 157              		.align	1
+ 158              		.global	PWR_OverDriveCmd
+ 159              		.syntax unified
+ 160              		.thumb
+ 161              		.thumb_func
+ 163              	PWR_OverDriveCmd:
+ 164              		@ args = 0, pretend = 0, frame = 0
+ 165              		@ frame_needed = 0, uses_anonymous_args = 0
+ 166              		@ link register save eliminated.
+ 167 0000 014B     		ldr	r3, .L22
+ 168 0002 1864     		str	r0, [r3, #64]
+ 169 0004 7047     		bx	lr
+ 170              	.L23:
+ 171 0006 00BF     		.align	2
+ 172              	.L22:
+ 173 0008 00000E42 		.word	1108213760
+ 175              		.section	.text.PWR_OverDriveSWCmd,"ax",%progbits
+ 176              		.align	1
+ 177              		.global	PWR_OverDriveSWCmd
+ 178              		.syntax unified
+ 179              		.thumb
+ 180              		.thumb_func
+ 182              	PWR_OverDriveSWCmd:
+ 183              		@ args = 0, pretend = 0, frame = 0
+ 184              		@ frame_needed = 0, uses_anonymous_args = 0
+ 185              		@ link register save eliminated.
+ 186 0000 014B     		ldr	r3, .L25
+ 187 0002 5864     		str	r0, [r3, #68]
+ 188 0004 7047     		bx	lr
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s 			page 4
+
+
+ 189              	.L26:
+ 190 0006 00BF     		.align	2
+ 191              	.L25:
+ 192 0008 00000E42 		.word	1108213760
+ 194              		.section	.text.PWR_UnderDriveCmd,"ax",%progbits
+ 195              		.align	1
+ 196              		.global	PWR_UnderDriveCmd
+ 197              		.syntax unified
+ 198              		.thumb
+ 199              		.thumb_func
+ 201              	PWR_UnderDriveCmd:
+ 202              		@ args = 0, pretend = 0, frame = 0
+ 203              		@ frame_needed = 0, uses_anonymous_args = 0
+ 204              		@ link register save eliminated.
+ 205 0000 28B1     		cbz	r0, .L28
+ 206 0002 064A     		ldr	r2, .L30
+ 207 0004 1368     		ldr	r3, [r2]
+ 208 0006 43F44023 		orr	r3, r3, #786432
+ 209 000a 1360     		str	r3, [r2]
+ 210 000c 7047     		bx	lr
+ 211              	.L28:
+ 212 000e 034A     		ldr	r2, .L30
+ 213 0010 1368     		ldr	r3, [r2]
+ 214 0012 23F44023 		bic	r3, r3, #786432
+ 215 0016 1360     		str	r3, [r2]
+ 216 0018 7047     		bx	lr
+ 217              	.L31:
+ 218 001a 00BF     		.align	2
+ 219              	.L30:
+ 220 001c 00700040 		.word	1073770496
+ 222              		.section	.text.PWR_MainRegulatorLowVoltageCmd,"ax",%progbits
+ 223              		.align	1
+ 224              		.global	PWR_MainRegulatorLowVoltageCmd
+ 225              		.syntax unified
+ 226              		.thumb
+ 227              		.thumb_func
+ 229              	PWR_MainRegulatorLowVoltageCmd:
+ 230              		@ args = 0, pretend = 0, frame = 0
+ 231              		@ frame_needed = 0, uses_anonymous_args = 0
+ 232              		@ link register save eliminated.
+ 233 0000 18B1     		cbz	r0, .L33
+ 234 0002 044B     		ldr	r3, .L35
+ 235 0004 0122     		movs	r2, #1
+ 236 0006 DA62     		str	r2, [r3, #44]
+ 237 0008 7047     		bx	lr
+ 238              	.L33:
+ 239 000a 024B     		ldr	r3, .L35
+ 240 000c 0022     		movs	r2, #0
+ 241 000e DA62     		str	r2, [r3, #44]
+ 242 0010 7047     		bx	lr
+ 243              	.L36:
+ 244 0012 00BF     		.align	2
+ 245              	.L35:
+ 246 0014 00000E42 		.word	1108213760
+ 248              		.section	.text.PWR_LowRegulatorLowVoltageCmd,"ax",%progbits
+ 249              		.align	1
+ 250              		.global	PWR_LowRegulatorLowVoltageCmd
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s 			page 5
+
+
+ 251              		.syntax unified
+ 252              		.thumb
+ 253              		.thumb_func
+ 255              	PWR_LowRegulatorLowVoltageCmd:
+ 256              		@ args = 0, pretend = 0, frame = 0
+ 257              		@ frame_needed = 0, uses_anonymous_args = 0
+ 258              		@ link register save eliminated.
+ 259 0000 18B1     		cbz	r0, .L38
+ 260 0002 044B     		ldr	r3, .L40
+ 261 0004 0122     		movs	r2, #1
+ 262 0006 9A62     		str	r2, [r3, #40]
+ 263 0008 7047     		bx	lr
+ 264              	.L38:
+ 265 000a 024B     		ldr	r3, .L40
+ 266 000c 0022     		movs	r2, #0
+ 267 000e 9A62     		str	r2, [r3, #40]
+ 268 0010 7047     		bx	lr
+ 269              	.L41:
+ 270 0012 00BF     		.align	2
+ 271              	.L40:
+ 272 0014 00000E42 		.word	1108213760
+ 274              		.section	.text.PWR_FlashPowerDownCmd,"ax",%progbits
+ 275              		.align	1
+ 276              		.global	PWR_FlashPowerDownCmd
+ 277              		.syntax unified
+ 278              		.thumb
+ 279              		.thumb_func
+ 281              	PWR_FlashPowerDownCmd:
+ 282              		@ args = 0, pretend = 0, frame = 0
+ 283              		@ frame_needed = 0, uses_anonymous_args = 0
+ 284              		@ link register save eliminated.
+ 285 0000 014B     		ldr	r3, .L43
+ 286 0002 5862     		str	r0, [r3, #36]
+ 287 0004 7047     		bx	lr
+ 288              	.L44:
+ 289 0006 00BF     		.align	2
+ 290              	.L43:
+ 291 0008 00000E42 		.word	1108213760
+ 293              		.section	.text.PWR_EnterSTOPMode,"ax",%progbits
+ 294              		.align	1
+ 295              		.global	PWR_EnterSTOPMode
+ 296              		.syntax unified
+ 297              		.thumb
+ 298              		.thumb_func
+ 300              	PWR_EnterSTOPMode:
+ 301              		@ args = 0, pretend = 0, frame = 0
+ 302              		@ frame_needed = 0, uses_anonymous_args = 0
+ 303              		@ link register save eliminated.
+ 304 0000 0B4A     		ldr	r2, .L49
+ 305 0002 1368     		ldr	r3, [r2]
+ 306 0004 23F44063 		bic	r3, r3, #3072
+ 307 0008 23F00303 		bic	r3, r3, #3
+ 308 000c 0343     		orrs	r3, r3, r0
+ 309 000e 1360     		str	r3, [r2]
+ 310 0010 084A     		ldr	r2, .L49+4
+ 311 0012 1369     		ldr	r3, [r2, #16]
+ 312 0014 43F00403 		orr	r3, r3, #4
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s 			page 6
+
+
+ 313 0018 1361     		str	r3, [r2, #16]
+ 314 001a 0129     		cmp	r1, #1
+ 315 001c 06D0     		beq	.L48
+ 316              		.syntax unified
+ 317              	@ 349 "CORE/core_cmInstr.h" 1
+ 318 001e 20BF     		wfe
+ 319              	@ 0 "" 2
+ 320              		.thumb
+ 321              		.syntax unified
+ 322              	.L47:
+ 323 0020 044A     		ldr	r2, .L49+4
+ 324 0022 1369     		ldr	r3, [r2, #16]
+ 325 0024 23F00403 		bic	r3, r3, #4
+ 326 0028 1361     		str	r3, [r2, #16]
+ 327 002a 7047     		bx	lr
+ 328              	.L48:
+ 329              		.syntax unified
+ 330              	@ 338 "CORE/core_cmInstr.h" 1
+ 331 002c 30BF     		wfi
+ 332              	@ 0 "" 2
+ 333              		.thumb
+ 334              		.syntax unified
+ 335 002e F7E7     		b	.L47
+ 336              	.L50:
+ 337              		.align	2
+ 338              	.L49:
+ 339 0030 00700040 		.word	1073770496
+ 340 0034 00ED00E0 		.word	-536810240
+ 342              		.section	.text.PWR_EnterUnderDriveSTOPMode,"ax",%progbits
+ 343              		.align	1
+ 344              		.global	PWR_EnterUnderDriveSTOPMode
+ 345              		.syntax unified
+ 346              		.thumb
+ 347              		.thumb_func
+ 349              	PWR_EnterUnderDriveSTOPMode:
+ 350              		@ args = 0, pretend = 0, frame = 0
+ 351              		@ frame_needed = 0, uses_anonymous_args = 0
+ 352              		@ link register save eliminated.
+ 353 0000 0B4A     		ldr	r2, .L55
+ 354 0002 1368     		ldr	r3, [r2]
+ 355 0004 23F44063 		bic	r3, r3, #3072
+ 356 0008 23F00303 		bic	r3, r3, #3
+ 357 000c 0343     		orrs	r3, r3, r0
+ 358 000e 1360     		str	r3, [r2]
+ 359 0010 084A     		ldr	r2, .L55+4
+ 360 0012 1369     		ldr	r3, [r2, #16]
+ 361 0014 43F00403 		orr	r3, r3, #4
+ 362 0018 1361     		str	r3, [r2, #16]
+ 363 001a 0129     		cmp	r1, #1
+ 364 001c 06D0     		beq	.L54
+ 365              		.syntax unified
+ 366              	@ 349 "CORE/core_cmInstr.h" 1
+ 367 001e 20BF     		wfe
+ 368              	@ 0 "" 2
+ 369              		.thumb
+ 370              		.syntax unified
+ 371              	.L53:
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s 			page 7
+
+
+ 372 0020 044A     		ldr	r2, .L55+4
+ 373 0022 1369     		ldr	r3, [r2, #16]
+ 374 0024 23F00403 		bic	r3, r3, #4
+ 375 0028 1361     		str	r3, [r2, #16]
+ 376 002a 7047     		bx	lr
+ 377              	.L54:
+ 378              		.syntax unified
+ 379              	@ 338 "CORE/core_cmInstr.h" 1
+ 380 002c 30BF     		wfi
+ 381              	@ 0 "" 2
+ 382              		.thumb
+ 383              		.syntax unified
+ 384 002e F7E7     		b	.L53
+ 385              	.L56:
+ 386              		.align	2
+ 387              	.L55:
+ 388 0030 00700040 		.word	1073770496
+ 389 0034 00ED00E0 		.word	-536810240
+ 391              		.section	.text.PWR_EnterSTANDBYMode,"ax",%progbits
+ 392              		.align	1
+ 393              		.global	PWR_EnterSTANDBYMode
+ 394              		.syntax unified
+ 395              		.thumb
+ 396              		.thumb_func
+ 398              	PWR_EnterSTANDBYMode:
+ 399              		@ args = 0, pretend = 0, frame = 0
+ 400              		@ frame_needed = 0, uses_anonymous_args = 0
+ 401              		@ link register save eliminated.
+ 402 0000 054A     		ldr	r2, .L58
+ 403 0002 1368     		ldr	r3, [r2]
+ 404 0004 43F00203 		orr	r3, r3, #2
+ 405 0008 1360     		str	r3, [r2]
+ 406 000a 044A     		ldr	r2, .L58+4
+ 407 000c 1369     		ldr	r3, [r2, #16]
+ 408 000e 43F00403 		orr	r3, r3, #4
+ 409 0012 1361     		str	r3, [r2, #16]
+ 410              		.syntax unified
+ 411              	@ 338 "CORE/core_cmInstr.h" 1
+ 412 0014 30BF     		wfi
+ 413              	@ 0 "" 2
+ 414              		.thumb
+ 415              		.syntax unified
+ 416 0016 7047     		bx	lr
+ 417              	.L59:
+ 418              		.align	2
+ 419              	.L58:
+ 420 0018 00700040 		.word	1073770496
+ 421 001c 00ED00E0 		.word	-536810240
+ 423              		.section	.text.PWR_GetFlagStatus,"ax",%progbits
+ 424              		.align	1
+ 425              		.global	PWR_GetFlagStatus
+ 426              		.syntax unified
+ 427              		.thumb
+ 428              		.thumb_func
+ 430              	PWR_GetFlagStatus:
+ 431              		@ args = 0, pretend = 0, frame = 0
+ 432              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s 			page 8
+
+
+ 433              		@ link register save eliminated.
+ 434 0000 034B     		ldr	r3, .L63
+ 435 0002 5B68     		ldr	r3, [r3, #4]
+ 436 0004 0342     		tst	r3, r0
+ 437 0006 01D0     		beq	.L62
+ 438 0008 0120     		movs	r0, #1
+ 439 000a 7047     		bx	lr
+ 440              	.L62:
+ 441 000c 0020     		movs	r0, #0
+ 442 000e 7047     		bx	lr
+ 443              	.L64:
+ 444              		.align	2
+ 445              	.L63:
+ 446 0010 00700040 		.word	1073770496
+ 448              		.section	.text.PWR_ClearFlag,"ax",%progbits
+ 449              		.align	1
+ 450              		.global	PWR_ClearFlag
+ 451              		.syntax unified
+ 452              		.thumb
+ 453              		.thumb_func
+ 455              	PWR_ClearFlag:
+ 456              		@ args = 0, pretend = 0, frame = 0
+ 457              		@ frame_needed = 0, uses_anonymous_args = 0
+ 458              		@ link register save eliminated.
+ 459 0000 024A     		ldr	r2, .L66
+ 460 0002 1368     		ldr	r3, [r2]
+ 461 0004 43EA8003 		orr	r3, r3, r0, lsl #2
+ 462 0008 1360     		str	r3, [r2]
+ 463 000a 7047     		bx	lr
+ 464              	.L67:
+ 465              		.align	2
+ 466              	.L66:
+ 467 000c 00700040 		.word	1073770496
+ 469              		.ident	"GCC: (Arm GNU Toolchain 13.3.Rel1 (Build arm-13.24)) 13.3.1 20240614"
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s 			page 9
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 stm32f4xx_pwr.c
+C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:18     .text.PWR_DeInit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:24     .text.PWR_DeInit:00000000 PWR_DeInit
+C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:37     .text.PWR_BackupAccessCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:43     .text.PWR_BackupAccessCmd:00000000 PWR_BackupAccessCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:53     .text.PWR_BackupAccessCmd:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:56     .text.PWR_PVDLevelConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:62     .text.PWR_PVDLevelConfig:00000000 PWR_PVDLevelConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:75     .text.PWR_PVDLevelConfig:00000010 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:78     .text.PWR_PVDCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:84     .text.PWR_PVDCmd:00000000 PWR_PVDCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:94     .text.PWR_PVDCmd:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:97     .text.PWR_WakeUpPinCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:103    .text.PWR_WakeUpPinCmd:00000000 PWR_WakeUpPinCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:113    .text.PWR_WakeUpPinCmd:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:116    .text.PWR_BackupRegulatorCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:122    .text.PWR_BackupRegulatorCmd:00000000 PWR_BackupRegulatorCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:132    .text.PWR_BackupRegulatorCmd:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:135    .text.PWR_MainRegulatorModeConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:141    .text.PWR_MainRegulatorModeConfig:00000000 PWR_MainRegulatorModeConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:154    .text.PWR_MainRegulatorModeConfig:00000010 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:157    .text.PWR_OverDriveCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:163    .text.PWR_OverDriveCmd:00000000 PWR_OverDriveCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:173    .text.PWR_OverDriveCmd:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:176    .text.PWR_OverDriveSWCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:182    .text.PWR_OverDriveSWCmd:00000000 PWR_OverDriveSWCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:192    .text.PWR_OverDriveSWCmd:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:195    .text.PWR_UnderDriveCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:201    .text.PWR_UnderDriveCmd:00000000 PWR_UnderDriveCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:220    .text.PWR_UnderDriveCmd:0000001c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:223    .text.PWR_MainRegulatorLowVoltageCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:229    .text.PWR_MainRegulatorLowVoltageCmd:00000000 PWR_MainRegulatorLowVoltageCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:246    .text.PWR_MainRegulatorLowVoltageCmd:00000014 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:249    .text.PWR_LowRegulatorLowVoltageCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:255    .text.PWR_LowRegulatorLowVoltageCmd:00000000 PWR_LowRegulatorLowVoltageCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:272    .text.PWR_LowRegulatorLowVoltageCmd:00000014 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:275    .text.PWR_FlashPowerDownCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:281    .text.PWR_FlashPowerDownCmd:00000000 PWR_FlashPowerDownCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:291    .text.PWR_FlashPowerDownCmd:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:294    .text.PWR_EnterSTOPMode:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:300    .text.PWR_EnterSTOPMode:00000000 PWR_EnterSTOPMode
+C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:339    .text.PWR_EnterSTOPMode:00000030 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:343    .text.PWR_EnterUnderDriveSTOPMode:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:349    .text.PWR_EnterUnderDriveSTOPMode:00000000 PWR_EnterUnderDriveSTOPMode
+C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:388    .text.PWR_EnterUnderDriveSTOPMode:00000030 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:392    .text.PWR_EnterSTANDBYMode:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:398    .text.PWR_EnterSTANDBYMode:00000000 PWR_EnterSTANDBYMode
+C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:420    .text.PWR_EnterSTANDBYMode:00000018 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:424    .text.PWR_GetFlagStatus:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:430    .text.PWR_GetFlagStatus:00000000 PWR_GetFlagStatus
+C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:446    .text.PWR_GetFlagStatus:00000010 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:449    .text.PWR_ClearFlag:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:455    .text.PWR_ClearFlag:00000000 PWR_ClearFlag
+C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:467    .text.PWR_ClearFlag:0000000c $d
+
+UNDEFINED SYMBOLS
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s 			page 10
+
+
+RCC_APB1PeriphResetCmd

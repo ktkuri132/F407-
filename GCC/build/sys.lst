@@ -1,0 +1,115 @@
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccsz6QYQ.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"sys.c"
+  16              		.text
+  17              		.section	.text.WFI_SET,"ax",%progbits
+  18              		.align	1
+  19              		.global	WFI_SET
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  24              	WFI_SET:
+  25              		@ args = 0, pretend = 0, frame = 0
+  26              		@ frame_needed = 0, uses_anonymous_args = 0
+  27              		@ link register save eliminated.
+  28              		.syntax unified
+  29              	@ 6 "SYSTEM/sys/sys.c" 1
+  30 0000 30BF     		WFI
+  31              	@ 0 "" 2
+  32              		.thumb
+  33              		.syntax unified
+  34 0002 7047     		bx	lr
+  36              		.section	.text.INTX_DISABLE,"ax",%progbits
+  37              		.align	1
+  38              		.global	INTX_DISABLE
+  39              		.syntax unified
+  40              		.thumb
+  41              		.thumb_func
+  43              	INTX_DISABLE:
+  44              		@ args = 0, pretend = 0, frame = 0
+  45              		@ frame_needed = 0, uses_anonymous_args = 0
+  46              		@ link register save eliminated.
+  47              		.syntax unified
+  48              	@ 12 "SYSTEM/sys/sys.c" 1
+  49 0000 72B6     		CPSID   I
+  50              	@ 0 "" 2
+  51              	@ 13 "SYSTEM/sys/sys.c" 1
+  52 0002 7047     		BX      LR
+  53              	@ 0 "" 2
+  54              		.thumb
+  55              		.syntax unified
+  56 0004 7047     		bx	lr
+  58              		.section	.text.INTX_ENABLE,"ax",%progbits
+  59              		.align	1
+  60              		.global	INTX_ENABLE
+  61              		.syntax unified
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccsz6QYQ.s 			page 2
+
+
+  62              		.thumb
+  63              		.thumb_func
+  65              	INTX_ENABLE:
+  66              		@ args = 0, pretend = 0, frame = 0
+  67              		@ frame_needed = 0, uses_anonymous_args = 0
+  68              		@ link register save eliminated.
+  69              		.syntax unified
+  70              	@ 18 "SYSTEM/sys/sys.c" 1
+  71 0000 62B6     		CPSIE   I
+  72              	@ 0 "" 2
+  73              	@ 19 "SYSTEM/sys/sys.c" 1
+  74 0002 7047     		BX      LR
+  75              	@ 0 "" 2
+  76              		.thumb
+  77              		.syntax unified
+  78 0004 7047     		bx	lr
+  80              		.section	.text.MSR_MSP,"ax",%progbits
+  81              		.align	1
+  82              		.global	MSR_MSP
+  83              		.syntax unified
+  84              		.thumb
+  85              		.thumb_func
+  87              	MSR_MSP:
+  88              		@ args = 0, pretend = 0, frame = 0
+  89              		@ frame_needed = 0, uses_anonymous_args = 0
+  90              		@ link register save eliminated.
+  91              		.syntax unified
+  92              	@ 25 "SYSTEM/sys/sys.c" 1
+  93 0000 80F30888 		MSR MSP, r0
+  94              	@ 0 "" 2
+  95              	@ 26 "SYSTEM/sys/sys.c" 1
+  96 0004 7047     		BX r14
+  97              	@ 0 "" 2
+  98              		.thumb
+  99              		.syntax unified
+ 100 0006 7047     		bx	lr
+ 102              		.ident	"GCC: (Arm GNU Toolchain 13.3.Rel1 (Build arm-13.24)) 13.3.1 20240614"
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccsz6QYQ.s 			page 3
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 sys.c
+C:\Users\ktkuru\AppData\Local\Temp\ccsz6QYQ.s:18     .text.WFI_SET:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccsz6QYQ.s:24     .text.WFI_SET:00000000 WFI_SET
+C:\Users\ktkuru\AppData\Local\Temp\ccsz6QYQ.s:37     .text.INTX_DISABLE:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccsz6QYQ.s:43     .text.INTX_DISABLE:00000000 INTX_DISABLE
+C:\Users\ktkuru\AppData\Local\Temp\ccsz6QYQ.s:59     .text.INTX_ENABLE:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccsz6QYQ.s:65     .text.INTX_ENABLE:00000000 INTX_ENABLE
+C:\Users\ktkuru\AppData\Local\Temp\ccsz6QYQ.s:81     .text.MSR_MSP:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccsz6QYQ.s:87     .text.MSR_MSP:00000000 MSR_MSP
+
+NO UNDEFINED SYMBOLS

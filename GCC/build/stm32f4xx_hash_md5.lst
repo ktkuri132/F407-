@@ -1,0 +1,280 @@
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccnYup8M.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"stm32f4xx_hash_md5.c"
+  16              		.text
+  17              		.section	.text.HASH_MD5,"ax",%progbits
+  18              		.align	1
+  19              		.global	HASH_MD5
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  24              	HASH_MD5:
+  25              		@ args = 0, pretend = 0, frame = 56
+  26              		@ frame_needed = 0, uses_anonymous_args = 0
+  27 0000 F0B5     		push	{r4, r5, r6, r7, lr}
+  28 0002 8FB0     		sub	sp, sp, #60
+  29 0004 0F46     		mov	r7, r1
+  30 0006 1646     		mov	r6, r2
+  31 0008 0024     		movs	r4, #0
+  32 000a ADF80640 		strh	r4, [sp, #6]	@ movhi
+  33 000e 0094     		str	r4, [sp]
+  34 0010 0546     		mov	r5, r0
+  35 0012 01F00303 		and	r3, r1, #3
+  36 0016 DB00     		lsls	r3, r3, #3
+  37 0018 ADF80630 		strh	r3, [sp, #6]	@ movhi
+  38 001c FFF7FEFF 		bl	HASH_DeInit
+  39 0020 8023     		movs	r3, #128
+  40 0022 0A93     		str	r3, [sp, #40]
+  41 0024 0B94     		str	r4, [sp, #44]
+  42 0026 2023     		movs	r3, #32
+  43 0028 0C93     		str	r3, [sp, #48]
+  44 002a 0AA8     		add	r0, sp, #40
+  45 002c FFF7FEFF 		bl	HASH_Init
+  46 0030 BDF80600 		ldrh	r0, [sp, #6]
+  47 0034 80B2     		uxth	r0, r0
+  48 0036 FFF7FEFF 		bl	HASH_SetLastWordValidBitsNbr
+  49 003a 04E0     		b	.L2
+  50              	.L3:
+  51 003c 55F8040B 		ldr	r0, [r5], #4
+  52 0040 FFF7FEFF 		bl	HASH_DataIn
+  53 0044 0434     		adds	r4, r4, #4
+  54              	.L2:
+  55 0046 BC42     		cmp	r4, r7
+  56 0048 F8D3     		bcc	.L3
+  57 004a FFF7FEFF 		bl	HASH_StartDigest
+  58              	.L5:
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccnYup8M.s 			page 2
+
+
+  59 004e 0820     		movs	r0, #8
+  60 0050 FFF7FEFF 		bl	HASH_GetFlagStatus
+  61 0054 009B     		ldr	r3, [sp]
+  62 0056 0133     		adds	r3, r3, #1
+  63 0058 0093     		str	r3, [sp]
+  64 005a 009B     		ldr	r3, [sp]
+  65 005c B3F5803F 		cmp	r3, #65536
+  66 0060 01D0     		beq	.L4
+  67 0062 0028     		cmp	r0, #0
+  68 0064 F3D1     		bne	.L5
+  69              	.L4:
+  70 0066 10B1     		cbz	r0, .L9
+  71 0068 0020     		movs	r0, #0
+  72              	.L6:
+  73 006a 0FB0     		add	sp, sp, #60
+  74              		@ sp needed
+  75 006c F0BD     		pop	{r4, r5, r6, r7, pc}
+  76              	.L9:
+  77 006e 02A8     		add	r0, sp, #8
+  78 0070 FFF7FEFF 		bl	HASH_GetDigest
+  79 0074 029B     		ldr	r3, [sp, #8]
+  80 0076 1BBA     		rev	r3, r3
+  81 0078 3360     		str	r3, [r6]
+  82 007a 039B     		ldr	r3, [sp, #12]
+  83 007c 1BBA     		rev	r3, r3
+  84 007e 7360     		str	r3, [r6, #4]
+  85 0080 049B     		ldr	r3, [sp, #16]
+  86 0082 1BBA     		rev	r3, r3
+  87 0084 B360     		str	r3, [r6, #8]
+  88 0086 059B     		ldr	r3, [sp, #20]
+  89 0088 1BBA     		rev	r3, r3
+  90 008a F360     		str	r3, [r6, #12]
+  91 008c 0120     		movs	r0, #1
+  92 008e ECE7     		b	.L6
+  94              		.section	.text.HMAC_MD5,"ax",%progbits
+  95              		.align	1
+  96              		.global	HMAC_MD5
+  97              		.syntax unified
+  98              		.thumb
+  99              		.thumb_func
+ 101              	HMAC_MD5:
+ 102              		@ args = 4, pretend = 0, frame = 56
+ 103              		@ frame_needed = 0, uses_anonymous_args = 0
+ 104 0000 2DE9F043 		push	{r4, r5, r6, r7, r8, r9, lr}
+ 105 0004 8FB0     		sub	sp, sp, #60
+ 106 0006 8146     		mov	r9, r0
+ 107 0008 0D46     		mov	r5, r1
+ 108 000a 1F46     		mov	r7, r3
+ 109 000c 0023     		movs	r3, #0
+ 110 000e ADF80630 		strh	r3, [sp, #6]	@ movhi
+ 111 0012 ADF80430 		strh	r3, [sp, #4]	@ movhi
+ 112 0016 0093     		str	r3, [sp]
+ 113 0018 8046     		mov	r8, r0
+ 114 001a 1646     		mov	r6, r2
+ 115 001c 07F00303 		and	r3, r7, #3
+ 116 0020 DB00     		lsls	r3, r3, #3
+ 117 0022 ADF80630 		strh	r3, [sp, #6]	@ movhi
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccnYup8M.s 			page 3
+
+
+ 118 0026 01F00303 		and	r3, r1, #3
+ 119 002a DB00     		lsls	r3, r3, #3
+ 120 002c ADF80430 		strh	r3, [sp, #4]	@ movhi
+ 121 0030 FFF7FEFF 		bl	HASH_DeInit
+ 122 0034 8023     		movs	r3, #128
+ 123 0036 0A93     		str	r3, [sp, #40]
+ 124 0038 4023     		movs	r3, #64
+ 125 003a 0B93     		str	r3, [sp, #44]
+ 126 003c 2023     		movs	r3, #32
+ 127 003e 0C93     		str	r3, [sp, #48]
+ 128 0040 402D     		cmp	r5, #64
+ 129 0042 0CD9     		bls	.L11
+ 130 0044 4FF48033 		mov	r3, #65536
+ 131 0048 0D93     		str	r3, [sp, #52]
+ 132              	.L12:
+ 133 004a 0AA8     		add	r0, sp, #40
+ 134 004c FFF7FEFF 		bl	HASH_Init
+ 135 0050 BDF80400 		ldrh	r0, [sp, #4]
+ 136 0054 80B2     		uxth	r0, r0
+ 137 0056 FFF7FEFF 		bl	HASH_SetLastWordValidBitsNbr
+ 138 005a 0024     		movs	r4, #0
+ 139 005c 07E0     		b	.L13
+ 140              	.L11:
+ 141 005e 0023     		movs	r3, #0
+ 142 0060 0D93     		str	r3, [sp, #52]
+ 143 0062 F2E7     		b	.L12
+ 144              	.L14:
+ 145 0064 59F8040B 		ldr	r0, [r9], #4
+ 146 0068 FFF7FEFF 		bl	HASH_DataIn
+ 147 006c 0434     		adds	r4, r4, #4
+ 148              	.L13:
+ 149 006e AC42     		cmp	r4, r5
+ 150 0070 F8D3     		bcc	.L14
+ 151 0072 FFF7FEFF 		bl	HASH_StartDigest
+ 152              	.L16:
+ 153 0076 0820     		movs	r0, #8
+ 154 0078 FFF7FEFF 		bl	HASH_GetFlagStatus
+ 155 007c 8146     		mov	r9, r0
+ 156 007e 009C     		ldr	r4, [sp]
+ 157 0080 0134     		adds	r4, r4, #1
+ 158 0082 0094     		str	r4, [sp]
+ 159 0084 009B     		ldr	r3, [sp]
+ 160 0086 B3F5803F 		cmp	r3, #65536
+ 161 008a 01D0     		beq	.L15
+ 162 008c 0028     		cmp	r0, #0
+ 163 008e F2D1     		bne	.L16
+ 164              	.L15:
+ 165 0090 18B1     		cbz	r0, .L30
+ 166 0092 0020     		movs	r0, #0
+ 167              	.L17:
+ 168 0094 0FB0     		add	sp, sp, #60
+ 169              		@ sp needed
+ 170 0096 BDE8F083 		pop	{r4, r5, r6, r7, r8, r9, pc}
+ 171              	.L30:
+ 172 009a BDF80600 		ldrh	r0, [sp, #6]
+ 173 009e 80B2     		uxth	r0, r0
+ 174 00a0 FFF7FEFF 		bl	HASH_SetLastWordValidBitsNbr
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccnYup8M.s 			page 4
+
+
+ 175 00a4 05E0     		b	.L18
+ 176              	.L19:
+ 177 00a6 56F8040B 		ldr	r0, [r6], #4
+ 178 00aa FFF7FEFF 		bl	HASH_DataIn
+ 179 00ae 09F10409 		add	r9, r9, #4
+ 180              	.L18:
+ 181 00b2 B945     		cmp	r9, r7
+ 182 00b4 F7D3     		bcc	.L19
+ 183 00b6 FFF7FEFF 		bl	HASH_StartDigest
+ 184 00ba 0023     		movs	r3, #0
+ 185 00bc 0093     		str	r3, [sp]
+ 186              	.L21:
+ 187 00be 0820     		movs	r0, #8
+ 188 00c0 FFF7FEFF 		bl	HASH_GetFlagStatus
+ 189 00c4 0446     		mov	r4, r0
+ 190 00c6 009B     		ldr	r3, [sp]
+ 191 00c8 0133     		adds	r3, r3, #1
+ 192 00ca 0093     		str	r3, [sp]
+ 193 00cc 009B     		ldr	r3, [sp]
+ 194 00ce B3F5803F 		cmp	r3, #65536
+ 195 00d2 01D0     		beq	.L20
+ 196 00d4 0028     		cmp	r0, #0
+ 197 00d6 F2D1     		bne	.L21
+ 198              	.L20:
+ 199 00d8 08B1     		cbz	r0, .L31
+ 200 00da 0020     		movs	r0, #0
+ 201 00dc DAE7     		b	.L17
+ 202              	.L31:
+ 203 00de BDF80400 		ldrh	r0, [sp, #4]
+ 204 00e2 80B2     		uxth	r0, r0
+ 205 00e4 FFF7FEFF 		bl	HASH_SetLastWordValidBitsNbr
+ 206 00e8 04E0     		b	.L22
+ 207              	.L23:
+ 208 00ea 58F8040B 		ldr	r0, [r8], #4
+ 209 00ee FFF7FEFF 		bl	HASH_DataIn
+ 210 00f2 0434     		adds	r4, r4, #4
+ 211              	.L22:
+ 212 00f4 AC42     		cmp	r4, r5
+ 213 00f6 F8D3     		bcc	.L23
+ 214 00f8 FFF7FEFF 		bl	HASH_StartDigest
+ 215 00fc 0023     		movs	r3, #0
+ 216 00fe 0093     		str	r3, [sp]
+ 217              	.L25:
+ 218 0100 0820     		movs	r0, #8
+ 219 0102 FFF7FEFF 		bl	HASH_GetFlagStatus
+ 220 0106 009B     		ldr	r3, [sp]
+ 221 0108 0133     		adds	r3, r3, #1
+ 222 010a 0093     		str	r3, [sp]
+ 223 010c 009B     		ldr	r3, [sp]
+ 224 010e B3F5803F 		cmp	r3, #65536
+ 225 0112 01D0     		beq	.L24
+ 226 0114 0028     		cmp	r0, #0
+ 227 0116 F3D1     		bne	.L25
+ 228              	.L24:
+ 229 0118 08B1     		cbz	r0, .L32
+ 230 011a 0020     		movs	r0, #0
+ 231 011c BAE7     		b	.L17
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccnYup8M.s 			page 5
+
+
+ 232              	.L32:
+ 233 011e 02A8     		add	r0, sp, #8
+ 234 0120 FFF7FEFF 		bl	HASH_GetDigest
+ 235 0124 029B     		ldr	r3, [sp, #8]
+ 236 0126 1BBA     		rev	r3, r3
+ 237 0128 169A     		ldr	r2, [sp, #88]
+ 238 012a 1360     		str	r3, [r2]
+ 239 012c 039B     		ldr	r3, [sp, #12]
+ 240 012e 1BBA     		rev	r3, r3
+ 241 0130 5360     		str	r3, [r2, #4]
+ 242 0132 049B     		ldr	r3, [sp, #16]
+ 243 0134 1BBA     		rev	r3, r3
+ 244 0136 9360     		str	r3, [r2, #8]
+ 245 0138 059B     		ldr	r3, [sp, #20]
+ 246 013a 1BBA     		rev	r3, r3
+ 247 013c D360     		str	r3, [r2, #12]
+ 248 013e 0120     		movs	r0, #1
+ 249 0140 A8E7     		b	.L17
+ 251              		.ident	"GCC: (Arm GNU Toolchain 13.3.Rel1 (Build arm-13.24)) 13.3.1 20240614"
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccnYup8M.s 			page 6
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 stm32f4xx_hash_md5.c
+C:\Users\ktkuru\AppData\Local\Temp\ccnYup8M.s:18     .text.HASH_MD5:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccnYup8M.s:24     .text.HASH_MD5:00000000 HASH_MD5
+C:\Users\ktkuru\AppData\Local\Temp\ccnYup8M.s:95     .text.HMAC_MD5:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccnYup8M.s:101    .text.HMAC_MD5:00000000 HMAC_MD5
+
+UNDEFINED SYMBOLS
+HASH_DeInit
+HASH_Init
+HASH_SetLastWordValidBitsNbr
+HASH_DataIn
+HASH_StartDigest
+HASH_GetFlagStatus
+HASH_GetDigest

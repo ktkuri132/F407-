@@ -1,0 +1,1550 @@
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"stm32f4xx_rcc.c"
+  16              		.text
+  17              		.section	.text.RCC_DeInit,"ax",%progbits
+  18              		.align	1
+  19              		.global	RCC_DeInit
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  24              	RCC_DeInit:
+  25              		@ args = 0, pretend = 0, frame = 0
+  26              		@ frame_needed = 0, uses_anonymous_args = 0
+  27              		@ link register save eliminated.
+  28 0000 0E4B     		ldr	r3, .L2
+  29 0002 1A68     		ldr	r2, [r3]
+  30 0004 42F00102 		orr	r2, r2, #1
+  31 0008 1A60     		str	r2, [r3]
+  32 000a 0021     		movs	r1, #0
+  33 000c 9960     		str	r1, [r3, #8]
+  34 000e 1A68     		ldr	r2, [r3]
+  35 0010 22F0A852 		bic	r2, r2, #352321536
+  36 0014 22F41022 		bic	r2, r2, #589824
+  37 0018 1A60     		str	r2, [r3]
+  38 001a 094A     		ldr	r2, .L2+4
+  39 001c 5A60     		str	r2, [r3, #4]
+  40 001e 094A     		ldr	r2, .L2+8
+  41 0020 C3F88420 		str	r2, [r3, #132]
+  42 0024 02F18062 		add	r2, r2, #67108864
+  43 0028 C3F88820 		str	r2, [r3, #136]
+  44 002c 1A68     		ldr	r2, [r3]
+  45 002e 22F48022 		bic	r2, r2, #262144
+  46 0032 1A60     		str	r2, [r3]
+  47 0034 D960     		str	r1, [r3, #12]
+  48 0036 C3F88C10 		str	r1, [r3, #140]
+  49 003a 7047     		bx	lr
+  50              	.L3:
+  51              		.align	2
+  52              	.L2:
+  53 003c 00380240 		.word	1073887232
+  54 0040 10300024 		.word	603992080
+  55 0044 00300020 		.word	536883200
+  57              		.section	.text.RCC_HSEConfig,"ax",%progbits
+  58              		.align	1
+  59              		.global	RCC_HSEConfig
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s 			page 2
+
+
+  60              		.syntax unified
+  61              		.thumb
+  62              		.thumb_func
+  64              	RCC_HSEConfig:
+  65              		@ args = 0, pretend = 0, frame = 0
+  66              		@ frame_needed = 0, uses_anonymous_args = 0
+  67              		@ link register save eliminated.
+  68 0000 024B     		ldr	r3, .L5
+  69 0002 0022     		movs	r2, #0
+  70 0004 9A70     		strb	r2, [r3, #2]
+  71 0006 9870     		strb	r0, [r3, #2]
+  72 0008 7047     		bx	lr
+  73              	.L6:
+  74 000a 00BF     		.align	2
+  75              	.L5:
+  76 000c 00380240 		.word	1073887232
+  78              		.section	.text.RCC_AdjustHSICalibrationValue,"ax",%progbits
+  79              		.align	1
+  80              		.global	RCC_AdjustHSICalibrationValue
+  81              		.syntax unified
+  82              		.thumb
+  83              		.thumb_func
+  85              	RCC_AdjustHSICalibrationValue:
+  86              		@ args = 0, pretend = 0, frame = 0
+  87              		@ frame_needed = 0, uses_anonymous_args = 0
+  88              		@ link register save eliminated.
+  89 0000 034A     		ldr	r2, .L8
+  90 0002 1368     		ldr	r3, [r2]
+  91 0004 23F0F803 		bic	r3, r3, #248
+  92 0008 43EAC003 		orr	r3, r3, r0, lsl #3
+  93 000c 1360     		str	r3, [r2]
+  94 000e 7047     		bx	lr
+  95              	.L9:
+  96              		.align	2
+  97              	.L8:
+  98 0010 00380240 		.word	1073887232
+ 100              		.section	.text.RCC_HSICmd,"ax",%progbits
+ 101              		.align	1
+ 102              		.global	RCC_HSICmd
+ 103              		.syntax unified
+ 104              		.thumb
+ 105              		.thumb_func
+ 107              	RCC_HSICmd:
+ 108              		@ args = 0, pretend = 0, frame = 0
+ 109              		@ frame_needed = 0, uses_anonymous_args = 0
+ 110              		@ link register save eliminated.
+ 111 0000 014B     		ldr	r3, .L11
+ 112 0002 1860     		str	r0, [r3]
+ 113 0004 7047     		bx	lr
+ 114              	.L12:
+ 115 0006 00BF     		.align	2
+ 116              	.L11:
+ 117 0008 00004742 		.word	1111949312
+ 119              		.section	.text.RCC_LSEConfig,"ax",%progbits
+ 120              		.align	1
+ 121              		.global	RCC_LSEConfig
+ 122              		.syntax unified
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s 			page 3
+
+
+ 123              		.thumb
+ 124              		.thumb_func
+ 126              	RCC_LSEConfig:
+ 127              		@ args = 0, pretend = 0, frame = 0
+ 128              		@ frame_needed = 0, uses_anonymous_args = 0
+ 129              		@ link register save eliminated.
+ 130 0000 0A4B     		ldr	r3, .L17
+ 131 0002 0022     		movs	r2, #0
+ 132 0004 83F87020 		strb	r2, [r3, #112]
+ 133 0008 83F87020 		strb	r2, [r3, #112]
+ 134 000c 0128     		cmp	r0, #1
+ 135 000e 02D0     		beq	.L14
+ 136 0010 0428     		cmp	r0, #4
+ 137 0012 05D0     		beq	.L15
+ 138 0014 7047     		bx	lr
+ 139              	.L14:
+ 140 0016 054B     		ldr	r3, .L17
+ 141 0018 0122     		movs	r2, #1
+ 142 001a 83F87020 		strb	r2, [r3, #112]
+ 143 001e 7047     		bx	lr
+ 144              	.L15:
+ 145 0020 024B     		ldr	r3, .L17
+ 146 0022 0522     		movs	r2, #5
+ 147 0024 83F87020 		strb	r2, [r3, #112]
+ 148 0028 7047     		bx	lr
+ 149              	.L18:
+ 150 002a 00BF     		.align	2
+ 151              	.L17:
+ 152 002c 00380240 		.word	1073887232
+ 154              		.section	.text.RCC_LSICmd,"ax",%progbits
+ 155              		.align	1
+ 156              		.global	RCC_LSICmd
+ 157              		.syntax unified
+ 158              		.thumb
+ 159              		.thumb_func
+ 161              	RCC_LSICmd:
+ 162              		@ args = 0, pretend = 0, frame = 0
+ 163              		@ frame_needed = 0, uses_anonymous_args = 0
+ 164              		@ link register save eliminated.
+ 165 0000 014B     		ldr	r3, .L20
+ 166 0002 C3F8800E 		str	r0, [r3, #3712]
+ 167 0006 7047     		bx	lr
+ 168              	.L21:
+ 169              		.align	2
+ 170              	.L20:
+ 171 0008 00004742 		.word	1111949312
+ 173              		.section	.text.RCC_PLLConfig,"ax",%progbits
+ 174              		.align	1
+ 175              		.global	RCC_PLLConfig
+ 176              		.syntax unified
+ 177              		.thumb
+ 178              		.thumb_func
+ 180              	RCC_PLLConfig:
+ 181              		@ args = 4, pretend = 0, frame = 0
+ 182              		@ frame_needed = 0, uses_anonymous_args = 0
+ 183              		@ link register save eliminated.
+ 184 0000 41EA8211 		orr	r1, r1, r2, lsl #6
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s 			page 4
+
+
+ 185 0004 5B08     		lsrs	r3, r3, #1
+ 186 0006 013B     		subs	r3, r3, #1
+ 187 0008 41EA0341 		orr	r1, r1, r3, lsl #16
+ 188 000c 0143     		orrs	r1, r1, r0
+ 189 000e 009B     		ldr	r3, [sp]
+ 190 0010 41EA0361 		orr	r1, r1, r3, lsl #24
+ 191 0014 014B     		ldr	r3, .L23
+ 192 0016 5960     		str	r1, [r3, #4]
+ 193 0018 7047     		bx	lr
+ 194              	.L24:
+ 195 001a 00BF     		.align	2
+ 196              	.L23:
+ 197 001c 00380240 		.word	1073887232
+ 199              		.section	.text.RCC_PLLCmd,"ax",%progbits
+ 200              		.align	1
+ 201              		.global	RCC_PLLCmd
+ 202              		.syntax unified
+ 203              		.thumb
+ 204              		.thumb_func
+ 206              	RCC_PLLCmd:
+ 207              		@ args = 0, pretend = 0, frame = 0
+ 208              		@ frame_needed = 0, uses_anonymous_args = 0
+ 209              		@ link register save eliminated.
+ 210 0000 014B     		ldr	r3, .L26
+ 211 0002 1866     		str	r0, [r3, #96]
+ 212 0004 7047     		bx	lr
+ 213              	.L27:
+ 214 0006 00BF     		.align	2
+ 215              	.L26:
+ 216 0008 00004742 		.word	1111949312
+ 218              		.section	.text.RCC_PLLI2SConfig,"ax",%progbits
+ 219              		.align	1
+ 220              		.global	RCC_PLLI2SConfig
+ 221              		.syntax unified
+ 222              		.thumb
+ 223              		.thumb_func
+ 225              	RCC_PLLI2SConfig:
+ 226              		@ args = 0, pretend = 0, frame = 0
+ 227              		@ frame_needed = 0, uses_anonymous_args = 0
+ 228              		@ link register save eliminated.
+ 229 0000 0907     		lsls	r1, r1, #28
+ 230 0002 41EA8011 		orr	r1, r1, r0, lsl #6
+ 231 0006 024B     		ldr	r3, .L29
+ 232 0008 C3F88410 		str	r1, [r3, #132]
+ 233 000c 7047     		bx	lr
+ 234              	.L30:
+ 235 000e 00BF     		.align	2
+ 236              	.L29:
+ 237 0010 00380240 		.word	1073887232
+ 239              		.section	.text.RCC_PLLI2SCmd,"ax",%progbits
+ 240              		.align	1
+ 241              		.global	RCC_PLLI2SCmd
+ 242              		.syntax unified
+ 243              		.thumb
+ 244              		.thumb_func
+ 246              	RCC_PLLI2SCmd:
+ 247              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s 			page 5
+
+
+ 248              		@ frame_needed = 0, uses_anonymous_args = 0
+ 249              		@ link register save eliminated.
+ 250 0000 014B     		ldr	r3, .L32
+ 251 0002 9866     		str	r0, [r3, #104]
+ 252 0004 7047     		bx	lr
+ 253              	.L33:
+ 254 0006 00BF     		.align	2
+ 255              	.L32:
+ 256 0008 00004742 		.word	1111949312
+ 258              		.section	.text.RCC_PLLSAIConfig,"ax",%progbits
+ 259              		.align	1
+ 260              		.global	RCC_PLLSAIConfig
+ 261              		.syntax unified
+ 262              		.thumb
+ 263              		.thumb_func
+ 265              	RCC_PLLSAIConfig:
+ 266              		@ args = 0, pretend = 0, frame = 0
+ 267              		@ frame_needed = 0, uses_anonymous_args = 0
+ 268              		@ link register save eliminated.
+ 269 0000 0906     		lsls	r1, r1, #24
+ 270 0002 41EA8011 		orr	r1, r1, r0, lsl #6
+ 271 0006 41EA0271 		orr	r1, r1, r2, lsl #28
+ 272 000a 024B     		ldr	r3, .L35
+ 273 000c C3F88810 		str	r1, [r3, #136]
+ 274 0010 7047     		bx	lr
+ 275              	.L36:
+ 276 0012 00BF     		.align	2
+ 277              	.L35:
+ 278 0014 00380240 		.word	1073887232
+ 280              		.section	.text.RCC_PLLSAICmd,"ax",%progbits
+ 281              		.align	1
+ 282              		.global	RCC_PLLSAICmd
+ 283              		.syntax unified
+ 284              		.thumb
+ 285              		.thumb_func
+ 287              	RCC_PLLSAICmd:
+ 288              		@ args = 0, pretend = 0, frame = 0
+ 289              		@ frame_needed = 0, uses_anonymous_args = 0
+ 290              		@ link register save eliminated.
+ 291 0000 014B     		ldr	r3, .L38
+ 292 0002 1867     		str	r0, [r3, #112]
+ 293 0004 7047     		bx	lr
+ 294              	.L39:
+ 295 0006 00BF     		.align	2
+ 296              	.L38:
+ 297 0008 00004742 		.word	1111949312
+ 299              		.section	.text.RCC_ClockSecuritySystemCmd,"ax",%progbits
+ 300              		.align	1
+ 301              		.global	RCC_ClockSecuritySystemCmd
+ 302              		.syntax unified
+ 303              		.thumb
+ 304              		.thumb_func
+ 306              	RCC_ClockSecuritySystemCmd:
+ 307              		@ args = 0, pretend = 0, frame = 0
+ 308              		@ frame_needed = 0, uses_anonymous_args = 0
+ 309              		@ link register save eliminated.
+ 310 0000 014B     		ldr	r3, .L41
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s 			page 6
+
+
+ 311 0002 D864     		str	r0, [r3, #76]
+ 312 0004 7047     		bx	lr
+ 313              	.L42:
+ 314 0006 00BF     		.align	2
+ 315              	.L41:
+ 316 0008 00004742 		.word	1111949312
+ 318              		.section	.text.RCC_MCO1Config,"ax",%progbits
+ 319              		.align	1
+ 320              		.global	RCC_MCO1Config
+ 321              		.syntax unified
+ 322              		.thumb
+ 323              		.thumb_func
+ 325              	RCC_MCO1Config:
+ 326              		@ args = 0, pretend = 0, frame = 0
+ 327              		@ frame_needed = 0, uses_anonymous_args = 0
+ 328              		@ link register save eliminated.
+ 329 0000 034A     		ldr	r2, .L44
+ 330 0002 9368     		ldr	r3, [r2, #8]
+ 331 0004 23F0EC63 		bic	r3, r3, #123731968
+ 332 0008 0843     		orrs	r0, r0, r1
+ 333 000a 1843     		orrs	r0, r0, r3
+ 334 000c 9060     		str	r0, [r2, #8]
+ 335 000e 7047     		bx	lr
+ 336              	.L45:
+ 337              		.align	2
+ 338              	.L44:
+ 339 0010 00380240 		.word	1073887232
+ 341              		.section	.text.RCC_MCO2Config,"ax",%progbits
+ 342              		.align	1
+ 343              		.global	RCC_MCO2Config
+ 344              		.syntax unified
+ 345              		.thumb
+ 346              		.thumb_func
+ 348              	RCC_MCO2Config:
+ 349              		@ args = 0, pretend = 0, frame = 0
+ 350              		@ frame_needed = 0, uses_anonymous_args = 0
+ 351              		@ link register save eliminated.
+ 352 0000 034A     		ldr	r2, .L47
+ 353 0002 9368     		ldr	r3, [r2, #8]
+ 354 0004 23F07843 		bic	r3, r3, #-134217728
+ 355 0008 0843     		orrs	r0, r0, r1
+ 356 000a 1843     		orrs	r0, r0, r3
+ 357 000c 9060     		str	r0, [r2, #8]
+ 358 000e 7047     		bx	lr
+ 359              	.L48:
+ 360              		.align	2
+ 361              	.L47:
+ 362 0010 00380240 		.word	1073887232
+ 364              		.section	.text.RCC_SYSCLKConfig,"ax",%progbits
+ 365              		.align	1
+ 366              		.global	RCC_SYSCLKConfig
+ 367              		.syntax unified
+ 368              		.thumb
+ 369              		.thumb_func
+ 371              	RCC_SYSCLKConfig:
+ 372              		@ args = 0, pretend = 0, frame = 0
+ 373              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s 			page 7
+
+
+ 374              		@ link register save eliminated.
+ 375 0000 034A     		ldr	r2, .L50
+ 376 0002 9368     		ldr	r3, [r2, #8]
+ 377 0004 23F00303 		bic	r3, r3, #3
+ 378 0008 0343     		orrs	r3, r3, r0
+ 379 000a 9360     		str	r3, [r2, #8]
+ 380 000c 7047     		bx	lr
+ 381              	.L51:
+ 382 000e 00BF     		.align	2
+ 383              	.L50:
+ 384 0010 00380240 		.word	1073887232
+ 386              		.section	.text.RCC_GetSYSCLKSource,"ax",%progbits
+ 387              		.align	1
+ 388              		.global	RCC_GetSYSCLKSource
+ 389              		.syntax unified
+ 390              		.thumb
+ 391              		.thumb_func
+ 393              	RCC_GetSYSCLKSource:
+ 394              		@ args = 0, pretend = 0, frame = 0
+ 395              		@ frame_needed = 0, uses_anonymous_args = 0
+ 396              		@ link register save eliminated.
+ 397 0000 024B     		ldr	r3, .L53
+ 398 0002 9868     		ldr	r0, [r3, #8]
+ 399 0004 00F00C00 		and	r0, r0, #12
+ 400 0008 7047     		bx	lr
+ 401              	.L54:
+ 402 000a 00BF     		.align	2
+ 403              	.L53:
+ 404 000c 00380240 		.word	1073887232
+ 406              		.section	.text.RCC_HCLKConfig,"ax",%progbits
+ 407              		.align	1
+ 408              		.global	RCC_HCLKConfig
+ 409              		.syntax unified
+ 410              		.thumb
+ 411              		.thumb_func
+ 413              	RCC_HCLKConfig:
+ 414              		@ args = 0, pretend = 0, frame = 0
+ 415              		@ frame_needed = 0, uses_anonymous_args = 0
+ 416              		@ link register save eliminated.
+ 417 0000 034A     		ldr	r2, .L56
+ 418 0002 9368     		ldr	r3, [r2, #8]
+ 419 0004 23F0F003 		bic	r3, r3, #240
+ 420 0008 0343     		orrs	r3, r3, r0
+ 421 000a 9360     		str	r3, [r2, #8]
+ 422 000c 7047     		bx	lr
+ 423              	.L57:
+ 424 000e 00BF     		.align	2
+ 425              	.L56:
+ 426 0010 00380240 		.word	1073887232
+ 428              		.section	.text.RCC_PCLK1Config,"ax",%progbits
+ 429              		.align	1
+ 430              		.global	RCC_PCLK1Config
+ 431              		.syntax unified
+ 432              		.thumb
+ 433              		.thumb_func
+ 435              	RCC_PCLK1Config:
+ 436              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s 			page 8
+
+
+ 437              		@ frame_needed = 0, uses_anonymous_args = 0
+ 438              		@ link register save eliminated.
+ 439 0000 034A     		ldr	r2, .L59
+ 440 0002 9368     		ldr	r3, [r2, #8]
+ 441 0004 23F4E053 		bic	r3, r3, #7168
+ 442 0008 0343     		orrs	r3, r3, r0
+ 443 000a 9360     		str	r3, [r2, #8]
+ 444 000c 7047     		bx	lr
+ 445              	.L60:
+ 446 000e 00BF     		.align	2
+ 447              	.L59:
+ 448 0010 00380240 		.word	1073887232
+ 450              		.section	.text.RCC_PCLK2Config,"ax",%progbits
+ 451              		.align	1
+ 452              		.global	RCC_PCLK2Config
+ 453              		.syntax unified
+ 454              		.thumb
+ 455              		.thumb_func
+ 457              	RCC_PCLK2Config:
+ 458              		@ args = 0, pretend = 0, frame = 0
+ 459              		@ frame_needed = 0, uses_anonymous_args = 0
+ 460              		@ link register save eliminated.
+ 461 0000 034A     		ldr	r2, .L62
+ 462 0002 9368     		ldr	r3, [r2, #8]
+ 463 0004 23F46043 		bic	r3, r3, #57344
+ 464 0008 43EAC003 		orr	r3, r3, r0, lsl #3
+ 465 000c 9360     		str	r3, [r2, #8]
+ 466 000e 7047     		bx	lr
+ 467              	.L63:
+ 468              		.align	2
+ 469              	.L62:
+ 470 0010 00380240 		.word	1073887232
+ 472              		.section	.text.RCC_GetClocksFreq,"ax",%progbits
+ 473              		.align	1
+ 474              		.global	RCC_GetClocksFreq
+ 475              		.syntax unified
+ 476              		.thumb
+ 477              		.thumb_func
+ 479              	RCC_GetClocksFreq:
+ 480              		@ args = 0, pretend = 0, frame = 0
+ 481              		@ frame_needed = 0, uses_anonymous_args = 0
+ 482              		@ link register save eliminated.
+ 483 0000 10B4     		push	{r4}
+ 484 0002 294B     		ldr	r3, .L72
+ 485 0004 9B68     		ldr	r3, [r3, #8]
+ 486 0006 03F00C03 		and	r3, r3, #12
+ 487 000a 042B     		cmp	r3, #4
+ 488 000c 21D0     		beq	.L65
+ 489 000e 082B     		cmp	r3, #8
+ 490 0010 22D0     		beq	.L66
+ 491 0012 002B     		cmp	r3, #0
+ 492 0014 45D1     		bne	.L67
+ 493 0016 254B     		ldr	r3, .L72+4
+ 494 0018 0360     		str	r3, [r0]
+ 495              	.L68:
+ 496 001a 234C     		ldr	r4, .L72
+ 497 001c A368     		ldr	r3, [r4, #8]
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s 			page 9
+
+
+ 498 001e C3F30313 		ubfx	r3, r3, #4, #4
+ 499 0022 2349     		ldr	r1, .L72+8
+ 500 0024 CA5C     		ldrb	r2, [r1, r3]	@ zero_extendqisi2
+ 501 0026 D2B2     		uxtb	r2, r2
+ 502 0028 0368     		ldr	r3, [r0]
+ 503 002a D340     		lsrs	r3, r3, r2
+ 504 002c 4360     		str	r3, [r0, #4]
+ 505 002e A268     		ldr	r2, [r4, #8]
+ 506 0030 C2F38222 		ubfx	r2, r2, #10, #3
+ 507 0034 8A5C     		ldrb	r2, [r1, r2]	@ zero_extendqisi2
+ 508 0036 D2B2     		uxtb	r2, r2
+ 509 0038 23FA02F2 		lsr	r2, r3, r2
+ 510 003c 8260     		str	r2, [r0, #8]
+ 511 003e A268     		ldr	r2, [r4, #8]
+ 512 0040 C2F34232 		ubfx	r2, r2, #13, #3
+ 513 0044 8A5C     		ldrb	r2, [r1, r2]	@ zero_extendqisi2
+ 514 0046 D2B2     		uxtb	r2, r2
+ 515 0048 D340     		lsrs	r3, r3, r2
+ 516 004a C360     		str	r3, [r0, #12]
+ 517 004c 5DF8044B 		ldr	r4, [sp], #4
+ 518 0050 7047     		bx	lr
+ 519              	.L65:
+ 520 0052 184B     		ldr	r3, .L72+12
+ 521 0054 0360     		str	r3, [r0]
+ 522 0056 E0E7     		b	.L68
+ 523              	.L66:
+ 524 0058 134B     		ldr	r3, .L72
+ 525 005a 5968     		ldr	r1, [r3, #4]
+ 526 005c 5A68     		ldr	r2, [r3, #4]
+ 527 005e 02F03F02 		and	r2, r2, #63
+ 528 0062 11F4800F 		tst	r1, #4194304
+ 529 0066 12D0     		beq	.L69
+ 530 0068 124B     		ldr	r3, .L72+12
+ 531 006a B3FBF2F3 		udiv	r3, r3, r2
+ 532 006e 0E4A     		ldr	r2, .L72
+ 533 0070 5268     		ldr	r2, [r2, #4]
+ 534 0072 C2F38812 		ubfx	r2, r2, #6, #9
+ 535 0076 02FB03F3 		mul	r3, r2, r3
+ 536              	.L70:
+ 537 007a 0B4A     		ldr	r2, .L72
+ 538 007c 5268     		ldr	r2, [r2, #4]
+ 539 007e C2F30142 		ubfx	r2, r2, #16, #2
+ 540 0082 0132     		adds	r2, r2, #1
+ 541 0084 5200     		lsls	r2, r2, #1
+ 542 0086 B3FBF2F3 		udiv	r3, r3, r2
+ 543 008a 0360     		str	r3, [r0]
+ 544 008c C5E7     		b	.L68
+ 545              	.L69:
+ 546 008e 074B     		ldr	r3, .L72+4
+ 547 0090 B3FBF2F3 		udiv	r3, r3, r2
+ 548 0094 044A     		ldr	r2, .L72
+ 549 0096 5268     		ldr	r2, [r2, #4]
+ 550 0098 C2F38812 		ubfx	r2, r2, #6, #9
+ 551 009c 02FB03F3 		mul	r3, r2, r3
+ 552 00a0 EBE7     		b	.L70
+ 553              	.L67:
+ 554 00a2 024B     		ldr	r3, .L72+4
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s 			page 10
+
+
+ 555 00a4 0360     		str	r3, [r0]
+ 556 00a6 B8E7     		b	.L68
+ 557              	.L73:
+ 558              		.align	2
+ 559              	.L72:
+ 560 00a8 00380240 		.word	1073887232
+ 561 00ac 0024F400 		.word	16000000
+ 562 00b0 00000000 		.word	APBAHBPrescTable
+ 563 00b4 00127A00 		.word	8000000
+ 565              		.section	.text.RCC_RTCCLKConfig,"ax",%progbits
+ 566              		.align	1
+ 567              		.global	RCC_RTCCLKConfig
+ 568              		.syntax unified
+ 569              		.thumb
+ 570              		.thumb_func
+ 572              	RCC_RTCCLKConfig:
+ 573              		@ args = 0, pretend = 0, frame = 0
+ 574              		@ frame_needed = 0, uses_anonymous_args = 0
+ 575              		@ link register save eliminated.
+ 576 0000 00F44073 		and	r3, r0, #768
+ 577 0004 B3F5407F 		cmp	r3, #768
+ 578 0008 06D0     		beq	.L76
+ 579              	.L75:
+ 580 000a 094A     		ldr	r2, .L77
+ 581 000c 136F     		ldr	r3, [r2, #112]
+ 582 000e C0F30B00 		ubfx	r0, r0, #0, #12
+ 583 0012 0343     		orrs	r3, r3, r0
+ 584 0014 1367     		str	r3, [r2, #112]
+ 585 0016 7047     		bx	lr
+ 586              	.L76:
+ 587 0018 0549     		ldr	r1, .L77
+ 588 001a 8A68     		ldr	r2, [r1, #8]
+ 589 001c 22F4F812 		bic	r2, r2, #2031616
+ 590 0020 20F07043 		bic	r3, r0, #-268435456
+ 591 0024 23F44073 		bic	r3, r3, #768
+ 592 0028 1343     		orrs	r3, r3, r2
+ 593 002a 8B60     		str	r3, [r1, #8]
+ 594 002c EDE7     		b	.L75
+ 595              	.L78:
+ 596 002e 00BF     		.align	2
+ 597              	.L77:
+ 598 0030 00380240 		.word	1073887232
+ 600              		.section	.text.RCC_RTCCLKCmd,"ax",%progbits
+ 601              		.align	1
+ 602              		.global	RCC_RTCCLKCmd
+ 603              		.syntax unified
+ 604              		.thumb
+ 605              		.thumb_func
+ 607              	RCC_RTCCLKCmd:
+ 608              		@ args = 0, pretend = 0, frame = 0
+ 609              		@ frame_needed = 0, uses_anonymous_args = 0
+ 610              		@ link register save eliminated.
+ 611 0000 014B     		ldr	r3, .L80
+ 612 0002 C3F83C0E 		str	r0, [r3, #3644]
+ 613 0006 7047     		bx	lr
+ 614              	.L81:
+ 615              		.align	2
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s 			page 11
+
+
+ 616              	.L80:
+ 617 0008 00004742 		.word	1111949312
+ 619              		.section	.text.RCC_BackupResetCmd,"ax",%progbits
+ 620              		.align	1
+ 621              		.global	RCC_BackupResetCmd
+ 622              		.syntax unified
+ 623              		.thumb
+ 624              		.thumb_func
+ 626              	RCC_BackupResetCmd:
+ 627              		@ args = 0, pretend = 0, frame = 0
+ 628              		@ frame_needed = 0, uses_anonymous_args = 0
+ 629              		@ link register save eliminated.
+ 630 0000 014B     		ldr	r3, .L83
+ 631 0002 C3F8400E 		str	r0, [r3, #3648]
+ 632 0006 7047     		bx	lr
+ 633              	.L84:
+ 634              		.align	2
+ 635              	.L83:
+ 636 0008 00004742 		.word	1111949312
+ 638              		.section	.text.RCC_I2SCLKConfig,"ax",%progbits
+ 639              		.align	1
+ 640              		.global	RCC_I2SCLKConfig
+ 641              		.syntax unified
+ 642              		.thumb
+ 643              		.thumb_func
+ 645              	RCC_I2SCLKConfig:
+ 646              		@ args = 0, pretend = 0, frame = 0
+ 647              		@ frame_needed = 0, uses_anonymous_args = 0
+ 648              		@ link register save eliminated.
+ 649 0000 014B     		ldr	r3, .L86
+ 650 0002 C3F85C01 		str	r0, [r3, #348]
+ 651 0006 7047     		bx	lr
+ 652              	.L87:
+ 653              		.align	2
+ 654              	.L86:
+ 655 0008 00004742 		.word	1111949312
+ 657              		.section	.text.RCC_SAIPLLI2SClkDivConfig,"ax",%progbits
+ 658              		.align	1
+ 659              		.global	RCC_SAIPLLI2SClkDivConfig
+ 660              		.syntax unified
+ 661              		.thumb
+ 662              		.thumb_func
+ 664              	RCC_SAIPLLI2SClkDivConfig:
+ 665              		@ args = 0, pretend = 0, frame = 0
+ 666              		@ frame_needed = 0, uses_anonymous_args = 0
+ 667              		@ link register save eliminated.
+ 668 0000 044A     		ldr	r2, .L89
+ 669 0002 D2F88C30 		ldr	r3, [r2, #140]
+ 670 0006 23F01F03 		bic	r3, r3, #31
+ 671 000a 0138     		subs	r0, r0, #1
+ 672 000c 1843     		orrs	r0, r0, r3
+ 673 000e C2F88C00 		str	r0, [r2, #140]
+ 674 0012 7047     		bx	lr
+ 675              	.L90:
+ 676              		.align	2
+ 677              	.L89:
+ 678 0014 00380240 		.word	1073887232
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s 			page 12
+
+
+ 680              		.section	.text.RCC_SAIPLLSAIClkDivConfig,"ax",%progbits
+ 681              		.align	1
+ 682              		.global	RCC_SAIPLLSAIClkDivConfig
+ 683              		.syntax unified
+ 684              		.thumb
+ 685              		.thumb_func
+ 687              	RCC_SAIPLLSAIClkDivConfig:
+ 688              		@ args = 0, pretend = 0, frame = 0
+ 689              		@ frame_needed = 0, uses_anonymous_args = 0
+ 690              		@ link register save eliminated.
+ 691 0000 054A     		ldr	r2, .L92
+ 692 0002 D2F88C30 		ldr	r3, [r2, #140]
+ 693 0006 23F4F853 		bic	r3, r3, #7936
+ 694 000a 0138     		subs	r0, r0, #1
+ 695 000c 43EA0023 		orr	r3, r3, r0, lsl #8
+ 696 0010 C2F88C30 		str	r3, [r2, #140]
+ 697 0014 7047     		bx	lr
+ 698              	.L93:
+ 699 0016 00BF     		.align	2
+ 700              	.L92:
+ 701 0018 00380240 		.word	1073887232
+ 703              		.section	.text.RCC_SAIBlockACLKConfig,"ax",%progbits
+ 704              		.align	1
+ 705              		.global	RCC_SAIBlockACLKConfig
+ 706              		.syntax unified
+ 707              		.thumb
+ 708              		.thumb_func
+ 710              	RCC_SAIBlockACLKConfig:
+ 711              		@ args = 0, pretend = 0, frame = 0
+ 712              		@ frame_needed = 0, uses_anonymous_args = 0
+ 713              		@ link register save eliminated.
+ 714 0000 044A     		ldr	r2, .L95
+ 715 0002 D2F88C30 		ldr	r3, [r2, #140]
+ 716 0006 23F44013 		bic	r3, r3, #3145728
+ 717 000a 0343     		orrs	r3, r3, r0
+ 718 000c C2F88C30 		str	r3, [r2, #140]
+ 719 0010 7047     		bx	lr
+ 720              	.L96:
+ 721 0012 00BF     		.align	2
+ 722              	.L95:
+ 723 0014 00380240 		.word	1073887232
+ 725              		.section	.text.RCC_SAIBlockBCLKConfig,"ax",%progbits
+ 726              		.align	1
+ 727              		.global	RCC_SAIBlockBCLKConfig
+ 728              		.syntax unified
+ 729              		.thumb
+ 730              		.thumb_func
+ 732              	RCC_SAIBlockBCLKConfig:
+ 733              		@ args = 0, pretend = 0, frame = 0
+ 734              		@ frame_needed = 0, uses_anonymous_args = 0
+ 735              		@ link register save eliminated.
+ 736 0000 044A     		ldr	r2, .L98
+ 737 0002 D2F88C30 		ldr	r3, [r2, #140]
+ 738 0006 23F44003 		bic	r3, r3, #12582912
+ 739 000a 0343     		orrs	r3, r3, r0
+ 740 000c C2F88C30 		str	r3, [r2, #140]
+ 741 0010 7047     		bx	lr
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s 			page 13
+
+
+ 742              	.L99:
+ 743 0012 00BF     		.align	2
+ 744              	.L98:
+ 745 0014 00380240 		.word	1073887232
+ 747              		.section	.text.RCC_LTDCCLKDivConfig,"ax",%progbits
+ 748              		.align	1
+ 749              		.global	RCC_LTDCCLKDivConfig
+ 750              		.syntax unified
+ 751              		.thumb
+ 752              		.thumb_func
+ 754              	RCC_LTDCCLKDivConfig:
+ 755              		@ args = 0, pretend = 0, frame = 0
+ 756              		@ frame_needed = 0, uses_anonymous_args = 0
+ 757              		@ link register save eliminated.
+ 758 0000 044A     		ldr	r2, .L101
+ 759 0002 D2F88C30 		ldr	r3, [r2, #140]
+ 760 0006 23F44033 		bic	r3, r3, #196608
+ 761 000a 0343     		orrs	r3, r3, r0
+ 762 000c C2F88C30 		str	r3, [r2, #140]
+ 763 0010 7047     		bx	lr
+ 764              	.L102:
+ 765 0012 00BF     		.align	2
+ 766              	.L101:
+ 767 0014 00380240 		.word	1073887232
+ 769              		.section	.text.RCC_TIMCLKPresConfig,"ax",%progbits
+ 770              		.align	1
+ 771              		.global	RCC_TIMCLKPresConfig
+ 772              		.syntax unified
+ 773              		.thumb
+ 774              		.thumb_func
+ 776              	RCC_TIMCLKPresConfig:
+ 777              		@ args = 0, pretend = 0, frame = 0
+ 778              		@ frame_needed = 0, uses_anonymous_args = 0
+ 779              		@ link register save eliminated.
+ 780 0000 014B     		ldr	r3, .L104
+ 781 0002 C3F8E001 		str	r0, [r3, #480]
+ 782 0006 7047     		bx	lr
+ 783              	.L105:
+ 784              		.align	2
+ 785              	.L104:
+ 786 0008 00104742 		.word	1111953408
+ 788              		.section	.text.RCC_AHB1PeriphClockCmd,"ax",%progbits
+ 789              		.align	1
+ 790              		.global	RCC_AHB1PeriphClockCmd
+ 791              		.syntax unified
+ 792              		.thumb
+ 793              		.thumb_func
+ 795              	RCC_AHB1PeriphClockCmd:
+ 796              		@ args = 0, pretend = 0, frame = 0
+ 797              		@ frame_needed = 0, uses_anonymous_args = 0
+ 798              		@ link register save eliminated.
+ 799 0000 21B1     		cbz	r1, .L107
+ 800 0002 054A     		ldr	r2, .L109
+ 801 0004 136B     		ldr	r3, [r2, #48]
+ 802 0006 0343     		orrs	r3, r3, r0
+ 803 0008 1363     		str	r3, [r2, #48]
+ 804 000a 7047     		bx	lr
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s 			page 14
+
+
+ 805              	.L107:
+ 806 000c 024A     		ldr	r2, .L109
+ 807 000e 136B     		ldr	r3, [r2, #48]
+ 808 0010 23EA0003 		bic	r3, r3, r0
+ 809 0014 1363     		str	r3, [r2, #48]
+ 810 0016 7047     		bx	lr
+ 811              	.L110:
+ 812              		.align	2
+ 813              	.L109:
+ 814 0018 00380240 		.word	1073887232
+ 816              		.section	.text.RCC_AHB2PeriphClockCmd,"ax",%progbits
+ 817              		.align	1
+ 818              		.global	RCC_AHB2PeriphClockCmd
+ 819              		.syntax unified
+ 820              		.thumb
+ 821              		.thumb_func
+ 823              	RCC_AHB2PeriphClockCmd:
+ 824              		@ args = 0, pretend = 0, frame = 0
+ 825              		@ frame_needed = 0, uses_anonymous_args = 0
+ 826              		@ link register save eliminated.
+ 827 0000 21B1     		cbz	r1, .L112
+ 828 0002 054A     		ldr	r2, .L114
+ 829 0004 536B     		ldr	r3, [r2, #52]
+ 830 0006 0343     		orrs	r3, r3, r0
+ 831 0008 5363     		str	r3, [r2, #52]
+ 832 000a 7047     		bx	lr
+ 833              	.L112:
+ 834 000c 024A     		ldr	r2, .L114
+ 835 000e 536B     		ldr	r3, [r2, #52]
+ 836 0010 23EA0003 		bic	r3, r3, r0
+ 837 0014 5363     		str	r3, [r2, #52]
+ 838 0016 7047     		bx	lr
+ 839              	.L115:
+ 840              		.align	2
+ 841              	.L114:
+ 842 0018 00380240 		.word	1073887232
+ 844              		.section	.text.RCC_AHB3PeriphClockCmd,"ax",%progbits
+ 845              		.align	1
+ 846              		.global	RCC_AHB3PeriphClockCmd
+ 847              		.syntax unified
+ 848              		.thumb
+ 849              		.thumb_func
+ 851              	RCC_AHB3PeriphClockCmd:
+ 852              		@ args = 0, pretend = 0, frame = 0
+ 853              		@ frame_needed = 0, uses_anonymous_args = 0
+ 854              		@ link register save eliminated.
+ 855 0000 21B1     		cbz	r1, .L117
+ 856 0002 054A     		ldr	r2, .L119
+ 857 0004 936B     		ldr	r3, [r2, #56]
+ 858 0006 0343     		orrs	r3, r3, r0
+ 859 0008 9363     		str	r3, [r2, #56]
+ 860 000a 7047     		bx	lr
+ 861              	.L117:
+ 862 000c 024A     		ldr	r2, .L119
+ 863 000e 936B     		ldr	r3, [r2, #56]
+ 864 0010 23EA0003 		bic	r3, r3, r0
+ 865 0014 9363     		str	r3, [r2, #56]
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s 			page 15
+
+
+ 866 0016 7047     		bx	lr
+ 867              	.L120:
+ 868              		.align	2
+ 869              	.L119:
+ 870 0018 00380240 		.word	1073887232
+ 872              		.section	.text.RCC_APB1PeriphClockCmd,"ax",%progbits
+ 873              		.align	1
+ 874              		.global	RCC_APB1PeriphClockCmd
+ 875              		.syntax unified
+ 876              		.thumb
+ 877              		.thumb_func
+ 879              	RCC_APB1PeriphClockCmd:
+ 880              		@ args = 0, pretend = 0, frame = 0
+ 881              		@ frame_needed = 0, uses_anonymous_args = 0
+ 882              		@ link register save eliminated.
+ 883 0000 21B1     		cbz	r1, .L122
+ 884 0002 054A     		ldr	r2, .L124
+ 885 0004 136C     		ldr	r3, [r2, #64]
+ 886 0006 0343     		orrs	r3, r3, r0
+ 887 0008 1364     		str	r3, [r2, #64]
+ 888 000a 7047     		bx	lr
+ 889              	.L122:
+ 890 000c 024A     		ldr	r2, .L124
+ 891 000e 136C     		ldr	r3, [r2, #64]
+ 892 0010 23EA0003 		bic	r3, r3, r0
+ 893 0014 1364     		str	r3, [r2, #64]
+ 894 0016 7047     		bx	lr
+ 895              	.L125:
+ 896              		.align	2
+ 897              	.L124:
+ 898 0018 00380240 		.word	1073887232
+ 900              		.section	.text.RCC_APB2PeriphClockCmd,"ax",%progbits
+ 901              		.align	1
+ 902              		.global	RCC_APB2PeriphClockCmd
+ 903              		.syntax unified
+ 904              		.thumb
+ 905              		.thumb_func
+ 907              	RCC_APB2PeriphClockCmd:
+ 908              		@ args = 0, pretend = 0, frame = 0
+ 909              		@ frame_needed = 0, uses_anonymous_args = 0
+ 910              		@ link register save eliminated.
+ 911 0000 21B1     		cbz	r1, .L127
+ 912 0002 054A     		ldr	r2, .L129
+ 913 0004 536C     		ldr	r3, [r2, #68]
+ 914 0006 0343     		orrs	r3, r3, r0
+ 915 0008 5364     		str	r3, [r2, #68]
+ 916 000a 7047     		bx	lr
+ 917              	.L127:
+ 918 000c 024A     		ldr	r2, .L129
+ 919 000e 536C     		ldr	r3, [r2, #68]
+ 920 0010 23EA0003 		bic	r3, r3, r0
+ 921 0014 5364     		str	r3, [r2, #68]
+ 922 0016 7047     		bx	lr
+ 923              	.L130:
+ 924              		.align	2
+ 925              	.L129:
+ 926 0018 00380240 		.word	1073887232
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s 			page 16
+
+
+ 928              		.section	.text.RCC_AHB1PeriphResetCmd,"ax",%progbits
+ 929              		.align	1
+ 930              		.global	RCC_AHB1PeriphResetCmd
+ 931              		.syntax unified
+ 932              		.thumb
+ 933              		.thumb_func
+ 935              	RCC_AHB1PeriphResetCmd:
+ 936              		@ args = 0, pretend = 0, frame = 0
+ 937              		@ frame_needed = 0, uses_anonymous_args = 0
+ 938              		@ link register save eliminated.
+ 939 0000 21B1     		cbz	r1, .L132
+ 940 0002 054A     		ldr	r2, .L134
+ 941 0004 1369     		ldr	r3, [r2, #16]
+ 942 0006 0343     		orrs	r3, r3, r0
+ 943 0008 1361     		str	r3, [r2, #16]
+ 944 000a 7047     		bx	lr
+ 945              	.L132:
+ 946 000c 024A     		ldr	r2, .L134
+ 947 000e 1369     		ldr	r3, [r2, #16]
+ 948 0010 23EA0003 		bic	r3, r3, r0
+ 949 0014 1361     		str	r3, [r2, #16]
+ 950 0016 7047     		bx	lr
+ 951              	.L135:
+ 952              		.align	2
+ 953              	.L134:
+ 954 0018 00380240 		.word	1073887232
+ 956              		.section	.text.RCC_AHB2PeriphResetCmd,"ax",%progbits
+ 957              		.align	1
+ 958              		.global	RCC_AHB2PeriphResetCmd
+ 959              		.syntax unified
+ 960              		.thumb
+ 961              		.thumb_func
+ 963              	RCC_AHB2PeriphResetCmd:
+ 964              		@ args = 0, pretend = 0, frame = 0
+ 965              		@ frame_needed = 0, uses_anonymous_args = 0
+ 966              		@ link register save eliminated.
+ 967 0000 21B1     		cbz	r1, .L137
+ 968 0002 054A     		ldr	r2, .L139
+ 969 0004 5369     		ldr	r3, [r2, #20]
+ 970 0006 0343     		orrs	r3, r3, r0
+ 971 0008 5361     		str	r3, [r2, #20]
+ 972 000a 7047     		bx	lr
+ 973              	.L137:
+ 974 000c 024A     		ldr	r2, .L139
+ 975 000e 5369     		ldr	r3, [r2, #20]
+ 976 0010 23EA0003 		bic	r3, r3, r0
+ 977 0014 5361     		str	r3, [r2, #20]
+ 978 0016 7047     		bx	lr
+ 979              	.L140:
+ 980              		.align	2
+ 981              	.L139:
+ 982 0018 00380240 		.word	1073887232
+ 984              		.section	.text.RCC_AHB3PeriphResetCmd,"ax",%progbits
+ 985              		.align	1
+ 986              		.global	RCC_AHB3PeriphResetCmd
+ 987              		.syntax unified
+ 988              		.thumb
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s 			page 17
+
+
+ 989              		.thumb_func
+ 991              	RCC_AHB3PeriphResetCmd:
+ 992              		@ args = 0, pretend = 0, frame = 0
+ 993              		@ frame_needed = 0, uses_anonymous_args = 0
+ 994              		@ link register save eliminated.
+ 995 0000 21B1     		cbz	r1, .L142
+ 996 0002 054A     		ldr	r2, .L144
+ 997 0004 9369     		ldr	r3, [r2, #24]
+ 998 0006 0343     		orrs	r3, r3, r0
+ 999 0008 9361     		str	r3, [r2, #24]
+ 1000 000a 7047     		bx	lr
+ 1001              	.L142:
+ 1002 000c 024A     		ldr	r2, .L144
+ 1003 000e 9369     		ldr	r3, [r2, #24]
+ 1004 0010 23EA0003 		bic	r3, r3, r0
+ 1005 0014 9361     		str	r3, [r2, #24]
+ 1006 0016 7047     		bx	lr
+ 1007              	.L145:
+ 1008              		.align	2
+ 1009              	.L144:
+ 1010 0018 00380240 		.word	1073887232
+ 1012              		.section	.text.RCC_APB1PeriphResetCmd,"ax",%progbits
+ 1013              		.align	1
+ 1014              		.global	RCC_APB1PeriphResetCmd
+ 1015              		.syntax unified
+ 1016              		.thumb
+ 1017              		.thumb_func
+ 1019              	RCC_APB1PeriphResetCmd:
+ 1020              		@ args = 0, pretend = 0, frame = 0
+ 1021              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1022              		@ link register save eliminated.
+ 1023 0000 21B1     		cbz	r1, .L147
+ 1024 0002 054A     		ldr	r2, .L149
+ 1025 0004 136A     		ldr	r3, [r2, #32]
+ 1026 0006 0343     		orrs	r3, r3, r0
+ 1027 0008 1362     		str	r3, [r2, #32]
+ 1028 000a 7047     		bx	lr
+ 1029              	.L147:
+ 1030 000c 024A     		ldr	r2, .L149
+ 1031 000e 136A     		ldr	r3, [r2, #32]
+ 1032 0010 23EA0003 		bic	r3, r3, r0
+ 1033 0014 1362     		str	r3, [r2, #32]
+ 1034 0016 7047     		bx	lr
+ 1035              	.L150:
+ 1036              		.align	2
+ 1037              	.L149:
+ 1038 0018 00380240 		.word	1073887232
+ 1040              		.section	.text.RCC_APB2PeriphResetCmd,"ax",%progbits
+ 1041              		.align	1
+ 1042              		.global	RCC_APB2PeriphResetCmd
+ 1043              		.syntax unified
+ 1044              		.thumb
+ 1045              		.thumb_func
+ 1047              	RCC_APB2PeriphResetCmd:
+ 1048              		@ args = 0, pretend = 0, frame = 0
+ 1049              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1050              		@ link register save eliminated.
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s 			page 18
+
+
+ 1051 0000 21B1     		cbz	r1, .L152
+ 1052 0002 054A     		ldr	r2, .L154
+ 1053 0004 536A     		ldr	r3, [r2, #36]
+ 1054 0006 0343     		orrs	r3, r3, r0
+ 1055 0008 5362     		str	r3, [r2, #36]
+ 1056 000a 7047     		bx	lr
+ 1057              	.L152:
+ 1058 000c 024A     		ldr	r2, .L154
+ 1059 000e 536A     		ldr	r3, [r2, #36]
+ 1060 0010 23EA0003 		bic	r3, r3, r0
+ 1061 0014 5362     		str	r3, [r2, #36]
+ 1062 0016 7047     		bx	lr
+ 1063              	.L155:
+ 1064              		.align	2
+ 1065              	.L154:
+ 1066 0018 00380240 		.word	1073887232
+ 1068              		.section	.text.RCC_AHB1PeriphClockLPModeCmd,"ax",%progbits
+ 1069              		.align	1
+ 1070              		.global	RCC_AHB1PeriphClockLPModeCmd
+ 1071              		.syntax unified
+ 1072              		.thumb
+ 1073              		.thumb_func
+ 1075              	RCC_AHB1PeriphClockLPModeCmd:
+ 1076              		@ args = 0, pretend = 0, frame = 0
+ 1077              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1078              		@ link register save eliminated.
+ 1079 0000 21B1     		cbz	r1, .L157
+ 1080 0002 054A     		ldr	r2, .L159
+ 1081 0004 136D     		ldr	r3, [r2, #80]
+ 1082 0006 0343     		orrs	r3, r3, r0
+ 1083 0008 1365     		str	r3, [r2, #80]
+ 1084 000a 7047     		bx	lr
+ 1085              	.L157:
+ 1086 000c 024A     		ldr	r2, .L159
+ 1087 000e 136D     		ldr	r3, [r2, #80]
+ 1088 0010 23EA0003 		bic	r3, r3, r0
+ 1089 0014 1365     		str	r3, [r2, #80]
+ 1090 0016 7047     		bx	lr
+ 1091              	.L160:
+ 1092              		.align	2
+ 1093              	.L159:
+ 1094 0018 00380240 		.word	1073887232
+ 1096              		.section	.text.RCC_AHB2PeriphClockLPModeCmd,"ax",%progbits
+ 1097              		.align	1
+ 1098              		.global	RCC_AHB2PeriphClockLPModeCmd
+ 1099              		.syntax unified
+ 1100              		.thumb
+ 1101              		.thumb_func
+ 1103              	RCC_AHB2PeriphClockLPModeCmd:
+ 1104              		@ args = 0, pretend = 0, frame = 0
+ 1105              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1106              		@ link register save eliminated.
+ 1107 0000 21B1     		cbz	r1, .L162
+ 1108 0002 054A     		ldr	r2, .L164
+ 1109 0004 536D     		ldr	r3, [r2, #84]
+ 1110 0006 0343     		orrs	r3, r3, r0
+ 1111 0008 5365     		str	r3, [r2, #84]
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s 			page 19
+
+
+ 1112 000a 7047     		bx	lr
+ 1113              	.L162:
+ 1114 000c 024A     		ldr	r2, .L164
+ 1115 000e 536D     		ldr	r3, [r2, #84]
+ 1116 0010 23EA0003 		bic	r3, r3, r0
+ 1117 0014 5365     		str	r3, [r2, #84]
+ 1118 0016 7047     		bx	lr
+ 1119              	.L165:
+ 1120              		.align	2
+ 1121              	.L164:
+ 1122 0018 00380240 		.word	1073887232
+ 1124              		.section	.text.RCC_AHB3PeriphClockLPModeCmd,"ax",%progbits
+ 1125              		.align	1
+ 1126              		.global	RCC_AHB3PeriphClockLPModeCmd
+ 1127              		.syntax unified
+ 1128              		.thumb
+ 1129              		.thumb_func
+ 1131              	RCC_AHB3PeriphClockLPModeCmd:
+ 1132              		@ args = 0, pretend = 0, frame = 0
+ 1133              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1134              		@ link register save eliminated.
+ 1135 0000 21B1     		cbz	r1, .L167
+ 1136 0002 054A     		ldr	r2, .L169
+ 1137 0004 936D     		ldr	r3, [r2, #88]
+ 1138 0006 0343     		orrs	r3, r3, r0
+ 1139 0008 9365     		str	r3, [r2, #88]
+ 1140 000a 7047     		bx	lr
+ 1141              	.L167:
+ 1142 000c 024A     		ldr	r2, .L169
+ 1143 000e 936D     		ldr	r3, [r2, #88]
+ 1144 0010 23EA0003 		bic	r3, r3, r0
+ 1145 0014 9365     		str	r3, [r2, #88]
+ 1146 0016 7047     		bx	lr
+ 1147              	.L170:
+ 1148              		.align	2
+ 1149              	.L169:
+ 1150 0018 00380240 		.word	1073887232
+ 1152              		.section	.text.RCC_APB1PeriphClockLPModeCmd,"ax",%progbits
+ 1153              		.align	1
+ 1154              		.global	RCC_APB1PeriphClockLPModeCmd
+ 1155              		.syntax unified
+ 1156              		.thumb
+ 1157              		.thumb_func
+ 1159              	RCC_APB1PeriphClockLPModeCmd:
+ 1160              		@ args = 0, pretend = 0, frame = 0
+ 1161              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1162              		@ link register save eliminated.
+ 1163 0000 21B1     		cbz	r1, .L172
+ 1164 0002 054A     		ldr	r2, .L174
+ 1165 0004 136E     		ldr	r3, [r2, #96]
+ 1166 0006 0343     		orrs	r3, r3, r0
+ 1167 0008 1366     		str	r3, [r2, #96]
+ 1168 000a 7047     		bx	lr
+ 1169              	.L172:
+ 1170 000c 024A     		ldr	r2, .L174
+ 1171 000e 136E     		ldr	r3, [r2, #96]
+ 1172 0010 23EA0003 		bic	r3, r3, r0
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s 			page 20
+
+
+ 1173 0014 1366     		str	r3, [r2, #96]
+ 1174 0016 7047     		bx	lr
+ 1175              	.L175:
+ 1176              		.align	2
+ 1177              	.L174:
+ 1178 0018 00380240 		.word	1073887232
+ 1180              		.section	.text.RCC_APB2PeriphClockLPModeCmd,"ax",%progbits
+ 1181              		.align	1
+ 1182              		.global	RCC_APB2PeriphClockLPModeCmd
+ 1183              		.syntax unified
+ 1184              		.thumb
+ 1185              		.thumb_func
+ 1187              	RCC_APB2PeriphClockLPModeCmd:
+ 1188              		@ args = 0, pretend = 0, frame = 0
+ 1189              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1190              		@ link register save eliminated.
+ 1191 0000 21B1     		cbz	r1, .L177
+ 1192 0002 054A     		ldr	r2, .L179
+ 1193 0004 536E     		ldr	r3, [r2, #100]
+ 1194 0006 0343     		orrs	r3, r3, r0
+ 1195 0008 5366     		str	r3, [r2, #100]
+ 1196 000a 7047     		bx	lr
+ 1197              	.L177:
+ 1198 000c 024A     		ldr	r2, .L179
+ 1199 000e 536E     		ldr	r3, [r2, #100]
+ 1200 0010 23EA0003 		bic	r3, r3, r0
+ 1201 0014 5366     		str	r3, [r2, #100]
+ 1202 0016 7047     		bx	lr
+ 1203              	.L180:
+ 1204              		.align	2
+ 1205              	.L179:
+ 1206 0018 00380240 		.word	1073887232
+ 1208              		.section	.text.RCC_LSEModeConfig,"ax",%progbits
+ 1209              		.align	1
+ 1210              		.global	RCC_LSEModeConfig
+ 1211              		.syntax unified
+ 1212              		.thumb
+ 1213              		.thumb_func
+ 1215              	RCC_LSEModeConfig:
+ 1216              		@ args = 0, pretend = 0, frame = 0
+ 1217              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1218              		@ link register save eliminated.
+ 1219 0000 0128     		cmp	r0, #1
+ 1220 0002 05D0     		beq	.L184
+ 1221 0004 054A     		ldr	r2, .L185
+ 1222 0006 136F     		ldr	r3, [r2, #112]
+ 1223 0008 23F00803 		bic	r3, r3, #8
+ 1224 000c 1367     		str	r3, [r2, #112]
+ 1225 000e 7047     		bx	lr
+ 1226              	.L184:
+ 1227 0010 024A     		ldr	r2, .L185
+ 1228 0012 136F     		ldr	r3, [r2, #112]
+ 1229 0014 43F00803 		orr	r3, r3, #8
+ 1230 0018 1367     		str	r3, [r2, #112]
+ 1231 001a 7047     		bx	lr
+ 1232              	.L186:
+ 1233              		.align	2
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s 			page 21
+
+
+ 1234              	.L185:
+ 1235 001c 00380240 		.word	1073887232
+ 1237              		.section	.text.RCC_ITConfig,"ax",%progbits
+ 1238              		.align	1
+ 1239              		.global	RCC_ITConfig
+ 1240              		.syntax unified
+ 1241              		.thumb
+ 1242              		.thumb_func
+ 1244              	RCC_ITConfig:
+ 1245              		@ args = 0, pretend = 0, frame = 0
+ 1246              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1247              		@ link register save eliminated.
+ 1248 0000 21B1     		cbz	r1, .L188
+ 1249 0002 054A     		ldr	r2, .L190
+ 1250 0004 537B     		ldrb	r3, [r2, #13]	@ zero_extendqisi2
+ 1251 0006 0343     		orrs	r3, r3, r0
+ 1252 0008 5373     		strb	r3, [r2, #13]
+ 1253 000a 7047     		bx	lr
+ 1254              	.L188:
+ 1255 000c 024A     		ldr	r2, .L190
+ 1256 000e 537B     		ldrb	r3, [r2, #13]	@ zero_extendqisi2
+ 1257 0010 23EA0003 		bic	r3, r3, r0
+ 1258 0014 5373     		strb	r3, [r2, #13]
+ 1259 0016 7047     		bx	lr
+ 1260              	.L191:
+ 1261              		.align	2
+ 1262              	.L190:
+ 1263 0018 00380240 		.word	1073887232
+ 1265              		.section	.text.RCC_GetFlagStatus,"ax",%progbits
+ 1266              		.align	1
+ 1267              		.global	RCC_GetFlagStatus
+ 1268              		.syntax unified
+ 1269              		.thumb
+ 1270              		.thumb_func
+ 1272              	RCC_GetFlagStatus:
+ 1273              		@ args = 0, pretend = 0, frame = 0
+ 1274              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1275              		@ link register save eliminated.
+ 1276 0000 4309     		lsrs	r3, r0, #5
+ 1277 0002 012B     		cmp	r3, #1
+ 1278 0004 0BD0     		beq	.L198
+ 1279 0006 022B     		cmp	r3, #2
+ 1280 0008 0CD0     		beq	.L199
+ 1281 000a 094B     		ldr	r3, .L200
+ 1282 000c 5B6F     		ldr	r3, [r3, #116]
+ 1283              	.L194:
+ 1284 000e 00F01F00 		and	r0, r0, #31
+ 1285 0012 C340     		lsrs	r3, r3, r0
+ 1286 0014 13F0010F 		tst	r3, #1
+ 1287 0018 07D0     		beq	.L197
+ 1288 001a 0120     		movs	r0, #1
+ 1289 001c 7047     		bx	lr
+ 1290              	.L198:
+ 1291 001e 044B     		ldr	r3, .L200
+ 1292 0020 1B68     		ldr	r3, [r3]
+ 1293 0022 F4E7     		b	.L194
+ 1294              	.L199:
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s 			page 22
+
+
+ 1295 0024 024B     		ldr	r3, .L200
+ 1296 0026 1B6F     		ldr	r3, [r3, #112]
+ 1297 0028 F1E7     		b	.L194
+ 1298              	.L197:
+ 1299 002a 0020     		movs	r0, #0
+ 1300 002c 7047     		bx	lr
+ 1301              	.L201:
+ 1302 002e 00BF     		.align	2
+ 1303              	.L200:
+ 1304 0030 00380240 		.word	1073887232
+ 1306              		.section	.text.RCC_WaitForHSEStartUp,"ax",%progbits
+ 1307              		.align	1
+ 1308              		.global	RCC_WaitForHSEStartUp
+ 1309              		.syntax unified
+ 1310              		.thumb
+ 1311              		.thumb_func
+ 1313              	RCC_WaitForHSEStartUp:
+ 1314              		@ args = 0, pretend = 0, frame = 8
+ 1315              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1316 0000 00B5     		push	{lr}
+ 1317 0002 83B0     		sub	sp, sp, #12
+ 1318 0004 0023     		movs	r3, #0
+ 1319 0006 0193     		str	r3, [sp, #4]
+ 1320              	.L204:
+ 1321 0008 3120     		movs	r0, #49
+ 1322 000a FFF7FEFF 		bl	RCC_GetFlagStatus
+ 1323 000e 019B     		ldr	r3, [sp, #4]
+ 1324 0010 0133     		adds	r3, r3, #1
+ 1325 0012 0193     		str	r3, [sp, #4]
+ 1326 0014 019B     		ldr	r3, [sp, #4]
+ 1327 0016 B3F5A04F 		cmp	r3, #20480
+ 1328 001a 01D0     		beq	.L203
+ 1329 001c 0028     		cmp	r0, #0
+ 1330 001e F3D0     		beq	.L204
+ 1331              	.L203:
+ 1332 0020 3120     		movs	r0, #49
+ 1333 0022 FFF7FEFF 		bl	RCC_GetFlagStatus
+ 1334 0026 00B1     		cbz	r0, .L205
+ 1335 0028 0120     		movs	r0, #1
+ 1336              	.L205:
+ 1337 002a 03B0     		add	sp, sp, #12
+ 1338              		@ sp needed
+ 1339 002c 5DF804FB 		ldr	pc, [sp], #4
+ 1341              		.section	.text.RCC_ClearFlag,"ax",%progbits
+ 1342              		.align	1
+ 1343              		.global	RCC_ClearFlag
+ 1344              		.syntax unified
+ 1345              		.thumb
+ 1346              		.thumb_func
+ 1348              	RCC_ClearFlag:
+ 1349              		@ args = 0, pretend = 0, frame = 0
+ 1350              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1351              		@ link register save eliminated.
+ 1352 0000 024A     		ldr	r2, .L208
+ 1353 0002 536F     		ldr	r3, [r2, #116]
+ 1354 0004 43F08073 		orr	r3, r3, #16777216
+ 1355 0008 5367     		str	r3, [r2, #116]
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s 			page 23
+
+
+ 1356 000a 7047     		bx	lr
+ 1357              	.L209:
+ 1358              		.align	2
+ 1359              	.L208:
+ 1360 000c 00380240 		.word	1073887232
+ 1362              		.section	.text.RCC_GetITStatus,"ax",%progbits
+ 1363              		.align	1
+ 1364              		.global	RCC_GetITStatus
+ 1365              		.syntax unified
+ 1366              		.thumb
+ 1367              		.thumb_func
+ 1369              	RCC_GetITStatus:
+ 1370              		@ args = 0, pretend = 0, frame = 0
+ 1371              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1372              		@ link register save eliminated.
+ 1373 0000 034B     		ldr	r3, .L213
+ 1374 0002 DB68     		ldr	r3, [r3, #12]
+ 1375 0004 1842     		tst	r0, r3
+ 1376 0006 01D0     		beq	.L212
+ 1377 0008 0120     		movs	r0, #1
+ 1378 000a 7047     		bx	lr
+ 1379              	.L212:
+ 1380 000c 0020     		movs	r0, #0
+ 1381 000e 7047     		bx	lr
+ 1382              	.L214:
+ 1383              		.align	2
+ 1384              	.L213:
+ 1385 0010 00380240 		.word	1073887232
+ 1387              		.section	.text.RCC_ClearITPendingBit,"ax",%progbits
+ 1388              		.align	1
+ 1389              		.global	RCC_ClearITPendingBit
+ 1390              		.syntax unified
+ 1391              		.thumb
+ 1392              		.thumb_func
+ 1394              	RCC_ClearITPendingBit:
+ 1395              		@ args = 0, pretend = 0, frame = 0
+ 1396              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1397              		@ link register save eliminated.
+ 1398 0000 014B     		ldr	r3, .L216
+ 1399 0002 9873     		strb	r0, [r3, #14]
+ 1400 0004 7047     		bx	lr
+ 1401              	.L217:
+ 1402 0006 00BF     		.align	2
+ 1403              	.L216:
+ 1404 0008 00380240 		.word	1073887232
+ 1406              		.section	.rodata.APBAHBPrescTable,"a"
+ 1407              		.align	2
+ 1410              	APBAHBPrescTable:
+ 1411 0000 00000000 		.ascii	"\000\000\000\000\001\002\003\004\001\002\003\004\006"
+ 1411      01020304 
+ 1411      01020304 
+ 1411      06
+ 1412 000d 070809   		.ascii	"\007\010\011"
+ 1413              		.ident	"GCC: (Arm GNU Toolchain 13.3.Rel1 (Build arm-13.24)) 13.3.1 20240614"
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s 			page 24
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 stm32f4xx_rcc.c
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:18     .text.RCC_DeInit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:24     .text.RCC_DeInit:00000000 RCC_DeInit
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:53     .text.RCC_DeInit:0000003c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:58     .text.RCC_HSEConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:64     .text.RCC_HSEConfig:00000000 RCC_HSEConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:76     .text.RCC_HSEConfig:0000000c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:79     .text.RCC_AdjustHSICalibrationValue:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:85     .text.RCC_AdjustHSICalibrationValue:00000000 RCC_AdjustHSICalibrationValue
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:98     .text.RCC_AdjustHSICalibrationValue:00000010 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:101    .text.RCC_HSICmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:107    .text.RCC_HSICmd:00000000 RCC_HSICmd
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:117    .text.RCC_HSICmd:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:120    .text.RCC_LSEConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:126    .text.RCC_LSEConfig:00000000 RCC_LSEConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:152    .text.RCC_LSEConfig:0000002c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:155    .text.RCC_LSICmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:161    .text.RCC_LSICmd:00000000 RCC_LSICmd
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:171    .text.RCC_LSICmd:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:174    .text.RCC_PLLConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:180    .text.RCC_PLLConfig:00000000 RCC_PLLConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:197    .text.RCC_PLLConfig:0000001c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:200    .text.RCC_PLLCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:206    .text.RCC_PLLCmd:00000000 RCC_PLLCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:216    .text.RCC_PLLCmd:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:219    .text.RCC_PLLI2SConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:225    .text.RCC_PLLI2SConfig:00000000 RCC_PLLI2SConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:237    .text.RCC_PLLI2SConfig:00000010 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:240    .text.RCC_PLLI2SCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:246    .text.RCC_PLLI2SCmd:00000000 RCC_PLLI2SCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:256    .text.RCC_PLLI2SCmd:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:259    .text.RCC_PLLSAIConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:265    .text.RCC_PLLSAIConfig:00000000 RCC_PLLSAIConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:278    .text.RCC_PLLSAIConfig:00000014 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:281    .text.RCC_PLLSAICmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:287    .text.RCC_PLLSAICmd:00000000 RCC_PLLSAICmd
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:297    .text.RCC_PLLSAICmd:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:300    .text.RCC_ClockSecuritySystemCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:306    .text.RCC_ClockSecuritySystemCmd:00000000 RCC_ClockSecuritySystemCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:316    .text.RCC_ClockSecuritySystemCmd:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:319    .text.RCC_MCO1Config:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:325    .text.RCC_MCO1Config:00000000 RCC_MCO1Config
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:339    .text.RCC_MCO1Config:00000010 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:342    .text.RCC_MCO2Config:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:348    .text.RCC_MCO2Config:00000000 RCC_MCO2Config
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:362    .text.RCC_MCO2Config:00000010 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:365    .text.RCC_SYSCLKConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:371    .text.RCC_SYSCLKConfig:00000000 RCC_SYSCLKConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:384    .text.RCC_SYSCLKConfig:00000010 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:387    .text.RCC_GetSYSCLKSource:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:393    .text.RCC_GetSYSCLKSource:00000000 RCC_GetSYSCLKSource
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:404    .text.RCC_GetSYSCLKSource:0000000c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:407    .text.RCC_HCLKConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:413    .text.RCC_HCLKConfig:00000000 RCC_HCLKConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:426    .text.RCC_HCLKConfig:00000010 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:429    .text.RCC_PCLK1Config:00000000 $t
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s 			page 25
+
+
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:435    .text.RCC_PCLK1Config:00000000 RCC_PCLK1Config
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:448    .text.RCC_PCLK1Config:00000010 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:451    .text.RCC_PCLK2Config:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:457    .text.RCC_PCLK2Config:00000000 RCC_PCLK2Config
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:470    .text.RCC_PCLK2Config:00000010 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:473    .text.RCC_GetClocksFreq:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:479    .text.RCC_GetClocksFreq:00000000 RCC_GetClocksFreq
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:560    .text.RCC_GetClocksFreq:000000a8 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:1410   .rodata.APBAHBPrescTable:00000000 APBAHBPrescTable
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:566    .text.RCC_RTCCLKConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:572    .text.RCC_RTCCLKConfig:00000000 RCC_RTCCLKConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:598    .text.RCC_RTCCLKConfig:00000030 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:601    .text.RCC_RTCCLKCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:607    .text.RCC_RTCCLKCmd:00000000 RCC_RTCCLKCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:617    .text.RCC_RTCCLKCmd:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:620    .text.RCC_BackupResetCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:626    .text.RCC_BackupResetCmd:00000000 RCC_BackupResetCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:636    .text.RCC_BackupResetCmd:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:639    .text.RCC_I2SCLKConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:645    .text.RCC_I2SCLKConfig:00000000 RCC_I2SCLKConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:655    .text.RCC_I2SCLKConfig:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:658    .text.RCC_SAIPLLI2SClkDivConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:664    .text.RCC_SAIPLLI2SClkDivConfig:00000000 RCC_SAIPLLI2SClkDivConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:678    .text.RCC_SAIPLLI2SClkDivConfig:00000014 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:681    .text.RCC_SAIPLLSAIClkDivConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:687    .text.RCC_SAIPLLSAIClkDivConfig:00000000 RCC_SAIPLLSAIClkDivConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:701    .text.RCC_SAIPLLSAIClkDivConfig:00000018 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:704    .text.RCC_SAIBlockACLKConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:710    .text.RCC_SAIBlockACLKConfig:00000000 RCC_SAIBlockACLKConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:723    .text.RCC_SAIBlockACLKConfig:00000014 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:726    .text.RCC_SAIBlockBCLKConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:732    .text.RCC_SAIBlockBCLKConfig:00000000 RCC_SAIBlockBCLKConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:745    .text.RCC_SAIBlockBCLKConfig:00000014 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:748    .text.RCC_LTDCCLKDivConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:754    .text.RCC_LTDCCLKDivConfig:00000000 RCC_LTDCCLKDivConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:767    .text.RCC_LTDCCLKDivConfig:00000014 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:770    .text.RCC_TIMCLKPresConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:776    .text.RCC_TIMCLKPresConfig:00000000 RCC_TIMCLKPresConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:786    .text.RCC_TIMCLKPresConfig:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:789    .text.RCC_AHB1PeriphClockCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:795    .text.RCC_AHB1PeriphClockCmd:00000000 RCC_AHB1PeriphClockCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:814    .text.RCC_AHB1PeriphClockCmd:00000018 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:817    .text.RCC_AHB2PeriphClockCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:823    .text.RCC_AHB2PeriphClockCmd:00000000 RCC_AHB2PeriphClockCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:842    .text.RCC_AHB2PeriphClockCmd:00000018 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:845    .text.RCC_AHB3PeriphClockCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:851    .text.RCC_AHB3PeriphClockCmd:00000000 RCC_AHB3PeriphClockCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:870    .text.RCC_AHB3PeriphClockCmd:00000018 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:873    .text.RCC_APB1PeriphClockCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:879    .text.RCC_APB1PeriphClockCmd:00000000 RCC_APB1PeriphClockCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:898    .text.RCC_APB1PeriphClockCmd:00000018 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:901    .text.RCC_APB2PeriphClockCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:907    .text.RCC_APB2PeriphClockCmd:00000000 RCC_APB2PeriphClockCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:926    .text.RCC_APB2PeriphClockCmd:00000018 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:929    .text.RCC_AHB1PeriphResetCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:935    .text.RCC_AHB1PeriphResetCmd:00000000 RCC_AHB1PeriphResetCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:954    .text.RCC_AHB1PeriphResetCmd:00000018 $d
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s 			page 26
+
+
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:957    .text.RCC_AHB2PeriphResetCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:963    .text.RCC_AHB2PeriphResetCmd:00000000 RCC_AHB2PeriphResetCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:982    .text.RCC_AHB2PeriphResetCmd:00000018 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:985    .text.RCC_AHB3PeriphResetCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:991    .text.RCC_AHB3PeriphResetCmd:00000000 RCC_AHB3PeriphResetCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:1010   .text.RCC_AHB3PeriphResetCmd:00000018 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:1013   .text.RCC_APB1PeriphResetCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:1019   .text.RCC_APB1PeriphResetCmd:00000000 RCC_APB1PeriphResetCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:1038   .text.RCC_APB1PeriphResetCmd:00000018 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:1041   .text.RCC_APB2PeriphResetCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:1047   .text.RCC_APB2PeriphResetCmd:00000000 RCC_APB2PeriphResetCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:1066   .text.RCC_APB2PeriphResetCmd:00000018 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:1069   .text.RCC_AHB1PeriphClockLPModeCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:1075   .text.RCC_AHB1PeriphClockLPModeCmd:00000000 RCC_AHB1PeriphClockLPModeCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:1094   .text.RCC_AHB1PeriphClockLPModeCmd:00000018 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:1097   .text.RCC_AHB2PeriphClockLPModeCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:1103   .text.RCC_AHB2PeriphClockLPModeCmd:00000000 RCC_AHB2PeriphClockLPModeCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:1122   .text.RCC_AHB2PeriphClockLPModeCmd:00000018 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:1125   .text.RCC_AHB3PeriphClockLPModeCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:1131   .text.RCC_AHB3PeriphClockLPModeCmd:00000000 RCC_AHB3PeriphClockLPModeCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:1150   .text.RCC_AHB3PeriphClockLPModeCmd:00000018 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:1153   .text.RCC_APB1PeriphClockLPModeCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:1159   .text.RCC_APB1PeriphClockLPModeCmd:00000000 RCC_APB1PeriphClockLPModeCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:1178   .text.RCC_APB1PeriphClockLPModeCmd:00000018 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:1181   .text.RCC_APB2PeriphClockLPModeCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:1187   .text.RCC_APB2PeriphClockLPModeCmd:00000000 RCC_APB2PeriphClockLPModeCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:1206   .text.RCC_APB2PeriphClockLPModeCmd:00000018 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:1209   .text.RCC_LSEModeConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:1215   .text.RCC_LSEModeConfig:00000000 RCC_LSEModeConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:1235   .text.RCC_LSEModeConfig:0000001c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:1238   .text.RCC_ITConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:1244   .text.RCC_ITConfig:00000000 RCC_ITConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:1263   .text.RCC_ITConfig:00000018 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:1266   .text.RCC_GetFlagStatus:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:1272   .text.RCC_GetFlagStatus:00000000 RCC_GetFlagStatus
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:1304   .text.RCC_GetFlagStatus:00000030 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:1307   .text.RCC_WaitForHSEStartUp:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:1313   .text.RCC_WaitForHSEStartUp:00000000 RCC_WaitForHSEStartUp
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:1342   .text.RCC_ClearFlag:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:1348   .text.RCC_ClearFlag:00000000 RCC_ClearFlag
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:1360   .text.RCC_ClearFlag:0000000c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:1363   .text.RCC_GetITStatus:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:1369   .text.RCC_GetITStatus:00000000 RCC_GetITStatus
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:1385   .text.RCC_GetITStatus:00000010 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:1388   .text.RCC_ClearITPendingBit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:1394   .text.RCC_ClearITPendingBit:00000000 RCC_ClearITPendingBit
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:1404   .text.RCC_ClearITPendingBit:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccXCIiIJ.s:1407   .rodata.APBAHBPrescTable:00000000 $d
+
+NO UNDEFINED SYMBOLS

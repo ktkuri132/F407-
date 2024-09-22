@@ -1,0 +1,854 @@
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccDwJtk8.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"stm32f4xx_fsmc.c"
+  16              		.text
+  17              		.section	.text.FSMC_NORSRAMDeInit,"ax",%progbits
+  18              		.align	1
+  19              		.global	FSMC_NORSRAMDeInit
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  24              	FSMC_NORSRAMDeInit:
+  25              		@ args = 0, pretend = 0, frame = 0
+  26              		@ frame_needed = 0, uses_anonymous_args = 0
+  27              		@ link register save eliminated.
+  28 0000 0346     		mov	r3, r0
+  29 0002 88B9     		cbnz	r0, .L2
+  30 0004 4FF02042 		mov	r2, #-1610612736
+  31 0008 43F2DB01 		movw	r1, #12507
+  32 000c 42F82010 		str	r1, [r2, r0, lsl #2]
+  33              	.L3:
+  34 0010 581C     		adds	r0, r3, #1
+  35 0012 6FF07042 		mvn	r2, #-268435456
+  36 0016 4FF02041 		mov	r1, #-1610612736
+  37 001a 41F82020 		str	r2, [r1, r0, lsl #2]
+  38 001e 9B00     		lsls	r3, r3, #2
+  39 0020 0B44     		add	r3, r3, r1
+  40 0022 C3F80421 		str	r2, [r3, #260]
+  41 0026 7047     		bx	lr
+  42              	.L2:
+  43 0028 4FF02042 		mov	r2, #-1610612736
+  44 002c 43F2D201 		movw	r1, #12498
+  45 0030 42F82010 		str	r1, [r2, r0, lsl #2]
+  46 0034 ECE7     		b	.L3
+  48              		.section	.text.FSMC_NORSRAMInit,"ax",%progbits
+  49              		.align	1
+  50              		.global	FSMC_NORSRAMInit
+  51              		.syntax unified
+  52              		.thumb
+  53              		.thumb_func
+  55              	FSMC_NORSRAMInit:
+  56              		@ args = 0, pretend = 0, frame = 0
+  57              		@ frame_needed = 0, uses_anonymous_args = 0
+  58              		@ link register save eliminated.
+  59 0000 4368     		ldr	r3, [r0, #4]
+  60 0002 8268     		ldr	r2, [r0, #8]
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccDwJtk8.s 			page 2
+
+
+  61 0004 1343     		orrs	r3, r3, r2
+  62 0006 C268     		ldr	r2, [r0, #12]
+  63 0008 1343     		orrs	r3, r3, r2
+  64 000a 0269     		ldr	r2, [r0, #16]
+  65 000c 1343     		orrs	r3, r3, r2
+  66 000e 4269     		ldr	r2, [r0, #20]
+  67 0010 1343     		orrs	r3, r3, r2
+  68 0012 8269     		ldr	r2, [r0, #24]
+  69 0014 1343     		orrs	r3, r3, r2
+  70 0016 C269     		ldr	r2, [r0, #28]
+  71 0018 1343     		orrs	r3, r3, r2
+  72 001a 026A     		ldr	r2, [r0, #32]
+  73 001c 1343     		orrs	r3, r3, r2
+  74 001e 426A     		ldr	r2, [r0, #36]
+  75 0020 1343     		orrs	r3, r3, r2
+  76 0022 826A     		ldr	r2, [r0, #40]
+  77 0024 1343     		orrs	r3, r3, r2
+  78 0026 C26A     		ldr	r2, [r0, #44]
+  79 0028 1343     		orrs	r3, r3, r2
+  80 002a 026B     		ldr	r2, [r0, #48]
+  81 002c 0168     		ldr	r1, [r0]
+  82 002e 1343     		orrs	r3, r3, r2
+  83 0030 4FF02042 		mov	r2, #-1610612736
+  84 0034 42F82130 		str	r3, [r2, r1, lsl #2]
+  85 0038 8368     		ldr	r3, [r0, #8]
+  86 003a 082B     		cmp	r3, #8
+  87 003c 25D0     		beq	.L8
+  88              	.L5:
+  89 003e 426B     		ldr	r2, [r0, #52]
+  90 0040 1368     		ldr	r3, [r2]
+  91 0042 5168     		ldr	r1, [r2, #4]
+  92 0044 43EA0113 		orr	r3, r3, r1, lsl #4
+  93 0048 9168     		ldr	r1, [r2, #8]
+  94 004a 43EA0123 		orr	r3, r3, r1, lsl #8
+  95 004e D168     		ldr	r1, [r2, #12]
+  96 0050 43EA0143 		orr	r3, r3, r1, lsl #16
+  97 0054 1169     		ldr	r1, [r2, #16]
+  98 0056 43EA0153 		orr	r3, r3, r1, lsl #20
+  99 005a 5169     		ldr	r1, [r2, #20]
+ 100 005c 43EA0163 		orr	r3, r3, r1, lsl #24
+ 101 0060 9169     		ldr	r1, [r2, #24]
+ 102 0062 0268     		ldr	r2, [r0]
+ 103 0064 0132     		adds	r2, r2, #1
+ 104 0066 0B43     		orrs	r3, r3, r1
+ 105 0068 4FF02041 		mov	r1, #-1610612736
+ 106 006c 41F82230 		str	r3, [r1, r2, lsl #2]
+ 107 0070 C36A     		ldr	r3, [r0, #44]
+ 108 0072 B3F5804F 		cmp	r3, #16384
+ 109 0076 10D0     		beq	.L9
+ 110 0078 0368     		ldr	r3, [r0]
+ 111 007a 9B00     		lsls	r3, r3, #2
+ 112 007c 03F12043 		add	r3, r3, #-1610612736
+ 113 0080 6FF07042 		mvn	r2, #-268435456
+ 114 0084 C3F80421 		str	r2, [r3, #260]
+ 115 0088 7047     		bx	lr
+ 116              	.L8:
+ 117 008a 0168     		ldr	r1, [r0]
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccDwJtk8.s 			page 3
+
+
+ 118 008c 52F82130 		ldr	r3, [r2, r1, lsl #2]
+ 119 0090 43F04003 		orr	r3, r3, #64
+ 120 0094 42F82130 		str	r3, [r2, r1, lsl #2]
+ 121 0098 D1E7     		b	.L5
+ 122              	.L9:
+ 123 009a 826B     		ldr	r2, [r0, #56]
+ 124 009c 1368     		ldr	r3, [r2]
+ 125 009e 5168     		ldr	r1, [r2, #4]
+ 126 00a0 43EA0113 		orr	r3, r3, r1, lsl #4
+ 127 00a4 9168     		ldr	r1, [r2, #8]
+ 128 00a6 43EA0123 		orr	r3, r3, r1, lsl #8
+ 129 00aa 1169     		ldr	r1, [r2, #16]
+ 130 00ac 43EA0153 		orr	r3, r3, r1, lsl #20
+ 131 00b0 5169     		ldr	r1, [r2, #20]
+ 132 00b2 43EA0163 		orr	r3, r3, r1, lsl #24
+ 133 00b6 9169     		ldr	r1, [r2, #24]
+ 134 00b8 0268     		ldr	r2, [r0]
+ 135 00ba 0B43     		orrs	r3, r3, r1
+ 136 00bc 9200     		lsls	r2, r2, #2
+ 137 00be 02F12042 		add	r2, r2, #-1610612736
+ 138 00c2 C2F80431 		str	r3, [r2, #260]
+ 139 00c6 7047     		bx	lr
+ 141              		.section	.text.FSMC_NORSRAMStructInit,"ax",%progbits
+ 142              		.align	1
+ 143              		.global	FSMC_NORSRAMStructInit
+ 144              		.syntax unified
+ 145              		.thumb
+ 146              		.thumb_func
+ 148              	FSMC_NORSRAMStructInit:
+ 149              		@ args = 0, pretend = 0, frame = 0
+ 150              		@ frame_needed = 0, uses_anonymous_args = 0
+ 151              		@ link register save eliminated.
+ 152 0000 0023     		movs	r3, #0
+ 153 0002 0360     		str	r3, [r0]
+ 154 0004 0222     		movs	r2, #2
+ 155 0006 4260     		str	r2, [r0, #4]
+ 156 0008 8360     		str	r3, [r0, #8]
+ 157 000a C360     		str	r3, [r0, #12]
+ 158 000c 0361     		str	r3, [r0, #16]
+ 159 000e 4361     		str	r3, [r0, #20]
+ 160 0010 8361     		str	r3, [r0, #24]
+ 161 0012 C361     		str	r3, [r0, #28]
+ 162 0014 0362     		str	r3, [r0, #32]
+ 163 0016 4FF48052 		mov	r2, #4096
+ 164 001a 4262     		str	r2, [r0, #36]
+ 165 001c 4FF40052 		mov	r2, #8192
+ 166 0020 8262     		str	r2, [r0, #40]
+ 167 0022 C362     		str	r3, [r0, #44]
+ 168 0024 0363     		str	r3, [r0, #48]
+ 169 0026 024B     		ldr	r3, .L11
+ 170 0028 4363     		str	r3, [r0, #52]
+ 171 002a 8363     		str	r3, [r0, #56]
+ 172 002c 7047     		bx	lr
+ 173              	.L12:
+ 174 002e 00BF     		.align	2
+ 175              	.L11:
+ 176 0030 00000000 		.word	FSMC_DefaultTimingStruct
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccDwJtk8.s 			page 4
+
+
+ 178              		.section	.text.FSMC_NORSRAMCmd,"ax",%progbits
+ 179              		.align	1
+ 180              		.global	FSMC_NORSRAMCmd
+ 181              		.syntax unified
+ 182              		.thumb
+ 183              		.thumb_func
+ 185              	FSMC_NORSRAMCmd:
+ 186              		@ args = 0, pretend = 0, frame = 0
+ 187              		@ frame_needed = 0, uses_anonymous_args = 0
+ 188              		@ link register save eliminated.
+ 189 0000 41B1     		cbz	r1, .L14
+ 190 0002 4FF02042 		mov	r2, #-1610612736
+ 191 0006 52F82030 		ldr	r3, [r2, r0, lsl #2]
+ 192 000a 43F00103 		orr	r3, r3, #1
+ 193 000e 42F82030 		str	r3, [r2, r0, lsl #2]
+ 194 0012 7047     		bx	lr
+ 195              	.L14:
+ 196 0014 4FF02042 		mov	r2, #-1610612736
+ 197 0018 52F82010 		ldr	r1, [r2, r0, lsl #2]
+ 198 001c 024B     		ldr	r3, .L16
+ 199 001e 0B40     		ands	r3, r3, r1
+ 200 0020 42F82030 		str	r3, [r2, r0, lsl #2]
+ 201 0024 7047     		bx	lr
+ 202              	.L17:
+ 203 0026 00BF     		.align	2
+ 204              	.L16:
+ 205 0028 FEFF0F00 		.word	1048574
+ 207              		.section	.text.FSMC_NANDDeInit,"ax",%progbits
+ 208              		.align	1
+ 209              		.global	FSMC_NANDDeInit
+ 210              		.syntax unified
+ 211              		.thumb
+ 212              		.thumb_func
+ 214              	FSMC_NANDDeInit:
+ 215              		@ args = 0, pretend = 0, frame = 0
+ 216              		@ frame_needed = 0, uses_anonymous_args = 0
+ 217              		@ link register save eliminated.
+ 218 0000 1028     		cmp	r0, #16
+ 219 0002 0ED0     		beq	.L21
+ 220 0004 4FF02043 		mov	r3, #-1610612736
+ 221 0008 1822     		movs	r2, #24
+ 222 000a C3F88020 		str	r2, [r3, #128]
+ 223 000e 4022     		movs	r2, #64
+ 224 0010 C3F88420 		str	r2, [r3, #132]
+ 225 0014 4FF0FC32 		mov	r2, #-50529028
+ 226 0018 C3F88820 		str	r2, [r3, #136]
+ 227 001c C3F88C20 		str	r2, [r3, #140]
+ 228 0020 7047     		bx	lr
+ 229              	.L21:
+ 230 0022 4FF02043 		mov	r3, #-1610612736
+ 231 0026 1822     		movs	r2, #24
+ 232 0028 1A66     		str	r2, [r3, #96]
+ 233 002a 4022     		movs	r2, #64
+ 234 002c 5A66     		str	r2, [r3, #100]
+ 235 002e 4FF0FC32 		mov	r2, #-50529028
+ 236 0032 9A66     		str	r2, [r3, #104]
+ 237 0034 DA66     		str	r2, [r3, #108]
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccDwJtk8.s 			page 5
+
+
+ 238 0036 7047     		bx	lr
+ 240              		.section	.text.FSMC_NANDInit,"ax",%progbits
+ 241              		.align	1
+ 242              		.global	FSMC_NANDInit
+ 243              		.syntax unified
+ 244              		.thumb
+ 245              		.thumb_func
+ 247              	FSMC_NANDInit:
+ 248              		@ args = 0, pretend = 0, frame = 0
+ 249              		@ frame_needed = 0, uses_anonymous_args = 0
+ 250              		@ link register save eliminated.
+ 251 0000 30B4     		push	{r4, r5}
+ 252 0002 4368     		ldr	r3, [r0, #4]
+ 253 0004 8268     		ldr	r2, [r0, #8]
+ 254 0006 1343     		orrs	r3, r3, r2
+ 255 0008 C268     		ldr	r2, [r0, #12]
+ 256 000a 1343     		orrs	r3, r3, r2
+ 257 000c 0269     		ldr	r2, [r0, #16]
+ 258 000e 1343     		orrs	r3, r3, r2
+ 259 0010 4269     		ldr	r2, [r0, #20]
+ 260 0012 43EA4223 		orr	r3, r3, r2, lsl #9
+ 261 0016 8269     		ldr	r2, [r0, #24]
+ 262 0018 43EA4233 		orr	r3, r3, r2, lsl #13
+ 263 001c 43F00803 		orr	r3, r3, #8
+ 264 0020 C469     		ldr	r4, [r0, #28]
+ 265 0022 2268     		ldr	r2, [r4]
+ 266 0024 6168     		ldr	r1, [r4, #4]
+ 267 0026 42EA0121 		orr	r1, r2, r1, lsl #8
+ 268 002a A268     		ldr	r2, [r4, #8]
+ 269 002c 41EA0241 		orr	r1, r1, r2, lsl #16
+ 270 0030 E268     		ldr	r2, [r4, #12]
+ 271 0032 41EA0261 		orr	r1, r1, r2, lsl #24
+ 272 0036 046A     		ldr	r4, [r0, #32]
+ 273 0038 2268     		ldr	r2, [r4]
+ 274 003a 6568     		ldr	r5, [r4, #4]
+ 275 003c 42EA0522 		orr	r2, r2, r5, lsl #8
+ 276 0040 A568     		ldr	r5, [r4, #8]
+ 277 0042 42EA0542 		orr	r2, r2, r5, lsl #16
+ 278 0046 E468     		ldr	r4, [r4, #12]
+ 279 0048 42EA0462 		orr	r2, r2, r4, lsl #24
+ 280 004c 0068     		ldr	r0, [r0]
+ 281 004e 1028     		cmp	r0, #16
+ 282 0050 09D0     		beq	.L26
+ 283 0052 4FF02040 		mov	r0, #-1610612736
+ 284 0056 C0F88030 		str	r3, [r0, #128]
+ 285 005a C0F88810 		str	r1, [r0, #136]
+ 286 005e C0F88C20 		str	r2, [r0, #140]
+ 287              	.L22:
+ 288 0062 30BC     		pop	{r4, r5}
+ 289 0064 7047     		bx	lr
+ 290              	.L26:
+ 291 0066 4FF02040 		mov	r0, #-1610612736
+ 292 006a 0366     		str	r3, [r0, #96]
+ 293 006c 8166     		str	r1, [r0, #104]
+ 294 006e C266     		str	r2, [r0, #108]
+ 295 0070 F7E7     		b	.L22
+ 297              		.section	.text.FSMC_NANDStructInit,"ax",%progbits
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccDwJtk8.s 			page 6
+
+
+ 298              		.align	1
+ 299              		.global	FSMC_NANDStructInit
+ 300              		.syntax unified
+ 301              		.thumb
+ 302              		.thumb_func
+ 304              	FSMC_NANDStructInit:
+ 305              		@ args = 0, pretend = 0, frame = 0
+ 306              		@ frame_needed = 0, uses_anonymous_args = 0
+ 307              		@ link register save eliminated.
+ 308 0000 1023     		movs	r3, #16
+ 309 0002 0360     		str	r3, [r0]
+ 310 0004 0023     		movs	r3, #0
+ 311 0006 4360     		str	r3, [r0, #4]
+ 312 0008 8360     		str	r3, [r0, #8]
+ 313 000a C360     		str	r3, [r0, #12]
+ 314 000c 0361     		str	r3, [r0, #16]
+ 315 000e 4361     		str	r3, [r0, #20]
+ 316 0010 8361     		str	r3, [r0, #24]
+ 317 0012 C269     		ldr	r2, [r0, #28]
+ 318 0014 FC23     		movs	r3, #252
+ 319 0016 1360     		str	r3, [r2]
+ 320 0018 C269     		ldr	r2, [r0, #28]
+ 321 001a 5360     		str	r3, [r2, #4]
+ 322 001c C269     		ldr	r2, [r0, #28]
+ 323 001e 9360     		str	r3, [r2, #8]
+ 324 0020 C269     		ldr	r2, [r0, #28]
+ 325 0022 D360     		str	r3, [r2, #12]
+ 326 0024 026A     		ldr	r2, [r0, #32]
+ 327 0026 1360     		str	r3, [r2]
+ 328 0028 026A     		ldr	r2, [r0, #32]
+ 329 002a 5360     		str	r3, [r2, #4]
+ 330 002c 026A     		ldr	r2, [r0, #32]
+ 331 002e 9360     		str	r3, [r2, #8]
+ 332 0030 026A     		ldr	r2, [r0, #32]
+ 333 0032 D360     		str	r3, [r2, #12]
+ 334 0034 7047     		bx	lr
+ 336              		.section	.text.FSMC_NANDCmd,"ax",%progbits
+ 337              		.align	1
+ 338              		.global	FSMC_NANDCmd
+ 339              		.syntax unified
+ 340              		.thumb
+ 341              		.thumb_func
+ 343              	FSMC_NANDCmd:
+ 344              		@ args = 0, pretend = 0, frame = 0
+ 345              		@ frame_needed = 0, uses_anonymous_args = 0
+ 346              		@ link register save eliminated.
+ 347 0000 89B1     		cbz	r1, .L29
+ 348 0002 1028     		cmp	r0, #16
+ 349 0004 08D0     		beq	.L33
+ 350 0006 4FF02042 		mov	r2, #-1610612736
+ 351 000a D2F88030 		ldr	r3, [r2, #128]
+ 352 000e 43F00403 		orr	r3, r3, #4
+ 353 0012 C2F88030 		str	r3, [r2, #128]
+ 354 0016 7047     		bx	lr
+ 355              	.L33:
+ 356 0018 4FF02042 		mov	r2, #-1610612736
+ 357 001c 136E     		ldr	r3, [r2, #96]
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccDwJtk8.s 			page 7
+
+
+ 358 001e 43F00403 		orr	r3, r3, #4
+ 359 0022 1366     		str	r3, [r2, #96]
+ 360 0024 7047     		bx	lr
+ 361              	.L29:
+ 362 0026 1028     		cmp	r0, #16
+ 363 0028 08D0     		beq	.L34
+ 364 002a 4FF02042 		mov	r2, #-1610612736
+ 365 002e D2F88010 		ldr	r1, [r2, #128]
+ 366 0032 064B     		ldr	r3, .L35
+ 367 0034 0B40     		ands	r3, r3, r1
+ 368 0036 C2F88030 		str	r3, [r2, #128]
+ 369 003a 7047     		bx	lr
+ 370              	.L34:
+ 371 003c 4FF02042 		mov	r2, #-1610612736
+ 372 0040 116E     		ldr	r1, [r2, #96]
+ 373 0042 024B     		ldr	r3, .L35
+ 374 0044 0B40     		ands	r3, r3, r1
+ 375 0046 1366     		str	r3, [r2, #96]
+ 376 0048 7047     		bx	lr
+ 377              	.L36:
+ 378 004a 00BF     		.align	2
+ 379              	.L35:
+ 380 004c FBFF0F00 		.word	1048571
+ 382              		.section	.text.FSMC_NANDECCCmd,"ax",%progbits
+ 383              		.align	1
+ 384              		.global	FSMC_NANDECCCmd
+ 385              		.syntax unified
+ 386              		.thumb
+ 387              		.thumb_func
+ 389              	FSMC_NANDECCCmd:
+ 390              		@ args = 0, pretend = 0, frame = 0
+ 391              		@ frame_needed = 0, uses_anonymous_args = 0
+ 392              		@ link register save eliminated.
+ 393 0000 89B1     		cbz	r1, .L38
+ 394 0002 1028     		cmp	r0, #16
+ 395 0004 08D0     		beq	.L42
+ 396 0006 4FF02042 		mov	r2, #-1610612736
+ 397 000a D2F88030 		ldr	r3, [r2, #128]
+ 398 000e 43F04003 		orr	r3, r3, #64
+ 399 0012 C2F88030 		str	r3, [r2, #128]
+ 400 0016 7047     		bx	lr
+ 401              	.L42:
+ 402 0018 4FF02042 		mov	r2, #-1610612736
+ 403 001c 136E     		ldr	r3, [r2, #96]
+ 404 001e 43F04003 		orr	r3, r3, #64
+ 405 0022 1366     		str	r3, [r2, #96]
+ 406 0024 7047     		bx	lr
+ 407              	.L38:
+ 408 0026 1028     		cmp	r0, #16
+ 409 0028 08D0     		beq	.L43
+ 410 002a 4FF02042 		mov	r2, #-1610612736
+ 411 002e D2F88010 		ldr	r1, [r2, #128]
+ 412 0032 064B     		ldr	r3, .L44
+ 413 0034 0B40     		ands	r3, r3, r1
+ 414 0036 C2F88030 		str	r3, [r2, #128]
+ 415 003a 7047     		bx	lr
+ 416              	.L43:
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccDwJtk8.s 			page 8
+
+
+ 417 003c 4FF02042 		mov	r2, #-1610612736
+ 418 0040 116E     		ldr	r1, [r2, #96]
+ 419 0042 024B     		ldr	r3, .L44
+ 420 0044 0B40     		ands	r3, r3, r1
+ 421 0046 1366     		str	r3, [r2, #96]
+ 422 0048 7047     		bx	lr
+ 423              	.L45:
+ 424 004a 00BF     		.align	2
+ 425              	.L44:
+ 426 004c BFFF0F00 		.word	1048511
+ 428              		.section	.text.FSMC_GetECC,"ax",%progbits
+ 429              		.align	1
+ 430              		.global	FSMC_GetECC
+ 431              		.syntax unified
+ 432              		.thumb
+ 433              		.thumb_func
+ 435              	FSMC_GetECC:
+ 436              		@ args = 0, pretend = 0, frame = 0
+ 437              		@ frame_needed = 0, uses_anonymous_args = 0
+ 438              		@ link register save eliminated.
+ 439 0000 1028     		cmp	r0, #16
+ 440 0002 04D0     		beq	.L49
+ 441 0004 4FF02043 		mov	r3, #-1610612736
+ 442 0008 D3F89400 		ldr	r0, [r3, #148]
+ 443 000c 7047     		bx	lr
+ 444              	.L49:
+ 445 000e 4FF02043 		mov	r3, #-1610612736
+ 446 0012 586F     		ldr	r0, [r3, #116]
+ 447 0014 7047     		bx	lr
+ 449              		.section	.text.FSMC_PCCARDDeInit,"ax",%progbits
+ 450              		.align	1
+ 451              		.global	FSMC_PCCARDDeInit
+ 452              		.syntax unified
+ 453              		.thumb
+ 454              		.thumb_func
+ 456              	FSMC_PCCARDDeInit:
+ 457              		@ args = 0, pretend = 0, frame = 0
+ 458              		@ frame_needed = 0, uses_anonymous_args = 0
+ 459              		@ link register save eliminated.
+ 460 0000 4FF02043 		mov	r3, #-1610612736
+ 461 0004 1822     		movs	r2, #24
+ 462 0006 C3F8A020 		str	r2, [r3, #160]
+ 463 000a 0022     		movs	r2, #0
+ 464 000c C3F8A420 		str	r2, [r3, #164]
+ 465 0010 4FF0FC32 		mov	r2, #-50529028
+ 466 0014 C3F8A820 		str	r2, [r3, #168]
+ 467 0018 C3F8AC20 		str	r2, [r3, #172]
+ 468 001c C3F8B020 		str	r2, [r3, #176]
+ 469 0020 7047     		bx	lr
+ 471              		.section	.text.FSMC_PCCARDInit,"ax",%progbits
+ 472              		.align	1
+ 473              		.global	FSMC_PCCARDInit
+ 474              		.syntax unified
+ 475              		.thumb
+ 476              		.thumb_func
+ 478              	FSMC_PCCARDInit:
+ 479              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccDwJtk8.s 			page 9
+
+
+ 480              		@ frame_needed = 0, uses_anonymous_args = 0
+ 481              		@ link register save eliminated.
+ 482 0000 10B4     		push	{r4}
+ 483 0002 0368     		ldr	r3, [r0]
+ 484 0004 4268     		ldr	r2, [r0, #4]
+ 485 0006 43EA4223 		orr	r3, r3, r2, lsl #9
+ 486 000a 8268     		ldr	r2, [r0, #8]
+ 487 000c 43EA4233 		orr	r3, r3, r2, lsl #13
+ 488 0010 43F01003 		orr	r3, r3, #16
+ 489 0014 4FF02042 		mov	r2, #-1610612736
+ 490 0018 C2F8A030 		str	r3, [r2, #160]
+ 491 001c C168     		ldr	r1, [r0, #12]
+ 492 001e 0B68     		ldr	r3, [r1]
+ 493 0020 4C68     		ldr	r4, [r1, #4]
+ 494 0022 43EA0423 		orr	r3, r3, r4, lsl #8
+ 495 0026 8C68     		ldr	r4, [r1, #8]
+ 496 0028 43EA0443 		orr	r3, r3, r4, lsl #16
+ 497 002c C968     		ldr	r1, [r1, #12]
+ 498 002e 43EA0163 		orr	r3, r3, r1, lsl #24
+ 499 0032 C2F8A830 		str	r3, [r2, #168]
+ 500 0036 0169     		ldr	r1, [r0, #16]
+ 501 0038 0B68     		ldr	r3, [r1]
+ 502 003a 4C68     		ldr	r4, [r1, #4]
+ 503 003c 43EA0423 		orr	r3, r3, r4, lsl #8
+ 504 0040 8C68     		ldr	r4, [r1, #8]
+ 505 0042 43EA0443 		orr	r3, r3, r4, lsl #16
+ 506 0046 C968     		ldr	r1, [r1, #12]
+ 507 0048 43EA0163 		orr	r3, r3, r1, lsl #24
+ 508 004c C2F8AC30 		str	r3, [r2, #172]
+ 509 0050 4169     		ldr	r1, [r0, #20]
+ 510 0052 0B68     		ldr	r3, [r1]
+ 511 0054 4868     		ldr	r0, [r1, #4]
+ 512 0056 43EA0023 		orr	r3, r3, r0, lsl #8
+ 513 005a 8868     		ldr	r0, [r1, #8]
+ 514 005c 43EA0043 		orr	r3, r3, r0, lsl #16
+ 515 0060 C968     		ldr	r1, [r1, #12]
+ 516 0062 43EA0163 		orr	r3, r3, r1, lsl #24
+ 517 0066 C2F8B030 		str	r3, [r2, #176]
+ 518 006a 5DF8044B 		ldr	r4, [sp], #4
+ 519 006e 7047     		bx	lr
+ 521              		.section	.text.FSMC_PCCARDStructInit,"ax",%progbits
+ 522              		.align	1
+ 523              		.global	FSMC_PCCARDStructInit
+ 524              		.syntax unified
+ 525              		.thumb
+ 526              		.thumb_func
+ 528              	FSMC_PCCARDStructInit:
+ 529              		@ args = 0, pretend = 0, frame = 0
+ 530              		@ frame_needed = 0, uses_anonymous_args = 0
+ 531              		@ link register save eliminated.
+ 532 0000 0023     		movs	r3, #0
+ 533 0002 0360     		str	r3, [r0]
+ 534 0004 4360     		str	r3, [r0, #4]
+ 535 0006 8360     		str	r3, [r0, #8]
+ 536 0008 C268     		ldr	r2, [r0, #12]
+ 537 000a FC23     		movs	r3, #252
+ 538 000c 1360     		str	r3, [r2]
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccDwJtk8.s 			page 10
+
+
+ 539 000e C268     		ldr	r2, [r0, #12]
+ 540 0010 5360     		str	r3, [r2, #4]
+ 541 0012 C268     		ldr	r2, [r0, #12]
+ 542 0014 9360     		str	r3, [r2, #8]
+ 543 0016 C268     		ldr	r2, [r0, #12]
+ 544 0018 D360     		str	r3, [r2, #12]
+ 545 001a 0269     		ldr	r2, [r0, #16]
+ 546 001c 1360     		str	r3, [r2]
+ 547 001e 0269     		ldr	r2, [r0, #16]
+ 548 0020 5360     		str	r3, [r2, #4]
+ 549 0022 0269     		ldr	r2, [r0, #16]
+ 550 0024 9360     		str	r3, [r2, #8]
+ 551 0026 0269     		ldr	r2, [r0, #16]
+ 552 0028 D360     		str	r3, [r2, #12]
+ 553 002a 4269     		ldr	r2, [r0, #20]
+ 554 002c 1360     		str	r3, [r2]
+ 555 002e 4269     		ldr	r2, [r0, #20]
+ 556 0030 5360     		str	r3, [r2, #4]
+ 557 0032 4269     		ldr	r2, [r0, #20]
+ 558 0034 9360     		str	r3, [r2, #8]
+ 559 0036 4269     		ldr	r2, [r0, #20]
+ 560 0038 D360     		str	r3, [r2, #12]
+ 561 003a 7047     		bx	lr
+ 563              		.section	.text.FSMC_PCCARDCmd,"ax",%progbits
+ 564              		.align	1
+ 565              		.global	FSMC_PCCARDCmd
+ 566              		.syntax unified
+ 567              		.thumb
+ 568              		.thumb_func
+ 570              	FSMC_PCCARDCmd:
+ 571              		@ args = 0, pretend = 0, frame = 0
+ 572              		@ frame_needed = 0, uses_anonymous_args = 0
+ 573              		@ link register save eliminated.
+ 574 0000 40B1     		cbz	r0, .L55
+ 575 0002 4FF02042 		mov	r2, #-1610612736
+ 576 0006 D2F8A030 		ldr	r3, [r2, #160]
+ 577 000a 43F00403 		orr	r3, r3, #4
+ 578 000e C2F8A030 		str	r3, [r2, #160]
+ 579 0012 7047     		bx	lr
+ 580              	.L55:
+ 581 0014 4FF02042 		mov	r2, #-1610612736
+ 582 0018 D2F8A010 		ldr	r1, [r2, #160]
+ 583 001c 024B     		ldr	r3, .L57
+ 584 001e 0B40     		ands	r3, r3, r1
+ 585 0020 C2F8A030 		str	r3, [r2, #160]
+ 586 0024 7047     		bx	lr
+ 587              	.L58:
+ 588 0026 00BF     		.align	2
+ 589              	.L57:
+ 590 0028 FBFF0F00 		.word	1048571
+ 592              		.section	.text.FSMC_ITConfig,"ax",%progbits
+ 593              		.align	1
+ 594              		.global	FSMC_ITConfig
+ 595              		.syntax unified
+ 596              		.thumb
+ 597              		.thumb_func
+ 599              	FSMC_ITConfig:
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccDwJtk8.s 			page 11
+
+
+ 600              		@ args = 0, pretend = 0, frame = 0
+ 601              		@ frame_needed = 0, uses_anonymous_args = 0
+ 602              		@ link register save eliminated.
+ 603 0000 D2B1     		cbz	r2, .L60
+ 604 0002 1028     		cmp	r0, #16
+ 605 0004 0AD0     		beq	.L66
+ 606 0006 B0F5807F 		cmp	r0, #256
+ 607 000a 0DD0     		beq	.L67
+ 608 000c 4FF02042 		mov	r2, #-1610612736
+ 609 0010 D2F8A430 		ldr	r3, [r2, #164]
+ 610 0014 0B43     		orrs	r3, r3, r1
+ 611 0016 C2F8A430 		str	r3, [r2, #164]
+ 612 001a 7047     		bx	lr
+ 613              	.L66:
+ 614 001c 4FF02042 		mov	r2, #-1610612736
+ 615 0020 536E     		ldr	r3, [r2, #100]
+ 616 0022 0B43     		orrs	r3, r3, r1
+ 617 0024 5366     		str	r3, [r2, #100]
+ 618 0026 7047     		bx	lr
+ 619              	.L67:
+ 620 0028 4FF02042 		mov	r2, #-1610612736
+ 621 002c D2F88430 		ldr	r3, [r2, #132]
+ 622 0030 0B43     		orrs	r3, r3, r1
+ 623 0032 C2F88430 		str	r3, [r2, #132]
+ 624 0036 7047     		bx	lr
+ 625              	.L60:
+ 626 0038 1028     		cmp	r0, #16
+ 627 003a 0BD0     		beq	.L68
+ 628 003c B0F5807F 		cmp	r0, #256
+ 629 0040 0FD0     		beq	.L69
+ 630 0042 4FF02042 		mov	r2, #-1610612736
+ 631 0046 D2F8A430 		ldr	r3, [r2, #164]
+ 632 004a 23EA0103 		bic	r3, r3, r1
+ 633 004e C2F8A430 		str	r3, [r2, #164]
+ 634 0052 7047     		bx	lr
+ 635              	.L68:
+ 636 0054 4FF02042 		mov	r2, #-1610612736
+ 637 0058 536E     		ldr	r3, [r2, #100]
+ 638 005a 23EA0103 		bic	r3, r3, r1
+ 639 005e 5366     		str	r3, [r2, #100]
+ 640 0060 7047     		bx	lr
+ 641              	.L69:
+ 642 0062 4FF02042 		mov	r2, #-1610612736
+ 643 0066 D2F88430 		ldr	r3, [r2, #132]
+ 644 006a 23EA0103 		bic	r3, r3, r1
+ 645 006e C2F88430 		str	r3, [r2, #132]
+ 646 0072 7047     		bx	lr
+ 648              		.section	.text.FSMC_GetFlagStatus,"ax",%progbits
+ 649              		.align	1
+ 650              		.global	FSMC_GetFlagStatus
+ 651              		.syntax unified
+ 652              		.thumb
+ 653              		.thumb_func
+ 655              	FSMC_GetFlagStatus:
+ 656              		@ args = 0, pretend = 0, frame = 0
+ 657              		@ frame_needed = 0, uses_anonymous_args = 0
+ 658              		@ link register save eliminated.
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccDwJtk8.s 			page 12
+
+
+ 659 0000 1028     		cmp	r0, #16
+ 660 0002 0AD0     		beq	.L76
+ 661 0004 B0F5807F 		cmp	r0, #256
+ 662 0008 0BD0     		beq	.L77
+ 663 000a 4FF02043 		mov	r3, #-1610612736
+ 664 000e D3F8A430 		ldr	r3, [r3, #164]
+ 665              	.L72:
+ 666 0012 0B42     		tst	r3, r1
+ 667 0014 0AD0     		beq	.L75
+ 668 0016 0120     		movs	r0, #1
+ 669 0018 7047     		bx	lr
+ 670              	.L76:
+ 671 001a 4FF02043 		mov	r3, #-1610612736
+ 672 001e 5B6E     		ldr	r3, [r3, #100]
+ 673 0020 F7E7     		b	.L72
+ 674              	.L77:
+ 675 0022 4FF02043 		mov	r3, #-1610612736
+ 676 0026 D3F88430 		ldr	r3, [r3, #132]
+ 677 002a F2E7     		b	.L72
+ 678              	.L75:
+ 679 002c 0020     		movs	r0, #0
+ 680 002e 7047     		bx	lr
+ 682              		.section	.text.FSMC_ClearFlag,"ax",%progbits
+ 683              		.align	1
+ 684              		.global	FSMC_ClearFlag
+ 685              		.syntax unified
+ 686              		.thumb
+ 687              		.thumb_func
+ 689              	FSMC_ClearFlag:
+ 690              		@ args = 0, pretend = 0, frame = 0
+ 691              		@ frame_needed = 0, uses_anonymous_args = 0
+ 692              		@ link register save eliminated.
+ 693 0000 1028     		cmp	r0, #16
+ 694 0002 0BD0     		beq	.L82
+ 695 0004 B0F5807F 		cmp	r0, #256
+ 696 0008 0FD0     		beq	.L83
+ 697 000a 4FF02042 		mov	r2, #-1610612736
+ 698 000e D2F8A430 		ldr	r3, [r2, #164]
+ 699 0012 23EA0103 		bic	r3, r3, r1
+ 700 0016 C2F8A430 		str	r3, [r2, #164]
+ 701 001a 7047     		bx	lr
+ 702              	.L82:
+ 703 001c 4FF02042 		mov	r2, #-1610612736
+ 704 0020 536E     		ldr	r3, [r2, #100]
+ 705 0022 23EA0103 		bic	r3, r3, r1
+ 706 0026 5366     		str	r3, [r2, #100]
+ 707 0028 7047     		bx	lr
+ 708              	.L83:
+ 709 002a 4FF02042 		mov	r2, #-1610612736
+ 710 002e D2F88430 		ldr	r3, [r2, #132]
+ 711 0032 23EA0103 		bic	r3, r3, r1
+ 712 0036 C2F88430 		str	r3, [r2, #132]
+ 713 003a 7047     		bx	lr
+ 715              		.section	.text.FSMC_GetITStatus,"ax",%progbits
+ 716              		.align	1
+ 717              		.global	FSMC_GetITStatus
+ 718              		.syntax unified
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccDwJtk8.s 			page 13
+
+
+ 719              		.thumb
+ 720              		.thumb_func
+ 722              	FSMC_GetITStatus:
+ 723              		@ args = 0, pretend = 0, frame = 0
+ 724              		@ frame_needed = 0, uses_anonymous_args = 0
+ 725              		@ link register save eliminated.
+ 726 0000 1028     		cmp	r0, #16
+ 727 0002 0DD0     		beq	.L91
+ 728 0004 B0F5807F 		cmp	r0, #256
+ 729 0008 0ED0     		beq	.L92
+ 730 000a 4FF02043 		mov	r3, #-1610612736
+ 731 000e D3F8A430 		ldr	r3, [r3, #164]
+ 732              	.L86:
+ 733 0012 03EAD102 		and	r2, r3, r1, lsr #3
+ 734 0016 0B42     		tst	r3, r1
+ 735 0018 0BD0     		beq	.L89
+ 736 001a 62B9     		cbnz	r2, .L90
+ 737 001c 0020     		movs	r0, #0
+ 738 001e 7047     		bx	lr
+ 739              	.L91:
+ 740 0020 4FF02043 		mov	r3, #-1610612736
+ 741 0024 5B6E     		ldr	r3, [r3, #100]
+ 742 0026 F4E7     		b	.L86
+ 743              	.L92:
+ 744 0028 4FF02043 		mov	r3, #-1610612736
+ 745 002c D3F88430 		ldr	r3, [r3, #132]
+ 746 0030 EFE7     		b	.L86
+ 747              	.L89:
+ 748 0032 0020     		movs	r0, #0
+ 749 0034 7047     		bx	lr
+ 750              	.L90:
+ 751 0036 0120     		movs	r0, #1
+ 752 0038 7047     		bx	lr
+ 754              		.section	.text.FSMC_ClearITPendingBit,"ax",%progbits
+ 755              		.align	1
+ 756              		.global	FSMC_ClearITPendingBit
+ 757              		.syntax unified
+ 758              		.thumb
+ 759              		.thumb_func
+ 761              	FSMC_ClearITPendingBit:
+ 762              		@ args = 0, pretend = 0, frame = 0
+ 763              		@ frame_needed = 0, uses_anonymous_args = 0
+ 764              		@ link register save eliminated.
+ 765 0000 1028     		cmp	r0, #16
+ 766 0002 0BD0     		beq	.L97
+ 767 0004 B0F5807F 		cmp	r0, #256
+ 768 0008 0FD0     		beq	.L98
+ 769 000a 4FF02042 		mov	r2, #-1610612736
+ 770 000e D2F8A430 		ldr	r3, [r2, #164]
+ 771 0012 23EAD103 		bic	r3, r3, r1, lsr #3
+ 772 0016 C2F8A430 		str	r3, [r2, #164]
+ 773 001a 7047     		bx	lr
+ 774              	.L97:
+ 775 001c 4FF02042 		mov	r2, #-1610612736
+ 776 0020 536E     		ldr	r3, [r2, #100]
+ 777 0022 23EAD103 		bic	r3, r3, r1, lsr #3
+ 778 0026 5366     		str	r3, [r2, #100]
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccDwJtk8.s 			page 14
+
+
+ 779 0028 7047     		bx	lr
+ 780              	.L98:
+ 781 002a 4FF02042 		mov	r2, #-1610612736
+ 782 002e D2F88430 		ldr	r3, [r2, #132]
+ 783 0032 23EAD103 		bic	r3, r3, r1, lsr #3
+ 784 0036 C2F88430 		str	r3, [r2, #132]
+ 785 003a 7047     		bx	lr
+ 787              		.global	FSMC_DefaultTimingStruct
+ 788              		.section	.rodata.FSMC_DefaultTimingStruct,"a"
+ 789              		.align	2
+ 792              	FSMC_DefaultTimingStruct:
+ 793 0000 0F000000 		.word	15
+ 794 0004 0F000000 		.word	15
+ 795 0008 FF000000 		.word	255
+ 796 000c 0F000000 		.word	15
+ 797 0010 0F000000 		.word	15
+ 798 0014 0F000000 		.word	15
+ 799 0018 00000000 		.word	0
+ 800              		.ident	"GCC: (Arm GNU Toolchain 13.3.Rel1 (Build arm-13.24)) 13.3.1 20240614"
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccDwJtk8.s 			page 15
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 stm32f4xx_fsmc.c
+C:\Users\ktkuru\AppData\Local\Temp\ccDwJtk8.s:18     .text.FSMC_NORSRAMDeInit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccDwJtk8.s:24     .text.FSMC_NORSRAMDeInit:00000000 FSMC_NORSRAMDeInit
+C:\Users\ktkuru\AppData\Local\Temp\ccDwJtk8.s:49     .text.FSMC_NORSRAMInit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccDwJtk8.s:55     .text.FSMC_NORSRAMInit:00000000 FSMC_NORSRAMInit
+C:\Users\ktkuru\AppData\Local\Temp\ccDwJtk8.s:142    .text.FSMC_NORSRAMStructInit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccDwJtk8.s:148    .text.FSMC_NORSRAMStructInit:00000000 FSMC_NORSRAMStructInit
+C:\Users\ktkuru\AppData\Local\Temp\ccDwJtk8.s:176    .text.FSMC_NORSRAMStructInit:00000030 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccDwJtk8.s:792    .rodata.FSMC_DefaultTimingStruct:00000000 FSMC_DefaultTimingStruct
+C:\Users\ktkuru\AppData\Local\Temp\ccDwJtk8.s:179    .text.FSMC_NORSRAMCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccDwJtk8.s:185    .text.FSMC_NORSRAMCmd:00000000 FSMC_NORSRAMCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccDwJtk8.s:205    .text.FSMC_NORSRAMCmd:00000028 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccDwJtk8.s:208    .text.FSMC_NANDDeInit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccDwJtk8.s:214    .text.FSMC_NANDDeInit:00000000 FSMC_NANDDeInit
+C:\Users\ktkuru\AppData\Local\Temp\ccDwJtk8.s:241    .text.FSMC_NANDInit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccDwJtk8.s:247    .text.FSMC_NANDInit:00000000 FSMC_NANDInit
+C:\Users\ktkuru\AppData\Local\Temp\ccDwJtk8.s:298    .text.FSMC_NANDStructInit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccDwJtk8.s:304    .text.FSMC_NANDStructInit:00000000 FSMC_NANDStructInit
+C:\Users\ktkuru\AppData\Local\Temp\ccDwJtk8.s:337    .text.FSMC_NANDCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccDwJtk8.s:343    .text.FSMC_NANDCmd:00000000 FSMC_NANDCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccDwJtk8.s:380    .text.FSMC_NANDCmd:0000004c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccDwJtk8.s:383    .text.FSMC_NANDECCCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccDwJtk8.s:389    .text.FSMC_NANDECCCmd:00000000 FSMC_NANDECCCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccDwJtk8.s:426    .text.FSMC_NANDECCCmd:0000004c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccDwJtk8.s:429    .text.FSMC_GetECC:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccDwJtk8.s:435    .text.FSMC_GetECC:00000000 FSMC_GetECC
+C:\Users\ktkuru\AppData\Local\Temp\ccDwJtk8.s:450    .text.FSMC_PCCARDDeInit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccDwJtk8.s:456    .text.FSMC_PCCARDDeInit:00000000 FSMC_PCCARDDeInit
+C:\Users\ktkuru\AppData\Local\Temp\ccDwJtk8.s:472    .text.FSMC_PCCARDInit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccDwJtk8.s:478    .text.FSMC_PCCARDInit:00000000 FSMC_PCCARDInit
+C:\Users\ktkuru\AppData\Local\Temp\ccDwJtk8.s:522    .text.FSMC_PCCARDStructInit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccDwJtk8.s:528    .text.FSMC_PCCARDStructInit:00000000 FSMC_PCCARDStructInit
+C:\Users\ktkuru\AppData\Local\Temp\ccDwJtk8.s:564    .text.FSMC_PCCARDCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccDwJtk8.s:570    .text.FSMC_PCCARDCmd:00000000 FSMC_PCCARDCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccDwJtk8.s:590    .text.FSMC_PCCARDCmd:00000028 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccDwJtk8.s:593    .text.FSMC_ITConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccDwJtk8.s:599    .text.FSMC_ITConfig:00000000 FSMC_ITConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccDwJtk8.s:649    .text.FSMC_GetFlagStatus:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccDwJtk8.s:655    .text.FSMC_GetFlagStatus:00000000 FSMC_GetFlagStatus
+C:\Users\ktkuru\AppData\Local\Temp\ccDwJtk8.s:683    .text.FSMC_ClearFlag:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccDwJtk8.s:689    .text.FSMC_ClearFlag:00000000 FSMC_ClearFlag
+C:\Users\ktkuru\AppData\Local\Temp\ccDwJtk8.s:716    .text.FSMC_GetITStatus:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccDwJtk8.s:722    .text.FSMC_GetITStatus:00000000 FSMC_GetITStatus
+C:\Users\ktkuru\AppData\Local\Temp\ccDwJtk8.s:755    .text.FSMC_ClearITPendingBit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccDwJtk8.s:761    .text.FSMC_ClearITPendingBit:00000000 FSMC_ClearITPendingBit
+C:\Users\ktkuru\AppData\Local\Temp\ccDwJtk8.s:789    .rodata.FSMC_DefaultTimingStruct:00000000 $d
+
+NO UNDEFINED SYMBOLS

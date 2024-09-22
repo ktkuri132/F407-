@@ -1,0 +1,706 @@
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccSjfHSK.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"port.c"
+  16              		.text
+  17              		.section	.text.prvPortStartFirstTask,"ax",%progbits
+  18              		.align	1
+  19              		.syntax unified
+  20              		.thumb
+  21              		.thumb_func
+  23              	prvPortStartFirstTask:
+  24              		@ Naked Function: prologue and epilogue provided by programmer.
+  25              		@ args = 0, pretend = 0, frame = 0
+  26              		@ frame_needed = 0, uses_anonymous_args = 0
+  27              		.syntax unified
+  28              	@ 277 "RTOS/portable/GCC/ARM_CM4F/port.c" 1
+  29 0000 0848     		 ldr r0, =0xE000ED08 	
+  30 0002 0068     	 ldr r0, [r0] 			
+  31 0004 0068     	 ldr r0, [r0] 			
+  32 0006 80F30888 	 msr msp, r0			
+  33 000a 4FF00000 	 mov r0, #0			
+  34 000e 80F31488 	 msr control, r0		
+  35 0012 62B6     	 cpsie i				
+  36 0014 61B6     	 cpsie f				
+  37 0016 BFF34F8F 	 dsb					
+  38 001a BFF36F8F 	 isb					
+  39 001e 00DF     	 svc 0					
+  40 0020 00BF     	 nop					
+  41 0022 000008ED 	 .ltorg				
+  41      00E0
+  42              	
+  43              	@ 0 "" 2
+  44              		.thumb
+  45              		.syntax unified
+  47              		.section	.text.vPortEnableVFP,"ax",%progbits
+  48              		.align	1
+  49              		.syntax unified
+  50              		.thumb
+  51              		.thumb_func
+  53              	vPortEnableVFP:
+  54              		@ Naked Function: prologue and epilogue provided by programmer.
+  55              		@ args = 0, pretend = 0, frame = 0
+  56              		@ frame_needed = 0, uses_anonymous_args = 0
+  57              		.syntax unified
+  58              	@ 770 "RTOS/portable/GCC/ARM_CM4F/port.c" 1
+  59 0000 DFF80C00 			ldr.w r0, =0xE000ED88		
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccSjfHSK.s 			page 2
+
+
+  60 0004 0168     		ldr r1, [r0]				
+  61              									
+  62 0006 41F47001 		orr r1, r1, #( 0xf << 20 )	
+  63 000a 0160     		str r1, [r0]				
+  64 000c 7047     		bx r14						
+  65 000e 000088ED 		.ltorg						
+  65      00E0
+  66              	
+  67              	@ 0 "" 2
+  68              		.thumb
+  69              		.syntax unified
+  71              		.section	.rodata.prvTaskExitError.str1.4,"aMS",%progbits,1
+  72              		.align	2
+  73              	.LC0:
+  74 0000 52544F53 		.ascii	"RTOS/portable/GCC/ARM_CM4F/port.c\000"
+  74      2F706F72 
+  74      7461626C 
+  74      652F4743 
+  74      432F4152 
+  75 0022 0000     		.align	2
+  76              	.LC1:
+  77 0024 4572726F 		.ascii	"Error:%s,%d\015\012\000"
+  77      723A2573 
+  77      2C25640D 
+  77      0A00
+  78              		.section	.text.prvTaskExitError,"ax",%progbits
+  79              		.align	1
+  80              		.syntax unified
+  81              		.thumb
+  82              		.thumb_func
+  84              	prvTaskExitError:
+  85              		@ args = 0, pretend = 0, frame = 8
+  86              		@ frame_needed = 0, uses_anonymous_args = 0
+  87 0000 00B5     		push	{lr}
+  88 0002 83B0     		sub	sp, sp, #12
+  89 0004 0023     		movs	r3, #0
+  90 0006 0193     		str	r3, [sp, #4]
+  91 0008 0C4B     		ldr	r3, .L8
+  92 000a 1B68     		ldr	r3, [r3]
+  93 000c B3F1FF3F 		cmp	r3, #-1
+  94 0010 0DD1     		bne	.L7
+  95              	.L4:
+  96              		.syntax unified
+  97              	@ 198 "RTOS/portable/GCC/ARM_CM4F/portmacro.h" 1
+  98 0012 4FF05003 			mov r3, #80												
+  99 0016 83F31188 		msr basepri, r3											
+ 100 001a BFF36F8F 		isb														
+ 101 001e BFF34F8F 		dsb														
+ 102              	
+ 103              	@ 0 "" 2
+ 104              		.thumb
+ 105              		.syntax unified
+ 106              	.L5:
+ 107 0022 019B     		ldr	r3, [sp, #4]
+ 108 0024 002B     		cmp	r3, #0
+ 109 0026 FCD0     		beq	.L5
+ 110 0028 03B0     		add	sp, sp, #12
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccSjfHSK.s 			page 3
+
+
+ 111              		@ sp needed
+ 112 002a 5DF804FB 		ldr	pc, [sp], #4
+ 113              	.L7:
+ 114 002e EC22     		movs	r2, #236
+ 115 0030 0349     		ldr	r1, .L8+4
+ 116 0032 0448     		ldr	r0, .L8+8
+ 117 0034 FFF7FEFF 		bl	printf
+ 118 0038 EBE7     		b	.L4
+ 119              	.L9:
+ 120 003a 00BF     		.align	2
+ 121              	.L8:
+ 122 003c 00000000 		.word	uxCriticalNesting
+ 123 0040 00000000 		.word	.LC0
+ 124 0044 24000000 		.word	.LC1
+ 126              		.section	.text.pxPortInitialiseStack,"ax",%progbits
+ 127              		.align	1
+ 128              		.global	pxPortInitialiseStack
+ 129              		.syntax unified
+ 130              		.thumb
+ 131              		.thumb_func
+ 133              	pxPortInitialiseStack:
+ 134              		@ args = 0, pretend = 0, frame = 0
+ 135              		@ frame_needed = 0, uses_anonymous_args = 0
+ 136              		@ link register save eliminated.
+ 137 0000 4FF08073 		mov	r3, #16777216
+ 138 0004 40F8043C 		str	r3, [r0, #-4]
+ 139 0008 21F00101 		bic	r1, r1, #1
+ 140 000c 40F8081C 		str	r1, [r0, #-8]
+ 141 0010 054B     		ldr	r3, .L11
+ 142 0012 40F80C3C 		str	r3, [r0, #-12]
+ 143 0016 40F8202C 		str	r2, [r0, #-32]
+ 144 001a 6FF00203 		mvn	r3, #2
+ 145 001e 40F8243C 		str	r3, [r0, #-36]
+ 146 0022 4438     		subs	r0, r0, #68
+ 147 0024 7047     		bx	lr
+ 148              	.L12:
+ 149 0026 00BF     		.align	2
+ 150              	.L11:
+ 151 0028 00000000 		.word	prvTaskExitError
+ 153              		.section	.text.SVC_Handler,"ax",%progbits
+ 154              		.align	1
+ 155              		.global	SVC_Handler
+ 156              		.syntax unified
+ 157              		.thumb
+ 158              		.thumb_func
+ 160              	SVC_Handler:
+ 161              		@ Naked Function: prologue and epilogue provided by programmer.
+ 162              		@ args = 0, pretend = 0, frame = 0
+ 163              		@ frame_needed = 0, uses_anonymous_args = 0
+ 164              		.syntax unified
+ 165              	@ 254 "RTOS/portable/GCC/ARM_CM4F/port.c" 1
+ 166 0000 074B     			ldr	r3, pxCurrentTCBConst2		
+ 167 0002 1968     		ldr r1, [r3]					
+ 168 0004 0868     		ldr r0, [r1]					
+ 169 0006 B0E8F04F 		ldmia r0!, {r4-r11, r14}		
+ 170 000a 80F30988 		msr psp, r0						
+ 171 000e BFF36F8F 		isb								
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccSjfHSK.s 			page 4
+
+
+ 172 0012 4FF00000 		mov r0, #0 						
+ 173 0016 80F31188 		msr	basepri, r0					
+ 174 001a 7047     		bx r14							
+ 175              										
+ 176 001c AFF30080 		.align 4						
+ 177 0020 00000000 	pxCurrentTCBConst2: .word pxCurrentTCB				
+ 178              	
+ 179              	@ 0 "" 2
+ 180              		.thumb
+ 181              		.syntax unified
+ 183              		.section	.text.vPortEndScheduler,"ax",%progbits
+ 184              		.align	1
+ 185              		.global	vPortEndScheduler
+ 186              		.syntax unified
+ 187              		.thumb
+ 188              		.thumb_func
+ 190              	vPortEndScheduler:
+ 191              		@ args = 0, pretend = 0, frame = 0
+ 192              		@ frame_needed = 0, uses_anonymous_args = 0
+ 193 0000 08B5     		push	{r3, lr}
+ 194 0002 064B     		ldr	r3, .L18
+ 195 0004 1B68     		ldr	r3, [r3]
+ 196 0006 B3F57A7F 		cmp	r3, #1000
+ 197 000a 00D1     		bne	.L17
+ 198              	.L14:
+ 199 000c 08BD     		pop	{r3, pc}
+ 200              	.L17:
+ 201 000e 40F29B12 		movw	r2, #411
+ 202 0012 0349     		ldr	r1, .L18+4
+ 203 0014 0348     		ldr	r0, .L18+8
+ 204 0016 FFF7FEFF 		bl	printf
+ 205 001a F7E7     		b	.L14
+ 206              	.L19:
+ 207              		.align	2
+ 208              	.L18:
+ 209 001c 00000000 		.word	uxCriticalNesting
+ 210 0020 00000000 		.word	.LC0
+ 211 0024 24000000 		.word	.LC1
+ 213              		.section	.text.vPortEnterCritical,"ax",%progbits
+ 214              		.align	1
+ 215              		.global	vPortEnterCritical
+ 216              		.syntax unified
+ 217              		.thumb
+ 218              		.thumb_func
+ 220              	vPortEnterCritical:
+ 221              		@ args = 0, pretend = 0, frame = 0
+ 222              		@ frame_needed = 0, uses_anonymous_args = 0
+ 223 0000 08B5     		push	{r3, lr}
+ 224              		.syntax unified
+ 225              	@ 198 "RTOS/portable/GCC/ARM_CM4F/portmacro.h" 1
+ 226 0002 4FF05003 			mov r3, #80												
+ 227 0006 83F31188 		msr basepri, r3											
+ 228 000a BFF36F8F 		isb														
+ 229 000e BFF34F8F 		dsb														
+ 230              	
+ 231              	@ 0 "" 2
+ 232              		.thumb
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccSjfHSK.s 			page 5
+
+
+ 233              		.syntax unified
+ 234 0012 0A4A     		ldr	r2, .L24
+ 235 0014 1368     		ldr	r3, [r2]
+ 236 0016 0133     		adds	r3, r3, #1
+ 237 0018 1360     		str	r3, [r2]
+ 238 001a 012B     		cmp	r3, #1
+ 239 001c 00D0     		beq	.L23
+ 240              	.L20:
+ 241 001e 08BD     		pop	{r3, pc}
+ 242              	.L23:
+ 243 0020 4FF0E023 		mov	r3, #-536813568
+ 244 0024 D3F8043D 		ldr	r3, [r3, #3332]
+ 245 0028 13F0FF0F 		tst	r3, #255
+ 246 002c F7D0     		beq	.L20
+ 247 002e 40F2AB12 		movw	r2, #427
+ 248 0032 0349     		ldr	r1, .L24+4
+ 249 0034 0348     		ldr	r0, .L24+8
+ 250 0036 FFF7FEFF 		bl	printf
+ 251 003a F0E7     		b	.L20
+ 252              	.L25:
+ 253              		.align	2
+ 254              	.L24:
+ 255 003c 00000000 		.word	uxCriticalNesting
+ 256 0040 00000000 		.word	.LC0
+ 257 0044 24000000 		.word	.LC1
+ 259              		.section	.text.vPortExitCritical,"ax",%progbits
+ 260              		.align	1
+ 261              		.global	vPortExitCritical
+ 262              		.syntax unified
+ 263              		.thumb
+ 264              		.thumb_func
+ 266              	vPortExitCritical:
+ 267              		@ args = 0, pretend = 0, frame = 0
+ 268              		@ frame_needed = 0, uses_anonymous_args = 0
+ 269 0000 08B5     		push	{r3, lr}
+ 270 0002 094B     		ldr	r3, .L31
+ 271 0004 1B68     		ldr	r3, [r3]
+ 272 0006 3BB1     		cbz	r3, .L30
+ 273              	.L27:
+ 274 0008 074A     		ldr	r2, .L31
+ 275 000a 1368     		ldr	r3, [r2]
+ 276 000c 013B     		subs	r3, r3, #1
+ 277 000e 1360     		str	r3, [r2]
+ 278 0010 0BB9     		cbnz	r3, .L26
+ 279              		.syntax unified
+ 280              	@ 232 "RTOS/portable/GCC/ARM_CM4F/portmacro.h" 1
+ 281 0012 83F31188 			msr basepri, r3	
+ 282              	@ 0 "" 2
+ 283              		.thumb
+ 284              		.syntax unified
+ 285              	.L26:
+ 286 0016 08BD     		pop	{r3, pc}
+ 287              	.L30:
+ 288 0018 4FF4D972 		mov	r2, #434
+ 289 001c 0349     		ldr	r1, .L31+4
+ 290 001e 0448     		ldr	r0, .L31+8
+ 291 0020 FFF7FEFF 		bl	printf
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccSjfHSK.s 			page 6
+
+
+ 292 0024 F0E7     		b	.L27
+ 293              	.L32:
+ 294 0026 00BF     		.align	2
+ 295              	.L31:
+ 296 0028 00000000 		.word	uxCriticalNesting
+ 297 002c 00000000 		.word	.LC0
+ 298 0030 24000000 		.word	.LC1
+ 300              		.section	.text.PendSV_Handler,"ax",%progbits
+ 301              		.align	1
+ 302              		.global	PendSV_Handler
+ 303              		.syntax unified
+ 304              		.thumb
+ 305              		.thumb_func
+ 307              	PendSV_Handler:
+ 308              		@ Naked Function: prologue and epilogue provided by programmer.
+ 309              		@ args = 0, pretend = 0, frame = 0
+ 310              		@ frame_needed = 0, uses_anonymous_args = 0
+ 311              		.syntax unified
+ 312              	@ 448 "RTOS/portable/GCC/ARM_CM4F/port.c" 1
+ 313 0000 EFF30980 			mrs r0, psp							
+ 314 0004 BFF36F8F 		isb									
+ 315              											
+ 316 0008 154B     		ldr	r3, pxCurrentTCBConst			
+ 317 000a 1A68     		ldr	r2, [r3]						
+ 318              											
+ 319 000c 1EF0100F 		tst r14, #0x10						
+ 320 0010 08BF     		it eq								
+ 321 0012 20ED108A 		vstmdbeq r0!, {s16-s31}				
+ 322              											
+ 323 0016 20E9F04F 		stmdb r0!, {r4-r11, r14}			
+ 324 001a 1060     		str r0, [r2]						
+ 325              											
+ 326 001c 2DE90900 		stmdb sp!, {r0, r3}					
+ 327 0020 4FF05000 		mov r0, #80 							
+ 328 0024 80F31188 		msr basepri, r0						
+ 329 0028 BFF34F8F 		dsb									
+ 330 002c BFF36F8F 		isb									
+ 331 0030 FFF7FEFF 		bl vTaskSwitchContext				
+ 332 0034 4FF00000 		mov r0, #0							
+ 333 0038 80F31188 		msr basepri, r0						
+ 334 003c 09BC     		ldmia sp!, {r0, r3}					
+ 335              											
+ 336 003e 1968     		ldr r1, [r3]						
+ 337 0040 0868     		ldr r0, [r1]						
+ 338              											
+ 339 0042 B0E8F04F 		ldmia r0!, {r4-r11, r14}			
+ 340              											
+ 341 0046 1EF0100F 		tst r14, #0x10						
+ 342 004a 08BF     		it eq								
+ 343 004c B0EC108A 		vldmiaeq r0!, {s16-s31}				
+ 344              											
+ 345 0050 80F30988 		msr psp, r0							
+ 346 0054 BFF36F8F 		isb									
+ 347              											
+ 348              											
+ 349 0058 7047     		bx r14								
+ 350              											
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccSjfHSK.s 			page 7
+
+
+ 351 005a 00BFAFF3 		.align 4							
+ 351      0080
+ 352 0060 00000000 	pxCurrentTCBConst: .word pxCurrentTCB	
+ 353              	
+ 354              	@ 0 "" 2
+ 355              		.thumb
+ 356              		.syntax unified
+ 358              		.section	.text.SysTick_Handler,"ax",%progbits
+ 359              		.align	1
+ 360              		.global	SysTick_Handler
+ 361              		.syntax unified
+ 362              		.thumb
+ 363              		.thumb_func
+ 365              	SysTick_Handler:
+ 366              		@ args = 0, pretend = 0, frame = 0
+ 367              		@ frame_needed = 0, uses_anonymous_args = 0
+ 368 0000 08B5     		push	{r3, lr}
+ 369              		.syntax unified
+ 370              	@ 198 "RTOS/portable/GCC/ARM_CM4F/portmacro.h" 1
+ 371 0002 4FF05003 			mov r3, #80												
+ 372 0006 83F31188 		msr basepri, r3											
+ 373 000a BFF36F8F 		isb														
+ 374 000e BFF34F8F 		dsb														
+ 375              	
+ 376              	@ 0 "" 2
+ 377              		.thumb
+ 378              		.syntax unified
+ 379 0012 FFF7FEFF 		bl	xTaskIncrementTick
+ 380 0016 28B1     		cbz	r0, .L35
+ 381 0018 4FF0E023 		mov	r3, #-536813568
+ 382 001c 4FF08052 		mov	r2, #268435456
+ 383 0020 C3F8042D 		str	r2, [r3, #3332]
+ 384              	.L35:
+ 385 0024 0023     		movs	r3, #0
+ 386              		.syntax unified
+ 387              	@ 232 "RTOS/portable/GCC/ARM_CM4F/portmacro.h" 1
+ 388 0026 83F31188 			msr basepri, r3	
+ 389              	@ 0 "" 2
+ 390              		.thumb
+ 391              		.syntax unified
+ 392 002a 08BD     		pop	{r3, pc}
+ 394              		.section	.text.vPortSetupTimerInterrupt,"ax",%progbits
+ 395              		.align	1
+ 396              		.weak	vPortSetupTimerInterrupt
+ 397              		.syntax unified
+ 398              		.thumb
+ 399              		.thumb_func
+ 401              	vPortSetupTimerInterrupt:
+ 402              		@ args = 0, pretend = 0, frame = 0
+ 403              		@ frame_needed = 0, uses_anonymous_args = 0
+ 404              		@ link register save eliminated.
+ 405 0000 4FF0E022 		mov	r2, #-536813568
+ 406 0004 0023     		movs	r3, #0
+ 407 0006 1361     		str	r3, [r2, #16]
+ 408 0008 9361     		str	r3, [r2, #24]
+ 409 000a 054B     		ldr	r3, .L38
+ 410 000c 1B68     		ldr	r3, [r3]
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccSjfHSK.s 			page 8
+
+
+ 411 000e 0549     		ldr	r1, .L38+4
+ 412 0010 A1FB0313 		umull	r1, r3, r1, r3
+ 413 0014 DB09     		lsrs	r3, r3, #7
+ 414 0016 013B     		subs	r3, r3, #1
+ 415 0018 5361     		str	r3, [r2, #20]
+ 416 001a 0723     		movs	r3, #7
+ 417 001c 1361     		str	r3, [r2, #16]
+ 418 001e 7047     		bx	lr
+ 419              	.L39:
+ 420              		.align	2
+ 421              	.L38:
+ 422 0020 00000000 		.word	SystemCoreClock
+ 423 0024 D34D6210 		.word	274877907
+ 425              		.section	.text.xPortStartScheduler,"ax",%progbits
+ 426              		.align	1
+ 427              		.global	xPortStartScheduler
+ 428              		.syntax unified
+ 429              		.thumb
+ 430              		.thumb_func
+ 432              	xPortStartScheduler:
+ 433              		@ args = 0, pretend = 0, frame = 8
+ 434              		@ frame_needed = 0, uses_anonymous_args = 0
+ 435 0000 30B5     		push	{r4, r5, lr}
+ 436 0002 83B0     		sub	sp, sp, #12
+ 437 0004 4FF0E023 		mov	r3, #-536813568
+ 438 0008 D3F8002D 		ldr	r2, [r3, #3328]
+ 439 000c 3F4B     		ldr	r3, .L52
+ 440 000e 9A42     		cmp	r2, r3
+ 441 0010 1AD0     		beq	.L48
+ 442              	.L41:
+ 443 0012 4FF0E023 		mov	r3, #-536813568
+ 444 0016 D3F8002D 		ldr	r2, [r3, #3328]
+ 445 001a 3D4B     		ldr	r3, .L52+4
+ 446 001c 9A42     		cmp	r2, r3
+ 447 001e 1AD0     		beq	.L49
+ 448              	.L42:
+ 449 0020 3C4B     		ldr	r3, .L52+8
+ 450 0022 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 451 0024 D2B2     		uxtb	r2, r2
+ 452 0026 0192     		str	r2, [sp, #4]
+ 453 0028 FF22     		movs	r2, #255
+ 454 002a 1A70     		strb	r2, [r3]
+ 455 002c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 456 002e DBB2     		uxtb	r3, r3
+ 457 0030 8DF80330 		strb	r3, [sp, #3]
+ 458 0034 9DF80330 		ldrb	r3, [sp, #3]	@ zero_extendqisi2
+ 459 0038 03F05003 		and	r3, r3, #80
+ 460 003c 364A     		ldr	r2, .L52+12
+ 461 003e 1370     		strb	r3, [r2]
+ 462 0040 364B     		ldr	r3, .L52+16
+ 463 0042 0722     		movs	r2, #7
+ 464 0044 1A60     		str	r2, [r3]
+ 465 0046 17E0     		b	.L43
+ 466              	.L48:
+ 467 0048 40F23312 		movw	r2, #307
+ 468 004c 3449     		ldr	r1, .L52+20
+ 469 004e 3548     		ldr	r0, .L52+24
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccSjfHSK.s 			page 9
+
+
+ 470 0050 FFF7FEFF 		bl	printf
+ 471 0054 DDE7     		b	.L41
+ 472              	.L49:
+ 473 0056 4FF49A72 		mov	r2, #308
+ 474 005a 3149     		ldr	r1, .L52+20
+ 475 005c 3148     		ldr	r0, .L52+24
+ 476 005e FFF7FEFF 		bl	printf
+ 477 0062 DDE7     		b	.L42
+ 478              	.L44:
+ 479 0064 2D4A     		ldr	r2, .L52+16
+ 480 0066 1368     		ldr	r3, [r2]
+ 481 0068 013B     		subs	r3, r3, #1
+ 482 006a 1360     		str	r3, [r2]
+ 483 006c 9DF80330 		ldrb	r3, [sp, #3]	@ zero_extendqisi2
+ 484 0070 5B00     		lsls	r3, r3, #1
+ 485 0072 DBB2     		uxtb	r3, r3
+ 486 0074 8DF80330 		strb	r3, [sp, #3]
+ 487              	.L43:
+ 488 0078 9DF80330 		ldrb	r3, [sp, #3]	@ zero_extendqisi2
+ 489 007c 13F0800F 		tst	r3, #128
+ 490 0080 F0D1     		bne	.L44
+ 491 0082 264B     		ldr	r3, .L52+16
+ 492 0084 1B68     		ldr	r3, [r3]
+ 493 0086 032B     		cmp	r3, #3
+ 494 0088 32D1     		bne	.L50
+ 495              	.L45:
+ 496 008a 244B     		ldr	r3, .L52+16
+ 497 008c 1B68     		ldr	r3, [r3]
+ 498 008e 032B     		cmp	r3, #3
+ 499 0090 35D1     		bne	.L51
+ 500              	.L46:
+ 501 0092 224A     		ldr	r2, .L52+16
+ 502 0094 1368     		ldr	r3, [r2]
+ 503 0096 1B02     		lsls	r3, r3, #8
+ 504 0098 1360     		str	r3, [r2]
+ 505 009a 03F4E063 		and	r3, r3, #1792
+ 506 009e 1360     		str	r3, [r2]
+ 507 00a0 019B     		ldr	r3, [sp, #4]
+ 508 00a2 DBB2     		uxtb	r3, r3
+ 509 00a4 1B4A     		ldr	r2, .L52+8
+ 510 00a6 1370     		strb	r3, [r2]
+ 511 00a8 4FF0E024 		mov	r4, #-536813568
+ 512 00ac D4F8203D 		ldr	r3, [r4, #3360]
+ 513 00b0 43F47003 		orr	r3, r3, #15728640
+ 514 00b4 C4F8203D 		str	r3, [r4, #3360]
+ 515 00b8 D4F8203D 		ldr	r3, [r4, #3360]
+ 516 00bc 43F07043 		orr	r3, r3, #-268435456
+ 517 00c0 C4F8203D 		str	r3, [r4, #3360]
+ 518 00c4 FFF7FEFF 		bl	vPortSetupTimerInterrupt
+ 519 00c8 0025     		movs	r5, #0
+ 520 00ca 174B     		ldr	r3, .L52+28
+ 521 00cc 1D60     		str	r5, [r3]
+ 522 00ce FFF7FEFF 		bl	vPortEnableVFP
+ 523 00d2 D4F8343F 		ldr	r3, [r4, #3892]
+ 524 00d6 43F04043 		orr	r3, r3, #-1073741824
+ 525 00da C4F8343F 		str	r3, [r4, #3892]
+ 526 00de FFF7FEFF 		bl	prvPortStartFirstTask
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccSjfHSK.s 			page 10
+
+
+ 527 00e2 FFF7FEFF 		bl	vTaskSwitchContext
+ 528 00e6 FFF7FEFF 		bl	prvTaskExitError
+ 529 00ea 2846     		mov	r0, r5
+ 530 00ec 03B0     		add	sp, sp, #12
+ 531              		@ sp needed
+ 532 00ee 30BD     		pop	{r4, r5, pc}
+ 533              	.L50:
+ 534 00f0 40F25D12 		movw	r2, #349
+ 535 00f4 0A49     		ldr	r1, .L52+20
+ 536 00f6 0B48     		ldr	r0, .L52+24
+ 537 00f8 FFF7FEFF 		bl	printf
+ 538 00fc C5E7     		b	.L45
+ 539              	.L51:
+ 540 00fe 4FF4B372 		mov	r2, #358
+ 541 0102 0749     		ldr	r1, .L52+20
+ 542 0104 0748     		ldr	r0, .L52+24
+ 543 0106 FFF7FEFF 		bl	printf
+ 544 010a C2E7     		b	.L46
+ 545              	.L53:
+ 546              		.align	2
+ 547              	.L52:
+ 548 010c 71C20F41 		.word	1091551857
+ 549 0110 70C20F41 		.word	1091551856
+ 550 0114 00E400E0 		.word	-536812544
+ 551 0118 00000000 		.word	ucMaxSysCallPriority
+ 552 011c 00000000 		.word	ulMaxPRIGROUPValue
+ 553 0120 00000000 		.word	.LC0
+ 554 0124 24000000 		.word	.LC1
+ 555 0128 00000000 		.word	uxCriticalNesting
+ 557              		.section	.text.vPortValidateInterruptPriority,"ax",%progbits
+ 558              		.align	1
+ 559              		.global	vPortValidateInterruptPriority
+ 560              		.syntax unified
+ 561              		.thumb
+ 562              		.thumb_func
+ 564              	vPortValidateInterruptPriority:
+ 565              		@ args = 0, pretend = 0, frame = 0
+ 566              		@ frame_needed = 0, uses_anonymous_args = 0
+ 567 0000 08B5     		push	{r3, lr}
+ 568              		.syntax unified
+ 569              	@ 791 "RTOS/portable/GCC/ARM_CM4F/port.c" 1
+ 570 0002 EFF30583 		mrs r3, ipsr
+ 571              	@ 0 "" 2
+ 572              		.thumb
+ 573              		.syntax unified
+ 574 0006 0F2B     		cmp	r3, #15
+ 575 0008 06D9     		bls	.L55
+ 576 000a 104A     		ldr	r2, .L60
+ 577 000c 9B5C     		ldrb	r3, [r3, r2]	@ zero_extendqisi2
+ 578 000e DBB2     		uxtb	r3, r3
+ 579 0010 0F4A     		ldr	r2, .L60+4
+ 580 0012 1278     		ldrb	r2, [r2]	@ zero_extendqisi2
+ 581 0014 9A42     		cmp	r2, r3
+ 582 0016 0AD8     		bhi	.L58
+ 583              	.L55:
+ 584 0018 4FF0E023 		mov	r3, #-536813568
+ 585 001c D3F80C3D 		ldr	r3, [r3, #3340]
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccSjfHSK.s 			page 11
+
+
+ 586 0020 03F4E063 		and	r3, r3, #1792
+ 587 0024 0B4A     		ldr	r2, .L60+8
+ 588 0026 1268     		ldr	r2, [r2]
+ 589 0028 9342     		cmp	r3, r2
+ 590 002a 07D8     		bhi	.L59
+ 591              	.L54:
+ 592 002c 08BD     		pop	{r3, pc}
+ 593              	.L58:
+ 594 002e 40F23632 		movw	r2, #822
+ 595 0032 0949     		ldr	r1, .L60+12
+ 596 0034 0948     		ldr	r0, .L60+16
+ 597 0036 FFF7FEFF 		bl	printf
+ 598 003a EDE7     		b	.L55
+ 599              	.L59:
+ 600 003c 40F24632 		movw	r2, #838
+ 601 0040 0549     		ldr	r1, .L60+12
+ 602 0042 0648     		ldr	r0, .L60+16
+ 603 0044 FFF7FEFF 		bl	printf
+ 604 0048 F0E7     		b	.L54
+ 605              	.L61:
+ 606 004a 00BF     		.align	2
+ 607              	.L60:
+ 608 004c F0E300E0 		.word	-536812560
+ 609 0050 00000000 		.word	ucMaxSysCallPriority
+ 610 0054 00000000 		.word	ulMaxPRIGROUPValue
+ 611 0058 00000000 		.word	.LC0
+ 612 005c 24000000 		.word	.LC1
+ 614              		.section	.bss.ulMaxPRIGROUPValue,"aw",%nobits
+ 615              		.align	2
+ 618              	ulMaxPRIGROUPValue:
+ 619 0000 00000000 		.space	4
+ 620              		.section	.bss.ucMaxSysCallPriority,"aw",%nobits
+ 623              	ucMaxSysCallPriority:
+ 624 0000 00       		.space	1
+ 625              		.section	.data.uxCriticalNesting,"aw"
+ 626              		.align	2
+ 629              	uxCriticalNesting:
+ 630 0000 AAAAAAAA 		.word	-1431655766
+ 631              		.ident	"GCC: (Arm GNU Toolchain 13.3.Rel1 (Build arm-13.24)) 13.3.1 20240614"
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccSjfHSK.s 			page 12
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 port.c
+C:\Users\ktkuru\AppData\Local\Temp\ccSjfHSK.s:18     .text.prvPortStartFirstTask:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccSjfHSK.s:23     .text.prvPortStartFirstTask:00000000 prvPortStartFirstTask
+C:\Users\ktkuru\AppData\Local\Temp\ccSjfHSK.s:41     .text.prvPortStartFirstTask:00000022 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccSjfHSK.s:41     .text.prvPortStartFirstTask:00000024 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccSjfHSK.s:48     .text.vPortEnableVFP:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccSjfHSK.s:53     .text.vPortEnableVFP:00000000 vPortEnableVFP
+C:\Users\ktkuru\AppData\Local\Temp\ccSjfHSK.s:65     .text.vPortEnableVFP:0000000e $d
+C:\Users\ktkuru\AppData\Local\Temp\ccSjfHSK.s:65     .text.vPortEnableVFP:00000010 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccSjfHSK.s:72     .rodata.prvTaskExitError.str1.4:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccSjfHSK.s:79     .text.prvTaskExitError:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccSjfHSK.s:84     .text.prvTaskExitError:00000000 prvTaskExitError
+C:\Users\ktkuru\AppData\Local\Temp\ccSjfHSK.s:122    .text.prvTaskExitError:0000003c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccSjfHSK.s:629    .data.uxCriticalNesting:00000000 uxCriticalNesting
+C:\Users\ktkuru\AppData\Local\Temp\ccSjfHSK.s:127    .text.pxPortInitialiseStack:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccSjfHSK.s:133    .text.pxPortInitialiseStack:00000000 pxPortInitialiseStack
+C:\Users\ktkuru\AppData\Local\Temp\ccSjfHSK.s:151    .text.pxPortInitialiseStack:00000028 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccSjfHSK.s:154    .text.SVC_Handler:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccSjfHSK.s:160    .text.SVC_Handler:00000000 SVC_Handler
+C:\Users\ktkuru\AppData\Local\Temp\ccSjfHSK.s:177    .text.SVC_Handler:00000020 pxCurrentTCBConst2
+C:\Users\ktkuru\AppData\Local\Temp\ccSjfHSK.s:177    .text.SVC_Handler:00000020 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccSjfHSK.s:184    .text.vPortEndScheduler:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccSjfHSK.s:190    .text.vPortEndScheduler:00000000 vPortEndScheduler
+C:\Users\ktkuru\AppData\Local\Temp\ccSjfHSK.s:209    .text.vPortEndScheduler:0000001c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccSjfHSK.s:214    .text.vPortEnterCritical:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccSjfHSK.s:220    .text.vPortEnterCritical:00000000 vPortEnterCritical
+C:\Users\ktkuru\AppData\Local\Temp\ccSjfHSK.s:255    .text.vPortEnterCritical:0000003c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccSjfHSK.s:260    .text.vPortExitCritical:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccSjfHSK.s:266    .text.vPortExitCritical:00000000 vPortExitCritical
+C:\Users\ktkuru\AppData\Local\Temp\ccSjfHSK.s:296    .text.vPortExitCritical:00000028 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccSjfHSK.s:301    .text.PendSV_Handler:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccSjfHSK.s:307    .text.PendSV_Handler:00000000 PendSV_Handler
+C:\Users\ktkuru\AppData\Local\Temp\ccSjfHSK.s:352    .text.PendSV_Handler:00000060 pxCurrentTCBConst
+C:\Users\ktkuru\AppData\Local\Temp\ccSjfHSK.s:352    .text.PendSV_Handler:00000060 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccSjfHSK.s:359    .text.SysTick_Handler:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccSjfHSK.s:365    .text.SysTick_Handler:00000000 SysTick_Handler
+C:\Users\ktkuru\AppData\Local\Temp\ccSjfHSK.s:395    .text.vPortSetupTimerInterrupt:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccSjfHSK.s:401    .text.vPortSetupTimerInterrupt:00000000 vPortSetupTimerInterrupt
+C:\Users\ktkuru\AppData\Local\Temp\ccSjfHSK.s:422    .text.vPortSetupTimerInterrupt:00000020 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccSjfHSK.s:426    .text.xPortStartScheduler:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccSjfHSK.s:432    .text.xPortStartScheduler:00000000 xPortStartScheduler
+C:\Users\ktkuru\AppData\Local\Temp\ccSjfHSK.s:548    .text.xPortStartScheduler:0000010c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccSjfHSK.s:623    .bss.ucMaxSysCallPriority:00000000 ucMaxSysCallPriority
+C:\Users\ktkuru\AppData\Local\Temp\ccSjfHSK.s:618    .bss.ulMaxPRIGROUPValue:00000000 ulMaxPRIGROUPValue
+C:\Users\ktkuru\AppData\Local\Temp\ccSjfHSK.s:558    .text.vPortValidateInterruptPriority:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccSjfHSK.s:564    .text.vPortValidateInterruptPriority:00000000 vPortValidateInterruptPriority
+C:\Users\ktkuru\AppData\Local\Temp\ccSjfHSK.s:608    .text.vPortValidateInterruptPriority:0000004c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccSjfHSK.s:615    .bss.ulMaxPRIGROUPValue:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccSjfHSK.s:624    .bss.ucMaxSysCallPriority:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccSjfHSK.s:626    .data.uxCriticalNesting:00000000 $d
+
+UNDEFINED SYMBOLS
+printf
+pxCurrentTCB
+vTaskSwitchContext
+xTaskIncrementTick
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccSjfHSK.s 			page 13
+
+
+SystemCoreClock

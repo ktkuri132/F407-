@@ -1,0 +1,289 @@
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccek6QYQ.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"system_stm32f4xx.c"
+  16              		.text
+  17              		.section	.text.SetSysClock,"ax",%progbits
+  18              		.align	1
+  19              		.syntax unified
+  20              		.thumb
+  21              		.thumb_func
+  23              	SetSysClock:
+  24              		@ args = 0, pretend = 0, frame = 8
+  25              		@ frame_needed = 0, uses_anonymous_args = 0
+  26              		@ link register save eliminated.
+  27 0000 82B0     		sub	sp, sp, #8
+  28 0002 0023     		movs	r3, #0
+  29 0004 0193     		str	r3, [sp, #4]
+  30 0006 0093     		str	r3, [sp]
+  31 0008 2A4A     		ldr	r2, .L11
+  32 000a 1368     		ldr	r3, [r2]
+  33 000c 43F48033 		orr	r3, r3, #65536
+  34 0010 1360     		str	r3, [r2]
+  35              	.L3:
+  36 0012 284B     		ldr	r3, .L11
+  37 0014 1B68     		ldr	r3, [r3]
+  38 0016 03F40033 		and	r3, r3, #131072
+  39 001a 0093     		str	r3, [sp]
+  40 001c 019B     		ldr	r3, [sp, #4]
+  41 001e 0133     		adds	r3, r3, #1
+  42 0020 0193     		str	r3, [sp, #4]
+  43 0022 009B     		ldr	r3, [sp]
+  44 0024 1BB9     		cbnz	r3, .L2
+  45 0026 019B     		ldr	r3, [sp, #4]
+  46 0028 B3F5A04F 		cmp	r3, #20480
+  47 002c F1D1     		bne	.L3
+  48              	.L2:
+  49 002e 214B     		ldr	r3, .L11
+  50 0030 1B68     		ldr	r3, [r3]
+  51 0032 13F4003F 		tst	r3, #131072
+  52 0036 06D0     		beq	.L4
+  53 0038 0123     		movs	r3, #1
+  54 003a 0093     		str	r3, [sp]
+  55              	.L5:
+  56 003c 009B     		ldr	r3, [sp]
+  57 003e 012B     		cmp	r3, #1
+  58 0040 04D0     		beq	.L10
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccek6QYQ.s 			page 2
+
+
+  59              	.L1:
+  60 0042 02B0     		add	sp, sp, #8
+  61              		@ sp needed
+  62 0044 7047     		bx	lr
+  63              	.L4:
+  64 0046 0023     		movs	r3, #0
+  65 0048 0093     		str	r3, [sp]
+  66 004a F7E7     		b	.L5
+  67              	.L10:
+  68 004c 194B     		ldr	r3, .L11
+  69 004e 1A6C     		ldr	r2, [r3, #64]
+  70 0050 42F08052 		orr	r2, r2, #268435456
+  71 0054 1A64     		str	r2, [r3, #64]
+  72 0056 1849     		ldr	r1, .L11+4
+  73 0058 0A68     		ldr	r2, [r1]
+  74 005a 42F44042 		orr	r2, r2, #49152
+  75 005e 0A60     		str	r2, [r1]
+  76 0060 9A68     		ldr	r2, [r3, #8]
+  77 0062 9A60     		str	r2, [r3, #8]
+  78 0064 9A68     		ldr	r2, [r3, #8]
+  79 0066 42F40042 		orr	r2, r2, #32768
+  80 006a 9A60     		str	r2, [r3, #8]
+  81 006c 9A68     		ldr	r2, [r3, #8]
+  82 006e 42F4A052 		orr	r2, r2, #5120
+  83 0072 9A60     		str	r2, [r3, #8]
+  84 0074 114A     		ldr	r2, .L11+8
+  85 0076 5A60     		str	r2, [r3, #4]
+  86 0078 1A68     		ldr	r2, [r3]
+  87 007a 42F08072 		orr	r2, r2, #16777216
+  88 007e 1A60     		str	r2, [r3]
+  89              	.L7:
+  90 0080 0C4B     		ldr	r3, .L11
+  91 0082 1B68     		ldr	r3, [r3]
+  92 0084 13F0007F 		tst	r3, #33554432
+  93 0088 FAD0     		beq	.L7
+  94 008a 0D4B     		ldr	r3, .L11+12
+  95 008c 40F20572 		movw	r2, #1797
+  96 0090 1A60     		str	r2, [r3]
+  97 0092 A3F58063 		sub	r3, r3, #1024
+  98 0096 9A68     		ldr	r2, [r3, #8]
+  99 0098 22F00302 		bic	r2, r2, #3
+ 100 009c 9A60     		str	r2, [r3, #8]
+ 101 009e 9A68     		ldr	r2, [r3, #8]
+ 102 00a0 42F00202 		orr	r2, r2, #2
+ 103 00a4 9A60     		str	r2, [r3, #8]
+ 104              	.L8:
+ 105 00a6 034B     		ldr	r3, .L11
+ 106 00a8 9B68     		ldr	r3, [r3, #8]
+ 107 00aa 03F00C03 		and	r3, r3, #12
+ 108 00ae 082B     		cmp	r3, #8
+ 109 00b0 F9D1     		bne	.L8
+ 110 00b2 C6E7     		b	.L1
+ 111              	.L12:
+ 112              		.align	2
+ 113              	.L11:
+ 114 00b4 00380240 		.word	1073887232
+ 115 00b8 00700040 		.word	1073770496
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccek6QYQ.s 			page 3
+
+
+ 116 00bc 19544007 		.word	121656345
+ 117 00c0 003C0240 		.word	1073888256
+ 119              		.section	.text.SystemInit,"ax",%progbits
+ 120              		.align	1
+ 121              		.global	SystemInit
+ 122              		.syntax unified
+ 123              		.thumb
+ 124              		.thumb_func
+ 126              	SystemInit:
+ 127              		@ args = 0, pretend = 0, frame = 0
+ 128              		@ frame_needed = 0, uses_anonymous_args = 0
+ 129 0000 10B5     		push	{r4, lr}
+ 130 0002 104C     		ldr	r4, .L15
+ 131 0004 D4F88830 		ldr	r3, [r4, #136]
+ 132 0008 43F47003 		orr	r3, r3, #15728640
+ 133 000c C4F88830 		str	r3, [r4, #136]
+ 134 0010 0D4B     		ldr	r3, .L15+4
+ 135 0012 1A68     		ldr	r2, [r3]
+ 136 0014 42F00102 		orr	r2, r2, #1
+ 137 0018 1A60     		str	r2, [r3]
+ 138 001a 0021     		movs	r1, #0
+ 139 001c 9960     		str	r1, [r3, #8]
+ 140 001e 1A68     		ldr	r2, [r3]
+ 141 0020 22F08472 		bic	r2, r2, #17301504
+ 142 0024 22F48032 		bic	r2, r2, #65536
+ 143 0028 1A60     		str	r2, [r3]
+ 144 002a 084A     		ldr	r2, .L15+8
+ 145 002c 5A60     		str	r2, [r3, #4]
+ 146 002e 1A68     		ldr	r2, [r3]
+ 147 0030 22F48022 		bic	r2, r2, #262144
+ 148 0034 1A60     		str	r2, [r3]
+ 149 0036 D960     		str	r1, [r3, #12]
+ 150 0038 FFF7FEFF 		bl	SetSysClock
+ 151 003c 4FF00063 		mov	r3, #134217728
+ 152 0040 A360     		str	r3, [r4, #8]
+ 153 0042 10BD     		pop	{r4, pc}
+ 154              	.L16:
+ 155              		.align	2
+ 156              	.L15:
+ 157 0044 00ED00E0 		.word	-536810240
+ 158 0048 00380240 		.word	1073887232
+ 159 004c 10300024 		.word	603992080
+ 161              		.section	.text.SystemCoreClockUpdate,"ax",%progbits
+ 162              		.align	1
+ 163              		.global	SystemCoreClockUpdate
+ 164              		.syntax unified
+ 165              		.thumb
+ 166              		.thumb_func
+ 168              	SystemCoreClockUpdate:
+ 169              		@ args = 0, pretend = 0, frame = 0
+ 170              		@ frame_needed = 0, uses_anonymous_args = 0
+ 171              		@ link register save eliminated.
+ 172 0000 234B     		ldr	r3, .L24
+ 173 0002 9B68     		ldr	r3, [r3, #8]
+ 174 0004 03F00C03 		and	r3, r3, #12
+ 175 0008 042B     		cmp	r3, #4
+ 176 000a 12D0     		beq	.L18
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccek6QYQ.s 			page 4
+
+
+ 177 000c 082B     		cmp	r3, #8
+ 178 000e 14D0     		beq	.L19
+ 179 0010 002B     		cmp	r3, #0
+ 180 0012 38D1     		bne	.L20
+ 181 0014 1F4B     		ldr	r3, .L24+4
+ 182 0016 204A     		ldr	r2, .L24+8
+ 183 0018 1A60     		str	r2, [r3]
+ 184              	.L21:
+ 185 001a 1D4B     		ldr	r3, .L24
+ 186 001c 9B68     		ldr	r3, [r3, #8]
+ 187 001e C3F30313 		ubfx	r3, r3, #4, #4
+ 188 0022 1E4A     		ldr	r2, .L24+12
+ 189 0024 D25C     		ldrb	r2, [r2, r3]	@ zero_extendqisi2
+ 190 0026 D2B2     		uxtb	r2, r2
+ 191 0028 1A49     		ldr	r1, .L24+4
+ 192 002a 0B68     		ldr	r3, [r1]
+ 193 002c D340     		lsrs	r3, r3, r2
+ 194 002e 0B60     		str	r3, [r1]
+ 195 0030 7047     		bx	lr
+ 196              	.L18:
+ 197 0032 184B     		ldr	r3, .L24+4
+ 198 0034 1A4A     		ldr	r2, .L24+16
+ 199 0036 1A60     		str	r2, [r3]
+ 200 0038 EFE7     		b	.L21
+ 201              	.L19:
+ 202 003a 154B     		ldr	r3, .L24
+ 203 003c 5968     		ldr	r1, [r3, #4]
+ 204 003e 5A68     		ldr	r2, [r3, #4]
+ 205 0040 02F03F02 		and	r2, r2, #63
+ 206 0044 11F4800F 		tst	r1, #4194304
+ 207 0048 13D0     		beq	.L22
+ 208 004a 154B     		ldr	r3, .L24+16
+ 209 004c B3FBF2F3 		udiv	r3, r3, r2
+ 210 0050 0F4A     		ldr	r2, .L24
+ 211 0052 5268     		ldr	r2, [r2, #4]
+ 212 0054 C2F38812 		ubfx	r2, r2, #6, #9
+ 213 0058 02FB03F3 		mul	r3, r2, r3
+ 214              	.L23:
+ 215 005c 0C4A     		ldr	r2, .L24
+ 216 005e 5268     		ldr	r2, [r2, #4]
+ 217 0060 C2F30142 		ubfx	r2, r2, #16, #2
+ 218 0064 0132     		adds	r2, r2, #1
+ 219 0066 5200     		lsls	r2, r2, #1
+ 220 0068 B3FBF2F3 		udiv	r3, r3, r2
+ 221 006c 094A     		ldr	r2, .L24+4
+ 222 006e 1360     		str	r3, [r2]
+ 223 0070 D3E7     		b	.L21
+ 224              	.L22:
+ 225 0072 094B     		ldr	r3, .L24+8
+ 226 0074 B3FBF2F3 		udiv	r3, r3, r2
+ 227 0078 054A     		ldr	r2, .L24
+ 228 007a 5268     		ldr	r2, [r2, #4]
+ 229 007c C2F38812 		ubfx	r2, r2, #6, #9
+ 230 0080 02FB03F3 		mul	r3, r2, r3
+ 231 0084 EAE7     		b	.L23
+ 232              	.L20:
+ 233 0086 034B     		ldr	r3, .L24+4
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccek6QYQ.s 			page 5
+
+
+ 234 0088 034A     		ldr	r2, .L24+8
+ 235 008a 1A60     		str	r2, [r3]
+ 236 008c C5E7     		b	.L21
+ 237              	.L25:
+ 238 008e 00BF     		.align	2
+ 239              	.L24:
+ 240 0090 00380240 		.word	1073887232
+ 241 0094 00000000 		.word	SystemCoreClock
+ 242 0098 0024F400 		.word	16000000
+ 243 009c 00000000 		.word	AHBPrescTable
+ 244 00a0 00127A00 		.word	8000000
+ 246              		.global	AHBPrescTable
+ 247              		.section	.rodata.AHBPrescTable,"a"
+ 248              		.align	2
+ 251              	AHBPrescTable:
+ 252 0000 00000000 		.ascii	"\000\000\000\000\000\000\000\000\001\002\003\004\006"
+ 252      00000000 
+ 252      01020304 
+ 252      06
+ 253 000d 070809   		.ascii	"\007\010\011"
+ 254              		.global	SystemCoreClock
+ 255              		.section	.data.SystemCoreClock,"aw"
+ 256              		.align	2
+ 259              	SystemCoreClock:
+ 260 0000 007A030A 		.word	168000000
+ 261              		.ident	"GCC: (Arm GNU Toolchain 13.3.Rel1 (Build arm-13.24)) 13.3.1 20240614"
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccek6QYQ.s 			page 6
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 system_stm32f4xx.c
+C:\Users\ktkuru\AppData\Local\Temp\ccek6QYQ.s:18     .text.SetSysClock:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccek6QYQ.s:23     .text.SetSysClock:00000000 SetSysClock
+C:\Users\ktkuru\AppData\Local\Temp\ccek6QYQ.s:114    .text.SetSysClock:000000b4 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccek6QYQ.s:120    .text.SystemInit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccek6QYQ.s:126    .text.SystemInit:00000000 SystemInit
+C:\Users\ktkuru\AppData\Local\Temp\ccek6QYQ.s:157    .text.SystemInit:00000044 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccek6QYQ.s:162    .text.SystemCoreClockUpdate:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccek6QYQ.s:168    .text.SystemCoreClockUpdate:00000000 SystemCoreClockUpdate
+C:\Users\ktkuru\AppData\Local\Temp\ccek6QYQ.s:240    .text.SystemCoreClockUpdate:00000090 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccek6QYQ.s:259    .data.SystemCoreClock:00000000 SystemCoreClock
+C:\Users\ktkuru\AppData\Local\Temp\ccek6QYQ.s:251    .rodata.AHBPrescTable:00000000 AHBPrescTable
+C:\Users\ktkuru\AppData\Local\Temp\ccek6QYQ.s:248    .rodata.AHBPrescTable:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccek6QYQ.s:256    .data.SystemCoreClock:00000000 $d
+
+NO UNDEFINED SYMBOLS

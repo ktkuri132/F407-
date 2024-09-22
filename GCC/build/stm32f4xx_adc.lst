@@ -1,0 +1,978 @@
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccuK5QYQ.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"stm32f4xx_adc.c"
+  16              		.text
+  17              		.section	.text.ADC_DeInit,"ax",%progbits
+  18              		.align	1
+  19              		.global	ADC_DeInit
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  24              	ADC_DeInit:
+  25              		@ args = 0, pretend = 0, frame = 0
+  26              		@ frame_needed = 0, uses_anonymous_args = 0
+  27 0000 08B5     		push	{r3, lr}
+  28 0002 0121     		movs	r1, #1
+  29 0004 4FF48070 		mov	r0, #256
+  30 0008 FFF7FEFF 		bl	RCC_APB2PeriphResetCmd
+  31 000c 0021     		movs	r1, #0
+  32 000e 4FF48070 		mov	r0, #256
+  33 0012 FFF7FEFF 		bl	RCC_APB2PeriphResetCmd
+  34 0016 08BD     		pop	{r3, pc}
+  36              		.section	.text.ADC_Init,"ax",%progbits
+  37              		.align	1
+  38              		.global	ADC_Init
+  39              		.syntax unified
+  40              		.thumb
+  41              		.thumb_func
+  43              	ADC_Init:
+  44              		@ args = 0, pretend = 0, frame = 0
+  45              		@ frame_needed = 0, uses_anonymous_args = 0
+  46              		@ link register save eliminated.
+  47 0000 10B4     		push	{r4}
+  48 0002 4268     		ldr	r2, [r0, #4]
+  49 0004 22F04072 		bic	r2, r2, #50331648
+  50 0008 22F48072 		bic	r2, r2, #256
+  51 000c 91F804C0 		ldrb	ip, [r1, #4]	@ zero_extendqisi2
+  52 0010 0B68     		ldr	r3, [r1]
+  53 0012 43EA0C23 		orr	r3, r3, ip, lsl #8
+  54 0016 1343     		orrs	r3, r3, r2
+  55 0018 4360     		str	r3, [r0, #4]
+  56 001a 8368     		ldr	r3, [r0, #8]
+  57 001c 0C4A     		ldr	r2, .L5
+  58 001e 1A40     		ands	r2, r2, r3
+  59 0020 0B69     		ldr	r3, [r1, #16]
+  60 0022 CC68     		ldr	r4, [r1, #12]
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccuK5QYQ.s 			page 2
+
+
+  61 0024 2343     		orrs	r3, r3, r4
+  62 0026 8C68     		ldr	r4, [r1, #8]
+  63 0028 2343     		orrs	r3, r3, r4
+  64 002a 91F805C0 		ldrb	ip, [r1, #5]	@ zero_extendqisi2
+  65 002e 43EA4C03 		orr	r3, r3, ip, lsl #1
+  66 0032 1343     		orrs	r3, r3, r2
+  67 0034 8360     		str	r3, [r0, #8]
+  68 0036 C36A     		ldr	r3, [r0, #44]
+  69 0038 23F47003 		bic	r3, r3, #15728640
+  70 003c 0A7D     		ldrb	r2, [r1, #20]	@ zero_extendqisi2
+  71 003e 013A     		subs	r2, r2, #1
+  72 0040 D2B2     		uxtb	r2, r2
+  73 0042 43EA0253 		orr	r3, r3, r2, lsl #20
+  74 0046 C362     		str	r3, [r0, #44]
+  75 0048 5DF8044B 		ldr	r4, [sp], #4
+  76 004c 7047     		bx	lr
+  77              	.L6:
+  78 004e 00BF     		.align	2
+  79              	.L5:
+  80 0050 FDF7FFC0 		.word	-1056966659
+  82              		.section	.text.ADC_StructInit,"ax",%progbits
+  83              		.align	1
+  84              		.global	ADC_StructInit
+  85              		.syntax unified
+  86              		.thumb
+  87              		.thumb_func
+  89              	ADC_StructInit:
+  90              		@ args = 0, pretend = 0, frame = 0
+  91              		@ frame_needed = 0, uses_anonymous_args = 0
+  92              		@ link register save eliminated.
+  93 0000 0023     		movs	r3, #0
+  94 0002 0360     		str	r3, [r0]
+  95 0004 0371     		strb	r3, [r0, #4]
+  96 0006 4371     		strb	r3, [r0, #5]
+  97 0008 8360     		str	r3, [r0, #8]
+  98 000a C360     		str	r3, [r0, #12]
+  99 000c 0361     		str	r3, [r0, #16]
+ 100 000e 0123     		movs	r3, #1
+ 101 0010 0375     		strb	r3, [r0, #20]
+ 102 0012 7047     		bx	lr
+ 104              		.section	.text.ADC_CommonInit,"ax",%progbits
+ 105              		.align	1
+ 106              		.global	ADC_CommonInit
+ 107              		.syntax unified
+ 108              		.thumb
+ 109              		.thumb_func
+ 111              	ADC_CommonInit:
+ 112              		@ args = 0, pretend = 0, frame = 0
+ 113              		@ frame_needed = 0, uses_anonymous_args = 0
+ 114              		@ link register save eliminated.
+ 115 0000 10B4     		push	{r4}
+ 116 0002 0849     		ldr	r1, .L10
+ 117 0004 4B68     		ldr	r3, [r1, #4]
+ 118 0006 084A     		ldr	r2, .L10+4
+ 119 0008 1A40     		ands	r2, r2, r3
+ 120 000a 0368     		ldr	r3, [r0]
+ 121 000c 4468     		ldr	r4, [r0, #4]
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccuK5QYQ.s 			page 3
+
+
+ 122 000e 2343     		orrs	r3, r3, r4
+ 123 0010 8468     		ldr	r4, [r0, #8]
+ 124 0012 2343     		orrs	r3, r3, r4
+ 125 0014 C068     		ldr	r0, [r0, #12]
+ 126 0016 0343     		orrs	r3, r3, r0
+ 127 0018 1343     		orrs	r3, r3, r2
+ 128 001a 4B60     		str	r3, [r1, #4]
+ 129 001c 5DF8044B 		ldr	r4, [sp], #4
+ 130 0020 7047     		bx	lr
+ 131              	.L11:
+ 132 0022 00BF     		.align	2
+ 133              	.L10:
+ 134 0024 00230140 		.word	1073816320
+ 135 0028 E030FCFF 		.word	-249632
+ 137              		.section	.text.ADC_CommonStructInit,"ax",%progbits
+ 138              		.align	1
+ 139              		.global	ADC_CommonStructInit
+ 140              		.syntax unified
+ 141              		.thumb
+ 142              		.thumb_func
+ 144              	ADC_CommonStructInit:
+ 145              		@ args = 0, pretend = 0, frame = 0
+ 146              		@ frame_needed = 0, uses_anonymous_args = 0
+ 147              		@ link register save eliminated.
+ 148 0000 0023     		movs	r3, #0
+ 149 0002 0360     		str	r3, [r0]
+ 150 0004 4360     		str	r3, [r0, #4]
+ 151 0006 8360     		str	r3, [r0, #8]
+ 152 0008 C360     		str	r3, [r0, #12]
+ 153 000a 7047     		bx	lr
+ 155              		.section	.text.ADC_Cmd,"ax",%progbits
+ 156              		.align	1
+ 157              		.global	ADC_Cmd
+ 158              		.syntax unified
+ 159              		.thumb
+ 160              		.thumb_func
+ 162              	ADC_Cmd:
+ 163              		@ args = 0, pretend = 0, frame = 0
+ 164              		@ frame_needed = 0, uses_anonymous_args = 0
+ 165              		@ link register save eliminated.
+ 166 0000 21B1     		cbz	r1, .L14
+ 167 0002 8368     		ldr	r3, [r0, #8]
+ 168 0004 43F00103 		orr	r3, r3, #1
+ 169 0008 8360     		str	r3, [r0, #8]
+ 170 000a 7047     		bx	lr
+ 171              	.L14:
+ 172 000c 8368     		ldr	r3, [r0, #8]
+ 173 000e 23F00103 		bic	r3, r3, #1
+ 174 0012 8360     		str	r3, [r0, #8]
+ 175 0014 7047     		bx	lr
+ 177              		.section	.text.ADC_AnalogWatchdogCmd,"ax",%progbits
+ 178              		.align	1
+ 179              		.global	ADC_AnalogWatchdogCmd
+ 180              		.syntax unified
+ 181              		.thumb
+ 182              		.thumb_func
+ 184              	ADC_AnalogWatchdogCmd:
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccuK5QYQ.s 			page 4
+
+
+ 185              		@ args = 0, pretend = 0, frame = 0
+ 186              		@ frame_needed = 0, uses_anonymous_args = 0
+ 187              		@ link register save eliminated.
+ 188 0000 4368     		ldr	r3, [r0, #4]
+ 189 0002 23F44003 		bic	r3, r3, #12582912
+ 190 0006 23F40073 		bic	r3, r3, #512
+ 191 000a 0B43     		orrs	r3, r3, r1
+ 192 000c 4360     		str	r3, [r0, #4]
+ 193 000e 7047     		bx	lr
+ 195              		.section	.text.ADC_AnalogWatchdogThresholdsConfig,"ax",%progbits
+ 196              		.align	1
+ 197              		.global	ADC_AnalogWatchdogThresholdsConfig
+ 198              		.syntax unified
+ 199              		.thumb
+ 200              		.thumb_func
+ 202              	ADC_AnalogWatchdogThresholdsConfig:
+ 203              		@ args = 0, pretend = 0, frame = 0
+ 204              		@ frame_needed = 0, uses_anonymous_args = 0
+ 205              		@ link register save eliminated.
+ 206 0000 4162     		str	r1, [r0, #36]
+ 207 0002 8262     		str	r2, [r0, #40]
+ 208 0004 7047     		bx	lr
+ 210              		.section	.text.ADC_AnalogWatchdogSingleChannelConfig,"ax",%progbits
+ 211              		.align	1
+ 212              		.global	ADC_AnalogWatchdogSingleChannelConfig
+ 213              		.syntax unified
+ 214              		.thumb
+ 215              		.thumb_func
+ 217              	ADC_AnalogWatchdogSingleChannelConfig:
+ 218              		@ args = 0, pretend = 0, frame = 0
+ 219              		@ frame_needed = 0, uses_anonymous_args = 0
+ 220              		@ link register save eliminated.
+ 221 0000 4368     		ldr	r3, [r0, #4]
+ 222 0002 23F01F03 		bic	r3, r3, #31
+ 223 0006 1943     		orrs	r1, r1, r3
+ 224 0008 4160     		str	r1, [r0, #4]
+ 225 000a 7047     		bx	lr
+ 227              		.section	.text.ADC_TempSensorVrefintCmd,"ax",%progbits
+ 228              		.align	1
+ 229              		.global	ADC_TempSensorVrefintCmd
+ 230              		.syntax unified
+ 231              		.thumb
+ 232              		.thumb_func
+ 234              	ADC_TempSensorVrefintCmd:
+ 235              		@ args = 0, pretend = 0, frame = 0
+ 236              		@ frame_needed = 0, uses_anonymous_args = 0
+ 237              		@ link register save eliminated.
+ 238 0000 28B1     		cbz	r0, .L20
+ 239 0002 064A     		ldr	r2, .L22
+ 240 0004 5368     		ldr	r3, [r2, #4]
+ 241 0006 43F40003 		orr	r3, r3, #8388608
+ 242 000a 5360     		str	r3, [r2, #4]
+ 243 000c 7047     		bx	lr
+ 244              	.L20:
+ 245 000e 034A     		ldr	r2, .L22
+ 246 0010 5368     		ldr	r3, [r2, #4]
+ 247 0012 23F40003 		bic	r3, r3, #8388608
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccuK5QYQ.s 			page 5
+
+
+ 248 0016 5360     		str	r3, [r2, #4]
+ 249 0018 7047     		bx	lr
+ 250              	.L23:
+ 251 001a 00BF     		.align	2
+ 252              	.L22:
+ 253 001c 00230140 		.word	1073816320
+ 255              		.section	.text.ADC_VBATCmd,"ax",%progbits
+ 256              		.align	1
+ 257              		.global	ADC_VBATCmd
+ 258              		.syntax unified
+ 259              		.thumb
+ 260              		.thumb_func
+ 262              	ADC_VBATCmd:
+ 263              		@ args = 0, pretend = 0, frame = 0
+ 264              		@ frame_needed = 0, uses_anonymous_args = 0
+ 265              		@ link register save eliminated.
+ 266 0000 28B1     		cbz	r0, .L25
+ 267 0002 064A     		ldr	r2, .L27
+ 268 0004 5368     		ldr	r3, [r2, #4]
+ 269 0006 43F48003 		orr	r3, r3, #4194304
+ 270 000a 5360     		str	r3, [r2, #4]
+ 271 000c 7047     		bx	lr
+ 272              	.L25:
+ 273 000e 034A     		ldr	r2, .L27
+ 274 0010 5368     		ldr	r3, [r2, #4]
+ 275 0012 23F48003 		bic	r3, r3, #4194304
+ 276 0016 5360     		str	r3, [r2, #4]
+ 277 0018 7047     		bx	lr
+ 278              	.L28:
+ 279 001a 00BF     		.align	2
+ 280              	.L27:
+ 281 001c 00230140 		.word	1073816320
+ 283              		.section	.text.ADC_RegularChannelConfig,"ax",%progbits
+ 284              		.align	1
+ 285              		.global	ADC_RegularChannelConfig
+ 286              		.syntax unified
+ 287              		.thumb
+ 288              		.thumb_func
+ 290              	ADC_RegularChannelConfig:
+ 291              		@ args = 0, pretend = 0, frame = 0
+ 292              		@ frame_needed = 0, uses_anonymous_args = 0
+ 293 0000 10B5     		push	{r4, lr}
+ 294 0002 0929     		cmp	r1, #9
+ 295 0004 1ED9     		bls	.L30
+ 296 0006 C468     		ldr	r4, [r0, #12]
+ 297 0008 A1F10A0C 		sub	ip, r1, #10
+ 298 000c 0CEB4C0C 		add	ip, ip, ip, lsl #1
+ 299 0010 4FF0070E 		mov	lr, #7
+ 300 0014 0EFA0CFE 		lsl	lr, lr, ip
+ 301 0018 24EA0E04 		bic	r4, r4, lr
+ 302 001c 03FA0CFC 		lsl	ip, r3, ip
+ 303 0020 44EA0C04 		orr	r4, r4, ip
+ 304 0024 C460     		str	r4, [r0, #12]
+ 305              	.L31:
+ 306 0026 062A     		cmp	r2, #6
+ 307 0028 1BD8     		bhi	.L32
+ 308 002a 436B     		ldr	r3, [r0, #52]
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccuK5QYQ.s 			page 6
+
+
+ 309 002c 013A     		subs	r2, r2, #1
+ 310 002e 02EB8202 		add	r2, r2, r2, lsl #2
+ 311 0032 1F24     		movs	r4, #31
+ 312 0034 9440     		lsls	r4, r4, r2
+ 313 0036 23EA0403 		bic	r3, r3, r4
+ 314 003a 01FA02F2 		lsl	r2, r1, r2
+ 315 003e 1343     		orrs	r3, r3, r2
+ 316 0040 4363     		str	r3, [r0, #52]
+ 317              	.L29:
+ 318 0042 10BD     		pop	{r4, pc}
+ 319              	.L30:
+ 320 0044 0469     		ldr	r4, [r0, #16]
+ 321 0046 01EB410E 		add	lr, r1, r1, lsl #1
+ 322 004a 4FF0070C 		mov	ip, #7
+ 323 004e 0CFA0EFC 		lsl	ip, ip, lr
+ 324 0052 24EA0C0C 		bic	ip, r4, ip
+ 325 0056 03FA0EF3 		lsl	r3, r3, lr
+ 326 005a 4CEA0303 		orr	r3, ip, r3
+ 327 005e 0361     		str	r3, [r0, #16]
+ 328 0060 E1E7     		b	.L31
+ 329              	.L32:
+ 330 0062 0C2A     		cmp	r2, #12
+ 331 0064 0CD8     		bhi	.L34
+ 332 0066 036B     		ldr	r3, [r0, #48]
+ 333 0068 073A     		subs	r2, r2, #7
+ 334 006a 02EB8202 		add	r2, r2, r2, lsl #2
+ 335 006e 1F24     		movs	r4, #31
+ 336 0070 9440     		lsls	r4, r4, r2
+ 337 0072 23EA0403 		bic	r3, r3, r4
+ 338 0076 01FA02F2 		lsl	r2, r1, r2
+ 339 007a 1343     		orrs	r3, r3, r2
+ 340 007c 0363     		str	r3, [r0, #48]
+ 341 007e E0E7     		b	.L29
+ 342              	.L34:
+ 343 0080 C36A     		ldr	r3, [r0, #44]
+ 344 0082 0D3A     		subs	r2, r2, #13
+ 345 0084 02EB8202 		add	r2, r2, r2, lsl #2
+ 346 0088 1F24     		movs	r4, #31
+ 347 008a 9440     		lsls	r4, r4, r2
+ 348 008c 23EA0403 		bic	r3, r3, r4
+ 349 0090 9140     		lsls	r1, r1, r2
+ 350 0092 0B43     		orrs	r3, r3, r1
+ 351 0094 C362     		str	r3, [r0, #44]
+ 352 0096 D4E7     		b	.L29
+ 354              		.section	.text.ADC_SoftwareStartConv,"ax",%progbits
+ 355              		.align	1
+ 356              		.global	ADC_SoftwareStartConv
+ 357              		.syntax unified
+ 358              		.thumb
+ 359              		.thumb_func
+ 361              	ADC_SoftwareStartConv:
+ 362              		@ args = 0, pretend = 0, frame = 0
+ 363              		@ frame_needed = 0, uses_anonymous_args = 0
+ 364              		@ link register save eliminated.
+ 365 0000 8368     		ldr	r3, [r0, #8]
+ 366 0002 43F08043 		orr	r3, r3, #1073741824
+ 367 0006 8360     		str	r3, [r0, #8]
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccuK5QYQ.s 			page 7
+
+
+ 368 0008 7047     		bx	lr
+ 370              		.section	.text.ADC_GetSoftwareStartConvStatus,"ax",%progbits
+ 371              		.align	1
+ 372              		.global	ADC_GetSoftwareStartConvStatus
+ 373              		.syntax unified
+ 374              		.thumb
+ 375              		.thumb_func
+ 377              	ADC_GetSoftwareStartConvStatus:
+ 378              		@ args = 0, pretend = 0, frame = 0
+ 379              		@ frame_needed = 0, uses_anonymous_args = 0
+ 380              		@ link register save eliminated.
+ 381 0000 8368     		ldr	r3, [r0, #8]
+ 382 0002 13F0804F 		tst	r3, #1073741824
+ 383 0006 01D0     		beq	.L39
+ 384 0008 0120     		movs	r0, #1
+ 385 000a 7047     		bx	lr
+ 386              	.L39:
+ 387 000c 0020     		movs	r0, #0
+ 388 000e 7047     		bx	lr
+ 390              		.section	.text.ADC_EOCOnEachRegularChannelCmd,"ax",%progbits
+ 391              		.align	1
+ 392              		.global	ADC_EOCOnEachRegularChannelCmd
+ 393              		.syntax unified
+ 394              		.thumb
+ 395              		.thumb_func
+ 397              	ADC_EOCOnEachRegularChannelCmd:
+ 398              		@ args = 0, pretend = 0, frame = 0
+ 399              		@ frame_needed = 0, uses_anonymous_args = 0
+ 400              		@ link register save eliminated.
+ 401 0000 21B1     		cbz	r1, .L41
+ 402 0002 8368     		ldr	r3, [r0, #8]
+ 403 0004 43F48063 		orr	r3, r3, #1024
+ 404 0008 8360     		str	r3, [r0, #8]
+ 405 000a 7047     		bx	lr
+ 406              	.L41:
+ 407 000c 8368     		ldr	r3, [r0, #8]
+ 408 000e 23F48063 		bic	r3, r3, #1024
+ 409 0012 8360     		str	r3, [r0, #8]
+ 410 0014 7047     		bx	lr
+ 412              		.section	.text.ADC_ContinuousModeCmd,"ax",%progbits
+ 413              		.align	1
+ 414              		.global	ADC_ContinuousModeCmd
+ 415              		.syntax unified
+ 416              		.thumb
+ 417              		.thumb_func
+ 419              	ADC_ContinuousModeCmd:
+ 420              		@ args = 0, pretend = 0, frame = 0
+ 421              		@ frame_needed = 0, uses_anonymous_args = 0
+ 422              		@ link register save eliminated.
+ 423 0000 21B1     		cbz	r1, .L44
+ 424 0002 8368     		ldr	r3, [r0, #8]
+ 425 0004 43F00203 		orr	r3, r3, #2
+ 426 0008 8360     		str	r3, [r0, #8]
+ 427 000a 7047     		bx	lr
+ 428              	.L44:
+ 429 000c 8368     		ldr	r3, [r0, #8]
+ 430 000e 23F00203 		bic	r3, r3, #2
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccuK5QYQ.s 			page 8
+
+
+ 431 0012 8360     		str	r3, [r0, #8]
+ 432 0014 7047     		bx	lr
+ 434              		.section	.text.ADC_DiscModeChannelCountConfig,"ax",%progbits
+ 435              		.align	1
+ 436              		.global	ADC_DiscModeChannelCountConfig
+ 437              		.syntax unified
+ 438              		.thumb
+ 439              		.thumb_func
+ 441              	ADC_DiscModeChannelCountConfig:
+ 442              		@ args = 0, pretend = 0, frame = 0
+ 443              		@ frame_needed = 0, uses_anonymous_args = 0
+ 444              		@ link register save eliminated.
+ 445 0000 4368     		ldr	r3, [r0, #4]
+ 446 0002 23F46043 		bic	r3, r3, #57344
+ 447 0006 0139     		subs	r1, r1, #1
+ 448 0008 43EA4133 		orr	r3, r3, r1, lsl #13
+ 449 000c 4360     		str	r3, [r0, #4]
+ 450 000e 7047     		bx	lr
+ 452              		.section	.text.ADC_DiscModeCmd,"ax",%progbits
+ 453              		.align	1
+ 454              		.global	ADC_DiscModeCmd
+ 455              		.syntax unified
+ 456              		.thumb
+ 457              		.thumb_func
+ 459              	ADC_DiscModeCmd:
+ 460              		@ args = 0, pretend = 0, frame = 0
+ 461              		@ frame_needed = 0, uses_anonymous_args = 0
+ 462              		@ link register save eliminated.
+ 463 0000 21B1     		cbz	r1, .L48
+ 464 0002 4368     		ldr	r3, [r0, #4]
+ 465 0004 43F40063 		orr	r3, r3, #2048
+ 466 0008 4360     		str	r3, [r0, #4]
+ 467 000a 7047     		bx	lr
+ 468              	.L48:
+ 469 000c 4368     		ldr	r3, [r0, #4]
+ 470 000e 23F40063 		bic	r3, r3, #2048
+ 471 0012 4360     		str	r3, [r0, #4]
+ 472 0014 7047     		bx	lr
+ 474              		.section	.text.ADC_GetConversionValue,"ax",%progbits
+ 475              		.align	1
+ 476              		.global	ADC_GetConversionValue
+ 477              		.syntax unified
+ 478              		.thumb
+ 479              		.thumb_func
+ 481              	ADC_GetConversionValue:
+ 482              		@ args = 0, pretend = 0, frame = 0
+ 483              		@ frame_needed = 0, uses_anonymous_args = 0
+ 484              		@ link register save eliminated.
+ 485 0000 C06C     		ldr	r0, [r0, #76]
+ 486 0002 80B2     		uxth	r0, r0
+ 487 0004 7047     		bx	lr
+ 489              		.section	.text.ADC_GetMultiModeConversionValue,"ax",%progbits
+ 490              		.align	1
+ 491              		.global	ADC_GetMultiModeConversionValue
+ 492              		.syntax unified
+ 493              		.thumb
+ 494              		.thumb_func
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccuK5QYQ.s 			page 9
+
+
+ 496              	ADC_GetMultiModeConversionValue:
+ 497              		@ args = 0, pretend = 0, frame = 0
+ 498              		@ frame_needed = 0, uses_anonymous_args = 0
+ 499              		@ link register save eliminated.
+ 500 0000 014B     		ldr	r3, .L52
+ 501 0002 D3F80803 		ldr	r0, [r3, #776]
+ 502 0006 7047     		bx	lr
+ 503              	.L53:
+ 504              		.align	2
+ 505              	.L52:
+ 506 0008 00200140 		.word	1073815552
+ 508              		.section	.text.ADC_DMACmd,"ax",%progbits
+ 509              		.align	1
+ 510              		.global	ADC_DMACmd
+ 511              		.syntax unified
+ 512              		.thumb
+ 513              		.thumb_func
+ 515              	ADC_DMACmd:
+ 516              		@ args = 0, pretend = 0, frame = 0
+ 517              		@ frame_needed = 0, uses_anonymous_args = 0
+ 518              		@ link register save eliminated.
+ 519 0000 21B1     		cbz	r1, .L55
+ 520 0002 8368     		ldr	r3, [r0, #8]
+ 521 0004 43F48073 		orr	r3, r3, #256
+ 522 0008 8360     		str	r3, [r0, #8]
+ 523 000a 7047     		bx	lr
+ 524              	.L55:
+ 525 000c 8368     		ldr	r3, [r0, #8]
+ 526 000e 23F48073 		bic	r3, r3, #256
+ 527 0012 8360     		str	r3, [r0, #8]
+ 528 0014 7047     		bx	lr
+ 530              		.section	.text.ADC_DMARequestAfterLastTransferCmd,"ax",%progbits
+ 531              		.align	1
+ 532              		.global	ADC_DMARequestAfterLastTransferCmd
+ 533              		.syntax unified
+ 534              		.thumb
+ 535              		.thumb_func
+ 537              	ADC_DMARequestAfterLastTransferCmd:
+ 538              		@ args = 0, pretend = 0, frame = 0
+ 539              		@ frame_needed = 0, uses_anonymous_args = 0
+ 540              		@ link register save eliminated.
+ 541 0000 21B1     		cbz	r1, .L58
+ 542 0002 8368     		ldr	r3, [r0, #8]
+ 543 0004 43F40073 		orr	r3, r3, #512
+ 544 0008 8360     		str	r3, [r0, #8]
+ 545 000a 7047     		bx	lr
+ 546              	.L58:
+ 547 000c 8368     		ldr	r3, [r0, #8]
+ 548 000e 23F40073 		bic	r3, r3, #512
+ 549 0012 8360     		str	r3, [r0, #8]
+ 550 0014 7047     		bx	lr
+ 552              		.section	.text.ADC_MultiModeDMARequestAfterLastTransferCmd,"ax",%progbits
+ 553              		.align	1
+ 554              		.global	ADC_MultiModeDMARequestAfterLastTransferCmd
+ 555              		.syntax unified
+ 556              		.thumb
+ 557              		.thumb_func
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccuK5QYQ.s 			page 10
+
+
+ 559              	ADC_MultiModeDMARequestAfterLastTransferCmd:
+ 560              		@ args = 0, pretend = 0, frame = 0
+ 561              		@ frame_needed = 0, uses_anonymous_args = 0
+ 562              		@ link register save eliminated.
+ 563 0000 28B1     		cbz	r0, .L61
+ 564 0002 064A     		ldr	r2, .L63
+ 565 0004 5368     		ldr	r3, [r2, #4]
+ 566 0006 43F40053 		orr	r3, r3, #8192
+ 567 000a 5360     		str	r3, [r2, #4]
+ 568 000c 7047     		bx	lr
+ 569              	.L61:
+ 570 000e 034A     		ldr	r2, .L63
+ 571 0010 5368     		ldr	r3, [r2, #4]
+ 572 0012 23F40053 		bic	r3, r3, #8192
+ 573 0016 5360     		str	r3, [r2, #4]
+ 574 0018 7047     		bx	lr
+ 575              	.L64:
+ 576 001a 00BF     		.align	2
+ 577              	.L63:
+ 578 001c 00230140 		.word	1073816320
+ 580              		.section	.text.ADC_InjectedChannelConfig,"ax",%progbits
+ 581              		.align	1
+ 582              		.global	ADC_InjectedChannelConfig
+ 583              		.syntax unified
+ 584              		.thumb
+ 585              		.thumb_func
+ 587              	ADC_InjectedChannelConfig:
+ 588              		@ args = 0, pretend = 0, frame = 0
+ 589              		@ frame_needed = 0, uses_anonymous_args = 0
+ 590              		@ link register save eliminated.
+ 591 0000 30B4     		push	{r4, r5}
+ 592 0002 0929     		cmp	r1, #9
+ 593 0004 21D9     		bls	.L66
+ 594 0006 C568     		ldr	r5, [r0, #12]
+ 595 0008 A1F10A04 		sub	r4, r1, #10
+ 596 000c 04EB4404 		add	r4, r4, r4, lsl #1
+ 597 0010 4FF0070C 		mov	ip, #7
+ 598 0014 0CFA04FC 		lsl	ip, ip, r4
+ 599 0018 25EA0C0C 		bic	ip, r5, ip
+ 600 001c 03FA04F4 		lsl	r4, r3, r4
+ 601 0020 4CEA0404 		orr	r4, ip, r4
+ 602 0024 C460     		str	r4, [r0, #12]
+ 603              	.L67:
+ 604 0026 846B     		ldr	r4, [r0, #56]
+ 605 0028 C4F30153 		ubfx	r3, r4, #20, #2
+ 606 002c D31A     		subs	r3, r2, r3
+ 607 002e DBB2     		uxtb	r3, r3
+ 608 0030 0233     		adds	r3, r3, #2
+ 609 0032 DBB2     		uxtb	r3, r3
+ 610 0034 03EB8303 		add	r3, r3, r3, lsl #2
+ 611 0038 1F22     		movs	r2, #31
+ 612 003a 9A40     		lsls	r2, r2, r3
+ 613 003c 24EA0204 		bic	r4, r4, r2
+ 614 0040 9940     		lsls	r1, r1, r3
+ 615 0042 0C43     		orrs	r4, r4, r1
+ 616 0044 8463     		str	r4, [r0, #56]
+ 617 0046 30BC     		pop	{r4, r5}
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccuK5QYQ.s 			page 11
+
+
+ 618 0048 7047     		bx	lr
+ 619              	.L66:
+ 620 004a 0469     		ldr	r4, [r0, #16]
+ 621 004c 01EB410C 		add	ip, r1, r1, lsl #1
+ 622 0050 0725     		movs	r5, #7
+ 623 0052 05FA0CF5 		lsl	r5, r5, ip
+ 624 0056 24EA0504 		bic	r4, r4, r5
+ 625 005a 03FA0CF3 		lsl	r3, r3, ip
+ 626 005e 2343     		orrs	r3, r3, r4
+ 627 0060 0361     		str	r3, [r0, #16]
+ 628 0062 E0E7     		b	.L67
+ 630              		.section	.text.ADC_InjectedSequencerLengthConfig,"ax",%progbits
+ 631              		.align	1
+ 632              		.global	ADC_InjectedSequencerLengthConfig
+ 633              		.syntax unified
+ 634              		.thumb
+ 635              		.thumb_func
+ 637              	ADC_InjectedSequencerLengthConfig:
+ 638              		@ args = 0, pretend = 0, frame = 0
+ 639              		@ frame_needed = 0, uses_anonymous_args = 0
+ 640              		@ link register save eliminated.
+ 641 0000 836B     		ldr	r3, [r0, #56]
+ 642 0002 23F44013 		bic	r3, r3, #3145728
+ 643 0006 0139     		subs	r1, r1, #1
+ 644 0008 43EA0153 		orr	r3, r3, r1, lsl #20
+ 645 000c 8363     		str	r3, [r0, #56]
+ 646 000e 7047     		bx	lr
+ 648              		.section	.text.ADC_SetInjectedOffset,"ax",%progbits
+ 649              		.align	1
+ 650              		.global	ADC_SetInjectedOffset
+ 651              		.syntax unified
+ 652              		.thumb
+ 653              		.thumb_func
+ 655              	ADC_SetInjectedOffset:
+ 656              		@ args = 0, pretend = 0, frame = 8
+ 657              		@ frame_needed = 0, uses_anonymous_args = 0
+ 658              		@ link register save eliminated.
+ 659 0000 82B0     		sub	sp, sp, #8
+ 660 0002 0023     		movs	r3, #0
+ 661 0004 0193     		str	r3, [sp, #4]
+ 662 0006 0190     		str	r0, [sp, #4]
+ 663 0008 019B     		ldr	r3, [sp, #4]
+ 664 000a 1944     		add	r1, r1, r3
+ 665 000c 0191     		str	r1, [sp, #4]
+ 666 000e 019B     		ldr	r3, [sp, #4]
+ 667 0010 1A60     		str	r2, [r3]
+ 668 0012 02B0     		add	sp, sp, #8
+ 669              		@ sp needed
+ 670 0014 7047     		bx	lr
+ 672              		.section	.text.ADC_ExternalTrigInjectedConvConfig,"ax",%progbits
+ 673              		.align	1
+ 674              		.global	ADC_ExternalTrigInjectedConvConfig
+ 675              		.syntax unified
+ 676              		.thumb
+ 677              		.thumb_func
+ 679              	ADC_ExternalTrigInjectedConvConfig:
+ 680              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccuK5QYQ.s 			page 12
+
+
+ 681              		@ frame_needed = 0, uses_anonymous_args = 0
+ 682              		@ link register save eliminated.
+ 683 0000 8368     		ldr	r3, [r0, #8]
+ 684 0002 23F47023 		bic	r3, r3, #983040
+ 685 0006 0B43     		orrs	r3, r3, r1
+ 686 0008 8360     		str	r3, [r0, #8]
+ 687 000a 7047     		bx	lr
+ 689              		.section	.text.ADC_ExternalTrigInjectedConvEdgeConfig,"ax",%progbits
+ 690              		.align	1
+ 691              		.global	ADC_ExternalTrigInjectedConvEdgeConfig
+ 692              		.syntax unified
+ 693              		.thumb
+ 694              		.thumb_func
+ 696              	ADC_ExternalTrigInjectedConvEdgeConfig:
+ 697              		@ args = 0, pretend = 0, frame = 0
+ 698              		@ frame_needed = 0, uses_anonymous_args = 0
+ 699              		@ link register save eliminated.
+ 700 0000 8368     		ldr	r3, [r0, #8]
+ 701 0002 23F44013 		bic	r3, r3, #3145728
+ 702 0006 0B43     		orrs	r3, r3, r1
+ 703 0008 8360     		str	r3, [r0, #8]
+ 704 000a 7047     		bx	lr
+ 706              		.section	.text.ADC_SoftwareStartInjectedConv,"ax",%progbits
+ 707              		.align	1
+ 708              		.global	ADC_SoftwareStartInjectedConv
+ 709              		.syntax unified
+ 710              		.thumb
+ 711              		.thumb_func
+ 713              	ADC_SoftwareStartInjectedConv:
+ 714              		@ args = 0, pretend = 0, frame = 0
+ 715              		@ frame_needed = 0, uses_anonymous_args = 0
+ 716              		@ link register save eliminated.
+ 717 0000 8368     		ldr	r3, [r0, #8]
+ 718 0002 43F48003 		orr	r3, r3, #4194304
+ 719 0006 8360     		str	r3, [r0, #8]
+ 720 0008 7047     		bx	lr
+ 722              		.section	.text.ADC_GetSoftwareStartInjectedConvCmdStatus,"ax",%progbits
+ 723              		.align	1
+ 724              		.global	ADC_GetSoftwareStartInjectedConvCmdStatus
+ 725              		.syntax unified
+ 726              		.thumb
+ 727              		.thumb_func
+ 729              	ADC_GetSoftwareStartInjectedConvCmdStatus:
+ 730              		@ args = 0, pretend = 0, frame = 0
+ 731              		@ frame_needed = 0, uses_anonymous_args = 0
+ 732              		@ link register save eliminated.
+ 733 0000 8368     		ldr	r3, [r0, #8]
+ 734 0002 13F4800F 		tst	r3, #4194304
+ 735 0006 01D0     		beq	.L77
+ 736 0008 0120     		movs	r0, #1
+ 737 000a 7047     		bx	lr
+ 738              	.L77:
+ 739 000c 0020     		movs	r0, #0
+ 740 000e 7047     		bx	lr
+ 742              		.section	.text.ADC_AutoInjectedConvCmd,"ax",%progbits
+ 743              		.align	1
+ 744              		.global	ADC_AutoInjectedConvCmd
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccuK5QYQ.s 			page 13
+
+
+ 745              		.syntax unified
+ 746              		.thumb
+ 747              		.thumb_func
+ 749              	ADC_AutoInjectedConvCmd:
+ 750              		@ args = 0, pretend = 0, frame = 0
+ 751              		@ frame_needed = 0, uses_anonymous_args = 0
+ 752              		@ link register save eliminated.
+ 753 0000 21B1     		cbz	r1, .L79
+ 754 0002 4368     		ldr	r3, [r0, #4]
+ 755 0004 43F48063 		orr	r3, r3, #1024
+ 756 0008 4360     		str	r3, [r0, #4]
+ 757 000a 7047     		bx	lr
+ 758              	.L79:
+ 759 000c 4368     		ldr	r3, [r0, #4]
+ 760 000e 23F48063 		bic	r3, r3, #1024
+ 761 0012 4360     		str	r3, [r0, #4]
+ 762 0014 7047     		bx	lr
+ 764              		.section	.text.ADC_InjectedDiscModeCmd,"ax",%progbits
+ 765              		.align	1
+ 766              		.global	ADC_InjectedDiscModeCmd
+ 767              		.syntax unified
+ 768              		.thumb
+ 769              		.thumb_func
+ 771              	ADC_InjectedDiscModeCmd:
+ 772              		@ args = 0, pretend = 0, frame = 0
+ 773              		@ frame_needed = 0, uses_anonymous_args = 0
+ 774              		@ link register save eliminated.
+ 775 0000 21B1     		cbz	r1, .L82
+ 776 0002 4368     		ldr	r3, [r0, #4]
+ 777 0004 43F48053 		orr	r3, r3, #4096
+ 778 0008 4360     		str	r3, [r0, #4]
+ 779 000a 7047     		bx	lr
+ 780              	.L82:
+ 781 000c 4368     		ldr	r3, [r0, #4]
+ 782 000e 23F48053 		bic	r3, r3, #4096
+ 783 0012 4360     		str	r3, [r0, #4]
+ 784 0014 7047     		bx	lr
+ 786              		.section	.text.ADC_GetInjectedConversionValue,"ax",%progbits
+ 787              		.align	1
+ 788              		.global	ADC_GetInjectedConversionValue
+ 789              		.syntax unified
+ 790              		.thumb
+ 791              		.thumb_func
+ 793              	ADC_GetInjectedConversionValue:
+ 794              		@ args = 0, pretend = 0, frame = 8
+ 795              		@ frame_needed = 0, uses_anonymous_args = 0
+ 796              		@ link register save eliminated.
+ 797 0000 82B0     		sub	sp, sp, #8
+ 798 0002 0023     		movs	r3, #0
+ 799 0004 0193     		str	r3, [sp, #4]
+ 800 0006 0190     		str	r0, [sp, #4]
+ 801 0008 019B     		ldr	r3, [sp, #4]
+ 802 000a 1944     		add	r1, r1, r3
+ 803 000c 2831     		adds	r1, r1, #40
+ 804 000e 0191     		str	r1, [sp, #4]
+ 805 0010 019B     		ldr	r3, [sp, #4]
+ 806 0012 1868     		ldr	r0, [r3]
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccuK5QYQ.s 			page 14
+
+
+ 807 0014 80B2     		uxth	r0, r0
+ 808 0016 02B0     		add	sp, sp, #8
+ 809              		@ sp needed
+ 810 0018 7047     		bx	lr
+ 812              		.section	.text.ADC_ITConfig,"ax",%progbits
+ 813              		.align	1
+ 814              		.global	ADC_ITConfig
+ 815              		.syntax unified
+ 816              		.thumb
+ 817              		.thumb_func
+ 819              	ADC_ITConfig:
+ 820              		@ args = 0, pretend = 0, frame = 0
+ 821              		@ frame_needed = 0, uses_anonymous_args = 0
+ 822              		@ link register save eliminated.
+ 823 0000 C9B2     		uxtb	r1, r1
+ 824 0002 0123     		movs	r3, #1
+ 825 0004 8B40     		lsls	r3, r3, r1
+ 826 0006 1AB1     		cbz	r2, .L87
+ 827 0008 4268     		ldr	r2, [r0, #4]
+ 828 000a 1343     		orrs	r3, r3, r2
+ 829 000c 4360     		str	r3, [r0, #4]
+ 830 000e 7047     		bx	lr
+ 831              	.L87:
+ 832 0010 4268     		ldr	r2, [r0, #4]
+ 833 0012 22EA0303 		bic	r3, r2, r3
+ 834 0016 4360     		str	r3, [r0, #4]
+ 835 0018 7047     		bx	lr
+ 837              		.section	.text.ADC_GetFlagStatus,"ax",%progbits
+ 838              		.align	1
+ 839              		.global	ADC_GetFlagStatus
+ 840              		.syntax unified
+ 841              		.thumb
+ 842              		.thumb_func
+ 844              	ADC_GetFlagStatus:
+ 845              		@ args = 0, pretend = 0, frame = 0
+ 846              		@ frame_needed = 0, uses_anonymous_args = 0
+ 847              		@ link register save eliminated.
+ 848 0000 0368     		ldr	r3, [r0]
+ 849 0002 1942     		tst	r1, r3
+ 850 0004 01D0     		beq	.L91
+ 851 0006 0120     		movs	r0, #1
+ 852 0008 7047     		bx	lr
+ 853              	.L91:
+ 854 000a 0020     		movs	r0, #0
+ 855 000c 7047     		bx	lr
+ 857              		.section	.text.ADC_ClearFlag,"ax",%progbits
+ 858              		.align	1
+ 859              		.global	ADC_ClearFlag
+ 860              		.syntax unified
+ 861              		.thumb
+ 862              		.thumb_func
+ 864              	ADC_ClearFlag:
+ 865              		@ args = 0, pretend = 0, frame = 0
+ 866              		@ frame_needed = 0, uses_anonymous_args = 0
+ 867              		@ link register save eliminated.
+ 868 0000 C943     		mvns	r1, r1
+ 869 0002 0160     		str	r1, [r0]
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccuK5QYQ.s 			page 15
+
+
+ 870 0004 7047     		bx	lr
+ 872              		.section	.text.ADC_GetITStatus,"ax",%progbits
+ 873              		.align	1
+ 874              		.global	ADC_GetITStatus
+ 875              		.syntax unified
+ 876              		.thumb
+ 877              		.thumb_func
+ 879              	ADC_GetITStatus:
+ 880              		@ args = 0, pretend = 0, frame = 0
+ 881              		@ frame_needed = 0, uses_anonymous_args = 0
+ 882              		@ link register save eliminated.
+ 883 0000 4268     		ldr	r2, [r0, #4]
+ 884 0002 5FFA81FC 		uxtb	ip, r1
+ 885 0006 0123     		movs	r3, #1
+ 886 0008 03FA0CF3 		lsl	r3, r3, ip
+ 887 000c 1A40     		ands	r2, r2, r3
+ 888 000e 0368     		ldr	r3, [r0]
+ 889 0010 13EA1123 		ands	r3, r3, r1, lsr #8
+ 890 0014 02D0     		beq	.L95
+ 891 0016 1AB9     		cbnz	r2, .L96
+ 892 0018 0020     		movs	r0, #0
+ 893 001a 7047     		bx	lr
+ 894              	.L95:
+ 895 001c 0020     		movs	r0, #0
+ 896 001e 7047     		bx	lr
+ 897              	.L96:
+ 898 0020 0120     		movs	r0, #1
+ 899 0022 7047     		bx	lr
+ 901              		.section	.text.ADC_ClearITPendingBit,"ax",%progbits
+ 902              		.align	1
+ 903              		.global	ADC_ClearITPendingBit
+ 904              		.syntax unified
+ 905              		.thumb
+ 906              		.thumb_func
+ 908              	ADC_ClearITPendingBit:
+ 909              		@ args = 0, pretend = 0, frame = 0
+ 910              		@ frame_needed = 0, uses_anonymous_args = 0
+ 911              		@ link register save eliminated.
+ 912 0000 6FEA1121 		mvn	r1, r1, lsr #8
+ 913 0004 0160     		str	r1, [r0]
+ 914 0006 7047     		bx	lr
+ 916              		.ident	"GCC: (Arm GNU Toolchain 13.3.Rel1 (Build arm-13.24)) 13.3.1 20240614"
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccuK5QYQ.s 			page 16
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 stm32f4xx_adc.c
+C:\Users\ktkuru\AppData\Local\Temp\ccuK5QYQ.s:18     .text.ADC_DeInit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccuK5QYQ.s:24     .text.ADC_DeInit:00000000 ADC_DeInit
+C:\Users\ktkuru\AppData\Local\Temp\ccuK5QYQ.s:37     .text.ADC_Init:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccuK5QYQ.s:43     .text.ADC_Init:00000000 ADC_Init
+C:\Users\ktkuru\AppData\Local\Temp\ccuK5QYQ.s:80     .text.ADC_Init:00000050 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccuK5QYQ.s:83     .text.ADC_StructInit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccuK5QYQ.s:89     .text.ADC_StructInit:00000000 ADC_StructInit
+C:\Users\ktkuru\AppData\Local\Temp\ccuK5QYQ.s:105    .text.ADC_CommonInit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccuK5QYQ.s:111    .text.ADC_CommonInit:00000000 ADC_CommonInit
+C:\Users\ktkuru\AppData\Local\Temp\ccuK5QYQ.s:134    .text.ADC_CommonInit:00000024 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccuK5QYQ.s:138    .text.ADC_CommonStructInit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccuK5QYQ.s:144    .text.ADC_CommonStructInit:00000000 ADC_CommonStructInit
+C:\Users\ktkuru\AppData\Local\Temp\ccuK5QYQ.s:156    .text.ADC_Cmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccuK5QYQ.s:162    .text.ADC_Cmd:00000000 ADC_Cmd
+C:\Users\ktkuru\AppData\Local\Temp\ccuK5QYQ.s:178    .text.ADC_AnalogWatchdogCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccuK5QYQ.s:184    .text.ADC_AnalogWatchdogCmd:00000000 ADC_AnalogWatchdogCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccuK5QYQ.s:196    .text.ADC_AnalogWatchdogThresholdsConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccuK5QYQ.s:202    .text.ADC_AnalogWatchdogThresholdsConfig:00000000 ADC_AnalogWatchdogThresholdsConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccuK5QYQ.s:211    .text.ADC_AnalogWatchdogSingleChannelConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccuK5QYQ.s:217    .text.ADC_AnalogWatchdogSingleChannelConfig:00000000 ADC_AnalogWatchdogSingleChannelConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccuK5QYQ.s:228    .text.ADC_TempSensorVrefintCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccuK5QYQ.s:234    .text.ADC_TempSensorVrefintCmd:00000000 ADC_TempSensorVrefintCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccuK5QYQ.s:253    .text.ADC_TempSensorVrefintCmd:0000001c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccuK5QYQ.s:256    .text.ADC_VBATCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccuK5QYQ.s:262    .text.ADC_VBATCmd:00000000 ADC_VBATCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccuK5QYQ.s:281    .text.ADC_VBATCmd:0000001c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccuK5QYQ.s:284    .text.ADC_RegularChannelConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccuK5QYQ.s:290    .text.ADC_RegularChannelConfig:00000000 ADC_RegularChannelConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccuK5QYQ.s:355    .text.ADC_SoftwareStartConv:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccuK5QYQ.s:361    .text.ADC_SoftwareStartConv:00000000 ADC_SoftwareStartConv
+C:\Users\ktkuru\AppData\Local\Temp\ccuK5QYQ.s:371    .text.ADC_GetSoftwareStartConvStatus:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccuK5QYQ.s:377    .text.ADC_GetSoftwareStartConvStatus:00000000 ADC_GetSoftwareStartConvStatus
+C:\Users\ktkuru\AppData\Local\Temp\ccuK5QYQ.s:391    .text.ADC_EOCOnEachRegularChannelCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccuK5QYQ.s:397    .text.ADC_EOCOnEachRegularChannelCmd:00000000 ADC_EOCOnEachRegularChannelCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccuK5QYQ.s:413    .text.ADC_ContinuousModeCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccuK5QYQ.s:419    .text.ADC_ContinuousModeCmd:00000000 ADC_ContinuousModeCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccuK5QYQ.s:435    .text.ADC_DiscModeChannelCountConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccuK5QYQ.s:441    .text.ADC_DiscModeChannelCountConfig:00000000 ADC_DiscModeChannelCountConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccuK5QYQ.s:453    .text.ADC_DiscModeCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccuK5QYQ.s:459    .text.ADC_DiscModeCmd:00000000 ADC_DiscModeCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccuK5QYQ.s:475    .text.ADC_GetConversionValue:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccuK5QYQ.s:481    .text.ADC_GetConversionValue:00000000 ADC_GetConversionValue
+C:\Users\ktkuru\AppData\Local\Temp\ccuK5QYQ.s:490    .text.ADC_GetMultiModeConversionValue:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccuK5QYQ.s:496    .text.ADC_GetMultiModeConversionValue:00000000 ADC_GetMultiModeConversionValue
+C:\Users\ktkuru\AppData\Local\Temp\ccuK5QYQ.s:506    .text.ADC_GetMultiModeConversionValue:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccuK5QYQ.s:509    .text.ADC_DMACmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccuK5QYQ.s:515    .text.ADC_DMACmd:00000000 ADC_DMACmd
+C:\Users\ktkuru\AppData\Local\Temp\ccuK5QYQ.s:531    .text.ADC_DMARequestAfterLastTransferCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccuK5QYQ.s:537    .text.ADC_DMARequestAfterLastTransferCmd:00000000 ADC_DMARequestAfterLastTransferCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccuK5QYQ.s:553    .text.ADC_MultiModeDMARequestAfterLastTransferCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccuK5QYQ.s:559    .text.ADC_MultiModeDMARequestAfterLastTransferCmd:00000000 ADC_MultiModeDMARequestAfterLastTransferCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccuK5QYQ.s:578    .text.ADC_MultiModeDMARequestAfterLastTransferCmd:0000001c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccuK5QYQ.s:581    .text.ADC_InjectedChannelConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccuK5QYQ.s:587    .text.ADC_InjectedChannelConfig:00000000 ADC_InjectedChannelConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccuK5QYQ.s:631    .text.ADC_InjectedSequencerLengthConfig:00000000 $t
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccuK5QYQ.s 			page 17
+
+
+C:\Users\ktkuru\AppData\Local\Temp\ccuK5QYQ.s:637    .text.ADC_InjectedSequencerLengthConfig:00000000 ADC_InjectedSequencerLengthConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccuK5QYQ.s:649    .text.ADC_SetInjectedOffset:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccuK5QYQ.s:655    .text.ADC_SetInjectedOffset:00000000 ADC_SetInjectedOffset
+C:\Users\ktkuru\AppData\Local\Temp\ccuK5QYQ.s:673    .text.ADC_ExternalTrigInjectedConvConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccuK5QYQ.s:679    .text.ADC_ExternalTrigInjectedConvConfig:00000000 ADC_ExternalTrigInjectedConvConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccuK5QYQ.s:690    .text.ADC_ExternalTrigInjectedConvEdgeConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccuK5QYQ.s:696    .text.ADC_ExternalTrigInjectedConvEdgeConfig:00000000 ADC_ExternalTrigInjectedConvEdgeConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccuK5QYQ.s:707    .text.ADC_SoftwareStartInjectedConv:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccuK5QYQ.s:713    .text.ADC_SoftwareStartInjectedConv:00000000 ADC_SoftwareStartInjectedConv
+C:\Users\ktkuru\AppData\Local\Temp\ccuK5QYQ.s:723    .text.ADC_GetSoftwareStartInjectedConvCmdStatus:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccuK5QYQ.s:729    .text.ADC_GetSoftwareStartInjectedConvCmdStatus:00000000 ADC_GetSoftwareStartInjectedConvCmdStatus
+C:\Users\ktkuru\AppData\Local\Temp\ccuK5QYQ.s:743    .text.ADC_AutoInjectedConvCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccuK5QYQ.s:749    .text.ADC_AutoInjectedConvCmd:00000000 ADC_AutoInjectedConvCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccuK5QYQ.s:765    .text.ADC_InjectedDiscModeCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccuK5QYQ.s:771    .text.ADC_InjectedDiscModeCmd:00000000 ADC_InjectedDiscModeCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccuK5QYQ.s:787    .text.ADC_GetInjectedConversionValue:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccuK5QYQ.s:793    .text.ADC_GetInjectedConversionValue:00000000 ADC_GetInjectedConversionValue
+C:\Users\ktkuru\AppData\Local\Temp\ccuK5QYQ.s:813    .text.ADC_ITConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccuK5QYQ.s:819    .text.ADC_ITConfig:00000000 ADC_ITConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccuK5QYQ.s:838    .text.ADC_GetFlagStatus:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccuK5QYQ.s:844    .text.ADC_GetFlagStatus:00000000 ADC_GetFlagStatus
+C:\Users\ktkuru\AppData\Local\Temp\ccuK5QYQ.s:858    .text.ADC_ClearFlag:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccuK5QYQ.s:864    .text.ADC_ClearFlag:00000000 ADC_ClearFlag
+C:\Users\ktkuru\AppData\Local\Temp\ccuK5QYQ.s:873    .text.ADC_GetITStatus:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccuK5QYQ.s:879    .text.ADC_GetITStatus:00000000 ADC_GetITStatus
+C:\Users\ktkuru\AppData\Local\Temp\ccuK5QYQ.s:902    .text.ADC_ClearITPendingBit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccuK5QYQ.s:908    .text.ADC_ClearITPendingBit:00000000 ADC_ClearITPendingBit
+
+UNDEFINED SYMBOLS
+RCC_APB2PeriphResetCmd
