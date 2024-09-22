@@ -176,7 +176,13 @@ void Motor_PWM_TIM8_Init()
 #define RIN3 PFout(6)
 #define RIN4 PFout(7)
 
-
+#define MLevelOut(x) do{    
+                            if(x==1)
+                            {
+                                
+                            }           
+                                    
+                    }while(0)
 /// @brief 电机使能函数
 /// @param x MLevelOut 
 //           MLevelIlOut
