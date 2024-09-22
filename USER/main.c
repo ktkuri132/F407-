@@ -32,20 +32,20 @@
 #include <mpu6050.h>
 #include <inv_mpu.h>
 
-//¶¨ÒåÈýÖá½Ç¶È
+//å®šä¹‰ä¸‰è½´è§’åº¦
 float pitch,roll,yaw;
-//¶¨ÒåÈýÖá½ÇËÙ¶È
+//å®šä¹‰ä¸‰è½´è§’é€Ÿåº¦
 //short 
 
 /*
 
-Ã¿Ò»²½¶¼ÓÐ¶¼ÓÐµ÷ÊÔÐÅÏ¢£¬ÂèÂèÔÙÒ²²»ÓÃµ£ÐÄÎÒÕÒ²»³ö³ÌÐòbugÁË
+æ¯ä¸€æ­¥éƒ½æœ‰éƒ½æœ‰è°ƒè¯•ä¿¡æ¯ï¼Œå¦ˆå¦ˆå†ä¹Ÿä¸ç”¨æ‹…å¿ƒæˆ‘æ‰¾ä¸å‡ºç¨‹åºbugäº†
 
 */
 int main(void) 
 {
     
-    /* ËùÓÐÍâÉèµÄ³õÊ¼»¯º¯Êý¶¼ÔÚÕâ¸öÀïÃæÁË  */
+    /* æ‰€æœ‰å¤–è®¾çš„åˆå§‹åŒ–å‡½æ•°éƒ½åœ¨è¿™ä¸ªé‡Œé¢äº†  */
     if(BSP_Init())
     {
         printf("peripheral init failed\n");
@@ -57,7 +57,7 @@ int main(void)
     }
      
 
-    /* Ç°Ì¨³ÌÐòÂÖÑ¯  */
+    /* å‰å°ç¨‹åºè½®è¯¢  */
     while (1)
     {
         
@@ -66,7 +66,7 @@ int main(void)
         OLED_Update();
     }
     
-
+/******************************/
 
     for(;;);
         
