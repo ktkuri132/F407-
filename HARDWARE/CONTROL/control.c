@@ -2,6 +2,10 @@
 
 这个文件  实现了  PID控制计算，PWM输出  是风力摆控制中调用的主要函数
 
+    水平方向 pitch轴  ---向外 + 向内 -
+    前后方向 roll轴  ---向外 - 向内 +
+    旋转方向 yaw轴（未使用）
+
 */
 
 
@@ -9,54 +13,102 @@
 #include <stm32f4xx.h>
 #include <bsp.h>
 
-//PID参数
-float Kp=0,
-      Ki=0,
-      Kd=0;
+//直线状态控制PID参数
+float LSKp=0,
+      LSKi=0,
+      LSKd=0;
 
+//摆动状态控制PID参数
+float SWKp=0,
+      SWKi=0,
+      SWKd=0;
 
-
-/// @brief PID计算函数
+/// @brief PID直线控制函数
 /// @param target 目标值
 /// @param feedback 当前值
 /// @return 计算值（浮点型，有正负）
-float pidControl(float target, float feedback)
+float PidControl_LineState(float target, float feedback)
 {
 
     // 定义误差变量
-    static float error = 0;
-    static float lastError = 0;
-    static float integral = 0;
-    static float derivative = 0;
+    static float LSerror = 0;
+    static float LSlastError = 0;
+    static float LSintegral = 0;
+    static float LSderivative = 0;
 
     // 定义积分限幅变量
-    static float integralMin = 0;
-    static float integralMax = 0;
+    static float LSintegralMin = 0;
+    static float LSintegralMax = 0;
 
     // 定义PID输出变量
     static float output = 0;
 
     // 计算误差
-    error = target - feedback;
+    LSerror = target - feedback;
 
     // 计算积分项
-    integral += error;
+    LSintegral += LSerror;
 
     // 限制积分项在积分限幅范围内
-    if (integral < integralMin) {
-        integral = integralMin;
-    } else if (integral > integralMax) {
-        integral = integralMax;
+    if (LSintegral < LSintegralMin) {
+        LSintegral = LSintegralMin;
+    } else if (LSintegral > LSintegralMax) {
+        LSintegral = LSintegralMax;
     }
 
     // 计算微分项
-    derivative = error - lastError;
+    LSderivative = LSerror - LSlastError;
 
     // 计算PID输出
-    output = Kp * error + Ki * integral + Kd * derivative;
+    output = LSKp * LSerror + LSKi * LSintegral + LSKd * LSderivative;
 
     // 更新误差变量
-    lastError = error;
+    LSlastError = LSerror;
+
+    return output;
+}
+
+/// @brief PID摆动控制函数
+/// @param target 目标值
+/// @param feedback 当前值
+/// @return 计算值（浮点型，有正负）
+float PidControl_SwingState(float target, float feedback)
+{
+
+    // 定义误差变量
+    static float SWerror = 0;
+    static float SWlastError = 0;
+    static float SWintegral = 0;
+    static float SWderivative = 0;
+
+    // 定义积分限幅变量
+    static float SWintegralMin = 0;
+    static float SWintegralMax = 0;
+
+    // 定义PID输出变量
+    static float output = 0;
+
+    // 计算误差
+    SWerror = target - feedback;
+
+    // 计算积分项
+    SWintegral += SWerror;
+
+    // 限制积分项在积分限幅范围内
+    if (SWintegral < SWintegralMin) {
+        SWintegral = SWintegralMin;
+    } else if (SWintegral > SWintegralMax) {
+        SWintegral = SWintegralMax;
+    }
+
+    // 计算微分项
+    SWderivative = SWerror - SWlastError;
+
+    // 计算PID输出
+    output = SWKp * SWerror + SWKi * SWintegral + SWKd * SWderivative;
+
+    // 更新误差变量
+    SWlastError = SWerror;
 
     return output;
 }
@@ -116,3 +168,8 @@ void Motor_PWM_TIM8_Init()
     printf("->Motor->TIM1_TIM8 Enable  done\n");
 }
 
+/// @brief 电机使能函数
+void Motor_Enable(uint8_t)
+{
+    GPIO_SetBits(GPIOC, GPIO_Pin_5);
+}
