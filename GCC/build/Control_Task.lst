@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc5QRxya.s 			page 1
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cccnUAzt.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -17,403 +17,232 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc5QRxya.s 			page 1
   14              		.eabi_attribute 18, 4
   15              		.file	"Control_Task.c"
   16              		.text
-  17              		.section	.text.Task_MoveLine,"ax",%progbits
-  18              		.align	1
-  19              		.global	Task_MoveLine
-  20              		.syntax unified
-  21              		.thumb
-  22              		.thumb_func
-  24              	Task_MoveLine:
-  25              		@ args = 0, pretend = 0, frame = 0
-  26              		@ frame_needed = 0, uses_anonymous_args = 0
-  27 0000 08B5     		push	{r3, lr}
-  28 0002 A54B     		ldr	r3, .L58
-  29 0004 D3ED000A 		vldr.32	s1, [r3]
-  30 0008 F2EE0E7A 		vmov.f32	s15, #1.5e+1
-  31 000c F4EEE70A 		vcmpe.f32	s1, s15
-  32 0010 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
-  33 0014 04D5     		bpl	.L2
-  34 0016 F5EEC00A 		vcmpe.f32	s1, #0
-  35 001a F1EE10FA 		vmrs	APSR_nzcv, FPSCR
-  36 001e 52DC     		bgt	.L48
-  37              	.L2:
-  38 0020 FAEE0E7A 		vmov.f32	s15, #-1.5e+1
-  39 0024 F4EEE70A 		vcmpe.f32	s1, s15
-  40 0028 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
-  41 002c 04D5     		bpl	.L6
-  42 002e F5EEC00A 		vcmpe.f32	s1, #0
-  43 0032 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
-  44 0036 4FDC     		bgt	.L49
-  45              	.L6:
-  46 0038 F2EE0E7A 		vmov.f32	s15, #1.5e+1
-  47 003c F4EE670A 		vcmp.f32	s1, s15
-  48 0040 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
-  49 0044 51D1     		bne	.L9
-  50 0046 954B     		ldr	r3, .L58+4
-  51 0048 954A     		ldr	r2, .L58+8
-  52 004a 1A60     		str	r2, [r3]	@ float
-  53              	.L5:
-  54 004c 954B     		ldr	r3, .L58+12
-  55 004e D3ED000A 		vldr.32	s1, [r3]
-  56 0052 9FED950A 		vldr.32	s0, .L58+16
-  57 0056 FFF7FEFF 		bl	PidControl_LineState
-  58 005a 944B     		ldr	r3, .L58+20
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc5QRxya.s 			page 2
+  17              		.section	.rodata.Task_MoveLine.str1.4,"aMS",%progbits,1
+  18              		.align	2
+  19              	.LC0:
+  20 0000 4C4F3A25 		.ascii	"LO:%f\000"
+  20      6600
+  21              		.global	__aeabi_f2d
+  22 0006 0000     		.align	2
+  23              	.LC1:
+  24 0008 534F3A25 		.ascii	"SO:%f\000"
+  24      6600
+  25              		.section	.text.Task_MoveLine,"ax",%progbits
+  26              		.align	1
+  27              		.global	Task_MoveLine
+  28              		.syntax unified
+  29              		.thumb
+  30              		.thumb_func
+  32              	Task_MoveLine:
+  33              		@ args = 0, pretend = 0, frame = 0
+  34              		@ frame_needed = 0, uses_anonymous_args = 0
+  35 0000 00B5     		push	{lr}
+  36 0002 83B0     		sub	sp, sp, #12
+  37 0004 334B     		ldr	r3, .L17
+  38 0006 D3ED000A 		vldr.32	s1, [r3]
+  39 000a F2EE0E7A 		vmov.f32	s15, #1.5e+1
+  40 000e F4EEE70A 		vcmpe.f32	s1, s15
+  41 0012 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+  42 0016 04D5     		bpl	.L2
+  43 0018 F5EEC00A 		vcmpe.f32	s1, #0
+  44 001c F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+  45 0020 3ADC     		bgt	.L15
+  46              	.L2:
+  47 0022 FAEE0E7A 		vmov.f32	s15, #-1.5e+1
+  48 0026 F4EEE70A 		vcmpe.f32	s1, s15
+  49 002a F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+  50 002e 04D5     		bpl	.L6
+  51 0030 F5EEC00A 		vcmpe.f32	s1, #0
+  52 0034 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+  53 0038 37DC     		bgt	.L16
+  54              	.L6:
+  55 003a F2EE0E7A 		vmov.f32	s15, #1.5e+1
+  56 003e F4EE670A 		vcmp.f32	s1, s15
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cccnUAzt.s 			page 2
 
 
-  59 005c 83ED000A 		vstr.32	s0, [r3]
-  60 0060 B5EEC00A 		vcmpe.f32	s0, #0
-  61 0064 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
-  62 0068 4ADC     		bgt	.L50
-  63 006a B5EEC00A 		vcmpe.f32	s0, #0
-  64 006e F1EE10FA 		vmrs	APSR_nzcv, FPSCR
-  65 0072 00F19680 		bmi	.L51
-  66 0076 0021     		movs	r1, #0
-  67 0078 0320     		movs	r0, #3
-  68 007a FFF7FEFF 		bl	Motor_Cmd
-  69 007e 0021     		movs	r1, #0
-  70 0080 0420     		movs	r0, #4
-  71 0082 FFF7FEFF 		bl	Motor_Cmd
-  72 0086 8A4B     		ldr	r3, .L58+24
-  73 0088 0022     		movs	r2, #0
-  74 008a DA63     		str	r2, [r3, #60]
-  75 008c 1A64     		str	r2, [r3, #64]
-  76 008e 894B     		ldr	r3, .L58+28
-  77 0090 D3ED007A 		vldr.32	s15, [r3]
-  78 0094 F5EEC07A 		vcmpe.f32	s15, #0
-  79 0098 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
-  80 009c 00F3D480 		bgt	.L52
-  81 00a0 F5EEC07A 		vcmpe.f32	s15, #0
-  82 00a4 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
-  83 00a8 00F1E180 		bmi	.L53
-  84 00ac 0021     		movs	r1, #0
-  85 00ae 0120     		movs	r0, #1
-  86 00b0 FFF7FEFF 		bl	Motor_Cmd
-  87 00b4 0021     		movs	r1, #0
-  88 00b6 0220     		movs	r0, #2
-  89 00b8 FFF7FEFF 		bl	Motor_Cmd
-  90 00bc 7C4B     		ldr	r3, .L58+24
-  91 00be 0022     		movs	r2, #0
-  92 00c0 5A63     		str	r2, [r3, #52]
-  93 00c2 9A63     		str	r2, [r3, #56]
-  94 00c4 57E0     		b	.L1
-  95              	.L48:
-  96 00c6 754B     		ldr	r3, .L58+4
-  97 00c8 93ED000A 		vldr.32	s0, [r3]
-  98 00cc FFF7FEFF 		bl	PidControl_SwingState
-  99 00d0 784B     		ldr	r3, .L58+28
- 100 00d2 83ED000A 		vstr.32	s0, [r3]
- 101 00d6 B9E7     		b	.L5
- 102              	.L49:
- 103 00d8 704B     		ldr	r3, .L58+4
- 104 00da 93ED000A 		vldr.32	s0, [r3]
- 105 00de FFF7FEFF 		bl	PidControl_SwingState
- 106 00e2 744B     		ldr	r3, .L58+28
- 107 00e4 83ED000A 		vstr.32	s0, [r3]
- 108 00e8 B0E7     		b	.L5
- 109              	.L9:
- 110 00ea FAEE0E7A 		vmov.f32	s15, #-1.5e+1
- 111 00ee F4EE670A 		vcmp.f32	s1, s15
- 112 00f2 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
- 113 00f6 A9D1     		bne	.L5
- 114 00f8 684B     		ldr	r3, .L58+4
- 115 00fa 6F4A     		ldr	r2, .L58+32
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc5QRxya.s 			page 3
+  57 0042 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+  58 0046 39D1     		bne	.L9
+  59 0048 234B     		ldr	r3, .L17+4
+  60 004a 244A     		ldr	r2, .L17+8
+  61 004c 1A60     		str	r2, [r3]	@ float
+  62              	.L5:
+  63 004e 244B     		ldr	r3, .L17+12
+  64 0050 D3ED000A 		vldr.32	s1, [r3]
+  65 0054 9FED230A 		vldr.32	s0, .L17+16
+  66 0058 FFF7FEFF 		bl	PidControl_LineState
+  67 005c 10EE100A 		vmov	r0, s0
+  68 0060 214B     		ldr	r3, .L17+20
+  69 0062 83ED000A 		vstr.32	s0, [r3]
+  70 0066 FFF7FEFF 		bl	__aeabi_f2d
+  71 006a CDE90001 		strd	r0, [sp]
+  72 006e 1F4B     		ldr	r3, .L17+24
+  73 0070 0622     		movs	r2, #6
+  74 0072 2021     		movs	r1, #32
+  75 0074 0020     		movs	r0, #0
+  76 0076 FFF7FEFF 		bl	OLED_Printf
+  77 007a 1D4B     		ldr	r3, .L17+28
+  78 007c 1868     		ldr	r0, [r3]	@ float
+  79 007e FFF7FEFF 		bl	__aeabi_f2d
+  80 0082 CDE90001 		strd	r0, [sp]
+  81 0086 1B4B     		ldr	r3, .L17+32
+  82 0088 0622     		movs	r2, #6
+  83 008a 3021     		movs	r1, #48
+  84 008c 0020     		movs	r0, #0
+  85 008e FFF7FEFF 		bl	OLED_Printf
+  86 0092 03B0     		add	sp, sp, #12
+  87              		@ sp needed
+  88 0094 5DF804FB 		ldr	pc, [sp], #4
+  89              	.L15:
+  90 0098 0F4B     		ldr	r3, .L17+4
+  91 009a 93ED000A 		vldr.32	s0, [r3]
+  92 009e FFF7FEFF 		bl	PidControl_SwingState
+  93 00a2 134B     		ldr	r3, .L17+28
+  94 00a4 83ED000A 		vstr.32	s0, [r3]
+  95 00a8 D1E7     		b	.L5
+  96              	.L16:
+  97 00aa 0B4B     		ldr	r3, .L17+4
+  98 00ac 93ED000A 		vldr.32	s0, [r3]
+  99 00b0 FFF7FEFF 		bl	PidControl_SwingState
+ 100 00b4 0E4B     		ldr	r3, .L17+28
+ 101 00b6 83ED000A 		vstr.32	s0, [r3]
+ 102 00ba C8E7     		b	.L5
+ 103              	.L9:
+ 104 00bc FAEE0E7A 		vmov.f32	s15, #-1.5e+1
+ 105 00c0 F4EE670A 		vcmp.f32	s1, s15
+ 106 00c4 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 107 00c8 C1D1     		bne	.L5
+ 108 00ca 034B     		ldr	r3, .L17+4
+ 109 00cc 0A4A     		ldr	r2, .L17+36
+ 110 00ce 1A60     		str	r2, [r3]	@ float
+ 111 00d0 BDE7     		b	.L5
+ 112              	.L18:
+ 113 00d2 00BF     		.align	2
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cccnUAzt.s 			page 3
 
 
- 116 00fc 1A60     		str	r2, [r3]	@ float
- 117 00fe A5E7     		b	.L5
- 118              	.L50:
- 119 0100 0121     		movs	r1, #1
- 120 0102 0420     		movs	r0, #4
- 121 0104 FFF7FEFF 		bl	Motor_Cmd
- 122 0108 0021     		movs	r1, #0
- 123 010a 0320     		movs	r0, #3
- 124 010c FFF7FEFF 		bl	Motor_Cmd
- 125 0110 674B     		ldr	r3, .L58+24
- 126 0112 0022     		movs	r2, #0
- 127 0114 DA63     		str	r2, [r3, #60]
- 128 0116 674A     		ldr	r2, .L58+28
- 129 0118 D2ED007A 		vldr.32	s15, [r2]
- 130 011c BCEEE77A 		vcvt.u32.f32	s14, s15
- 131 0120 83ED107A 		vstr.32	s14, [r3, #64]	@ int
- 132 0124 F5EEC07A 		vcmpe.f32	s15, #0
- 133 0128 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
- 134 012c 11DC     		bgt	.L54
- 135 012e F5EEC07A 		vcmpe.f32	s15, #0
- 136 0132 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
- 137 0136 1FD4     		bmi	.L55
- 138 0138 0021     		movs	r1, #0
- 139 013a 0120     		movs	r0, #1
- 140 013c FFF7FEFF 		bl	Motor_Cmd
- 141 0140 0021     		movs	r1, #0
- 142 0142 0220     		movs	r0, #2
- 143 0144 FFF7FEFF 		bl	Motor_Cmd
- 144 0148 594B     		ldr	r3, .L58+24
- 145 014a 0022     		movs	r2, #0
- 146 014c 5A63     		str	r2, [r3, #52]
- 147 014e 9A63     		str	r2, [r3, #56]
- 148 0150 11E0     		b	.L1
- 149              	.L54:
- 150 0152 0121     		movs	r1, #1
- 151 0154 0846     		mov	r0, r1
- 152 0156 FFF7FEFF 		bl	Motor_Cmd
- 153 015a 0021     		movs	r1, #0
- 154 015c 0220     		movs	r0, #2
- 155 015e FFF7FEFF 		bl	Motor_Cmd
- 156 0162 524B     		ldr	r3, .L58+20
- 157 0164 D3ED007A 		vldr.32	s15, [r3]
- 158 0168 FCEEE77A 		vcvt.u32.f32	s15, s15
- 159 016c 504B     		ldr	r3, .L58+24
- 160 016e C3ED0D7A 		vstr.32	s15, [r3, #52]	@ int
- 161 0172 0022     		movs	r2, #0
- 162 0174 9A63     		str	r2, [r3, #56]
- 163              	.L1:
- 164 0176 08BD     		pop	{r3, pc}
- 165              	.L55:
- 166 0178 0021     		movs	r1, #0
- 167 017a 0120     		movs	r0, #1
- 168 017c FFF7FEFF 		bl	Motor_Cmd
- 169 0180 0121     		movs	r1, #1
- 170 0182 0220     		movs	r0, #2
- 171 0184 FFF7FEFF 		bl	Motor_Cmd
- 172 0188 494A     		ldr	r2, .L58+24
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc5QRxya.s 			page 4
+ 114              	.L17:
+ 115 00d4 00000000 		.word	pitch
+ 116 00d8 00000000 		.word	TargetPitch.2
+ 117 00dc 000070C1 		.word	-1049624576
+ 118 00e0 00000000 		.word	roll
+ 119 00e4 00000000 		.word	0
+ 120 00e8 00000000 		.word	LineState_Output.0
+ 121 00ec 00000000 		.word	.LC0
+ 122 00f0 00000000 		.word	SwingState_Output.1
+ 123 00f4 08000000 		.word	.LC1
+ 124 00f8 00007041 		.word	1097859072
+ 126              		.section	.text.EXTI15_10_IRQHandler,"ax",%progbits
+ 127              		.align	1
+ 128              		.global	EXTI15_10_IRQHandler
+ 129              		.syntax unified
+ 130              		.thumb
+ 131              		.thumb_func
+ 133              	EXTI15_10_IRQHandler:
+ 134              		@ args = 0, pretend = 0, frame = 0
+ 135              		@ frame_needed = 0, uses_anonymous_args = 0
+ 136 0000 08B5     		push	{r3, lr}
+ 137 0002 4FF40040 		mov	r0, #32768
+ 138 0006 FFF7FEFF 		bl	EXTI_GetITStatus
+ 139 000a 00B9     		cbnz	r0, .L22
+ 140              	.L19:
+ 141 000c 08BD     		pop	{r3, pc}
+ 142              	.L22:
+ 143 000e 4FF40040 		mov	r0, #32768
+ 144 0012 FFF7FEFF 		bl	EXTI_ClearITPendingBit
+ 145 0016 044A     		ldr	r2, .L23
+ 146 0018 0449     		ldr	r1, .L23+4
+ 147 001a 0548     		ldr	r0, .L23+8
+ 148 001c FFF7FEFF 		bl	mpu_dmp_get_data
+ 149 0020 FFF7FEFF 		bl	Task_MoveLine
+ 150 0024 F2E7     		b	.L19
+ 151              	.L24:
+ 152 0026 00BF     		.align	2
+ 153              	.L23:
+ 154 0028 00000000 		.word	yaw
+ 155 002c 00000000 		.word	roll
+ 156 0030 00000000 		.word	pitch
+ 158              		.section	.bss.LineState_Output.0,"aw",%nobits
+ 159              		.align	2
+ 162              	LineState_Output.0:
+ 163 0000 00000000 		.space	4
+ 164              		.section	.bss.SwingState_Output.1,"aw",%nobits
+ 165              		.align	2
+ 168              	SwingState_Output.1:
+ 169 0000 00000000 		.space	4
+ 170              		.section	.data.TargetPitch.2,"aw"
+ 171              		.align	2
+ 174              	TargetPitch.2:
+ 175 0000 00007041 		.word	1097859072
+ 176              		.global	SWKd
+ 177              		.section	.bss.SWKd,"aw",%nobits
+ 178              		.align	2
+ 181              	SWKd:
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cccnUAzt.s 			page 4
 
 
- 173 018a 0023     		movs	r3, #0
- 174 018c 5363     		str	r3, [r2, #52]
- 175 018e 474B     		ldr	r3, .L58+20
- 176 0190 D3ED007A 		vldr.32	s15, [r3]
- 177 0194 FCEEE77A 		vcvt.u32.f32	s15, s15
- 178 0198 17EE903A 		vmov	r3, s15	@ int
- 179 019c 5B42     		rsbs	r3, r3, #0
- 180 019e 9363     		str	r3, [r2, #56]
- 181 01a0 E9E7     		b	.L1
- 182              	.L51:
- 183 01a2 0121     		movs	r1, #1
- 184 01a4 0320     		movs	r0, #3
- 185 01a6 FFF7FEFF 		bl	Motor_Cmd
- 186 01aa 0021     		movs	r1, #0
- 187 01ac 0420     		movs	r0, #4
- 188 01ae FFF7FEFF 		bl	Motor_Cmd
- 189 01b2 404B     		ldr	r3, .L58+28
- 190 01b4 D3ED007A 		vldr.32	s15, [r3]
- 191 01b8 BCEEE77A 		vcvt.u32.f32	s14, s15
- 192 01bc 17EE103A 		vmov	r3, s14	@ int
- 193 01c0 5B42     		rsbs	r3, r3, #0
- 194 01c2 3B4A     		ldr	r2, .L58+24
- 195 01c4 D363     		str	r3, [r2, #60]
- 196 01c6 0023     		movs	r3, #0
- 197 01c8 1364     		str	r3, [r2, #64]
- 198 01ca F5EEC07A 		vcmpe.f32	s15, #0
- 199 01ce F1EE10FA 		vmrs	APSR_nzcv, FPSCR
- 200 01d2 11DC     		bgt	.L56
- 201 01d4 F5EEC07A 		vcmpe.f32	s15, #0
- 202 01d8 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
- 203 01dc 1FD4     		bmi	.L57
- 204 01de 0021     		movs	r1, #0
- 205 01e0 0120     		movs	r0, #1
- 206 01e2 FFF7FEFF 		bl	Motor_Cmd
- 207 01e6 0021     		movs	r1, #0
- 208 01e8 0220     		movs	r0, #2
- 209 01ea FFF7FEFF 		bl	Motor_Cmd
- 210 01ee 304B     		ldr	r3, .L58+24
- 211 01f0 0022     		movs	r2, #0
- 212 01f2 5A63     		str	r2, [r3, #52]
- 213 01f4 9A63     		str	r2, [r3, #56]
- 214 01f6 BEE7     		b	.L1
- 215              	.L56:
- 216 01f8 0121     		movs	r1, #1
- 217 01fa 0846     		mov	r0, r1
- 218 01fc FFF7FEFF 		bl	Motor_Cmd
- 219 0200 0021     		movs	r1, #0
- 220 0202 0220     		movs	r0, #2
- 221 0204 FFF7FEFF 		bl	Motor_Cmd
- 222 0208 284B     		ldr	r3, .L58+20
- 223 020a D3ED007A 		vldr.32	s15, [r3]
- 224 020e FCEEE77A 		vcvt.u32.f32	s15, s15
- 225 0212 274B     		ldr	r3, .L58+24
- 226 0214 C3ED0D7A 		vstr.32	s15, [r3, #52]	@ int
- 227 0218 0022     		movs	r2, #0
- 228 021a 9A63     		str	r2, [r3, #56]
- 229 021c ABE7     		b	.L1
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc5QRxya.s 			page 5
-
-
- 230              	.L57:
- 231 021e 0021     		movs	r1, #0
- 232 0220 0120     		movs	r0, #1
- 233 0222 FFF7FEFF 		bl	Motor_Cmd
- 234 0226 0121     		movs	r1, #1
- 235 0228 0220     		movs	r0, #2
- 236 022a FFF7FEFF 		bl	Motor_Cmd
- 237 022e 204A     		ldr	r2, .L58+24
- 238 0230 0023     		movs	r3, #0
- 239 0232 5363     		str	r3, [r2, #52]
- 240 0234 1D4B     		ldr	r3, .L58+20
- 241 0236 D3ED007A 		vldr.32	s15, [r3]
- 242 023a FCEEE77A 		vcvt.u32.f32	s15, s15
- 243 023e 17EE903A 		vmov	r3, s15	@ int
- 244 0242 5B42     		rsbs	r3, r3, #0
- 245 0244 9363     		str	r3, [r2, #56]
- 246 0246 96E7     		b	.L1
- 247              	.L52:
- 248 0248 0121     		movs	r1, #1
- 249 024a 0846     		mov	r0, r1
- 250 024c FFF7FEFF 		bl	Motor_Cmd
- 251 0250 0021     		movs	r1, #0
- 252 0252 0220     		movs	r0, #2
- 253 0254 FFF7FEFF 		bl	Motor_Cmd
- 254 0258 144B     		ldr	r3, .L58+20
- 255 025a D3ED007A 		vldr.32	s15, [r3]
- 256 025e FCEEE77A 		vcvt.u32.f32	s15, s15
- 257 0262 134B     		ldr	r3, .L58+24
- 258 0264 C3ED0D7A 		vstr.32	s15, [r3, #52]	@ int
- 259 0268 0022     		movs	r2, #0
- 260 026a 9A63     		str	r2, [r3, #56]
- 261 026c 83E7     		b	.L1
- 262              	.L53:
- 263 026e 0021     		movs	r1, #0
- 264 0270 0120     		movs	r0, #1
- 265 0272 FFF7FEFF 		bl	Motor_Cmd
- 266 0276 0121     		movs	r1, #1
- 267 0278 0220     		movs	r0, #2
- 268 027a FFF7FEFF 		bl	Motor_Cmd
- 269 027e 0C4A     		ldr	r2, .L58+24
- 270 0280 0023     		movs	r3, #0
- 271 0282 5363     		str	r3, [r2, #52]
- 272 0284 094B     		ldr	r3, .L58+20
- 273 0286 D3ED007A 		vldr.32	s15, [r3]
- 274 028a FCEEE77A 		vcvt.u32.f32	s15, s15
- 275 028e 17EE903A 		vmov	r3, s15	@ int
- 276 0292 5B42     		rsbs	r3, r3, #0
- 277 0294 9363     		str	r3, [r2, #56]
- 278 0296 6EE7     		b	.L1
- 279              	.L59:
- 280              		.align	2
- 281              	.L58:
- 282 0298 00000000 		.word	pitch
- 283 029c 00000000 		.word	TargetPitch.2
- 284 02a0 000070C1 		.word	-1049624576
- 285 02a4 00000000 		.word	roll
- 286 02a8 00000000 		.word	0
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc5QRxya.s 			page 6
-
-
- 287 02ac 00000000 		.word	LineState_Output.0
- 288 02b0 00040140 		.word	1073808384
- 289 02b4 00000000 		.word	SwingState_Output.1
- 290 02b8 00007041 		.word	1097859072
- 292              		.section	.text.EXTI15_10_IRQHandler,"ax",%progbits
- 293              		.align	1
- 294              		.global	EXTI15_10_IRQHandler
- 295              		.syntax unified
- 296              		.thumb
- 297              		.thumb_func
- 299              	EXTI15_10_IRQHandler:
- 300              		@ args = 0, pretend = 0, frame = 0
- 301              		@ frame_needed = 0, uses_anonymous_args = 0
- 302 0000 08B5     		push	{r3, lr}
- 303 0002 4FF40040 		mov	r0, #32768
- 304 0006 FFF7FEFF 		bl	EXTI_GetITStatus
- 305 000a 00B9     		cbnz	r0, .L63
- 306              	.L60:
- 307 000c 08BD     		pop	{r3, pc}
- 308              	.L63:
- 309 000e 4FF40040 		mov	r0, #32768
- 310 0012 FFF7FEFF 		bl	EXTI_ClearITPendingBit
- 311 0016 044A     		ldr	r2, .L64
- 312 0018 0449     		ldr	r1, .L64+4
- 313 001a 0548     		ldr	r0, .L64+8
- 314 001c FFF7FEFF 		bl	mpu_dmp_get_data
- 315 0020 FFF7FEFF 		bl	Task_MoveLine
- 316 0024 F2E7     		b	.L60
- 317              	.L65:
- 318 0026 00BF     		.align	2
- 319              	.L64:
- 320 0028 00000000 		.word	yaw
- 321 002c 00000000 		.word	roll
- 322 0030 00000000 		.word	pitch
- 324              		.section	.bss.LineState_Output.0,"aw",%nobits
- 325              		.align	2
- 328              	LineState_Output.0:
- 329 0000 00000000 		.space	4
- 330              		.section	.bss.SwingState_Output.1,"aw",%nobits
- 331              		.align	2
- 334              	SwingState_Output.1:
- 335 0000 00000000 		.space	4
- 336              		.section	.data.TargetPitch.2,"aw"
- 337              		.align	2
- 340              	TargetPitch.2:
- 341 0000 00007041 		.word	1097859072
- 342              		.global	SWKd
- 343              		.section	.bss.SWKd,"aw",%nobits
- 344              		.align	2
- 347              	SWKd:
- 348 0000 00000000 		.space	4
- 349              		.global	SWKi
- 350              		.section	.bss.SWKi,"aw",%nobits
- 351              		.align	2
- 354              	SWKi:
- 355 0000 00000000 		.space	4
- 356              		.global	SWKp
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc5QRxya.s 			page 7
-
-
- 357              		.section	.data.SWKp,"aw"
- 358              		.align	2
- 361              	SWKp:
- 362 0000 0000A041 		.word	1101004800
- 363              		.global	LSKd
- 364              		.section	.bss.LSKd,"aw",%nobits
- 365              		.align	2
- 368              	LSKd:
- 369 0000 00000000 		.space	4
- 370              		.global	LSKi
- 371              		.section	.bss.LSKi,"aw",%nobits
- 372              		.align	2
- 375              	LSKi:
- 376 0000 00000000 		.space	4
- 377              		.global	LSKp
- 378              		.section	.data.LSKp,"aw"
- 379              		.align	2
- 382              	LSKp:
- 383 0000 00007A44 		.word	1148846080
- 384              		.ident	"GCC: (Arm GNU Toolchain 13.3.Rel1 (Build arm-13.24)) 13.3.1 20240614"
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc5QRxya.s 			page 8
+ 182 0000 00000000 		.space	4
+ 183              		.global	SWKi
+ 184              		.section	.bss.SWKi,"aw",%nobits
+ 185              		.align	2
+ 188              	SWKi:
+ 189 0000 00000000 		.space	4
+ 190              		.global	SWKp
+ 191              		.section	.data.SWKp,"aw"
+ 192              		.align	2
+ 195              	SWKp:
+ 196 0000 0000A041 		.word	1101004800
+ 197              		.global	LSKd
+ 198              		.section	.bss.LSKd,"aw",%nobits
+ 199              		.align	2
+ 202              	LSKd:
+ 203 0000 00000000 		.space	4
+ 204              		.global	LSKi
+ 205              		.section	.bss.LSKi,"aw",%nobits
+ 206              		.align	2
+ 209              	LSKi:
+ 210 0000 00000000 		.space	4
+ 211              		.global	LSKp
+ 212              		.section	.data.LSKp,"aw"
+ 213              		.align	2
+ 216              	LSKp:
+ 217 0000 00409C45 		.word	1167867904
+ 218              		.ident	"GCC: (Arm GNU Toolchain 13.3.Rel1 (Build arm-13.24)) 13.3.1 20240614"
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cccnUAzt.s 			page 5
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 Control_Task.c
-C:\Users\ktkuru\AppData\Local\Temp\cc5QRxya.s:18     .text.Task_MoveLine:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\cc5QRxya.s:24     .text.Task_MoveLine:00000000 Task_MoveLine
-C:\Users\ktkuru\AppData\Local\Temp\cc5QRxya.s:282    .text.Task_MoveLine:00000298 $d
-C:\Users\ktkuru\AppData\Local\Temp\cc5QRxya.s:340    .data.TargetPitch.2:00000000 TargetPitch.2
-C:\Users\ktkuru\AppData\Local\Temp\cc5QRxya.s:328    .bss.LineState_Output.0:00000000 LineState_Output.0
-C:\Users\ktkuru\AppData\Local\Temp\cc5QRxya.s:334    .bss.SwingState_Output.1:00000000 SwingState_Output.1
-C:\Users\ktkuru\AppData\Local\Temp\cc5QRxya.s:293    .text.EXTI15_10_IRQHandler:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\cc5QRxya.s:299    .text.EXTI15_10_IRQHandler:00000000 EXTI15_10_IRQHandler
-C:\Users\ktkuru\AppData\Local\Temp\cc5QRxya.s:320    .text.EXTI15_10_IRQHandler:00000028 $d
-C:\Users\ktkuru\AppData\Local\Temp\cc5QRxya.s:325    .bss.LineState_Output.0:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\cc5QRxya.s:331    .bss.SwingState_Output.1:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\cc5QRxya.s:337    .data.TargetPitch.2:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\cc5QRxya.s:347    .bss.SWKd:00000000 SWKd
-C:\Users\ktkuru\AppData\Local\Temp\cc5QRxya.s:344    .bss.SWKd:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\cc5QRxya.s:354    .bss.SWKi:00000000 SWKi
-C:\Users\ktkuru\AppData\Local\Temp\cc5QRxya.s:351    .bss.SWKi:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\cc5QRxya.s:361    .data.SWKp:00000000 SWKp
-C:\Users\ktkuru\AppData\Local\Temp\cc5QRxya.s:358    .data.SWKp:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\cc5QRxya.s:368    .bss.LSKd:00000000 LSKd
-C:\Users\ktkuru\AppData\Local\Temp\cc5QRxya.s:365    .bss.LSKd:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\cc5QRxya.s:375    .bss.LSKi:00000000 LSKi
-C:\Users\ktkuru\AppData\Local\Temp\cc5QRxya.s:372    .bss.LSKi:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\cc5QRxya.s:382    .data.LSKp:00000000 LSKp
-C:\Users\ktkuru\AppData\Local\Temp\cc5QRxya.s:379    .data.LSKp:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\cccnUAzt.s:18     .rodata.Task_MoveLine.str1.4:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\cccnUAzt.s:26     .text.Task_MoveLine:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cccnUAzt.s:32     .text.Task_MoveLine:00000000 Task_MoveLine
+C:\Users\ktkuru\AppData\Local\Temp\cccnUAzt.s:115    .text.Task_MoveLine:000000d4 $d
+C:\Users\ktkuru\AppData\Local\Temp\cccnUAzt.s:174    .data.TargetPitch.2:00000000 TargetPitch.2
+C:\Users\ktkuru\AppData\Local\Temp\cccnUAzt.s:162    .bss.LineState_Output.0:00000000 LineState_Output.0
+C:\Users\ktkuru\AppData\Local\Temp\cccnUAzt.s:168    .bss.SwingState_Output.1:00000000 SwingState_Output.1
+C:\Users\ktkuru\AppData\Local\Temp\cccnUAzt.s:127    .text.EXTI15_10_IRQHandler:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cccnUAzt.s:133    .text.EXTI15_10_IRQHandler:00000000 EXTI15_10_IRQHandler
+C:\Users\ktkuru\AppData\Local\Temp\cccnUAzt.s:154    .text.EXTI15_10_IRQHandler:00000028 $d
+C:\Users\ktkuru\AppData\Local\Temp\cccnUAzt.s:159    .bss.LineState_Output.0:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\cccnUAzt.s:165    .bss.SwingState_Output.1:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\cccnUAzt.s:171    .data.TargetPitch.2:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\cccnUAzt.s:181    .bss.SWKd:00000000 SWKd
+C:\Users\ktkuru\AppData\Local\Temp\cccnUAzt.s:178    .bss.SWKd:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\cccnUAzt.s:188    .bss.SWKi:00000000 SWKi
+C:\Users\ktkuru\AppData\Local\Temp\cccnUAzt.s:185    .bss.SWKi:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\cccnUAzt.s:195    .data.SWKp:00000000 SWKp
+C:\Users\ktkuru\AppData\Local\Temp\cccnUAzt.s:192    .data.SWKp:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\cccnUAzt.s:202    .bss.LSKd:00000000 LSKd
+C:\Users\ktkuru\AppData\Local\Temp\cccnUAzt.s:199    .bss.LSKd:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\cccnUAzt.s:209    .bss.LSKi:00000000 LSKi
+C:\Users\ktkuru\AppData\Local\Temp\cccnUAzt.s:206    .bss.LSKi:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\cccnUAzt.s:216    .data.LSKp:00000000 LSKp
+C:\Users\ktkuru\AppData\Local\Temp\cccnUAzt.s:213    .data.LSKp:00000000 $d
 
 UNDEFINED SYMBOLS
+__aeabi_f2d
 PidControl_LineState
-Motor_Cmd
+OLED_Printf
 PidControl_SwingState
 pitch
 roll

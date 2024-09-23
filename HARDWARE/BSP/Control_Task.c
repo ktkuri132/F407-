@@ -18,11 +18,11 @@
 #include <OLED.h>
 
 //方便调试，定义电机方位
-#define Motor       TIM8
-#define LineOut     CCR3
-#define LineIn      CCR4
-#define SwingOut    CCR1
-#define SwingIn     CCR2
+#define Motor           TIM8
+#define MVerticalOut    CCR1    //垂直方向外侧电机
+#define MVerticalIn     CCR2    //垂直方向内侧电机
+#define MLevelOut       CCR3    //水平方向外侧电机
+#define MLevelIn        CCR4    //水平方向内侧电机
 
 
 //定义电机x的y方向
@@ -33,7 +33,7 @@
 extern float pitch,roll,yaw;
 
 //直线状态控制PID参数
-float LSKp=1000,
+float LSKp=5000,
       LSKi=0,
       LSKd=0;
 
@@ -66,9 +66,9 @@ void Task_MoveLine()
 {
 
     static float TargetPitch=15;
-    //摆动状态输出
+    //让摆体摆动的输出
     static float SwingState_Output;
-    //直线状态输出
+    //让摆体直线状态的输出
     static float LineState_Output;
     //检查当前摆体状态
     if(pitch<15&&pitch>0)          //处在外侧
@@ -92,99 +92,8 @@ void Task_MoveLine()
 
     LineState_Output= PidControl_LineState(TargetRoll, roll);
 
-    //假设OUt边全部为正，IN边全部为负
     if(LineState_Output>0)
     {
-        MotorState(LevelIn,ENABLE);
-        MotorState(LevelOut,DISABLE);
-
-        Motor->LineOut = 0;
-        Motor->LineIn = (uint32_t)SwingState_Output;
-        if(SwingState_Output>0)
-        {
-            MotorState(VerticalOut,ENABLE);
-            MotorState(VerticalIn,DISABLE);
-
-            Motor->SwingOut = (uint32_t)LineState_Output;
-            Motor->SwingIn= 0;
-        }
-        else if(SwingState_Output<0)
-        {
-            MotorState(VerticalOut,DISABLE);
-            MotorState(VerticalIn,ENABLE);
-
-            Motor->SwingOut = 0;
-            Motor->SwingIn = -(uint32_t)LineState_Output;
-        }
-        else
-        {
-            MotorState(VerticalOut,DISABLE);
-            MotorState(VerticalIn,DISABLE);
-
-            Motor->SwingOut = 0;
-            Motor->SwingIn = 0;
-        }
-    }
-    else if(LineState_Output<0)
-    {
-        MotorState(LevelOut,ENABLE);
-        MotorState(LevelIn,DISABLE);
-
-        Motor->LineOut = -(uint32_t)SwingState_Output;
-        Motor->LineIn = 0;
-        if(SwingState_Output>0)
-        {
-            MotorState(VerticalOut,ENABLE);
-            MotorState(VerticalIn,DISABLE);
-
-            Motor->SwingOut = (uint32_t)LineState_Output;
-            Motor->SwingIn = 0;
-        }
-        else if(SwingState_Output<0)
-        {
-            MotorState(VerticalOut,DISABLE);
-            MotorState(VerticalIn,ENABLE);
-
-            Motor->SwingOut = 0;
-            Motor->SwingIn = -(uint32_t)LineState_Output;
-        }
-        else
-        {
-            MotorState(VerticalOut,DISABLE);
-            MotorState(VerticalIn,DISABLE);
-
-            Motor->SwingOut = 0;
-            Motor->SwingIn = 0;
-        }
-    }
-    else
-    {
-        MotorState(LevelOut,DISABLE);
-        MotorState(LevelIn,DISABLE);
-
-        Motor->LineOut = 0;
-        Motor->LineIn = 0;
-        if(SwingState_Output>0)
-        {
-            MotorState(VerticalOut,ENABLE);
-            MotorState(VerticalIn,DISABLE);
-
-            Motor->SwingOut = (uint32_t)LineState_Output;
-            Motor->SwingIn = 0;
-        }
-        else if(SwingState_Output<0)
-        {
-            MotorState(VerticalOut,DISABLE);
-            MotorState(VerticalIn,ENABLE);
-            Motor->SwingOut = 0;
-            Motor->SwingIn = -(uint32_t)LineState_Output;
-        }
-        else
-        {
-            MotorState(VerticalOut,DISABLE);
-            MotorState(VerticalIn,DISABLE);
-            Motor->SwingOut = 0;
-            Motor->SwingIn = 0;
-        }
+        
     }
 }
