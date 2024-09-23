@@ -15,102 +15,57 @@
 #include <sys.h>
 #include <control.h>
 
+//T--任务，4--第四项，S--停止，制动
+extern float T4SKp, T4SKi, T4SKd;
 
-extern float LSKp, LSKi, LSKd;
-extern float SWKp, SWKi, SWKd;
 
-
-/// @brief PID直线控制函数
+/// @brief PID控制制动
 /// @param target 目标值
 /// @param feedback 当前值
 /// @return 计算值（浮点型，有正负）
-float PidControl_LineState(float target, float feedback)
+float PidControl_Stop(float target, float feedback)
 {
 
     // 定义误差变量
-    static float LSerror = 0;
-    static float LSlastError = 0;
-    static float LSintegral = 0;
-    static float LSderivative = 0;
+    static float T4Serror = 0;
+    static float T4SlastError = 0;
+    static float T4Sintegral = 0;
+    static float T4Sderivative = 0;
 
     // 定义积分限幅变量
-    static float LSintegralMin = 0;
-    static float LSintegralMax = 0;
+    static float T4SintegralMin = 0;
+    static float T4SintegralMax = 0;
 
     // 定义PID输出变量
     static float output = 0;
 
     // 计算误差
-    LSerror = target - feedback;
+    T4Serror = target - feedback;
 
     // 计算积分项
-    LSintegral += LSerror;
+    T4Sintegral += T4Serror;
 
     // 限制积分项在积分限幅范围内
-    if (LSintegral < LSintegralMin) {
-        LSintegral = LSintegralMin;
-    } else if (LSintegral > LSintegralMax) {
-        LSintegral = LSintegralMax;
+    if (T4Sintegral < T4SintegralMin) {
+        T4Sintegral = T4SintegralMin;
+    } else if (T4Sintegral > T4SintegralMax) {
+        T4Sintegral = T4SintegralMax;
     }
 
     // 计算微分项
-    LSderivative = LSerror - LSlastError;
+    T4Sderivative = T4Serror - T4SlastError;
 
     // 计算PID输出
-    output = LSKp * LSerror + LSKi * LSintegral + LSKd * LSderivative;
+    output = T4SKp * T4Serror + T4SKi * T4Sintegral + T4SKd * T4Sderivative;
 
     // 更新误差变量
-    LSlastError = LSerror;
+    T4SlastError = T4Serror;
 
     return output;
 
 }
 
-/// @brief PID摆动控制函数
-/// @param target 目标值
-/// @param feedback 当前值
-/// @return 计算值（浮点型，有正负）
-float PidControl_SwingState(float target, float feedback)
-{
 
-    // 定义误差变量
-    static float SWerror = 0;
-    static float SWlastError = 0;
-    static float SWintegral = 0;
-    static float SWderivative = 0;
-
-    // 定义积分限幅变量
-    static float SWintegralMin = 0;
-    static float SWintegralMax = 0;
-
-    // 定义PID输出变量
-    static float output = 0;
-
-    // 计算误差
-    SWerror = target - feedback;
-
-    // 计算积分项
-    SWintegral += SWerror;
-
-    // 限制积分项在积分限幅范围内
-    if (SWintegral < SWintegralMin) {
-        SWintegral = SWintegralMin;
-    } else if (SWintegral > SWintegralMax) {
-        SWintegral = SWintegralMax;
-    }
-
-    // 计算微分项
-    SWderivative = SWerror - SWlastError;
-
-    // 计算PID输出
-    output = SWKp * SWerror + SWKi * SWintegral + SWKd * SWderivative;
-
-    // 更新误差变量
-    SWlastError = SWerror;
-
-    return output;
-    
-}
 
 //PWM输出，采用高级定时器TIM8，输出4路PWM
 void Motor_PWM_TIM8_Init()
@@ -242,5 +197,46 @@ void Motor_Cmd(uint8_t MotorSit,FunctionalState NewState)
 
     default:
         break;
+    }
+}
+
+
+/*
+依据角度判断风机方位，调用电机使能函数
+
+*/
+void MotorState(float pitch,float roll)
+{
+    if(roll>0&&pitch>0)
+    {
+        Motor_Cmd(LevelOut,ENABLE);
+        Motor_Cmd(LevelIn,DISABLE);
+        Motor_Cmd(VerticalOut,DISABLE);
+        Motor_Cmd(VerticalIn,ENABLE);
+    }
+    else if(roll>0&&pitch<0)
+    {
+        Motor_Cmd(LevelOut,DISABLE);
+        Motor_Cmd(LevelIn,ENABLE);
+        Motor_Cmd(VerticalOut,DISABLE);
+        Motor_Cmd(VerticalIn,ENABLE);
+    }
+    else if(roll<0&&pitch>0)
+    {
+        Motor_Cmd(LevelOut,ENABLE);
+        Motor_Cmd(LevelIn,DISABLE);
+        Motor_Cmd(VerticalOut,ENABLE);
+        Motor_Cmd(VerticalIn,DISABLE);
+    }
+    else if(roll<0&&pitch<0)
+    {
+        Motor_Cmd(LevelOut,DISABLE);
+        Motor_Cmd(LevelIn,ENABLE);
+        Motor_Cmd(VerticalOut,ENABLE);
+        Motor_Cmd(VerticalIn,DISABLE);
+    }
+    else
+    {
+        Motor_Cmd(StopAll,DISABLE);
     }
 }

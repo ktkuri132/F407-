@@ -25,16 +25,24 @@
 
 
 /* 基础  */
+
 void Motor_PWM_TIM8_Init();
+void MotorState(float pitch,float roll);
 
 /* 第一项  */
 
-float PidControl_LineState(float target, float feedback);
-float PidControl_SwingState(float target, float feedback);
-void Task_MoveLine();
+
 
 /* 第二项  */
 
+
+/* 第三项  */
+
+
+/* 第四项  */
+
+float PidControl_Stop(float target, float feedback);
+void Task4_StopFast();
 
 
 #endif 
