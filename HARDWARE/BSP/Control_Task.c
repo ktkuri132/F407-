@@ -52,7 +52,7 @@ void EXTI15_10_IRQHandler(void)
         
         mpu_dmp_get_data(&pitch, &roll, &yaw);      //读取MPU6050数据
         
-        Task4_StopFast();    //调用控制函数--->第一项
+        Task4_StopFast();    //调用控制函数--->第4项
 
     }
 }
