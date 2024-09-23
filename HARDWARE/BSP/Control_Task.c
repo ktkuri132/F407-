@@ -71,6 +71,18 @@ void Task4_StopFast()
     VerticalOutput=PidControl_Stop(TargetRoll, pitch);
     LevelOutput= PidControl_Stop(TargetPitch, roll);
 
-   
+    if(VerticalOutput<0)
+    {
+        VerticalOutput=-VerticalOutput;
+    }
+    if(LevelOutput<0)
+    {
+        LevelOutput=-LevelOutput;
+    }
 
+    Motor->MVerticalOutput=(uint32_t)VerticalOutput;
+    Motor->MVerticalIn=(uint32_t)VerticalOutput;
+    Motor->MLevelOut=(uint32_t)LevelOutput;
+    Motor->MLevelIn=(uint32_t)LevelOutput;
+  
 }
