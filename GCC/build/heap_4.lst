@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s 			page 1
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc7wPzod.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s 			page 1
   56 003e 4FF4A043 		mov	r3, #20480
   57 0042 E8E7     		b	.L2
   58              	.L5:
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s 			page 2
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc7wPzod.s 			page 2
 
 
   59              		.align	2
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s 			page 1
  115              	.L11:
  116 0048 9042     		cmp	r0, r2
  117 004a 00D0     		beq	.L6
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s 			page 3
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc7wPzod.s 			page 3
 
 
  118 004c 1060     		str	r0, [r2]
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s 			page 1
  167              	.L40:
  168 0026 FFF7FEFF 		bl	prvHeapInit
  169 002a F0E7     		b	.L24
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s 			page 4
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc7wPzod.s 			page 4
 
 
  170              	.L33:
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s 			page 1
  224 008e 01D2     		bcs	.L31
  225 0090 1549     		ldr	r1, .L43+12
  226 0092 0B60     		str	r3, [r1]
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s 			page 5
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc7wPzod.s 			page 5
 
 
  227              	.L31:
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s 			page 1
  283              		@ args = 0, pretend = 0, frame = 0
  284              		@ frame_needed = 0, uses_anonymous_args = 0
  285 0000 0028     		cmp	r0, #0
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s 			page 6
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc7wPzod.s 			page 6
 
 
  286 0002 36D0     		beq	.L50
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s 			page 1
  340 0080 00000000 		.word	xNumberOfSuccessfulFrees
  342              		.section	.text.xPortGetFreeHeapSize,"ax",%progbits
  343              		.align	1
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s 			page 7
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc7wPzod.s 			page 7
 
 
  344              		.global	xPortGetFreeHeapSize
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s 			page 1
  405 0004 20B1     		cbz	r0, .L65
  406 0006 0022     		movs	r2, #0
  407 0008 A1FB0040 		umull	r4, r0, r1, r0
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s 			page 8
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc7wPzod.s 			page 8
 
 
  408 000c 68B9     		cbnz	r0, .L71
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s 			page 1
  464 0036 1B68     		ldr	r3, [r3]
  465 0038 7B61     		str	r3, [r7, #20]
  466 003a 0E4B     		ldr	r3, .L83+12
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s 			page 9
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc7wPzod.s 			page 9
 
 
  467 003c 1B68     		ldr	r3, [r3]
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s 			page 1
  532              		.align	2
  535              	xStart:
  536 0000 00000000 		.space	8
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s 			page 10
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc7wPzod.s 			page 10
 
 
  536      00000000 
@@ -551,51 +551,51 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s 			page 1
  542      00000000 
  542      00000000 
  543              		.ident	"GCC: (Arm GNU Toolchain 13.3.Rel1 (Build arm-13.24)) 13.3.1 20240614"
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s 			page 11
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc7wPzod.s 			page 11
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 heap_4.c
-C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s:18     .text.prvHeapInit:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s:23     .text.prvHeapInit:00000000 prvHeapInit
-C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s:61     .text.prvHeapInit:00000044 $d
-C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s:541    .bss.ucHeap:00000000 ucHeap
-C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s:535    .bss.xStart:00000000 xStart
-C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s:529    .bss.pxEnd:00000000 pxEnd
-C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s:517    .bss.xMinimumEverFreeBytesRemaining:00000000 xMinimumEverFreeBytesRemaining
-C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s:523    .bss.xFreeBytesRemaining:00000000 xFreeBytesRemaining
-C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s:68     .text.prvInsertBlockIntoFreeList:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s:73     .text.prvInsertBlockIntoFreeList:00000000 prvInsertBlockIntoFreeList
-C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s:130    .text.prvInsertBlockIntoFreeList:0000005c $d
-C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s:134    .rodata.pvPortMalloc.str1.4:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s:141    .text.pvPortMalloc:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s:147    .text.pvPortMalloc:00000000 pvPortMalloc
-C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s:267    .text.pvPortMalloc:000000dc $d
-C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s:511    .bss.xNumberOfSuccessfulAllocations:00000000 xNumberOfSuccessfulAllocations
-C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s:276    .text.vPortFree:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s:282    .text.vPortFree:00000000 vPortFree
-C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s:337    .text.vPortFree:00000074 $d
-C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s:505    .bss.xNumberOfSuccessfulFrees:00000000 xNumberOfSuccessfulFrees
-C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s:343    .text.xPortGetFreeHeapSize:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s:349    .text.xPortGetFreeHeapSize:00000000 xPortGetFreeHeapSize
-C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s:359    .text.xPortGetFreeHeapSize:00000008 $d
-C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s:362    .text.xPortGetMinimumEverFreeHeapSize:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s:368    .text.xPortGetMinimumEverFreeHeapSize:00000000 xPortGetMinimumEverFreeHeapSize
-C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s:378    .text.xPortGetMinimumEverFreeHeapSize:00000008 $d
-C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s:381    .text.vPortInitialiseBlocks:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s:387    .text.vPortInitialiseBlocks:00000000 vPortInitialiseBlocks
-C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s:394    .text.pvPortCalloc:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s:400    .text.pvPortCalloc:00000000 pvPortCalloc
-C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s:431    .text.vPortGetHeapStats:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s:437    .text.vPortGetHeapStats:00000000 vPortGetHeapStats
-C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s:494    .text.vPortGetHeapStats:00000068 $d
-C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s:502    .bss.xNumberOfSuccessfulFrees:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s:508    .bss.xNumberOfSuccessfulAllocations:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s:514    .bss.xMinimumEverFreeBytesRemaining:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s:520    .bss.xFreeBytesRemaining:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s:526    .bss.pxEnd:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s:532    .bss.xStart:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\cc0R0zxN.s:538    .bss.ucHeap:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc7wPzod.s:18     .text.prvHeapInit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc7wPzod.s:23     .text.prvHeapInit:00000000 prvHeapInit
+C:\Users\ktkuru\AppData\Local\Temp\cc7wPzod.s:61     .text.prvHeapInit:00000044 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc7wPzod.s:541    .bss.ucHeap:00000000 ucHeap
+C:\Users\ktkuru\AppData\Local\Temp\cc7wPzod.s:535    .bss.xStart:00000000 xStart
+C:\Users\ktkuru\AppData\Local\Temp\cc7wPzod.s:529    .bss.pxEnd:00000000 pxEnd
+C:\Users\ktkuru\AppData\Local\Temp\cc7wPzod.s:517    .bss.xMinimumEverFreeBytesRemaining:00000000 xMinimumEverFreeBytesRemaining
+C:\Users\ktkuru\AppData\Local\Temp\cc7wPzod.s:523    .bss.xFreeBytesRemaining:00000000 xFreeBytesRemaining
+C:\Users\ktkuru\AppData\Local\Temp\cc7wPzod.s:68     .text.prvInsertBlockIntoFreeList:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc7wPzod.s:73     .text.prvInsertBlockIntoFreeList:00000000 prvInsertBlockIntoFreeList
+C:\Users\ktkuru\AppData\Local\Temp\cc7wPzod.s:130    .text.prvInsertBlockIntoFreeList:0000005c $d
+C:\Users\ktkuru\AppData\Local\Temp\cc7wPzod.s:134    .rodata.pvPortMalloc.str1.4:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc7wPzod.s:141    .text.pvPortMalloc:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc7wPzod.s:147    .text.pvPortMalloc:00000000 pvPortMalloc
+C:\Users\ktkuru\AppData\Local\Temp\cc7wPzod.s:267    .text.pvPortMalloc:000000dc $d
+C:\Users\ktkuru\AppData\Local\Temp\cc7wPzod.s:511    .bss.xNumberOfSuccessfulAllocations:00000000 xNumberOfSuccessfulAllocations
+C:\Users\ktkuru\AppData\Local\Temp\cc7wPzod.s:276    .text.vPortFree:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc7wPzod.s:282    .text.vPortFree:00000000 vPortFree
+C:\Users\ktkuru\AppData\Local\Temp\cc7wPzod.s:337    .text.vPortFree:00000074 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc7wPzod.s:505    .bss.xNumberOfSuccessfulFrees:00000000 xNumberOfSuccessfulFrees
+C:\Users\ktkuru\AppData\Local\Temp\cc7wPzod.s:343    .text.xPortGetFreeHeapSize:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc7wPzod.s:349    .text.xPortGetFreeHeapSize:00000000 xPortGetFreeHeapSize
+C:\Users\ktkuru\AppData\Local\Temp\cc7wPzod.s:359    .text.xPortGetFreeHeapSize:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc7wPzod.s:362    .text.xPortGetMinimumEverFreeHeapSize:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc7wPzod.s:368    .text.xPortGetMinimumEverFreeHeapSize:00000000 xPortGetMinimumEverFreeHeapSize
+C:\Users\ktkuru\AppData\Local\Temp\cc7wPzod.s:378    .text.xPortGetMinimumEverFreeHeapSize:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc7wPzod.s:381    .text.vPortInitialiseBlocks:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc7wPzod.s:387    .text.vPortInitialiseBlocks:00000000 vPortInitialiseBlocks
+C:\Users\ktkuru\AppData\Local\Temp\cc7wPzod.s:394    .text.pvPortCalloc:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc7wPzod.s:400    .text.pvPortCalloc:00000000 pvPortCalloc
+C:\Users\ktkuru\AppData\Local\Temp\cc7wPzod.s:431    .text.vPortGetHeapStats:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc7wPzod.s:437    .text.vPortGetHeapStats:00000000 vPortGetHeapStats
+C:\Users\ktkuru\AppData\Local\Temp\cc7wPzod.s:494    .text.vPortGetHeapStats:00000068 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc7wPzod.s:502    .bss.xNumberOfSuccessfulFrees:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc7wPzod.s:508    .bss.xNumberOfSuccessfulAllocations:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc7wPzod.s:514    .bss.xMinimumEverFreeBytesRemaining:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc7wPzod.s:520    .bss.xFreeBytesRemaining:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc7wPzod.s:526    .bss.pxEnd:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc7wPzod.s:532    .bss.xStart:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc7wPzod.s:538    .bss.ucHeap:00000000 $d
 
 UNDEFINED SYMBOLS
 vTaskSuspendAll

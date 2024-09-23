@@ -22,7 +22,8 @@ GCC/build/main.o: USER/main.c USER/stm32f4xx.h CORE/core_cm4.h \
  HARDWARE/OLED_SPI/OLED.h HARDWARE/OLED_SPI/OLED_Data.h \
  SYSTEM/usart/usart.h USER/stm32f4xx_conf.h SYSTEM/sys/sys.h \
  SYSTEM/delay/delay.h SYSTEM/shell/shell.h HARDWARE/MPU6050/mpu6050.h \
- HARDWARE/IIC/myiic.h HARDWARE/MPU6050/eMPL/inv_mpu.h
+ HARDWARE/IIC/myiic.h HARDWARE/MPU6050/eMPL/inv_mpu.h \
+ HARDWARE/CONTROL/control.h
 USER/stm32f4xx.h:
 CORE/core_cm4.h:
 CORE/core_cmInstr.h:
@@ -68,3 +69,4 @@ SYSTEM/shell/shell.h:
 HARDWARE/MPU6050/mpu6050.h:
 HARDWARE/IIC/myiic.h:
 HARDWARE/MPU6050/eMPL/inv_mpu.h:
+HARDWARE/CONTROL/control.h:

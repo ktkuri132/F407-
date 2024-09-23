@@ -18,7 +18,8 @@ GCC/build/control.o: HARDWARE/CONTROL/control.c USER/stm32f4xx.h \
  STM32F4xx_FWLib/inc/stm32f4xx_can.h STM32F4xx_FWLib/inc/stm32f4xx_dac.h \
  STM32F4xx_FWLib/inc/stm32f4xx_dcmi.h \
  STM32F4xx_FWLib/inc/stm32f4xx_fsmc.h HARDWARE/BSP/bsp.h \
- HARDWARE/OLED_SPI/OLED.h HARDWARE/OLED_SPI/OLED_Data.h
+ HARDWARE/OLED_SPI/OLED.h HARDWARE/OLED_SPI/OLED_Data.h SYSTEM/sys/sys.h \
+ HARDWARE/CONTROL/control.h
 USER/stm32f4xx.h:
 CORE/core_cm4.h:
 CORE/core_cmInstr.h:
@@ -55,3 +56,5 @@ STM32F4xx_FWLib/inc/stm32f4xx_fsmc.h:
 HARDWARE/BSP/bsp.h:
 HARDWARE/OLED_SPI/OLED.h:
 HARDWARE/OLED_SPI/OLED_Data.h:
+SYSTEM/sys/sys.h:
+HARDWARE/CONTROL/control.h:

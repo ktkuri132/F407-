@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s 			page 1
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccojy4Nx.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s 			page 1
   59              		.thumb
   60              		.thumb_func
   62              	PWR_PVDLevelConfig:
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s 			page 2
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccojy4Nx.s 			page 2
 
 
   63              		@ args = 0, pretend = 0, frame = 0
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s 			page 1
  123              		@ args = 0, pretend = 0, frame = 0
  124              		@ frame_needed = 0, uses_anonymous_args = 0
  125              		@ link register save eliminated.
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s 			page 3
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccojy4Nx.s 			page 3
 
 
  126 0000 014B     		ldr	r3, .L16
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s 			page 1
  186 0000 014B     		ldr	r3, .L25
  187 0002 5864     		str	r0, [r3, #68]
  188 0004 7047     		bx	lr
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s 			page 4
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccojy4Nx.s 			page 4
 
 
  189              	.L26:
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s 			page 1
  248              		.section	.text.PWR_LowRegulatorLowVoltageCmd,"ax",%progbits
  249              		.align	1
  250              		.global	PWR_LowRegulatorLowVoltageCmd
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s 			page 5
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccojy4Nx.s 			page 5
 
 
  251              		.syntax unified
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s 			page 1
  310 0010 084A     		ldr	r2, .L49+4
  311 0012 1369     		ldr	r3, [r2, #16]
  312 0014 43F00403 		orr	r3, r3, #4
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s 			page 6
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccojy4Nx.s 			page 6
 
 
  313 0018 1361     		str	r3, [r2, #16]
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s 			page 1
  369              		.thumb
  370              		.syntax unified
  371              	.L53:
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s 			page 7
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccojy4Nx.s 			page 7
 
 
  372 0020 044A     		ldr	r2, .L55+4
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s 			page 1
  430              	PWR_GetFlagStatus:
  431              		@ args = 0, pretend = 0, frame = 0
  432              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s 			page 8
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccojy4Nx.s 			page 8
 
 
  433              		@ link register save eliminated.
@@ -455,67 +455,67 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s 			page 1
  466              	.L66:
  467 000c 00700040 		.word	1073770496
  469              		.ident	"GCC: (Arm GNU Toolchain 13.3.Rel1 (Build arm-13.24)) 13.3.1 20240614"
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s 			page 9
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccojy4Nx.s 			page 9
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 stm32f4xx_pwr.c
-C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:18     .text.PWR_DeInit:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:24     .text.PWR_DeInit:00000000 PWR_DeInit
-C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:37     .text.PWR_BackupAccessCmd:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:43     .text.PWR_BackupAccessCmd:00000000 PWR_BackupAccessCmd
-C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:53     .text.PWR_BackupAccessCmd:00000008 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:56     .text.PWR_PVDLevelConfig:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:62     .text.PWR_PVDLevelConfig:00000000 PWR_PVDLevelConfig
-C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:75     .text.PWR_PVDLevelConfig:00000010 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:78     .text.PWR_PVDCmd:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:84     .text.PWR_PVDCmd:00000000 PWR_PVDCmd
-C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:94     .text.PWR_PVDCmd:00000008 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:97     .text.PWR_WakeUpPinCmd:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:103    .text.PWR_WakeUpPinCmd:00000000 PWR_WakeUpPinCmd
-C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:113    .text.PWR_WakeUpPinCmd:00000008 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:116    .text.PWR_BackupRegulatorCmd:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:122    .text.PWR_BackupRegulatorCmd:00000000 PWR_BackupRegulatorCmd
-C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:132    .text.PWR_BackupRegulatorCmd:00000008 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:135    .text.PWR_MainRegulatorModeConfig:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:141    .text.PWR_MainRegulatorModeConfig:00000000 PWR_MainRegulatorModeConfig
-C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:154    .text.PWR_MainRegulatorModeConfig:00000010 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:157    .text.PWR_OverDriveCmd:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:163    .text.PWR_OverDriveCmd:00000000 PWR_OverDriveCmd
-C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:173    .text.PWR_OverDriveCmd:00000008 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:176    .text.PWR_OverDriveSWCmd:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:182    .text.PWR_OverDriveSWCmd:00000000 PWR_OverDriveSWCmd
-C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:192    .text.PWR_OverDriveSWCmd:00000008 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:195    .text.PWR_UnderDriveCmd:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:201    .text.PWR_UnderDriveCmd:00000000 PWR_UnderDriveCmd
-C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:220    .text.PWR_UnderDriveCmd:0000001c $d
-C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:223    .text.PWR_MainRegulatorLowVoltageCmd:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:229    .text.PWR_MainRegulatorLowVoltageCmd:00000000 PWR_MainRegulatorLowVoltageCmd
-C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:246    .text.PWR_MainRegulatorLowVoltageCmd:00000014 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:249    .text.PWR_LowRegulatorLowVoltageCmd:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:255    .text.PWR_LowRegulatorLowVoltageCmd:00000000 PWR_LowRegulatorLowVoltageCmd
-C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:272    .text.PWR_LowRegulatorLowVoltageCmd:00000014 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:275    .text.PWR_FlashPowerDownCmd:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:281    .text.PWR_FlashPowerDownCmd:00000000 PWR_FlashPowerDownCmd
-C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:291    .text.PWR_FlashPowerDownCmd:00000008 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:294    .text.PWR_EnterSTOPMode:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:300    .text.PWR_EnterSTOPMode:00000000 PWR_EnterSTOPMode
-C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:339    .text.PWR_EnterSTOPMode:00000030 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:343    .text.PWR_EnterUnderDriveSTOPMode:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:349    .text.PWR_EnterUnderDriveSTOPMode:00000000 PWR_EnterUnderDriveSTOPMode
-C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:388    .text.PWR_EnterUnderDriveSTOPMode:00000030 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:392    .text.PWR_EnterSTANDBYMode:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:398    .text.PWR_EnterSTANDBYMode:00000000 PWR_EnterSTANDBYMode
-C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:420    .text.PWR_EnterSTANDBYMode:00000018 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:424    .text.PWR_GetFlagStatus:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:430    .text.PWR_GetFlagStatus:00000000 PWR_GetFlagStatus
-C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:446    .text.PWR_GetFlagStatus:00000010 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:449    .text.PWR_ClearFlag:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:455    .text.PWR_ClearFlag:00000000 PWR_ClearFlag
-C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s:467    .text.PWR_ClearFlag:0000000c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccojy4Nx.s:18     .text.PWR_DeInit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccojy4Nx.s:24     .text.PWR_DeInit:00000000 PWR_DeInit
+C:\Users\ktkuru\AppData\Local\Temp\ccojy4Nx.s:37     .text.PWR_BackupAccessCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccojy4Nx.s:43     .text.PWR_BackupAccessCmd:00000000 PWR_BackupAccessCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccojy4Nx.s:53     .text.PWR_BackupAccessCmd:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccojy4Nx.s:56     .text.PWR_PVDLevelConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccojy4Nx.s:62     .text.PWR_PVDLevelConfig:00000000 PWR_PVDLevelConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccojy4Nx.s:75     .text.PWR_PVDLevelConfig:00000010 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccojy4Nx.s:78     .text.PWR_PVDCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccojy4Nx.s:84     .text.PWR_PVDCmd:00000000 PWR_PVDCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccojy4Nx.s:94     .text.PWR_PVDCmd:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccojy4Nx.s:97     .text.PWR_WakeUpPinCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccojy4Nx.s:103    .text.PWR_WakeUpPinCmd:00000000 PWR_WakeUpPinCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccojy4Nx.s:113    .text.PWR_WakeUpPinCmd:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccojy4Nx.s:116    .text.PWR_BackupRegulatorCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccojy4Nx.s:122    .text.PWR_BackupRegulatorCmd:00000000 PWR_BackupRegulatorCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccojy4Nx.s:132    .text.PWR_BackupRegulatorCmd:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccojy4Nx.s:135    .text.PWR_MainRegulatorModeConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccojy4Nx.s:141    .text.PWR_MainRegulatorModeConfig:00000000 PWR_MainRegulatorModeConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccojy4Nx.s:154    .text.PWR_MainRegulatorModeConfig:00000010 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccojy4Nx.s:157    .text.PWR_OverDriveCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccojy4Nx.s:163    .text.PWR_OverDriveCmd:00000000 PWR_OverDriveCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccojy4Nx.s:173    .text.PWR_OverDriveCmd:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccojy4Nx.s:176    .text.PWR_OverDriveSWCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccojy4Nx.s:182    .text.PWR_OverDriveSWCmd:00000000 PWR_OverDriveSWCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccojy4Nx.s:192    .text.PWR_OverDriveSWCmd:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccojy4Nx.s:195    .text.PWR_UnderDriveCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccojy4Nx.s:201    .text.PWR_UnderDriveCmd:00000000 PWR_UnderDriveCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccojy4Nx.s:220    .text.PWR_UnderDriveCmd:0000001c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccojy4Nx.s:223    .text.PWR_MainRegulatorLowVoltageCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccojy4Nx.s:229    .text.PWR_MainRegulatorLowVoltageCmd:00000000 PWR_MainRegulatorLowVoltageCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccojy4Nx.s:246    .text.PWR_MainRegulatorLowVoltageCmd:00000014 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccojy4Nx.s:249    .text.PWR_LowRegulatorLowVoltageCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccojy4Nx.s:255    .text.PWR_LowRegulatorLowVoltageCmd:00000000 PWR_LowRegulatorLowVoltageCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccojy4Nx.s:272    .text.PWR_LowRegulatorLowVoltageCmd:00000014 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccojy4Nx.s:275    .text.PWR_FlashPowerDownCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccojy4Nx.s:281    .text.PWR_FlashPowerDownCmd:00000000 PWR_FlashPowerDownCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccojy4Nx.s:291    .text.PWR_FlashPowerDownCmd:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccojy4Nx.s:294    .text.PWR_EnterSTOPMode:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccojy4Nx.s:300    .text.PWR_EnterSTOPMode:00000000 PWR_EnterSTOPMode
+C:\Users\ktkuru\AppData\Local\Temp\ccojy4Nx.s:339    .text.PWR_EnterSTOPMode:00000030 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccojy4Nx.s:343    .text.PWR_EnterUnderDriveSTOPMode:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccojy4Nx.s:349    .text.PWR_EnterUnderDriveSTOPMode:00000000 PWR_EnterUnderDriveSTOPMode
+C:\Users\ktkuru\AppData\Local\Temp\ccojy4Nx.s:388    .text.PWR_EnterUnderDriveSTOPMode:00000030 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccojy4Nx.s:392    .text.PWR_EnterSTANDBYMode:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccojy4Nx.s:398    .text.PWR_EnterSTANDBYMode:00000000 PWR_EnterSTANDBYMode
+C:\Users\ktkuru\AppData\Local\Temp\ccojy4Nx.s:420    .text.PWR_EnterSTANDBYMode:00000018 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccojy4Nx.s:424    .text.PWR_GetFlagStatus:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccojy4Nx.s:430    .text.PWR_GetFlagStatus:00000000 PWR_GetFlagStatus
+C:\Users\ktkuru\AppData\Local\Temp\ccojy4Nx.s:446    .text.PWR_GetFlagStatus:00000010 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccojy4Nx.s:449    .text.PWR_ClearFlag:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccojy4Nx.s:455    .text.PWR_ClearFlag:00000000 PWR_ClearFlag
+C:\Users\ktkuru\AppData\Local\Temp\ccojy4Nx.s:467    .text.PWR_ClearFlag:0000000c $d
 
 UNDEFINED SYMBOLS
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccZhqxOR.s 			page 10
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccojy4Nx.s 			page 10
 
 
 RCC_APB1PeriphResetCmd

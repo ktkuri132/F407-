@@ -30,6 +30,7 @@
 #include <shell.h>
 #include <mpu6050.h>
 #include <inv_mpu.h>
+#include <control.h>
 
 //定义三轴角度
 float pitch,roll,yaw;
@@ -56,14 +57,13 @@ int main(void)
     }
      
 
+
+    
     /* 前台程序轮询  */
     while (1)
     {
-        
-        //printf("->pitch:%f\n",pitch);
         OLED_Printf(0,0,OLED_6X8,"pitch:%f",pitch);
         OLED_Printf(0,16,OLED_6X8,"roll:%f",roll);
-        OLED_Printf(0,32,OLED_6X8,"yaw:%f",yaw);
         OLED_Update();
     }
     

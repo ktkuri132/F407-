@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccJZvEzH.s 			page 1
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc3WK2mB.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccJZvEzH.s 			page 1
   58 001e 5A63     		str	r2, [r3, #52]
   59 0020 5A6B     		ldr	r2, [r3, #52]
   60 0022 4168     		ldr	r1, [r0, #4]
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccJZvEzH.s 			page 2
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc3WK2mB.s 			page 2
 
 
   61 0024 0A43     		orrs	r2, r2, r1
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccJZvEzH.s 			page 1
  115              	.L7:
  116 0096 C268     		ldr	r2, [r0, #12]
  117 0098 5201     		lsls	r2, r2, #5
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccJZvEzH.s 			page 3
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc3WK2mB.s 			page 3
 
 
  118 009a 0369     		ldr	r3, [r0, #16]
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccJZvEzH.s 			page 1
  176              		@ frame_needed = 0, uses_anonymous_args = 0
  177              		@ link register save eliminated.
  178 0000 024A     		ldr	r2, .L16
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccJZvEzH.s 			page 4
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc3WK2mB.s 			page 4
 
 
  179 0002 1368     		ldr	r3, [r2]
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccJZvEzH.s 			page 1
  238              		.align	1
  239              		.global	DMA2D_FGConfig
  240              		.syntax unified
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccJZvEzH.s 			page 5
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc3WK2mB.s 			page 5
 
 
  241              		.thumb
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccJZvEzH.s 			page 1
  297              		.align	1
  298              		.global	DMA2D_FG_StructInit
  299              		.syntax unified
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccJZvEzH.s 			page 6
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc3WK2mB.s 			page 6
 
 
  300              		.thumb
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccJZvEzH.s 			page 1
  357 003c 0A43     		orrs	r2, r2, r1
  358 003e 5A62     		str	r2, [r3, #36]
  359 0040 9A6A     		ldr	r2, [r3, #40]
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccJZvEzH.s 			page 7
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc3WK2mB.s 			page 7
 
 
  360 0042 02F07F42 		and	r2, r2, #-16777216
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccJZvEzH.s 			page 1
  418 0004 D369     		ldr	r3, [r2, #28]
  419 0006 43F02003 		orr	r3, r3, #32
  420 000a D361     		str	r3, [r2, #28]
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccJZvEzH.s 			page 8
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc3WK2mB.s 			page 8
 
 
  421 000c 7047     		bx	lr
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccJZvEzH.s 			page 1
  479 0012 43EA0023 		orr	r3, r3, r0, lsl #8
  480 0016 43F00103 		orr	r3, r3, #1
  481 001a D364     		str	r3, [r2, #76]
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccJZvEzH.s 			page 9
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc3WK2mB.s 			page 9
 
 
  482 001c 7047     		bx	lr
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccJZvEzH.s 			page 1
  541              		.section	.text.DMA2D_GetFlagStatus,"ax",%progbits
  542              		.align	1
  543              		.global	DMA2D_GetFlagStatus
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccJZvEzH.s 			page 10
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc3WK2mB.s 			page 10
 
 
  544              		.syntax unified
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccJZvEzH.s 			page 1
  603 000e 044A     		ldr	r2, .L72
  604 0010 1268     		ldr	r2, [r2]
  605 0012 1A42     		tst	r2, r3
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccJZvEzH.s 			page 11
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc3WK2mB.s 			page 11
 
 
  606 0014 00D1     		bne	.L69
@@ -631,67 +631,67 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccJZvEzH.s 			page 1
  635              	.L75:
  636 0008 00B00240 		.word	1073917952
  638              		.ident	"GCC: (Arm GNU Toolchain 13.3.Rel1 (Build arm-13.24)) 13.3.1 20240614"
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccJZvEzH.s 			page 12
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc3WK2mB.s 			page 12
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 stm32f4xx_dma2d.c
-C:\Users\ktkuru\AppData\Local\Temp\ccJZvEzH.s:18     .text.DMA2D_DeInit:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccJZvEzH.s:24     .text.DMA2D_DeInit:00000000 DMA2D_DeInit
-C:\Users\ktkuru\AppData\Local\Temp\ccJZvEzH.s:37     .text.DMA2D_Init:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccJZvEzH.s:43     .text.DMA2D_Init:00000000 DMA2D_Init
-C:\Users\ktkuru\AppData\Local\Temp\ccJZvEzH.s:68     .text.DMA2D_Init:00000032 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccJZvEzH.s:72     .text.DMA2D_Init:00000036 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccJZvEzH.s:141    .text.DMA2D_Init:000000cc $d
-C:\Users\ktkuru\AppData\Local\Temp\ccJZvEzH.s:144    .text.DMA2D_StructInit:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccJZvEzH.s:150    .text.DMA2D_StructInit:00000000 DMA2D_StructInit
-C:\Users\ktkuru\AppData\Local\Temp\ccJZvEzH.s:168    .text.DMA2D_StartTransfer:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccJZvEzH.s:174    .text.DMA2D_StartTransfer:00000000 DMA2D_StartTransfer
-C:\Users\ktkuru\AppData\Local\Temp\ccJZvEzH.s:186    .text.DMA2D_StartTransfer:0000000c $d
-C:\Users\ktkuru\AppData\Local\Temp\ccJZvEzH.s:189    .text.DMA2D_AbortTransfer:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccJZvEzH.s:195    .text.DMA2D_AbortTransfer:00000000 DMA2D_AbortTransfer
-C:\Users\ktkuru\AppData\Local\Temp\ccJZvEzH.s:207    .text.DMA2D_AbortTransfer:0000000c $d
-C:\Users\ktkuru\AppData\Local\Temp\ccJZvEzH.s:210    .text.DMA2D_Suspend:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccJZvEzH.s:216    .text.DMA2D_Suspend:00000000 DMA2D_Suspend
-C:\Users\ktkuru\AppData\Local\Temp\ccJZvEzH.s:235    .text.DMA2D_Suspend:0000001c $d
-C:\Users\ktkuru\AppData\Local\Temp\ccJZvEzH.s:238    .text.DMA2D_FGConfig:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccJZvEzH.s:244    .text.DMA2D_FGConfig:00000000 DMA2D_FGConfig
-C:\Users\ktkuru\AppData\Local\Temp\ccJZvEzH.s:293    .text.DMA2D_FGConfig:00000068 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccJZvEzH.s:297    .text.DMA2D_FG_StructInit:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccJZvEzH.s:303    .text.DMA2D_FG_StructInit:00000000 DMA2D_FG_StructInit
-C:\Users\ktkuru\AppData\Local\Temp\ccJZvEzH.s:322    .text.DMA2D_BGConfig:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccJZvEzH.s:328    .text.DMA2D_BGConfig:00000000 DMA2D_BGConfig
-C:\Users\ktkuru\AppData\Local\Temp\ccJZvEzH.s:377    .text.DMA2D_BGConfig:00000068 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccJZvEzH.s:381    .text.DMA2D_BG_StructInit:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccJZvEzH.s:387    .text.DMA2D_BG_StructInit:00000000 DMA2D_BG_StructInit
-C:\Users\ktkuru\AppData\Local\Temp\ccJZvEzH.s:406    .text.DMA2D_FGStart:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccJZvEzH.s:412    .text.DMA2D_FGStart:00000000 DMA2D_FGStart
-C:\Users\ktkuru\AppData\Local\Temp\ccJZvEzH.s:431    .text.DMA2D_FGStart:0000001c $d
-C:\Users\ktkuru\AppData\Local\Temp\ccJZvEzH.s:434    .text.DMA2D_BGStart:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccJZvEzH.s:440    .text.DMA2D_BGStart:00000000 DMA2D_BGStart
-C:\Users\ktkuru\AppData\Local\Temp\ccJZvEzH.s:459    .text.DMA2D_BGStart:0000001c $d
-C:\Users\ktkuru\AppData\Local\Temp\ccJZvEzH.s:462    .text.DMA2D_DeadTimeConfig:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccJZvEzH.s:468    .text.DMA2D_DeadTimeConfig:00000000 DMA2D_DeadTimeConfig
-C:\Users\ktkuru\AppData\Local\Temp\ccJZvEzH.s:492    .text.DMA2D_DeadTimeConfig:0000002c $d
-C:\Users\ktkuru\AppData\Local\Temp\ccJZvEzH.s:495    .text.DMA2D_LineWatermarkConfig:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccJZvEzH.s:501    .text.DMA2D_LineWatermarkConfig:00000000 DMA2D_LineWatermarkConfig
-C:\Users\ktkuru\AppData\Local\Temp\ccJZvEzH.s:511    .text.DMA2D_LineWatermarkConfig:00000008 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccJZvEzH.s:514    .text.DMA2D_ITConfig:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccJZvEzH.s:520    .text.DMA2D_ITConfig:00000000 DMA2D_ITConfig
-C:\Users\ktkuru\AppData\Local\Temp\ccJZvEzH.s:539    .text.DMA2D_ITConfig:00000018 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccJZvEzH.s:542    .text.DMA2D_GetFlagStatus:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccJZvEzH.s:548    .text.DMA2D_GetFlagStatus:00000000 DMA2D_GetFlagStatus
-C:\Users\ktkuru\AppData\Local\Temp\ccJZvEzH.s:564    .text.DMA2D_GetFlagStatus:00000010 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccJZvEzH.s:567    .text.DMA2D_ClearFlag:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccJZvEzH.s:573    .text.DMA2D_ClearFlag:00000000 DMA2D_ClearFlag
-C:\Users\ktkuru\AppData\Local\Temp\ccJZvEzH.s:583    .text.DMA2D_ClearFlag:00000008 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccJZvEzH.s:586    .text.DMA2D_GetITStatus:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccJZvEzH.s:592    .text.DMA2D_GetITStatus:00000000 DMA2D_GetITStatus
-C:\Users\ktkuru\AppData\Local\Temp\ccJZvEzH.s:616    .text.DMA2D_GetITStatus:00000020 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccJZvEzH.s:619    .text.DMA2D_ClearITPendingBit:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccJZvEzH.s:625    .text.DMA2D_ClearITPendingBit:00000000 DMA2D_ClearITPendingBit
-C:\Users\ktkuru\AppData\Local\Temp\ccJZvEzH.s:636    .text.DMA2D_ClearITPendingBit:00000008 $d
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccJZvEzH.s 			page 13
+C:\Users\ktkuru\AppData\Local\Temp\cc3WK2mB.s:18     .text.DMA2D_DeInit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc3WK2mB.s:24     .text.DMA2D_DeInit:00000000 DMA2D_DeInit
+C:\Users\ktkuru\AppData\Local\Temp\cc3WK2mB.s:37     .text.DMA2D_Init:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc3WK2mB.s:43     .text.DMA2D_Init:00000000 DMA2D_Init
+C:\Users\ktkuru\AppData\Local\Temp\cc3WK2mB.s:68     .text.DMA2D_Init:00000032 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc3WK2mB.s:72     .text.DMA2D_Init:00000036 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc3WK2mB.s:141    .text.DMA2D_Init:000000cc $d
+C:\Users\ktkuru\AppData\Local\Temp\cc3WK2mB.s:144    .text.DMA2D_StructInit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc3WK2mB.s:150    .text.DMA2D_StructInit:00000000 DMA2D_StructInit
+C:\Users\ktkuru\AppData\Local\Temp\cc3WK2mB.s:168    .text.DMA2D_StartTransfer:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc3WK2mB.s:174    .text.DMA2D_StartTransfer:00000000 DMA2D_StartTransfer
+C:\Users\ktkuru\AppData\Local\Temp\cc3WK2mB.s:186    .text.DMA2D_StartTransfer:0000000c $d
+C:\Users\ktkuru\AppData\Local\Temp\cc3WK2mB.s:189    .text.DMA2D_AbortTransfer:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc3WK2mB.s:195    .text.DMA2D_AbortTransfer:00000000 DMA2D_AbortTransfer
+C:\Users\ktkuru\AppData\Local\Temp\cc3WK2mB.s:207    .text.DMA2D_AbortTransfer:0000000c $d
+C:\Users\ktkuru\AppData\Local\Temp\cc3WK2mB.s:210    .text.DMA2D_Suspend:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc3WK2mB.s:216    .text.DMA2D_Suspend:00000000 DMA2D_Suspend
+C:\Users\ktkuru\AppData\Local\Temp\cc3WK2mB.s:235    .text.DMA2D_Suspend:0000001c $d
+C:\Users\ktkuru\AppData\Local\Temp\cc3WK2mB.s:238    .text.DMA2D_FGConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc3WK2mB.s:244    .text.DMA2D_FGConfig:00000000 DMA2D_FGConfig
+C:\Users\ktkuru\AppData\Local\Temp\cc3WK2mB.s:293    .text.DMA2D_FGConfig:00000068 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc3WK2mB.s:297    .text.DMA2D_FG_StructInit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc3WK2mB.s:303    .text.DMA2D_FG_StructInit:00000000 DMA2D_FG_StructInit
+C:\Users\ktkuru\AppData\Local\Temp\cc3WK2mB.s:322    .text.DMA2D_BGConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc3WK2mB.s:328    .text.DMA2D_BGConfig:00000000 DMA2D_BGConfig
+C:\Users\ktkuru\AppData\Local\Temp\cc3WK2mB.s:377    .text.DMA2D_BGConfig:00000068 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc3WK2mB.s:381    .text.DMA2D_BG_StructInit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc3WK2mB.s:387    .text.DMA2D_BG_StructInit:00000000 DMA2D_BG_StructInit
+C:\Users\ktkuru\AppData\Local\Temp\cc3WK2mB.s:406    .text.DMA2D_FGStart:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc3WK2mB.s:412    .text.DMA2D_FGStart:00000000 DMA2D_FGStart
+C:\Users\ktkuru\AppData\Local\Temp\cc3WK2mB.s:431    .text.DMA2D_FGStart:0000001c $d
+C:\Users\ktkuru\AppData\Local\Temp\cc3WK2mB.s:434    .text.DMA2D_BGStart:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc3WK2mB.s:440    .text.DMA2D_BGStart:00000000 DMA2D_BGStart
+C:\Users\ktkuru\AppData\Local\Temp\cc3WK2mB.s:459    .text.DMA2D_BGStart:0000001c $d
+C:\Users\ktkuru\AppData\Local\Temp\cc3WK2mB.s:462    .text.DMA2D_DeadTimeConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc3WK2mB.s:468    .text.DMA2D_DeadTimeConfig:00000000 DMA2D_DeadTimeConfig
+C:\Users\ktkuru\AppData\Local\Temp\cc3WK2mB.s:492    .text.DMA2D_DeadTimeConfig:0000002c $d
+C:\Users\ktkuru\AppData\Local\Temp\cc3WK2mB.s:495    .text.DMA2D_LineWatermarkConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc3WK2mB.s:501    .text.DMA2D_LineWatermarkConfig:00000000 DMA2D_LineWatermarkConfig
+C:\Users\ktkuru\AppData\Local\Temp\cc3WK2mB.s:511    .text.DMA2D_LineWatermarkConfig:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc3WK2mB.s:514    .text.DMA2D_ITConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc3WK2mB.s:520    .text.DMA2D_ITConfig:00000000 DMA2D_ITConfig
+C:\Users\ktkuru\AppData\Local\Temp\cc3WK2mB.s:539    .text.DMA2D_ITConfig:00000018 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc3WK2mB.s:542    .text.DMA2D_GetFlagStatus:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc3WK2mB.s:548    .text.DMA2D_GetFlagStatus:00000000 DMA2D_GetFlagStatus
+C:\Users\ktkuru\AppData\Local\Temp\cc3WK2mB.s:564    .text.DMA2D_GetFlagStatus:00000010 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc3WK2mB.s:567    .text.DMA2D_ClearFlag:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc3WK2mB.s:573    .text.DMA2D_ClearFlag:00000000 DMA2D_ClearFlag
+C:\Users\ktkuru\AppData\Local\Temp\cc3WK2mB.s:583    .text.DMA2D_ClearFlag:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc3WK2mB.s:586    .text.DMA2D_GetITStatus:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc3WK2mB.s:592    .text.DMA2D_GetITStatus:00000000 DMA2D_GetITStatus
+C:\Users\ktkuru\AppData\Local\Temp\cc3WK2mB.s:616    .text.DMA2D_GetITStatus:00000020 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc3WK2mB.s:619    .text.DMA2D_ClearITPendingBit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc3WK2mB.s:625    .text.DMA2D_ClearITPendingBit:00000000 DMA2D_ClearITPendingBit
+C:\Users\ktkuru\AppData\Local\Temp\cc3WK2mB.s:636    .text.DMA2D_ClearITPendingBit:00000008 $d
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc3WK2mB.s 			page 13
 
 
 

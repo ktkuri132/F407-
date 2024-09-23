@@ -13,6 +13,7 @@
 #include <stm32f4xx.h>
 #include <bsp.h>
 #include <sys.h>
+#include <control.h>
 
 
 extern float LSKp, LSKi, LSKd;
@@ -62,6 +63,7 @@ float PidControl_LineState(float target, float feedback)
     LSlastError = LSerror;
 
     return output;
+
 }
 
 /// @brief PID摆动控制函数
@@ -107,6 +109,7 @@ float PidControl_SwingState(float target, float feedback)
     SWlastError = SWerror;
 
     return output;
+    
 }
 
 //PWM输出，采用高级定时器TIM8，输出4路PWM
@@ -165,32 +168,79 @@ void Motor_PWM_TIM8_Init()
 }
 
 
-//使能驱动1
-#define LIN1 PFout(0)
-#define LIN2 PFout(1)
-#define LIN3 PFout(2)
-#define LIN4 PFout(3)
-//使能驱动2
-#define RIN1 PFout(4)
-#define RIN2 PFout(5)
-#define RIN3 PFout(6)
-#define RIN4 PFout(7)
 
-#define MLevelOut(x) do{    
-                            if(x==1)
-                            {
-                                
-                            }           
-                                    
-                    }while(0)
+
 /// @brief 电机使能函数
-/// @param x MLevelOut 
-//           MLevelIlOut
-//           MVerticalOut
-//           MVerticalIn
+/// @param x LevelOut 
+//           LevelIn
+//           VerticalOut
+//           VerticalIn
 ///
-/// @param y 
-void Motor_Enable(uint8_t x,uint8_t y)
+/// @param y ENABLE/DISABLE
+void Motor_Cmd(uint8_t MotorSit,FunctionalState NewState)
 {
-    
+    switch (MotorSit)
+    {
+    case LevelOut:
+        if(NewState==ENABLE)
+        {
+            RIN3=1;
+            RIN4=0;
+        }
+        else
+        {
+            RIN3=0;
+            RIN4=0;
+        }
+        break;
+    case LevelIn:
+        if(NewState==ENABLE)
+        {
+            RIN1=0;
+            RIN2=1;
+        }
+        else
+        {
+            RIN1=0;
+            RIN2=0;
+        }
+        break;
+    case VerticalOut:
+        if(NewState==ENABLE)
+        {
+            LIN1=1;
+            LIN2=0;
+        }
+        else
+        {
+            LIN1=0;
+            LIN2=0;
+        }
+        break;
+    case VerticalIn:
+        if(NewState==ENABLE)
+        {
+            LIN3=1;
+            LIN4=0;
+        }
+        else
+        {
+            LIN3=0;
+            LIN4=0;
+        }
+        break;
+    case StopAll:
+        LIN1=0;
+        LIN2=0;
+        LIN3=0;
+        LIN4=0;
+        RIN1=0;
+        RIN2=0;
+        RIN3=0;
+        RIN4=0;
+        break;
+
+    default:
+        break;
+    }
 }
