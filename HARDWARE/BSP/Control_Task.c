@@ -19,14 +19,14 @@
 
 //方便调试，定义电机方位
 #define Motor           TIM8
-#define MVerticalOut    CCR1    //垂直方向外侧电机
+#define MVerticalOut    CCR1    //垂直方向外侧电机,M--电机前缀，Vertical--电机方向垂直方向，Out--电机位置外侧电机
 #define MVerticalIn     CCR2    //垂直方向内侧电机
 #define MLevelOut       CCR3    //水平方向外侧电机
 #define MLevelIn        CCR4    //水平方向内侧电机
 
 
 //定义电机x的y方向
-#define MotorState(x,y) Motor_Cmd(x,y)
+#define MotorState(x,y) Motor_Cmd(x,y)  //x为电机编号，y为电机状态
 
 #define TargetRoll  0
 
@@ -66,9 +66,9 @@ void Task_MoveLine()
 {
 
     static float TargetPitch=15;
-    //让摆体摆动的输出
+    //让摆体直线摆动的输出
     static float SwingState_Output;
-    //让摆体直线状态的输出
+    //让摆体保持直线状态的输出
     static float LineState_Output;
     //检查当前摆体状态
     if(pitch<15&&pitch>0)          //处在外侧
@@ -92,8 +92,26 @@ void Task_MoveLine()
 
     LineState_Output= PidControl_LineState(TargetRoll, roll);
 
-    if(LineState_Output>0)
+    if(LineState_Output>0)  //输出大于0，此时电机处在垂直外侧，应打开垂直外侧方向电机,关闭内侧电机
     {
-        
+        MotorState(VerticalOut,ENABLE);
+        MotorState(VerticalIn,DISABLE);
+
+        Motor->MVerticalOut = (uint32_t)LineState_Output;
+
     }
+    else if(LineState_Output<0)  //输出小于0，此时电机处在垂直内侧，应打开垂直内侧方向电机,关闭外侧电机
+    {
+        MotorState(VerticalOut,DISABLE);
+        MotorState(VerticalIn,ENABLE);
+
+        Motor->MVerticalIn = (uint32_t)(-LineState_Output);
+    }
+    else
+    {
+        MotorState(VerticalOut,DISABLE);
+        MotorState(VerticalIn,DISABLE);
+    }
+   
+
 }
