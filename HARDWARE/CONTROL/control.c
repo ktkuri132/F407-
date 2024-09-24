@@ -209,31 +209,31 @@ void MotorState(float pitch,float roll)
 {
     if(roll>0&&pitch>0)
     {
-        Motor_Cmd(LevelOut,ENABLE);
-        Motor_Cmd(LevelIn,DISABLE);
-        Motor_Cmd(VerticalOut,DISABLE);
-        Motor_Cmd(VerticalIn,ENABLE);
+        Motor_Cmd(LevelOut,DISABLE);
+        Motor_Cmd(LevelIn,ENABLE);
+        Motor_Cmd(VerticalOut,ENABLE);
+        Motor_Cmd(VerticalIn,DISABLE);
     }
     else if(roll>0&&pitch<0)
     {
-        Motor_Cmd(LevelOut,DISABLE);
-        Motor_Cmd(LevelIn,ENABLE);
-        Motor_Cmd(VerticalOut,DISABLE);
-        Motor_Cmd(VerticalIn,ENABLE);
-    }
-    else if(roll<0&&pitch>0)
-    {
         Motor_Cmd(LevelOut,ENABLE);
         Motor_Cmd(LevelIn,DISABLE);
         Motor_Cmd(VerticalOut,ENABLE);
         Motor_Cmd(VerticalIn,DISABLE);
     }
-    else if(roll<0&&pitch<0)
+    else if(roll<0&&pitch>0)
     {
         Motor_Cmd(LevelOut,DISABLE);
         Motor_Cmd(LevelIn,ENABLE);
-        Motor_Cmd(VerticalOut,ENABLE);
-        Motor_Cmd(VerticalIn,DISABLE);
+        Motor_Cmd(VerticalOut,DISABLE);
+        Motor_Cmd(VerticalIn,ENABLE);
+    }
+    else if(roll<0&&pitch<0)
+    {
+        Motor_Cmd(LevelOut,ENABLE);
+        Motor_Cmd(LevelIn,DISABLE);
+        Motor_Cmd(VerticalOut,DISABLE);
+        Motor_Cmd(VerticalIn,ENABLE);
     }
     else
     {

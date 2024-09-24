@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s 			page 1
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccqMnGny.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s 			page 1
   58 001e 1A40     		ands	r2, r2, r3
   59 0020 0B69     		ldr	r3, [r1, #16]
   60 0022 CC68     		ldr	r4, [r1, #12]
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s 			page 2
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccqMnGny.s 			page 2
 
 
   61 0024 2343     		orrs	r3, r3, r4
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s 			page 1
  119 0008 1A40     		ands	r2, r2, r3
  120 000a 0368     		ldr	r3, [r0]
  121 000c 4468     		ldr	r4, [r0, #4]
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s 			page 3
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccqMnGny.s 			page 3
 
 
  122 000e 2343     		orrs	r3, r3, r4
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s 			page 1
  181              		.thumb
  182              		.thumb_func
  184              	ADC_AnalogWatchdogCmd:
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s 			page 4
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccqMnGny.s 			page 4
 
 
  185              		@ args = 0, pretend = 0, frame = 0
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s 			page 1
  245 000e 034A     		ldr	r2, .L22
  246 0010 5368     		ldr	r3, [r2, #4]
  247 0012 23F40003 		bic	r3, r3, #8388608
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s 			page 5
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccqMnGny.s 			page 5
 
 
  248 0016 5360     		str	r3, [r2, #4]
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s 			page 1
  306 0026 062A     		cmp	r2, #6
  307 0028 1BD8     		bhi	.L32
  308 002a 436B     		ldr	r3, [r0, #52]
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s 			page 6
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccqMnGny.s 			page 6
 
 
  309 002c 013A     		subs	r2, r2, #1
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s 			page 1
  365 0000 8368     		ldr	r3, [r0, #8]
  366 0002 43F08043 		orr	r3, r3, #1073741824
  367 0006 8360     		str	r3, [r0, #8]
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s 			page 7
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccqMnGny.s 			page 7
 
 
  368 0008 7047     		bx	lr
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s 			page 1
  428              	.L44:
  429 000c 8368     		ldr	r3, [r0, #8]
  430 000e 23F00203 		bic	r3, r3, #2
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s 			page 8
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccqMnGny.s 			page 8
 
 
  431 0012 8360     		str	r3, [r0, #8]
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s 			page 1
  492              		.syntax unified
  493              		.thumb
  494              		.thumb_func
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s 			page 9
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccqMnGny.s 			page 9
 
 
  496              	ADC_GetMultiModeConversionValue:
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s 			page 1
  555              		.syntax unified
  556              		.thumb
  557              		.thumb_func
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s 			page 10
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccqMnGny.s 			page 10
 
 
  559              	ADC_MultiModeDMARequestAfterLastTransferCmd:
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s 			page 1
  615 0042 0C43     		orrs	r4, r4, r1
  616 0044 8463     		str	r4, [r0, #56]
  617 0046 30BC     		pop	{r4, r5}
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s 			page 11
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccqMnGny.s 			page 11
 
 
  618 0048 7047     		bx	lr
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s 			page 1
  677              		.thumb_func
  679              	ADC_ExternalTrigInjectedConvConfig:
  680              		@ args = 0, pretend = 0, frame = 0
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s 			page 12
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccqMnGny.s 			page 12
 
 
  681              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s 			page 1
  742              		.section	.text.ADC_AutoInjectedConvCmd,"ax",%progbits
  743              		.align	1
  744              		.global	ADC_AutoInjectedConvCmd
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s 			page 13
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccqMnGny.s 			page 13
 
 
  745              		.syntax unified
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s 			page 1
  804 000e 0191     		str	r1, [sp, #4]
  805 0010 019B     		ldr	r3, [sp, #4]
  806 0012 1868     		ldr	r0, [r3]
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s 			page 14
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccqMnGny.s 			page 14
 
 
  807 0014 80B2     		uxth	r0, r0
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s 			page 1
  867              		@ link register save eliminated.
  868 0000 C943     		mvns	r1, r1
  869 0002 0160     		str	r1, [r0]
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s 			page 15
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccqMnGny.s 			page 15
 
 
  870 0004 7047     		bx	lr
@@ -883,96 +883,96 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s 			page 1
  913 0004 0160     		str	r1, [r0]
  914 0006 7047     		bx	lr
  916              		.ident	"GCC: (Arm GNU Toolchain 13.3.Rel1 (Build arm-13.24)) 13.3.1 20240614"
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s 			page 16
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccqMnGny.s 			page 16
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 stm32f4xx_adc.c
-C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s:18     .text.ADC_DeInit:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s:24     .text.ADC_DeInit:00000000 ADC_DeInit
-C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s:37     .text.ADC_Init:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s:43     .text.ADC_Init:00000000 ADC_Init
-C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s:80     .text.ADC_Init:00000050 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s:83     .text.ADC_StructInit:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s:89     .text.ADC_StructInit:00000000 ADC_StructInit
-C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s:105    .text.ADC_CommonInit:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s:111    .text.ADC_CommonInit:00000000 ADC_CommonInit
-C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s:134    .text.ADC_CommonInit:00000024 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s:138    .text.ADC_CommonStructInit:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s:144    .text.ADC_CommonStructInit:00000000 ADC_CommonStructInit
-C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s:156    .text.ADC_Cmd:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s:162    .text.ADC_Cmd:00000000 ADC_Cmd
-C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s:178    .text.ADC_AnalogWatchdogCmd:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s:184    .text.ADC_AnalogWatchdogCmd:00000000 ADC_AnalogWatchdogCmd
-C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s:196    .text.ADC_AnalogWatchdogThresholdsConfig:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s:202    .text.ADC_AnalogWatchdogThresholdsConfig:00000000 ADC_AnalogWatchdogThresholdsConfig
-C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s:211    .text.ADC_AnalogWatchdogSingleChannelConfig:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s:217    .text.ADC_AnalogWatchdogSingleChannelConfig:00000000 ADC_AnalogWatchdogSingleChannelConfig
-C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s:228    .text.ADC_TempSensorVrefintCmd:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s:234    .text.ADC_TempSensorVrefintCmd:00000000 ADC_TempSensorVrefintCmd
-C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s:253    .text.ADC_TempSensorVrefintCmd:0000001c $d
-C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s:256    .text.ADC_VBATCmd:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s:262    .text.ADC_VBATCmd:00000000 ADC_VBATCmd
-C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s:281    .text.ADC_VBATCmd:0000001c $d
-C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s:284    .text.ADC_RegularChannelConfig:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s:290    .text.ADC_RegularChannelConfig:00000000 ADC_RegularChannelConfig
-C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s:355    .text.ADC_SoftwareStartConv:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s:361    .text.ADC_SoftwareStartConv:00000000 ADC_SoftwareStartConv
-C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s:371    .text.ADC_GetSoftwareStartConvStatus:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s:377    .text.ADC_GetSoftwareStartConvStatus:00000000 ADC_GetSoftwareStartConvStatus
-C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s:391    .text.ADC_EOCOnEachRegularChannelCmd:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s:397    .text.ADC_EOCOnEachRegularChannelCmd:00000000 ADC_EOCOnEachRegularChannelCmd
-C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s:413    .text.ADC_ContinuousModeCmd:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s:419    .text.ADC_ContinuousModeCmd:00000000 ADC_ContinuousModeCmd
-C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s:435    .text.ADC_DiscModeChannelCountConfig:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s:441    .text.ADC_DiscModeChannelCountConfig:00000000 ADC_DiscModeChannelCountConfig
-C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s:453    .text.ADC_DiscModeCmd:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s:459    .text.ADC_DiscModeCmd:00000000 ADC_DiscModeCmd
-C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s:475    .text.ADC_GetConversionValue:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s:481    .text.ADC_GetConversionValue:00000000 ADC_GetConversionValue
-C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s:490    .text.ADC_GetMultiModeConversionValue:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s:496    .text.ADC_GetMultiModeConversionValue:00000000 ADC_GetMultiModeConversionValue
-C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s:506    .text.ADC_GetMultiModeConversionValue:00000008 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s:509    .text.ADC_DMACmd:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s:515    .text.ADC_DMACmd:00000000 ADC_DMACmd
-C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s:531    .text.ADC_DMARequestAfterLastTransferCmd:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s:537    .text.ADC_DMARequestAfterLastTransferCmd:00000000 ADC_DMARequestAfterLastTransferCmd
-C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s:553    .text.ADC_MultiModeDMARequestAfterLastTransferCmd:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s:559    .text.ADC_MultiModeDMARequestAfterLastTransferCmd:00000000 ADC_MultiModeDMARequestAfterLastTransferCmd
-C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s:578    .text.ADC_MultiModeDMARequestAfterLastTransferCmd:0000001c $d
-C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s:581    .text.ADC_InjectedChannelConfig:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s:587    .text.ADC_InjectedChannelConfig:00000000 ADC_InjectedChannelConfig
-C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s:631    .text.ADC_InjectedSequencerLengthConfig:00000000 $t
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s 			page 17
+C:\Users\ktkuru\AppData\Local\Temp\ccqMnGny.s:18     .text.ADC_DeInit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccqMnGny.s:24     .text.ADC_DeInit:00000000 ADC_DeInit
+C:\Users\ktkuru\AppData\Local\Temp\ccqMnGny.s:37     .text.ADC_Init:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccqMnGny.s:43     .text.ADC_Init:00000000 ADC_Init
+C:\Users\ktkuru\AppData\Local\Temp\ccqMnGny.s:80     .text.ADC_Init:00000050 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccqMnGny.s:83     .text.ADC_StructInit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccqMnGny.s:89     .text.ADC_StructInit:00000000 ADC_StructInit
+C:\Users\ktkuru\AppData\Local\Temp\ccqMnGny.s:105    .text.ADC_CommonInit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccqMnGny.s:111    .text.ADC_CommonInit:00000000 ADC_CommonInit
+C:\Users\ktkuru\AppData\Local\Temp\ccqMnGny.s:134    .text.ADC_CommonInit:00000024 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccqMnGny.s:138    .text.ADC_CommonStructInit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccqMnGny.s:144    .text.ADC_CommonStructInit:00000000 ADC_CommonStructInit
+C:\Users\ktkuru\AppData\Local\Temp\ccqMnGny.s:156    .text.ADC_Cmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccqMnGny.s:162    .text.ADC_Cmd:00000000 ADC_Cmd
+C:\Users\ktkuru\AppData\Local\Temp\ccqMnGny.s:178    .text.ADC_AnalogWatchdogCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccqMnGny.s:184    .text.ADC_AnalogWatchdogCmd:00000000 ADC_AnalogWatchdogCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccqMnGny.s:196    .text.ADC_AnalogWatchdogThresholdsConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccqMnGny.s:202    .text.ADC_AnalogWatchdogThresholdsConfig:00000000 ADC_AnalogWatchdogThresholdsConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccqMnGny.s:211    .text.ADC_AnalogWatchdogSingleChannelConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccqMnGny.s:217    .text.ADC_AnalogWatchdogSingleChannelConfig:00000000 ADC_AnalogWatchdogSingleChannelConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccqMnGny.s:228    .text.ADC_TempSensorVrefintCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccqMnGny.s:234    .text.ADC_TempSensorVrefintCmd:00000000 ADC_TempSensorVrefintCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccqMnGny.s:253    .text.ADC_TempSensorVrefintCmd:0000001c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccqMnGny.s:256    .text.ADC_VBATCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccqMnGny.s:262    .text.ADC_VBATCmd:00000000 ADC_VBATCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccqMnGny.s:281    .text.ADC_VBATCmd:0000001c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccqMnGny.s:284    .text.ADC_RegularChannelConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccqMnGny.s:290    .text.ADC_RegularChannelConfig:00000000 ADC_RegularChannelConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccqMnGny.s:355    .text.ADC_SoftwareStartConv:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccqMnGny.s:361    .text.ADC_SoftwareStartConv:00000000 ADC_SoftwareStartConv
+C:\Users\ktkuru\AppData\Local\Temp\ccqMnGny.s:371    .text.ADC_GetSoftwareStartConvStatus:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccqMnGny.s:377    .text.ADC_GetSoftwareStartConvStatus:00000000 ADC_GetSoftwareStartConvStatus
+C:\Users\ktkuru\AppData\Local\Temp\ccqMnGny.s:391    .text.ADC_EOCOnEachRegularChannelCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccqMnGny.s:397    .text.ADC_EOCOnEachRegularChannelCmd:00000000 ADC_EOCOnEachRegularChannelCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccqMnGny.s:413    .text.ADC_ContinuousModeCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccqMnGny.s:419    .text.ADC_ContinuousModeCmd:00000000 ADC_ContinuousModeCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccqMnGny.s:435    .text.ADC_DiscModeChannelCountConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccqMnGny.s:441    .text.ADC_DiscModeChannelCountConfig:00000000 ADC_DiscModeChannelCountConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccqMnGny.s:453    .text.ADC_DiscModeCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccqMnGny.s:459    .text.ADC_DiscModeCmd:00000000 ADC_DiscModeCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccqMnGny.s:475    .text.ADC_GetConversionValue:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccqMnGny.s:481    .text.ADC_GetConversionValue:00000000 ADC_GetConversionValue
+C:\Users\ktkuru\AppData\Local\Temp\ccqMnGny.s:490    .text.ADC_GetMultiModeConversionValue:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccqMnGny.s:496    .text.ADC_GetMultiModeConversionValue:00000000 ADC_GetMultiModeConversionValue
+C:\Users\ktkuru\AppData\Local\Temp\ccqMnGny.s:506    .text.ADC_GetMultiModeConversionValue:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccqMnGny.s:509    .text.ADC_DMACmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccqMnGny.s:515    .text.ADC_DMACmd:00000000 ADC_DMACmd
+C:\Users\ktkuru\AppData\Local\Temp\ccqMnGny.s:531    .text.ADC_DMARequestAfterLastTransferCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccqMnGny.s:537    .text.ADC_DMARequestAfterLastTransferCmd:00000000 ADC_DMARequestAfterLastTransferCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccqMnGny.s:553    .text.ADC_MultiModeDMARequestAfterLastTransferCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccqMnGny.s:559    .text.ADC_MultiModeDMARequestAfterLastTransferCmd:00000000 ADC_MultiModeDMARequestAfterLastTransferCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccqMnGny.s:578    .text.ADC_MultiModeDMARequestAfterLastTransferCmd:0000001c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccqMnGny.s:581    .text.ADC_InjectedChannelConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccqMnGny.s:587    .text.ADC_InjectedChannelConfig:00000000 ADC_InjectedChannelConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccqMnGny.s:631    .text.ADC_InjectedSequencerLengthConfig:00000000 $t
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccqMnGny.s 			page 17
 
 
-C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s:637    .text.ADC_InjectedSequencerLengthConfig:00000000 ADC_InjectedSequencerLengthConfig
-C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s:649    .text.ADC_SetInjectedOffset:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s:655    .text.ADC_SetInjectedOffset:00000000 ADC_SetInjectedOffset
-C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s:673    .text.ADC_ExternalTrigInjectedConvConfig:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s:679    .text.ADC_ExternalTrigInjectedConvConfig:00000000 ADC_ExternalTrigInjectedConvConfig
-C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s:690    .text.ADC_ExternalTrigInjectedConvEdgeConfig:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s:696    .text.ADC_ExternalTrigInjectedConvEdgeConfig:00000000 ADC_ExternalTrigInjectedConvEdgeConfig
-C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s:707    .text.ADC_SoftwareStartInjectedConv:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s:713    .text.ADC_SoftwareStartInjectedConv:00000000 ADC_SoftwareStartInjectedConv
-C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s:723    .text.ADC_GetSoftwareStartInjectedConvCmdStatus:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s:729    .text.ADC_GetSoftwareStartInjectedConvCmdStatus:00000000 ADC_GetSoftwareStartInjectedConvCmdStatus
-C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s:743    .text.ADC_AutoInjectedConvCmd:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s:749    .text.ADC_AutoInjectedConvCmd:00000000 ADC_AutoInjectedConvCmd
-C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s:765    .text.ADC_InjectedDiscModeCmd:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s:771    .text.ADC_InjectedDiscModeCmd:00000000 ADC_InjectedDiscModeCmd
-C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s:787    .text.ADC_GetInjectedConversionValue:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s:793    .text.ADC_GetInjectedConversionValue:00000000 ADC_GetInjectedConversionValue
-C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s:813    .text.ADC_ITConfig:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s:819    .text.ADC_ITConfig:00000000 ADC_ITConfig
-C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s:838    .text.ADC_GetFlagStatus:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s:844    .text.ADC_GetFlagStatus:00000000 ADC_GetFlagStatus
-C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s:858    .text.ADC_ClearFlag:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s:864    .text.ADC_ClearFlag:00000000 ADC_ClearFlag
-C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s:873    .text.ADC_GetITStatus:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s:879    .text.ADC_GetITStatus:00000000 ADC_GetITStatus
-C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s:902    .text.ADC_ClearITPendingBit:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccf8ABuY.s:908    .text.ADC_ClearITPendingBit:00000000 ADC_ClearITPendingBit
+C:\Users\ktkuru\AppData\Local\Temp\ccqMnGny.s:637    .text.ADC_InjectedSequencerLengthConfig:00000000 ADC_InjectedSequencerLengthConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccqMnGny.s:649    .text.ADC_SetInjectedOffset:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccqMnGny.s:655    .text.ADC_SetInjectedOffset:00000000 ADC_SetInjectedOffset
+C:\Users\ktkuru\AppData\Local\Temp\ccqMnGny.s:673    .text.ADC_ExternalTrigInjectedConvConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccqMnGny.s:679    .text.ADC_ExternalTrigInjectedConvConfig:00000000 ADC_ExternalTrigInjectedConvConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccqMnGny.s:690    .text.ADC_ExternalTrigInjectedConvEdgeConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccqMnGny.s:696    .text.ADC_ExternalTrigInjectedConvEdgeConfig:00000000 ADC_ExternalTrigInjectedConvEdgeConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccqMnGny.s:707    .text.ADC_SoftwareStartInjectedConv:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccqMnGny.s:713    .text.ADC_SoftwareStartInjectedConv:00000000 ADC_SoftwareStartInjectedConv
+C:\Users\ktkuru\AppData\Local\Temp\ccqMnGny.s:723    .text.ADC_GetSoftwareStartInjectedConvCmdStatus:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccqMnGny.s:729    .text.ADC_GetSoftwareStartInjectedConvCmdStatus:00000000 ADC_GetSoftwareStartInjectedConvCmdStatus
+C:\Users\ktkuru\AppData\Local\Temp\ccqMnGny.s:743    .text.ADC_AutoInjectedConvCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccqMnGny.s:749    .text.ADC_AutoInjectedConvCmd:00000000 ADC_AutoInjectedConvCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccqMnGny.s:765    .text.ADC_InjectedDiscModeCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccqMnGny.s:771    .text.ADC_InjectedDiscModeCmd:00000000 ADC_InjectedDiscModeCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccqMnGny.s:787    .text.ADC_GetInjectedConversionValue:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccqMnGny.s:793    .text.ADC_GetInjectedConversionValue:00000000 ADC_GetInjectedConversionValue
+C:\Users\ktkuru\AppData\Local\Temp\ccqMnGny.s:813    .text.ADC_ITConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccqMnGny.s:819    .text.ADC_ITConfig:00000000 ADC_ITConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccqMnGny.s:838    .text.ADC_GetFlagStatus:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccqMnGny.s:844    .text.ADC_GetFlagStatus:00000000 ADC_GetFlagStatus
+C:\Users\ktkuru\AppData\Local\Temp\ccqMnGny.s:858    .text.ADC_ClearFlag:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccqMnGny.s:864    .text.ADC_ClearFlag:00000000 ADC_ClearFlag
+C:\Users\ktkuru\AppData\Local\Temp\ccqMnGny.s:873    .text.ADC_GetITStatus:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccqMnGny.s:879    .text.ADC_GetITStatus:00000000 ADC_GetITStatus
+C:\Users\ktkuru\AppData\Local\Temp\ccqMnGny.s:902    .text.ADC_ClearITPendingBit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccqMnGny.s:908    .text.ADC_ClearITPendingBit:00000000 ADC_ClearITPendingBit
 
 UNDEFINED SYMBOLS
 RCC_APB2PeriphResetCmd

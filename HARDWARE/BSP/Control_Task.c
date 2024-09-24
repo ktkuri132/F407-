@@ -37,7 +37,7 @@ extern float pitch,roll,yaw;
 
 
 //控制制动PID参数
-float T4SKp=300,
+float T4SKp=510,
       T4SKi=0,
       T4SKd=0;
 
