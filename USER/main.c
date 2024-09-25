@@ -59,6 +59,7 @@ int main(void)
     {
         printf("peripheral init done\n");
     }
+
 /*
     TIM8->CCR1=0;//垂直方向内侧电机
     TIM8->CCR2=0;//垂直方向外侧电机
@@ -77,6 +78,7 @@ int main(void)
     RIN3=0;//水平方向外侧电机
     RIN4=1;
 */
+
     /* 前台程序轮询  */
     while (1)
     {

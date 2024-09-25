@@ -65,6 +65,6 @@ void GetPolar(float roll,float pitch);
 
 float PidControl_Stop(float target, float feedback);
 void Task4_StopFast();
-void PWM_Allocation(float VerticalOutput,float LevelOutput);
+void PWM_Allocation(float Output);
 
 #endif 

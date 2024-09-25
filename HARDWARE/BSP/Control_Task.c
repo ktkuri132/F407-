@@ -20,13 +20,13 @@
 
 
 
-extern float pitch,roll,yaw;
+extern float pitch,roll,yaw,dis;
 
 
 //控制制动PID参数
-float T4SKp=900,
-      T4SKi=0,
-      T4SKd=0;
+float T4SKp=700,
+      T4SKi=-1,
+      T4SKd=-300;
 
 
 
@@ -52,14 +52,15 @@ void EXTI15_10_IRQHandler(void)
 */
 void Task4_StopFast()
 {
+    /*
     //垂直制动输出
     static float VerticalOutput;
     //水平制动输出
     static float LevelOutput;
-    
-    VerticalOutput=PidControl_Stop(TargetRoll, roll);
-    LevelOutput= PidControl_Stop(TargetPitch, pitch);
-
-    PWM_Allocation(VerticalOutput,LevelOutput);
+    */
+    static float Output;
+    Output = PidControl_Stop(TargetDis,dis);
+    //printf("Output:%f\n",Output);
+    PWM_Allocation(Output);
   
 }
