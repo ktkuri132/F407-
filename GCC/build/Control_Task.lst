@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNoFVpN.s 			page 1
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccG7C7C3.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -17,170 +17,134 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNoFVpN.s 			page 1
   14              		.eabi_attribute 18, 4
   15              		.file	"Control_Task.c"
   16              		.text
-  17              		.section	.text.EXTI15_10_IRQHandler,"ax",%progbits
+  17              		.section	.text.Task4_StopFast,"ax",%progbits
   18              		.align	1
-  19              		.global	EXTI15_10_IRQHandler
+  19              		.global	Task4_StopFast
   20              		.syntax unified
   21              		.thumb
   22              		.thumb_func
-  24              	EXTI15_10_IRQHandler:
+  24              	Task4_StopFast:
   25              		@ args = 0, pretend = 0, frame = 0
   26              		@ frame_needed = 0, uses_anonymous_args = 0
-  27 0000 38B5     		push	{r3, r4, r5, lr}
-  28 0002 4FF40040 		mov	r0, #32768
-  29 0006 FFF7FEFF 		bl	EXTI_GetITStatus
-  30 000a 00B9     		cbnz	r0, .L4
-  31              	.L1:
-  32 000c 38BD     		pop	{r3, r4, r5, pc}
-  33              	.L4:
-  34 000e 4FF40040 		mov	r0, #32768
-  35 0012 FFF7FEFF 		bl	EXTI_ClearITPendingBit
-  36 0016 074C     		ldr	r4, .L5
-  37 0018 074D     		ldr	r5, .L5+4
-  38 001a 084A     		ldr	r2, .L5+8
-  39 001c 2146     		mov	r1, r4
-  40 001e 2846     		mov	r0, r5
-  41 0020 FFF7FEFF 		bl	mpu_dmp_get_data
-  42 0024 D5ED000A 		vldr.32	s1, [r5]
-  43 0028 94ED000A 		vldr.32	s0, [r4]
-  44 002c FFF7FEFF 		bl	GetPolar
-  45 0030 ECE7     		b	.L1
-  46              	.L6:
-  47 0032 00BF     		.align	2
-  48              	.L5:
-  49 0034 00000000 		.word	roll
-  50 0038 00000000 		.word	pitch
-  51 003c 00000000 		.word	yaw
-  53              		.section	.text.Task4_StopFast,"ax",%progbits
-  54              		.align	1
-  55              		.global	Task4_StopFast
-  56              		.syntax unified
-  57              		.thumb
-  58              		.thumb_func
-  60              	Task4_StopFast:
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNoFVpN.s 			page 2
+  27 0000 10B5     		push	{r4, lr}
+  28 0002 2DED028B 		vpush.64	{d8}
+  29 0006 9FED0F8A 		vldr.32	s16, .L3
+  30 000a 0F4B     		ldr	r3, .L3+4
+  31 000c D3ED000A 		vldr.32	s1, [r3]
+  32 0010 B0EE480A 		vmov.f32	s0, s16
+  33 0014 FFF7FEFF 		bl	PidControl_Stop
+  34 0018 0C4C     		ldr	r4, .L3+8
+  35 001a 84ED000A 		vstr.32	s0, [r4]
+  36 001e 0C4B     		ldr	r3, .L3+12
+  37 0020 D3ED000A 		vldr.32	s1, [r3]
+  38 0024 B0EE480A 		vmov.f32	s0, s16
+  39 0028 FFF7FEFF 		bl	PidControl_Stop
+  40 002c F0EE400A 		vmov.f32	s1, s0
+  41 0030 084B     		ldr	r3, .L3+16
+  42 0032 83ED000A 		vstr.32	s0, [r3]
+  43 0036 94ED000A 		vldr.32	s0, [r4]
+  44 003a FFF7FEFF 		bl	PWM_Allocation
+  45 003e BDEC028B 		vldm	sp!, {d8}
+  46 0042 10BD     		pop	{r4, pc}
+  47              	.L4:
+  48              		.align	2
+  49              	.L3:
+  50 0044 00000000 		.word	0
+  51 0048 00000000 		.word	roll
+  52 004c 00000000 		.word	VerticalOutput.1
+  53 0050 00000000 		.word	pitch
+  54 0054 00000000 		.word	LevelOutput.0
+  56              		.section	.text.EXTI15_10_IRQHandler,"ax",%progbits
+  57              		.align	1
+  58              		.global	EXTI15_10_IRQHandler
+  59              		.syntax unified
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccG7C7C3.s 			page 2
 
 
-  61              		@ args = 0, pretend = 0, frame = 0
-  62              		@ frame_needed = 0, uses_anonymous_args = 0
-  63 0000 10B5     		push	{r4, lr}
-  64 0002 2DED028B 		vpush.64	{d8}
-  65 0006 9FED288A 		vldr.32	s16, .L17
-  66 000a 284B     		ldr	r3, .L17+4
-  67 000c D3ED000A 		vldr.32	s1, [r3]
-  68 0010 B0EE480A 		vmov.f32	s0, s16
-  69 0014 FFF7FEFF 		bl	PidControl_Stop
-  70 0018 254C     		ldr	r4, .L17+8
-  71 001a 84ED000A 		vstr.32	s0, [r4]
-  72 001e 254B     		ldr	r3, .L17+12
-  73 0020 D3ED000A 		vldr.32	s1, [r3]
-  74 0024 B0EE480A 		vmov.f32	s0, s16
-  75 0028 FFF7FEFF 		bl	PidControl_Stop
-  76 002c 224B     		ldr	r3, .L17+16
-  77 002e 83ED000A 		vstr.32	s0, [r3]
-  78 0032 D4ED007A 		vldr.32	s15, [r4]
-  79 0036 9FED217A 		vldr.32	s14, .L17+20
-  80 003a F4EEC77A 		vcmpe.f32	s15, s14
-  81 003e F1EE10FA 		vmrs	APSR_nzcv, FPSCR
-  82 0042 07DC     		bgt	.L12
-  83 0044 F4EEC87A 		vcmpe.f32	s15, s16
-  84 0048 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
-  85 004c 04D5     		bpl	.L8
-  86 004e F8EE007A 		vmov.f32	s15, #-2.0e+0
-  87 0052 01E0     		b	.L8
-  88              	.L12:
-  89 0054 DFED197A 		vldr.32	s15, .L17+20
-  90              	.L8:
-  91 0058 154B     		ldr	r3, .L17+8
-  92 005a C3ED007A 		vstr.32	s15, [r3]
-  93 005e 9FED177A 		vldr.32	s14, .L17+20
-  94 0062 B4EEC70A 		vcmpe.f32	s0, s14
-  95 0066 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
-  96 006a 07DC     		bgt	.L13
-  97 006c B5EEC00A 		vcmpe.f32	s0, #0
-  98 0070 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
-  99 0074 04D5     		bpl	.L10
- 100 0076 B1EE400A 		vneg.f32	s0, s0
- 101 007a 01E0     		b	.L10
- 102              	.L13:
- 103 007c 9FED0F0A 		vldr.32	s0, .L17+20
- 104              	.L10:
- 105 0080 0D4B     		ldr	r3, .L17+16
- 106 0082 83ED000A 		vstr.32	s0, [r3]
- 107 0086 FCEEE77A 		vcvt.u32.f32	s15, s15
- 108 008a 0D4A     		ldr	r2, .L17+24
- 109 008c C2ED0E7A 		vstr.32	s15, [r2, #56]	@ int
- 110 0090 C2ED0D7A 		vstr.32	s15, [r2, #52]	@ int
- 111 0094 FCEEC07A 		vcvt.u32.f32	s15, s0
- 112 0098 C2ED0F7A 		vstr.32	s15, [r2, #60]	@ int
- 113 009c C2ED107A 		vstr.32	s15, [r2, #64]	@ int
- 114 00a0 BDEC028B 		vldm	sp!, {d8}
- 115 00a4 10BD     		pop	{r4, pc}
- 116              	.L18:
- 117 00a6 00BF     		.align	2
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNoFVpN.s 			page 3
-
-
- 118              	.L17:
- 119 00a8 00000000 		.word	0
- 120 00ac 00000000 		.word	roll
- 121 00b0 00000000 		.word	VerticalOutput.1
- 122 00b4 00000000 		.word	pitch
- 123 00b8 00000000 		.word	LevelOutput.0
- 124 00bc 00400346 		.word	1174618112
- 125 00c0 00040140 		.word	1073808384
- 127              		.section	.bss.LevelOutput.0,"aw",%nobits
- 128              		.align	2
- 131              	LevelOutput.0:
- 132 0000 00000000 		.space	4
- 133              		.section	.bss.VerticalOutput.1,"aw",%nobits
- 134              		.align	2
- 137              	VerticalOutput.1:
- 138 0000 00000000 		.space	4
- 139              		.global	T4SKd
- 140              		.section	.data.T4SKd,"aw"
- 141              		.align	2
- 144              	T4SKd:
- 145 0000 000096C3 		.word	-1013579776
- 146              		.global	T4SKi
- 147              		.section	.bss.T4SKi,"aw",%nobits
- 148              		.align	2
- 151              	T4SKi:
- 152 0000 00000000 		.space	4
- 153              		.global	T4SKp
- 154              		.section	.data.T4SKp,"aw"
- 155              		.align	2
- 158              	T4SKp:
- 159 0000 0000FA43 		.word	1140457472
- 160              		.ident	"GCC: (Arm GNU Toolchain 13.3.Rel1 (Build arm-13.24)) 13.3.1 20240614"
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNoFVpN.s 			page 4
+  60              		.thumb
+  61              		.thumb_func
+  63              	EXTI15_10_IRQHandler:
+  64              		@ args = 0, pretend = 0, frame = 0
+  65              		@ frame_needed = 0, uses_anonymous_args = 0
+  66 0000 38B5     		push	{r3, r4, r5, lr}
+  67 0002 4FF40040 		mov	r0, #32768
+  68 0006 FFF7FEFF 		bl	EXTI_GetITStatus
+  69 000a 00B9     		cbnz	r0, .L8
+  70              	.L5:
+  71 000c 38BD     		pop	{r3, r4, r5, pc}
+  72              	.L8:
+  73 000e 4FF40040 		mov	r0, #32768
+  74 0012 FFF7FEFF 		bl	EXTI_ClearITPendingBit
+  75 0016 084C     		ldr	r4, .L9
+  76 0018 084D     		ldr	r5, .L9+4
+  77 001a 094A     		ldr	r2, .L9+8
+  78 001c 2146     		mov	r1, r4
+  79 001e 2846     		mov	r0, r5
+  80 0020 FFF7FEFF 		bl	mpu_dmp_get_data
+  81 0024 D5ED000A 		vldr.32	s1, [r5]
+  82 0028 94ED000A 		vldr.32	s0, [r4]
+  83 002c FFF7FEFF 		bl	GetPolar
+  84 0030 FFF7FEFF 		bl	Task4_StopFast
+  85 0034 EAE7     		b	.L5
+  86              	.L10:
+  87 0036 00BF     		.align	2
+  88              	.L9:
+  89 0038 00000000 		.word	roll
+  90 003c 00000000 		.word	pitch
+  91 0040 00000000 		.word	yaw
+  93              		.section	.bss.LevelOutput.0,"aw",%nobits
+  94              		.align	2
+  97              	LevelOutput.0:
+  98 0000 00000000 		.space	4
+  99              		.section	.bss.VerticalOutput.1,"aw",%nobits
+ 100              		.align	2
+ 103              	VerticalOutput.1:
+ 104 0000 00000000 		.space	4
+ 105              		.global	T4SKd
+ 106              		.section	.bss.T4SKd,"aw",%nobits
+ 107              		.align	2
+ 110              	T4SKd:
+ 111 0000 00000000 		.space	4
+ 112              		.global	T4SKi
+ 113              		.section	.bss.T4SKi,"aw",%nobits
+ 114              		.align	2
+ 117              	T4SKi:
+ 118 0000 00000000 		.space	4
+ 119              		.global	T4SKp
+ 120              		.section	.data.T4SKp,"aw"
+ 121              		.align	2
+ 124              	T4SKp:
+ 125 0000 00006144 		.word	1147207680
+ 126              		.ident	"GCC: (Arm GNU Toolchain 13.3.Rel1 (Build arm-13.24)) 13.3.1 20240614"
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccG7C7C3.s 			page 3
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 Control_Task.c
-C:\Users\ktkuru\AppData\Local\Temp\ccNoFVpN.s:18     .text.EXTI15_10_IRQHandler:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccNoFVpN.s:24     .text.EXTI15_10_IRQHandler:00000000 EXTI15_10_IRQHandler
-C:\Users\ktkuru\AppData\Local\Temp\ccNoFVpN.s:49     .text.EXTI15_10_IRQHandler:00000034 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccNoFVpN.s:54     .text.Task4_StopFast:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccNoFVpN.s:60     .text.Task4_StopFast:00000000 Task4_StopFast
-C:\Users\ktkuru\AppData\Local\Temp\ccNoFVpN.s:119    .text.Task4_StopFast:000000a8 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccNoFVpN.s:137    .bss.VerticalOutput.1:00000000 VerticalOutput.1
-C:\Users\ktkuru\AppData\Local\Temp\ccNoFVpN.s:131    .bss.LevelOutput.0:00000000 LevelOutput.0
-C:\Users\ktkuru\AppData\Local\Temp\ccNoFVpN.s:128    .bss.LevelOutput.0:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccNoFVpN.s:134    .bss.VerticalOutput.1:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccNoFVpN.s:144    .data.T4SKd:00000000 T4SKd
-C:\Users\ktkuru\AppData\Local\Temp\ccNoFVpN.s:141    .data.T4SKd:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccNoFVpN.s:151    .bss.T4SKi:00000000 T4SKi
-C:\Users\ktkuru\AppData\Local\Temp\ccNoFVpN.s:148    .bss.T4SKi:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccNoFVpN.s:158    .data.T4SKp:00000000 T4SKp
-C:\Users\ktkuru\AppData\Local\Temp\ccNoFVpN.s:155    .data.T4SKp:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccG7C7C3.s:18     .text.Task4_StopFast:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccG7C7C3.s:24     .text.Task4_StopFast:00000000 Task4_StopFast
+C:\Users\ktkuru\AppData\Local\Temp\ccG7C7C3.s:50     .text.Task4_StopFast:00000044 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccG7C7C3.s:103    .bss.VerticalOutput.1:00000000 VerticalOutput.1
+C:\Users\ktkuru\AppData\Local\Temp\ccG7C7C3.s:97     .bss.LevelOutput.0:00000000 LevelOutput.0
+C:\Users\ktkuru\AppData\Local\Temp\ccG7C7C3.s:57     .text.EXTI15_10_IRQHandler:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccG7C7C3.s:63     .text.EXTI15_10_IRQHandler:00000000 EXTI15_10_IRQHandler
+C:\Users\ktkuru\AppData\Local\Temp\ccG7C7C3.s:89     .text.EXTI15_10_IRQHandler:00000038 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccG7C7C3.s:94     .bss.LevelOutput.0:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccG7C7C3.s:100    .bss.VerticalOutput.1:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccG7C7C3.s:110    .bss.T4SKd:00000000 T4SKd
+C:\Users\ktkuru\AppData\Local\Temp\ccG7C7C3.s:107    .bss.T4SKd:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccG7C7C3.s:117    .bss.T4SKi:00000000 T4SKi
+C:\Users\ktkuru\AppData\Local\Temp\ccG7C7C3.s:114    .bss.T4SKi:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccG7C7C3.s:124    .data.T4SKp:00000000 T4SKp
+C:\Users\ktkuru\AppData\Local\Temp\ccG7C7C3.s:121    .data.T4SKp:00000000 $d
 
 UNDEFINED SYMBOLS
+PidControl_Stop
+PWM_Allocation
+roll
+pitch
 EXTI_GetITStatus
 EXTI_ClearITPendingBit
 mpu_dmp_get_data
 GetPolar
-roll
-pitch
 yaw
-PidControl_Stop

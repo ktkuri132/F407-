@@ -7,8 +7,7 @@
 
 */
 
-//选择模式的宏定义
-#define Task4
+
 
 #include <stm32f4xx.h>
 #include <bsp.h>
@@ -19,28 +18,15 @@
 #include <stm32f4xx_exti.h>
 #include <OLED.h>
 
-//方便调试，定义电机方位
-#define Motor           TIM8
-#define MVerticalIn     CCR1    //垂直方向外侧电机,M--电机前缀，Vertical--电机方向垂直方向，Out--电机位置外侧电机
-#define MVerticalOut    CCR2    //垂直方向内侧电机
-#define MLevelOut       CCR3    //水平方向外侧电机
-#define MLevelIn        CCR4    //水平方向内侧电机
-
-
-#ifdef Task4
-#define TargetRoll  0
-#define TargetPitch 0
-#define TargetDis   0
-#endif
 
 
 extern float pitch,roll,yaw;
 
 
 //控制制动PID参数
-float T4SKp=500,
+float T4SKp=900,
       T4SKi=0,
-      T4SKd=-300;
+      T4SKd=0;
 
 
 
@@ -55,7 +41,7 @@ void EXTI15_10_IRQHandler(void)
         
         GetPolar(roll, pitch);    
 
-        //Task4_StopFast();    //调用控制函数--->第4项
+        Task4_StopFast();    //调用控制函数--->第4项
 
     }
 }
@@ -74,15 +60,6 @@ void Task4_StopFast()
     VerticalOutput=PidControl_Stop(TargetRoll, roll);
     LevelOutput= PidControl_Stop(TargetPitch, pitch);
 
-    //VerticalOutput>8400?VerticalOutput=8400:(VerticalOutput<0?VerticalOutput=0:VerticalOutput);
-    //LevelOutput>8400?LevelOutput=8400:(LevelOutput<0?LevelOutput=0:LevelOutput);
-
-    VerticalOutput=VerticalOutput>8400?8400:(VerticalOutput<0?(-VerticalOut):VerticalOutput);
-    LevelOutput=LevelOutput>8400?8400:(LevelOutput<0?(-LevelOutput):LevelOutput);
-    //printf("VerticalOutput:%f  LevelOutput:%f\n",VerticalOutput,LevelOutput);
-    Motor->MVerticalOut=(uint32_t)VerticalOutput;
-    Motor->MVerticalIn=(uint32_t)VerticalOutput;
-    Motor->MLevelOut=(uint32_t)LevelOutput;
-    Motor->MLevelIn=(uint32_t)LevelOutput;
+    PWM_Allocation(VerticalOutput,LevelOutput);
   
 }

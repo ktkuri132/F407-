@@ -23,7 +23,7 @@ extern float pitch,roll,yaw,def,dis,polar;
 #define heigh 86
 
 
-//计算极坐标
+//计算极坐标,以及任意角
 void GetPolar(float roll,float pitch)
 {
     /*
@@ -294,9 +294,12 @@ void StopAllMotor()
     }
 }
 
+
+//电机位置
+uint8_t MotorLocation;
+
 /*
 依据角度判断风机方位，调用电机使能函数
-
 */
 void MotorState(float pitch,float roll)
 {
@@ -306,6 +309,7 @@ void MotorState(float pitch,float roll)
         Motor_Cmd(LevelIn,ENABLE);
         Motor_Cmd(VerticalOut,ENABLE);
         Motor_Cmd(VerticalIn,DISABLE);
+        MotorLocation = 1;
     }
     else if(roll>0&&pitch<0)
     {
@@ -313,6 +317,7 @@ void MotorState(float pitch,float roll)
         Motor_Cmd(LevelIn,DISABLE);
         Motor_Cmd(VerticalOut,ENABLE);
         Motor_Cmd(VerticalIn,DISABLE);
+        MotorLocation = 2;
     }
     else if(roll<0&&pitch>0)
     {
@@ -320,6 +325,7 @@ void MotorState(float pitch,float roll)
         Motor_Cmd(LevelIn,ENABLE);
         Motor_Cmd(VerticalOut,DISABLE);
         Motor_Cmd(VerticalIn,ENABLE);
+        MotorLocation = 3;
     }
     else if(roll<0&&pitch<0)
     {
@@ -327,9 +333,71 @@ void MotorState(float pitch,float roll)
         Motor_Cmd(LevelIn,DISABLE);
         Motor_Cmd(VerticalOut,DISABLE);
         Motor_Cmd(VerticalIn,ENABLE);
+        MotorLocation = 4;
     }
     else
     {
         Motor_Cmd(StopAll,DISABLE);
+        MotorLocation = 0;
     }
+}
+
+/*
+依据极坐标角度和位移，对PID输出值正交分解
+*/
+void PWM_Allocation(float VerticalOutput,float LevelOutput)
+{
+    float VerticalOutput1;
+    float LevelOutput1;
+
+    float VerticalOutput2;
+    float LevelOutput2;
+
+    float VerticalOutput3;
+    float LevelOutput3;
+    
+    float VerticalOutput4;
+    float LevelOutput4;
+
+    VerticalOutput=VerticalOutput>8400?8400:(VerticalOutput<0?(-VerticalOut):VerticalOutput);
+    LevelOutput=LevelOutput>8400?8400:(LevelOutput<0?(-LevelOutput):LevelOutput);
+
+    if(polar>=0&&polar<=90)
+    {
+        VerticalOutput1 = VerticalOutput*cosf((polar/180)*3.1415926);
+        LevelOutput1 = LevelOutput*sinf((polar/180)*3.1415926);
+        Motor->MVerticalOut=(uint32_t)VerticalOutput1;
+        Motor->MLevelOut=(uint32_t)LevelOutput1;
+        //printf("VerticalOutput1:%f  LevelOutput1:%f\n",VerticalOutput1,LevelOutput1);
+    }
+    else if(polar>90&&polar<=180)
+    {
+        VerticalOutput2 = VerticalOutput*cosf((180-polar)/180*3.1415926);
+        LevelOutput2 = LevelOutput*sinf((180-polar)/180*3.1415926);
+        Motor->MVerticalOut=(uint32_t)VerticalOutput2;
+        Motor->MLevelIn=(uint32_t)LevelOutput2;
+        //printf("VerticalOutput2:%f  LevelOutput2:%f\n",VerticalOutput2,LevelOutput2);
+    }
+    else if(polar>180&&polar<=270)
+    {
+        VerticalOutput3 = VerticalOutput*cosf((polar-180)/180*3.1415926);
+        LevelOutput3 = LevelOutput*sinf((polar-180)/180*3.1415926);
+        Motor->MVerticalIn=(uint32_t)VerticalOutput3;
+        Motor->MLevelIn=(uint32_t)LevelOutput3;
+        //printf("VerticalOutput3:%f  LevelOutput3:%f  polar:%f\n",VerticalOutput3,LevelOutput3,polar);
+    }
+    else if(polar>270&&polar<=360)
+    {
+        VerticalOutput4 = VerticalOutput*cosf((360-polar)/180*3.1415926);
+        LevelOutput4 = LevelOutput*sinf((360-polar)/180*3.1415926);
+        Motor->MVerticalIn=(uint32_t)VerticalOutput4;
+        Motor->MLevelOut=(uint32_t)LevelOutput4;
+        //printf("VerticalOutput4:%f  LevelOutput4:%f\n",VerticalOutput4,LevelOutput4);
+    }
+    else
+    {
+        VerticalOutput = 0;
+        LevelOutput = 0;
+    }
+    
 }

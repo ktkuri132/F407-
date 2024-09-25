@@ -20,6 +20,25 @@
 #define LevelIn         4
 #define StopAll         0
 
+//方便调试，定义电机方位
+#define Motor           TIM8
+#define MVerticalIn     CCR1    //垂直方向外侧电机,M--电机前缀，Vertical--电机方向垂直方向，Out--电机位置外侧电机
+#define MVerticalOut    CCR2    //垂直方向内侧电机
+#define MLevelOut       CCR3    //水平方向外侧电机
+#define MLevelIn        CCR4    //水平方向内侧电机
+
+//选择模式的宏定义
+#define Task4
+
+#ifdef Task4
+#define TargetRoll  0
+#define TargetPitch 0
+#define TargetDis   0
+#endif
+
+
+
+
 //电机制动使能
 #define ControlMotor(x,y) 
 
@@ -30,6 +49,7 @@ void Motor_PWM_TIM8_Init();
 void MotorState(float pitch,float roll);
 void StopAllMotor();
 void GetPolar(float roll,float pitch);
+
 
 /* 第一项  */
 
@@ -45,6 +65,6 @@ void GetPolar(float roll,float pitch);
 
 float PidControl_Stop(float target, float feedback);
 void Task4_StopFast();
-
+void PWM_Allocation(float VerticalOutput,float LevelOutput);
 
 #endif 
