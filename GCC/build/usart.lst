@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccc9i6fr.s 			page 1
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc2U9Ccs.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccc9i6fr.s 			page 1
   57              		.align	1
   58              		.global	usart1_init
   59              		.syntax unified
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccc9i6fr.s 			page 2
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc2U9Ccs.s 			page 2
 
 
   60              		.thumb
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccc9i6fr.s 			page 1
  115 008c 07B0     		add	sp, sp, #28
  116              		@ sp needed
  117 008e F0BD     		pop	{r4, r5, r6, r7, pc}
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccc9i6fr.s 			page 3
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc2U9Ccs.s 			page 3
 
 
  118              	.L14:
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccc9i6fr.s 			page 1
  174 006e FFF7FEFF 		bl	USART_ITConfig
  175 0072 05B0     		add	sp, sp, #20
  176              		@ sp needed
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccc9i6fr.s 			page 4
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc2U9Ccs.s 			page 4
 
 
  177 0074 30BD     		pop	{r4, r5, pc}
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccc9i6fr.s 			page 1
  233 0056 1380     		strh	r3, [r2]	@ movhi
  234 0058 C72B     		cmp	r3, #199
  235 005a D8D9     		bls	.L19
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccc9i6fr.s 			page 5
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc2U9Ccs.s 			page 5
 
 
  236 005c 1346     		mov	r3, r2
@@ -256,183 +256,185 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccc9i6fr.s 			page 1
  248 0070 00100140 		.word	1073811456
  249 0074 00000000 		.word	USART_RX_STA
  250 0078 00000000 		.word	USART_RX_BUF
- 252              		.section	.text.USART_Send_Data,"ax",%progbits
+ 252              		.section	.text.USART2_IRQHandler,"ax",%progbits
  253              		.align	1
- 254              		.global	USART_Send_Data
+ 254              		.global	USART2_IRQHandler
  255              		.syntax unified
  256              		.thumb
  257              		.thumb_func
- 259              	USART_Send_Data:
+ 259              	USART2_IRQHandler:
  260              		@ args = 0, pretend = 0, frame = 0
  261              		@ frame_needed = 0, uses_anonymous_args = 0
- 262 0000 10B5     		push	{r4, lr}
- 263 0002 0446     		mov	r4, r0
- 264 0004 FFF7FEFF 		bl	USART_SendData
- 265              	.L30:
- 266 0008 4021     		movs	r1, #64
- 267 000a 2046     		mov	r0, r4
- 268 000c FFF7FEFF 		bl	USART_GetFlagStatus
- 269 0010 0128     		cmp	r0, #1
- 270 0012 F9D1     		bne	.L30
- 271 0014 10BD     		pop	{r4, pc}
- 273              		.section	.text.USART_Send_String,"ax",%progbits
- 274              		.align	1
- 275              		.global	USART_Send_String
- 276              		.syntax unified
- 277              		.thumb
- 278              		.thumb_func
- 280              	USART_Send_String:
- 281              		@ args = 0, pretend = 0, frame = 0
- 282              		@ frame_needed = 0, uses_anonymous_args = 0
- 283 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
- 284 0002 0746     		mov	r7, r0
- 285 0004 0C46     		mov	r4, r1
- 286 0006 0846     		mov	r0, r1
- 287 0008 FFF7FEFF 		bl	strlen
- 288 000c 86B2     		uxth	r6, r0
- 289 000e 0025     		movs	r5, #0
- 290 0010 06E0     		b	.L33
- 291              	.L34:
- 292 0012 14F8011B 		ldrb	r1, [r4], #1	@ zero_extendqisi2
- 293 0016 3846     		mov	r0, r7
- 294 0018 FFF7FEFF 		bl	USART_Send_Data
- 295 001c 0135     		adds	r5, r5, #1
- 296 001e ADB2     		uxth	r5, r5
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccc9i6fr.s 			page 6
+ 262 0000 08B5     		push	{r3, lr}
+ 263 0002 40F22551 		movw	r1, #1317
+ 264 0006 0C48     		ldr	r0, .L35
+ 265 0008 FFF7FEFF 		bl	USART_GetITStatus
+ 266 000c 00B9     		cbnz	r0, .L33
+ 267              	.L29:
+ 268 000e 08BD     		pop	{r3, pc}
+ 269              	.L33:
+ 270 0010 0948     		ldr	r0, .L35
+ 271 0012 FFF7FEFF 		bl	USART_ReceiveData
+ 272 0016 094B     		ldr	r3, .L35+4
+ 273 0018 1880     		strh	r0, [r3]	@ movhi
+ 274 001a 6128     		cmp	r0, #97
+ 275 001c 05D0     		beq	.L34
+ 276              	.L31:
+ 277 001e 40F22551 		movw	r1, #1317
+ 278 0022 0548     		ldr	r0, .L35
+ 279 0024 FFF7FEFF 		bl	USART_ClearITPendingBit
+ 280 0028 F1E7     		b	.L29
+ 281              	.L34:
+ 282 002a 054B     		ldr	r3, .L35+8
+ 283 002c 0122     		movs	r2, #1
+ 284 002e 1A70     		strb	r2, [r3]
+ 285 0030 FFF7FEFF 		bl	StopAllMotor
+ 286 0034 F3E7     		b	.L31
+ 287              	.L36:
+ 288 0036 00BF     		.align	2
+ 289              	.L35:
+ 290 0038 00440040 		.word	1073759232
+ 291 003c 00000000 		.word	Res.0
+ 292 0040 00000000 		.word	Stop_flag
+ 294              		.section	.text.USART_Send_Data,"ax",%progbits
+ 295              		.align	1
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc2U9Ccs.s 			page 6
 
 
- 297              	.L33:
- 298 0020 B542     		cmp	r5, r6
- 299 0022 F6D3     		bcc	.L34
- 300 0024 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
- 302              		.section	.text.U2printf,"ax",%progbits
- 303              		.align	1
- 304              		.global	U2printf
- 305              		.syntax unified
- 306              		.thumb
- 307              		.thumb_func
- 309              	U2printf:
- 310              		@ args = 4, pretend = 16, frame = 264
- 311              		@ frame_needed = 0, uses_anonymous_args = 1
- 312 0000 0FB4     		push	{r0, r1, r2, r3}
- 313 0002 00B5     		push	{lr}
- 314 0004 C3B0     		sub	sp, sp, #268
- 315 0006 44AA     		add	r2, sp, #272
- 316 0008 52F8041B 		ldr	r1, [r2], #4
- 317 000c 0192     		str	r2, [sp, #4]
- 318 000e 02A8     		add	r0, sp, #8
- 319 0010 FFF7FEFF 		bl	vsprintf
- 320 0014 02A9     		add	r1, sp, #8
- 321 0016 0448     		ldr	r0, .L38
- 322 0018 FFF7FEFF 		bl	USART_Send_String
- 323 001c 43B0     		add	sp, sp, #268
- 324              		@ sp needed
- 325 001e 5DF804EB 		ldr	lr, [sp], #4
- 326 0022 04B0     		add	sp, sp, #16
- 327 0024 7047     		bx	lr
- 328              	.L39:
- 329 0026 00BF     		.align	2
- 330              	.L38:
- 331 0028 00440040 		.word	1073759232
- 333              		.section	.rodata.USART2_IRQHandler.str1.4,"aMS",%progbits,1
- 334              		.align	2
- 335              	.LC0:
- 336 0000 25640A00 		.ascii	"%d\012\000"
- 337              		.align	2
- 338              	.LC1:
- 339 0004 256400   		.ascii	"%d\000"
- 340              		.section	.text.USART2_IRQHandler,"ax",%progbits
- 341              		.align	1
- 342              		.global	USART2_IRQHandler
- 343              		.syntax unified
- 344              		.thumb
- 345              		.thumb_func
- 347              	USART2_IRQHandler:
- 348              		@ args = 0, pretend = 0, frame = 0
- 349              		@ frame_needed = 0, uses_anonymous_args = 0
- 350 0000 10B5     		push	{r4, lr}
- 351 0002 40F22551 		movw	r1, #1317
- 352 0006 0B48     		ldr	r0, .L44
- 353 0008 FFF7FEFF 		bl	USART_GetITStatus
- 354 000c 00B9     		cbnz	r0, .L43
- 355              	.L40:
- 356 000e 10BD     		pop	{r4, pc}
- 357              	.L43:
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccc9i6fr.s 			page 7
+ 296              		.global	USART_Send_Data
+ 297              		.syntax unified
+ 298              		.thumb
+ 299              		.thumb_func
+ 301              	USART_Send_Data:
+ 302              		@ args = 0, pretend = 0, frame = 0
+ 303              		@ frame_needed = 0, uses_anonymous_args = 0
+ 304 0000 10B5     		push	{r4, lr}
+ 305 0002 0446     		mov	r4, r0
+ 306 0004 FFF7FEFF 		bl	USART_SendData
+ 307              	.L38:
+ 308 0008 4021     		movs	r1, #64
+ 309 000a 2046     		mov	r0, r4
+ 310 000c FFF7FEFF 		bl	USART_GetFlagStatus
+ 311 0010 0128     		cmp	r0, #1
+ 312 0012 F9D1     		bne	.L38
+ 313 0014 10BD     		pop	{r4, pc}
+ 315              		.section	.text.USART_Send_String,"ax",%progbits
+ 316              		.align	1
+ 317              		.global	USART_Send_String
+ 318              		.syntax unified
+ 319              		.thumb
+ 320              		.thumb_func
+ 322              	USART_Send_String:
+ 323              		@ args = 0, pretend = 0, frame = 0
+ 324              		@ frame_needed = 0, uses_anonymous_args = 0
+ 325 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+ 326 0002 0746     		mov	r7, r0
+ 327 0004 0C46     		mov	r4, r1
+ 328 0006 0846     		mov	r0, r1
+ 329 0008 FFF7FEFF 		bl	strlen
+ 330 000c 86B2     		uxth	r6, r0
+ 331 000e 0025     		movs	r5, #0
+ 332 0010 06E0     		b	.L41
+ 333              	.L42:
+ 334 0012 14F8011B 		ldrb	r1, [r4], #1	@ zero_extendqisi2
+ 335 0016 3846     		mov	r0, r7
+ 336 0018 FFF7FEFF 		bl	USART_Send_Data
+ 337 001c 0135     		adds	r5, r5, #1
+ 338 001e ADB2     		uxth	r5, r5
+ 339              	.L41:
+ 340 0020 B542     		cmp	r5, r6
+ 341 0022 F6D3     		bcc	.L42
+ 342 0024 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 344              		.section	.text.U2printf,"ax",%progbits
+ 345              		.align	1
+ 346              		.global	U2printf
+ 347              		.syntax unified
+ 348              		.thumb
+ 349              		.thumb_func
+ 351              	U2printf:
+ 352              		@ args = 4, pretend = 16, frame = 264
+ 353              		@ frame_needed = 0, uses_anonymous_args = 1
+ 354 0000 0FB4     		push	{r0, r1, r2, r3}
+ 355 0002 00B5     		push	{lr}
+ 356 0004 C3B0     		sub	sp, sp, #268
+ 357 0006 44AA     		add	r2, sp, #272
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc2U9Ccs.s 			page 7
 
 
- 358 0010 094C     		ldr	r4, .L44+4
- 359 0012 2178     		ldrb	r1, [r4]	@ zero_extendqisi2
- 360 0014 4B1C     		adds	r3, r1, #1
- 361 0016 2370     		strb	r3, [r4]
- 362 0018 0848     		ldr	r0, .L44+8
- 363 001a FFF7FEFF 		bl	printf
- 364 001e 2178     		ldrb	r1, [r4]	@ zero_extendqisi2
- 365 0020 0748     		ldr	r0, .L44+12
- 366 0022 FFF7FEFF 		bl	U2printf
- 367 0026 40F22551 		movw	r1, #1317
- 368 002a 0248     		ldr	r0, .L44
- 369 002c FFF7FEFF 		bl	USART_ClearITPendingBit
- 370 0030 EDE7     		b	.L40
- 371              	.L45:
- 372 0032 00BF     		.align	2
- 373              	.L44:
- 374 0034 00440040 		.word	1073759232
- 375 0038 00000000 		.word	Res.0
- 376 003c 00000000 		.word	.LC0
- 377 0040 04000000 		.word	.LC1
- 379              		.section	.bss.Res.0,"aw",%nobits
- 382              	Res.0:
- 383 0000 00       		.space	1
- 384              		.global	USART_RX_STA
- 385              		.section	.bss.USART_RX_STA,"aw",%nobits
- 386              		.align	1
- 389              	USART_RX_STA:
- 390 0000 0000     		.space	2
- 391              		.global	USART_RX_BUF
- 392              		.section	.bss.USART_RX_BUF,"aw",%nobits
- 393              		.align	2
- 396              	USART_RX_BUF:
- 397 0000 00000000 		.space	200
- 397      00000000 
- 397      00000000 
- 397      00000000 
- 397      00000000 
- 398              		.ident	"GCC: (Arm GNU Toolchain 13.3.Rel1 (Build arm-13.24)) 13.3.1 20240614"
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccc9i6fr.s 			page 8
+ 358 0008 52F8041B 		ldr	r1, [r2], #4
+ 359 000c 0192     		str	r2, [sp, #4]
+ 360 000e 02A8     		add	r0, sp, #8
+ 361 0010 FFF7FEFF 		bl	vsprintf
+ 362 0014 02A9     		add	r1, sp, #8
+ 363 0016 0448     		ldr	r0, .L46
+ 364 0018 FFF7FEFF 		bl	USART_Send_String
+ 365 001c 43B0     		add	sp, sp, #268
+ 366              		@ sp needed
+ 367 001e 5DF804EB 		ldr	lr, [sp], #4
+ 368 0022 04B0     		add	sp, sp, #16
+ 369 0024 7047     		bx	lr
+ 370              	.L47:
+ 371 0026 00BF     		.align	2
+ 372              	.L46:
+ 373 0028 00440040 		.word	1073759232
+ 375              		.section	.bss.Res.0,"aw",%nobits
+ 376              		.align	1
+ 379              	Res.0:
+ 380 0000 0000     		.space	2
+ 381              		.global	USART_RX_STA
+ 382              		.section	.bss.USART_RX_STA,"aw",%nobits
+ 383              		.align	1
+ 386              	USART_RX_STA:
+ 387 0000 0000     		.space	2
+ 388              		.global	USART_RX_BUF
+ 389              		.section	.bss.USART_RX_BUF,"aw",%nobits
+ 390              		.align	2
+ 393              	USART_RX_BUF:
+ 394 0000 00000000 		.space	200
+ 394      00000000 
+ 394      00000000 
+ 394      00000000 
+ 394      00000000 
+ 395              		.global	Stop_flag
+ 396              		.section	.bss.Stop_flag,"aw",%nobits
+ 399              	Stop_flag:
+ 400 0000 00       		.space	1
+ 401              		.ident	"GCC: (Arm GNU Toolchain 13.3.Rel1 (Build arm-13.24)) 13.3.1 20240614"
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc2U9Ccs.s 			page 8
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 usart.c
-C:\Users\ktkuru\AppData\Local\Temp\ccc9i6fr.s:23     .text._write:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccc9i6fr.s:29     .text._write:00000000 _write
-C:\Users\ktkuru\AppData\Local\Temp\ccc9i6fr.s:54     .text._write:00000030 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccc9i6fr.s:57     .text.usart1_init:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccc9i6fr.s:63     .text.usart1_init:00000000 usart1_init
-C:\Users\ktkuru\AppData\Local\Temp\ccc9i6fr.s:121    .text.usart1_init:00000090 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccc9i6fr.s:124    .text.usart2_init:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccc9i6fr.s:130    .text.usart2_init:00000000 usart2_init
-C:\Users\ktkuru\AppData\Local\Temp\ccc9i6fr.s:181    .text.usart2_init:00000078 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccc9i6fr.s:185    .text.USART1_IRQHandler:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccc9i6fr.s:191    .text.USART1_IRQHandler:00000000 USART1_IRQHandler
-C:\Users\ktkuru\AppData\Local\Temp\ccc9i6fr.s:248    .text.USART1_IRQHandler:00000070 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccc9i6fr.s:389    .bss.USART_RX_STA:00000000 USART_RX_STA
-C:\Users\ktkuru\AppData\Local\Temp\ccc9i6fr.s:396    .bss.USART_RX_BUF:00000000 USART_RX_BUF
-C:\Users\ktkuru\AppData\Local\Temp\ccc9i6fr.s:253    .text.USART_Send_Data:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccc9i6fr.s:259    .text.USART_Send_Data:00000000 USART_Send_Data
-C:\Users\ktkuru\AppData\Local\Temp\ccc9i6fr.s:274    .text.USART_Send_String:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccc9i6fr.s:280    .text.USART_Send_String:00000000 USART_Send_String
-C:\Users\ktkuru\AppData\Local\Temp\ccc9i6fr.s:303    .text.U2printf:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccc9i6fr.s:309    .text.U2printf:00000000 U2printf
-C:\Users\ktkuru\AppData\Local\Temp\ccc9i6fr.s:331    .text.U2printf:00000028 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccc9i6fr.s:334    .rodata.USART2_IRQHandler.str1.4:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccc9i6fr.s:341    .text.USART2_IRQHandler:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccc9i6fr.s:347    .text.USART2_IRQHandler:00000000 USART2_IRQHandler
-C:\Users\ktkuru\AppData\Local\Temp\ccc9i6fr.s:374    .text.USART2_IRQHandler:00000034 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccc9i6fr.s:382    .bss.Res.0:00000000 Res.0
-C:\Users\ktkuru\AppData\Local\Temp\ccc9i6fr.s:383    .bss.Res.0:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccc9i6fr.s:386    .bss.USART_RX_STA:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccc9i6fr.s:393    .bss.USART_RX_BUF:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc2U9Ccs.s:23     .text._write:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc2U9Ccs.s:29     .text._write:00000000 _write
+C:\Users\ktkuru\AppData\Local\Temp\cc2U9Ccs.s:54     .text._write:00000030 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc2U9Ccs.s:57     .text.usart1_init:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc2U9Ccs.s:63     .text.usart1_init:00000000 usart1_init
+C:\Users\ktkuru\AppData\Local\Temp\cc2U9Ccs.s:121    .text.usart1_init:00000090 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc2U9Ccs.s:124    .text.usart2_init:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc2U9Ccs.s:130    .text.usart2_init:00000000 usart2_init
+C:\Users\ktkuru\AppData\Local\Temp\cc2U9Ccs.s:181    .text.usart2_init:00000078 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc2U9Ccs.s:185    .text.USART1_IRQHandler:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc2U9Ccs.s:191    .text.USART1_IRQHandler:00000000 USART1_IRQHandler
+C:\Users\ktkuru\AppData\Local\Temp\cc2U9Ccs.s:248    .text.USART1_IRQHandler:00000070 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc2U9Ccs.s:386    .bss.USART_RX_STA:00000000 USART_RX_STA
+C:\Users\ktkuru\AppData\Local\Temp\cc2U9Ccs.s:393    .bss.USART_RX_BUF:00000000 USART_RX_BUF
+C:\Users\ktkuru\AppData\Local\Temp\cc2U9Ccs.s:253    .text.USART2_IRQHandler:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc2U9Ccs.s:259    .text.USART2_IRQHandler:00000000 USART2_IRQHandler
+C:\Users\ktkuru\AppData\Local\Temp\cc2U9Ccs.s:290    .text.USART2_IRQHandler:00000038 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc2U9Ccs.s:379    .bss.Res.0:00000000 Res.0
+C:\Users\ktkuru\AppData\Local\Temp\cc2U9Ccs.s:399    .bss.Stop_flag:00000000 Stop_flag
+C:\Users\ktkuru\AppData\Local\Temp\cc2U9Ccs.s:295    .text.USART_Send_Data:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc2U9Ccs.s:301    .text.USART_Send_Data:00000000 USART_Send_Data
+C:\Users\ktkuru\AppData\Local\Temp\cc2U9Ccs.s:316    .text.USART_Send_String:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc2U9Ccs.s:322    .text.USART_Send_String:00000000 USART_Send_String
+C:\Users\ktkuru\AppData\Local\Temp\cc2U9Ccs.s:345    .text.U2printf:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc2U9Ccs.s:351    .text.U2printf:00000000 U2printf
+C:\Users\ktkuru\AppData\Local\Temp\cc2U9Ccs.s:373    .text.U2printf:00000028 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc2U9Ccs.s:376    .bss.Res.0:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc2U9Ccs.s:383    .bss.USART_RX_STA:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc2U9Ccs.s:390    .bss.USART_RX_BUF:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc2U9Ccs.s:400    .bss.Stop_flag:00000000 $d
 
 UNDEFINED SYMBOLS
 __use_no_semihosting
@@ -447,9 +449,9 @@ RCC_APB1PeriphClockCmd
 GPIO_Config
 USART_GetITStatus
 USART_ReceiveData
+USART_ClearITPendingBit
+StopAllMotor
 USART_SendData
 USART_GetFlagStatus
 strlen
 vsprintf
-printf
-USART_ClearITPendingBit

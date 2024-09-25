@@ -14,11 +14,11 @@
 #define RIN4 PFout(7)//lo
 
 //电机位置
-#define VerticalOut    1
-#define VerticalIn     2
-#define LevelOut       3
-#define LevelIn        4
-#define StopAll        0
+#define VerticalIn      1
+#define VerticalOut     2
+#define LevelOut        3
+#define LevelIn         4
+#define StopAll         0
 
 //电机制动使能
 #define ControlMotor(x,y) 
@@ -28,6 +28,8 @@
 
 void Motor_PWM_TIM8_Init();
 void MotorState(float pitch,float roll);
+void StopAllMotor();
+void GetDef(float roll,float pitch);
 
 /* 第一项  */
 

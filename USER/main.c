@@ -34,8 +34,10 @@
 
 //定义三轴角度
 float pitch,roll,yaw;
-//定义三轴角速度
-//short 
+//定义任意角
+float def;
+
+
 
 /*
 
@@ -55,22 +57,37 @@ int main(void)
     {
         printf("peripheral init done\n");
     }
-     
+/*
+    TIM8->CCR1=0;//垂直方向内侧电机
+    TIM8->CCR2=0;//垂直方向外侧电机
+    TIM8->CCR3=0;//水平方向外侧电机
+    TIM8->CCR4=0;//水平方向内侧电机
 
+    LIN1=0;//垂直方向内侧电机
+    LIN2=1;
 
-    
+    LIN3=0;//垂直方向外侧电机
+    LIN4=1;
+
+    RIN1=1;//水平方向内侧电机
+    RIN2=0;
+
+    RIN3=0;//水平方向外侧电机
+    RIN4=1;
+*/
     /* 前台程序轮询  */
     while (1)
     {
         MotorState(pitch,roll);
         OLED_Printf(0,0,OLED_6X8,"pitch:%f",pitch);
         OLED_Printf(0,16,OLED_6X8,"roll:%f",roll);
+        OLED_Printf(0,32,OLED_6X8,"def:%f",def);
         OLED_Update();
     }
     
 
 
-    for(;;);
+    
         
 
 }

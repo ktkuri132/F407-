@@ -21,15 +21,15 @@
 
 //方便调试，定义电机方位
 #define Motor           TIM8
-#define MVerticalOutput    CCR1    //垂直方向外侧电机,M--电机前缀，Vertical--电机方向垂直方向，Out--电机位置外侧电机
-#define MVerticalIn     CCR2    //垂直方向内侧电机
+#define MVerticalIn     CCR1    //垂直方向外侧电机,M--电机前缀，Vertical--电机方向垂直方向，Out--电机位置外侧电机
+#define MVerticalOut    CCR2    //垂直方向内侧电机
 #define MLevelOut       CCR3    //水平方向外侧电机
 #define MLevelIn        CCR4    //水平方向内侧电机
 
 
 #ifdef Task4
 #define TargetRoll  0
-#define TargetPitch 0 
+#define TargetPitch 0
 #endif
 
 
@@ -37,9 +37,9 @@ extern float pitch,roll,yaw;
 
 
 //控制制动PID参数
-float T4SKp=510,
+float T4SKp=500,
       T4SKi=0,
-      T4SKd=0;
+      T4SKd=-300;
 
 
 
@@ -52,6 +52,8 @@ void EXTI15_10_IRQHandler(void)
         
         mpu_dmp_get_data(&pitch, &roll, &yaw);      //读取MPU6050数据
         
+        GetDef(roll, pitch);    
+
         Task4_StopFast();    //调用控制函数--->第4项
 
     }
@@ -68,19 +70,16 @@ void Task4_StopFast()
     //水平制动输出
     static float LevelOutput;
     
-    VerticalOutput=PidControl_Stop(TargetRoll, pitch);
-    LevelOutput= PidControl_Stop(TargetPitch, roll);
+    VerticalOutput=PidControl_Stop(TargetRoll, roll);
+    LevelOutput= PidControl_Stop(TargetPitch, pitch);
 
-    if(VerticalOutput<0)
-    {
-        VerticalOutput=-VerticalOutput;
-    }
-    if(LevelOutput<0)
-    {
-        LevelOutput=-LevelOutput;
-    }
+    //VerticalOutput>8400?VerticalOutput=8400:(VerticalOutput<0?VerticalOutput=0:VerticalOutput);
+    //LevelOutput>8400?LevelOutput=8400:(LevelOutput<0?LevelOutput=0:LevelOutput);
 
-    Motor->MVerticalOutput=(uint32_t)VerticalOutput;
+    VerticalOutput=VerticalOutput>8400?8400:(VerticalOutput<0?(-VerticalOut):VerticalOutput);
+    LevelOutput=LevelOutput>8400?8400:(LevelOutput<0?(-LevelOutput):LevelOutput);
+    //printf("VerticalOutput:%f  LevelOutput:%f\n",VerticalOutput,LevelOutput);
+    Motor->MVerticalOut=(uint32_t)VerticalOutput;
     Motor->MVerticalIn=(uint32_t)VerticalOutput;
     Motor->MLevelOut=(uint32_t)LevelOutput;
     Motor->MLevelIn=(uint32_t)LevelOutput;

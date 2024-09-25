@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc6Nmurl.s 			page 1
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccw0wYKr.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -42,93 +42,118 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc6Nmurl.s 			page 1
   29              	.LC3:
   30 003c 726F6C6C 		.ascii	"roll:%f\000"
   30      3A256600 
-  31              		.section	.text.main,"ax",%progbits
-  32              		.align	1
-  33              		.global	main
-  34              		.syntax unified
-  35              		.thumb
-  36              		.thumb_func
-  38              	main:
-  39              		@ Volatile: function does not return.
-  40              		@ args = 0, pretend = 0, frame = 0
-  41              		@ frame_needed = 0, uses_anonymous_args = 0
-  42 0000 00B5     		push	{lr}
-  43 0002 83B0     		sub	sp, sp, #12
-  44 0004 FFF7FEFF 		bl	BSP_Init
-  45 0008 18B3     		cbz	r0, .L2
-  46 000a 1448     		ldr	r0, .L6
-  47 000c FFF7FEFF 		bl	puts
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc6Nmurl.s 			page 2
+  31              		.align	2
+  32              	.LC4:
+  33 0044 6465663A 		.ascii	"def:%f\000"
+  33      256600
+  34              		.section	.text.main,"ax",%progbits
+  35              		.align	1
+  36              		.global	main
+  37              		.syntax unified
+  38              		.thumb
+  39              		.thumb_func
+  41              	main:
+  42              		@ Volatile: function does not return.
+  43              		@ args = 0, pretend = 0, frame = 0
+  44              		@ frame_needed = 0, uses_anonymous_args = 0
+  45 0000 00B5     		push	{lr}
+  46 0002 83B0     		sub	sp, sp, #12
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccw0wYKr.s 			page 2
 
 
-  48              	.L3:
-  49 0010 134C     		ldr	r4, .L6+4
-  50 0012 144D     		ldr	r5, .L6+8
-  51 0014 D4ED000A 		vldr.32	s1, [r4]
-  52 0018 95ED000A 		vldr.32	s0, [r5]
-  53 001c FFF7FEFF 		bl	MotorState
-  54 0020 2868     		ldr	r0, [r5]	@ float
-  55 0022 FFF7FEFF 		bl	__aeabi_f2d
-  56 0026 CDE90001 		strd	r0, [sp]
-  57 002a 0F4B     		ldr	r3, .L6+12
-  58 002c 0622     		movs	r2, #6
-  59 002e 0021     		movs	r1, #0
-  60 0030 0846     		mov	r0, r1
-  61 0032 FFF7FEFF 		bl	OLED_Printf
-  62 0036 2068     		ldr	r0, [r4]	@ float
-  63 0038 FFF7FEFF 		bl	__aeabi_f2d
-  64 003c CDE90001 		strd	r0, [sp]
-  65 0040 0A4B     		ldr	r3, .L6+16
-  66 0042 0622     		movs	r2, #6
-  67 0044 1021     		movs	r1, #16
-  68 0046 0020     		movs	r0, #0
-  69 0048 FFF7FEFF 		bl	OLED_Printf
-  70 004c FFF7FEFF 		bl	OLED_Update
-  71 0050 DEE7     		b	.L3
-  72              	.L2:
-  73 0052 0748     		ldr	r0, .L6+20
-  74 0054 FFF7FEFF 		bl	puts
-  75 0058 DAE7     		b	.L3
-  76              	.L7:
-  77 005a 00BF     		.align	2
-  78              	.L6:
-  79 005c 00000000 		.word	.LC0
-  80 0060 00000000 		.word	roll
-  81 0064 00000000 		.word	pitch
-  82 0068 30000000 		.word	.LC2
-  83 006c 3C000000 		.word	.LC3
-  84 0070 18000000 		.word	.LC1
-  86              		.global	yaw
-  87              		.section	.bss.yaw,"aw",%nobits
-  88              		.align	2
-  91              	yaw:
-  92 0000 00000000 		.space	4
-  93              		.global	roll
-  94              		.section	.bss.roll,"aw",%nobits
-  95              		.align	2
-  98              	roll:
-  99 0000 00000000 		.space	4
- 100              		.global	pitch
- 101              		.section	.bss.pitch,"aw",%nobits
+  47 0004 FFF7FEFF 		bl	BSP_Init
+  48 0008 78B3     		cbz	r0, .L2
+  49 000a 1A48     		ldr	r0, .L6
+  50 000c FFF7FEFF 		bl	puts
+  51              	.L3:
+  52 0010 194C     		ldr	r4, .L6+4
+  53 0012 1A4D     		ldr	r5, .L6+8
+  54 0014 D4ED000A 		vldr.32	s1, [r4]
+  55 0018 95ED000A 		vldr.32	s0, [r5]
+  56 001c FFF7FEFF 		bl	MotorState
+  57 0020 2868     		ldr	r0, [r5]	@ float
+  58 0022 FFF7FEFF 		bl	__aeabi_f2d
+  59 0026 CDE90001 		strd	r0, [sp]
+  60 002a 154B     		ldr	r3, .L6+12
+  61 002c 0622     		movs	r2, #6
+  62 002e 0021     		movs	r1, #0
+  63 0030 0846     		mov	r0, r1
+  64 0032 FFF7FEFF 		bl	OLED_Printf
+  65 0036 2068     		ldr	r0, [r4]	@ float
+  66 0038 FFF7FEFF 		bl	__aeabi_f2d
+  67 003c CDE90001 		strd	r0, [sp]
+  68 0040 104B     		ldr	r3, .L6+16
+  69 0042 0622     		movs	r2, #6
+  70 0044 1021     		movs	r1, #16
+  71 0046 0020     		movs	r0, #0
+  72 0048 FFF7FEFF 		bl	OLED_Printf
+  73 004c 0E4B     		ldr	r3, .L6+20
+  74 004e 1868     		ldr	r0, [r3]	@ float
+  75 0050 FFF7FEFF 		bl	__aeabi_f2d
+  76 0054 CDE90001 		strd	r0, [sp]
+  77 0058 0C4B     		ldr	r3, .L6+24
+  78 005a 0622     		movs	r2, #6
+  79 005c 2021     		movs	r1, #32
+  80 005e 0020     		movs	r0, #0
+  81 0060 FFF7FEFF 		bl	OLED_Printf
+  82 0064 FFF7FEFF 		bl	OLED_Update
+  83 0068 D2E7     		b	.L3
+  84              	.L2:
+  85 006a 0948     		ldr	r0, .L6+28
+  86 006c FFF7FEFF 		bl	puts
+  87 0070 CEE7     		b	.L3
+  88              	.L7:
+  89 0072 00BF     		.align	2
+  90              	.L6:
+  91 0074 00000000 		.word	.LC0
+  92 0078 00000000 		.word	roll
+  93 007c 00000000 		.word	pitch
+  94 0080 30000000 		.word	.LC2
+  95 0084 3C000000 		.word	.LC3
+  96 0088 00000000 		.word	def
+  97 008c 44000000 		.word	.LC4
+  98 0090 18000000 		.word	.LC1
+ 100              		.global	def
+ 101              		.section	.bss.def,"aw",%nobits
  102              		.align	2
- 105              	pitch:
+ 105              	def:
  106 0000 00000000 		.space	4
- 107              		.ident	"GCC: (Arm GNU Toolchain 13.3.Rel1 (Build arm-13.24)) 13.3.1 20240614"
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc6Nmurl.s 			page 3
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccw0wYKr.s 			page 3
+
+
+ 107              		.global	yaw
+ 108              		.section	.bss.yaw,"aw",%nobits
+ 109              		.align	2
+ 112              	yaw:
+ 113 0000 00000000 		.space	4
+ 114              		.global	roll
+ 115              		.section	.bss.roll,"aw",%nobits
+ 116              		.align	2
+ 119              	roll:
+ 120 0000 00000000 		.space	4
+ 121              		.global	pitch
+ 122              		.section	.bss.pitch,"aw",%nobits
+ 123              		.align	2
+ 126              	pitch:
+ 127 0000 00000000 		.space	4
+ 128              		.ident	"GCC: (Arm GNU Toolchain 13.3.Rel1 (Build arm-13.24)) 13.3.1 20240614"
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccw0wYKr.s 			page 4
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 main.c
-C:\Users\ktkuru\AppData\Local\Temp\cc6Nmurl.s:18     .rodata.main.str1.4:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\cc6Nmurl.s:32     .text.main:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\cc6Nmurl.s:38     .text.main:00000000 main
-C:\Users\ktkuru\AppData\Local\Temp\cc6Nmurl.s:79     .text.main:0000005c $d
-C:\Users\ktkuru\AppData\Local\Temp\cc6Nmurl.s:98     .bss.roll:00000000 roll
-C:\Users\ktkuru\AppData\Local\Temp\cc6Nmurl.s:105    .bss.pitch:00000000 pitch
-C:\Users\ktkuru\AppData\Local\Temp\cc6Nmurl.s:91     .bss.yaw:00000000 yaw
-C:\Users\ktkuru\AppData\Local\Temp\cc6Nmurl.s:88     .bss.yaw:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\cc6Nmurl.s:95     .bss.roll:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\cc6Nmurl.s:102    .bss.pitch:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccw0wYKr.s:18     .rodata.main.str1.4:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccw0wYKr.s:35     .text.main:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccw0wYKr.s:41     .text.main:00000000 main
+C:\Users\ktkuru\AppData\Local\Temp\ccw0wYKr.s:91     .text.main:00000074 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccw0wYKr.s:119    .bss.roll:00000000 roll
+C:\Users\ktkuru\AppData\Local\Temp\ccw0wYKr.s:126    .bss.pitch:00000000 pitch
+C:\Users\ktkuru\AppData\Local\Temp\ccw0wYKr.s:105    .bss.def:00000000 def
+C:\Users\ktkuru\AppData\Local\Temp\ccw0wYKr.s:102    .bss.def:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccw0wYKr.s:112    .bss.yaw:00000000 yaw
+C:\Users\ktkuru\AppData\Local\Temp\ccw0wYKr.s:109    .bss.yaw:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccw0wYKr.s:116    .bss.roll:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccw0wYKr.s:123    .bss.pitch:00000000 $d
 
 UNDEFINED SYMBOLS
 __aeabi_f2d

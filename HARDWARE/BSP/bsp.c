@@ -216,3 +216,15 @@ uint16_t ADCvalue_convert(uint16_t adcValue)
     return output;
     
 }
+
+
+
+__INLINE void function_goto(int (*pfunction)())
+{
+    __ASM __IO 
+    (
+        "mov r0,%0 \n\t"
+        "bx r0     \n\t"
+        ::"r"(pfunction)
+    );
+}

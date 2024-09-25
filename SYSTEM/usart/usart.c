@@ -85,7 +85,7 @@ int fgetc(FILE *f)
 
 #endif
 
-
+uint8_t Stop_flag=0;
 
 //串口1中断服务程序 	
 u8 USART_RX_BUF[USART_REC_LEN];     
@@ -191,11 +191,23 @@ void USART1_IRQHandler(void)
 //串口2中断函数
 void USART2_IRQHandler(void)
 {
-	static uint8_t Res;
+	static uint16_t Res;
 	if(USART_GetITStatus(USART2, USART_IT_RXNE) != RESET)
 	{
-		printf("%d\n",Res++);
-		U2printf("%d",Res);
+		Res =USART_ReceiveData(USART2);
+		switch (Res)
+		{
+			case 'a':
+				Stop_flag=1;
+				StopAllMotor();
+
+			break;
+			
+			
+			default:
+				break;
+		}
+
 		USART_ClearITPendingBit(USART2,USART_IT_RXNE);
 	}
 }

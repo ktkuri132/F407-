@@ -12,4 +12,9 @@ void BSP_NVIC_IT_Config();
 void EXIT15_Init();
 void ADC_Config();
 uint16_t ADCvalue_convert(uint16_t adcValue);
+
+void function_goto(int (*pfunction)());
+
+int main(void);
+
 #endif

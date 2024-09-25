@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccYFWvDR.s 			page 1
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccqlLSnR.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccYFWvDR.s 			page 1
   58 000a 23F00103 		bic	r3, r3, #1
   59 000e 0B60     		str	r3, [r1]
   60 0010 0A68     		ldr	r2, [r1]
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccYFWvDR.s 			page 2
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccqlLSnR.s 			page 2
 
 
   61 0012 22F47F62 		bic	r2, r2, #4080
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccYFWvDR.s 			page 1
  119 0008 034A     		ldr	r2, .L10
  120 000a 1362     		str	r3, [r2, #32]
  121 000c C388     		ldrh	r3, [r0, #6]
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccYFWvDR.s 			page 3
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccqlLSnR.s 			page 3
 
 
  122 000e 8188     		ldrh	r1, [r0, #4]
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccYFWvDR.s 			page 1
  180              	.L19:
  181 001a 00BF     		.align	2
  182              	.L18:
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccYFWvDR.s 			page 4
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccqlLSnR.s 			page 4
 
 
  183 001c 00000550 		.word	1342504960
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccYFWvDR.s 			page 1
  242              		.align	1
  243              		.global	DCMI_CaptureCmd
  244              		.syntax unified
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccYFWvDR.s 			page 5
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccqlLSnR.s 			page 5
 
 
  245              		.thumb
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccYFWvDR.s 			page 1
  304 000a 7047     		bx	lr
  305              	.L39:
  306 000c 034A     		ldr	r2, .L41
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccYFWvDR.s 			page 6
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccqlLSnR.s 			page 6
 
 
  307 000e D368     		ldr	r3, [r2, #12]
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccYFWvDR.s 			page 1
  365              		@ frame_needed = 0, uses_anonymous_args = 0
  366              		@ link register save eliminated.
  367 0000 014B     		ldr	r3, .L53
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccYFWvDR.s 			page 7
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccqlLSnR.s 			page 7
 
 
  368 0002 5861     		str	r0, [r3, #20]
@@ -408,54 +408,54 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccYFWvDR.s 			page 1
  416              	.L61:
  417 0008 00000550 		.word	1342504960
  419              		.ident	"GCC: (Arm GNU Toolchain 13.3.Rel1 (Build arm-13.24)) 13.3.1 20240614"
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccYFWvDR.s 			page 8
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccqlLSnR.s 			page 8
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 stm32f4xx_dcmi.c
-C:\Users\ktkuru\AppData\Local\Temp\ccYFWvDR.s:18     .text.DCMI_DeInit:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccYFWvDR.s:24     .text.DCMI_DeInit:00000000 DCMI_DeInit
-C:\Users\ktkuru\AppData\Local\Temp\ccYFWvDR.s:42     .text.DCMI_DeInit:00000018 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccYFWvDR.s:45     .text.DCMI_Init:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccYFWvDR.s:51     .text.DCMI_Init:00000000 DCMI_Init
-C:\Users\ktkuru\AppData\Local\Temp\ccYFWvDR.s:82     .text.DCMI_Init:00000044 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccYFWvDR.s:85     .text.DCMI_StructInit:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccYFWvDR.s:91     .text.DCMI_StructInit:00000000 DCMI_StructInit
-C:\Users\ktkuru\AppData\Local\Temp\ccYFWvDR.s:106    .text.DCMI_CROPConfig:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccYFWvDR.s:112    .text.DCMI_CROPConfig:00000000 DCMI_CROPConfig
-C:\Users\ktkuru\AppData\Local\Temp\ccYFWvDR.s:129    .text.DCMI_CROPConfig:00000018 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccYFWvDR.s:132    .text.DCMI_CROPCmd:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccYFWvDR.s:138    .text.DCMI_CROPCmd:00000000 DCMI_CROPCmd
-C:\Users\ktkuru\AppData\Local\Temp\ccYFWvDR.s:157    .text.DCMI_CROPCmd:0000001c $d
-C:\Users\ktkuru\AppData\Local\Temp\ccYFWvDR.s:160    .text.DCMI_SetEmbeddedSynchroCodes:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccYFWvDR.s:166    .text.DCMI_SetEmbeddedSynchroCodes:00000000 DCMI_SetEmbeddedSynchroCodes
-C:\Users\ktkuru\AppData\Local\Temp\ccYFWvDR.s:183    .text.DCMI_SetEmbeddedSynchroCodes:0000001c $d
-C:\Users\ktkuru\AppData\Local\Temp\ccYFWvDR.s:186    .text.DCMI_JPEGCmd:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccYFWvDR.s:192    .text.DCMI_JPEGCmd:00000000 DCMI_JPEGCmd
-C:\Users\ktkuru\AppData\Local\Temp\ccYFWvDR.s:211    .text.DCMI_JPEGCmd:0000001c $d
-C:\Users\ktkuru\AppData\Local\Temp\ccYFWvDR.s:214    .text.DCMI_Cmd:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccYFWvDR.s:220    .text.DCMI_Cmd:00000000 DCMI_Cmd
-C:\Users\ktkuru\AppData\Local\Temp\ccYFWvDR.s:239    .text.DCMI_Cmd:0000001c $d
-C:\Users\ktkuru\AppData\Local\Temp\ccYFWvDR.s:242    .text.DCMI_CaptureCmd:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccYFWvDR.s:248    .text.DCMI_CaptureCmd:00000000 DCMI_CaptureCmd
-C:\Users\ktkuru\AppData\Local\Temp\ccYFWvDR.s:267    .text.DCMI_CaptureCmd:0000001c $d
-C:\Users\ktkuru\AppData\Local\Temp\ccYFWvDR.s:270    .text.DCMI_ReadData:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccYFWvDR.s:276    .text.DCMI_ReadData:00000000 DCMI_ReadData
-C:\Users\ktkuru\AppData\Local\Temp\ccYFWvDR.s:286    .text.DCMI_ReadData:00000008 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccYFWvDR.s:289    .text.DCMI_ITConfig:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccYFWvDR.s:295    .text.DCMI_ITConfig:00000000 DCMI_ITConfig
-C:\Users\ktkuru\AppData\Local\Temp\ccYFWvDR.s:316    .text.DCMI_ITConfig:0000001c $d
-C:\Users\ktkuru\AppData\Local\Temp\ccYFWvDR.s:319    .text.DCMI_GetFlagStatus:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccYFWvDR.s:325    .text.DCMI_GetFlagStatus:00000000 DCMI_GetFlagStatus
-C:\Users\ktkuru\AppData\Local\Temp\ccYFWvDR.s:354    .text.DCMI_GetFlagStatus:00000024 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccYFWvDR.s:357    .text.DCMI_ClearFlag:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccYFWvDR.s:363    .text.DCMI_ClearFlag:00000000 DCMI_ClearFlag
-C:\Users\ktkuru\AppData\Local\Temp\ccYFWvDR.s:373    .text.DCMI_ClearFlag:00000008 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccYFWvDR.s:376    .text.DCMI_GetITStatus:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccYFWvDR.s:382    .text.DCMI_GetITStatus:00000000 DCMI_GetITStatus
-C:\Users\ktkuru\AppData\Local\Temp\ccYFWvDR.s:398    .text.DCMI_GetITStatus:00000010 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccYFWvDR.s:401    .text.DCMI_ClearITPendingBit:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccYFWvDR.s:407    .text.DCMI_ClearITPendingBit:00000000 DCMI_ClearITPendingBit
-C:\Users\ktkuru\AppData\Local\Temp\ccYFWvDR.s:417    .text.DCMI_ClearITPendingBit:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccqlLSnR.s:18     .text.DCMI_DeInit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccqlLSnR.s:24     .text.DCMI_DeInit:00000000 DCMI_DeInit
+C:\Users\ktkuru\AppData\Local\Temp\ccqlLSnR.s:42     .text.DCMI_DeInit:00000018 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccqlLSnR.s:45     .text.DCMI_Init:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccqlLSnR.s:51     .text.DCMI_Init:00000000 DCMI_Init
+C:\Users\ktkuru\AppData\Local\Temp\ccqlLSnR.s:82     .text.DCMI_Init:00000044 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccqlLSnR.s:85     .text.DCMI_StructInit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccqlLSnR.s:91     .text.DCMI_StructInit:00000000 DCMI_StructInit
+C:\Users\ktkuru\AppData\Local\Temp\ccqlLSnR.s:106    .text.DCMI_CROPConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccqlLSnR.s:112    .text.DCMI_CROPConfig:00000000 DCMI_CROPConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccqlLSnR.s:129    .text.DCMI_CROPConfig:00000018 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccqlLSnR.s:132    .text.DCMI_CROPCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccqlLSnR.s:138    .text.DCMI_CROPCmd:00000000 DCMI_CROPCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccqlLSnR.s:157    .text.DCMI_CROPCmd:0000001c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccqlLSnR.s:160    .text.DCMI_SetEmbeddedSynchroCodes:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccqlLSnR.s:166    .text.DCMI_SetEmbeddedSynchroCodes:00000000 DCMI_SetEmbeddedSynchroCodes
+C:\Users\ktkuru\AppData\Local\Temp\ccqlLSnR.s:183    .text.DCMI_SetEmbeddedSynchroCodes:0000001c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccqlLSnR.s:186    .text.DCMI_JPEGCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccqlLSnR.s:192    .text.DCMI_JPEGCmd:00000000 DCMI_JPEGCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccqlLSnR.s:211    .text.DCMI_JPEGCmd:0000001c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccqlLSnR.s:214    .text.DCMI_Cmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccqlLSnR.s:220    .text.DCMI_Cmd:00000000 DCMI_Cmd
+C:\Users\ktkuru\AppData\Local\Temp\ccqlLSnR.s:239    .text.DCMI_Cmd:0000001c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccqlLSnR.s:242    .text.DCMI_CaptureCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccqlLSnR.s:248    .text.DCMI_CaptureCmd:00000000 DCMI_CaptureCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccqlLSnR.s:267    .text.DCMI_CaptureCmd:0000001c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccqlLSnR.s:270    .text.DCMI_ReadData:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccqlLSnR.s:276    .text.DCMI_ReadData:00000000 DCMI_ReadData
+C:\Users\ktkuru\AppData\Local\Temp\ccqlLSnR.s:286    .text.DCMI_ReadData:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccqlLSnR.s:289    .text.DCMI_ITConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccqlLSnR.s:295    .text.DCMI_ITConfig:00000000 DCMI_ITConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccqlLSnR.s:316    .text.DCMI_ITConfig:0000001c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccqlLSnR.s:319    .text.DCMI_GetFlagStatus:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccqlLSnR.s:325    .text.DCMI_GetFlagStatus:00000000 DCMI_GetFlagStatus
+C:\Users\ktkuru\AppData\Local\Temp\ccqlLSnR.s:354    .text.DCMI_GetFlagStatus:00000024 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccqlLSnR.s:357    .text.DCMI_ClearFlag:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccqlLSnR.s:363    .text.DCMI_ClearFlag:00000000 DCMI_ClearFlag
+C:\Users\ktkuru\AppData\Local\Temp\ccqlLSnR.s:373    .text.DCMI_ClearFlag:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccqlLSnR.s:376    .text.DCMI_GetITStatus:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccqlLSnR.s:382    .text.DCMI_GetITStatus:00000000 DCMI_GetITStatus
+C:\Users\ktkuru\AppData\Local\Temp\ccqlLSnR.s:398    .text.DCMI_GetITStatus:00000010 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccqlLSnR.s:401    .text.DCMI_ClearITPendingBit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccqlLSnR.s:407    .text.DCMI_ClearITPendingBit:00000000 DCMI_ClearITPendingBit
+C:\Users\ktkuru\AppData\Local\Temp\ccqlLSnR.s:417    .text.DCMI_ClearITPendingBit:00000008 $d
 
 NO UNDEFINED SYMBOLS

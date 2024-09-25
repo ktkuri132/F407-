@@ -29,7 +29,8 @@
         "oled.h": "c",
         "string.h": "c",
         "myiic.h": "c",
-        "stdarg.h": "c"
+        "stdarg.h": "c",
+        "math.h": "c"
     },
     "files.encoding": "gb2312",
     "C_Cpp.errorSquiggles": "enabled"

@@ -14,6 +14,35 @@
 #include <bsp.h>
 #include <sys.h>
 #include <control.h>
+#include <math.h>
+#include <stdlib.h>
+
+extern uint8_t Stop_flag;
+extern float pitch,roll,yaw,def;
+
+//将roll角，pitch角转换成任意角def
+void GetDef(float roll,float pitch)
+{
+    /*
+        任意角def的计算公式
+        tan?(def)=tan?(roll)+tan?(pitch)
+        def=atan(sqrt(tan?(roll)+tan?(pitch)))
+    */
+    if(roll<0)
+    {
+        roll=-roll;
+    }
+    if(pitch<0)
+    {
+        pitch=-pitch;
+    }
+    roll=(roll/180)*3.1415926;
+    pitch=(pitch/180)*3.1415926;
+    float a= sqrtf(tanf(roll)*tanf(roll)+tanf(pitch)*tanf(pitch));
+    def = (atanf(a)*180.0)/3.1415926;
+    //printf("def:%f  a:%f\n",def,a);
+}
+
 
 //T--任务，4--第四项，S--停止，制动
 extern float T4SKp, T4SKi, T4SKd;
@@ -33,8 +62,8 @@ float PidControl_Stop(float target, float feedback)
     static float T4Sderivative = 0;
 
     // 定义积分限幅变量
-    static float T4SintegralMin = 0;
-    static float T4SintegralMax = 0;
+    static float T4SintegralMin = -8400;
+    static float T4SintegralMax = 8400;
 
     // 定义PID输出变量
     static float output = 0;
@@ -44,6 +73,11 @@ float PidControl_Stop(float target, float feedback)
 
     // 计算积分项
     T4Sintegral += T4Serror;
+
+    if(def<7.23&&def>7.01)
+    {
+        T4Sintegral=0;
+    }
 
     // 限制积分项在积分限幅范围内
     if (T4Sintegral < T4SintegralMin) {
@@ -58,8 +92,11 @@ float PidControl_Stop(float target, float feedback)
     // 计算PID输出
     output = T4SKp * T4Serror + T4SKi * T4Sintegral + T4SKd * T4Sderivative;
 
+
     // 更新误差变量
     T4SlastError = T4Serror;
+
+
 
     return output;
 
@@ -139,8 +176,8 @@ void Motor_Cmd(uint8_t MotorSit,FunctionalState NewState)
     case LevelOut:
         if(NewState==ENABLE)
         {
-            RIN3=1;
-            RIN4=0;
+            RIN3=0;
+            RIN4=1;
         }
         else
         {
@@ -151,8 +188,8 @@ void Motor_Cmd(uint8_t MotorSit,FunctionalState NewState)
     case LevelIn:
         if(NewState==ENABLE)
         {
-            RIN1=0;
-            RIN2=1;
+            RIN1=1;
+            RIN2=0;
         }
         else
         {
@@ -163,25 +200,25 @@ void Motor_Cmd(uint8_t MotorSit,FunctionalState NewState)
     case VerticalOut:
         if(NewState==ENABLE)
         {
-            LIN1=1;
-            LIN2=0;
-        }
-        else
-        {
-            LIN1=0;
-            LIN2=0;
-        }
-        break;
-    case VerticalIn:
-        if(NewState==ENABLE)
-        {
-            LIN3=1;
-            LIN4=0;
+            LIN3=0;
+            LIN4=1;
         }
         else
         {
             LIN3=0;
             LIN4=0;
+        }
+        break;
+    case VerticalIn:
+        if(NewState==ENABLE)
+        {
+            LIN1=0;
+            LIN2=1;
+        }
+        else
+        {
+            LIN1=0;
+            LIN2=0;
         }
         break;
     case StopAll:
@@ -200,6 +237,18 @@ void Motor_Cmd(uint8_t MotorSit,FunctionalState NewState)
     }
 }
 
+void StopAllMotor()
+{
+    if(Stop_flag)
+    {
+        Motor_Cmd(StopAll,DISABLE);
+        for(;;);
+    }
+    if(Stop_flag==0)
+    {
+        Motor_Cmd(StopAll,ENABLE);
+    }
+}
 
 /*
 依据角度判断风机方位，调用电机使能函数

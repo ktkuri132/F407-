@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s 			page 1
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s 			page 1
   57              		.section	.text.RCC_HSEConfig,"ax",%progbits
   58              		.align	1
   59              		.global	RCC_HSEConfig
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s 			page 2
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s 			page 2
 
 
   60              		.syntax unified
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s 			page 1
  120              		.align	1
  121              		.global	RCC_LSEConfig
  122              		.syntax unified
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s 			page 3
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s 			page 3
 
 
  123              		.thumb
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s 			page 1
  182              		@ frame_needed = 0, uses_anonymous_args = 0
  183              		@ link register save eliminated.
  184 0000 41EA8211 		orr	r1, r1, r2, lsl #6
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s 			page 4
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s 			page 4
 
 
  185 0004 5B08     		lsrs	r3, r3, #1
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s 			page 1
  244              		.thumb_func
  246              	RCC_PLLI2SCmd:
  247              		@ args = 0, pretend = 0, frame = 0
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s 			page 5
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s 			page 5
 
 
  248              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s 			page 1
  308              		@ frame_needed = 0, uses_anonymous_args = 0
  309              		@ link register save eliminated.
  310 0000 014B     		ldr	r3, .L41
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s 			page 6
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s 			page 6
 
 
  311 0002 D864     		str	r0, [r3, #76]
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s 			page 1
  371              	RCC_SYSCLKConfig:
  372              		@ args = 0, pretend = 0, frame = 0
  373              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s 			page 7
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s 			page 7
 
 
  374              		@ link register save eliminated.
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s 			page 1
  433              		.thumb_func
  435              	RCC_PCLK1Config:
  436              		@ args = 0, pretend = 0, frame = 0
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s 			page 8
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s 			page 8
 
 
  437              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s 			page 1
  495              	.L68:
  496 001a 234C     		ldr	r4, .L72
  497 001c A368     		ldr	r3, [r4, #8]
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s 			page 9
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s 			page 9
 
 
  498 001e C3F30313 		ubfx	r3, r3, #4, #4
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s 			page 1
  552 00a0 EBE7     		b	.L70
  553              	.L67:
  554 00a2 024B     		ldr	r3, .L72+4
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s 			page 10
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s 			page 10
 
 
  555 00a4 0360     		str	r3, [r0]
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s 			page 1
  613 0006 7047     		bx	lr
  614              	.L81:
  615              		.align	2
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s 			page 11
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s 			page 11
 
 
  616              	.L80:
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s 			page 1
  676              		.align	2
  677              	.L89:
  678 0014 00380240 		.word	1073887232
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s 			page 12
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s 			page 12
 
 
  680              		.section	.text.RCC_SAIPLLSAIClkDivConfig,"ax",%progbits
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s 			page 1
  739 000a 0343     		orrs	r3, r3, r0
  740 000c C2F88C30 		str	r3, [r2, #140]
  741 0010 7047     		bx	lr
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s 			page 13
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s 			page 13
 
 
  742              	.L99:
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s 			page 1
  802 0006 0343     		orrs	r3, r3, r0
  803 0008 1363     		str	r3, [r2, #48]
  804 000a 7047     		bx	lr
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s 			page 14
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s 			page 14
 
 
  805              	.L107:
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s 			page 1
  863 000e 936B     		ldr	r3, [r2, #56]
  864 0010 23EA0003 		bic	r3, r3, r0
  865 0014 9363     		str	r3, [r2, #56]
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s 			page 15
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s 			page 15
 
 
  866 0016 7047     		bx	lr
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s 			page 1
  924              		.align	2
  925              	.L129:
  926 0018 00380240 		.word	1073887232
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s 			page 16
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s 			page 16
 
 
  928              		.section	.text.RCC_AHB1PeriphResetCmd,"ax",%progbits
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s 			page 1
  986              		.global	RCC_AHB3PeriphResetCmd
  987              		.syntax unified
  988              		.thumb
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s 			page 17
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s 			page 17
 
 
  989              		.thumb_func
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s 			page 1
  1048              		@ args = 0, pretend = 0, frame = 0
  1049              		@ frame_needed = 0, uses_anonymous_args = 0
  1050              		@ link register save eliminated.
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s 			page 18
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s 			page 18
 
 
  1051 0000 21B1     		cbz	r1, .L152
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s 			page 1
  1109 0004 536D     		ldr	r3, [r2, #84]
  1110 0006 0343     		orrs	r3, r3, r0
  1111 0008 5365     		str	r3, [r2, #84]
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s 			page 19
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s 			page 19
 
 
  1112 000a 7047     		bx	lr
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s 			page 1
  1170 000c 024A     		ldr	r2, .L174
  1171 000e 136E     		ldr	r3, [r2, #96]
  1172 0010 23EA0003 		bic	r3, r3, r0
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s 			page 20
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s 			page 20
 
 
  1173 0014 1366     		str	r3, [r2, #96]
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s 			page 1
  1231 001a 7047     		bx	lr
  1232              	.L186:
  1233              		.align	2
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s 			page 21
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s 			page 21
 
 
  1234              	.L185:
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s 			page 1
  1292 0020 1B68     		ldr	r3, [r3]
  1293 0022 F4E7     		b	.L194
  1294              	.L199:
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s 			page 22
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s 			page 22
 
 
  1295 0024 024B     		ldr	r3, .L200
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s 			page 1
  1353 0002 536F     		ldr	r3, [r2, #116]
  1354 0004 43F08073 		orr	r3, r3, #16777216
  1355 0008 5367     		str	r3, [r2, #116]
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s 			page 23
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s 			page 23
 
 
  1356 000a 7047     		bx	lr
@@ -1375,176 +1375,176 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s 			page 1
  1411      06
  1412 000d 070809   		.ascii	"\007\010\011"
  1413              		.ident	"GCC: (Arm GNU Toolchain 13.3.Rel1 (Build arm-13.24)) 13.3.1 20240614"
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s 			page 24
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s 			page 24
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 stm32f4xx_rcc.c
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:18     .text.RCC_DeInit:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:24     .text.RCC_DeInit:00000000 RCC_DeInit
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:53     .text.RCC_DeInit:0000003c $d
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:58     .text.RCC_HSEConfig:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:64     .text.RCC_HSEConfig:00000000 RCC_HSEConfig
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:76     .text.RCC_HSEConfig:0000000c $d
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:79     .text.RCC_AdjustHSICalibrationValue:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:85     .text.RCC_AdjustHSICalibrationValue:00000000 RCC_AdjustHSICalibrationValue
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:98     .text.RCC_AdjustHSICalibrationValue:00000010 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:101    .text.RCC_HSICmd:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:107    .text.RCC_HSICmd:00000000 RCC_HSICmd
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:117    .text.RCC_HSICmd:00000008 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:120    .text.RCC_LSEConfig:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:126    .text.RCC_LSEConfig:00000000 RCC_LSEConfig
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:152    .text.RCC_LSEConfig:0000002c $d
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:155    .text.RCC_LSICmd:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:161    .text.RCC_LSICmd:00000000 RCC_LSICmd
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:171    .text.RCC_LSICmd:00000008 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:174    .text.RCC_PLLConfig:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:180    .text.RCC_PLLConfig:00000000 RCC_PLLConfig
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:197    .text.RCC_PLLConfig:0000001c $d
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:200    .text.RCC_PLLCmd:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:206    .text.RCC_PLLCmd:00000000 RCC_PLLCmd
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:216    .text.RCC_PLLCmd:00000008 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:219    .text.RCC_PLLI2SConfig:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:225    .text.RCC_PLLI2SConfig:00000000 RCC_PLLI2SConfig
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:237    .text.RCC_PLLI2SConfig:00000010 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:240    .text.RCC_PLLI2SCmd:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:246    .text.RCC_PLLI2SCmd:00000000 RCC_PLLI2SCmd
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:256    .text.RCC_PLLI2SCmd:00000008 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:259    .text.RCC_PLLSAIConfig:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:265    .text.RCC_PLLSAIConfig:00000000 RCC_PLLSAIConfig
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:278    .text.RCC_PLLSAIConfig:00000014 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:281    .text.RCC_PLLSAICmd:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:287    .text.RCC_PLLSAICmd:00000000 RCC_PLLSAICmd
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:297    .text.RCC_PLLSAICmd:00000008 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:300    .text.RCC_ClockSecuritySystemCmd:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:306    .text.RCC_ClockSecuritySystemCmd:00000000 RCC_ClockSecuritySystemCmd
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:316    .text.RCC_ClockSecuritySystemCmd:00000008 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:319    .text.RCC_MCO1Config:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:325    .text.RCC_MCO1Config:00000000 RCC_MCO1Config
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:339    .text.RCC_MCO1Config:00000010 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:342    .text.RCC_MCO2Config:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:348    .text.RCC_MCO2Config:00000000 RCC_MCO2Config
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:362    .text.RCC_MCO2Config:00000010 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:365    .text.RCC_SYSCLKConfig:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:371    .text.RCC_SYSCLKConfig:00000000 RCC_SYSCLKConfig
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:384    .text.RCC_SYSCLKConfig:00000010 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:387    .text.RCC_GetSYSCLKSource:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:393    .text.RCC_GetSYSCLKSource:00000000 RCC_GetSYSCLKSource
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:404    .text.RCC_GetSYSCLKSource:0000000c $d
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:407    .text.RCC_HCLKConfig:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:413    .text.RCC_HCLKConfig:00000000 RCC_HCLKConfig
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:426    .text.RCC_HCLKConfig:00000010 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:429    .text.RCC_PCLK1Config:00000000 $t
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s 			page 25
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:18     .text.RCC_DeInit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:24     .text.RCC_DeInit:00000000 RCC_DeInit
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:53     .text.RCC_DeInit:0000003c $d
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:58     .text.RCC_HSEConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:64     .text.RCC_HSEConfig:00000000 RCC_HSEConfig
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:76     .text.RCC_HSEConfig:0000000c $d
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:79     .text.RCC_AdjustHSICalibrationValue:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:85     .text.RCC_AdjustHSICalibrationValue:00000000 RCC_AdjustHSICalibrationValue
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:98     .text.RCC_AdjustHSICalibrationValue:00000010 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:101    .text.RCC_HSICmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:107    .text.RCC_HSICmd:00000000 RCC_HSICmd
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:117    .text.RCC_HSICmd:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:120    .text.RCC_LSEConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:126    .text.RCC_LSEConfig:00000000 RCC_LSEConfig
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:152    .text.RCC_LSEConfig:0000002c $d
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:155    .text.RCC_LSICmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:161    .text.RCC_LSICmd:00000000 RCC_LSICmd
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:171    .text.RCC_LSICmd:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:174    .text.RCC_PLLConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:180    .text.RCC_PLLConfig:00000000 RCC_PLLConfig
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:197    .text.RCC_PLLConfig:0000001c $d
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:200    .text.RCC_PLLCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:206    .text.RCC_PLLCmd:00000000 RCC_PLLCmd
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:216    .text.RCC_PLLCmd:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:219    .text.RCC_PLLI2SConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:225    .text.RCC_PLLI2SConfig:00000000 RCC_PLLI2SConfig
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:237    .text.RCC_PLLI2SConfig:00000010 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:240    .text.RCC_PLLI2SCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:246    .text.RCC_PLLI2SCmd:00000000 RCC_PLLI2SCmd
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:256    .text.RCC_PLLI2SCmd:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:259    .text.RCC_PLLSAIConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:265    .text.RCC_PLLSAIConfig:00000000 RCC_PLLSAIConfig
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:278    .text.RCC_PLLSAIConfig:00000014 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:281    .text.RCC_PLLSAICmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:287    .text.RCC_PLLSAICmd:00000000 RCC_PLLSAICmd
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:297    .text.RCC_PLLSAICmd:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:300    .text.RCC_ClockSecuritySystemCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:306    .text.RCC_ClockSecuritySystemCmd:00000000 RCC_ClockSecuritySystemCmd
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:316    .text.RCC_ClockSecuritySystemCmd:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:319    .text.RCC_MCO1Config:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:325    .text.RCC_MCO1Config:00000000 RCC_MCO1Config
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:339    .text.RCC_MCO1Config:00000010 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:342    .text.RCC_MCO2Config:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:348    .text.RCC_MCO2Config:00000000 RCC_MCO2Config
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:362    .text.RCC_MCO2Config:00000010 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:365    .text.RCC_SYSCLKConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:371    .text.RCC_SYSCLKConfig:00000000 RCC_SYSCLKConfig
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:384    .text.RCC_SYSCLKConfig:00000010 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:387    .text.RCC_GetSYSCLKSource:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:393    .text.RCC_GetSYSCLKSource:00000000 RCC_GetSYSCLKSource
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:404    .text.RCC_GetSYSCLKSource:0000000c $d
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:407    .text.RCC_HCLKConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:413    .text.RCC_HCLKConfig:00000000 RCC_HCLKConfig
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:426    .text.RCC_HCLKConfig:00000010 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:429    .text.RCC_PCLK1Config:00000000 $t
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s 			page 25
 
 
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:435    .text.RCC_PCLK1Config:00000000 RCC_PCLK1Config
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:448    .text.RCC_PCLK1Config:00000010 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:451    .text.RCC_PCLK2Config:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:457    .text.RCC_PCLK2Config:00000000 RCC_PCLK2Config
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:470    .text.RCC_PCLK2Config:00000010 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:473    .text.RCC_GetClocksFreq:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:479    .text.RCC_GetClocksFreq:00000000 RCC_GetClocksFreq
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:560    .text.RCC_GetClocksFreq:000000a8 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:1410   .rodata.APBAHBPrescTable:00000000 APBAHBPrescTable
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:566    .text.RCC_RTCCLKConfig:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:572    .text.RCC_RTCCLKConfig:00000000 RCC_RTCCLKConfig
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:598    .text.RCC_RTCCLKConfig:00000030 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:601    .text.RCC_RTCCLKCmd:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:607    .text.RCC_RTCCLKCmd:00000000 RCC_RTCCLKCmd
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:617    .text.RCC_RTCCLKCmd:00000008 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:620    .text.RCC_BackupResetCmd:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:626    .text.RCC_BackupResetCmd:00000000 RCC_BackupResetCmd
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:636    .text.RCC_BackupResetCmd:00000008 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:639    .text.RCC_I2SCLKConfig:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:645    .text.RCC_I2SCLKConfig:00000000 RCC_I2SCLKConfig
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:655    .text.RCC_I2SCLKConfig:00000008 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:658    .text.RCC_SAIPLLI2SClkDivConfig:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:664    .text.RCC_SAIPLLI2SClkDivConfig:00000000 RCC_SAIPLLI2SClkDivConfig
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:678    .text.RCC_SAIPLLI2SClkDivConfig:00000014 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:681    .text.RCC_SAIPLLSAIClkDivConfig:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:687    .text.RCC_SAIPLLSAIClkDivConfig:00000000 RCC_SAIPLLSAIClkDivConfig
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:701    .text.RCC_SAIPLLSAIClkDivConfig:00000018 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:704    .text.RCC_SAIBlockACLKConfig:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:710    .text.RCC_SAIBlockACLKConfig:00000000 RCC_SAIBlockACLKConfig
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:723    .text.RCC_SAIBlockACLKConfig:00000014 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:726    .text.RCC_SAIBlockBCLKConfig:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:732    .text.RCC_SAIBlockBCLKConfig:00000000 RCC_SAIBlockBCLKConfig
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:745    .text.RCC_SAIBlockBCLKConfig:00000014 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:748    .text.RCC_LTDCCLKDivConfig:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:754    .text.RCC_LTDCCLKDivConfig:00000000 RCC_LTDCCLKDivConfig
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:767    .text.RCC_LTDCCLKDivConfig:00000014 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:770    .text.RCC_TIMCLKPresConfig:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:776    .text.RCC_TIMCLKPresConfig:00000000 RCC_TIMCLKPresConfig
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:786    .text.RCC_TIMCLKPresConfig:00000008 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:789    .text.RCC_AHB1PeriphClockCmd:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:795    .text.RCC_AHB1PeriphClockCmd:00000000 RCC_AHB1PeriphClockCmd
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:814    .text.RCC_AHB1PeriphClockCmd:00000018 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:817    .text.RCC_AHB2PeriphClockCmd:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:823    .text.RCC_AHB2PeriphClockCmd:00000000 RCC_AHB2PeriphClockCmd
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:842    .text.RCC_AHB2PeriphClockCmd:00000018 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:845    .text.RCC_AHB3PeriphClockCmd:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:851    .text.RCC_AHB3PeriphClockCmd:00000000 RCC_AHB3PeriphClockCmd
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:870    .text.RCC_AHB3PeriphClockCmd:00000018 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:873    .text.RCC_APB1PeriphClockCmd:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:879    .text.RCC_APB1PeriphClockCmd:00000000 RCC_APB1PeriphClockCmd
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:898    .text.RCC_APB1PeriphClockCmd:00000018 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:901    .text.RCC_APB2PeriphClockCmd:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:907    .text.RCC_APB2PeriphClockCmd:00000000 RCC_APB2PeriphClockCmd
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:926    .text.RCC_APB2PeriphClockCmd:00000018 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:929    .text.RCC_AHB1PeriphResetCmd:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:935    .text.RCC_AHB1PeriphResetCmd:00000000 RCC_AHB1PeriphResetCmd
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:954    .text.RCC_AHB1PeriphResetCmd:00000018 $d
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s 			page 26
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:435    .text.RCC_PCLK1Config:00000000 RCC_PCLK1Config
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:448    .text.RCC_PCLK1Config:00000010 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:451    .text.RCC_PCLK2Config:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:457    .text.RCC_PCLK2Config:00000000 RCC_PCLK2Config
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:470    .text.RCC_PCLK2Config:00000010 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:473    .text.RCC_GetClocksFreq:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:479    .text.RCC_GetClocksFreq:00000000 RCC_GetClocksFreq
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:560    .text.RCC_GetClocksFreq:000000a8 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:1410   .rodata.APBAHBPrescTable:00000000 APBAHBPrescTable
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:566    .text.RCC_RTCCLKConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:572    .text.RCC_RTCCLKConfig:00000000 RCC_RTCCLKConfig
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:598    .text.RCC_RTCCLKConfig:00000030 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:601    .text.RCC_RTCCLKCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:607    .text.RCC_RTCCLKCmd:00000000 RCC_RTCCLKCmd
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:617    .text.RCC_RTCCLKCmd:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:620    .text.RCC_BackupResetCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:626    .text.RCC_BackupResetCmd:00000000 RCC_BackupResetCmd
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:636    .text.RCC_BackupResetCmd:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:639    .text.RCC_I2SCLKConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:645    .text.RCC_I2SCLKConfig:00000000 RCC_I2SCLKConfig
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:655    .text.RCC_I2SCLKConfig:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:658    .text.RCC_SAIPLLI2SClkDivConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:664    .text.RCC_SAIPLLI2SClkDivConfig:00000000 RCC_SAIPLLI2SClkDivConfig
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:678    .text.RCC_SAIPLLI2SClkDivConfig:00000014 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:681    .text.RCC_SAIPLLSAIClkDivConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:687    .text.RCC_SAIPLLSAIClkDivConfig:00000000 RCC_SAIPLLSAIClkDivConfig
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:701    .text.RCC_SAIPLLSAIClkDivConfig:00000018 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:704    .text.RCC_SAIBlockACLKConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:710    .text.RCC_SAIBlockACLKConfig:00000000 RCC_SAIBlockACLKConfig
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:723    .text.RCC_SAIBlockACLKConfig:00000014 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:726    .text.RCC_SAIBlockBCLKConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:732    .text.RCC_SAIBlockBCLKConfig:00000000 RCC_SAIBlockBCLKConfig
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:745    .text.RCC_SAIBlockBCLKConfig:00000014 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:748    .text.RCC_LTDCCLKDivConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:754    .text.RCC_LTDCCLKDivConfig:00000000 RCC_LTDCCLKDivConfig
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:767    .text.RCC_LTDCCLKDivConfig:00000014 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:770    .text.RCC_TIMCLKPresConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:776    .text.RCC_TIMCLKPresConfig:00000000 RCC_TIMCLKPresConfig
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:786    .text.RCC_TIMCLKPresConfig:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:789    .text.RCC_AHB1PeriphClockCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:795    .text.RCC_AHB1PeriphClockCmd:00000000 RCC_AHB1PeriphClockCmd
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:814    .text.RCC_AHB1PeriphClockCmd:00000018 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:817    .text.RCC_AHB2PeriphClockCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:823    .text.RCC_AHB2PeriphClockCmd:00000000 RCC_AHB2PeriphClockCmd
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:842    .text.RCC_AHB2PeriphClockCmd:00000018 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:845    .text.RCC_AHB3PeriphClockCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:851    .text.RCC_AHB3PeriphClockCmd:00000000 RCC_AHB3PeriphClockCmd
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:870    .text.RCC_AHB3PeriphClockCmd:00000018 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:873    .text.RCC_APB1PeriphClockCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:879    .text.RCC_APB1PeriphClockCmd:00000000 RCC_APB1PeriphClockCmd
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:898    .text.RCC_APB1PeriphClockCmd:00000018 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:901    .text.RCC_APB2PeriphClockCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:907    .text.RCC_APB2PeriphClockCmd:00000000 RCC_APB2PeriphClockCmd
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:926    .text.RCC_APB2PeriphClockCmd:00000018 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:929    .text.RCC_AHB1PeriphResetCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:935    .text.RCC_AHB1PeriphResetCmd:00000000 RCC_AHB1PeriphResetCmd
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:954    .text.RCC_AHB1PeriphResetCmd:00000018 $d
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s 			page 26
 
 
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:957    .text.RCC_AHB2PeriphResetCmd:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:963    .text.RCC_AHB2PeriphResetCmd:00000000 RCC_AHB2PeriphResetCmd
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:982    .text.RCC_AHB2PeriphResetCmd:00000018 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:985    .text.RCC_AHB3PeriphResetCmd:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:991    .text.RCC_AHB3PeriphResetCmd:00000000 RCC_AHB3PeriphResetCmd
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:1010   .text.RCC_AHB3PeriphResetCmd:00000018 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:1013   .text.RCC_APB1PeriphResetCmd:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:1019   .text.RCC_APB1PeriphResetCmd:00000000 RCC_APB1PeriphResetCmd
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:1038   .text.RCC_APB1PeriphResetCmd:00000018 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:1041   .text.RCC_APB2PeriphResetCmd:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:1047   .text.RCC_APB2PeriphResetCmd:00000000 RCC_APB2PeriphResetCmd
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:1066   .text.RCC_APB2PeriphResetCmd:00000018 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:1069   .text.RCC_AHB1PeriphClockLPModeCmd:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:1075   .text.RCC_AHB1PeriphClockLPModeCmd:00000000 RCC_AHB1PeriphClockLPModeCmd
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:1094   .text.RCC_AHB1PeriphClockLPModeCmd:00000018 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:1097   .text.RCC_AHB2PeriphClockLPModeCmd:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:1103   .text.RCC_AHB2PeriphClockLPModeCmd:00000000 RCC_AHB2PeriphClockLPModeCmd
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:1122   .text.RCC_AHB2PeriphClockLPModeCmd:00000018 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:1125   .text.RCC_AHB3PeriphClockLPModeCmd:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:1131   .text.RCC_AHB3PeriphClockLPModeCmd:00000000 RCC_AHB3PeriphClockLPModeCmd
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:1150   .text.RCC_AHB3PeriphClockLPModeCmd:00000018 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:1153   .text.RCC_APB1PeriphClockLPModeCmd:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:1159   .text.RCC_APB1PeriphClockLPModeCmd:00000000 RCC_APB1PeriphClockLPModeCmd
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:1178   .text.RCC_APB1PeriphClockLPModeCmd:00000018 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:1181   .text.RCC_APB2PeriphClockLPModeCmd:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:1187   .text.RCC_APB2PeriphClockLPModeCmd:00000000 RCC_APB2PeriphClockLPModeCmd
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:1206   .text.RCC_APB2PeriphClockLPModeCmd:00000018 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:1209   .text.RCC_LSEModeConfig:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:1215   .text.RCC_LSEModeConfig:00000000 RCC_LSEModeConfig
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:1235   .text.RCC_LSEModeConfig:0000001c $d
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:1238   .text.RCC_ITConfig:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:1244   .text.RCC_ITConfig:00000000 RCC_ITConfig
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:1263   .text.RCC_ITConfig:00000018 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:1266   .text.RCC_GetFlagStatus:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:1272   .text.RCC_GetFlagStatus:00000000 RCC_GetFlagStatus
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:1304   .text.RCC_GetFlagStatus:00000030 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:1307   .text.RCC_WaitForHSEStartUp:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:1313   .text.RCC_WaitForHSEStartUp:00000000 RCC_WaitForHSEStartUp
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:1342   .text.RCC_ClearFlag:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:1348   .text.RCC_ClearFlag:00000000 RCC_ClearFlag
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:1360   .text.RCC_ClearFlag:0000000c $d
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:1363   .text.RCC_GetITStatus:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:1369   .text.RCC_GetITStatus:00000000 RCC_GetITStatus
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:1385   .text.RCC_GetITStatus:00000010 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:1388   .text.RCC_ClearITPendingBit:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:1394   .text.RCC_ClearITPendingBit:00000000 RCC_ClearITPendingBit
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:1404   .text.RCC_ClearITPendingBit:00000008 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccxpoHXe.s:1407   .rodata.APBAHBPrescTable:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:957    .text.RCC_AHB2PeriphResetCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:963    .text.RCC_AHB2PeriphResetCmd:00000000 RCC_AHB2PeriphResetCmd
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:982    .text.RCC_AHB2PeriphResetCmd:00000018 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:985    .text.RCC_AHB3PeriphResetCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:991    .text.RCC_AHB3PeriphResetCmd:00000000 RCC_AHB3PeriphResetCmd
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:1010   .text.RCC_AHB3PeriphResetCmd:00000018 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:1013   .text.RCC_APB1PeriphResetCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:1019   .text.RCC_APB1PeriphResetCmd:00000000 RCC_APB1PeriphResetCmd
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:1038   .text.RCC_APB1PeriphResetCmd:00000018 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:1041   .text.RCC_APB2PeriphResetCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:1047   .text.RCC_APB2PeriphResetCmd:00000000 RCC_APB2PeriphResetCmd
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:1066   .text.RCC_APB2PeriphResetCmd:00000018 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:1069   .text.RCC_AHB1PeriphClockLPModeCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:1075   .text.RCC_AHB1PeriphClockLPModeCmd:00000000 RCC_AHB1PeriphClockLPModeCmd
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:1094   .text.RCC_AHB1PeriphClockLPModeCmd:00000018 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:1097   .text.RCC_AHB2PeriphClockLPModeCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:1103   .text.RCC_AHB2PeriphClockLPModeCmd:00000000 RCC_AHB2PeriphClockLPModeCmd
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:1122   .text.RCC_AHB2PeriphClockLPModeCmd:00000018 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:1125   .text.RCC_AHB3PeriphClockLPModeCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:1131   .text.RCC_AHB3PeriphClockLPModeCmd:00000000 RCC_AHB3PeriphClockLPModeCmd
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:1150   .text.RCC_AHB3PeriphClockLPModeCmd:00000018 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:1153   .text.RCC_APB1PeriphClockLPModeCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:1159   .text.RCC_APB1PeriphClockLPModeCmd:00000000 RCC_APB1PeriphClockLPModeCmd
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:1178   .text.RCC_APB1PeriphClockLPModeCmd:00000018 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:1181   .text.RCC_APB2PeriphClockLPModeCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:1187   .text.RCC_APB2PeriphClockLPModeCmd:00000000 RCC_APB2PeriphClockLPModeCmd
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:1206   .text.RCC_APB2PeriphClockLPModeCmd:00000018 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:1209   .text.RCC_LSEModeConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:1215   .text.RCC_LSEModeConfig:00000000 RCC_LSEModeConfig
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:1235   .text.RCC_LSEModeConfig:0000001c $d
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:1238   .text.RCC_ITConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:1244   .text.RCC_ITConfig:00000000 RCC_ITConfig
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:1263   .text.RCC_ITConfig:00000018 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:1266   .text.RCC_GetFlagStatus:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:1272   .text.RCC_GetFlagStatus:00000000 RCC_GetFlagStatus
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:1304   .text.RCC_GetFlagStatus:00000030 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:1307   .text.RCC_WaitForHSEStartUp:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:1313   .text.RCC_WaitForHSEStartUp:00000000 RCC_WaitForHSEStartUp
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:1342   .text.RCC_ClearFlag:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:1348   .text.RCC_ClearFlag:00000000 RCC_ClearFlag
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:1360   .text.RCC_ClearFlag:0000000c $d
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:1363   .text.RCC_GetITStatus:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:1369   .text.RCC_GetITStatus:00000000 RCC_GetITStatus
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:1385   .text.RCC_GetITStatus:00000010 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:1388   .text.RCC_ClearITPendingBit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:1394   .text.RCC_ClearITPendingBit:00000000 RCC_ClearITPendingBit
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:1404   .text.RCC_ClearITPendingBit:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc17vYPi.s:1407   .rodata.APBAHBPrescTable:00000000 $d
 
 NO UNDEFINED SYMBOLS
