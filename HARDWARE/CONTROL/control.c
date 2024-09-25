@@ -121,7 +121,7 @@ float PidControl_Stop(float target, float feedback)
     // 计算积分项
     T4Sintegral += T4Serror;
 
-    if(def<7.23&&def>7.01)
+    if(def<0.8)
     {
         T4Sintegral=0;
     }

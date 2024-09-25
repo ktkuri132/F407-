@@ -86,7 +86,7 @@ int main(void)
         OLED_Printf(0,0,OLED_6X8,"pitch:%f",pitch);
         OLED_Printf(0,16,OLED_6X8,"roll:%f",roll);
         OLED_Printf(0,32,OLED_6X8,"def:%f",def);
-        //printf("dis:%f  polar:%f\n",dis,polar);
+        printf("dis:%f  polar:%f\n",dis,polar);
         OLED_Update();
     }
     

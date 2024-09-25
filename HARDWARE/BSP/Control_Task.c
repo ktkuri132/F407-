@@ -24,11 +24,12 @@ extern float pitch,roll,yaw,dis;
 
 
 //控制制动PID参数
-float T4SKp=700,
-      T4SKi=-1,
-      T4SKd=-300;
+float T4SKp=550,
+      T4SKi=0,
+      T4SKd=300;
 
 
+.
 
 /// @brief MPU6050读值触发的外部中断函数      
 void EXTI15_10_IRQHandler(void)

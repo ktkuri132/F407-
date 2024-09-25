@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccd7ihvQ.s 			page 1
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccVggPqC.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccd7ihvQ.s 			page 1
   58 000c 38BD     		pop	{r3, r4, r5, pc}
   59              	.L8:
   60 000e 4FF40040 		mov	r0, #32768
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccd7ihvQ.s 			page 2
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccVggPqC.s 			page 2
 
 
   61 0012 FFF7FEFF 		bl	EXTI_ClearITPendingBit
@@ -87,37 +87,37 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccd7ihvQ.s 			page 1
   87              		.section	.data.T4SKd,"aw"
   88              		.align	2
   91              	T4SKd:
-  92 0000 000048C3 		.word	-1018691584
+  92 0000 00009643 		.word	1133903872
   93              		.global	T4SKi
-  94              		.section	.data.T4SKi,"aw"
+  94              		.section	.bss.T4SKi,"aw",%nobits
   95              		.align	2
   98              	T4SKi:
-  99 0000 000080BF 		.word	-1082130432
+  99 0000 00000000 		.space	4
  100              		.global	T4SKp
  101              		.section	.data.T4SKp,"aw"
  102              		.align	2
  105              	T4SKp:
- 106 0000 00002F44 		.word	1143930880
+ 106 0000 00800944 		.word	1141473280
  107              		.ident	"GCC: (Arm GNU Toolchain 13.3.Rel1 (Build arm-13.24)) 13.3.1 20240614"
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccd7ihvQ.s 			page 3
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccVggPqC.s 			page 3
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 Control_Task.c
-C:\Users\ktkuru\AppData\Local\Temp\ccd7ihvQ.s:18     .text.Task4_StopFast:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccd7ihvQ.s:24     .text.Task4_StopFast:00000000 Task4_StopFast
-C:\Users\ktkuru\AppData\Local\Temp\ccd7ihvQ.s:39     .text.Task4_StopFast:0000001c $d
-C:\Users\ktkuru\AppData\Local\Temp\ccd7ihvQ.s:84     .bss.Output.0:00000000 Output.0
-C:\Users\ktkuru\AppData\Local\Temp\ccd7ihvQ.s:44     .text.EXTI15_10_IRQHandler:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccd7ihvQ.s:50     .text.EXTI15_10_IRQHandler:00000000 EXTI15_10_IRQHandler
-C:\Users\ktkuru\AppData\Local\Temp\ccd7ihvQ.s:76     .text.EXTI15_10_IRQHandler:00000038 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccd7ihvQ.s:81     .bss.Output.0:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccd7ihvQ.s:91     .data.T4SKd:00000000 T4SKd
-C:\Users\ktkuru\AppData\Local\Temp\ccd7ihvQ.s:88     .data.T4SKd:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccd7ihvQ.s:98     .data.T4SKi:00000000 T4SKi
-C:\Users\ktkuru\AppData\Local\Temp\ccd7ihvQ.s:95     .data.T4SKi:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccd7ihvQ.s:105    .data.T4SKp:00000000 T4SKp
-C:\Users\ktkuru\AppData\Local\Temp\ccd7ihvQ.s:102    .data.T4SKp:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccVggPqC.s:18     .text.Task4_StopFast:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccVggPqC.s:24     .text.Task4_StopFast:00000000 Task4_StopFast
+C:\Users\ktkuru\AppData\Local\Temp\ccVggPqC.s:39     .text.Task4_StopFast:0000001c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccVggPqC.s:84     .bss.Output.0:00000000 Output.0
+C:\Users\ktkuru\AppData\Local\Temp\ccVggPqC.s:44     .text.EXTI15_10_IRQHandler:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccVggPqC.s:50     .text.EXTI15_10_IRQHandler:00000000 EXTI15_10_IRQHandler
+C:\Users\ktkuru\AppData\Local\Temp\ccVggPqC.s:76     .text.EXTI15_10_IRQHandler:00000038 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccVggPqC.s:81     .bss.Output.0:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccVggPqC.s:91     .data.T4SKd:00000000 T4SKd
+C:\Users\ktkuru\AppData\Local\Temp\ccVggPqC.s:88     .data.T4SKd:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccVggPqC.s:98     .bss.T4SKi:00000000 T4SKi
+C:\Users\ktkuru\AppData\Local\Temp\ccVggPqC.s:95     .bss.T4SKi:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccVggPqC.s:105    .data.T4SKp:00000000 T4SKp
+C:\Users\ktkuru\AppData\Local\Temp\ccVggPqC.s:102    .data.T4SKp:00000000 $d
 
 UNDEFINED SYMBOLS
 PidControl_Stop
