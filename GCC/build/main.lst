@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccw0wYKr.s 			page 1
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc4vjNmI.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -46,119 +46,154 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccw0wYKr.s 			page 1
   32              	.LC4:
   33 0044 6465663A 		.ascii	"def:%f\000"
   33      256600
-  34              		.section	.text.main,"ax",%progbits
-  35              		.align	1
-  36              		.global	main
-  37              		.syntax unified
-  38              		.thumb
-  39              		.thumb_func
-  41              	main:
-  42              		@ Volatile: function does not return.
-  43              		@ args = 0, pretend = 0, frame = 0
-  44              		@ frame_needed = 0, uses_anonymous_args = 0
-  45 0000 00B5     		push	{lr}
-  46 0002 83B0     		sub	sp, sp, #12
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccw0wYKr.s 			page 2
+  34 004b 00       		.align	2
+  35              	.LC5:
+  36 004c 6469733A 		.ascii	"dis:%f  polar:%f\012\000"
+  36      25662020 
+  36      706F6C61 
+  36      723A2566 
+  36      0A00
+  37              		.section	.text.main,"ax",%progbits
+  38              		.align	1
+  39              		.global	main
+  40              		.syntax unified
+  41              		.thumb
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc4vjNmI.s 			page 2
 
 
-  47 0004 FFF7FEFF 		bl	BSP_Init
-  48 0008 78B3     		cbz	r0, .L2
-  49 000a 1A48     		ldr	r0, .L6
-  50 000c FFF7FEFF 		bl	puts
-  51              	.L3:
-  52 0010 194C     		ldr	r4, .L6+4
-  53 0012 1A4D     		ldr	r5, .L6+8
-  54 0014 D4ED000A 		vldr.32	s1, [r4]
-  55 0018 95ED000A 		vldr.32	s0, [r5]
-  56 001c FFF7FEFF 		bl	MotorState
-  57 0020 2868     		ldr	r0, [r5]	@ float
-  58 0022 FFF7FEFF 		bl	__aeabi_f2d
-  59 0026 CDE90001 		strd	r0, [sp]
-  60 002a 154B     		ldr	r3, .L6+12
-  61 002c 0622     		movs	r2, #6
-  62 002e 0021     		movs	r1, #0
-  63 0030 0846     		mov	r0, r1
-  64 0032 FFF7FEFF 		bl	OLED_Printf
-  65 0036 2068     		ldr	r0, [r4]	@ float
-  66 0038 FFF7FEFF 		bl	__aeabi_f2d
-  67 003c CDE90001 		strd	r0, [sp]
-  68 0040 104B     		ldr	r3, .L6+16
-  69 0042 0622     		movs	r2, #6
-  70 0044 1021     		movs	r1, #16
-  71 0046 0020     		movs	r0, #0
-  72 0048 FFF7FEFF 		bl	OLED_Printf
-  73 004c 0E4B     		ldr	r3, .L6+20
-  74 004e 1868     		ldr	r0, [r3]	@ float
-  75 0050 FFF7FEFF 		bl	__aeabi_f2d
-  76 0054 CDE90001 		strd	r0, [sp]
-  77 0058 0C4B     		ldr	r3, .L6+24
-  78 005a 0622     		movs	r2, #6
-  79 005c 2021     		movs	r1, #32
-  80 005e 0020     		movs	r0, #0
-  81 0060 FFF7FEFF 		bl	OLED_Printf
-  82 0064 FFF7FEFF 		bl	OLED_Update
-  83 0068 D2E7     		b	.L3
-  84              	.L2:
-  85 006a 0948     		ldr	r0, .L6+28
-  86 006c FFF7FEFF 		bl	puts
-  87 0070 CEE7     		b	.L3
-  88              	.L7:
-  89 0072 00BF     		.align	2
-  90              	.L6:
-  91 0074 00000000 		.word	.LC0
-  92 0078 00000000 		.word	roll
-  93 007c 00000000 		.word	pitch
-  94 0080 30000000 		.word	.LC2
-  95 0084 3C000000 		.word	.LC3
-  96 0088 00000000 		.word	def
-  97 008c 44000000 		.word	.LC4
-  98 0090 18000000 		.word	.LC1
- 100              		.global	def
- 101              		.section	.bss.def,"aw",%nobits
- 102              		.align	2
- 105              	def:
- 106 0000 00000000 		.space	4
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccw0wYKr.s 			page 3
+  42              		.thumb_func
+  44              	main:
+  45              		@ Volatile: function does not return.
+  46              		@ args = 0, pretend = 0, frame = 0
+  47              		@ frame_needed = 0, uses_anonymous_args = 0
+  48 0000 00B5     		push	{lr}
+  49 0002 83B0     		sub	sp, sp, #12
+  50 0004 FFF7FEFF 		bl	BSP_Init
+  51 0008 0028     		cmp	r0, #0
+  52 000a 3AD0     		beq	.L2
+  53 000c 1F48     		ldr	r0, .L6
+  54 000e FFF7FEFF 		bl	puts
+  55              	.L3:
+  56 0012 1F4B     		ldr	r3, .L6+4
+  57 0014 1868     		ldr	r0, [r3]	@ float
+  58 0016 FFF7FEFF 		bl	__aeabi_f2d
+  59 001a CDE90001 		strd	r0, [sp]
+  60 001e 1D4B     		ldr	r3, .L6+8
+  61 0020 0622     		movs	r2, #6
+  62 0022 0021     		movs	r1, #0
+  63 0024 0846     		mov	r0, r1
+  64 0026 FFF7FEFF 		bl	OLED_Printf
+  65 002a 1B4B     		ldr	r3, .L6+12
+  66 002c 1868     		ldr	r0, [r3]	@ float
+  67 002e FFF7FEFF 		bl	__aeabi_f2d
+  68 0032 CDE90001 		strd	r0, [sp]
+  69 0036 194B     		ldr	r3, .L6+16
+  70 0038 0622     		movs	r2, #6
+  71 003a 1021     		movs	r1, #16
+  72 003c 0020     		movs	r0, #0
+  73 003e FFF7FEFF 		bl	OLED_Printf
+  74 0042 174B     		ldr	r3, .L6+20
+  75 0044 1868     		ldr	r0, [r3]	@ float
+  76 0046 FFF7FEFF 		bl	__aeabi_f2d
+  77 004a CDE90001 		strd	r0, [sp]
+  78 004e 154B     		ldr	r3, .L6+24
+  79 0050 0622     		movs	r2, #6
+  80 0052 2021     		movs	r1, #32
+  81 0054 0020     		movs	r0, #0
+  82 0056 FFF7FEFF 		bl	OLED_Printf
+  83 005a 134B     		ldr	r3, .L6+28
+  84 005c 1868     		ldr	r0, [r3]	@ float
+  85 005e FFF7FEFF 		bl	__aeabi_f2d
+  86 0062 0446     		mov	r4, r0
+  87 0064 0D46     		mov	r5, r1
+  88 0066 114B     		ldr	r3, .L6+32
+  89 0068 1868     		ldr	r0, [r3]	@ float
+  90 006a FFF7FEFF 		bl	__aeabi_f2d
+  91 006e CDE90001 		strd	r0, [sp]
+  92 0072 2246     		mov	r2, r4
+  93 0074 2B46     		mov	r3, r5
+  94 0076 0E48     		ldr	r0, .L6+36
+  95 0078 FFF7FEFF 		bl	printf
+  96 007c FFF7FEFF 		bl	OLED_Update
+  97 0080 C7E7     		b	.L3
+  98              	.L2:
+  99 0082 0C48     		ldr	r0, .L6+40
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc4vjNmI.s 			page 3
 
 
- 107              		.global	yaw
- 108              		.section	.bss.yaw,"aw",%nobits
- 109              		.align	2
- 112              	yaw:
- 113 0000 00000000 		.space	4
- 114              		.global	roll
- 115              		.section	.bss.roll,"aw",%nobits
- 116              		.align	2
- 119              	roll:
- 120 0000 00000000 		.space	4
- 121              		.global	pitch
- 122              		.section	.bss.pitch,"aw",%nobits
- 123              		.align	2
- 126              	pitch:
- 127 0000 00000000 		.space	4
- 128              		.ident	"GCC: (Arm GNU Toolchain 13.3.Rel1 (Build arm-13.24)) 13.3.1 20240614"
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccw0wYKr.s 			page 4
+ 100 0084 FFF7FEFF 		bl	puts
+ 101 0088 C3E7     		b	.L3
+ 102              	.L7:
+ 103 008a 00BF     		.align	2
+ 104              	.L6:
+ 105 008c 00000000 		.word	.LC0
+ 106 0090 00000000 		.word	pitch
+ 107 0094 30000000 		.word	.LC2
+ 108 0098 00000000 		.word	roll
+ 109 009c 3C000000 		.word	.LC3
+ 110 00a0 00000000 		.word	def
+ 111 00a4 44000000 		.word	.LC4
+ 112 00a8 00000000 		.word	dis
+ 113 00ac 00000000 		.word	polar
+ 114 00b0 4C000000 		.word	.LC5
+ 115 00b4 18000000 		.word	.LC1
+ 117              		.global	polar
+ 118              		.section	.bss.polar,"aw",%nobits
+ 119              		.align	2
+ 122              	polar:
+ 123 0000 00000000 		.space	4
+ 124              		.global	dis
+ 125              		.section	.bss.dis,"aw",%nobits
+ 126              		.align	2
+ 129              	dis:
+ 130 0000 00000000 		.space	4
+ 131              		.global	def
+ 132              		.section	.bss.def,"aw",%nobits
+ 133              		.align	2
+ 136              	def:
+ 137 0000 00000000 		.space	4
+ 138              		.global	yaw
+ 139              		.section	.bss.yaw,"aw",%nobits
+ 140              		.align	2
+ 143              	yaw:
+ 144 0000 00000000 		.space	4
+ 145              		.global	roll
+ 146              		.section	.bss.roll,"aw",%nobits
+ 147              		.align	2
+ 150              	roll:
+ 151 0000 00000000 		.space	4
+ 152              		.global	pitch
+ 153              		.section	.bss.pitch,"aw",%nobits
+ 154              		.align	2
+ 157              	pitch:
+ 158 0000 00000000 		.space	4
+ 159              		.ident	"GCC: (Arm GNU Toolchain 13.3.Rel1 (Build arm-13.24)) 13.3.1 20240614"
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc4vjNmI.s 			page 4
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 main.c
-C:\Users\ktkuru\AppData\Local\Temp\ccw0wYKr.s:18     .rodata.main.str1.4:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccw0wYKr.s:35     .text.main:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccw0wYKr.s:41     .text.main:00000000 main
-C:\Users\ktkuru\AppData\Local\Temp\ccw0wYKr.s:91     .text.main:00000074 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccw0wYKr.s:119    .bss.roll:00000000 roll
-C:\Users\ktkuru\AppData\Local\Temp\ccw0wYKr.s:126    .bss.pitch:00000000 pitch
-C:\Users\ktkuru\AppData\Local\Temp\ccw0wYKr.s:105    .bss.def:00000000 def
-C:\Users\ktkuru\AppData\Local\Temp\ccw0wYKr.s:102    .bss.def:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccw0wYKr.s:112    .bss.yaw:00000000 yaw
-C:\Users\ktkuru\AppData\Local\Temp\ccw0wYKr.s:109    .bss.yaw:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccw0wYKr.s:116    .bss.roll:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccw0wYKr.s:123    .bss.pitch:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc4vjNmI.s:18     .rodata.main.str1.4:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc4vjNmI.s:38     .text.main:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc4vjNmI.s:44     .text.main:00000000 main
+C:\Users\ktkuru\AppData\Local\Temp\cc4vjNmI.s:105    .text.main:0000008c $d
+C:\Users\ktkuru\AppData\Local\Temp\cc4vjNmI.s:157    .bss.pitch:00000000 pitch
+C:\Users\ktkuru\AppData\Local\Temp\cc4vjNmI.s:150    .bss.roll:00000000 roll
+C:\Users\ktkuru\AppData\Local\Temp\cc4vjNmI.s:136    .bss.def:00000000 def
+C:\Users\ktkuru\AppData\Local\Temp\cc4vjNmI.s:129    .bss.dis:00000000 dis
+C:\Users\ktkuru\AppData\Local\Temp\cc4vjNmI.s:122    .bss.polar:00000000 polar
+C:\Users\ktkuru\AppData\Local\Temp\cc4vjNmI.s:119    .bss.polar:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc4vjNmI.s:126    .bss.dis:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc4vjNmI.s:133    .bss.def:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc4vjNmI.s:143    .bss.yaw:00000000 yaw
+C:\Users\ktkuru\AppData\Local\Temp\cc4vjNmI.s:140    .bss.yaw:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc4vjNmI.s:147    .bss.roll:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc4vjNmI.s:154    .bss.pitch:00000000 $d
 
 UNDEFINED SYMBOLS
 __aeabi_f2d
 BSP_Init
 puts
-MotorState
 OLED_Printf
+printf
 OLED_Update

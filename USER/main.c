@@ -36,8 +36,10 @@
 float pitch,roll,yaw;
 //定义任意角
 float def;
-
-
+//定义位移
+float dis;
+//定义极坐标角度
+float polar;
 
 /*
 
@@ -78,10 +80,11 @@ int main(void)
     /* 前台程序轮询  */
     while (1)
     {
-        MotorState(pitch,roll);
+        //MotorState(pitch,roll);
         OLED_Printf(0,0,OLED_6X8,"pitch:%f",pitch);
         OLED_Printf(0,16,OLED_6X8,"roll:%f",roll);
         OLED_Printf(0,32,OLED_6X8,"def:%f",def);
+        printf("dis:%f  polar:%f\n",dis,polar);
         OLED_Update();
     }
     

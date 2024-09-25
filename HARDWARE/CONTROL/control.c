@@ -18,29 +18,73 @@
 #include <stdlib.h>
 
 extern uint8_t Stop_flag;
-extern float pitch,roll,yaw,def;
+extern float pitch,roll,yaw,def,dis,polar;
 
-//将roll角，pitch角转换成任意角def
-void GetDef(float roll,float pitch)
+#define heigh 86
+
+
+//计算极坐标
+void GetPolar(float roll,float pitch)
 {
     /*
         任意角def的计算公式
         tan?(def)=tan?(roll)+tan?(pitch)
         def=atan(sqrt(tan?(roll)+tan?(pitch)))
     */
+    float absroll,abspitch;
     if(roll<0)
     {
-        roll=-roll;
+        absroll=-roll;
+    }
+    else
+    {
+        absroll=roll;
     }
     if(pitch<0)
     {
-        pitch=-pitch;
+        abspitch=-pitch;
     }
-    roll=(roll/180)*3.1415926;
-    pitch=(pitch/180)*3.1415926;
-    float a= sqrtf(tanf(roll)*tanf(roll)+tanf(pitch)*tanf(pitch));
+    else
+    {
+        abspitch=pitch;
+    }
+    float rad_roll=(absroll/180)*3.1415926;
+    float rad_pitch=(abspitch/180)*3.1415926;
+    float a= sqrtf(tanf(rad_roll)*tanf(rad_roll)+tanf(rad_pitch)*tanf(rad_pitch));
     def = (atanf(a)*180.0)/3.1415926;
-    //printf("def:%f  a:%f\n",def,a);
+
+    /*
+        位移dis的计算公式
+        dis=heigh*tan(def)
+    
+    */
+    dis = tanf((def/180)*3.1415926)*heigh;
+    float b = (tanf(rad_pitch)/tanf(rad_roll));
+    polar = (atanf(b)*180.0)/3.1415926;
+    
+    if(pitch<0&&roll>0)
+    {
+        polar=polar;
+    }
+    else if(pitch<0&&roll<0)
+    {
+        polar = 180-polar;
+    }
+    else if(pitch>0&&roll<0)
+    {
+        polar = 180+polar;
+    }
+    else if(pitch>0&&roll>0)
+    {
+        polar = 360-polar;
+    }
+
+    //规定坐标无效区域
+    if(dis<1)
+    {
+        polar=0;
+    }
+    
 }
 
 

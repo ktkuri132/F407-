@@ -29,7 +29,7 @@
 void Motor_PWM_TIM8_Init();
 void MotorState(float pitch,float roll);
 void StopAllMotor();
-void GetDef(float roll,float pitch);
+void GetPolar(float roll,float pitch);
 
 /* µÚÒ»Ïî  */
 
