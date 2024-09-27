@@ -87,6 +87,8 @@ int fgetc(FILE *f)
 
 uint8_t Stop_flag=0;
 
+extern float Target_dis;
+
 //串口1中断服务程序 	
 u8 USART_RX_BUF[USART_REC_LEN];     
 u16 USART_RX_STA=0;       
@@ -198,11 +200,18 @@ void USART2_IRQHandler(void)
 		switch (Res)
 		{
 			case 'a':
-				Stop_flag=1;
-				StopAllMotor();
+			{
+				Target_dis +=0.01;
+				U2printf("Target_dis:%f\n",Target_dis);
+			}	break;
 
-			break;
 			
+			
+			case 'b':
+			{
+				Target_dis -=0.01;
+				U2printf("Target_dis:%f\n",Target_dis);
+			}	break;
 			
 			default:
 				break;

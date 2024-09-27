@@ -33,19 +33,19 @@ float T4SKp=900,
       T4SKi=-1,
       T4SKd=0;
 
-float T1LKp=400,//520
+float T1LKp=750,//520
       T1LKi=0,
-      T1LKd=0;//-65.5
+      T1LKd=-350;//-65.5
 
 /*
 
 15cm 500,0,-65.5,00983
-20cm
+25cm 300,0,0,0.0104223  <---这个具有普遍性
 
 
 */
 
-
+float Target_dis=0.15;
 
 #ifdef __EXTI15_10_IRQn__
 
@@ -62,7 +62,7 @@ void EXTI15_10_IRQHandler(void)
 
 
         //Task4_StopFast();    //调用控制函数--->第4项
-        Task1_LineMove(0.2);    //调用控制函数--->第1项
+        Task1_LineMove(Target_dis);    //调用控制函数--->第1项
     }
 }
 
@@ -116,7 +116,7 @@ void Task4_StopFast()
 float target_angle;
 
 /*
-    第一项  单摆运动
+    第一,二项  单摆运动+幅度可调
 */
 void Task1_LineMove(float R)
 {
@@ -127,24 +127,30 @@ void Task1_LineMove(float R)
     A = atanf(R/0.86)*180.0f/PI;
     target_angle = A*sinf(2*PI*time/T);
     
-    printf("%f,%f\r\n",target_angle,roll);
+    printf("%f,%f\r\n",target_angle,pitch);
 
     VOutput = PidControl_LineMove(target_angle,roll);
-    LOutput = PidControl_LineMove(0,pitch);
+    LOutput = PidControl_LineMove(target_angle,pitch);
 //0.00983---0.15
-    time+=0.0097;
+    time+=0.0104223;
     if(time<T)
     {
         if(VOutput>0)
         {
             Motor_Cmd(VerticalOut,ENABLE);
             Motor_Cmd(VerticalIn,DISABLE);
+            //Motor_Cmd(LevelOut,ENABLE);
+            //Motor_Cmd(LevelIn,DISABLE);
+            //Motor->MLevelOut =(uint32_t)LOutput;
             Motor->MVerticalOut =(uint32_t)VOutput;
         }
         else
         {
             Motor_Cmd(VerticalOut,DISABLE);
             Motor_Cmd(VerticalIn,ENABLE);
+            //Motor_Cmd(LevelOut,DISABLE);
+            //Motor_Cmd(LevelIn,ENABLE);
+            //Motor->MLevelIn =(uint32_t)(-LOutput);
             Motor->MVerticalIn =(uint32_t)(-VOutput);
         }
     }
@@ -153,4 +159,11 @@ void Task1_LineMove(float R)
 }
 
 
+/*
+    第三项  角度可调的单摆运动
+*/
+void Task3_AngleMove()
+{
+    
 
+}
