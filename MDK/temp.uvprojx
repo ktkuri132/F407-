@@ -340,7 +340,7 @@
               <MiscControls></MiscControls>
               <Define>STM32F40_41xxx,USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>..\STM32F4xx_FWLib\inc;..\USER;..\SYSTEM\delay;..\SYSTEM\sys;..\SYSTEM\usart;..\HARDWARE\CONTROL;..\HARDWARE\OLED_IIC;..\HARDWARE\BSP;..\HARDWARE\MPU6050;..\HARDWARE\MPU6050\eMPL;..\SYSTEM\shell</IncludePath>
+              <IncludePath>..\STM32F4xx_FWLib\inc;..\USER;..\SYSTEM\delay;..\SYSTEM\sys;..\SYSTEM\usart;..\HARDWARE\CONTROL;..\HARDWARE\BSP;..\HARDWARE\MPU6050;..\HARDWARE\MPU6050\eMPL;..\HARDWARE\OLED_SPI;..\HARDWARE\IIC;..\SYSTEM\shell</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -405,11 +405,6 @@
           <GroupName>HAREWARE</GroupName>
           <Files>
             <File>
-              <FileName>OLED.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\HARDWARE\OLED_IIC\OLED.c</FilePath>
-            </File>
-            <File>
               <FileName>bsp.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\HARDWARE\BSP\bsp.c</FilePath>
@@ -430,11 +425,6 @@
               <FilePath>..\HARDWARE\MPU6050\mpu6050.c</FilePath>
             </File>
             <File>
-              <FileName>mpuiic.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\HARDWARE\MPU6050\mpuiic.c</FilePath>
-            </File>
-            <File>
               <FileName>inv_mpu.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\HARDWARE\MPU6050\eMPL\inv_mpu.c</FilePath>
@@ -443,6 +433,16 @@
               <FileName>inv_mpu_dmp_motion_driver.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\HARDWARE\MPU6050\eMPL\inv_mpu_dmp_motion_driver.c</FilePath>
+            </File>
+            <File>
+              <FileName>OLED.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\OLED_SPI\OLED.c</FilePath>
+            </File>
+            <File>
+              <FileName>OLED_Data.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\OLED_SPI\OLED_Data.c</FilePath>
             </File>
           </Files>
         </Group>

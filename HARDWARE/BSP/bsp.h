@@ -10,6 +10,7 @@ void GPIO_Config(GPIO_TypeDef *GPIOx,uint32_t GPIO_Pin_x,uint32_t GPIO_Mode_x,ui
 int BSP_Init();
 void BSP_NVIC_IT_Config();
 void EXIT15_Init();
+void TIM2_Init(uint32_t ms);
 void ADC_Config();
 uint16_t ADCvalue_convert(uint16_t adcValue);
 

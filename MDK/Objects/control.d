@@ -37,4 +37,9 @@
 .\objects\control.o: ..\STM32F4xx_FWLib\inc\stm32f4xx_dcmi.h
 .\objects\control.o: ..\STM32F4xx_FWLib\inc\stm32f4xx_fsmc.h
 .\objects\control.o: ..\HARDWARE\BSP\bsp.h
-.\objects\control.o: ..\HARDWARE\OLED_IIC\OLED.h
+.\objects\control.o: ..\HARDWARE\OLED_SPI\OLED.h
+.\objects\control.o: ..\HARDWARE\OLED_SPI\OLED_Data.h
+.\objects\control.o: ..\SYSTEM\sys\sys.h
+.\objects\control.o: ..\HARDWARE\CONTROL\control.h
+.\objects\control.o: C:\Users\ktkuru\AppData\Local\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
+.\objects\control.o: C:\Users\ktkuru\AppData\Local\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h

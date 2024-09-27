@@ -38,3 +38,7 @@
 .\objects\usart.o: ..\STM32F4xx_FWLib\inc\stm32f4xx_fsmc.h
 .\objects\usart.o: ..\SYSTEM\usart\usart.h
 .\objects\usart.o: C:\Users\ktkuru\AppData\Local\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\usart.o: ..\HARDWARE\BSP\bsp.h
+.\objects\usart.o: ..\HARDWARE\OLED_SPI\OLED.h
+.\objects\usart.o: ..\HARDWARE\OLED_SPI\OLED_Data.h
+.\objects\usart.o: C:\Users\ktkuru\AppData\Local\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h

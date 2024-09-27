@@ -36,12 +36,14 @@
 .\objects\main.o: ..\STM32F4xx_FWLib\inc\stm32f4xx_dcmi.h
 .\objects\main.o: ..\STM32F4xx_FWLib\inc\stm32f4xx_fsmc.h
 .\objects\main.o: ..\HARDWARE\BSP\bsp.h
-.\objects\main.o: ..\HARDWARE\OLED_IIC\OLED.h
+.\objects\main.o: ..\HARDWARE\OLED_SPI\OLED.h
+.\objects\main.o: ..\HARDWARE\OLED_SPI\OLED_Data.h
 .\objects\main.o: ..\SYSTEM\usart\usart.h
 .\objects\main.o: C:\Users\ktkuru\AppData\Local\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\main.o: ..\SYSTEM\sys\sys.h
 .\objects\main.o: ..\SYSTEM\delay\delay.h
 .\objects\main.o: ..\SYSTEM\shell\shell.h
 .\objects\main.o: ..\HARDWARE\MPU6050\mpu6050.h
-.\objects\main.o: ..\HARDWARE\MPU6050\mpuiic.h
+.\objects\main.o: ..\HARDWARE\IIC\myiic.h
 .\objects\main.o: ..\HARDWARE\MPU6050\eMPL\inv_mpu.h
+.\objects\main.o: ..\HARDWARE\CONTROL\control.h

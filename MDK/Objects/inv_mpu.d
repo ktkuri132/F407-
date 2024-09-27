@@ -42,7 +42,7 @@
 .\objects\inv_mpu.o: ..\STM32F4xx_FWLib\inc\stm32f4xx_fsmc.h
 .\objects\inv_mpu.o: ..\HARDWARE\MPU6050\eMPL\inv_mpu_dmp_motion_driver.h
 .\objects\inv_mpu.o: ..\HARDWARE\MPU6050\mpu6050.h
-.\objects\inv_mpu.o: ..\HARDWARE\MPU6050\mpuiic.h
+.\objects\inv_mpu.o: ..\HARDWARE\IIC\myiic.h
 .\objects\inv_mpu.o: ..\SYSTEM\sys\sys.h
 .\objects\inv_mpu.o: ..\SYSTEM\delay\delay.h
 .\objects\inv_mpu.o: ..\SYSTEM\usart\usart.h

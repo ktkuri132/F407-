@@ -71,7 +71,10 @@ int BSP_Init()
 
     EXIT15_Init();
     printf("->ETIT15 Init done\n");
-    
+    //TIM2_Init(5);
+    //printf("->TIM2 Init done\n");
+
+
     return 0;
 }
 
@@ -125,6 +128,25 @@ void EXIT15_Init()
 
 }
 
+
+//定时器2初始化
+void TIM2_Init(uint32_t ms)
+{
+    TIM_TimeBaseInitTypeDef TIM_TimeBaseStructure;
+    NVIC_InitTypeDef NVIC_InitStructure;
+
+    RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2, ENABLE);
+
+    TIM_TimeBaseStructure.TIM_Period = 1000*ms - 1;
+    TIM_TimeBaseStructure.TIM_Prescaler = 84 - 1;
+    TIM_TimeBaseStructure.TIM_ClockDivision = TIM_CKD_DIV1;
+    TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_Up;
+    TIM_TimeBaseInit(TIM2, &TIM_TimeBaseStructure);
+
+    TIM_ITConfig(TIM2, TIM_IT_Update, ENABLE);
+
+    TIM_Cmd(TIM2, ENABLE);
+}
 
 
 
@@ -218,7 +240,7 @@ uint16_t ADCvalue_convert(uint16_t adcValue)
 }
 
 
-
+/*
 __INLINE void function_goto(int (*pfunction)())
 {
     __ASM __IO 
@@ -228,3 +250,4 @@ __INLINE void function_goto(int (*pfunction)())
         ::"r"(pfunction)
     );
 }
+*/

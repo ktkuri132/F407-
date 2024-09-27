@@ -23,7 +23,6 @@ extern float pitch,roll,yaw,def,dis,polar;
 //得到的极坐标的原始角度
 float Opolar;
 
-#define heigh 86
 
 
 //计算极坐标,以及任意角
@@ -90,15 +89,17 @@ void GetPolar(float roll,float pitch)
     
 }
 
+//计算
+
 
 //T--任务，4--第四项，S--停止，制动
 extern float T4SKp, T4SKi, T4SKd;
-
+extern float T1LKp, T1LKi, T1LKd;
 
 /// @brief PID控制制动
 /// @param target 目标值
 /// @param feedback 当前值
-/// @return 计算值（浮点型，有正负）
+/// @return 计算值（浮点型，无正负）
 float PidControl_Stop(float target, float feedback)
 {
 
@@ -146,7 +147,54 @@ float PidControl_Stop(float target, float feedback)
 
 }
 
+/// @brief PID控制线性移动
+/// @param target 目标值
+/// @param feedback 当前值
+/// @return 计算值（浮点型，有正负）
+float PidControl_LineMove(float target, float feedback)
+{
+    // 定义误差变量
+    static float T1Lerror = 0;
+    static float T1LlastError = 0;
+    static float T1Lintegral = 0;
+    static float T1Lderivative = 0;
 
+    // 定义积分限幅变量
+    static float T1LintegralMin = -8400;
+    static float T1LintegralMax = 8400;
+
+    // 定义PID输出变量
+    static float output = 0;
+
+    // 计算误差
+    T1Lerror = feedback - target;
+
+    // 计算积分项
+    T1Lintegral += T1Lerror;
+
+    if(def<0.8)
+    {
+        T1Lintegral=0;
+    }
+
+    // 限制积分项在积分限幅范围内
+    if (T1Lintegral < T1LintegralMin) {
+        T1Lintegral = T1LintegralMin;
+    } else if (T1Lintegral > T1LintegralMax) {
+        T1Lintegral = T1LintegralMax;
+    }
+
+    // 计算微分项
+    T1Lderivative = T1Lerror - T1LlastError;
+
+    // 计算PID输出
+    output = T1LKp * T1Lerror + T1LKi * T1Lintegral + T1LKd * T1Lderivative;
+
+    // 更新误差变量
+    T1LlastError = T1Lerror;
+
+    return output;
+}
 
 //PWM输出，采用高级定时器TIM8，输出4路PWM
 void Motor_PWM_TIM8_Init()

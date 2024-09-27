@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc7YdLYR.s 			page 1
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccD8dX0f.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc7YdLYR.s 			page 1
   56 003a 35D0     		beq	.L23
   57 003c 394B     		ldr	r3, .L34+24
   58 003e 9842     		cmp	r0, r3
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc7YdLYR.s 			page 2
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccD8dX0f.s 			page 2
 
 
   59 0040 36D0     		beq	.L24
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc7YdLYR.s 			page 1
  113 00a6 7047     		bx	lr
  114              	.L23:
  115 00a8 883B     		subs	r3, r3, #136
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc7YdLYR.s 			page 3
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccD8dX0f.s 			page 3
 
 
  116 00aa 294A     		ldr	r2, .L34+68
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc7YdLYR.s 			page 1
  170 010a 00BF     		.align	2
  171              	.L34:
  172 010c 10600240 		.word	1073897488
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc7YdLYR.s 			page 4
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccD8dX0f.s 			page 4
 
 
  173 0110 28600240 		.word	1073897512
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc7YdLYR.s 			page 1
  229 0034 22F00702 		bic	r2, r2, #7
  230 0038 CB6A     		ldr	r3, [r1, #44]
  231 003a 0C6B     		ldr	r4, [r1, #48]
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc7YdLYR.s 			page 5
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccD8dX0f.s 			page 5
 
 
  232 003c 2343     		orrs	r3, r3, r4
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc7YdLYR.s 			page 1
  290 0004 43F00103 		orr	r3, r3, #1
  291 0008 0360     		str	r3, [r0]
  292 000a 7047     		bx	lr
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc7YdLYR.s 			page 6
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccD8dX0f.s 			page 6
 
 
  293              	.L42:
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc7YdLYR.s 			page 1
  353              		@ link register save eliminated.
  354 0000 4160     		str	r1, [r0, #4]
  355 0002 7047     		bx	lr
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc7YdLYR.s 			page 7
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccD8dX0f.s 			page 7
 
 
  357              		.section	.text.DMA_GetCurrDataCounter,"ax",%progbits
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc7YdLYR.s 			page 1
  416 0014 7047     		bx	lr
  418              		.section	.text.DMA_MemoryTargetConfig,"ax",%progbits
  419              		.align	1
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc7YdLYR.s 			page 8
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccD8dX0f.s 			page 8
 
 
  420              		.global	DMA_MemoryTargetConfig
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc7YdLYR.s 			page 1
  481              	DMA_GetFIFOStatus:
  482              		@ args = 0, pretend = 0, frame = 0
  483              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc7YdLYR.s 			page 9
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccD8dX0f.s 			page 9
 
 
  484              		@ link register save eliminated.
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc7YdLYR.s 			page 1
  542 0002 9842     		cmp	r0, r3
  543 0004 0AD8     		bhi	.L80
  544 0006 A3F20F43 		subw	r3, r3, #1039
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc7YdLYR.s 			page 10
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccD8dX0f.s 			page 10
 
 
  545              	.L77:
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc7YdLYR.s 			page 1
  601 0036 0360     		str	r3, [r0]
  602              	.L83:
  603 0038 7047     		bx	lr
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc7YdLYR.s 			page 11
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccD8dX0f.s 			page 11
 
 
  605              		.section	.text.DMA_GetITStatus,"ax",%progbits
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc7YdLYR.s 			page 1
  660              		.align	2
  661              	.L99:
  662 0054 0F640240 		.word	1073898511
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc7YdLYR.s 			page 12
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccD8dX0f.s 			page 12
 
 
  663 0058 00600240 		.word	1073897472
@@ -698,54 +698,54 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc7YdLYR.s 			page 1
  699 002c 0F640240 		.word	1073898511
  700 0030 00640240 		.word	1073898496
  702              		.ident	"GCC: (Arm GNU Toolchain 13.3.Rel1 (Build arm-13.24)) 13.3.1 20240614"
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc7YdLYR.s 			page 13
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccD8dX0f.s 			page 13
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 stm32f4xx_dma.c
-C:\Users\ktkuru\AppData\Local\Temp\cc7YdLYR.s:18     .text.DMA_DeInit:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\cc7YdLYR.s:24     .text.DMA_DeInit:00000000 DMA_DeInit
-C:\Users\ktkuru\AppData\Local\Temp\cc7YdLYR.s:172    .text.DMA_DeInit:0000010c $d
-C:\Users\ktkuru\AppData\Local\Temp\cc7YdLYR.s:193    .text.DMA_Init:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\cc7YdLYR.s:199    .text.DMA_Init:00000000 DMA_Init
-C:\Users\ktkuru\AppData\Local\Temp\cc7YdLYR.s:246    .text.DMA_Init:00000054 $d
-C:\Users\ktkuru\AppData\Local\Temp\cc7YdLYR.s:249    .text.DMA_StructInit:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\cc7YdLYR.s:255    .text.DMA_StructInit:00000000 DMA_StructInit
-C:\Users\ktkuru\AppData\Local\Temp\cc7YdLYR.s:278    .text.DMA_Cmd:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\cc7YdLYR.s:284    .text.DMA_Cmd:00000000 DMA_Cmd
-C:\Users\ktkuru\AppData\Local\Temp\cc7YdLYR.s:300    .text.DMA_PeriphIncOffsetSizeConfig:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\cc7YdLYR.s:306    .text.DMA_PeriphIncOffsetSizeConfig:00000000 DMA_PeriphIncOffsetSizeConfig
-C:\Users\ktkuru\AppData\Local\Temp\cc7YdLYR.s:322    .text.DMA_FlowControllerConfig:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\cc7YdLYR.s:328    .text.DMA_FlowControllerConfig:00000000 DMA_FlowControllerConfig
-C:\Users\ktkuru\AppData\Local\Temp\cc7YdLYR.s:344    .text.DMA_SetCurrDataCounter:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\cc7YdLYR.s:350    .text.DMA_SetCurrDataCounter:00000000 DMA_SetCurrDataCounter
-C:\Users\ktkuru\AppData\Local\Temp\cc7YdLYR.s:358    .text.DMA_GetCurrDataCounter:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\cc7YdLYR.s:364    .text.DMA_GetCurrDataCounter:00000000 DMA_GetCurrDataCounter
-C:\Users\ktkuru\AppData\Local\Temp\cc7YdLYR.s:373    .text.DMA_DoubleBufferModeConfig:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\cc7YdLYR.s:379    .text.DMA_DoubleBufferModeConfig:00000000 DMA_DoubleBufferModeConfig
-C:\Users\ktkuru\AppData\Local\Temp\cc7YdLYR.s:397    .text.DMA_DoubleBufferModeCmd:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\cc7YdLYR.s:403    .text.DMA_DoubleBufferModeCmd:00000000 DMA_DoubleBufferModeCmd
-C:\Users\ktkuru\AppData\Local\Temp\cc7YdLYR.s:419    .text.DMA_MemoryTargetConfig:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\cc7YdLYR.s:425    .text.DMA_MemoryTargetConfig:00000000 DMA_MemoryTargetConfig
-C:\Users\ktkuru\AppData\Local\Temp\cc7YdLYR.s:437    .text.DMA_GetCurrentMemoryTarget:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\cc7YdLYR.s:443    .text.DMA_GetCurrentMemoryTarget:00000000 DMA_GetCurrentMemoryTarget
-C:\Users\ktkuru\AppData\Local\Temp\cc7YdLYR.s:455    .text.DMA_GetCmdStatus:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\cc7YdLYR.s:461    .text.DMA_GetCmdStatus:00000000 DMA_GetCmdStatus
-C:\Users\ktkuru\AppData\Local\Temp\cc7YdLYR.s:475    .text.DMA_GetFIFOStatus:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\cc7YdLYR.s:481    .text.DMA_GetFIFOStatus:00000000 DMA_GetFIFOStatus
-C:\Users\ktkuru\AppData\Local\Temp\cc7YdLYR.s:490    .text.DMA_GetFlagStatus:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\cc7YdLYR.s:496    .text.DMA_GetFlagStatus:00000000 DMA_GetFlagStatus
-C:\Users\ktkuru\AppData\Local\Temp\cc7YdLYR.s:527    .text.DMA_GetFlagStatus:00000030 $d
-C:\Users\ktkuru\AppData\Local\Temp\cc7YdLYR.s:531    .text.DMA_ClearFlag:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\cc7YdLYR.s:537    .text.DMA_ClearFlag:00000000 DMA_ClearFlag
-C:\Users\ktkuru\AppData\Local\Temp\cc7YdLYR.s:563    .text.DMA_ClearFlag:0000002c $d
-C:\Users\ktkuru\AppData\Local\Temp\cc7YdLYR.s:567    .text.DMA_ITConfig:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\cc7YdLYR.s:573    .text.DMA_ITConfig:00000000 DMA_ITConfig
-C:\Users\ktkuru\AppData\Local\Temp\cc7YdLYR.s:606    .text.DMA_GetITStatus:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\cc7YdLYR.s:612    .text.DMA_GetITStatus:00000000 DMA_GetITStatus
-C:\Users\ktkuru\AppData\Local\Temp\cc7YdLYR.s:662    .text.DMA_GetITStatus:00000054 $d
-C:\Users\ktkuru\AppData\Local\Temp\cc7YdLYR.s:667    .text.DMA_ClearITPendingBit:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\cc7YdLYR.s:673    .text.DMA_ClearITPendingBit:00000000 DMA_ClearITPendingBit
-C:\Users\ktkuru\AppData\Local\Temp\cc7YdLYR.s:699    .text.DMA_ClearITPendingBit:0000002c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccD8dX0f.s:18     .text.DMA_DeInit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccD8dX0f.s:24     .text.DMA_DeInit:00000000 DMA_DeInit
+C:\Users\ktkuru\AppData\Local\Temp\ccD8dX0f.s:172    .text.DMA_DeInit:0000010c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccD8dX0f.s:193    .text.DMA_Init:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccD8dX0f.s:199    .text.DMA_Init:00000000 DMA_Init
+C:\Users\ktkuru\AppData\Local\Temp\ccD8dX0f.s:246    .text.DMA_Init:00000054 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccD8dX0f.s:249    .text.DMA_StructInit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccD8dX0f.s:255    .text.DMA_StructInit:00000000 DMA_StructInit
+C:\Users\ktkuru\AppData\Local\Temp\ccD8dX0f.s:278    .text.DMA_Cmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccD8dX0f.s:284    .text.DMA_Cmd:00000000 DMA_Cmd
+C:\Users\ktkuru\AppData\Local\Temp\ccD8dX0f.s:300    .text.DMA_PeriphIncOffsetSizeConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccD8dX0f.s:306    .text.DMA_PeriphIncOffsetSizeConfig:00000000 DMA_PeriphIncOffsetSizeConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccD8dX0f.s:322    .text.DMA_FlowControllerConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccD8dX0f.s:328    .text.DMA_FlowControllerConfig:00000000 DMA_FlowControllerConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccD8dX0f.s:344    .text.DMA_SetCurrDataCounter:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccD8dX0f.s:350    .text.DMA_SetCurrDataCounter:00000000 DMA_SetCurrDataCounter
+C:\Users\ktkuru\AppData\Local\Temp\ccD8dX0f.s:358    .text.DMA_GetCurrDataCounter:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccD8dX0f.s:364    .text.DMA_GetCurrDataCounter:00000000 DMA_GetCurrDataCounter
+C:\Users\ktkuru\AppData\Local\Temp\ccD8dX0f.s:373    .text.DMA_DoubleBufferModeConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccD8dX0f.s:379    .text.DMA_DoubleBufferModeConfig:00000000 DMA_DoubleBufferModeConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccD8dX0f.s:397    .text.DMA_DoubleBufferModeCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccD8dX0f.s:403    .text.DMA_DoubleBufferModeCmd:00000000 DMA_DoubleBufferModeCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccD8dX0f.s:419    .text.DMA_MemoryTargetConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccD8dX0f.s:425    .text.DMA_MemoryTargetConfig:00000000 DMA_MemoryTargetConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccD8dX0f.s:437    .text.DMA_GetCurrentMemoryTarget:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccD8dX0f.s:443    .text.DMA_GetCurrentMemoryTarget:00000000 DMA_GetCurrentMemoryTarget
+C:\Users\ktkuru\AppData\Local\Temp\ccD8dX0f.s:455    .text.DMA_GetCmdStatus:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccD8dX0f.s:461    .text.DMA_GetCmdStatus:00000000 DMA_GetCmdStatus
+C:\Users\ktkuru\AppData\Local\Temp\ccD8dX0f.s:475    .text.DMA_GetFIFOStatus:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccD8dX0f.s:481    .text.DMA_GetFIFOStatus:00000000 DMA_GetFIFOStatus
+C:\Users\ktkuru\AppData\Local\Temp\ccD8dX0f.s:490    .text.DMA_GetFlagStatus:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccD8dX0f.s:496    .text.DMA_GetFlagStatus:00000000 DMA_GetFlagStatus
+C:\Users\ktkuru\AppData\Local\Temp\ccD8dX0f.s:527    .text.DMA_GetFlagStatus:00000030 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccD8dX0f.s:531    .text.DMA_ClearFlag:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccD8dX0f.s:537    .text.DMA_ClearFlag:00000000 DMA_ClearFlag
+C:\Users\ktkuru\AppData\Local\Temp\ccD8dX0f.s:563    .text.DMA_ClearFlag:0000002c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccD8dX0f.s:567    .text.DMA_ITConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccD8dX0f.s:573    .text.DMA_ITConfig:00000000 DMA_ITConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccD8dX0f.s:606    .text.DMA_GetITStatus:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccD8dX0f.s:612    .text.DMA_GetITStatus:00000000 DMA_GetITStatus
+C:\Users\ktkuru\AppData\Local\Temp\ccD8dX0f.s:662    .text.DMA_GetITStatus:00000054 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccD8dX0f.s:667    .text.DMA_ClearITPendingBit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccD8dX0f.s:673    .text.DMA_ClearITPendingBit:00000000 DMA_ClearITPendingBit
+C:\Users\ktkuru\AppData\Local\Temp\ccD8dX0f.s:699    .text.DMA_ClearITPendingBit:0000002c $d
 
 NO UNDEFINED SYMBOLS

@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNWNxm0.s 			page 1
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccAQVvPb.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNWNxm0.s 			page 1
   58 0016 0C69     		ldr	r4, [r1, #16]
   59 0018 2343     		orrs	r3, r3, r4
   60 001a 4C69     		ldr	r4, [r1, #20]
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNWNxm0.s 			page 2
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccAQVvPb.s 			page 2
 
 
   61 001c 2343     		orrs	r3, r3, r4
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNWNxm0.s 			page 1
  118              		.align	1
  119              		.global	SAI_SlotInit
  120              		.syntax unified
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNWNxm0.s 			page 3
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccAQVvPb.s 			page 3
 
 
  121              		.thumb
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNWNxm0.s 			page 1
  180              		@ args = 0, pretend = 0, frame = 0
  181              		@ frame_needed = 0, uses_anonymous_args = 0
  182              		@ link register save eliminated.
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNWNxm0.s 			page 4
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccAQVvPb.s 			page 4
 
 
  183 0000 0823     		movs	r3, #8
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNWNxm0.s 			page 1
  243              		@ frame_needed = 0, uses_anonymous_args = 0
  244              		@ link register save eliminated.
  245 0000 0368     		ldr	r3, [r0]
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNWNxm0.s 			page 5
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccAQVvPb.s 			page 5
 
 
  246 0002 23F48053 		bic	r3, r3, #4096
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNWNxm0.s 			page 1
  306 000a 7047     		bx	lr
  307              	.L23:
  308 000c 4368     		ldr	r3, [r0, #4]
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNWNxm0.s 			page 6
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccAQVvPb.s 			page 6
 
 
  309 000e 23F02003 		bic	r3, r3, #32
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNWNxm0.s 			page 1
  370              		.syntax unified
  371              		.thumb
  372              		.thumb_func
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNWNxm0.s 			page 7
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccAQVvPb.s 			page 7
 
 
  374              	SAI_ReceiveData:
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNWNxm0.s 			page 1
  434 000a 0369     		ldr	r3, [r0, #16]
  435 000c 23EA0103 		bic	r3, r3, r1
  436 0010 0361     		str	r3, [r0, #16]
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNWNxm0.s 			page 8
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccAQVvPb.s 			page 8
 
 
  437 0012 7047     		bx	lr
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNWNxm0.s 			page 1
  497              	.L43:
  498 0014 0120     		movs	r0, #1
  499 0016 7047     		bx	lr
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNWNxm0.s 			page 9
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccAQVvPb.s 			page 9
 
 
  501              		.section	.text.SAI_ClearITPendingBit,"ax",%progbits
@@ -527,66 +527,66 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNWNxm0.s 			page 1
  549 0002 00F4E020 		and	r0, r0, #458752
  550 0006 7047     		bx	lr
  552              		.ident	"GCC: (Arm GNU Toolchain 13.3.Rel1 (Build arm-13.24)) 13.3.1 20240614"
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNWNxm0.s 			page 10
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccAQVvPb.s 			page 10
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 stm32f4xx_sai.c
-C:\Users\ktkuru\AppData\Local\Temp\ccNWNxm0.s:18     .text.SAI_DeInit:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccNWNxm0.s:24     .text.SAI_DeInit:00000000 SAI_DeInit
-C:\Users\ktkuru\AppData\Local\Temp\ccNWNxm0.s:37     .text.SAI_Init:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccNWNxm0.s:43     .text.SAI_Init:00000000 SAI_Init
-C:\Users\ktkuru\AppData\Local\Temp\ccNWNxm0.s:80     .text.SAI_Init:00000044 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccNWNxm0.s:83     .text.SAI_FrameInit:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccNWNxm0.s:89     .text.SAI_FrameInit:00000000 SAI_FrameInit
-C:\Users\ktkuru\AppData\Local\Temp\ccNWNxm0.s:115    .text.SAI_FrameInit:0000002c $d
-C:\Users\ktkuru\AppData\Local\Temp\ccNWNxm0.s:118    .text.SAI_SlotInit:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccNWNxm0.s:124    .text.SAI_SlotInit:00000000 SAI_SlotInit
-C:\Users\ktkuru\AppData\Local\Temp\ccNWNxm0.s:148    .text.SAI_StructInit:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccNWNxm0.s:154    .text.SAI_StructInit:00000000 SAI_StructInit
-C:\Users\ktkuru\AppData\Local\Temp\ccNWNxm0.s:173    .text.SAI_FrameStructInit:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccNWNxm0.s:179    .text.SAI_FrameStructInit:00000000 SAI_FrameStructInit
-C:\Users\ktkuru\AppData\Local\Temp\ccNWNxm0.s:194    .text.SAI_SlotStructInit:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccNWNxm0.s:200    .text.SAI_SlotStructInit:00000000 SAI_SlotStructInit
-C:\Users\ktkuru\AppData\Local\Temp\ccNWNxm0.s:213    .text.SAI_Cmd:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccNWNxm0.s:219    .text.SAI_Cmd:00000000 SAI_Cmd
-C:\Users\ktkuru\AppData\Local\Temp\ccNWNxm0.s:235    .text.SAI_MonoModeConfig:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccNWNxm0.s:241    .text.SAI_MonoModeConfig:00000000 SAI_MonoModeConfig
-C:\Users\ktkuru\AppData\Local\Temp\ccNWNxm0.s:254    .text.SAI_TRIStateConfig:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccNWNxm0.s:260    .text.SAI_TRIStateConfig:00000000 SAI_TRIStateConfig
-C:\Users\ktkuru\AppData\Local\Temp\ccNWNxm0.s:273    .text.SAI_CompandingModeConfig:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccNWNxm0.s:279    .text.SAI_CompandingModeConfig:00000000 SAI_CompandingModeConfig
-C:\Users\ktkuru\AppData\Local\Temp\ccNWNxm0.s:292    .text.SAI_MuteModeCmd:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccNWNxm0.s:298    .text.SAI_MuteModeCmd:00000000 SAI_MuteModeCmd
-C:\Users\ktkuru\AppData\Local\Temp\ccNWNxm0.s:314    .text.SAI_MuteValueConfig:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccNWNxm0.s:320    .text.SAI_MuteValueConfig:00000000 SAI_MuteValueConfig
-C:\Users\ktkuru\AppData\Local\Temp\ccNWNxm0.s:333    .text.SAI_MuteFrameCounterConfig:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccNWNxm0.s:339    .text.SAI_MuteFrameCounterConfig:00000000 SAI_MuteFrameCounterConfig
-C:\Users\ktkuru\AppData\Local\Temp\ccNWNxm0.s:352    .text.SAI_FlushFIFO:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccNWNxm0.s:358    .text.SAI_FlushFIFO:00000000 SAI_FlushFIFO
-C:\Users\ktkuru\AppData\Local\Temp\ccNWNxm0.s:368    .text.SAI_ReceiveData:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccNWNxm0.s:374    .text.SAI_ReceiveData:00000000 SAI_ReceiveData
-C:\Users\ktkuru\AppData\Local\Temp\ccNWNxm0.s:382    .text.SAI_SendData:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccNWNxm0.s:388    .text.SAI_SendData:00000000 SAI_SendData
-C:\Users\ktkuru\AppData\Local\Temp\ccNWNxm0.s:396    .text.SAI_DMACmd:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccNWNxm0.s:402    .text.SAI_DMACmd:00000000 SAI_DMACmd
-C:\Users\ktkuru\AppData\Local\Temp\ccNWNxm0.s:418    .text.SAI_ITConfig:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccNWNxm0.s:424    .text.SAI_ITConfig:00000000 SAI_ITConfig
-C:\Users\ktkuru\AppData\Local\Temp\ccNWNxm0.s:440    .text.SAI_GetFlagStatus:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccNWNxm0.s:446    .text.SAI_GetFlagStatus:00000000 SAI_GetFlagStatus
-C:\Users\ktkuru\AppData\Local\Temp\ccNWNxm0.s:460    .text.SAI_ClearFlag:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccNWNxm0.s:466    .text.SAI_ClearFlag:00000000 SAI_ClearFlag
-C:\Users\ktkuru\AppData\Local\Temp\ccNWNxm0.s:476    .text.SAI_GetITStatus:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccNWNxm0.s:482    .text.SAI_GetITStatus:00000000 SAI_GetITStatus
-C:\Users\ktkuru\AppData\Local\Temp\ccNWNxm0.s:502    .text.SAI_ClearITPendingBit:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccNWNxm0.s:508    .text.SAI_ClearITPendingBit:00000000 SAI_ClearITPendingBit
-C:\Users\ktkuru\AppData\Local\Temp\ccNWNxm0.s:518    .text.SAI_GetCmdStatus:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccNWNxm0.s:524    .text.SAI_GetCmdStatus:00000000 SAI_GetCmdStatus
-C:\Users\ktkuru\AppData\Local\Temp\ccNWNxm0.s:538    .text.SAI_GetFIFOStatus:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccNWNxm0.s:544    .text.SAI_GetFIFOStatus:00000000 SAI_GetFIFOStatus
+C:\Users\ktkuru\AppData\Local\Temp\ccAQVvPb.s:18     .text.SAI_DeInit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccAQVvPb.s:24     .text.SAI_DeInit:00000000 SAI_DeInit
+C:\Users\ktkuru\AppData\Local\Temp\ccAQVvPb.s:37     .text.SAI_Init:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccAQVvPb.s:43     .text.SAI_Init:00000000 SAI_Init
+C:\Users\ktkuru\AppData\Local\Temp\ccAQVvPb.s:80     .text.SAI_Init:00000044 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccAQVvPb.s:83     .text.SAI_FrameInit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccAQVvPb.s:89     .text.SAI_FrameInit:00000000 SAI_FrameInit
+C:\Users\ktkuru\AppData\Local\Temp\ccAQVvPb.s:115    .text.SAI_FrameInit:0000002c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccAQVvPb.s:118    .text.SAI_SlotInit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccAQVvPb.s:124    .text.SAI_SlotInit:00000000 SAI_SlotInit
+C:\Users\ktkuru\AppData\Local\Temp\ccAQVvPb.s:148    .text.SAI_StructInit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccAQVvPb.s:154    .text.SAI_StructInit:00000000 SAI_StructInit
+C:\Users\ktkuru\AppData\Local\Temp\ccAQVvPb.s:173    .text.SAI_FrameStructInit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccAQVvPb.s:179    .text.SAI_FrameStructInit:00000000 SAI_FrameStructInit
+C:\Users\ktkuru\AppData\Local\Temp\ccAQVvPb.s:194    .text.SAI_SlotStructInit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccAQVvPb.s:200    .text.SAI_SlotStructInit:00000000 SAI_SlotStructInit
+C:\Users\ktkuru\AppData\Local\Temp\ccAQVvPb.s:213    .text.SAI_Cmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccAQVvPb.s:219    .text.SAI_Cmd:00000000 SAI_Cmd
+C:\Users\ktkuru\AppData\Local\Temp\ccAQVvPb.s:235    .text.SAI_MonoModeConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccAQVvPb.s:241    .text.SAI_MonoModeConfig:00000000 SAI_MonoModeConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccAQVvPb.s:254    .text.SAI_TRIStateConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccAQVvPb.s:260    .text.SAI_TRIStateConfig:00000000 SAI_TRIStateConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccAQVvPb.s:273    .text.SAI_CompandingModeConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccAQVvPb.s:279    .text.SAI_CompandingModeConfig:00000000 SAI_CompandingModeConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccAQVvPb.s:292    .text.SAI_MuteModeCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccAQVvPb.s:298    .text.SAI_MuteModeCmd:00000000 SAI_MuteModeCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccAQVvPb.s:314    .text.SAI_MuteValueConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccAQVvPb.s:320    .text.SAI_MuteValueConfig:00000000 SAI_MuteValueConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccAQVvPb.s:333    .text.SAI_MuteFrameCounterConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccAQVvPb.s:339    .text.SAI_MuteFrameCounterConfig:00000000 SAI_MuteFrameCounterConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccAQVvPb.s:352    .text.SAI_FlushFIFO:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccAQVvPb.s:358    .text.SAI_FlushFIFO:00000000 SAI_FlushFIFO
+C:\Users\ktkuru\AppData\Local\Temp\ccAQVvPb.s:368    .text.SAI_ReceiveData:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccAQVvPb.s:374    .text.SAI_ReceiveData:00000000 SAI_ReceiveData
+C:\Users\ktkuru\AppData\Local\Temp\ccAQVvPb.s:382    .text.SAI_SendData:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccAQVvPb.s:388    .text.SAI_SendData:00000000 SAI_SendData
+C:\Users\ktkuru\AppData\Local\Temp\ccAQVvPb.s:396    .text.SAI_DMACmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccAQVvPb.s:402    .text.SAI_DMACmd:00000000 SAI_DMACmd
+C:\Users\ktkuru\AppData\Local\Temp\ccAQVvPb.s:418    .text.SAI_ITConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccAQVvPb.s:424    .text.SAI_ITConfig:00000000 SAI_ITConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccAQVvPb.s:440    .text.SAI_GetFlagStatus:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccAQVvPb.s:446    .text.SAI_GetFlagStatus:00000000 SAI_GetFlagStatus
+C:\Users\ktkuru\AppData\Local\Temp\ccAQVvPb.s:460    .text.SAI_ClearFlag:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccAQVvPb.s:466    .text.SAI_ClearFlag:00000000 SAI_ClearFlag
+C:\Users\ktkuru\AppData\Local\Temp\ccAQVvPb.s:476    .text.SAI_GetITStatus:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccAQVvPb.s:482    .text.SAI_GetITStatus:00000000 SAI_GetITStatus
+C:\Users\ktkuru\AppData\Local\Temp\ccAQVvPb.s:502    .text.SAI_ClearITPendingBit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccAQVvPb.s:508    .text.SAI_ClearITPendingBit:00000000 SAI_ClearITPendingBit
+C:\Users\ktkuru\AppData\Local\Temp\ccAQVvPb.s:518    .text.SAI_GetCmdStatus:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccAQVvPb.s:524    .text.SAI_GetCmdStatus:00000000 SAI_GetCmdStatus
+C:\Users\ktkuru\AppData\Local\Temp\ccAQVvPb.s:538    .text.SAI_GetFIFOStatus:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccAQVvPb.s:544    .text.SAI_GetFIFOStatus:00000000 SAI_GetFIFOStatus
 
 UNDEFINED SYMBOLS
 RCC_APB2PeriphResetCmd
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNWNxm0.s 			page 11
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccAQVvPb.s 			page 11
 
 

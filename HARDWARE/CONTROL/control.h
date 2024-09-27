@@ -36,6 +36,13 @@
 #define TargetDis   0
 #endif
 
+//圆周率
+#define PI 3.1415926
+//到地面距离
+#define heigh 86
+
+
+
 
 
 
@@ -53,7 +60,8 @@ void GetPolar(float roll,float pitch);
 
 /* 第一项  */
 
-
+float PidControl_LineMove(float target, float feedback);
+void Task1_LineMove(float R);
 
 /* 第二项  */
 

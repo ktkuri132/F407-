@@ -1,6 +1,6 @@
 .\objects\mpu6050.o: ..\HARDWARE\MPU6050\mpu6050.c
 .\objects\mpu6050.o: ..\HARDWARE\MPU6050\mpu6050.h
-.\objects\mpu6050.o: ..\HARDWARE\MPU6050\mpuiic.h
+.\objects\mpu6050.o: ..\HARDWARE\IIC\myiic.h
 .\objects\mpu6050.o: ..\SYSTEM\sys\sys.h
 .\objects\mpu6050.o: ..\USER\stm32f4xx.h
 .\objects\mpu6050.o: C:\Users\ktkuru\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\core_cm4.h

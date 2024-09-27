@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccuNRg3U.s 			page 1
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccCbG5bs.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -26,8 +26,8 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccuNRg3U.s 			page 1
   24              	BSP_NVIC_IT_Config:
   25              		@ args = 0, pretend = 0, frame = 8
   26              		@ frame_needed = 0, uses_anonymous_args = 0
-  27 0000 30B5     		push	{r4, r5, lr}
-  28 0002 83B0     		sub	sp, sp, #12
+  27 0000 70B5     		push	{r4, r5, r6, lr}
+  28 0002 82B0     		sub	sp, sp, #8
   29 0004 4FF44070 		mov	r0, #768
   30 0008 FFF7FEFF 		bl	NVIC_PriorityGroupConfig
   31 000c 2823     		movs	r3, #40
@@ -39,43 +39,50 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccuNRg3U.s 			page 1
   37 001e 8DF80740 		strb	r4, [sp, #7]
   38 0022 01A8     		add	r0, sp, #4
   39 0024 FFF7FEFF 		bl	NVIC_Init
-  40 0028 2523     		movs	r3, #37
+  40 0028 1C23     		movs	r3, #28
   41 002a 8DF80430 		strb	r3, [sp, #4]
-  42 002e 0223     		movs	r3, #2
-  43 0030 8DF80530 		strb	r3, [sp, #5]
+  42 002e 0226     		movs	r6, #2
+  43 0030 8DF80560 		strb	r6, [sp, #5]
   44 0034 8DF80650 		strb	r5, [sp, #6]
   45 0038 8DF80740 		strb	r4, [sp, #7]
   46 003c 01A8     		add	r0, sp, #4
   47 003e FFF7FEFF 		bl	NVIC_Init
-  48 0042 2623     		movs	r3, #38
+  48 0042 2523     		movs	r3, #37
   49 0044 8DF80430 		strb	r3, [sp, #4]
-  50 0048 8DF80550 		strb	r5, [sp, #5]
+  50 0048 8DF80560 		strb	r6, [sp, #5]
   51 004c 8DF80650 		strb	r5, [sp, #6]
   52 0050 8DF80740 		strb	r4, [sp, #7]
   53 0054 01A8     		add	r0, sp, #4
   54 0056 FFF7FEFF 		bl	NVIC_Init
-  55 005a 2723     		movs	r3, #39
+  55 005a 2623     		movs	r3, #38
   56 005c 8DF80430 		strb	r3, [sp, #4]
-  57 0060 0323     		movs	r3, #3
-  58 0062 8DF80530 		strb	r3, [sp, #5]
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccuNRg3U.s 			page 2
+  57 0060 8DF80550 		strb	r5, [sp, #5]
+  58 0064 8DF80650 		strb	r5, [sp, #6]
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccCbG5bs.s 			page 2
 
 
-  59 0066 8DF80650 		strb	r5, [sp, #6]
-  60 006a 8DF80740 		strb	r4, [sp, #7]
-  61 006e 01A8     		add	r0, sp, #4
-  62 0070 FFF7FEFF 		bl	NVIC_Init
-  63 0074 03B0     		add	sp, sp, #12
-  64              		@ sp needed
-  65 0076 30BD     		pop	{r4, r5, pc}
-  67              		.ident	"GCC: (Arm GNU Toolchain 13.3.Rel1 (Build arm-13.24)) 13.3.1 20240614"
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccuNRg3U.s 			page 3
+  59 0068 8DF80740 		strb	r4, [sp, #7]
+  60 006c 01A8     		add	r0, sp, #4
+  61 006e FFF7FEFF 		bl	NVIC_Init
+  62 0072 2723     		movs	r3, #39
+  63 0074 8DF80430 		strb	r3, [sp, #4]
+  64 0078 0323     		movs	r3, #3
+  65 007a 8DF80530 		strb	r3, [sp, #5]
+  66 007e 8DF80650 		strb	r5, [sp, #6]
+  67 0082 8DF80740 		strb	r4, [sp, #7]
+  68 0086 01A8     		add	r0, sp, #4
+  69 0088 FFF7FEFF 		bl	NVIC_Init
+  70 008c 02B0     		add	sp, sp, #8
+  71              		@ sp needed
+  72 008e 70BD     		pop	{r4, r5, r6, pc}
+  74              		.ident	"GCC: (Arm GNU Toolchain 13.3.Rel1 (Build arm-13.24)) 13.3.1 20240614"
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccCbG5bs.s 			page 3
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 NVIC.c
-C:\Users\ktkuru\AppData\Local\Temp\ccuNRg3U.s:18     .text.BSP_NVIC_IT_Config:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccuNRg3U.s:24     .text.BSP_NVIC_IT_Config:00000000 BSP_NVIC_IT_Config
+C:\Users\ktkuru\AppData\Local\Temp\ccCbG5bs.s:18     .text.BSP_NVIC_IT_Config:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccCbG5bs.s:24     .text.BSP_NVIC_IT_Config:00000000 BSP_NVIC_IT_Config
 
 UNDEFINED SYMBOLS
 NVIC_PriorityGroupConfig

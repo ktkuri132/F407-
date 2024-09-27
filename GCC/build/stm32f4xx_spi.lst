@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccwA6nRw.s 			page 1
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNj9fFw.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccwA6nRw.s 			page 1
   56              	.L10:
   57 003e 0121     		movs	r1, #1
   58 0040 4FF48040 		mov	r0, #16384
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccwA6nRw.s 			page 2
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNj9fFw.s 			page 2
 
 
   59 0044 FFF7FEFF 		bl	RCC_APB1PeriphResetCmd
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccwA6nRw.s 			page 1
  115              		@ frame_needed = 0, uses_anonymous_args = 0
  116 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
  117 0004 0288     		ldrh	r2, [r0]
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccwA6nRw.s 			page 3
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNj9fFw.s 			page 3
 
 
  118 0006 02F44152 		and	r2, r2, #12352
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccwA6nRw.s 			page 1
  174 0028 394B     		ldr	r3, .L33
  175 002a 9B68     		ldr	r3, [r3, #8]
  176 002c 13F4000F 		tst	r3, #8388608
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccwA6nRw.s 			page 4
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNj9fFw.s 			page 4
 
 
  177 0030 04D0     		beq	.L22
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccwA6nRw.s 			page 1
  231 00ca 8989     		ldrh	r1, [r1, #12]
  232 00cc 4EEA0101 		orr	r1, lr, r1
  233 00d0 4CEA0101 		orr	r1, ip, r1
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccwA6nRw.s 			page 5
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNj9fFw.s 			page 5
 
 
  234 00d4 0B43     		orrs	r3, r3, r1
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccwA6nRw.s 			page 1
  290 0014 0382     		strh	r3, [r0, #16]	@ movhi
  291 0016 7047     		bx	lr
  293              		.section	.text.I2S_StructInit,"ax",%progbits
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccwA6nRw.s 			page 6
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNj9fFw.s 			page 6
 
 
  294              		.align	1
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccwA6nRw.s 			page 1
  353 0006 43F48063 		orr	r3, r3, #1024
  354 000a 8383     		strh	r3, [r0, #28]	@ movhi
  355 000c 7047     		bx	lr
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccwA6nRw.s 			page 7
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNj9fFw.s 			page 7
 
 
  356              	.L41:
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccwA6nRw.s 			page 1
  415              		.syntax unified
  416              		.thumb
  417              		.thumb_func
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccwA6nRw.s 			page 8
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNj9fFw.s 			page 8
 
 
  419              	SPI_NSSInternalSoftwareConfig:
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccwA6nRw.s 			page 1
  477 0004 9BB2     		uxth	r3, r3
  478 0006 43F01003 		orr	r3, r3, #16
  479 000a 8380     		strh	r3, [r0, #4]	@ movhi
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccwA6nRw.s 			page 9
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNj9fFw.s 			page 9
 
 
  480 000c 7047     		bx	lr
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccwA6nRw.s 			page 1
  537              		.thumb
  538              		.thumb_func
  540              	SPI_I2S_ReceiveData:
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccwA6nRw.s 			page 10
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNj9fFw.s 			page 10
 
 
  541              		@ args = 0, pretend = 0, frame = 0
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccwA6nRw.s 			page 1
  601 0008 0380     		strh	r3, [r0]	@ movhi
  602 000a 7047     		bx	lr
  604              		.section	.text.SPI_GetCRC,"ax",%progbits
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccwA6nRw.s 			page 11
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNj9fFw.s 			page 11
 
 
  605              		.align	1
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccwA6nRw.s 			page 1
  665              		.section	.text.SPI_I2S_ITConfig,"ax",%progbits
  666              		.align	1
  667              		.global	SPI_I2S_ITConfig
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccwA6nRw.s 			page 12
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNj9fFw.s 			page 12
 
 
  668              		.syntax unified
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccwA6nRw.s 			page 1
  727 0004 0181     		strh	r1, [r0, #8]	@ movhi
  728 0006 7047     		bx	lr
  730              		.section	.text.SPI_I2S_GetITStatus,"ax",%progbits
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccwA6nRw.s 			page 13
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNj9fFw.s 			page 13
 
 
  731              		.align	1
@@ -770,67 +770,67 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccwA6nRw.s 			page 1
  780 000e 0381     		strh	r3, [r0, #8]	@ movhi
  781 0010 7047     		bx	lr
  783              		.ident	"GCC: (Arm GNU Toolchain 13.3.Rel1 (Build arm-13.24)) 13.3.1 20240614"
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccwA6nRw.s 			page 14
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNj9fFw.s 			page 14
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 stm32f4xx_spi.c
-C:\Users\ktkuru\AppData\Local\Temp\ccwA6nRw.s:18     .text.SPI_I2S_DeInit:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccwA6nRw.s:24     .text.SPI_I2S_DeInit:00000000 SPI_I2S_DeInit
-C:\Users\ktkuru\AppData\Local\Temp\ccwA6nRw.s:99     .text.SPI_I2S_DeInit:000000ac $d
-C:\Users\ktkuru\AppData\Local\Temp\ccwA6nRw.s:107    .text.SPI_Init:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccwA6nRw.s:113    .text.SPI_Init:00000000 SPI_Init
-C:\Users\ktkuru\AppData\Local\Temp\ccwA6nRw.s:146    .text.I2S_Init:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccwA6nRw.s:152    .text.I2S_Init:00000000 I2S_Init
-C:\Users\ktkuru\AppData\Local\Temp\ccwA6nRw.s:264    .text.I2S_Init:00000110 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccwA6nRw.s:270    .text.SPI_StructInit:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccwA6nRw.s:276    .text.SPI_StructInit:00000000 SPI_StructInit
-C:\Users\ktkuru\AppData\Local\Temp\ccwA6nRw.s:294    .text.I2S_StructInit:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccwA6nRw.s:300    .text.I2S_StructInit:00000000 I2S_StructInit
-C:\Users\ktkuru\AppData\Local\Temp\ccwA6nRw.s:315    .text.SPI_Cmd:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccwA6nRw.s:321    .text.SPI_Cmd:00000000 SPI_Cmd
-C:\Users\ktkuru\AppData\Local\Temp\ccwA6nRw.s:340    .text.I2S_Cmd:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccwA6nRw.s:346    .text.I2S_Cmd:00000000 I2S_Cmd
-C:\Users\ktkuru\AppData\Local\Temp\ccwA6nRw.s:365    .text.SPI_DataSizeConfig:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccwA6nRw.s:371    .text.SPI_DataSizeConfig:00000000 SPI_DataSizeConfig
-C:\Users\ktkuru\AppData\Local\Temp\ccwA6nRw.s:387    .text.SPI_BiDirectionalLineConfig:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccwA6nRw.s:393    .text.SPI_BiDirectionalLineConfig:00000000 SPI_BiDirectionalLineConfig
-C:\Users\ktkuru\AppData\Local\Temp\ccwA6nRw.s:413    .text.SPI_NSSInternalSoftwareConfig:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccwA6nRw.s:419    .text.SPI_NSSInternalSoftwareConfig:00000000 SPI_NSSInternalSoftwareConfig
-C:\Users\ktkuru\AppData\Local\Temp\ccwA6nRw.s:440    .text.SPI_SSOutputCmd:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccwA6nRw.s:446    .text.SPI_SSOutputCmd:00000000 SPI_SSOutputCmd
-C:\Users\ktkuru\AppData\Local\Temp\ccwA6nRw.s:465    .text.SPI_TIModeCmd:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccwA6nRw.s:471    .text.SPI_TIModeCmd:00000000 SPI_TIModeCmd
-C:\Users\ktkuru\AppData\Local\Temp\ccwA6nRw.s:490    .text.I2S_FullDuplexConfig:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccwA6nRw.s:496    .text.I2S_FullDuplexConfig:00000000 I2S_FullDuplexConfig
-C:\Users\ktkuru\AppData\Local\Temp\ccwA6nRw.s:534    .text.SPI_I2S_ReceiveData:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccwA6nRw.s:540    .text.SPI_I2S_ReceiveData:00000000 SPI_I2S_ReceiveData
-C:\Users\ktkuru\AppData\Local\Temp\ccwA6nRw.s:549    .text.SPI_I2S_SendData:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccwA6nRw.s:555    .text.SPI_I2S_SendData:00000000 SPI_I2S_SendData
-C:\Users\ktkuru\AppData\Local\Temp\ccwA6nRw.s:563    .text.SPI_CalculateCRC:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccwA6nRw.s:569    .text.SPI_CalculateCRC:00000000 SPI_CalculateCRC
-C:\Users\ktkuru\AppData\Local\Temp\ccwA6nRw.s:588    .text.SPI_TransmitCRC:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccwA6nRw.s:594    .text.SPI_TransmitCRC:00000000 SPI_TransmitCRC
-C:\Users\ktkuru\AppData\Local\Temp\ccwA6nRw.s:605    .text.SPI_GetCRC:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccwA6nRw.s:611    .text.SPI_GetCRC:00000000 SPI_GetCRC
-C:\Users\ktkuru\AppData\Local\Temp\ccwA6nRw.s:626    .text.SPI_GetCRCPolynomial:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccwA6nRw.s:632    .text.SPI_GetCRCPolynomial:00000000 SPI_GetCRCPolynomial
-C:\Users\ktkuru\AppData\Local\Temp\ccwA6nRw.s:641    .text.SPI_I2S_DMACmd:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccwA6nRw.s:647    .text.SPI_I2S_DMACmd:00000000 SPI_I2S_DMACmd
-C:\Users\ktkuru\AppData\Local\Temp\ccwA6nRw.s:666    .text.SPI_I2S_ITConfig:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccwA6nRw.s:672    .text.SPI_I2S_ITConfig:00000000 SPI_I2S_ITConfig
-C:\Users\ktkuru\AppData\Local\Temp\ccwA6nRw.s:695    .text.SPI_I2S_GetFlagStatus:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccwA6nRw.s:701    .text.SPI_I2S_GetFlagStatus:00000000 SPI_I2S_GetFlagStatus
-C:\Users\ktkuru\AppData\Local\Temp\ccwA6nRw.s:715    .text.SPI_I2S_ClearFlag:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccwA6nRw.s:721    .text.SPI_I2S_ClearFlag:00000000 SPI_I2S_ClearFlag
-C:\Users\ktkuru\AppData\Local\Temp\ccwA6nRw.s:731    .text.SPI_I2S_GetITStatus:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccwA6nRw.s:737    .text.SPI_I2S_GetITStatus:00000000 SPI_I2S_GetITStatus
-C:\Users\ktkuru\AppData\Local\Temp\ccwA6nRw.s:764    .text.SPI_I2S_ClearITPendingBit:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccwA6nRw.s:770    .text.SPI_I2S_ClearITPendingBit:00000000 SPI_I2S_ClearITPendingBit
+C:\Users\ktkuru\AppData\Local\Temp\ccNj9fFw.s:18     .text.SPI_I2S_DeInit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccNj9fFw.s:24     .text.SPI_I2S_DeInit:00000000 SPI_I2S_DeInit
+C:\Users\ktkuru\AppData\Local\Temp\ccNj9fFw.s:99     .text.SPI_I2S_DeInit:000000ac $d
+C:\Users\ktkuru\AppData\Local\Temp\ccNj9fFw.s:107    .text.SPI_Init:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccNj9fFw.s:113    .text.SPI_Init:00000000 SPI_Init
+C:\Users\ktkuru\AppData\Local\Temp\ccNj9fFw.s:146    .text.I2S_Init:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccNj9fFw.s:152    .text.I2S_Init:00000000 I2S_Init
+C:\Users\ktkuru\AppData\Local\Temp\ccNj9fFw.s:264    .text.I2S_Init:00000110 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccNj9fFw.s:270    .text.SPI_StructInit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccNj9fFw.s:276    .text.SPI_StructInit:00000000 SPI_StructInit
+C:\Users\ktkuru\AppData\Local\Temp\ccNj9fFw.s:294    .text.I2S_StructInit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccNj9fFw.s:300    .text.I2S_StructInit:00000000 I2S_StructInit
+C:\Users\ktkuru\AppData\Local\Temp\ccNj9fFw.s:315    .text.SPI_Cmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccNj9fFw.s:321    .text.SPI_Cmd:00000000 SPI_Cmd
+C:\Users\ktkuru\AppData\Local\Temp\ccNj9fFw.s:340    .text.I2S_Cmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccNj9fFw.s:346    .text.I2S_Cmd:00000000 I2S_Cmd
+C:\Users\ktkuru\AppData\Local\Temp\ccNj9fFw.s:365    .text.SPI_DataSizeConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccNj9fFw.s:371    .text.SPI_DataSizeConfig:00000000 SPI_DataSizeConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccNj9fFw.s:387    .text.SPI_BiDirectionalLineConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccNj9fFw.s:393    .text.SPI_BiDirectionalLineConfig:00000000 SPI_BiDirectionalLineConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccNj9fFw.s:413    .text.SPI_NSSInternalSoftwareConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccNj9fFw.s:419    .text.SPI_NSSInternalSoftwareConfig:00000000 SPI_NSSInternalSoftwareConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccNj9fFw.s:440    .text.SPI_SSOutputCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccNj9fFw.s:446    .text.SPI_SSOutputCmd:00000000 SPI_SSOutputCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccNj9fFw.s:465    .text.SPI_TIModeCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccNj9fFw.s:471    .text.SPI_TIModeCmd:00000000 SPI_TIModeCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccNj9fFw.s:490    .text.I2S_FullDuplexConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccNj9fFw.s:496    .text.I2S_FullDuplexConfig:00000000 I2S_FullDuplexConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccNj9fFw.s:534    .text.SPI_I2S_ReceiveData:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccNj9fFw.s:540    .text.SPI_I2S_ReceiveData:00000000 SPI_I2S_ReceiveData
+C:\Users\ktkuru\AppData\Local\Temp\ccNj9fFw.s:549    .text.SPI_I2S_SendData:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccNj9fFw.s:555    .text.SPI_I2S_SendData:00000000 SPI_I2S_SendData
+C:\Users\ktkuru\AppData\Local\Temp\ccNj9fFw.s:563    .text.SPI_CalculateCRC:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccNj9fFw.s:569    .text.SPI_CalculateCRC:00000000 SPI_CalculateCRC
+C:\Users\ktkuru\AppData\Local\Temp\ccNj9fFw.s:588    .text.SPI_TransmitCRC:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccNj9fFw.s:594    .text.SPI_TransmitCRC:00000000 SPI_TransmitCRC
+C:\Users\ktkuru\AppData\Local\Temp\ccNj9fFw.s:605    .text.SPI_GetCRC:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccNj9fFw.s:611    .text.SPI_GetCRC:00000000 SPI_GetCRC
+C:\Users\ktkuru\AppData\Local\Temp\ccNj9fFw.s:626    .text.SPI_GetCRCPolynomial:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccNj9fFw.s:632    .text.SPI_GetCRCPolynomial:00000000 SPI_GetCRCPolynomial
+C:\Users\ktkuru\AppData\Local\Temp\ccNj9fFw.s:641    .text.SPI_I2S_DMACmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccNj9fFw.s:647    .text.SPI_I2S_DMACmd:00000000 SPI_I2S_DMACmd
+C:\Users\ktkuru\AppData\Local\Temp\ccNj9fFw.s:666    .text.SPI_I2S_ITConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccNj9fFw.s:672    .text.SPI_I2S_ITConfig:00000000 SPI_I2S_ITConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccNj9fFw.s:695    .text.SPI_I2S_GetFlagStatus:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccNj9fFw.s:701    .text.SPI_I2S_GetFlagStatus:00000000 SPI_I2S_GetFlagStatus
+C:\Users\ktkuru\AppData\Local\Temp\ccNj9fFw.s:715    .text.SPI_I2S_ClearFlag:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccNj9fFw.s:721    .text.SPI_I2S_ClearFlag:00000000 SPI_I2S_ClearFlag
+C:\Users\ktkuru\AppData\Local\Temp\ccNj9fFw.s:731    .text.SPI_I2S_GetITStatus:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccNj9fFw.s:737    .text.SPI_I2S_GetITStatus:00000000 SPI_I2S_GetITStatus
+C:\Users\ktkuru\AppData\Local\Temp\ccNj9fFw.s:764    .text.SPI_I2S_ClearITPendingBit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccNj9fFw.s:770    .text.SPI_I2S_ClearITPendingBit:00000000 SPI_I2S_ClearITPendingBit
 
 UNDEFINED SYMBOLS
 RCC_APB2PeriphResetCmd
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccwA6nRw.s 			page 15
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNj9fFw.s 			page 15
 
 
 RCC_APB1PeriphResetCmd

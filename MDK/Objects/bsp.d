@@ -39,9 +39,10 @@
 .\objects\bsp.o: C:\Users\ktkuru\AppData\Local\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\bsp.o: ..\SYSTEM\sys\sys.h
 .\objects\bsp.o: ..\HARDWARE\BSP\bsp.h
-.\objects\bsp.o: ..\HARDWARE\OLED_IIC\OLED.h
+.\objects\bsp.o: ..\HARDWARE\OLED_SPI\OLED.h
+.\objects\bsp.o: ..\HARDWARE\OLED_SPI\OLED_Data.h
 .\objects\bsp.o: ..\HARDWARE\CONTROL\control.h
 .\objects\bsp.o: ..\HARDWARE\MPU6050\mpu6050.h
-.\objects\bsp.o: ..\HARDWARE\MPU6050\mpuiic.h
+.\objects\bsp.o: ..\HARDWARE\IIC\myiic.h
 .\objects\bsp.o: ..\HARDWARE\MPU6050\eMPL\inv_mpu.h
 .\objects\bsp.o: ..\SYSTEM\delay\delay.h
