@@ -129,10 +129,10 @@ void Task1_LineMove(float R)
     A = atanf(R/0.86)*180.0f/PI;
     target_angle = A*sinf(2*PI*time/T);
     
-    printf("%f,%f\r\n",target_angle,pitch);
+    printf("%f,%f\r\n",target_angle,roll);
 
     VOutput = PidControl_LineMove(target_angle,roll);
-    LOutput = PidControl_LineMove(target_angle,pitch);
+    LOutput = PidControl_LineMove(0,pitch);
 //0.00983---0.15
     time+=0.0104223;
     if(time<T)
