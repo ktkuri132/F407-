@@ -240,7 +240,7 @@ uint16_t ADCvalue_convert(uint16_t adcValue)
 }
 
 
-/*
+#ifdef __GNUC__
 __INLINE void function_goto(int (*pfunction)())
 {
     __ASM __IO 
@@ -250,4 +250,4 @@ __INLINE void function_goto(int (*pfunction)())
         ::"r"(pfunction)
     );
 }
-*/
+#endif
