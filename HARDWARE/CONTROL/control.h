@@ -41,7 +41,15 @@
 //到地面距离
 #define heigh 86
 
-
+//PID结构体
+typedef struct PID
+{
+    float Kp;
+    float Ki;
+    float Kd;
+    float (*PIDControl)(float target, float feedback,struct PID* pid);
+    
+};
 
 
 
@@ -60,19 +68,22 @@ void GetPolar(float roll,float pitch);
 
 /* 第一项  */
 
-float PidControl_LineMove(float target, float feedback);
+float PidControl_LineMove(float target, float feedback,struct PID* pid);
 void Task1_LineMove(float R);
 
 /* 第二项  */
 
 
 /* 第三项  */
-
+void Task3_AngleMove(float angle,float R);
 
 /* 第四项  */
 
-float PidControl_Stop(float target, float feedback);
+float PidControl_Stop(float target, float feedback,struct PID* pid);
 void Task4_StopFast();
 void PWM_Allocation(float Output);
 
+
+/* 第五项  */
+void Task5_CircleMove(float R);
 #endif 

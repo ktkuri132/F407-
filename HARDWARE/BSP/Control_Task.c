@@ -28,14 +28,8 @@
 extern float pitch,roll,yaw,dis;
 
 
-//控制制动PID参数
-float T4SKp=900,
-      T4SKi=-1,
-      T4SKd=0;
 
-float T1LKp=750,//520
-      T1LKi=0,
-      T1LKd=-350;//-65.5
+
 
 /*
 
@@ -64,7 +58,9 @@ void EXTI15_10_IRQHandler(void)
 
 
         //Task4_StopFast();    //调用控制函数--->第4项
-        Task1_LineMove(Target_dis);    //调用控制函数--->第1项
+        //Task1_LineMove(Target_dis);    //调用控制函数--->第1项
+        //Task3_AngleMove(45,0.15);
+        Task5_CircleMove(0.2);
     }
 }
 
@@ -106,7 +102,9 @@ void Task4_StopFast()
     static float LevelOutput;
     */
     static float Output;
-    Output = PidControl_Stop(TargetDis,dis);
+    static struct PID Taks4Pid={900,-1,0,PidControl_Stop};
+    
+    Output = Taks4Pid.PIDControl(TargetDis,dis, &Taks4Pid);
     //printf("Output:%f\n",Output);
     PWM_Allocation(Output);
   
@@ -125,14 +123,15 @@ void Task1_LineMove(float R)
     static float VOutput,LOutput;
     static float A;
     static float time=0;
-
+    static struct PID Taks1Pid={750,0,-350,PidControl_LineMove};
+    
     A = atanf(R/0.86)*180.0f/PI;
     target_angle = A*sinf(2*PI*time/T);
     
-    printf("%f,%f\r\n",target_angle,roll);
+    printf("%f，%f\r\n",target_angle,roll);
 
-    VOutput = PidControl_LineMove(target_angle,roll);
-    LOutput = PidControl_LineMove(0,pitch);
+    VOutput = Taks1Pid.PIDControl(target_angle,roll, &Taks1Pid);
+    LOutput = Taks1Pid.PIDControl(0,pitch, &Taks1Pid);
 //0.00983---0.15
     time+=0.0104223;
     if(time<T)
@@ -141,18 +140,12 @@ void Task1_LineMove(float R)
         {
             Motor_Cmd(VerticalOut,ENABLE);
             Motor_Cmd(VerticalIn,DISABLE);
-            //Motor_Cmd(LevelOut,ENABLE);
-            //Motor_Cmd(LevelIn,DISABLE);
-            //Motor->MLevelOut =(uint32_t)LOutput;
             Motor->MVerticalOut =(uint32_t)VOutput;
         }
         else
         {
             Motor_Cmd(VerticalOut,DISABLE);
             Motor_Cmd(VerticalIn,ENABLE);
-            //Motor_Cmd(LevelOut,DISABLE);
-            //Motor_Cmd(LevelIn,ENABLE);
-            //Motor->MLevelIn =(uint32_t)(-LOutput);
             Motor->MVerticalIn =(uint32_t)(-VOutput);
         }
     }
@@ -161,11 +154,145 @@ void Task1_LineMove(float R)
 }
 
 
+
 /*
     第三项  角度可调的单摆运动
 */
-void Task3_AngleMove()
+void Task3_AngleMove(float angle,float R)
 {
+    static float VOutput,LOutput;
+    static float A1,A2;
+    static float time=0;
+    static float Vtarget_angle,Ltarget_angle;
+    static struct PID Taks3Pid={150,0,0,PidControl_LineMove};
+    static struct  PID Taks3Pid2={100,0,0,PidControl_LineMove};
+
     
 
+    //angle = angle+5;
+    angle = angle*PI/180.0f;
+
+    A1 = asinf(R*cosf(angle)/0.86)*180.0f/PI;
+    A2 = asinf(R*sinf(angle)/0.86)*180.0f/PI;
+	
+		//printf("%f,%f\r\n",A1,A2);
+			
+    Vtarget_angle = A1*sinf(2*PI*time/T);
+    Ltarget_angle = A2*sinf(2*PI*time/T);
+
+    printf("%f,%f\r\n",Vtarget_angle,Ltarget_angle);
+
+    VOutput = Taks3Pid.PIDControl(Vtarget_angle,roll,&Taks3Pid);
+    LOutput = Taks3Pid2.PIDControl(Ltarget_angle,pitch,&Taks3Pid2);
+
+    time+=0.0104223;
+    if(time<T)
+    {
+        if(VOutput>0)
+        {
+            Motor_Cmd(VerticalOut,ENABLE);
+            Motor_Cmd(VerticalIn,DISABLE);
+            Motor->MVerticalOut =(uint32_t)VOutput;
+            if(LOutput>0)
+            {
+                Motor_Cmd(LevelOut,ENABLE);
+                Motor_Cmd(LevelIn,DISABLE);
+                Motor->MLevelOut =(uint32_t)LOutput;
+            }
+            else
+            {
+                Motor_Cmd(LevelOut,DISABLE);
+                Motor_Cmd(LevelIn,ENABLE);
+                Motor->MLevelIn =(uint32_t)(-LOutput);
+            }
+        }
+        else
+        {
+            Motor_Cmd(VerticalOut,DISABLE);
+            Motor_Cmd(VerticalIn,ENABLE);
+            Motor->MVerticalIn =(uint32_t)(-VOutput);
+            if(LOutput>0)
+            {
+                Motor_Cmd(LevelOut,ENABLE);
+                Motor_Cmd(LevelIn,DISABLE);
+                Motor->MLevelOut =(uint32_t)LOutput;
+            }
+            else
+            {
+                Motor_Cmd(LevelOut,DISABLE);
+                Motor_Cmd(LevelIn,ENABLE);
+                Motor->MLevelIn =(uint32_t)(-LOutput);
+            }
+        }
+    }
+    else time=0;
+}
+
+
+/*
+    画圆
+*/
+void Task5_CircleMove(float R)
+{
+    static float VOutput,LOutput;
+    static float A;
+    static float time=0;
+    static float Vtarget_angle,Ltarget_angle;
+    static struct PID Taks5Pid={150,0,0,PidControl_LineMove};
+    static struct PID Taks5Pid2={90,0,0,PidControl_LineMove};
+
+    A = asinf(R/0.86)*180.0f/PI;
+    
+    
+        //printf("%f,%f\r\n",A1,A2);
+            
+    Vtarget_angle = A*sinf(2*PI*(time/T));
+    Ltarget_angle = A*sinf(2*PI*(time/T)+PI/2);
+
+    printf("%f,%f\r\n",Vtarget_angle,Ltarget_angle);
+
+    VOutput = Taks5Pid.PIDControl(Vtarget_angle,roll,&Taks5Pid);
+    LOutput = Taks5Pid2.PIDControl(Ltarget_angle,pitch,&Taks5Pid2);
+
+    time+=0.0104223;
+    if(time<T)
+    {
+        if(VOutput>0)
+        {
+            Motor_Cmd(VerticalOut,ENABLE);
+            Motor_Cmd(VerticalIn,DISABLE);
+            Motor->MVerticalOut =(uint32_t)VOutput;
+            if(LOutput>0)
+            {
+                Motor_Cmd(LevelOut,ENABLE);
+                Motor_Cmd(LevelIn,DISABLE);
+                Motor->MLevelOut =(uint32_t)LOutput;
+            }
+            else
+            {
+                Motor_Cmd(LevelOut,DISABLE);
+                Motor_Cmd(LevelIn,ENABLE);
+                Motor->MLevelIn =(uint32_t)(-LOutput);
+            }
+        }
+        else
+        {
+            Motor_Cmd(VerticalOut,DISABLE);
+            Motor_Cmd(VerticalIn,ENABLE);
+            Motor->MVerticalIn =(uint32_t)(-VOutput);
+            if(LOutput>0)
+            {
+                Motor_Cmd(LevelOut,ENABLE);
+                Motor_Cmd(LevelIn,DISABLE);
+                Motor->MLevelOut =(uint32_t)LOutput;
+            }
+            else
+            {
+                Motor_Cmd(LevelOut,DISABLE);
+                Motor_Cmd(LevelIn,ENABLE);
+                Motor->MLevelIn =(uint32_t)(-LOutput);
+            }
+        }
+    }
+    else time=0;
 }

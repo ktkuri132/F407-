@@ -20,6 +20,12 @@
 extern uint8_t Stop_flag;
 extern float pitch,roll,yaw,def,dis,polar;
 
+
+
+
+
+
+
 //得到的极坐标的原始角度
 float Opolar;
 
@@ -94,13 +100,13 @@ void GetPolar(float roll,float pitch)
 
 //T--任务，4--第四项，S--停止，制动
 extern float T4SKp, T4SKi, T4SKd;
-extern float T1LKp, T1LKi, T1LKd;
+//extern float T1LKp, T1LKi, T1LKd;
 
 /// @brief PID控制制动
 /// @param target 目标值
 /// @param feedback 当前值
 /// @return 计算值（浮点型，无正负）
-float PidControl_Stop(float target, float feedback)
+float PidControl_Stop(float target, float feedback,struct PID* pid)
 {
 
     // 定义误差变量
@@ -138,7 +144,7 @@ float PidControl_Stop(float target, float feedback)
     T4Sderivative = T4Serror - T4SlastError;
 
     // 计算PID输出
-    output = T4SKp * T4Serror + T4SKi * T4Sintegral + T4SKd * T4Sderivative;
+    output = pid->Kp * T4Serror + pid->Ki * T4Sintegral + pid->Kd * T4Sderivative;
 
     // 更新误差变量
     T4SlastError = T4Serror;
@@ -151,7 +157,7 @@ float PidControl_Stop(float target, float feedback)
 /// @param target 目标值
 /// @param feedback 当前值
 /// @return 计算值（浮点型，有正负）
-float PidControl_LineMove(float target, float feedback)
+float PidControl_LineMove(float target, float feedback,struct PID* pid)
 {
     // 定义误差变量
     static float T1Lerror = 0;
@@ -188,7 +194,7 @@ float PidControl_LineMove(float target, float feedback)
     T1Lderivative = T1Lerror - T1LlastError;
 
     // 计算PID输出
-    output = T1LKp * T1Lerror + T1LKi * T1Lintegral + T1LKd * T1Lderivative;
+    output = pid->Kp * T1Lerror + pid->Ki * T1Lintegral + pid->Kd * T1Lderivative;
 
     // 更新误差变量
     T1LlastError = T1Lerror;
@@ -280,8 +286,8 @@ void Motor_Cmd(uint8_t MotorSit,FunctionalState NewState)
     case LevelIn:
         if(NewState==ENABLE)
         {
-            RIN1=1;
-            RIN2=0;
+            RIN1=0;
+            RIN2=1;
         }
         else
         {
