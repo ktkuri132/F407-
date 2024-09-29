@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccXqllVJ.s 			page 1
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNrKdPK.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccXqllVJ.s 			page 1
   44              		@ frame_needed = 0, uses_anonymous_args = 0
   45 0000 00B5     		push	{lr}
   46 0002 83B0     		sub	sp, sp, #12
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccXqllVJ.s 			page 2
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNrKdPK.s 			page 2
 
 
   47 0004 FFF7FEFF 		bl	BSP_Init
@@ -110,61 +110,68 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccXqllVJ.s 			page 1
   93 007c 00000000 		.word	def
   94 0080 44000000 		.word	.LC4
   95 0084 18000000 		.word	.LC1
-  97              		.global	polar
-  98              		.section	.bss.polar,"aw",%nobits
+  97              		.global	Opolar
+  98              		.section	.bss.Opolar,"aw",%nobits
   99              		.align	2
- 102              	polar:
+ 102              	Opolar:
  103 0000 00000000 		.space	4
- 104              		.global	dis
- 105              		.section	.bss.dis,"aw",%nobits
+ 104              		.global	polar
+ 105              		.section	.bss.polar,"aw",%nobits
  106              		.align	2
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccXqllVJ.s 			page 3
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNrKdPK.s 			page 3
 
 
- 109              	dis:
+ 109              	polar:
  110 0000 00000000 		.space	4
- 111              		.global	def
- 112              		.section	.bss.def,"aw",%nobits
+ 111              		.global	dis
+ 112              		.section	.bss.dis,"aw",%nobits
  113              		.align	2
- 116              	def:
+ 116              	dis:
  117 0000 00000000 		.space	4
- 118              		.global	yaw
- 119              		.section	.bss.yaw,"aw",%nobits
+ 118              		.global	def
+ 119              		.section	.bss.def,"aw",%nobits
  120              		.align	2
- 123              	yaw:
+ 123              	def:
  124 0000 00000000 		.space	4
- 125              		.global	roll
- 126              		.section	.bss.roll,"aw",%nobits
+ 125              		.global	yaw
+ 126              		.section	.bss.yaw,"aw",%nobits
  127              		.align	2
- 130              	roll:
+ 130              	yaw:
  131 0000 00000000 		.space	4
- 132              		.global	pitch
- 133              		.section	.bss.pitch,"aw",%nobits
+ 132              		.global	roll
+ 133              		.section	.bss.roll,"aw",%nobits
  134              		.align	2
- 137              	pitch:
+ 137              	roll:
  138 0000 00000000 		.space	4
- 139              		.ident	"GCC: (Arm GNU Toolchain 13.3.Rel1 (Build arm-13.24)) 13.3.1 20240614"
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccXqllVJ.s 			page 4
+ 139              		.global	pitch
+ 140              		.section	.bss.pitch,"aw",%nobits
+ 141              		.align	2
+ 144              	pitch:
+ 145 0000 00000000 		.space	4
+ 146              		.ident	"GCC: (Arm GNU Toolchain 13.3.Rel1 (Build arm-13.24)) 13.3.1 20240614"
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNrKdPK.s 			page 4
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 main.c
-C:\Users\ktkuru\AppData\Local\Temp\ccXqllVJ.s:18     .rodata.main.str1.4:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccXqllVJ.s:35     .text.main:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccXqllVJ.s:41     .text.main:00000000 main
-C:\Users\ktkuru\AppData\Local\Temp\ccXqllVJ.s:88     .text.main:00000068 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccXqllVJ.s:137    .bss.pitch:00000000 pitch
-C:\Users\ktkuru\AppData\Local\Temp\ccXqllVJ.s:130    .bss.roll:00000000 roll
-C:\Users\ktkuru\AppData\Local\Temp\ccXqllVJ.s:116    .bss.def:00000000 def
-C:\Users\ktkuru\AppData\Local\Temp\ccXqllVJ.s:102    .bss.polar:00000000 polar
-C:\Users\ktkuru\AppData\Local\Temp\ccXqllVJ.s:99     .bss.polar:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccXqllVJ.s:109    .bss.dis:00000000 dis
-C:\Users\ktkuru\AppData\Local\Temp\ccXqllVJ.s:106    .bss.dis:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccXqllVJ.s:113    .bss.def:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccXqllVJ.s:123    .bss.yaw:00000000 yaw
-C:\Users\ktkuru\AppData\Local\Temp\ccXqllVJ.s:120    .bss.yaw:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccXqllVJ.s:127    .bss.roll:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccXqllVJ.s:134    .bss.pitch:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccNrKdPK.s:18     .rodata.main.str1.4:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccNrKdPK.s:35     .text.main:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccNrKdPK.s:41     .text.main:00000000 main
+C:\Users\ktkuru\AppData\Local\Temp\ccNrKdPK.s:88     .text.main:00000068 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccNrKdPK.s:144    .bss.pitch:00000000 pitch
+C:\Users\ktkuru\AppData\Local\Temp\ccNrKdPK.s:137    .bss.roll:00000000 roll
+C:\Users\ktkuru\AppData\Local\Temp\ccNrKdPK.s:123    .bss.def:00000000 def
+C:\Users\ktkuru\AppData\Local\Temp\ccNrKdPK.s:102    .bss.Opolar:00000000 Opolar
+C:\Users\ktkuru\AppData\Local\Temp\ccNrKdPK.s:99     .bss.Opolar:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccNrKdPK.s:109    .bss.polar:00000000 polar
+C:\Users\ktkuru\AppData\Local\Temp\ccNrKdPK.s:106    .bss.polar:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccNrKdPK.s:116    .bss.dis:00000000 dis
+C:\Users\ktkuru\AppData\Local\Temp\ccNrKdPK.s:113    .bss.dis:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccNrKdPK.s:120    .bss.def:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccNrKdPK.s:130    .bss.yaw:00000000 yaw
+C:\Users\ktkuru\AppData\Local\Temp\ccNrKdPK.s:127    .bss.yaw:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccNrKdPK.s:134    .bss.roll:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccNrKdPK.s:141    .bss.pitch:00000000 $d
 
 UNDEFINED SYMBOLS
 __aeabi_f2d

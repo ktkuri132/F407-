@@ -25,7 +25,7 @@
 #include <math.h>
 
 
-extern float pitch,roll,yaw,dis;
+extern float pitch,roll,yaw,dis,def,polar,Opolar;
 
 
 
@@ -238,8 +238,8 @@ void Task5_CircleMove(float R)
     static float A;
     static float time=0;
     static float Vtarget_angle,Ltarget_angle;
-    static struct PID Taks5Pid={150,0,0,PidControl_LineMove};
-    static struct PID Taks5Pid2={90,0,0,PidControl_LineMove};
+    static struct PID Taks5Pid={300,0,0,PidControl_LineMove};
+    static struct PID Taks5Pid2={300,0,0,PidControl_LineMove};
 
     A = asinf(R/0.86)*180.0f/PI;
     
@@ -247,14 +247,14 @@ void Task5_CircleMove(float R)
         //printf("%f,%f\r\n",A1,A2);
             
     Vtarget_angle = A*sinf(2*PI*(time/T));
-    Ltarget_angle = A*sinf(2*PI*(time/T)+PI/2);
+    Ltarget_angle = A*sinf(2*PI*(time/T)-PI/2);
 
-    printf("%f,%f\r\n",Vtarget_angle,Ltarget_angle);
+    printf("%f,%f\r\n",dis,0);
 
     VOutput = Taks5Pid.PIDControl(Vtarget_angle,roll,&Taks5Pid);
     LOutput = Taks5Pid2.PIDControl(Ltarget_angle,pitch,&Taks5Pid2);
 
-    time+=0.0104223;
+    time+=0.005;
     if(time<T)
     {
         if(VOutput>0)

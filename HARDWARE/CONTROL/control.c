@@ -18,7 +18,7 @@
 #include <stdlib.h>
 
 extern uint8_t Stop_flag;
-extern float pitch,roll,yaw,def,dis,polar;
+extern float pitch,roll,yaw,def,dis,polar,Opolar;
 
 
 
@@ -26,8 +26,7 @@ extern float pitch,roll,yaw,def,dis,polar;
 
 
 
-//得到的极坐标的原始角度
-float Opolar;
+
 
 
 
@@ -80,11 +79,11 @@ void GetPolar(float roll,float pitch)
     }
     else if(pitch>0&&roll<0)
     {
-        polar = 180+Opolar;
+        polar = 180-Opolar;
     }
     else if(pitch>0&&roll>0)
     {
-        polar = 360-Opolar;
+        polar = Opolar;
     }
 
     //规定坐标无效区域
