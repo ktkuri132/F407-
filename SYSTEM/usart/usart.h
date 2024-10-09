@@ -12,6 +12,7 @@ extern u8  USART_RX_BUF[USART_REC_LEN]; //½ÓÊÕ»º³å,×î´óUSART_REC_LEN¸ö×Ö½Ú.Ä©×Ö½
 extern u16 USART_RX_STA;         		//½ÓÊÕ×´Ì¬±ê¼Ç	
 //Èç¹ûÏë´®¿ÚÖĞ¶Ï½ÓÊÕ£¬Çë²»Òª×¢ÊÍÒÔÏÂºê¶¨Òå
 void usart1_init(u32 bound);
+void SendTo429(uint16_t *dataf);
 void USART_Send_Data(USART_TypeDef *USARTx, char data);
 void USART_Send_String(USART_TypeDef *USARTx,char *String);
 void U2printf(char *format, ...);

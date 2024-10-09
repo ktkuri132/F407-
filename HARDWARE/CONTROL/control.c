@@ -309,8 +309,8 @@ void Motor_Cmd(uint8_t MotorSit,FunctionalState NewState)
     case VerticalIn:
         if(NewState==ENABLE)
         {
-            LIN1=0;
-            LIN2=1;
+            LIN1=1;
+            LIN2=0;
         }
         else
         {

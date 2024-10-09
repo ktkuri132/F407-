@@ -54,9 +54,6 @@ typedef struct PID
 
 
 
-//电机制动使能
-#define ControlMotor(x,y) 
-
 
 /* 基础  */
 

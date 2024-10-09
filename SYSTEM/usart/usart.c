@@ -160,7 +160,7 @@ void usart2_init(u32 bound)
 }
 
 //串口1中断服务程序-->用于串口打印
-void USART1_IRQHandler(void)                	
+void USART1_IRQHandler(void)          	
 {
 	
 	u8 Res;
@@ -189,6 +189,17 @@ void USART1_IRQHandler(void)
 		}   	
   	} 
 } 
+
+
+void SendTo429(uint16_t *dataf)
+{
+	USART_Send_Data(USART1,0x01);	//起始帧
+
+	USART_Send_String(USART1,(char *)&dataf);	//发送数据
+
+	USART_Send_Data(USART1,0x02);	//结束帧
+	
+}
 
 //串口2中断函数
 void USART2_IRQHandler(void)

@@ -56,11 +56,11 @@ void EXTI15_10_IRQHandler(void)
         
         GetPolar(roll, pitch);    
 
-
+        //SendTo429((uint16_t *)&roll);
         //Task4_StopFast();    //调用控制函数--->第4项
-        //Task1_LineMove(Target_dis);    //调用控制函数--->第1项
+        Task1_LineMove(Target_dis);    //调用控制函数--->第1项
         //Task3_AngleMove(45,0.15);
-        Task5_CircleMove(0.2);
+        //Task5_CircleMove(0.2);
     }
 }
 
@@ -123,17 +123,17 @@ void Task1_LineMove(float R)
     static float VOutput,LOutput;
     static float A;
     static float time=0;
-    static struct PID Taks1Pid={750,0,-350,PidControl_LineMove};
+    static struct PID Taks1Pid={110,0,0,PidControl_LineMove};
     
     A = atanf(R/0.86)*180.0f/PI;
     target_angle = A*sinf(2*PI*time/T);
     
-    printf("%f，%f\r\n",target_angle,roll);
+    printf("%f,%f\r\n",target_angle,pitch);
 
-    VOutput = Taks1Pid.PIDControl(target_angle,roll, &Taks1Pid);
-    LOutput = Taks1Pid.PIDControl(0,pitch, &Taks1Pid);
+    VOutput = Taks1Pid.PIDControl(target_angle,pitch, &Taks1Pid);
+    LOutput = Taks1Pid.PIDControl(0,roll, &Taks1Pid);
 //0.00983---0.15
-    time+=0.0104223;
+    time+=0.01;
     if(time<T)
     {
         if(VOutput>0)
