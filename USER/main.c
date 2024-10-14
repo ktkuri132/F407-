@@ -32,27 +32,27 @@
 #include <inv_mpu.h>
 #include <control.h>
 
-//å®šä¹‰ä¸‰è½´è§’åº¦
+//¶¨ÒåÈýÖá½Ç¶È
 float pitch,roll,yaw;
-//å®šä¹‰ä»»æ„è§’
+//¶¨ÒåÈÎÒâ½Ç
 float def;
-//å®šä¹‰ä½ç§»
+//¶¨ÒåÎ»ÒÆ
 float dis;
-//å®šä¹‰æžåæ ‡è§’åº¦
+//¶¨Òå¼«×ø±ê½Ç¶È
 float polar;
-//å¾—åˆ°çš„æžåæ ‡çš„åŽŸå§‹è§’åº¦
+//µÃµ½µÄ¼«×ø±êµÄÔ­Ê¼½Ç¶È
 float Opolar;
 extern float target_angle;
 
 /*
 
-æ¯ä¸€æ­¥éƒ½æœ‰éƒ½æœ‰è°ƒè¯•ä¿¡æ¯ï¼Œå¦ˆå¦ˆå†ä¹Ÿä¸ç”¨æ‹…å¿ƒæˆ‘æ‰¾ä¸å‡ºç¨‹åºbugäº†
+Ã¿Ò»²½¶¼ÓÐ¶¼ÓÐµ÷ÊÔÐÅÏ¢£¬ÂèÂèÔÙÒ²²»ÓÃµ£ÐÄÎÒÕÒ²»³ö³ÌÐòbugÁË
 
 */
 int main(void) 
 {
     
-    /* æ‰€æœ‰å¤–è®¾çš„åˆå§‹åŒ–å‡½æ•°éƒ½åœ¨è¿™ä¸ªé‡Œé¢äº†  */
+    /* ËùÓÐÍâÉèµÄ³õÊ¼»¯º¯Êý¶¼ÔÚÕâ¸öÀïÃæÁË  */
     if(BSP_Init())
     {
         printf("peripheral init failed\n");
@@ -63,26 +63,26 @@ int main(void)
         printf("peripheral init done\n");
     }
 
-/* 
-    TIM8->CCR1=0;//åž‚ç›´æ–¹å‘å†…ä¾§ç”µæœº
-    TIM8->CCR2=0;//åž‚ç›´æ–¹å‘å¤–ä¾§ç”µæœº
-    TIM8->CCR3=0;//æ°´å¹³æ–¹å‘å¤–ä¾§ç”µæœº
-    TIM8->CCR4=4200;//æ°´å¹³æ–¹å‘å†…ä¾§ç”µæœº
+/*
+    TIM8->CCR1=600;//Ë®Æ½·½ÏòÄÚ²àµç»ú
+    TIM8->CCR2=600;//Ë®Æ½·½ÏòÍâ²àµç»ú
+    TIM8->CCR3=600;//´¹Ö±·½ÏòÄÚ²àµç»ú
+    TIM8->CCR4=600;//´¹Ö±·½ÏòÍâ²àµç»ú
 
-    LIN1=1;//åž‚ç›´æ–¹å‘å†…ä¾§ç”µæœº
+    LIN1=1;//Ë®Æ½·½ÏòÄÚ²àµç»ú
     LIN2=0;
 
-    LIN3=0;//åž‚ç›´æ–¹å‘å¤–ä¾§ç”µæœº
+    LIN3=0;//Ë®Æ½·½ÏòÍâ²àµç»ú
     LIN4=1;
 
-    RIN1=0;//æ°´å¹³æ–¹å‘å†…ä¾§ç”µæœº
+    RIN1=0;//´¹Ö±·½ÏòÍâ²àµç»ú
     RIN2=1;
 
-    RIN3=0;//æ°´å¹³æ–¹å‘å¤–ä¾§ç”µæœº
+    RIN3=0;//´¹Ö±·½ÏòÄÚ²àµç»ú
     RIN4=1;
-
- */
-    /* å‰å°ç¨‹åºè½®è¯¢  */
+*/
+ 
+    /* Ç°Ì¨³ÌÐòÂÖÑ¯  */
     while (1)
     {
         //MotorState(pitch,roll);
