@@ -60,7 +60,7 @@ void EXTI15_10_IRQHandler(void)
         //SendTo429((uint16_t *)&roll);
         //Task4_StopFast();    //调用控制函数--->第4项
         //Task1_LineMove(Target_dis);    //调用控制函数--->第1项/
-      Task3_AngleMove((17+0.73333*Target_angle),0.15);
+        Task3_AngleMove((17+0.73333*Target_angle),0.15);
         //Task5_CircleMove(0.2);
     }
 }
@@ -68,30 +68,6 @@ void EXTI15_10_IRQHandler(void)
 
 
 #endif
-
-#ifdef __TIM2_IRQn__
-
-void TIM2_IRQHandler(void)
-{
-    if(TIM_GetITStatus(TIM2, TIM_IT_Update) != RESET)
-    {
-        //mpu_dmp_get_data(&pitch, &roll, &yaw);      //读取MPU6050数据
-        
-        //GetPolar(roll, pitch);    
-
-
-
-        //Task4_StopFast();    //调用控制函数--->第4项
-        Task1_LineMove(10);    //调用控制函数--->第1项
-
-    TIM_ClearITPendingBit(TIM2, TIM_IT_Update);
-
-
-    }
-}
-
-#endif
-
 
 /*
     第四项  快速制动
@@ -115,7 +91,7 @@ void Task4_StopFast()
 }
 
 
-#define T 1.678
+
 
 float target_angle;
 
@@ -166,61 +142,24 @@ void Task1_LineMove(float R)
 void Task3_AngleMove(float angle,float R)
 {
     static float VOutput,LOutput;
-    static float target_roll,target_pitch;
-    static float time=0;
-    static float target_angle,Vtarget_angle,Ltarget_angle;
     static struct PID Taks3Pid={405,0,-50,PidControl_LineMove};
     static struct  PID Taks3Pid2={405,0,-50,PidControl_LineMove};
 
+    /* 状态更新，以及目标数值计算  */
+    float (*Data)[5] = T3State_Update(angle,R,roll,pitch);
+
+/* 
+    (*State_Data)[1]  Vtarget_angle
+    (*State_Data)[2]  Ltarget_angle
+    (*State_Data)[3]  roll
+    (*State_Data)[4]  pitch
+
+*/
+    VOutput = Taks3Pid.PIDControl((*Data)[1],(*Data)[3], &Taks3Pid);
+    LOutput = Taks3Pid2.PIDControl((*Data)[2],(*Data)[4], &Taks3Pid2);
     
-
-   // angle = angle+5;
-    angle = angle*PI/180.0f;
-
-    target_roll = atanf(R*cosf(angle)/0.86)/PI*180;
-    target_pitch = atanf(R*sinf(angle)/0.86)/PI*180;
-	
-//	printf("%f,%f\r\n",A1,A2);
-			 
-    Vtarget_angle =sinf(2*PI*(time/T))*target_roll;
-    Ltarget_angle =sinf(2*PI*(time/T))*target_pitch;
-
-
-     
-	printf("%f,%f\r\n",VOutput,LOutput);
-
-    time+=0.0104223;
-    if(time<T)
-    {            
-        if(VOutput>0)
-        {
-            VOutput = Taks3Pid.PIDControl(Vtarget_angle,roll,&Taks3Pid);
-            LOutput = Taks3Pid2.PIDControl(Ltarget_angle,-pitch,&Taks3Pid2);
-
-            Motor_Cmd(VerticalOut,ENABLE);
-            Motor_Cmd(VerticalIn,DISABLE);
-            Motor_Cmd(LevelOut,ENABLE);
-            Motor_Cmd(LevelIn,DISABLE);
-
-            Motor->MVerticalOut =(uint32_t)VOutput;
-            Motor->MLevelOut =(uint32_t)LOutput;
-        }
-        else
-        {
-            
-            VOutput = Taks3Pid.PIDControl(Vtarget_angle,roll,&Taks3Pid);
-            LOutput = Taks3Pid2.PIDControl(Ltarget_angle,-pitch,&Taks3Pid2);
-            Motor_Cmd(VerticalOut,DISABLE);
-            Motor_Cmd(VerticalIn,ENABLE);
-            Motor_Cmd(LevelOut,DISABLE);
-            Motor_Cmd(LevelIn,ENABLE);
-            
-            Motor->MVerticalIn =(uint32_t)(-VOutput);
-            Motor->MLevelIn =(uint32_t)(-LOutput);
-            
-        }
-    }
-    else time=0;
+    T3Motor_CmdCombination(VOutput,LOutput);
+    
 }
 
 

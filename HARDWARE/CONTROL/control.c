@@ -19,16 +19,7 @@
 
 extern uint8_t Stop_flag;
 extern float pitch,roll,yaw,def,dis,polar,Opolar;
-
-
-
-
-
-
-
-
-
-
+uint8_t State_Data;
 
 //计算极坐标,以及任意角
 void GetPolar(float roll,float pitch)
@@ -273,16 +264,28 @@ void Motor_Cmd(uint8_t MotorSit,FunctionalState NewState)
     case LevelOut:
         if(NewState==ENABLE)
         {
-            RIN3=0;
-            RIN4=1;
+            LIN3=0;
+            LIN4=1;
         }
         else
         {
-            RIN3=0;
-            RIN4=0;
+            LIN3=0;
+            LIN4=0;
         }
         break;
     case LevelIn:
+        if(NewState==ENABLE)
+        {
+            LIN1=1;
+            LIN2=0;
+        }
+        else
+        {
+            LIN1=0;
+            LIN2=0;
+        }
+        break;
+    case VerticalOut:
         if(NewState==ENABLE)
         {
             RIN1=0;
@@ -294,28 +297,16 @@ void Motor_Cmd(uint8_t MotorSit,FunctionalState NewState)
             RIN2=0;
         }
         break;
-    case VerticalOut:
-        if(NewState==ENABLE)
-        {
-            LIN3=0;
-            LIN4=1;
-        }
-        else
-        {
-            LIN3=0;
-            LIN4=0;
-        }
-        break;
     case VerticalIn:
         if(NewState==ENABLE)
         {
-            LIN1=1;
-            LIN2=0;
+            RIN3=0;
+            RIN4=1;
         }
         else
         {
-            LIN1=0;
-            LIN2=0;
+            RIN3=0;
+            RIN4=0;
         }
         break;
     case StopAll:
@@ -334,6 +325,72 @@ void Motor_Cmd(uint8_t MotorSit,FunctionalState NewState)
     }
 }
 
+/// @brief 设置默认运动方向：90方向向上，180方向向下，根据输出与方位来控制电机
+/// @param Vo 垂直方向输出
+/// @param Lo 水平方向输出
+__INLINE void T3Motor_CmdCombination(float Vo,float Lo)
+{
+   /*  PID计算是 ：当前值-目标值 */
+
+    if(State_Data)  /* 处于90运动线  */
+    {
+        if(Vo>0)    /* 当前垂直方向输出超调  */
+        {
+            Motor_Cmd(VerticalOut,DISABLE);
+            Motor_Cmd(VerticalIn,ENABLE);
+            Motor->MVerticalIn =(uint32_t)Vo;
+        }
+        else        /* 当前垂直方向输出不够  */
+        {
+            Motor_Cmd(VerticalOut,ENABLE);
+            Motor_Cmd(VerticalIn,DISABLE);
+            Motor->MVerticalOut =(uint32_t)(-Vo);
+        }
+
+        if(Lo>0)
+        {
+            Motor_Cmd(LevelOut,DISABLE);
+            Motor_Cmd(LevelIn,ENABLE);
+            Motor->MLevelIn =(uint32_t)Lo;
+        }
+        else
+        {
+            Motor_Cmd(LevelOut,ENABLE);
+            Motor_Cmd(LevelIn,DISABLE);
+            Motor->MLevelOut =(uint32_t)(-Lo);
+        }
+    }
+    else            /* 处于180运动线  */
+    {
+        if(Vo>0)
+        {
+            Motor_Cmd(VerticalOut,ENABLE);
+            Motor_Cmd(VerticalIn,DISABLE);
+            Motor->MVerticalOut =(uint32_t)Vo;
+        }
+        else
+        {
+            Motor_Cmd(VerticalOut,DISABLE);
+            Motor_Cmd(VerticalIn,ENABLE);
+            Motor->MVerticalIn =(uint32_t)(-Vo);
+        }
+
+        if(Lo>0)
+        {
+            Motor_Cmd(LevelOut,DISABLE);
+            Motor_Cmd(LevelIn,ENABLE);
+            Motor->MLevelOut =(uint32_t)Lo;
+        }
+        else
+        {
+            Motor_Cmd(LevelOut,ENABLE);
+            Motor_Cmd(LevelIn,DISABLE);
+            Motor->MLevelIn =(uint32_t)(-Lo);
+        }
+    }
+}
+
+
 void StopAllMotor()
 {
     if(Stop_flag)
@@ -348,13 +405,89 @@ void StopAllMotor()
 }
 
 
+/// @brief 根据要求的角度和位移，检测风机当前位置信息， 更新目标正弦函数值
+/// @param angle 位置角度
+/// @param R 摆动半径
+/// @return 包含时间，垂直方向目标角度，水平方向目标角度的数组
+__INLINE float (*T3State_Update(float angle,float R,float roll,float pitch))[5]
+{
+    static float Output[5];
+    
+    
+
+    /* 将超过180的角度全都转换回来  */
+    if(angle>180)
+    {
+        angle=360-angle;
+    }
+    
+/************************************************************************* */
+
+    float target_roll,target_pitch;
+    float time=0;
+    float Vtarget_angle,Ltarget_angle;
+
+    time+=0.0104223;
+    if(time>T)
+    {
+        time=0;
+    }
+
+    angle = angle*PI/180.0f;
+
+    target_roll = atanf(R*cosf(angle)/0.86)/PI*180;
+    target_pitch = atanf(R*sinf(angle)/0.86)/PI*180;
+
+    float wt = 2*PI*(time/T);
+			 
+    Vtarget_angle =sinf(wt)*target_roll;
+    Ltarget_angle =sinf(wt)*target_pitch;
+
+
+/**************************************************************************** */
+
+    /* 此处目的是要将：与目标角度极性不匹配的实际角度变换过来 并产生方位状态：90方向线 or 180方向线 */
+    /* 判断当前要求在那个区域走直线  PID计算是 ：当前值-目标值 */
+
+    if(angle>=90)/* 处在90°范围内  */
+    {
+        pitch = -pitch;
+        State_Data = 1;
+    }
+    else/* 超过90°范围  */
+    {
+        if((wt>=0&&(wt<PI)))   /* 0<=wt<PI 在180区域的下方 此时sin(wt)>0,Avsin(wt)<0,Alsin(wt)>0 */
+        {
+            pitch = -pitch;
+        }
+        else if((wt>=PI&&(wt<2*PI)))/* PI<=wt<2PI 在180区域的上方 此时sin(wt)<0,Avsin(wt)>0,Alsin(wt)<0 */
+        {
+            roll = -roll;
+        }
+        State_Data = 0;
+    }
+
+/***************************************************************************** */
+
+//  Output[0] = 0;      第0位保留
+    Output[1] = Vtarget_angle;
+    Output[2] = Ltarget_angle;
+    Output[3] = roll;
+    Output[4] = pitch;
+
+    return &Output;
+}
+
+
+
 //电机位置
 uint8_t MotorLocation=0;
 
+#ifdef Function_For_Task4
 /*
 依据角度判断风机方位，调用电机使能函数
 */
-void MotorState(float pitch,float roll)
+__attribute__((__weak__)) void MotorState(float pitch,float roll) 
 {
     if(roll>0&&pitch>0)
     {
@@ -394,6 +527,8 @@ void MotorState(float pitch,float roll)
         MotorLocation = 0;
     }
 }
+
+
 
 /*
 依据极坐标角度和位移，对PID输出值正交分解
@@ -437,3 +572,5 @@ void PWM_Allocation(float Output)
    
     
 }
+
+#endif

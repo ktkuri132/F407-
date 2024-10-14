@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccR5cgbg.s 			page 1
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc7h7VLb.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccR5cgbg.s 			page 1
   56 0058 FFF7FEFF 		bl	__aeabi_f2d
   57 005c 54A3     		adr	r3, .L39
   58 005e D3E90023 		ldrd	r2, [r3]
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccR5cgbg.s 			page 2
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc7h7VLb.s 			page 2
 
 
   59 0062 FFF7FEFF 		bl	__aeabi_dmul
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccR5cgbg.s 			page 1
  113 0122 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
  114 0126 18D4     		bmi	.L36
  115              	.L6:
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccR5cgbg.s 			page 3
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc7h7VLb.s 			page 3
 
 
  116 0128 B5EEC08A 		vcmpe.f32	s16, #0
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccR5cgbg.s 			page 1
  170              	.L39:
  171 01b0 4AD8124D 		.word	1293080650
  172 01b4 FB210940 		.word	1074340347
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccR5cgbg.s 			page 4
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc7h7VLb.s 			page 4
 
 
  173 01b8 00003443 		.word	1127481344
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccR5cgbg.s 			page 1
  229 006e 134A     		ldr	r2, .L53+12
  230 0070 D2ED006A 		vldr.32	s13, [r2]
  231 0074 27EE267A 		vmul.f32	s14, s14, s13
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccR5cgbg.s 			page 5
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc7h7VLb.s 			page 5
 
 
  232 0078 30EE070A 		vadd.f32	s0, s0, s14
@@ -263,13 +263,13 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccR5cgbg.s 			page 1
  251              	.L53:
  252 00b0 9A999999 		.word	-1717986918
  253 00b4 9999E93F 		.word	1072273817
- 254 00b8 00000000 		.word	T4Serror.13
- 255 00bc 00000000 		.word	T4Sintegral.12
+ 254 00b8 00000000 		.word	T4Serror.14
+ 255 00bc 00000000 		.word	T4Sintegral.13
  256 00c0 00000000 		.word	def
  257 00c4 004003C6 		.word	-972865536
- 258 00c8 00000000 		.word	T4SlastError.9
- 259 00cc 00000000 		.word	T4Sderivative.8
- 260 00d0 00000000 		.word	output.7
+ 258 00c8 00000000 		.word	T4SlastError.10
+ 259 00cc 00000000 		.word	T4Sderivative.9
+ 260 00d0 00000000 		.word	output.8
  261 00d4 00400346 		.word	1174618112
  263              		.section	.text.PidControl_LineMove,"ax",%progbits
  264              		.align	1
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccR5cgbg.s 			page 1
  288 002e FFF7FEFF 		bl	__aeabi_dcmplt
  289 0032 10B1     		cbz	r0, .L56
  290 0034 214B     		ldr	r3, .L67+12
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccR5cgbg.s 			page 6
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc7h7VLb.s 			page 6
 
 
  291 0036 0022     		movs	r2, #0
@@ -345,20 +345,20 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccR5cgbg.s 			page 1
  332              	.L67:
  333 00b0 9A999999 		.word	-1717986918
  334 00b4 9999E93F 		.word	1072273817
- 335 00b8 00000000 		.word	T1Lerror.6
- 336 00bc 00000000 		.word	T1Lintegral.5
+ 335 00b8 00000000 		.word	T1Lerror.7
+ 336 00bc 00000000 		.word	T1Lintegral.6
  337 00c0 00000000 		.word	def
  338 00c4 004003C6 		.word	-972865536
- 339 00c8 00000000 		.word	T1LlastError.2
- 340 00cc 00000000 		.word	T1Lderivative.1
- 341 00d0 00000000 		.word	output.0
+ 339 00c8 00000000 		.word	T1LlastError.3
+ 340 00cc 00000000 		.word	T1Lderivative.2
+ 341 00d0 00000000 		.word	output.1
  342 00d4 00400346 		.word	1174618112
  344              		.section	.rodata.Motor_PWM_TIM8_Init.str1.4,"aMS",%progbits,1
  345              		.align	2
  346              	.LC0:
  347 0000 2D3E4D6F 		.ascii	"->Motor->TIM8_OC1_OC2_OC3_OC4 Init  done\000"
  347      746F722D 
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccR5cgbg.s 			page 7
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc7h7VLb.s 			page 7
 
 
  347      3E54494D 
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccR5cgbg.s 			page 1
  396 005a ADF81C50 		strh	r5, [sp, #28]	@ movhi
  397 005e ADF81650 		strh	r5, [sp, #22]	@ movhi
  398 0062 A4F58234 		sub	r4, r4, #66560
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccR5cgbg.s 			page 8
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc7h7VLb.s 			page 8
 
 
  399 0066 05A9     		add	r1, sp, #20
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccR5cgbg.s 			page 1
  453              	.L71:
  454 00f8 00080240 		.word	1073874944
  455 00fc 00000000 		.word	.LC0
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccR5cgbg.s 			page 9
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc7h7VLb.s 			page 9
 
 
  456 0100 2C000000 		.word	.LC1
@@ -497,73 +497,73 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccR5cgbg.s 			page 1
  471 0004 DFE800F0 		tbb	[pc, r0]
  472              	.L76:
  473 0008 47       		.byte	(.L80-.L76)/2
- 474 0009 36       		.byte	(.L79-.L76)/2
- 475 000a 25       		.byte	(.L78-.L76)/2
- 476 000b 03       		.byte	(.L77-.L76)/2
- 477 000c 14       		.byte	(.L75-.L76)/2
+ 474 0009 14       		.byte	(.L79-.L76)/2
+ 475 000a 03       		.byte	(.L78-.L76)/2
+ 476 000b 36       		.byte	(.L77-.L76)/2
+ 477 000c 25       		.byte	(.L75-.L76)/2
  478 000d 00       		.p2align 1
- 479              	.L77:
+ 479              	.L78:
  480 000e 0129     		cmp	r1, #1
  481 0010 06D0     		beq	.L86
  482 0012 2A4B     		ldr	r3, .L90
  483 0014 0022     		movs	r2, #0
- 484 0016 C3F89822 		str	r2, [r3, #664]
- 485 001a C3F89C22 		str	r2, [r3, #668]
+ 484 0016 C3F88822 		str	r2, [r3, #648]
+ 485 001a C3F88C22 		str	r2, [r3, #652]
  486 001e 7047     		bx	lr
  487              	.L86:
  488 0020 264B     		ldr	r3, .L90
  489 0022 0022     		movs	r2, #0
- 490 0024 C3F89822 		str	r2, [r3, #664]
+ 490 0024 C3F88822 		str	r2, [r3, #648]
  491 0028 0122     		movs	r2, #1
- 492 002a C3F89C22 		str	r2, [r3, #668]
+ 492 002a C3F88C22 		str	r2, [r3, #652]
  493 002e 7047     		bx	lr
- 494              	.L75:
+ 494              	.L79:
  495 0030 0129     		cmp	r1, #1
  496 0032 06D0     		beq	.L87
  497 0034 214B     		ldr	r3, .L90
  498 0036 0022     		movs	r2, #0
- 499 0038 C3F89022 		str	r2, [r3, #656]
- 500 003c C3F89422 		str	r2, [r3, #660]
+ 499 0038 C3F88022 		str	r2, [r3, #640]
+ 500 003c C3F88422 		str	r2, [r3, #644]
  501 0040 7047     		bx	lr
  502              	.L87:
  503 0042 1E4B     		ldr	r3, .L90
- 504 0044 0022     		movs	r2, #0
- 505 0046 C3F89022 		str	r2, [r3, #656]
- 506 004a 0122     		movs	r2, #1
- 507 004c C3F89422 		str	r2, [r3, #660]
+ 504 0044 0122     		movs	r2, #1
+ 505 0046 C3F88022 		str	r2, [r3, #640]
+ 506 004a 0022     		movs	r2, #0
+ 507 004c C3F88422 		str	r2, [r3, #644]
  508 0050 7047     		bx	lr
- 509              	.L78:
+ 509              	.L75:
  510 0052 0129     		cmp	r1, #1
  511 0054 06D0     		beq	.L88
  512 0056 194B     		ldr	r3, .L90
  513 0058 0022     		movs	r2, #0
- 514 005a C3F88822 		str	r2, [r3, #648]
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccR5cgbg.s 			page 10
+ 514 005a C3F89022 		str	r2, [r3, #656]
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc7h7VLb.s 			page 10
 
 
- 515 005e C3F88C22 		str	r2, [r3, #652]
+ 515 005e C3F89422 		str	r2, [r3, #660]
  516 0062 7047     		bx	lr
  517              	.L88:
  518 0064 154B     		ldr	r3, .L90
  519 0066 0022     		movs	r2, #0
- 520 0068 C3F88822 		str	r2, [r3, #648]
+ 520 0068 C3F89022 		str	r2, [r3, #656]
  521 006c 0122     		movs	r2, #1
- 522 006e C3F88C22 		str	r2, [r3, #652]
+ 522 006e C3F89422 		str	r2, [r3, #660]
  523 0072 7047     		bx	lr
- 524              	.L79:
+ 524              	.L77:
  525 0074 0129     		cmp	r1, #1
  526 0076 06D0     		beq	.L89
  527 0078 104B     		ldr	r3, .L90
  528 007a 0022     		movs	r2, #0
- 529 007c C3F88022 		str	r2, [r3, #640]
- 530 0080 C3F88422 		str	r2, [r3, #644]
+ 529 007c C3F89822 		str	r2, [r3, #664]
+ 530 0080 C3F89C22 		str	r2, [r3, #668]
  531 0084 7047     		bx	lr
  532              	.L89:
  533 0086 0D4B     		ldr	r3, .L90
- 534 0088 0122     		movs	r2, #1
- 535 008a C3F88022 		str	r2, [r3, #640]
- 536 008e 0022     		movs	r2, #0
- 537 0090 C3F88422 		str	r2, [r3, #644]
+ 534 0088 0022     		movs	r2, #0
+ 535 008a C3F89822 		str	r2, [r3, #664]
+ 536 008e 0122     		movs	r2, #1
+ 537 0090 C3F89C22 		str	r2, [r3, #668]
  538 0094 7047     		bx	lr
  539              	.L80:
  540 0096 094B     		ldr	r3, .L90
@@ -582,414 +582,413 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccR5cgbg.s 			page 1
  553              		.align	2
  554              	.L90:
  555 00bc 00804242 		.word	1111654400
- 557              		.section	.text.StopAllMotor,"ax",%progbits
+ 557              		.section	.text.T3Motor_CmdCombination,"ax",%progbits
  558              		.align	1
- 559              		.global	StopAllMotor
+ 559              		.global	T3Motor_CmdCombination
  560              		.syntax unified
  561              		.thumb
  562              		.thumb_func
- 564              	StopAllMotor:
+ 564              	T3Motor_CmdCombination:
  565              		@ args = 0, pretend = 0, frame = 0
  566              		@ frame_needed = 0, uses_anonymous_args = 0
  567 0000 08B5     		push	{r3, lr}
- 568 0002 064B     		ldr	r3, .L96
- 569 0004 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 570 0006 23B1     		cbz	r3, .L93
- 571 0008 0021     		movs	r1, #0
- 572 000a 0846     		mov	r0, r1
- 573 000c FFF7FEFF 		bl	Motor_Cmd
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccR5cgbg.s 			page 11
+ 568 0002 2DED028B 		vpush.64	{d8}
+ 569 0006 F0EE408A 		vmov.f32	s17, s0
+ 570 000a B0EE608A 		vmov.f32	s16, s1
+ 571 000e 484B     		ldr	r3, .L114
+ 572 0010 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 573 0012 002B     		cmp	r3, #0
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc7h7VLb.s 			page 11
 
 
- 574              	.L94:
- 575 0010 FEE7     		b	.L94
- 576              	.L93:
- 577 0012 0121     		movs	r1, #1
- 578 0014 0020     		movs	r0, #0
- 579 0016 FFF7FEFF 		bl	Motor_Cmd
- 580 001a 08BD     		pop	{r3, pc}
- 581              	.L97:
- 582              		.align	2
- 583              	.L96:
- 584 001c 00000000 		.word	Stop_flag
- 586              		.section	.text.MotorState,"ax",%progbits
- 587              		.align	1
- 588              		.global	MotorState
- 589              		.syntax unified
- 590              		.thumb
- 591              		.thumb_func
- 593              	MotorState:
- 594              		@ args = 0, pretend = 0, frame = 0
- 595              		@ frame_needed = 0, uses_anonymous_args = 0
- 596 0000 08B5     		push	{r3, lr}
- 597 0002 F5EEC00A 		vcmpe.f32	s1, #0
- 598 0006 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
- 599 000a 09DD     		ble	.L99
- 600 000c B5EEC00A 		vcmpe.f32	s0, #0
- 601 0010 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
- 602 0014 1BDC     		bgt	.L119
- 603 0016 B5EEC00A 		vcmpe.f32	s0, #0
- 604 001a F1EE10FA 		vmrs	APSR_nzcv, FPSCR
- 605 001e 2AD4     		bmi	.L120
- 606              	.L99:
- 607 0020 F5EEC00A 		vcmpe.f32	s1, #0
- 608 0024 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
- 609 0028 09D5     		bpl	.L105
- 610 002a B5EEC00A 		vcmpe.f32	s0, #0
- 611 002e F1EE10FA 		vmrs	APSR_nzcv, FPSCR
- 612 0032 34DC     		bgt	.L121
- 613 0034 B5EEC00A 		vcmpe.f32	s0, #0
- 614 0038 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
- 615 003c 43D4     		bmi	.L122
- 616              	.L105:
- 617 003e 0021     		movs	r1, #0
- 618 0040 0846     		mov	r0, r1
- 619 0042 FFF7FEFF 		bl	Motor_Cmd
- 620 0046 2A4B     		ldr	r3, .L123
- 621 0048 0022     		movs	r2, #0
- 622 004a 1A70     		strb	r2, [r3]
- 623              	.L98:
- 624 004c 08BD     		pop	{r3, pc}
- 625              	.L119:
- 626 004e 0021     		movs	r1, #0
- 627 0050 0320     		movs	r0, #3
- 628 0052 FFF7FEFF 		bl	Motor_Cmd
- 629 0056 0121     		movs	r1, #1
- 630 0058 0420     		movs	r0, #4
- 631 005a FFF7FEFF 		bl	Motor_Cmd
- 632 005e 0121     		movs	r1, #1
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccR5cgbg.s 			page 12
+ 574 0014 46D0     		beq	.L93
+ 575 0016 B5EEC00A 		vcmpe.f32	s0, #0
+ 576 001a F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 577 001e 21DD     		ble	.L109
+ 578 0020 0021     		movs	r1, #0
+ 579 0022 0420     		movs	r0, #4
+ 580 0024 FFF7FEFF 		bl	Motor_Cmd
+ 581 0028 0121     		movs	r1, #1
+ 582 002a 0320     		movs	r0, #3
+ 583 002c FFF7FEFF 		bl	Motor_Cmd
+ 584 0030 FCEEE88A 		vcvt.u32.f32	s17, s17
+ 585 0034 3F4B     		ldr	r3, .L114+4
+ 586 0036 C3ED0F8A 		vstr.32	s17, [r3, #60]	@ int
+ 587              	.L96:
+ 588 003a B5EEC08A 		vcmpe.f32	s16, #0
+ 589 003e F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 590 0042 1FDD     		ble	.L110
+ 591 0044 0021     		movs	r1, #0
+ 592 0046 0220     		movs	r0, #2
+ 593 0048 FFF7FEFF 		bl	Motor_Cmd
+ 594 004c 0121     		movs	r1, #1
+ 595 004e 0846     		mov	r0, r1
+ 596 0050 FFF7FEFF 		bl	Motor_Cmd
+ 597 0054 BCEEC88A 		vcvt.u32.f32	s16, s16
+ 598 0058 364B     		ldr	r3, .L114+4
+ 599 005a 83ED0D8A 		vstr.32	s16, [r3, #52]	@ int
+ 600              	.L92:
+ 601 005e BDEC028B 		vldm	sp!, {d8}
+ 602 0062 08BD     		pop	{r3, pc}
+ 603              	.L109:
+ 604 0064 0121     		movs	r1, #1
+ 605 0066 0420     		movs	r0, #4
+ 606 0068 FFF7FEFF 		bl	Motor_Cmd
+ 607 006c 0021     		movs	r1, #0
+ 608 006e 0320     		movs	r0, #3
+ 609 0070 FFF7FEFF 		bl	Motor_Cmd
+ 610 0074 F1EE688A 		vneg.f32	s17, s17
+ 611 0078 FCEEE88A 		vcvt.u32.f32	s17, s17
+ 612 007c 2D4B     		ldr	r3, .L114+4
+ 613 007e C3ED108A 		vstr.32	s17, [r3, #64]	@ int
+ 614 0082 DAE7     		b	.L96
+ 615              	.L110:
+ 616 0084 0121     		movs	r1, #1
+ 617 0086 0220     		movs	r0, #2
+ 618 0088 FFF7FEFF 		bl	Motor_Cmd
+ 619 008c 0021     		movs	r1, #0
+ 620 008e 0120     		movs	r0, #1
+ 621 0090 FFF7FEFF 		bl	Motor_Cmd
+ 622 0094 B1EE488A 		vneg.f32	s16, s16
+ 623 0098 BCEEC88A 		vcvt.u32.f32	s16, s16
+ 624 009c 254B     		ldr	r3, .L114+4
+ 625 009e 83ED0E8A 		vstr.32	s16, [r3, #56]	@ int
+ 626 00a2 DCE7     		b	.L92
+ 627              	.L93:
+ 628 00a4 B5EEC00A 		vcmpe.f32	s0, #0
+ 629 00a8 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 630 00ac 1FDD     		ble	.L111
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc7h7VLb.s 			page 12
 
 
- 633 0060 0220     		movs	r0, #2
- 634 0062 FFF7FEFF 		bl	Motor_Cmd
- 635 0066 0021     		movs	r1, #0
- 636 0068 0120     		movs	r0, #1
- 637 006a FFF7FEFF 		bl	Motor_Cmd
- 638 006e 204B     		ldr	r3, .L123
- 639 0070 0422     		movs	r2, #4
- 640 0072 1A70     		strb	r2, [r3]
- 641 0074 EAE7     		b	.L98
- 642              	.L120:
- 643 0076 0121     		movs	r1, #1
- 644 0078 0320     		movs	r0, #3
- 645 007a FFF7FEFF 		bl	Motor_Cmd
- 646 007e 0021     		movs	r1, #0
- 647 0080 0420     		movs	r0, #4
- 648 0082 FFF7FEFF 		bl	Motor_Cmd
- 649 0086 0121     		movs	r1, #1
- 650 0088 0220     		movs	r0, #2
- 651 008a FFF7FEFF 		bl	Motor_Cmd
- 652 008e 0021     		movs	r1, #0
- 653 0090 0120     		movs	r0, #1
- 654 0092 FFF7FEFF 		bl	Motor_Cmd
- 655 0096 164B     		ldr	r3, .L123
- 656 0098 0122     		movs	r2, #1
- 657 009a 1A70     		strb	r2, [r3]
- 658 009c D6E7     		b	.L98
- 659              	.L121:
- 660 009e 0021     		movs	r1, #0
- 661 00a0 0320     		movs	r0, #3
- 662 00a2 FFF7FEFF 		bl	Motor_Cmd
- 663 00a6 0121     		movs	r1, #1
- 664 00a8 0420     		movs	r0, #4
- 665 00aa FFF7FEFF 		bl	Motor_Cmd
- 666 00ae 0021     		movs	r1, #0
- 667 00b0 0220     		movs	r0, #2
- 668 00b2 FFF7FEFF 		bl	Motor_Cmd
- 669 00b6 0121     		movs	r1, #1
- 670 00b8 0846     		mov	r0, r1
- 671 00ba FFF7FEFF 		bl	Motor_Cmd
- 672 00be 0C4B     		ldr	r3, .L123
- 673 00c0 0322     		movs	r2, #3
- 674 00c2 1A70     		strb	r2, [r3]
- 675 00c4 C2E7     		b	.L98
- 676              	.L122:
- 677 00c6 0121     		movs	r1, #1
- 678 00c8 0320     		movs	r0, #3
- 679 00ca FFF7FEFF 		bl	Motor_Cmd
- 680 00ce 0021     		movs	r1, #0
- 681 00d0 0420     		movs	r0, #4
- 682 00d2 FFF7FEFF 		bl	Motor_Cmd
- 683 00d6 0021     		movs	r1, #0
- 684 00d8 0220     		movs	r0, #2
- 685 00da FFF7FEFF 		bl	Motor_Cmd
- 686 00de 0121     		movs	r1, #1
- 687 00e0 0846     		mov	r0, r1
- 688 00e2 FFF7FEFF 		bl	Motor_Cmd
- 689 00e6 024B     		ldr	r3, .L123
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccR5cgbg.s 			page 13
+ 631 00ae 0121     		movs	r1, #1
+ 632 00b0 0420     		movs	r0, #4
+ 633 00b2 FFF7FEFF 		bl	Motor_Cmd
+ 634 00b6 0021     		movs	r1, #0
+ 635 00b8 0320     		movs	r0, #3
+ 636 00ba FFF7FEFF 		bl	Motor_Cmd
+ 637 00be FCEEE88A 		vcvt.u32.f32	s17, s17
+ 638 00c2 1C4B     		ldr	r3, .L114+4
+ 639 00c4 C3ED108A 		vstr.32	s17, [r3, #64]	@ int
+ 640              	.L102:
+ 641 00c8 B5EEC08A 		vcmpe.f32	s16, #0
+ 642 00cc F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 643 00d0 1DDD     		ble	.L112
+ 644 00d2 0021     		movs	r1, #0
+ 645 00d4 0220     		movs	r0, #2
+ 646 00d6 FFF7FEFF 		bl	Motor_Cmd
+ 647 00da 0121     		movs	r1, #1
+ 648 00dc 0846     		mov	r0, r1
+ 649 00de FFF7FEFF 		bl	Motor_Cmd
+ 650 00e2 BCEEC88A 		vcvt.u32.f32	s16, s16
+ 651 00e6 134B     		ldr	r3, .L114+4
+ 652 00e8 83ED0E8A 		vstr.32	s16, [r3, #56]	@ int
+ 653 00ec B7E7     		b	.L92
+ 654              	.L111:
+ 655 00ee 0021     		movs	r1, #0
+ 656 00f0 0420     		movs	r0, #4
+ 657 00f2 FFF7FEFF 		bl	Motor_Cmd
+ 658 00f6 0121     		movs	r1, #1
+ 659 00f8 0320     		movs	r0, #3
+ 660 00fa FFF7FEFF 		bl	Motor_Cmd
+ 661 00fe F1EE688A 		vneg.f32	s17, s17
+ 662 0102 FCEEE88A 		vcvt.u32.f32	s17, s17
+ 663 0106 0B4B     		ldr	r3, .L114+4
+ 664 0108 C3ED0F8A 		vstr.32	s17, [r3, #60]	@ int
+ 665 010c DCE7     		b	.L102
+ 666              	.L112:
+ 667 010e 0121     		movs	r1, #1
+ 668 0110 0220     		movs	r0, #2
+ 669 0112 FFF7FEFF 		bl	Motor_Cmd
+ 670 0116 0021     		movs	r1, #0
+ 671 0118 0120     		movs	r0, #1
+ 672 011a FFF7FEFF 		bl	Motor_Cmd
+ 673 011e B1EE488A 		vneg.f32	s16, s16
+ 674 0122 BCEEC88A 		vcvt.u32.f32	s16, s16
+ 675 0126 034B     		ldr	r3, .L114+4
+ 676 0128 83ED0D8A 		vstr.32	s16, [r3, #52]	@ int
+ 677 012c 97E7     		b	.L92
+ 678              	.L115:
+ 679 012e 00BF     		.align	2
+ 680              	.L114:
+ 681 0130 00000000 		.word	State_Data
+ 682 0134 00040140 		.word	1073808384
+ 684              		.section	.text.StopAllMotor,"ax",%progbits
+ 685              		.align	1
+ 686              		.global	StopAllMotor
+ 687              		.syntax unified
+ 688              		.thumb
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc7h7VLb.s 			page 13
 
 
- 690 00e8 0222     		movs	r2, #2
- 691 00ea 1A70     		strb	r2, [r3]
- 692 00ec AEE7     		b	.L98
- 693              	.L124:
- 694 00ee 00BF     		.align	2
- 695              	.L123:
- 696 00f0 00000000 		.word	MotorLocation
- 698              		.section	.text.PWM_Allocation,"ax",%progbits
- 699              		.align	1
- 700              		.global	PWM_Allocation
- 701              		.syntax unified
- 702              		.thumb
- 703              		.thumb_func
- 705              	PWM_Allocation:
- 706              		@ args = 0, pretend = 0, frame = 0
- 707              		@ frame_needed = 0, uses_anonymous_args = 0
- 708 0000 10B5     		push	{r4, lr}
- 709 0002 2DED028B 		vpush.64	{d8}
- 710 0006 DFED667A 		vldr.32	s15, .L138+8
- 711 000a B4EEE70A 		vcmpe.f32	s0, s15
- 712 000e F1EE10FA 		vmrs	APSR_nzcv, FPSCR
- 713 0012 09DC     		bgt	.L134
- 714 0014 B0EE408A 		vmov.f32	s16, s0
- 715 0018 B5EEC00A 		vcmpe.f32	s0, #0
- 716 001c F1EE10FA 		vmrs	APSR_nzcv, FPSCR
- 717 0020 04D5     		bpl	.L126
- 718 0022 B1EE408A 		vneg.f32	s16, s0
- 719 0026 01E0     		b	.L126
- 720              	.L134:
- 721 0028 9FED5D8A 		vldr.32	s16, .L138+8
- 722              	.L126:
- 723 002c 5D4B     		ldr	r3, .L138+12
- 724 002e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 725 0030 013B     		subs	r3, r3, #1
- 726 0032 032B     		cmp	r3, #3
- 727 0034 2CD8     		bhi	.L125
- 728 0036 DFE803F0 		tbb	[pc, r3]
- 729              	.L130:
- 730 003a 02       		.byte	(.L133-.L130)/2
- 731 003b 2E       		.byte	(.L132-.L130)/2
- 732 003c 58       		.byte	(.L131-.L130)/2
- 733 003d 82       		.byte	(.L129-.L130)/2
- 734              		.p2align 1
- 735              	.L133:
- 736 003e 5A4B     		ldr	r3, .L138+16
- 737 0040 93ED007A 		vldr.32	s14, [r3]
- 738 0044 DFED597A 		vldr.32	s15, .L138+20
- 739 0048 C7EE277A 		vdiv.f32	s15, s14, s15
- 740 004c 17EE900A 		vmov	r0, s15
- 741 0050 FFF7FEFF 		bl	__aeabi_f2d
- 742 0054 50A3     		adr	r3, .L138
- 743 0056 D3E90023 		ldrd	r2, [r3]
- 744 005a FFF7FEFF 		bl	__aeabi_dmul
- 745 005e FFF7FEFF 		bl	__aeabi_d2f
- 746 0062 08EE900A 		vmov	s17, r0
- 747 0066 B0EE680A 		vmov.f32	s0, s17
- 748 006a FFF7FEFF 		bl	cosf
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccR5cgbg.s 			page 14
+ 689              		.thumb_func
+ 691              	StopAllMotor:
+ 692              		@ args = 0, pretend = 0, frame = 0
+ 693              		@ frame_needed = 0, uses_anonymous_args = 0
+ 694 0000 08B5     		push	{r3, lr}
+ 695 0002 064B     		ldr	r3, .L120
+ 696 0004 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 697 0006 23B1     		cbz	r3, .L117
+ 698 0008 0021     		movs	r1, #0
+ 699 000a 0846     		mov	r0, r1
+ 700 000c FFF7FEFF 		bl	Motor_Cmd
+ 701              	.L118:
+ 702 0010 FEE7     		b	.L118
+ 703              	.L117:
+ 704 0012 0121     		movs	r1, #1
+ 705 0014 0020     		movs	r0, #0
+ 706 0016 FFF7FEFF 		bl	Motor_Cmd
+ 707 001a 08BD     		pop	{r3, pc}
+ 708              	.L121:
+ 709              		.align	2
+ 710              	.L120:
+ 711 001c 00000000 		.word	Stop_flag
+ 713              		.section	.text.T3State_Update,"ax",%progbits
+ 714              		.align	1
+ 715              		.global	T3State_Update
+ 716              		.syntax unified
+ 717              		.thumb
+ 718              		.thumb_func
+ 720              	T3State_Update:
+ 721              		@ args = 0, pretend = 0, frame = 0
+ 722              		@ frame_needed = 0, uses_anonymous_args = 0
+ 723 0000 10B5     		push	{r4, lr}
+ 724 0002 2DED048B 		vpush.64	{d8, d9}
+ 725 0006 F0EE609A 		vmov.f32	s19, s1
+ 726 000a 11EE104A 		vmov	r4, s2
+ 727 000e B0EE618A 		vmov.f32	s16, s3
+ 728 0012 DFED4B7A 		vldr.32	s15, .L132+16
+ 729 0016 B4EEE70A 		vcmpe.f32	s0, s15
+ 730 001a F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 731 001e 03DD     		ble	.L123
+ 732 0020 DFED487A 		vldr.32	s15, .L132+20
+ 733 0024 37EEC00A 		vsub.f32	s0, s15, s0
+ 734              	.L123:
+ 735 0028 10EE100A 		vmov	r0, s0
+ 736 002c FFF7FEFF 		bl	__aeabi_f2d
+ 737 0030 3FA3     		adr	r3, .L132
+ 738 0032 D3E90023 		ldrd	r2, [r3]
+ 739 0036 FFF7FEFF 		bl	__aeabi_dmul
+ 740 003a 0022     		movs	r2, #0
+ 741 003c 424B     		ldr	r3, .L132+24
+ 742 003e FFF7FEFF 		bl	__aeabi_ddiv
+ 743 0042 FFF7FEFF 		bl	__aeabi_d2f
+ 744 0046 09EE100A 		vmov	s18, r0
+ 745 004a B0EE490A 		vmov.f32	s0, s18
+ 746 004e FFF7FEFF 		bl	cosf
+ 747 0052 60EE297A 		vmul.f32	s15, s0, s19
+ 748 0056 17EE900A 		vmov	r0, s15
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc7h7VLb.s 			page 14
 
 
- 749 006e 20EE080A 		vmul.f32	s0, s0, s16
- 750 0072 BCEEC00A 		vcvt.u32.f32	s0, s0
- 751 0076 4E4C     		ldr	r4, .L138+24
- 752 0078 84ED0E0A 		vstr.32	s0, [r4, #56]	@ int
- 753 007c B0EE680A 		vmov.f32	s0, s17
- 754 0080 FFF7FEFF 		bl	sinf
- 755 0084 20EE080A 		vmul.f32	s0, s0, s16
- 756 0088 BCEEC00A 		vcvt.u32.f32	s0, s0
- 757 008c 84ED0F0A 		vstr.32	s0, [r4, #60]	@ int
- 758              	.L125:
- 759 0090 BDEC028B 		vldm	sp!, {d8}
- 760 0094 10BD     		pop	{r4, pc}
- 761              	.L132:
- 762 0096 444B     		ldr	r3, .L138+16
- 763 0098 93ED007A 		vldr.32	s14, [r3]
- 764 009c DFED437A 		vldr.32	s15, .L138+20
- 765 00a0 C7EE277A 		vdiv.f32	s15, s14, s15
- 766 00a4 17EE900A 		vmov	r0, s15
- 767 00a8 FFF7FEFF 		bl	__aeabi_f2d
- 768 00ac 3AA3     		adr	r3, .L138
- 769 00ae D3E90023 		ldrd	r2, [r3]
- 770 00b2 FFF7FEFF 		bl	__aeabi_dmul
- 771 00b6 FFF7FEFF 		bl	__aeabi_d2f
- 772 00ba 08EE900A 		vmov	s17, r0
- 773 00be B0EE680A 		vmov.f32	s0, s17
- 774 00c2 FFF7FEFF 		bl	cosf
- 775 00c6 20EE080A 		vmul.f32	s0, s0, s16
- 776 00ca BCEEC00A 		vcvt.u32.f32	s0, s0
- 777 00ce 384C     		ldr	r4, .L138+24
- 778 00d0 84ED0D0A 		vstr.32	s0, [r4, #52]	@ int
- 779 00d4 B0EE680A 		vmov.f32	s0, s17
- 780 00d8 FFF7FEFF 		bl	sinf
- 781 00dc 20EE080A 		vmul.f32	s0, s0, s16
- 782 00e0 BCEEC00A 		vcvt.u32.f32	s0, s0
- 783 00e4 84ED0F0A 		vstr.32	s0, [r4, #60]	@ int
- 784 00e8 D2E7     		b	.L125
- 785              	.L131:
- 786 00ea 2F4B     		ldr	r3, .L138+16
- 787 00ec 93ED007A 		vldr.32	s14, [r3]
- 788 00f0 DFED2E7A 		vldr.32	s15, .L138+20
- 789 00f4 C7EE277A 		vdiv.f32	s15, s14, s15
- 790 00f8 17EE900A 		vmov	r0, s15
- 791 00fc FFF7FEFF 		bl	__aeabi_f2d
- 792 0100 25A3     		adr	r3, .L138
- 793 0102 D3E90023 		ldrd	r2, [r3]
- 794 0106 FFF7FEFF 		bl	__aeabi_dmul
- 795 010a FFF7FEFF 		bl	__aeabi_d2f
- 796 010e 08EE900A 		vmov	s17, r0
- 797 0112 B0EE680A 		vmov.f32	s0, s17
- 798 0116 FFF7FEFF 		bl	cosf
- 799 011a 20EE080A 		vmul.f32	s0, s0, s16
- 800 011e BCEEC00A 		vcvt.u32.f32	s0, s0
- 801 0122 234C     		ldr	r4, .L138+24
- 802 0124 84ED0D0A 		vstr.32	s0, [r4, #52]	@ int
- 803 0128 B0EE680A 		vmov.f32	s0, s17
- 804 012c FFF7FEFF 		bl	sinf
- 805 0130 20EE080A 		vmul.f32	s0, s0, s16
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccR5cgbg.s 			page 15
+ 749 005a FFF7FEFF 		bl	__aeabi_f2d
+ 750 005e 36A3     		adr	r3, .L132+8
+ 751 0060 D3E90023 		ldrd	r2, [r3]
+ 752 0064 FFF7FEFF 		bl	__aeabi_ddiv
+ 753 0068 FFF7FEFF 		bl	__aeabi_d2f
+ 754 006c 00EE100A 		vmov	s0, r0
+ 755 0070 FFF7FEFF 		bl	atanf
+ 756 0074 10EE100A 		vmov	r0, s0
+ 757 0078 FFF7FEFF 		bl	__aeabi_f2d
+ 758 007c 2CA3     		adr	r3, .L132
+ 759 007e D3E90023 		ldrd	r2, [r3]
+ 760 0082 FFF7FEFF 		bl	__aeabi_ddiv
+ 761 0086 0022     		movs	r2, #0
+ 762 0088 2F4B     		ldr	r3, .L132+24
+ 763 008a FFF7FEFF 		bl	__aeabi_dmul
+ 764 008e FFF7FEFF 		bl	__aeabi_d2f
+ 765 0092 08EE900A 		vmov	s17, r0
+ 766 0096 B0EE490A 		vmov.f32	s0, s18
+ 767 009a FFF7FEFF 		bl	sinf
+ 768 009e 60EE297A 		vmul.f32	s15, s0, s19
+ 769 00a2 17EE900A 		vmov	r0, s15
+ 770 00a6 FFF7FEFF 		bl	__aeabi_f2d
+ 771 00aa 23A3     		adr	r3, .L132+8
+ 772 00ac D3E90023 		ldrd	r2, [r3]
+ 773 00b0 FFF7FEFF 		bl	__aeabi_ddiv
+ 774 00b4 FFF7FEFF 		bl	__aeabi_d2f
+ 775 00b8 00EE100A 		vmov	s0, r0
+ 776 00bc FFF7FEFF 		bl	atanf
+ 777 00c0 10EE100A 		vmov	r0, s0
+ 778 00c4 FFF7FEFF 		bl	__aeabi_f2d
+ 779 00c8 19A3     		adr	r3, .L132
+ 780 00ca D3E90023 		ldrd	r2, [r3]
+ 781 00ce FFF7FEFF 		bl	__aeabi_ddiv
+ 782 00d2 0022     		movs	r2, #0
+ 783 00d4 1C4B     		ldr	r3, .L132+24
+ 784 00d6 FFF7FEFF 		bl	__aeabi_dmul
+ 785 00da FFF7FEFF 		bl	__aeabi_d2f
+ 786 00de 07EE900A 		vmov	s15, r0
+ 787 00e2 9FED1A7A 		vldr.32	s14, .L132+28
+ 788 00e6 68EE878A 		vmul.f32	s17, s17, s14
+ 789 00ea 67EE877A 		vmul.f32	s15, s15, s14
+ 790 00ee 9FED187A 		vldr.32	s14, .L132+32
+ 791 00f2 B4EEC79A 		vcmpe.f32	s18, s14
+ 792 00f6 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 793 00fa 11DB     		blt	.L130
+ 794 00fc B1EE488A 		vneg.f32	s16, s16
+ 795 0100 144B     		ldr	r3, .L132+36
+ 796 0102 0122     		movs	r2, #1
+ 797 0104 1A70     		strb	r2, [r3]
+ 798              	.L127:
+ 799 0106 1448     		ldr	r0, .L132+40
+ 800 0108 144B     		ldr	r3, .L132+44
+ 801 010a 0360     		str	r3, [r0]	@ float
+ 802 010c C0ED018A 		vstr.32	s17, [r0, #4]
+ 803 0110 C0ED027A 		vstr.32	s15, [r0, #8]
+ 804 0114 C460     		str	r4, [r0, #12]	@ float
+ 805 0116 80ED048A 		vstr.32	s16, [r0, #16]
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc7h7VLb.s 			page 15
 
 
- 806 0134 BCEEC00A 		vcvt.u32.f32	s0, s0
- 807 0138 84ED100A 		vstr.32	s0, [r4, #64]	@ int
- 808 013c A8E7     		b	.L125
- 809              	.L129:
- 810 013e 1A4B     		ldr	r3, .L138+16
- 811 0140 93ED007A 		vldr.32	s14, [r3]
- 812 0144 DFED197A 		vldr.32	s15, .L138+20
- 813 0148 C7EE277A 		vdiv.f32	s15, s14, s15
- 814 014c 17EE900A 		vmov	r0, s15
- 815 0150 FFF7FEFF 		bl	__aeabi_f2d
- 816 0154 10A3     		adr	r3, .L138
- 817 0156 D3E90023 		ldrd	r2, [r3]
- 818 015a FFF7FEFF 		bl	__aeabi_dmul
- 819 015e FFF7FEFF 		bl	__aeabi_d2f
- 820 0162 08EE900A 		vmov	s17, r0
- 821 0166 B0EE680A 		vmov.f32	s0, s17
- 822 016a FFF7FEFF 		bl	cosf
- 823 016e 20EE080A 		vmul.f32	s0, s0, s16
- 824 0172 BCEEC00A 		vcvt.u32.f32	s0, s0
- 825 0176 0E4C     		ldr	r4, .L138+24
- 826 0178 84ED0E0A 		vstr.32	s0, [r4, #56]	@ int
- 827 017c B0EE680A 		vmov.f32	s0, s17
- 828 0180 FFF7FEFF 		bl	sinf
- 829 0184 20EE080A 		vmul.f32	s0, s0, s16
- 830 0188 BCEEC00A 		vcvt.u32.f32	s0, s0
- 831 018c 84ED100A 		vstr.32	s0, [r4, #64]	@ int
- 832 0190 7EE7     		b	.L125
- 833              	.L139:
- 834 0192 00BFAFF3 		.align	3
- 834      0080
- 835              	.L138:
- 836 0198 4AD8124D 		.word	1293080650
- 837 019c FB210940 		.word	1074340347
- 838 01a0 00400346 		.word	1174618112
- 839 01a4 00000000 		.word	MotorLocation
- 840 01a8 00000000 		.word	Opolar
- 841 01ac 00003443 		.word	1127481344
- 842 01b0 00040140 		.word	1073808384
- 844              		.section	.bss.output.0,"aw",%nobits
- 845              		.align	2
- 848              	output.0:
- 849 0000 00000000 		.space	4
- 850              		.section	.bss.T1Lderivative.1,"aw",%nobits
- 851              		.align	2
- 854              	T1Lderivative.1:
- 855 0000 00000000 		.space	4
- 856              		.section	.bss.T1LlastError.2,"aw",%nobits
- 857              		.align	2
- 860              	T1LlastError.2:
- 861 0000 00000000 		.space	4
- 862              		.section	.bss.T1Lintegral.5,"aw",%nobits
- 863              		.align	2
- 866              	T1Lintegral.5:
- 867 0000 00000000 		.space	4
- 868              		.section	.bss.T1Lerror.6,"aw",%nobits
- 869              		.align	2
- 872              	T1Lerror.6:
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccR5cgbg.s 			page 16
+ 806 011a BDEC048B 		vldm	sp!, {d8-d9}
+ 807 011e 10BD     		pop	{r4, pc}
+ 808              	.L130:
+ 809 0120 B1EE488A 		vneg.f32	s16, s16
+ 810 0124 0B4B     		ldr	r3, .L132+36
+ 811 0126 0022     		movs	r2, #0
+ 812 0128 1A70     		strb	r2, [r3]
+ 813 012a ECE7     		b	.L127
+ 814              	.L133:
+ 815 012c AFF30080 		.align	3
+ 816              	.L132:
+ 817 0130 4AD8124D 		.word	1293080650
+ 818 0134 FB210940 		.word	1074340347
+ 819 0138 85EB51B8 		.word	-1202590843
+ 820 013c 1E85EB3F 		.word	1072399646
+ 821 0140 00003443 		.word	1127481344
+ 822 0144 0000B443 		.word	1135869952
+ 823 0148 00806640 		.word	1080459264
+ 824 014c 19CF1F3D 		.word	1025494809
+ 825 0150 0000B442 		.word	1119092736
+ 826 0154 00000000 		.word	State_Data
+ 827 0158 00000000 		.word	Output.0
+ 828 015c 4BC22A3C 		.word	1009435211
+ 830              		.section	.bss.Output.0,"aw",%nobits
+ 831              		.align	2
+ 834              	Output.0:
+ 835 0000 00000000 		.space	20
+ 835      00000000 
+ 835      00000000 
+ 835      00000000 
+ 835      00000000 
+ 836              		.section	.bss.output.1,"aw",%nobits
+ 837              		.align	2
+ 840              	output.1:
+ 841 0000 00000000 		.space	4
+ 842              		.section	.bss.T1Lderivative.2,"aw",%nobits
+ 843              		.align	2
+ 846              	T1Lderivative.2:
+ 847 0000 00000000 		.space	4
+ 848              		.section	.bss.T1LlastError.3,"aw",%nobits
+ 849              		.align	2
+ 852              	T1LlastError.3:
+ 853 0000 00000000 		.space	4
+ 854              		.section	.bss.T1Lintegral.6,"aw",%nobits
+ 855              		.align	2
+ 858              	T1Lintegral.6:
+ 859 0000 00000000 		.space	4
+ 860              		.section	.bss.T1Lerror.7,"aw",%nobits
+ 861              		.align	2
+ 864              	T1Lerror.7:
+ 865 0000 00000000 		.space	4
+ 866              		.section	.bss.output.8,"aw",%nobits
+ 867              		.align	2
+ 870              	output.8:
+ 871 0000 00000000 		.space	4
+ 872              		.section	.bss.T4Sderivative.9,"aw",%nobits
+ 873              		.align	2
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc7h7VLb.s 			page 16
 
 
- 873 0000 00000000 		.space	4
- 874              		.section	.bss.output.7,"aw",%nobits
- 875              		.align	2
- 878              	output.7:
- 879 0000 00000000 		.space	4
- 880              		.section	.bss.T4Sderivative.8,"aw",%nobits
- 881              		.align	2
- 884              	T4Sderivative.8:
- 885 0000 00000000 		.space	4
- 886              		.section	.bss.T4SlastError.9,"aw",%nobits
- 887              		.align	2
- 890              	T4SlastError.9:
- 891 0000 00000000 		.space	4
- 892              		.section	.bss.T4Sintegral.12,"aw",%nobits
- 893              		.align	2
- 896              	T4Sintegral.12:
- 897 0000 00000000 		.space	4
- 898              		.section	.bss.T4Serror.13,"aw",%nobits
- 899              		.align	2
- 902              	T4Serror.13:
- 903 0000 00000000 		.space	4
- 904              		.global	MotorLocation
- 905              		.section	.bss.MotorLocation,"aw",%nobits
- 908              	MotorLocation:
- 909 0000 00       		.space	1
- 910              		.ident	"GCC: (Arm GNU Toolchain 13.3.Rel1 (Build arm-13.24)) 13.3.1 20240614"
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccR5cgbg.s 			page 17
+ 876              	T4Sderivative.9:
+ 877 0000 00000000 		.space	4
+ 878              		.section	.bss.T4SlastError.10,"aw",%nobits
+ 879              		.align	2
+ 882              	T4SlastError.10:
+ 883 0000 00000000 		.space	4
+ 884              		.section	.bss.T4Sintegral.13,"aw",%nobits
+ 885              		.align	2
+ 888              	T4Sintegral.13:
+ 889 0000 00000000 		.space	4
+ 890              		.section	.bss.T4Serror.14,"aw",%nobits
+ 891              		.align	2
+ 894              	T4Serror.14:
+ 895 0000 00000000 		.space	4
+ 896              		.global	MotorLocation
+ 897              		.section	.bss.MotorLocation,"aw",%nobits
+ 900              	MotorLocation:
+ 901 0000 00       		.space	1
+ 902              		.global	State_Data
+ 903              		.section	.bss.State_Data,"aw",%nobits
+ 906              	State_Data:
+ 907 0000 00       		.space	1
+ 908              		.ident	"GCC: (Arm GNU Toolchain 13.3.Rel1 (Build arm-13.24)) 13.3.1 20240614"
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc7h7VLb.s 			page 17
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 control.c
-C:\Users\ktkuru\AppData\Local\Temp\ccR5cgbg.s:22     .text.GetPolar:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccR5cgbg.s:28     .text.GetPolar:00000000 GetPolar
-C:\Users\ktkuru\AppData\Local\Temp\ccR5cgbg.s:171    .text.GetPolar:000001b0 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccR5cgbg.s:183    .text.PidControl_Stop:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccR5cgbg.s:189    .text.PidControl_Stop:00000000 PidControl_Stop
-C:\Users\ktkuru\AppData\Local\Temp\ccR5cgbg.s:252    .text.PidControl_Stop:000000b0 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccR5cgbg.s:902    .bss.T4Serror.13:00000000 T4Serror.13
-C:\Users\ktkuru\AppData\Local\Temp\ccR5cgbg.s:896    .bss.T4Sintegral.12:00000000 T4Sintegral.12
-C:\Users\ktkuru\AppData\Local\Temp\ccR5cgbg.s:890    .bss.T4SlastError.9:00000000 T4SlastError.9
-C:\Users\ktkuru\AppData\Local\Temp\ccR5cgbg.s:884    .bss.T4Sderivative.8:00000000 T4Sderivative.8
-C:\Users\ktkuru\AppData\Local\Temp\ccR5cgbg.s:878    .bss.output.7:00000000 output.7
-C:\Users\ktkuru\AppData\Local\Temp\ccR5cgbg.s:264    .text.PidControl_LineMove:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccR5cgbg.s:270    .text.PidControl_LineMove:00000000 PidControl_LineMove
-C:\Users\ktkuru\AppData\Local\Temp\ccR5cgbg.s:333    .text.PidControl_LineMove:000000b0 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccR5cgbg.s:872    .bss.T1Lerror.6:00000000 T1Lerror.6
-C:\Users\ktkuru\AppData\Local\Temp\ccR5cgbg.s:866    .bss.T1Lintegral.5:00000000 T1Lintegral.5
-C:\Users\ktkuru\AppData\Local\Temp\ccR5cgbg.s:860    .bss.T1LlastError.2:00000000 T1LlastError.2
-C:\Users\ktkuru\AppData\Local\Temp\ccR5cgbg.s:854    .bss.T1Lderivative.1:00000000 T1Lderivative.1
-C:\Users\ktkuru\AppData\Local\Temp\ccR5cgbg.s:848    .bss.output.0:00000000 output.0
-C:\Users\ktkuru\AppData\Local\Temp\ccR5cgbg.s:345    .rodata.Motor_PWM_TIM8_Init.str1.4:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccR5cgbg.s:352    .text.Motor_PWM_TIM8_Init:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccR5cgbg.s:358    .text.Motor_PWM_TIM8_Init:00000000 Motor_PWM_TIM8_Init
-C:\Users\ktkuru\AppData\Local\Temp\ccR5cgbg.s:454    .text.Motor_PWM_TIM8_Init:000000f8 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccR5cgbg.s:459    .text.Motor_Cmd:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccR5cgbg.s:465    .text.Motor_Cmd:00000000 Motor_Cmd
-C:\Users\ktkuru\AppData\Local\Temp\ccR5cgbg.s:473    .text.Motor_Cmd:00000008 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccR5cgbg.s:555    .text.Motor_Cmd:000000bc $d
-C:\Users\ktkuru\AppData\Local\Temp\ccR5cgbg.s:558    .text.StopAllMotor:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccR5cgbg.s:564    .text.StopAllMotor:00000000 StopAllMotor
-C:\Users\ktkuru\AppData\Local\Temp\ccR5cgbg.s:584    .text.StopAllMotor:0000001c $d
-C:\Users\ktkuru\AppData\Local\Temp\ccR5cgbg.s:587    .text.MotorState:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccR5cgbg.s:593    .text.MotorState:00000000 MotorState
-C:\Users\ktkuru\AppData\Local\Temp\ccR5cgbg.s:696    .text.MotorState:000000f0 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccR5cgbg.s:908    .bss.MotorLocation:00000000 MotorLocation
-C:\Users\ktkuru\AppData\Local\Temp\ccR5cgbg.s:699    .text.PWM_Allocation:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccR5cgbg.s:705    .text.PWM_Allocation:00000000 PWM_Allocation
-C:\Users\ktkuru\AppData\Local\Temp\ccR5cgbg.s:730    .text.PWM_Allocation:0000003a $d
-C:\Users\ktkuru\AppData\Local\Temp\ccR5cgbg.s:734    .text.PWM_Allocation:0000003e $t
-C:\Users\ktkuru\AppData\Local\Temp\ccR5cgbg.s:836    .text.PWM_Allocation:00000198 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccR5cgbg.s:845    .bss.output.0:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccR5cgbg.s:851    .bss.T1Lderivative.1:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccR5cgbg.s:857    .bss.T1LlastError.2:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccR5cgbg.s:863    .bss.T1Lintegral.5:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccR5cgbg.s:869    .bss.T1Lerror.6:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccR5cgbg.s:875    .bss.output.7:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccR5cgbg.s:881    .bss.T4Sderivative.8:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccR5cgbg.s:887    .bss.T4SlastError.9:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccR5cgbg.s:893    .bss.T4Sintegral.12:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccR5cgbg.s:899    .bss.T4Serror.13:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccR5cgbg.s:909    .bss.MotorLocation:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccR5cgbg.s:478    .text.Motor_Cmd:0000000d $d
-C:\Users\ktkuru\AppData\Local\Temp\ccR5cgbg.s:478    .text.Motor_Cmd:0000000e $t
+C:\Users\ktkuru\AppData\Local\Temp\cc7h7VLb.s:22     .text.GetPolar:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc7h7VLb.s:28     .text.GetPolar:00000000 GetPolar
+C:\Users\ktkuru\AppData\Local\Temp\cc7h7VLb.s:171    .text.GetPolar:000001b0 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc7h7VLb.s:183    .text.PidControl_Stop:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc7h7VLb.s:189    .text.PidControl_Stop:00000000 PidControl_Stop
+C:\Users\ktkuru\AppData\Local\Temp\cc7h7VLb.s:252    .text.PidControl_Stop:000000b0 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc7h7VLb.s:894    .bss.T4Serror.14:00000000 T4Serror.14
+C:\Users\ktkuru\AppData\Local\Temp\cc7h7VLb.s:888    .bss.T4Sintegral.13:00000000 T4Sintegral.13
+C:\Users\ktkuru\AppData\Local\Temp\cc7h7VLb.s:882    .bss.T4SlastError.10:00000000 T4SlastError.10
+C:\Users\ktkuru\AppData\Local\Temp\cc7h7VLb.s:876    .bss.T4Sderivative.9:00000000 T4Sderivative.9
+C:\Users\ktkuru\AppData\Local\Temp\cc7h7VLb.s:870    .bss.output.8:00000000 output.8
+C:\Users\ktkuru\AppData\Local\Temp\cc7h7VLb.s:264    .text.PidControl_LineMove:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc7h7VLb.s:270    .text.PidControl_LineMove:00000000 PidControl_LineMove
+C:\Users\ktkuru\AppData\Local\Temp\cc7h7VLb.s:333    .text.PidControl_LineMove:000000b0 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc7h7VLb.s:864    .bss.T1Lerror.7:00000000 T1Lerror.7
+C:\Users\ktkuru\AppData\Local\Temp\cc7h7VLb.s:858    .bss.T1Lintegral.6:00000000 T1Lintegral.6
+C:\Users\ktkuru\AppData\Local\Temp\cc7h7VLb.s:852    .bss.T1LlastError.3:00000000 T1LlastError.3
+C:\Users\ktkuru\AppData\Local\Temp\cc7h7VLb.s:846    .bss.T1Lderivative.2:00000000 T1Lderivative.2
+C:\Users\ktkuru\AppData\Local\Temp\cc7h7VLb.s:840    .bss.output.1:00000000 output.1
+C:\Users\ktkuru\AppData\Local\Temp\cc7h7VLb.s:345    .rodata.Motor_PWM_TIM8_Init.str1.4:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc7h7VLb.s:352    .text.Motor_PWM_TIM8_Init:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc7h7VLb.s:358    .text.Motor_PWM_TIM8_Init:00000000 Motor_PWM_TIM8_Init
+C:\Users\ktkuru\AppData\Local\Temp\cc7h7VLb.s:454    .text.Motor_PWM_TIM8_Init:000000f8 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc7h7VLb.s:459    .text.Motor_Cmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc7h7VLb.s:465    .text.Motor_Cmd:00000000 Motor_Cmd
+C:\Users\ktkuru\AppData\Local\Temp\cc7h7VLb.s:473    .text.Motor_Cmd:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc7h7VLb.s:555    .text.Motor_Cmd:000000bc $d
+C:\Users\ktkuru\AppData\Local\Temp\cc7h7VLb.s:558    .text.T3Motor_CmdCombination:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc7h7VLb.s:564    .text.T3Motor_CmdCombination:00000000 T3Motor_CmdCombination
+C:\Users\ktkuru\AppData\Local\Temp\cc7h7VLb.s:681    .text.T3Motor_CmdCombination:00000130 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc7h7VLb.s:906    .bss.State_Data:00000000 State_Data
+C:\Users\ktkuru\AppData\Local\Temp\cc7h7VLb.s:685    .text.StopAllMotor:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc7h7VLb.s:691    .text.StopAllMotor:00000000 StopAllMotor
+C:\Users\ktkuru\AppData\Local\Temp\cc7h7VLb.s:711    .text.StopAllMotor:0000001c $d
+C:\Users\ktkuru\AppData\Local\Temp\cc7h7VLb.s:714    .text.T3State_Update:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc7h7VLb.s:720    .text.T3State_Update:00000000 T3State_Update
+C:\Users\ktkuru\AppData\Local\Temp\cc7h7VLb.s:817    .text.T3State_Update:00000130 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc7h7VLb.s:834    .bss.Output.0:00000000 Output.0
+C:\Users\ktkuru\AppData\Local\Temp\cc7h7VLb.s:831    .bss.Output.0:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc7h7VLb.s:837    .bss.output.1:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc7h7VLb.s:843    .bss.T1Lderivative.2:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc7h7VLb.s:849    .bss.T1LlastError.3:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc7h7VLb.s:855    .bss.T1Lintegral.6:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc7h7VLb.s:861    .bss.T1Lerror.7:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc7h7VLb.s:867    .bss.output.8:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc7h7VLb.s:873    .bss.T4Sderivative.9:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc7h7VLb.s:879    .bss.T4SlastError.10:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc7h7VLb.s:885    .bss.T4Sintegral.13:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc7h7VLb.s:891    .bss.T4Serror.14:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc7h7VLb.s:900    .bss.MotorLocation:00000000 MotorLocation
+C:\Users\ktkuru\AppData\Local\Temp\cc7h7VLb.s:901    .bss.MotorLocation:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc7h7VLb.s:907    .bss.State_Data:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc7h7VLb.s:478    .text.Motor_Cmd:0000000d $d
+C:\Users\ktkuru\AppData\Local\Temp\cc7h7VLb.s:478    .text.Motor_Cmd:0000000e $t
+
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc7h7VLb.s 			page 18
+
 
 UNDEFINED SYMBOLS
 __aeabi_f2d
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccR5cgbg.s 			page 18
-
-
 __aeabi_dmul
 __aeabi_d2f
 __aeabi_ddiv

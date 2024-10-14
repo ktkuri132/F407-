@@ -14,18 +14,18 @@
 #define RIN4 PFout(7)//lo
 
 //电机位置
-#define VerticalIn      1
-#define VerticalOut     2
-#define LevelOut        3
-#define LevelIn         4
+#define VerticalIn      3
+#define VerticalOut     4
+#define LevelOut        2
+#define LevelIn         1
 #define StopAll         0
 
 //方便调试，定义电机方位
 #define Motor           TIM8
-#define MVerticalIn     CCR1    //垂直方向外侧电机,M--电机前缀，Vertical--电机方向垂直方向，Out--电机位置外侧电机
-#define MVerticalOut    CCR2    //垂直方向内侧电机
-#define MLevelOut       CCR3    //水平方向外侧电机
-#define MLevelIn        CCR4    //水平方向内侧电机
+#define MVerticalIn     CCR3    //垂直方向内侧电机,M--电机前缀，Vertical--电机方向垂直方向，Out--电机位置外侧电机
+#define MVerticalOut    CCR4    //垂直方向外侧电机
+#define MLevelOut       CCR2    //水平方向外侧电机
+#define MLevelIn        CCR1   //水平方向内侧电机
 
 //选择模式的宏定义
 #define Task4
@@ -40,6 +40,8 @@
 #define PI 3.1415926
 //到地面距离
 #define heigh 86
+//周期
+#define T 1.678
 
 //PID结构体
 typedef struct PID
@@ -52,16 +54,16 @@ typedef struct PID
 };
 
 
-
-
-
 /* 基础  */
 
 void Motor_PWM_TIM8_Init();
-void MotorState(float pitch,float roll);
-void StopAllMotor();
 void GetPolar(float roll,float pitch);
 
+#ifdef Function_For_Task4
+
+void MotorState(float pitch,float roll);
+void StopAllMotor();
+#endif
 
 /* 第一项  */
 
@@ -72,7 +74,11 @@ void Task1_LineMove(float R);
 
 
 /* 第三项  */
+extern uint8_t State_Data;
+
 void Task3_AngleMove(float angle,float R);
+float (*T3State_Update(float angle,float R,float roll,float pitch))[5];
+void T3Motor_CmdCombination(float Vo,float Lo);
 
 /* 第四项  */
 
