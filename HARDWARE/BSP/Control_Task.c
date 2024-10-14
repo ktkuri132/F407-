@@ -158,6 +158,8 @@ void Task3_AngleMove(float angle,float R)
     VOutput = Taks3Pid.PIDControl((*Data)[1],(*Data)[3], &Taks3Pid);
     LOutput = Taks3Pid2.PIDControl((*Data)[2],(*Data)[4], &Taks3Pid2);
     
+    printf("%f,%f,%f,%f\r\n",(*Data)[1],(*Data)[2],(*Data)[3],(*Data)[4]);
+
     T3Motor_CmdCombination(VOutput,LOutput);
     
 }
