@@ -33,5 +33,6 @@
         "math.h": "c"
     },
     "files.encoding": "gb2312",
-    "C_Cpp.errorSquiggles": "enabled"
+    "C_Cpp.errorSquiggles": "enabled",
+    "commentTranslate.hover.enabled": true
 }

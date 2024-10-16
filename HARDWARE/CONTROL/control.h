@@ -68,7 +68,7 @@ void StopAllMotor();
 /* 第一项  */
 
 float PidControl_LineMove(float target, float feedback,struct PID* pid);
-void Task1_LineMove(float R);
+void Task1_LineMove(float R,uint8_t forward);
 
 /* 第二项  */
 
@@ -78,7 +78,7 @@ extern uint8_t State_Data;
 
 void Task3_AngleMove(float angle,float R);
 float (*T3State_Update(float angle,float R,float roll,float pitch))[5];
-void T3Motor_CmdCombination(float Vo,float Lo);
+void T3Motor_CmdCombination(float Vo,float Lo,uint8_t a);
 
 /* 第四项  */
 
