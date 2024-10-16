@@ -38,11 +38,13 @@ extern float pitch,roll,yaw,dis,def,polar,Opolar;
 
 750,0,-350,0.0104223
 
+(17+0.73333*Target_angle)
+(140.625-Target_angle)/3.75+Target_angle
 
 */
 
-float Target_dis=0.15;
-float Target_angle = 45;
+float Target_dis=0.20;
+float Target_angle = 0;
 #ifdef __EXTI15_10_IRQn__
 
 /// @brief MPU6050读值触发的外部中断函数      
@@ -59,8 +61,15 @@ void EXTI15_10_IRQHandler(void)
 
         //SendTo429((uint16_t *)&roll);
         //Task4_StopFast();    //调用控制函数--->第4项
-        //Task1_LineMove(Target_dis);    //调用控制函数--->第1项/
-        Task3_AngleMove((17+0.73333*Target_angle),0.15);
+        if((Target_angle==90)||(Target_angle==0))
+        {
+            Task1_LineMove(Target_dis,Target_angle);    //调用控制函数--->第1项/
+        }
+        else
+        {
+            Task3_AngleMove(Target_angle,Target_dis);
+        }
+
         //Task5_CircleMove(0.2);
     }
 }
@@ -86,7 +95,7 @@ void Task4_StopFast()
     
     Output = Taks4Pid.PIDControl(TargetDis,dis, &Taks4Pid);
     //printf("Output:%f\n",Output);
-    PWM_Allocation(Output);
+    //PWM_Allocation(Output);
   
 }
 
@@ -98,36 +107,62 @@ float target_angle;
 /*
     第一,二项  单摆运动+幅度可调
 */
-void Task1_LineMove(float R)
+void Task1_LineMove(float R,uint8_t forward)
 {
     static float VOutput,LOutput;
     static float A;
     static float time=0;
 	static uint8_t flag_1=0,flag_2=0,flag_3=0;
-    static struct PID Taks1Pid={700,0,-400,PidControl_LineMove};
+    static struct PID Taks1Pid={690,0,-400,PidControl_LineMove};
    
     A = atanf(R/0.86)*180.0f/PI;
     target_angle = A*sinf(2*PI*time/T);
     
-    printf("%f,%f\r\n",target_angle,roll);
+    //printf("%f,%f\r\n",target_angle,roll);
+    if(forward==0)
+    {
+        VOutput = Taks1Pid.PIDControl(target_angle,roll, &Taks1Pid);
+        LOutput = Taks1Pid.PIDControl(0,pitch, &Taks1Pid);
+    }
+    else if(forward==90)
+    {
+        VOutput = Taks1Pid.PIDControl(0,-roll, &Taks1Pid);
+        LOutput = Taks1Pid.PIDControl(target_angle,pitch, &Taks1Pid);
+    }
 
-    VOutput = Taks1Pid.PIDControl(target_angle,roll, &Taks1Pid);
-    LOutput = Taks1Pid.PIDControl(0,pitch, &Taks1Pid);
 //0.00983---0.15
     time+=0.0105223;
     if(time<T)
     {
-        if(VOutput>0)
+        if(forward==0)
         {
-            Motor_Cmd(VerticalOut,ENABLE);
-            Motor_Cmd(VerticalIn,DISABLE);
-            Motor->MVerticalOut =(uint32_t)VOutput;
+            if(VOutput>0)
+            {
+                Motor_Cmd(VerticalOut,ENABLE);
+                Motor_Cmd(VerticalIn,DISABLE);
+                Motor->MVerticalOut =(uint32_t)VOutput;
+            }
+            else
+            {
+                Motor_Cmd(VerticalOut,DISABLE);
+                Motor_Cmd(VerticalIn,ENABLE);
+                Motor->MVerticalIn =(uint32_t)(-VOutput);
+            }
         }
-        else
+        else if(forward==90)
         {
-            Motor_Cmd(VerticalOut,DISABLE);
-            Motor_Cmd(VerticalIn,ENABLE);
-            Motor->MVerticalIn =(uint32_t)(-VOutput);
+            if(LOutput>0)
+            {
+                Motor_Cmd(LevelOut,DISABLE);
+                Motor_Cmd(LevelIn,ENABLE);
+                Motor->MLevelIn =(uint32_t)LOutput;
+            }
+            else
+            {
+                Motor_Cmd(LevelOut,ENABLE);
+                Motor_Cmd(LevelIn,DISABLE);
+                Motor->MLevelOut =(uint32_t)(-LOutput);
+            }
         }
     }
     else time=0;
@@ -141,26 +176,77 @@ void Task1_LineMove(float R)
 */
 void Task3_AngleMove(float angle,float R)
 {
-    static float VOutput,LOutput;
-    static struct PID Taks3Pid={405,0,-50,PidControl_LineMove};
-    static struct  PID Taks3Pid2={405,0,-50,PidControl_LineMove};
 
-    /* 状态更新，以及目标数值计算  */
-    float (*Data)[5] = T3State_Update(angle,R,roll,pitch);
-
-/* 
-    (*State_Data)[1]  Vtarget_angle
-    (*State_Data)[2]  Ltarget_angle
-    (*State_Data)[3]  roll
-    (*State_Data)[4]  pitch
-
-*/
-    VOutput = Taks3Pid.PIDControl((*Data)[1],(*Data)[3], &Taks3Pid);
-    LOutput = Taks3Pid2.PIDControl((*Data)[2],(*Data)[4], &Taks3Pid2);
     
-    printf("%f,%f,%f,%f\r\n",(*Data)[1],(*Data)[2],(*Data)[3],(*Data)[4]);
 
-    T3Motor_CmdCombination(VOutput,LOutput);
+    static float VOutput,LOutput;
+    static float target_roll,target_pitch;
+    static float time=0;
+    static float target_angle,Vtarget_angle,Ltarget_angle;
+    static struct PID Taks3Pid={435,0,-50,PidControl_LineMove};
+    static struct  PID Taks3Pid2={435,0,-50,PidControl_LineMove};
+    int a;
+    if(angle>90)
+    {   
+        angle = (140.625-angle)/3.75+angle,0.15;
+        angle = 180 - angle;
+        a=2;
+    }
+    
+    else if(angle<90)
+    {
+        angle = (17+0.73333*angle);
+        a=1;
+    }
+    
+
+   // angle = angle+5;
+    angle = angle*PI/180.0f;
+
+    target_roll = atanf(R*cosf(angle)/0.86)/PI*180;
+    target_pitch = atanf(R*sinf(angle)/0.86)/PI*180;
+	
+//	printf("%f,%f\r\n",A1,A2);
+
+    float wt = 2*PI*(time/T);
+
+    Vtarget_angle =sinf(wt)*target_roll;
+    Ltarget_angle =sinf(wt)*target_pitch;
+ 
+     
+	printf("%f,%f\r\n",VOutput,LOutput);
+    if(a==1)
+    {
+        VOutput = Taks3Pid.PIDControl(Vtarget_angle,roll,&Taks3Pid);
+        LOutput = Taks3Pid2.PIDControl(Ltarget_angle,-pitch,&Taks3Pid2);
+
+        time +=0.0104223;
+        if(time<T)
+        {
+            T3Motor_CmdCombination(VOutput,LOutput,1);
+        }
+        else
+        {
+            time=0;
+        }
+    }
+    else if(a==2)
+    {
+        VOutput = Taks3Pid.PIDControl(Vtarget_angle,-roll,&Taks3Pid);
+        LOutput = Taks3Pid2.PIDControl(Ltarget_angle,-pitch,&Taks3Pid2);
+
+        printf("%f,%f\r\n",VOutput,LOutput);
+        time +=0.0104223;
+        if(time<T)
+        {
+            T3Motor_CmdCombination(VOutput,LOutput,0);
+        }
+        else
+        {
+            time=0;
+        }
+    }
+
     
 }
 

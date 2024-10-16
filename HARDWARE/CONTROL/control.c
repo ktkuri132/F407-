@@ -328,66 +328,54 @@ void Motor_Cmd(uint8_t MotorSit,FunctionalState NewState)
 /// @brief 设置默认运动方向：90方向向上，180方向向下，根据输出与方位来控制电机
 /// @param Vo 垂直方向输出
 /// @param Lo 水平方向输出
-__INLINE void T3Motor_CmdCombination(float Vo,float Lo)
+__INLINE void T3Motor_CmdCombination(float Vo,float Lo,uint8_t a)
 {
-   /*  PID计算是 ：当前值-目标值 */
-
-    if(State_Data)  /* 处于90运动线  */
-    {
-        if(Vo>0)    /* 当前垂直方向输出超调  */
-        {
-            Motor_Cmd(VerticalOut,DISABLE);
-            Motor_Cmd(VerticalIn,ENABLE);
-            Motor->MVerticalIn =(uint32_t)Vo;
-        }
-        else        /* 当前垂直方向输出不够  */
-        {
-            Motor_Cmd(VerticalOut,ENABLE);
-            Motor_Cmd(VerticalIn,DISABLE);
-            Motor->MVerticalOut =(uint32_t)(-Vo);
-        }
-
-        if(Lo>0)
-        {
-            Motor_Cmd(LevelOut,DISABLE);
-            Motor_Cmd(LevelIn,ENABLE);
-            Motor->MLevelIn =(uint32_t)Lo;
-        }
-        else
-        {
-            Motor_Cmd(LevelOut,ENABLE);
-            Motor_Cmd(LevelIn,DISABLE);
-            Motor->MLevelOut =(uint32_t)(-Lo);
-        }
-    }
-    else            /* 处于180运动线  */
+    if(a)
     {
         if(Vo>0)
         {
             Motor_Cmd(VerticalOut,ENABLE);
             Motor_Cmd(VerticalIn,DISABLE);
+            Motor_Cmd(LevelOut,ENABLE);
+            Motor_Cmd(LevelIn,DISABLE);
             Motor->MVerticalOut =(uint32_t)Vo;
+            Motor->MLevelOut =(uint32_t)Lo;
         }
         else
         {
             Motor_Cmd(VerticalOut,DISABLE);
             Motor_Cmd(VerticalIn,ENABLE);
-            Motor->MVerticalIn =(uint32_t)(-Vo);
-        }
-
-        if(Lo>0)
-        {
             Motor_Cmd(LevelOut,DISABLE);
             Motor_Cmd(LevelIn,ENABLE);
+            Motor->MVerticalIn =(uint32_t)(-Vo);
+            Motor->MLevelIn =(uint32_t)(-Lo);
+        }
+    }
+    
+    else
+    {
+        if(Vo>0)
+        {
+            Motor_Cmd(VerticalOut,DISABLE);
+            Motor_Cmd(VerticalIn,ENABLE);
+            Motor_Cmd(LevelOut,ENABLE);
+            Motor_Cmd(LevelIn,DISABLE);
+            Motor->MVerticalIn =(uint32_t)Vo;
             Motor->MLevelOut =(uint32_t)Lo;
         }
         else
         {
-            Motor_Cmd(LevelOut,ENABLE);
-            Motor_Cmd(LevelIn,DISABLE);
+            Motor_Cmd(VerticalOut,ENABLE);
+            Motor_Cmd(VerticalIn,DISABLE);
+            Motor_Cmd(LevelOut,DISABLE);
+            Motor_Cmd(LevelIn,ENABLE);
+            Motor->MVerticalOut =(uint32_t)(-Vo);
             Motor->MLevelIn =(uint32_t)(-Lo);
         }
     }
+
+
+    
 }
 
 
@@ -424,7 +412,7 @@ __INLINE float (*T3State_Update(float angle,float R,float roll,float pitch))[5]
 /************************************************************************* */
 
     float target_roll,target_pitch;
-    float time=0;
+    static float time=0;
     float Vtarget_angle,Ltarget_angle;
 
     time+=0.0104223;
@@ -469,7 +457,7 @@ __INLINE float (*T3State_Update(float angle,float R,float roll,float pitch))[5]
 
 /***************************************************************************** */
 
-//  Output[0] = 0;      第0位保留
+    Output[0] = time;      //第0位保留
     Output[1] = Vtarget_angle;
     Output[2] = Ltarget_angle;
     Output[3] = roll;
