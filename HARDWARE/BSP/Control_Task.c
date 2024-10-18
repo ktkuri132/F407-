@@ -400,6 +400,23 @@ void Task3_AngleMove(float angle,float R)
 */
 void Task5_CircleMove(float R)
 {
+
+    /*
+    
+    
+    下载这个插件，被搞忘了
+       Output Colorizer
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    */
     static float VOutput,LOutput;
     static float A;
     static float time=0;
@@ -429,7 +446,7 @@ void Task5_CircleMove(float R)
         time=0;
         return;
     }
-    
+
     if((wt<PI/2)&&(wt>0))   //0-PI/2
     {
         sit = 1;
