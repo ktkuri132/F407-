@@ -404,11 +404,11 @@ void Task5_CircleMove(float R)
     /*
     
     
-    下载这个插件，被搞忘了
+    1，下载这个插件，被搞忘了
        Output Colorizer
     
     
-    
+    2，git插件打开源代码管理图
     
     
     
