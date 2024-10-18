@@ -70,11 +70,11 @@ void GetPolar(float roll,float pitch)
     }
     else if(pitch>0&&roll<0)
     {
-        polar = 180-Opolar;
+        polar = 180+Opolar;
     }
     else if(pitch>0&&roll>0)
     {
-        polar = Opolar;
+        polar = 360-Opolar;
     }
 
     //规定坐标无效区域
@@ -378,6 +378,174 @@ __INLINE void T3Motor_CmdCombination(float Vo,float Lo,uint8_t a)
     
 }
 
+__INLINE void T5Motor_CmdCombination(int sit,float Vo,float Lo)
+{
+    switch (sit)
+    {
+        case 2:
+        {
+            if(Vo>0)
+            {
+                Motor_Cmd(VerticalIn,DISABLE);
+                Motor_Cmd(VerticalOut,ENABLE);
+                Motor->MVerticalOut = (uint32_t)Vo;
+                if(Lo>0)
+                {
+                    Motor_Cmd(LevelOut,DISABLE);
+                    Motor_Cmd(LevelIn,ENABLE);
+                    Motor->MLevelIn =(uint32_t)Lo;
+                }
+                else
+                {
+                    Motor_Cmd(LevelOut,ENABLE);
+                    Motor_Cmd(LevelIn,DISABLE);
+                    Motor->MLevelOut =(uint32_t)-Lo;
+                }
+            }
+            else 
+            {
+                Motor_Cmd(VerticalIn,ENABLE);
+                Motor_Cmd(VerticalOut,DISABLE);
+                Motor->MVerticalIn = (uint32_t)-Vo;
+                if(Lo>0)
+                {
+                    Motor_Cmd(LevelOut,DISABLE);
+                    Motor_Cmd(LevelIn,ENABLE);
+                    Motor->MLevelIn =(uint32_t)Lo;
+                }
+                else
+                {
+                    Motor_Cmd(LevelOut,ENABLE);
+                    Motor_Cmd(LevelIn,DISABLE);
+                    Motor->MLevelOut =(uint32_t)-Lo;
+                }
+            }
+        }break;
+
+        case 3:
+        {
+            if(Vo>0)
+            {
+                Motor_Cmd(VerticalIn,DISABLE);
+                Motor_Cmd(VerticalOut,ENABLE);
+                Motor->MVerticalOut = (uint32_t)Vo;
+                if(Lo>0)
+                {
+                    Motor_Cmd(LevelOut,ENABLE);
+                    Motor_Cmd(LevelIn,DISABLE);
+                    Motor->MLevelOut =(uint32_t)Lo;
+                }
+                else
+                {
+                    Motor_Cmd(LevelOut,DISABLE);
+                    Motor_Cmd(LevelIn,ENABLE);
+                    Motor->MLevelIn =(uint32_t)-Lo;
+                }
+            }
+            else 
+            {
+                Motor_Cmd(VerticalIn,ENABLE);
+                Motor_Cmd(VerticalOut,DISABLE);
+                Motor->MVerticalIn = (uint32_t)-Vo;
+                if(Lo>0)
+                {
+                    Motor_Cmd(LevelOut,ENABLE);
+                    Motor_Cmd(LevelIn,DISABLE);
+                    Motor->MLevelOut =(uint32_t)Lo;
+                }
+                else
+                {
+                    Motor_Cmd(LevelOut,DISABLE);
+                    Motor_Cmd(LevelIn,ENABLE);
+                    Motor->MLevelIn =(uint32_t)-Lo;
+                }
+            }
+        }break;
+        
+        case 4:
+        {
+            if(Vo>0)
+            {
+                Motor_Cmd(VerticalIn,ENABLE);
+                Motor_Cmd(VerticalOut,DISABLE);
+                Motor->MVerticalIn = (uint32_t)Vo;
+                if(Lo>0)
+                {
+                    Motor_Cmd(LevelOut,ENABLE);
+                    Motor_Cmd(LevelIn,DISABLE);
+                    Motor->MLevelOut =(uint32_t)Lo;
+                }
+                else
+                {
+                    Motor_Cmd(LevelOut,DISABLE);
+                    Motor_Cmd(LevelIn,ENABLE);
+                    Motor->MLevelIn =(uint32_t)-Lo;
+                }
+            }
+            else 
+            {
+                Motor_Cmd(VerticalIn,DISABLE);
+                Motor_Cmd(VerticalOut,ENABLE);
+                Motor->MVerticalOut = (uint32_t)-Vo;
+                if(Lo>0)
+                {
+                    Motor_Cmd(LevelOut,ENABLE);
+                    Motor_Cmd(LevelIn,DISABLE);
+                    Motor->MLevelOut =(uint32_t)Lo;
+                }
+                else
+                {
+                    Motor_Cmd(LevelOut,DISABLE);
+                    Motor_Cmd(LevelIn,ENABLE);
+                    Motor->MLevelIn =(uint32_t)-Lo;
+                }
+            }
+        }break;
+
+        case 1:
+        {
+            if(Vo>0)
+            {
+                Motor_Cmd(VerticalIn,ENABLE);
+                Motor_Cmd(VerticalOut,DISABLE);
+                Motor->MVerticalIn = (uint32_t)Vo;
+                if(Lo>0)
+                {
+                    Motor_Cmd(LevelOut,DISABLE);
+                    Motor_Cmd(LevelIn,ENABLE);
+                    Motor->MLevelIn =(uint32_t)Lo;
+                }
+                else
+                {
+                    Motor_Cmd(LevelOut,ENABLE);
+                    Motor_Cmd(LevelIn,DISABLE);
+                    Motor->MLevelOut =(uint32_t)-Lo;
+                }
+            }
+            else 
+            {
+                Motor_Cmd(VerticalIn,DISABLE);
+                Motor_Cmd(VerticalOut,ENABLE);
+                Motor->MVerticalOut = (uint32_t)-Vo;
+                if(Lo>0)
+                {
+                    Motor_Cmd(LevelOut,DISABLE);
+                    Motor_Cmd(LevelIn,ENABLE);
+                    Motor->MLevelIn =(uint32_t)Lo;
+                }
+                else
+                {
+                    Motor_Cmd(LevelOut,ENABLE);
+                    Motor_Cmd(LevelIn,DISABLE);
+                    Motor->MLevelOut =(uint32_t)-Lo;
+                }
+            }
+        }break;
+ 
+    default:break;
+        
+    }
+}
 
 void StopAllMotor()
 {

@@ -89,4 +89,5 @@ void PWM_Allocation(float Output);
 
 /* µÚÎåÏî  */
 void Task5_CircleMove(float R);
+void T5Motor_CmdCombination(int sit,float Vo,float Lo);
 #endif 
