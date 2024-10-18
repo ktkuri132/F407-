@@ -41,6 +41,8 @@ int BSP_Init()
     Motor_PWM_TIM8_Init();
     printf("->Motor Init  done\n");
     OLED_Init();
+    OLED_Printf(0,0,OLED_8X16,"wiat for init");
+    OLED_update();
     printf("->OLED Init done\n");
     GPIO_Config(GPIOF, GPIO_Pin_0 | GPIO_Pin_1 | GPIO_Pin_2 | GPIO_Pin_3 | GPIO_Pin_4 | GPIO_Pin_5 | GPIO_Pin_6 | GPIO_Pin_7, GPIO_Mode_OUT, GPIO_PuPd_NOPULL);
     printf("->GPIOF Init done\n");
@@ -69,10 +71,12 @@ int BSP_Init()
         printf("->MPU6050 DMP init success\n");
     }
 
+    OLED_Printf(0,16,OLED_8X16,"init done");
+    OELD_update();  
     EXIT15_Init();
     printf("->ETIT15 Init done\n");
-    //TIM2_Init(5);
-    //printf("->TIM2 Init done\n");
+    TIM2_Init(5);
+    printf("->TIM2 Init done\n");
 
 
     return 0;

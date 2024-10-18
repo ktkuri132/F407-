@@ -18,7 +18,7 @@
 #include <stdlib.h>
 
 extern uint8_t Stop_flag;
-extern float pitch,roll,yaw,def,dis,polar,Opolar;
+extern float pitch,roll,abspitch,absroll, yaw,def,dis,polar,Opolar;
 uint8_t State_Data;
 
 //计算极坐标,以及任意角
@@ -29,7 +29,7 @@ void GetPolar(float roll,float pitch)
         tan?(def)=tan?(roll)+tan?(pitch)
         def=atan(sqrt(tan?(roll)+tan?(pitch)))
     */
-    float absroll,abspitch;
+    
     if(roll<0)
     {
         absroll=-roll;
@@ -382,7 +382,7 @@ __INLINE void T5Motor_CmdCombination(int sit,float Vo,float Lo)
 {
     switch (sit)
     {
-        case 2:
+        case 1:
         {
             if(Vo>0)
             {
@@ -422,7 +422,7 @@ __INLINE void T5Motor_CmdCombination(int sit,float Vo,float Lo)
             }
         }break;
 
-        case 3:
+        case 2:
         {
             if(Vo>0)
             {
@@ -462,7 +462,7 @@ __INLINE void T5Motor_CmdCombination(int sit,float Vo,float Lo)
             }
         }break;
         
-        case 4:
+        case 3:
         {
             if(Vo>0)
             {
@@ -502,7 +502,7 @@ __INLINE void T5Motor_CmdCombination(int sit,float Vo,float Lo)
             }
         }break;
 
-        case 1:
+        case 4:
         {
             if(Vo>0)
             {
@@ -561,79 +561,12 @@ void StopAllMotor()
 }
 
 
-/// @brief 根据要求的角度和位移，检测风机当前位置信息， 更新目标正弦函数值
-/// @param angle 位置角度
-/// @param R 摆动半径
-/// @return 包含时间，垂直方向目标角度，水平方向目标角度的数组
-__INLINE float (*T3State_Update(float angle,float R,float roll,float pitch))[5]
+__INLINE void T5Motor_TimeControl(float t)
 {
-    static float Output[5];
+    float wt = 2*PI/T*t;
     
     
-
-    /* 将超过180的角度全都转换回来  */
-    if(angle>180)
-    {
-        angle=360-angle;
-    }
-    
-/************************************************************************* */
-
-    float target_roll,target_pitch;
-    static float time=0;
-    float Vtarget_angle,Ltarget_angle;
-
-    time+=0.0104223;
-    if(time>T)
-    {
-        time=0;
-    }
-
-    angle = angle*PI/180.0f;
-
-    target_roll = atanf(R*cosf(angle)/0.86)/PI*180;
-    target_pitch = atanf(R*sinf(angle)/0.86)/PI*180;
-
-    float wt = 2*PI*(time/T);
-			 
-    Vtarget_angle =sinf(wt)*target_roll;
-    Ltarget_angle =sinf(wt)*target_pitch;
-
-
-/**************************************************************************** */
-
-    /* 此处目的是要将：与目标角度极性不匹配的实际角度变换过来 并产生方位状态：90方向线 or 180方向线 */
-    /* 判断当前要求在那个区域走直线  PID计算是 ：当前值-目标值 */
-
-    if(angle>=90)/* 处在90°范围内  */
-    {
-        pitch = -pitch;
-        State_Data = 1;
-    }
-    else/* 超过90°范围  */
-    {
-        if((wt>=0&&(wt<PI)))   /* 0<=wt<PI 在180区域的下方 此时sin(wt)>0,Avsin(wt)<0,Alsin(wt)>0 */
-        {
-            pitch = -pitch;
-        }
-        else if((wt>=PI&&(wt<2*PI)))/* PI<=wt<2PI 在180区域的上方 此时sin(wt)<0,Avsin(wt)>0,Alsin(wt)<0 */
-        {
-            roll = -roll;
-        }
-        State_Data = 0;
-    }
-
-/***************************************************************************** */
-
-    Output[0] = time;      //第0位保留
-    Output[1] = Vtarget_angle;
-    Output[2] = Ltarget_angle;
-    Output[3] = roll;
-    Output[4] = pitch;
-
-    return &Output;
 }
-
 
 
 //电机位置
