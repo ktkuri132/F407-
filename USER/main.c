@@ -46,7 +46,7 @@ extern float target_angle;
 //定义角度的绝对值
 float absroll,abspitch;
 //定义模式选择
-uint8_t mode=0;
+extern uint8_t mode;
 /*
 
 每一步都有都有调试信息，妈妈再也不用担心我找不出程序bug了
@@ -99,7 +99,11 @@ int main(void)
     /* 前台程序轮询  */
     while (1)
     {
-        //MotorState(pitch,roll);
+        if(mode==4)
+        {
+            MotorState(pitch,roll);
+        }
+        
         OLED_Printf(0,0,OLED_6X8,"pitch:%f",pitch);
         OLED_Printf(0,16,OLED_6X8,"roll:%f",roll);
         OLED_Printf(0,32,OLED_6X8,"def:%f",def);

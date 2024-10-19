@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccjOzR6D.s 			page 1
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccY9bCrq.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccjOzR6D.s 			page 1
   57              		.syntax unified
   58              	@ 770 "RTOS/portable/GCC/ARM_CM4F/port.c" 1
   59 0000 DFF80C00 			ldr.w r0, =0xE000ED88		
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccjOzR6D.s 			page 2
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccY9bCrq.s 			page 2
 
 
   60 0004 0168     		ldr r1, [r0]				
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccjOzR6D.s 			page 1
  108 0024 002B     		cmp	r3, #0
  109 0026 FCD0     		beq	.L5
  110 0028 03B0     		add	sp, sp, #12
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccjOzR6D.s 			page 3
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccY9bCrq.s 			page 3
 
 
  111              		@ sp needed
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccjOzR6D.s 			page 1
  169 0006 B0E8F04F 		ldmia r0!, {r4-r11, r14}		
  170 000a 80F30988 		msr psp, r0						
  171 000e BFF36F8F 		isb								
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccjOzR6D.s 			page 4
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccY9bCrq.s 			page 4
 
 
  172 0012 4FF00000 		mov r0, #0 						
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccjOzR6D.s 			page 1
  230              	
  231              	@ 0 "" 2
  232              		.thumb
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccjOzR6D.s 			page 5
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccY9bCrq.s 			page 5
 
 
  233              		.syntax unified
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccjOzR6D.s 			page 1
  289 001c 0349     		ldr	r1, .L31+4
  290 001e 0448     		ldr	r0, .L31+8
  291 0020 FFF7FEFF 		bl	printf
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccjOzR6D.s 			page 6
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccY9bCrq.s 			page 6
 
 
  292 0024 F0E7     		b	.L27
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccjOzR6D.s 			page 1
  348              											
  349 0058 7047     		bx r14								
  350              											
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccjOzR6D.s 			page 7
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccY9bCrq.s 			page 7
 
 
  351 005a 00BFAFF3 		.align 4							
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccjOzR6D.s 			page 1
  408 0008 9361     		str	r3, [r2, #24]
  409 000a 054B     		ldr	r3, .L38
  410 000c 1B68     		ldr	r3, [r3]
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccjOzR6D.s 			page 8
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccY9bCrq.s 			page 8
 
 
  411 000e 0549     		ldr	r1, .L38+4
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccjOzR6D.s 			page 1
  467 0048 40F23312 		movw	r2, #307
  468 004c 3449     		ldr	r1, .L52+20
  469 004e 3548     		ldr	r0, .L52+24
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccjOzR6D.s 			page 9
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccY9bCrq.s 			page 9
 
 
  470 0050 FFF7FEFF 		bl	printf
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccjOzR6D.s 			page 1
  524 00d6 43F04043 		orr	r3, r3, #-1073741824
  525 00da C4F8343F 		str	r3, [r4, #3892]
  526 00de FFF7FEFF 		bl	prvPortStartFirstTask
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccjOzR6D.s 			page 10
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccY9bCrq.s 			page 10
 
 
  527 00e2 FFF7FEFF 		bl	vTaskSwitchContext
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccjOzR6D.s 			page 1
  583              	.L55:
  584 0018 4FF0E023 		mov	r3, #-536813568
  585 001c D3F80C3D 		ldr	r3, [r3, #3340]
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccjOzR6D.s 			page 11
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccY9bCrq.s 			page 11
 
 
  586 0020 03F4E063 		and	r3, r3, #1792
@@ -640,67 +640,67 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccjOzR6D.s 			page 1
  629              	uxCriticalNesting:
  630 0000 AAAAAAAA 		.word	-1431655766
  631              		.ident	"GCC: (Arm GNU Toolchain 13.3.Rel1 (Build arm-13.24)) 13.3.1 20240614"
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccjOzR6D.s 			page 12
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccY9bCrq.s 			page 12
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 port.c
-C:\Users\ktkuru\AppData\Local\Temp\ccjOzR6D.s:18     .text.prvPortStartFirstTask:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccjOzR6D.s:23     .text.prvPortStartFirstTask:00000000 prvPortStartFirstTask
-C:\Users\ktkuru\AppData\Local\Temp\ccjOzR6D.s:41     .text.prvPortStartFirstTask:00000022 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccjOzR6D.s:41     .text.prvPortStartFirstTask:00000024 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccjOzR6D.s:48     .text.vPortEnableVFP:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccjOzR6D.s:53     .text.vPortEnableVFP:00000000 vPortEnableVFP
-C:\Users\ktkuru\AppData\Local\Temp\ccjOzR6D.s:65     .text.vPortEnableVFP:0000000e $d
-C:\Users\ktkuru\AppData\Local\Temp\ccjOzR6D.s:65     .text.vPortEnableVFP:00000010 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccjOzR6D.s:72     .rodata.prvTaskExitError.str1.4:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccjOzR6D.s:79     .text.prvTaskExitError:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccjOzR6D.s:84     .text.prvTaskExitError:00000000 prvTaskExitError
-C:\Users\ktkuru\AppData\Local\Temp\ccjOzR6D.s:122    .text.prvTaskExitError:0000003c $d
-C:\Users\ktkuru\AppData\Local\Temp\ccjOzR6D.s:629    .data.uxCriticalNesting:00000000 uxCriticalNesting
-C:\Users\ktkuru\AppData\Local\Temp\ccjOzR6D.s:127    .text.pxPortInitialiseStack:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccjOzR6D.s:133    .text.pxPortInitialiseStack:00000000 pxPortInitialiseStack
-C:\Users\ktkuru\AppData\Local\Temp\ccjOzR6D.s:151    .text.pxPortInitialiseStack:00000028 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccjOzR6D.s:154    .text.SVC_Handler:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccjOzR6D.s:160    .text.SVC_Handler:00000000 SVC_Handler
-C:\Users\ktkuru\AppData\Local\Temp\ccjOzR6D.s:177    .text.SVC_Handler:00000020 pxCurrentTCBConst2
-C:\Users\ktkuru\AppData\Local\Temp\ccjOzR6D.s:177    .text.SVC_Handler:00000020 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccjOzR6D.s:184    .text.vPortEndScheduler:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccjOzR6D.s:190    .text.vPortEndScheduler:00000000 vPortEndScheduler
-C:\Users\ktkuru\AppData\Local\Temp\ccjOzR6D.s:209    .text.vPortEndScheduler:0000001c $d
-C:\Users\ktkuru\AppData\Local\Temp\ccjOzR6D.s:214    .text.vPortEnterCritical:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccjOzR6D.s:220    .text.vPortEnterCritical:00000000 vPortEnterCritical
-C:\Users\ktkuru\AppData\Local\Temp\ccjOzR6D.s:255    .text.vPortEnterCritical:0000003c $d
-C:\Users\ktkuru\AppData\Local\Temp\ccjOzR6D.s:260    .text.vPortExitCritical:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccjOzR6D.s:266    .text.vPortExitCritical:00000000 vPortExitCritical
-C:\Users\ktkuru\AppData\Local\Temp\ccjOzR6D.s:296    .text.vPortExitCritical:00000028 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccjOzR6D.s:301    .text.PendSV_Handler:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccjOzR6D.s:307    .text.PendSV_Handler:00000000 PendSV_Handler
-C:\Users\ktkuru\AppData\Local\Temp\ccjOzR6D.s:352    .text.PendSV_Handler:00000060 pxCurrentTCBConst
-C:\Users\ktkuru\AppData\Local\Temp\ccjOzR6D.s:352    .text.PendSV_Handler:00000060 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccjOzR6D.s:359    .text.SysTick_Handler:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccjOzR6D.s:365    .text.SysTick_Handler:00000000 SysTick_Handler
-C:\Users\ktkuru\AppData\Local\Temp\ccjOzR6D.s:395    .text.vPortSetupTimerInterrupt:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccjOzR6D.s:401    .text.vPortSetupTimerInterrupt:00000000 vPortSetupTimerInterrupt
-C:\Users\ktkuru\AppData\Local\Temp\ccjOzR6D.s:422    .text.vPortSetupTimerInterrupt:00000020 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccjOzR6D.s:426    .text.xPortStartScheduler:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccjOzR6D.s:432    .text.xPortStartScheduler:00000000 xPortStartScheduler
-C:\Users\ktkuru\AppData\Local\Temp\ccjOzR6D.s:548    .text.xPortStartScheduler:0000010c $d
-C:\Users\ktkuru\AppData\Local\Temp\ccjOzR6D.s:623    .bss.ucMaxSysCallPriority:00000000 ucMaxSysCallPriority
-C:\Users\ktkuru\AppData\Local\Temp\ccjOzR6D.s:618    .bss.ulMaxPRIGROUPValue:00000000 ulMaxPRIGROUPValue
-C:\Users\ktkuru\AppData\Local\Temp\ccjOzR6D.s:558    .text.vPortValidateInterruptPriority:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccjOzR6D.s:564    .text.vPortValidateInterruptPriority:00000000 vPortValidateInterruptPriority
-C:\Users\ktkuru\AppData\Local\Temp\ccjOzR6D.s:608    .text.vPortValidateInterruptPriority:0000004c $d
-C:\Users\ktkuru\AppData\Local\Temp\ccjOzR6D.s:615    .bss.ulMaxPRIGROUPValue:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccjOzR6D.s:624    .bss.ucMaxSysCallPriority:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccjOzR6D.s:626    .data.uxCriticalNesting:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccY9bCrq.s:18     .text.prvPortStartFirstTask:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccY9bCrq.s:23     .text.prvPortStartFirstTask:00000000 prvPortStartFirstTask
+C:\Users\ktkuru\AppData\Local\Temp\ccY9bCrq.s:41     .text.prvPortStartFirstTask:00000022 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccY9bCrq.s:41     .text.prvPortStartFirstTask:00000024 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccY9bCrq.s:48     .text.vPortEnableVFP:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccY9bCrq.s:53     .text.vPortEnableVFP:00000000 vPortEnableVFP
+C:\Users\ktkuru\AppData\Local\Temp\ccY9bCrq.s:65     .text.vPortEnableVFP:0000000e $d
+C:\Users\ktkuru\AppData\Local\Temp\ccY9bCrq.s:65     .text.vPortEnableVFP:00000010 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccY9bCrq.s:72     .rodata.prvTaskExitError.str1.4:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccY9bCrq.s:79     .text.prvTaskExitError:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccY9bCrq.s:84     .text.prvTaskExitError:00000000 prvTaskExitError
+C:\Users\ktkuru\AppData\Local\Temp\ccY9bCrq.s:122    .text.prvTaskExitError:0000003c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccY9bCrq.s:629    .data.uxCriticalNesting:00000000 uxCriticalNesting
+C:\Users\ktkuru\AppData\Local\Temp\ccY9bCrq.s:127    .text.pxPortInitialiseStack:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccY9bCrq.s:133    .text.pxPortInitialiseStack:00000000 pxPortInitialiseStack
+C:\Users\ktkuru\AppData\Local\Temp\ccY9bCrq.s:151    .text.pxPortInitialiseStack:00000028 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccY9bCrq.s:154    .text.SVC_Handler:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccY9bCrq.s:160    .text.SVC_Handler:00000000 SVC_Handler
+C:\Users\ktkuru\AppData\Local\Temp\ccY9bCrq.s:177    .text.SVC_Handler:00000020 pxCurrentTCBConst2
+C:\Users\ktkuru\AppData\Local\Temp\ccY9bCrq.s:177    .text.SVC_Handler:00000020 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccY9bCrq.s:184    .text.vPortEndScheduler:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccY9bCrq.s:190    .text.vPortEndScheduler:00000000 vPortEndScheduler
+C:\Users\ktkuru\AppData\Local\Temp\ccY9bCrq.s:209    .text.vPortEndScheduler:0000001c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccY9bCrq.s:214    .text.vPortEnterCritical:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccY9bCrq.s:220    .text.vPortEnterCritical:00000000 vPortEnterCritical
+C:\Users\ktkuru\AppData\Local\Temp\ccY9bCrq.s:255    .text.vPortEnterCritical:0000003c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccY9bCrq.s:260    .text.vPortExitCritical:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccY9bCrq.s:266    .text.vPortExitCritical:00000000 vPortExitCritical
+C:\Users\ktkuru\AppData\Local\Temp\ccY9bCrq.s:296    .text.vPortExitCritical:00000028 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccY9bCrq.s:301    .text.PendSV_Handler:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccY9bCrq.s:307    .text.PendSV_Handler:00000000 PendSV_Handler
+C:\Users\ktkuru\AppData\Local\Temp\ccY9bCrq.s:352    .text.PendSV_Handler:00000060 pxCurrentTCBConst
+C:\Users\ktkuru\AppData\Local\Temp\ccY9bCrq.s:352    .text.PendSV_Handler:00000060 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccY9bCrq.s:359    .text.SysTick_Handler:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccY9bCrq.s:365    .text.SysTick_Handler:00000000 SysTick_Handler
+C:\Users\ktkuru\AppData\Local\Temp\ccY9bCrq.s:395    .text.vPortSetupTimerInterrupt:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccY9bCrq.s:401    .text.vPortSetupTimerInterrupt:00000000 vPortSetupTimerInterrupt
+C:\Users\ktkuru\AppData\Local\Temp\ccY9bCrq.s:422    .text.vPortSetupTimerInterrupt:00000020 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccY9bCrq.s:426    .text.xPortStartScheduler:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccY9bCrq.s:432    .text.xPortStartScheduler:00000000 xPortStartScheduler
+C:\Users\ktkuru\AppData\Local\Temp\ccY9bCrq.s:548    .text.xPortStartScheduler:0000010c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccY9bCrq.s:623    .bss.ucMaxSysCallPriority:00000000 ucMaxSysCallPriority
+C:\Users\ktkuru\AppData\Local\Temp\ccY9bCrq.s:618    .bss.ulMaxPRIGROUPValue:00000000 ulMaxPRIGROUPValue
+C:\Users\ktkuru\AppData\Local\Temp\ccY9bCrq.s:558    .text.vPortValidateInterruptPriority:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccY9bCrq.s:564    .text.vPortValidateInterruptPriority:00000000 vPortValidateInterruptPriority
+C:\Users\ktkuru\AppData\Local\Temp\ccY9bCrq.s:608    .text.vPortValidateInterruptPriority:0000004c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccY9bCrq.s:615    .bss.ulMaxPRIGROUPValue:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccY9bCrq.s:624    .bss.ucMaxSysCallPriority:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccY9bCrq.s:626    .data.uxCriticalNesting:00000000 $d
 
 UNDEFINED SYMBOLS
 printf
 pxCurrentTCB
 vTaskSwitchContext
 xTaskIncrementTick
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccjOzR6D.s 			page 13
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccY9bCrq.s 			page 13
 
 
 SystemCoreClock

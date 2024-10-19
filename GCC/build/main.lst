@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccPb66HU.s 			page 1
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccv2hz0g.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,148 +58,157 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccPb66HU.s 			page 1
   44              		@ frame_needed = 0, uses_anonymous_args = 0
   45 0000 00B5     		push	{lr}
   46 0002 83B0     		sub	sp, sp, #12
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccPb66HU.s 			page 2
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccv2hz0g.s 			page 2
 
 
   47 0004 FFF7FEFF 		bl	BSP_Init
-  48 0008 68B3     		cbz	r0, .L2
-  49 000a 1948     		ldr	r0, .L6
+  48 0008 38B1     		cbz	r0, .L2
+  49 000a 1F48     		ldr	r0, .L8
   50 000c FFF7FEFF 		bl	puts
   51              	.L3:
   52 0010 FFF7FEFF 		bl	OLED_Clear
   53 0014 FFF7FEFF 		bl	OLED_Clear
-  54              	.L4:
-  55 0018 164B     		ldr	r3, .L6+4
-  56 001a 1868     		ldr	r0, [r3]	@ float
-  57 001c FFF7FEFF 		bl	__aeabi_f2d
-  58 0020 CDE90001 		strd	r0, [sp]
-  59 0024 144B     		ldr	r3, .L6+8
-  60 0026 0622     		movs	r2, #6
-  61 0028 0021     		movs	r1, #0
-  62 002a 0846     		mov	r0, r1
-  63 002c FFF7FEFF 		bl	OLED_Printf
-  64 0030 124B     		ldr	r3, .L6+12
-  65 0032 1868     		ldr	r0, [r3]	@ float
-  66 0034 FFF7FEFF 		bl	__aeabi_f2d
-  67 0038 CDE90001 		strd	r0, [sp]
-  68 003c 104B     		ldr	r3, .L6+16
-  69 003e 0622     		movs	r2, #6
-  70 0040 1021     		movs	r1, #16
-  71 0042 0020     		movs	r0, #0
-  72 0044 FFF7FEFF 		bl	OLED_Printf
-  73 0048 0E4B     		ldr	r3, .L6+20
-  74 004a 1868     		ldr	r0, [r3]	@ float
-  75 004c FFF7FEFF 		bl	__aeabi_f2d
-  76 0050 CDE90001 		strd	r0, [sp]
-  77 0054 0C4B     		ldr	r3, .L6+24
-  78 0056 0622     		movs	r2, #6
-  79 0058 2021     		movs	r1, #32
-  80 005a 0020     		movs	r0, #0
-  81 005c FFF7FEFF 		bl	OLED_Printf
-  82 0060 FFF7FEFF 		bl	OLED_Update
-  83 0064 D8E7     		b	.L4
-  84              	.L2:
-  85 0066 0948     		ldr	r0, .L6+28
-  86 0068 FFF7FEFF 		bl	puts
-  87 006c D0E7     		b	.L3
-  88              	.L7:
-  89 006e 00BF     		.align	2
-  90              	.L6:
-  91 0070 00000000 		.word	.LC0
-  92 0074 00000000 		.word	pitch
-  93 0078 30000000 		.word	.LC2
-  94 007c 00000000 		.word	roll
-  95 0080 3C000000 		.word	.LC3
-  96 0084 00000000 		.word	def
-  97 0088 44000000 		.word	.LC4
-  98 008c 18000000 		.word	.LC1
- 100              		.global	mode
- 101              		.section	.bss.mode,"aw",%nobits
- 104              	mode:
- 105 0000 00       		.space	1
- 106              		.global	abspitch
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccPb66HU.s 			page 3
+  54 0018 31E0     		b	.L5
+  55              	.L2:
+  56 001a 1C48     		ldr	r0, .L8+4
+  57 001c FFF7FEFF 		bl	puts
+  58 0020 F6E7     		b	.L3
+  59              	.L7:
+  60 0022 1B4B     		ldr	r3, .L8+8
+  61 0024 D3ED000A 		vldr.32	s1, [r3]
+  62 0028 1A4B     		ldr	r3, .L8+12
+  63 002a 93ED000A 		vldr.32	s0, [r3]
+  64 002e FFF7FEFF 		bl	MotorState
+  65              	.L4:
+  66 0032 184B     		ldr	r3, .L8+12
+  67 0034 1868     		ldr	r0, [r3]	@ float
+  68 0036 FFF7FEFF 		bl	__aeabi_f2d
+  69 003a CDE90001 		strd	r0, [sp]
+  70 003e 164B     		ldr	r3, .L8+16
+  71 0040 0622     		movs	r2, #6
+  72 0042 0021     		movs	r1, #0
+  73 0044 0846     		mov	r0, r1
+  74 0046 FFF7FEFF 		bl	OLED_Printf
+  75 004a 114B     		ldr	r3, .L8+8
+  76 004c 1868     		ldr	r0, [r3]	@ float
+  77 004e FFF7FEFF 		bl	__aeabi_f2d
+  78 0052 CDE90001 		strd	r0, [sp]
+  79 0056 114B     		ldr	r3, .L8+20
+  80 0058 0622     		movs	r2, #6
+  81 005a 1021     		movs	r1, #16
+  82 005c 0020     		movs	r0, #0
+  83 005e FFF7FEFF 		bl	OLED_Printf
+  84 0062 0F4B     		ldr	r3, .L8+24
+  85 0064 1868     		ldr	r0, [r3]	@ float
+  86 0066 FFF7FEFF 		bl	__aeabi_f2d
+  87 006a CDE90001 		strd	r0, [sp]
+  88 006e 0D4B     		ldr	r3, .L8+28
+  89 0070 0622     		movs	r2, #6
+  90 0072 2021     		movs	r1, #32
+  91 0074 0020     		movs	r0, #0
+  92 0076 FFF7FEFF 		bl	OLED_Printf
+  93 007a FFF7FEFF 		bl	OLED_Update
+  94              	.L5:
+  95 007e 0A4B     		ldr	r3, .L8+32
+  96 0080 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  97 0082 042B     		cmp	r3, #4
+  98 0084 CDD0     		beq	.L7
+  99 0086 D4E7     		b	.L4
+ 100              	.L9:
+ 101              		.align	2
+ 102              	.L8:
+ 103 0088 00000000 		.word	.LC0
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccv2hz0g.s 			page 3
 
 
- 107              		.section	.bss.abspitch,"aw",%nobits
- 108              		.align	2
- 111              	abspitch:
- 112 0000 00000000 		.space	4
- 113              		.global	absroll
- 114              		.section	.bss.absroll,"aw",%nobits
+ 104 008c 18000000 		.word	.LC1
+ 105 0090 00000000 		.word	roll
+ 106 0094 00000000 		.word	pitch
+ 107 0098 30000000 		.word	.LC2
+ 108 009c 3C000000 		.word	.LC3
+ 109 00a0 00000000 		.word	def
+ 110 00a4 44000000 		.word	.LC4
+ 111 00a8 00000000 		.word	mode
+ 113              		.global	abspitch
+ 114              		.section	.bss.abspitch,"aw",%nobits
  115              		.align	2
- 118              	absroll:
+ 118              	abspitch:
  119 0000 00000000 		.space	4
- 120              		.global	Opolar
- 121              		.section	.bss.Opolar,"aw",%nobits
+ 120              		.global	absroll
+ 121              		.section	.bss.absroll,"aw",%nobits
  122              		.align	2
- 125              	Opolar:
+ 125              	absroll:
  126 0000 00000000 		.space	4
- 127              		.global	polar
- 128              		.section	.bss.polar,"aw",%nobits
+ 127              		.global	Opolar
+ 128              		.section	.bss.Opolar,"aw",%nobits
  129              		.align	2
- 132              	polar:
+ 132              	Opolar:
  133 0000 00000000 		.space	4
- 134              		.global	dis
- 135              		.section	.bss.dis,"aw",%nobits
+ 134              		.global	polar
+ 135              		.section	.bss.polar,"aw",%nobits
  136              		.align	2
- 139              	dis:
+ 139              	polar:
  140 0000 00000000 		.space	4
- 141              		.global	def
- 142              		.section	.bss.def,"aw",%nobits
+ 141              		.global	dis
+ 142              		.section	.bss.dis,"aw",%nobits
  143              		.align	2
- 146              	def:
+ 146              	dis:
  147 0000 00000000 		.space	4
- 148              		.global	yaw
- 149              		.section	.bss.yaw,"aw",%nobits
+ 148              		.global	def
+ 149              		.section	.bss.def,"aw",%nobits
  150              		.align	2
- 153              	yaw:
+ 153              	def:
  154 0000 00000000 		.space	4
- 155              		.global	roll
- 156              		.section	.bss.roll,"aw",%nobits
+ 155              		.global	yaw
+ 156              		.section	.bss.yaw,"aw",%nobits
  157              		.align	2
- 160              	roll:
+ 160              	yaw:
  161 0000 00000000 		.space	4
- 162              		.global	pitch
- 163              		.section	.bss.pitch,"aw",%nobits
+ 162              		.global	roll
+ 163              		.section	.bss.roll,"aw",%nobits
  164              		.align	2
- 167              	pitch:
+ 167              	roll:
  168 0000 00000000 		.space	4
- 169              		.ident	"GCC: (Arm GNU Toolchain 13.3.Rel1 (Build arm-13.24)) 13.3.1 20240614"
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccPb66HU.s 			page 4
+ 169              		.global	pitch
+ 170              		.section	.bss.pitch,"aw",%nobits
+ 171              		.align	2
+ 174              	pitch:
+ 175 0000 00000000 		.space	4
+ 176              		.ident	"GCC: (Arm GNU Toolchain 13.3.Rel1 (Build arm-13.24)) 13.3.1 20240614"
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccv2hz0g.s 			page 4
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 main.c
-C:\Users\ktkuru\AppData\Local\Temp\ccPb66HU.s:18     .rodata.main.str1.4:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccPb66HU.s:35     .text.main:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccPb66HU.s:41     .text.main:00000000 main
-C:\Users\ktkuru\AppData\Local\Temp\ccPb66HU.s:91     .text.main:00000070 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccPb66HU.s:167    .bss.pitch:00000000 pitch
-C:\Users\ktkuru\AppData\Local\Temp\ccPb66HU.s:160    .bss.roll:00000000 roll
-C:\Users\ktkuru\AppData\Local\Temp\ccPb66HU.s:146    .bss.def:00000000 def
-C:\Users\ktkuru\AppData\Local\Temp\ccPb66HU.s:104    .bss.mode:00000000 mode
-C:\Users\ktkuru\AppData\Local\Temp\ccPb66HU.s:105    .bss.mode:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccPb66HU.s:111    .bss.abspitch:00000000 abspitch
-C:\Users\ktkuru\AppData\Local\Temp\ccPb66HU.s:108    .bss.abspitch:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccPb66HU.s:118    .bss.absroll:00000000 absroll
-C:\Users\ktkuru\AppData\Local\Temp\ccPb66HU.s:115    .bss.absroll:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccPb66HU.s:125    .bss.Opolar:00000000 Opolar
-C:\Users\ktkuru\AppData\Local\Temp\ccPb66HU.s:122    .bss.Opolar:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccPb66HU.s:132    .bss.polar:00000000 polar
-C:\Users\ktkuru\AppData\Local\Temp\ccPb66HU.s:129    .bss.polar:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccPb66HU.s:139    .bss.dis:00000000 dis
-C:\Users\ktkuru\AppData\Local\Temp\ccPb66HU.s:136    .bss.dis:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccPb66HU.s:143    .bss.def:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccPb66HU.s:153    .bss.yaw:00000000 yaw
-C:\Users\ktkuru\AppData\Local\Temp\ccPb66HU.s:150    .bss.yaw:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccPb66HU.s:157    .bss.roll:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccPb66HU.s:164    .bss.pitch:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccv2hz0g.s:18     .rodata.main.str1.4:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccv2hz0g.s:35     .text.main:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccv2hz0g.s:41     .text.main:00000000 main
+C:\Users\ktkuru\AppData\Local\Temp\ccv2hz0g.s:103    .text.main:00000088 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccv2hz0g.s:167    .bss.roll:00000000 roll
+C:\Users\ktkuru\AppData\Local\Temp\ccv2hz0g.s:174    .bss.pitch:00000000 pitch
+C:\Users\ktkuru\AppData\Local\Temp\ccv2hz0g.s:153    .bss.def:00000000 def
+C:\Users\ktkuru\AppData\Local\Temp\ccv2hz0g.s:118    .bss.abspitch:00000000 abspitch
+C:\Users\ktkuru\AppData\Local\Temp\ccv2hz0g.s:115    .bss.abspitch:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccv2hz0g.s:125    .bss.absroll:00000000 absroll
+C:\Users\ktkuru\AppData\Local\Temp\ccv2hz0g.s:122    .bss.absroll:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccv2hz0g.s:132    .bss.Opolar:00000000 Opolar
+C:\Users\ktkuru\AppData\Local\Temp\ccv2hz0g.s:129    .bss.Opolar:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccv2hz0g.s:139    .bss.polar:00000000 polar
+C:\Users\ktkuru\AppData\Local\Temp\ccv2hz0g.s:136    .bss.polar:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccv2hz0g.s:146    .bss.dis:00000000 dis
+C:\Users\ktkuru\AppData\Local\Temp\ccv2hz0g.s:143    .bss.dis:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccv2hz0g.s:150    .bss.def:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccv2hz0g.s:160    .bss.yaw:00000000 yaw
+C:\Users\ktkuru\AppData\Local\Temp\ccv2hz0g.s:157    .bss.yaw:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccv2hz0g.s:164    .bss.roll:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccv2hz0g.s:171    .bss.pitch:00000000 $d
 
 UNDEFINED SYMBOLS
 __aeabi_f2d
 BSP_Init
 puts
 OLED_Clear
+MotorState
 OLED_Printf
 OLED_Update
+mode

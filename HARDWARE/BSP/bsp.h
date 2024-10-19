@@ -12,6 +12,7 @@
 #include <stm32f4xx_exti.h>
 #include <delay.h>
 
+extern uint8_t mode;
 
 void LED_Init();
 void GPIO_Config(GPIO_TypeDef *GPIOx,uint32_t GPIO_Pin_x,uint32_t GPIO_Mode_x,uint32_t GPIO_PuPd_x);

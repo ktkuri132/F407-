@@ -87,7 +87,7 @@ int fgetc(FILE *f)
 
 uint8_t Stop_flag=0;
 
-extern float Target_dis;
+extern float Target_dis,target_R;
 
 //串口1中断服务程序 	
 u8 USART_RX_BUF[USART_REC_LEN];     
@@ -216,14 +216,17 @@ void USART2_IRQHandler(void)
 				U2printf("Target_dis:%f\n",Target_dis);
 			}	break;
 
-			
-			
 			case 'b':
 			{
 				Target_dis -=0.01;
 				U2printf("Target_dis:%f\n",Target_dis);
 			}	break;
 			
+			case 'c':
+			{
+				target_R +=0.05;
+				U2printf("R:%f\n",target_R);
+			}
 			default:
 				break;
 		}

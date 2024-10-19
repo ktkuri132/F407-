@@ -39,7 +39,7 @@
 //圆周率
 #define PI 3.1415926
 //到地面距离
-#define heigh 86
+#define H 0.875
 //周期
 #define T 1.678
 
@@ -59,11 +59,10 @@ typedef struct PID
 void Motor_PWM_TIM8_Init();
 void GetPolar(float roll,float pitch);
 
-#ifdef Function_For_Task4
 
-void MotorState(float pitch,float roll);
+
 void StopAllMotor();
-#endif
+
 
 /* 第一项  */
 
@@ -85,9 +84,12 @@ void T3Motor_CmdCombination(float Vo,float Lo,uint8_t a);
 float PidControl_Stop(float target, float feedback,struct PID* pid);
 void Task4_StopFast();
 void PWM_Allocation(float Output);
+void MotorState(float pitch,float roll);
 
 
 /* 第五项  */
 void Task5_CircleMove(float R);
 void T5Motor_CmdCombination(int sit,float Vo,float Lo);
+float (*T5LowPassFilter(float Vinput,float Linput,float a))[3];
+
 #endif 

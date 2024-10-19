@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s 			page 1
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s 			page 1
   58 0016 1360     		str	r3, [r2]
   59 0018 7047     		bx	lr
   60              	.L8:
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s 			page 2
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s 			page 2
 
 
   61 001a 00BF     		.align	2
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s 			page 1
  119 001c 003C0240 		.word	1073888256
  121              		.section	.text.FLASH_InstructionCacheReset,"ax",%progbits
  122              		.align	1
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s 			page 3
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s 			page 3
 
 
  123              		.global	FLASH_InstructionCacheReset
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s 			page 1
  182 000c 034A     		ldr	r2, .L28+4
  183 000e 5A60     		str	r2, [r3, #4]
  184 0010 02F18832 		add	r2, r2, #-2004318072
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s 			page 4
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s 			page 4
 
 
  185 0014 5A60     		str	r2, [r3, #4]
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s 			page 1
  244              		.global	FLASH_OB_Lock
  245              		.syntax unified
  246              		.thumb
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s 			page 5
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s 			page 5
 
 
  247              		.thumb_func
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s 			page 1
  306              	.L44:
  307 0014 003C0240 		.word	1073888256
  309              		.section	.text.FLASH_OB_BORConfig,"ax",%progbits
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s 			page 6
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s 			page 6
 
 
  310              		.align	1
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s 			page 1
  369              		.align	2
  370              	.L53:
  371 0008 003C0240 		.word	1073888256
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s 			page 7
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s 			page 7
 
 
  373              		.section	.text.FLASH_OB_GetWRP1,"ax",%progbits
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s 			page 1
  433              		.section	.text.FLASH_OB_GetRDP,"ax",%progbits
  434              		.align	1
  435              		.global	FLASH_OB_GetRDP
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s 			page 8
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s 			page 8
 
 
  436              		.syntax unified
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s 			page 1
  495 000a 7047     		bx	lr
  496              	.L73:
  497 000c 024A     		ldr	r2, .L75
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s 			page 9
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s 			page 9
 
 
  498 000e 1369     		ldr	r3, [r2, #16]
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s 			page 1
  558              	FLASH_GetStatus:
  559              		@ args = 0, pretend = 0, frame = 0
  560              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s 			page 10
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s 			page 10
 
 
  561              		@ link register save eliminated.
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s 			page 1
  617 0006 8DF80730 		strb	r3, [sp, #7]
  618 000a FFF7FEFF 		bl	FLASH_GetStatus
  619 000e 8DF80700 		strb	r0, [sp, #7]
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s 			page 11
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s 			page 11
 
 
  620 0012 03E0     		b	.L95
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s 			page 1
  676 003e 23F0F803 		bic	r3, r3, #248
  677 0042 2B61     		str	r3, [r5, #16]
  678 0044 2B69     		ldr	r3, [r5, #16]
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s 			page 12
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s 			page 12
 
 
  679 0046 2343     		orrs	r3, r3, r4
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s 			page 1
  735 0034 2261     		str	r2, [r4, #16]
  736 0036 2269     		ldr	r2, [r4, #16]
  737 0038 1343     		orrs	r3, r3, r2
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s 			page 13
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s 			page 13
 
 
  738 003a 2361     		str	r3, [r4, #16]
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s 			page 1
  794 0038 1343     		orrs	r3, r3, r2
  795 003a 2361     		str	r3, [r4, #16]
  796 003c 2369     		ldr	r3, [r4, #16]
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s 			page 14
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s 			page 14
 
 
  797 003e 43F00403 		orr	r3, r3, #4
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s 			page 1
  853 003c 2369     		ldr	r3, [r4, #16]
  854 003e 43F40043 		orr	r3, r3, #32768
  855 0042 2361     		str	r3, [r4, #16]
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s 			page 15
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s 			page 15
 
 
  856 0044 2369     		ldr	r3, [r4, #16]
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s 			page 1
  913              		.syntax unified
  914              		.thumb
  915              		.thumb_func
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s 			page 16
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s 			page 16
 
 
  917              	FLASH_ProgramWord:
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s 			page 1
  973 001a 3369     		ldr	r3, [r6, #16]
  974 001c 43F48073 		orr	r3, r3, #256
  975 0020 3361     		str	r3, [r6, #16]
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s 			page 17
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s 			page 17
 
 
  976 0022 3369     		ldr	r3, [r6, #16]
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s 			page 1
  1033              		.thumb
  1034              		.thumb_func
  1036              	FLASH_OB_WRPConfig:
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s 			page 18
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s 			page 18
 
 
  1037              		@ args = 0, pretend = 0, frame = 0
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s 			page 1
  1093 001e F6E7     		b	.L169
  1094              	.L171:
  1095 0020 034A     		ldr	r2, .L174
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s 			page 19
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s 			page 19
 
 
  1096 0022 538B     		ldrh	r3, [r2, #26]
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s 			page 1
  1154              		@ args = 0, pretend = 0, frame = 0
  1155              		@ frame_needed = 0, uses_anonymous_args = 0
  1156 0000 38B5     		push	{r3, r4, r5, lr}
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s 			page 20
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s 			page 20
 
 
  1157 0002 0546     		mov	r5, r0
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s 			page 1
  1214              		.syntax unified
  1215              		.thumb
  1216              		.thumb_func
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s 			page 21
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s 			page 21
 
 
  1218              	FLASH_OB_UserConfig:
@@ -1247,135 +1247,135 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s 			page 1
  1263              	.L204:
  1264 0014 003C0240 		.word	1073888256
  1266              		.ident	"GCC: (Arm GNU Toolchain 13.3.Rel1 (Build arm-13.24)) 13.3.1 20240614"
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s 			page 22
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s 			page 22
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 stm32f4xx_flash.c
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:18     .text.FLASH_SetLatency:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:24     .text.FLASH_SetLatency:00000000 FLASH_SetLatency
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:35     .text.FLASH_SetLatency:00000008 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:38     .text.FLASH_PrefetchBufferCmd:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:44     .text.FLASH_PrefetchBufferCmd:00000000 FLASH_PrefetchBufferCmd
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:63     .text.FLASH_PrefetchBufferCmd:0000001c $d
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:66     .text.FLASH_InstructionCacheCmd:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:72     .text.FLASH_InstructionCacheCmd:00000000 FLASH_InstructionCacheCmd
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:91     .text.FLASH_InstructionCacheCmd:0000001c $d
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:94     .text.FLASH_DataCacheCmd:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:100    .text.FLASH_DataCacheCmd:00000000 FLASH_DataCacheCmd
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:119    .text.FLASH_DataCacheCmd:0000001c $d
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:122    .text.FLASH_InstructionCacheReset:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:128    .text.FLASH_InstructionCacheReset:00000000 FLASH_InstructionCacheReset
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:140    .text.FLASH_InstructionCacheReset:0000000c $d
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:143    .text.FLASH_DataCacheReset:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:149    .text.FLASH_DataCacheReset:00000000 FLASH_DataCacheReset
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:161    .text.FLASH_DataCacheReset:0000000c $d
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:164    .text.FLASH_Unlock:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:170    .text.FLASH_Unlock:00000000 FLASH_Unlock
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:190    .text.FLASH_Unlock:00000018 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:194    .text.FLASH_Lock:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:200    .text.FLASH_Lock:00000000 FLASH_Lock
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:212    .text.FLASH_Lock:0000000c $d
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:215    .text.FLASH_OB_Unlock:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:221    .text.FLASH_OB_Unlock:00000000 FLASH_OB_Unlock
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:239    .text.FLASH_OB_Unlock:00000018 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:243    .text.FLASH_OB_Lock:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:249    .text.FLASH_OB_Lock:00000000 FLASH_OB_Lock
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:261    .text.FLASH_OB_Lock:0000000c $d
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:264    .text.FLASH_OB_PCROPSelectionConfig:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:270    .text.FLASH_OB_PCROPSelectionConfig:00000000 FLASH_OB_PCROPSelectionConfig
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:283    .text.FLASH_OB_PCROPSelectionConfig:00000010 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:286    .text.FLASH_OB_BootConfig:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:292    .text.FLASH_OB_BootConfig:00000000 FLASH_OB_BootConfig
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:307    .text.FLASH_OB_BootConfig:00000014 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:310    .text.FLASH_OB_BORConfig:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:316    .text.FLASH_OB_BORConfig:00000000 FLASH_OB_BORConfig
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:331    .text.FLASH_OB_BORConfig:00000014 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:334    .text.FLASH_OB_GetUser:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:340    .text.FLASH_OB_GetUser:00000000 FLASH_OB_GetUser
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:351    .text.FLASH_OB_GetUser:0000000c $d
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:354    .text.FLASH_OB_GetWRP:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:360    .text.FLASH_OB_GetWRP:00000000 FLASH_OB_GetWRP
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:371    .text.FLASH_OB_GetWRP:00000008 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:374    .text.FLASH_OB_GetWRP1:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:380    .text.FLASH_OB_GetWRP1:00000000 FLASH_OB_GetWRP1
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:391    .text.FLASH_OB_GetWRP1:00000008 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:394    .text.FLASH_OB_GetPCROP:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:400    .text.FLASH_OB_GetPCROP:00000000 FLASH_OB_GetPCROP
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:411    .text.FLASH_OB_GetPCROP:00000008 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:414    .text.FLASH_OB_GetPCROP1:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:420    .text.FLASH_OB_GetPCROP1:00000000 FLASH_OB_GetPCROP1
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:431    .text.FLASH_OB_GetPCROP1:00000008 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:434    .text.FLASH_OB_GetRDP:00000000 $t
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s 			page 23
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:18     .text.FLASH_SetLatency:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:24     .text.FLASH_SetLatency:00000000 FLASH_SetLatency
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:35     .text.FLASH_SetLatency:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:38     .text.FLASH_PrefetchBufferCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:44     .text.FLASH_PrefetchBufferCmd:00000000 FLASH_PrefetchBufferCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:63     .text.FLASH_PrefetchBufferCmd:0000001c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:66     .text.FLASH_InstructionCacheCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:72     .text.FLASH_InstructionCacheCmd:00000000 FLASH_InstructionCacheCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:91     .text.FLASH_InstructionCacheCmd:0000001c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:94     .text.FLASH_DataCacheCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:100    .text.FLASH_DataCacheCmd:00000000 FLASH_DataCacheCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:119    .text.FLASH_DataCacheCmd:0000001c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:122    .text.FLASH_InstructionCacheReset:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:128    .text.FLASH_InstructionCacheReset:00000000 FLASH_InstructionCacheReset
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:140    .text.FLASH_InstructionCacheReset:0000000c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:143    .text.FLASH_DataCacheReset:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:149    .text.FLASH_DataCacheReset:00000000 FLASH_DataCacheReset
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:161    .text.FLASH_DataCacheReset:0000000c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:164    .text.FLASH_Unlock:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:170    .text.FLASH_Unlock:00000000 FLASH_Unlock
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:190    .text.FLASH_Unlock:00000018 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:194    .text.FLASH_Lock:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:200    .text.FLASH_Lock:00000000 FLASH_Lock
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:212    .text.FLASH_Lock:0000000c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:215    .text.FLASH_OB_Unlock:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:221    .text.FLASH_OB_Unlock:00000000 FLASH_OB_Unlock
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:239    .text.FLASH_OB_Unlock:00000018 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:243    .text.FLASH_OB_Lock:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:249    .text.FLASH_OB_Lock:00000000 FLASH_OB_Lock
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:261    .text.FLASH_OB_Lock:0000000c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:264    .text.FLASH_OB_PCROPSelectionConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:270    .text.FLASH_OB_PCROPSelectionConfig:00000000 FLASH_OB_PCROPSelectionConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:283    .text.FLASH_OB_PCROPSelectionConfig:00000010 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:286    .text.FLASH_OB_BootConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:292    .text.FLASH_OB_BootConfig:00000000 FLASH_OB_BootConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:307    .text.FLASH_OB_BootConfig:00000014 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:310    .text.FLASH_OB_BORConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:316    .text.FLASH_OB_BORConfig:00000000 FLASH_OB_BORConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:331    .text.FLASH_OB_BORConfig:00000014 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:334    .text.FLASH_OB_GetUser:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:340    .text.FLASH_OB_GetUser:00000000 FLASH_OB_GetUser
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:351    .text.FLASH_OB_GetUser:0000000c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:354    .text.FLASH_OB_GetWRP:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:360    .text.FLASH_OB_GetWRP:00000000 FLASH_OB_GetWRP
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:371    .text.FLASH_OB_GetWRP:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:374    .text.FLASH_OB_GetWRP1:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:380    .text.FLASH_OB_GetWRP1:00000000 FLASH_OB_GetWRP1
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:391    .text.FLASH_OB_GetWRP1:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:394    .text.FLASH_OB_GetPCROP:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:400    .text.FLASH_OB_GetPCROP:00000000 FLASH_OB_GetPCROP
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:411    .text.FLASH_OB_GetPCROP:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:414    .text.FLASH_OB_GetPCROP1:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:420    .text.FLASH_OB_GetPCROP1:00000000 FLASH_OB_GetPCROP1
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:431    .text.FLASH_OB_GetPCROP1:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:434    .text.FLASH_OB_GetRDP:00000000 $t
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s 			page 23
 
 
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:440    .text.FLASH_OB_GetRDP:00000000 FLASH_OB_GetRDP
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:457    .text.FLASH_OB_GetRDP:00000014 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:460    .text.FLASH_OB_GetBOR:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:466    .text.FLASH_OB_GetBOR:00000000 FLASH_OB_GetBOR
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:477    .text.FLASH_OB_GetBOR:0000000c $d
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:480    .text.FLASH_ITConfig:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:486    .text.FLASH_ITConfig:00000000 FLASH_ITConfig
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:505    .text.FLASH_ITConfig:00000018 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:508    .text.FLASH_GetFlagStatus:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:514    .text.FLASH_GetFlagStatus:00000000 FLASH_GetFlagStatus
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:530    .text.FLASH_GetFlagStatus:00000010 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:533    .text.FLASH_ClearFlag:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:539    .text.FLASH_ClearFlag:00000000 FLASH_ClearFlag
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:549    .text.FLASH_ClearFlag:00000008 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:552    .text.FLASH_GetStatus:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:558    .text.FLASH_GetStatus:00000000 FLASH_GetStatus
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:602    .text.FLASH_GetStatus:0000004c $d
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:605    .text.FLASH_WaitForLastOperation:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:611    .text.FLASH_WaitForLastOperation:00000000 FLASH_WaitForLastOperation
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:635    .text.FLASH_EraseSector:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:641    .text.FLASH_EraseSector:00000000 FLASH_EraseSector
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:696    .text.FLASH_EraseSector:0000006c $d
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:699    .text.FLASH_EraseAllSectors:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:705    .text.FLASH_EraseAllSectors:00000000 FLASH_EraseAllSectors
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:753    .text.FLASH_EraseAllSectors:0000005c $d
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:756    .text.FLASH_EraseAllBank1Sectors:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:762    .text.FLASH_EraseAllBank1Sectors:00000000 FLASH_EraseAllBank1Sectors
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:810    .text.FLASH_EraseAllBank1Sectors:0000005c $d
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:813    .text.FLASH_EraseAllBank2Sectors:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:819    .text.FLASH_EraseAllBank2Sectors:00000000 FLASH_EraseAllBank2Sectors
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:867    .text.FLASH_EraseAllBank2Sectors:0000005c $d
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:870    .text.FLASH_ProgramDoubleWord:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:876    .text.FLASH_ProgramDoubleWord:00000000 FLASH_ProgramDoubleWord
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:908    .text.FLASH_ProgramDoubleWord:00000040 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:911    .text.FLASH_ProgramWord:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:917    .text.FLASH_ProgramWord:00000000 FLASH_ProgramWord
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:948    .text.FLASH_ProgramWord:0000003c $d
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:951    .text.FLASH_ProgramHalfWord:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:957    .text.FLASH_ProgramHalfWord:00000000 FLASH_ProgramHalfWord
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:988    .text.FLASH_ProgramHalfWord:0000003c $d
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:991    .text.FLASH_ProgramByte:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:997    .text.FLASH_ProgramByte:00000000 FLASH_ProgramByte
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:1027   .text.FLASH_ProgramByte:00000038 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:1030   .text.FLASH_OB_WRPConfig:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:1036   .text.FLASH_OB_WRPConfig:00000000 FLASH_OB_WRPConfig
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:1066   .text.FLASH_OB_WRPConfig:00000030 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:1069   .text.FLASH_OB_WRP1Config:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:1075   .text.FLASH_OB_WRP1Config:00000000 FLASH_OB_WRP1Config
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:1105   .text.FLASH_OB_WRP1Config:00000030 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:1108   .text.FLASH_OB_PCROPConfig:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:1114   .text.FLASH_OB_PCROPConfig:00000000 FLASH_OB_PCROPConfig
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:1144   .text.FLASH_OB_PCROPConfig:00000030 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:1147   .text.FLASH_OB_PCROP1Config:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:1153   .text.FLASH_OB_PCROP1Config:00000000 FLASH_OB_PCROP1Config
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:1183   .text.FLASH_OB_PCROP1Config:00000030 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:1186   .text.FLASH_OB_RDPConfig:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:1192   .text.FLASH_OB_RDPConfig:00000000 FLASH_OB_RDPConfig
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s 			page 24
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:440    .text.FLASH_OB_GetRDP:00000000 FLASH_OB_GetRDP
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:457    .text.FLASH_OB_GetRDP:00000014 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:460    .text.FLASH_OB_GetBOR:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:466    .text.FLASH_OB_GetBOR:00000000 FLASH_OB_GetBOR
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:477    .text.FLASH_OB_GetBOR:0000000c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:480    .text.FLASH_ITConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:486    .text.FLASH_ITConfig:00000000 FLASH_ITConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:505    .text.FLASH_ITConfig:00000018 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:508    .text.FLASH_GetFlagStatus:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:514    .text.FLASH_GetFlagStatus:00000000 FLASH_GetFlagStatus
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:530    .text.FLASH_GetFlagStatus:00000010 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:533    .text.FLASH_ClearFlag:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:539    .text.FLASH_ClearFlag:00000000 FLASH_ClearFlag
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:549    .text.FLASH_ClearFlag:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:552    .text.FLASH_GetStatus:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:558    .text.FLASH_GetStatus:00000000 FLASH_GetStatus
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:602    .text.FLASH_GetStatus:0000004c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:605    .text.FLASH_WaitForLastOperation:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:611    .text.FLASH_WaitForLastOperation:00000000 FLASH_WaitForLastOperation
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:635    .text.FLASH_EraseSector:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:641    .text.FLASH_EraseSector:00000000 FLASH_EraseSector
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:696    .text.FLASH_EraseSector:0000006c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:699    .text.FLASH_EraseAllSectors:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:705    .text.FLASH_EraseAllSectors:00000000 FLASH_EraseAllSectors
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:753    .text.FLASH_EraseAllSectors:0000005c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:756    .text.FLASH_EraseAllBank1Sectors:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:762    .text.FLASH_EraseAllBank1Sectors:00000000 FLASH_EraseAllBank1Sectors
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:810    .text.FLASH_EraseAllBank1Sectors:0000005c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:813    .text.FLASH_EraseAllBank2Sectors:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:819    .text.FLASH_EraseAllBank2Sectors:00000000 FLASH_EraseAllBank2Sectors
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:867    .text.FLASH_EraseAllBank2Sectors:0000005c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:870    .text.FLASH_ProgramDoubleWord:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:876    .text.FLASH_ProgramDoubleWord:00000000 FLASH_ProgramDoubleWord
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:908    .text.FLASH_ProgramDoubleWord:00000040 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:911    .text.FLASH_ProgramWord:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:917    .text.FLASH_ProgramWord:00000000 FLASH_ProgramWord
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:948    .text.FLASH_ProgramWord:0000003c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:951    .text.FLASH_ProgramHalfWord:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:957    .text.FLASH_ProgramHalfWord:00000000 FLASH_ProgramHalfWord
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:988    .text.FLASH_ProgramHalfWord:0000003c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:991    .text.FLASH_ProgramByte:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:997    .text.FLASH_ProgramByte:00000000 FLASH_ProgramByte
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:1027   .text.FLASH_ProgramByte:00000038 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:1030   .text.FLASH_OB_WRPConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:1036   .text.FLASH_OB_WRPConfig:00000000 FLASH_OB_WRPConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:1066   .text.FLASH_OB_WRPConfig:00000030 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:1069   .text.FLASH_OB_WRP1Config:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:1075   .text.FLASH_OB_WRP1Config:00000000 FLASH_OB_WRP1Config
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:1105   .text.FLASH_OB_WRP1Config:00000030 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:1108   .text.FLASH_OB_PCROPConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:1114   .text.FLASH_OB_PCROPConfig:00000000 FLASH_OB_PCROPConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:1144   .text.FLASH_OB_PCROPConfig:00000030 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:1147   .text.FLASH_OB_PCROP1Config:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:1153   .text.FLASH_OB_PCROP1Config:00000000 FLASH_OB_PCROP1Config
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:1183   .text.FLASH_OB_PCROP1Config:00000030 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:1186   .text.FLASH_OB_RDPConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:1192   .text.FLASH_OB_RDPConfig:00000000 FLASH_OB_RDPConfig
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s 			page 24
 
 
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:1209   .text.FLASH_OB_RDPConfig:00000014 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:1212   .text.FLASH_OB_UserConfig:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:1218   .text.FLASH_OB_UserConfig:00000000 FLASH_OB_UserConfig
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:1242   .text.FLASH_OB_UserConfig:0000002c $d
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:1245   .text.FLASH_OB_Launch:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:1251   .text.FLASH_OB_Launch:00000000 FLASH_OB_Launch
-C:\Users\ktkuru\AppData\Local\Temp\ccQpV1ti.s:1264   .text.FLASH_OB_Launch:00000014 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:1209   .text.FLASH_OB_RDPConfig:00000014 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:1212   .text.FLASH_OB_UserConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:1218   .text.FLASH_OB_UserConfig:00000000 FLASH_OB_UserConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:1242   .text.FLASH_OB_UserConfig:0000002c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:1245   .text.FLASH_OB_Launch:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:1251   .text.FLASH_OB_Launch:00000000 FLASH_OB_Launch
+C:\Users\ktkuru\AppData\Local\Temp\ccW94IQh.s:1264   .text.FLASH_OB_Launch:00000014 $d
 
 NO UNDEFINED SYMBOLS

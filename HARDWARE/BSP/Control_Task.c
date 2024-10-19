@@ -42,9 +42,10 @@ extern float pitch,roll,yaw,dis,def,polar,Opolar,absroll,abspitch;
 //         30 45 60 150  135   120  90
 int de[7]={0,-5,-7,+12.5,+10.5,+9.9,-10 };
 
+
 float Target_dis=0.15;
-float Target_angle = 80;
-extern uint8_t mode;
+float Target_angle = 0;
+uint8_t mode=1;
 
 
 /// @brief MPU6050读值触发的外部中断函数      
@@ -56,7 +57,7 @@ void EXTI15_10_IRQHandler(void)
         
         mpu_dmp_get_data(&pitch, &roll, &yaw);      //读取MPU6050数据
 
-
+        
         switch (mode)
         {
 
@@ -83,6 +84,8 @@ void EXTI15_10_IRQHandler(void)
 }
 
 
+float target_R=0.15;
+
 /*
     定时器2中断函数,定时5ms计算一次PID
 */
@@ -92,7 +95,7 @@ void TIM2_IRQHandler(void)
     {
         TIM_ClearITPendingBit(TIM2, TIM_IT_Update);
         
-        Task5_CircleMove(0.2);
+        Task5_CircleMove(target_R);
     }
 }
 
@@ -116,7 +119,7 @@ void Task4_StopFast()
     
     Output = Taks4Pid.PIDControl(TargetDis,dis, &Taks4Pid);
     //printf("Output:%f\n",Output);
-    //PWM_Allocation(Output);
+    PWM_Allocation(Output);
   
 }
 
@@ -395,8 +398,13 @@ void Task3_AngleMove(float angle,float R)
 }
 
 
+
+float timepp = 0.0102220;
 /*
     画圆
+
+    290,0,0  跑 15~20
+    290,0,0
 */
 void Task5_CircleMove(float R)
 {
@@ -407,57 +415,69 @@ void Task5_CircleMove(float R)
     static float time=0;
     static float Vtarget_angle,Ltarget_angle;
     
-    static struct PID Taks5Pid={300,0,0,PidControl_LineMove};
-    static struct PID Taks5Pid2={300,0,0,PidControl_LineMove};
+    static struct PID Taks5Pid={290,0,0,PidControl_LineMove};
+    static struct PID Taks5Pid2={290,0,0,PidControl_LineMove};
+    
+    if(R>=0.24)
+    {
+        R=0.24;
+    }
+    
+    R += 0.05;
+
 
     GetPolar(roll,pitch);
-
-    A = asinf(R/0.86)*180.0f/PI;
+    A = asinf(R/0.875)*180.0f/PI;
 
     float wt = 2*PI/T*time;
 
     Vtarget_angle = A*sinf(wt);
     Ltarget_angle = A*cosf(wt);
 
-    float feedback_angle = A*sinf(polar/180*PI);
+    float feedback_angle = A*sinf((polar/180*PI)+PI);
 
     int sit;
 
-    printf("%f,%f\r\n",Vtarget_angle,feedback_angle);
+    //实际正弦与目标正弦的比较
+    //printf("%f,%f\r\n",Ltarget_angle,feedback_angle);
 
-    time+=0.01;
+    
+    time+=timepp;
     if(time>T)
     {
         time=0;
         return;
     }
 
-    if((wt<PI/2)&&(wt>0))   //0-PI/2
+    if((wt<PI/2)&&(wt>=0))   //0-PI/2
     {
         sit = 1;
         VOutput = Taks5Pid.PIDControl(Vtarget_angle,absroll,&Taks5Pid);
         LOutput = Taks5Pid2.PIDControl(Ltarget_angle,abspitch,&Taks5Pid2);
     }
-    else if((wt<PI)&&(wt>PI/2)) //PI/2-PI
+    else if((wt<PI)&&(wt>=PI/2)) //PI/2-PI
     {
         sit = 2;
         VOutput = Taks5Pid.PIDControl(Vtarget_angle,absroll,&Taks5Pid);
         LOutput = Taks5Pid2.PIDControl(Ltarget_angle,-abspitch,&Taks5Pid2);
     }
-    else if((wt<3*PI/2)&&(wt>PI))   //PI-3PI/2
+    else if((wt<3*PI/2)&&(wt>=PI))   //PI-3PI/2
     {
         sit = 3;
         VOutput = Taks5Pid.PIDControl(Vtarget_angle,-absroll,&Taks5Pid);
         LOutput = Taks5Pid2.PIDControl(Ltarget_angle,-abspitch,&Taks5Pid2);
     }
-    else if((wt<2*PI)&&(wt>3*PI/2)) //3PI/2-2PI
+    else if((wt<2*PI)&&(wt>=3*PI/2)) //3PI/2-2PI
     {
         sit = 4;
         VOutput = Taks5Pid.PIDControl(Vtarget_angle,-absroll,&Taks5Pid);
         LOutput = Taks5Pid2.PIDControl(Ltarget_angle,abspitch,&Taks5Pid2);
     }
-
-
+    
+    
+    //垂直输出和水平输出的比较
+    //printf("%f,%f\r\n",VOutput,LOutput);
+    
     T5Motor_CmdCombination(sit,VOutput,LOutput);
 
 }

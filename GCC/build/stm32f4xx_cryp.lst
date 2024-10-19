@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccPJ8Mr8.s 			page 1
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc0tbPrZ.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccPJ8Mr8.s 			page 1
   58 001c 1A60     		str	r2, [r3]
   59 001e 1A68     		ldr	r2, [r3]
   60 0020 8168     		ldr	r1, [r0, #8]
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccPJ8Mr8.s 			page 2
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc0tbPrZ.s 			page 2
 
 
   61 0022 0A43     		orrs	r2, r2, r1
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccPJ8Mr8.s 			page 1
  118              		.thumb
  119              		.thumb_func
  121              	CRYP_KeyInit:
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccPJ8Mr8.s 			page 3
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc0tbPrZ.s 			page 3
 
 
  122              		@ args = 0, pretend = 0, frame = 0
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccPJ8Mr8.s 			page 1
  180              		@ link register save eliminated.
  181 0000 0268     		ldr	r2, [r0]
  182 0002 044B     		ldr	r3, .L14
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccPJ8Mr8.s 			page 4
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc0tbPrZ.s 			page 4
 
 
  183 0004 1A64     		str	r2, [r3, #64]
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccPJ8Mr8.s 			page 1
  243              	CRYP_FIFOFlush:
  244              		@ args = 0, pretend = 0, frame = 0
  245              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccPJ8Mr8.s 			page 5
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc0tbPrZ.s 			page 5
 
 
  246              		@ link register save eliminated.
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccPJ8Mr8.s 			page 1
  305              		.align	1
  306              		.global	CRYP_DataOut
  307              		.syntax unified
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccPJ8Mr8.s 			page 6
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc0tbPrZ.s 			page 6
 
 
  308              		.thumb
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccPJ8Mr8.s 			page 1
  365 0046 0020     		movs	r0, #0
  366              	.L38:
  367 0048 03B0     		add	sp, sp, #12
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccPJ8Mr8.s 			page 7
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc0tbPrZ.s 			page 7
 
 
  368              		@ sp needed
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccPJ8Mr8.s 			page 1
  422 00c0 5A6E     		ldr	r2, [r3, #100]
  423 00c2 8264     		str	r2, [r0, #72]
  424 00c4 9A6E     		ldr	r2, [r3, #104]
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccPJ8Mr8.s 			page 8
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc0tbPrZ.s 			page 8
 
 
  425 00c6 C264     		str	r2, [r0, #76]
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccPJ8Mr8.s 			page 1
  481 0026 4268     		ldr	r2, [r0, #4]
  482 0028 1A64     		str	r2, [r3, #64]
  483 002a 8268     		ldr	r2, [r0, #8]
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccPJ8Mr8.s 			page 9
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc0tbPrZ.s 			page 9
 
 
  484 002c 5A64     		str	r2, [r3, #68]
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccPJ8Mr8.s 			page 1
  540              		@ link register save eliminated.
  541 0000 21B1     		cbz	r1, .L49
  542 0002 064B     		ldr	r3, .L51
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccPJ8Mr8.s 			page 10
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc0tbPrZ.s 			page 10
 
 
  543 0004 1A69     		ldr	r2, [r3, #16]
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccPJ8Mr8.s 			page 1
  601 0000 034B     		ldr	r3, .L61
  602 0002 DB69     		ldr	r3, [r3, #28]
  603 0004 1842     		tst	r0, r3
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccPJ8Mr8.s 			page 11
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc0tbPrZ.s 			page 11
 
 
  604 0006 01D0     		beq	.L60
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccPJ8Mr8.s 			page 1
  662 0014 5B68     		ldr	r3, [r3, #4]
  663 0016 F8E7     		b	.L70
  664              	.L72:
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccPJ8Mr8.s 			page 12
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc0tbPrZ.s 			page 12
 
 
  665 0018 0020     		movs	r0, #0
@@ -668,67 +668,67 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccPJ8Mr8.s 			page 1
  669              	.L73:
  670 001c 00000650 		.word	1342570496
  672              		.ident	"GCC: (Arm GNU Toolchain 13.3.Rel1 (Build arm-13.24)) 13.3.1 20240614"
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccPJ8Mr8.s 			page 13
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc0tbPrZ.s 			page 13
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 stm32f4xx_cryp.c
-C:\Users\ktkuru\AppData\Local\Temp\ccPJ8Mr8.s:18     .text.CRYP_DeInit:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccPJ8Mr8.s:24     .text.CRYP_DeInit:00000000 CRYP_DeInit
-C:\Users\ktkuru\AppData\Local\Temp\ccPJ8Mr8.s:37     .text.CRYP_Init:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccPJ8Mr8.s:43     .text.CRYP_Init:00000000 CRYP_Init
-C:\Users\ktkuru\AppData\Local\Temp\ccPJ8Mr8.s:93     .text.CRYP_Init:00000060 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccPJ8Mr8.s:97     .text.CRYP_StructInit:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccPJ8Mr8.s:103    .text.CRYP_StructInit:00000000 CRYP_StructInit
-C:\Users\ktkuru\AppData\Local\Temp\ccPJ8Mr8.s:115    .text.CRYP_KeyInit:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccPJ8Mr8.s:121    .text.CRYP_KeyInit:00000000 CRYP_KeyInit
-C:\Users\ktkuru\AppData\Local\Temp\ccPJ8Mr8.s:146    .text.CRYP_KeyInit:00000024 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccPJ8Mr8.s:149    .text.CRYP_KeyStructInit:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccPJ8Mr8.s:155    .text.CRYP_KeyStructInit:00000000 CRYP_KeyStructInit
-C:\Users\ktkuru\AppData\Local\Temp\ccPJ8Mr8.s:171    .text.CRYP_IVInit:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccPJ8Mr8.s:177    .text.CRYP_IVInit:00000000 CRYP_IVInit
-C:\Users\ktkuru\AppData\Local\Temp\ccPJ8Mr8.s:194    .text.CRYP_IVInit:00000014 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccPJ8Mr8.s:197    .text.CRYP_IVStructInit:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccPJ8Mr8.s:203    .text.CRYP_IVStructInit:00000000 CRYP_IVStructInit
-C:\Users\ktkuru\AppData\Local\Temp\ccPJ8Mr8.s:215    .text.CRYP_PhaseConfig:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccPJ8Mr8.s:221    .text.CRYP_PhaseConfig:00000000 CRYP_PhaseConfig
-C:\Users\ktkuru\AppData\Local\Temp\ccPJ8Mr8.s:234    .text.CRYP_PhaseConfig:00000010 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccPJ8Mr8.s:237    .text.CRYP_FIFOFlush:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccPJ8Mr8.s:243    .text.CRYP_FIFOFlush:00000000 CRYP_FIFOFlush
-C:\Users\ktkuru\AppData\Local\Temp\ccPJ8Mr8.s:255    .text.CRYP_FIFOFlush:0000000c $d
-C:\Users\ktkuru\AppData\Local\Temp\ccPJ8Mr8.s:258    .text.CRYP_Cmd:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccPJ8Mr8.s:264    .text.CRYP_Cmd:00000000 CRYP_Cmd
-C:\Users\ktkuru\AppData\Local\Temp\ccPJ8Mr8.s:283    .text.CRYP_Cmd:0000001c $d
-C:\Users\ktkuru\AppData\Local\Temp\ccPJ8Mr8.s:286    .text.CRYP_DataIn:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccPJ8Mr8.s:292    .text.CRYP_DataIn:00000000 CRYP_DataIn
-C:\Users\ktkuru\AppData\Local\Temp\ccPJ8Mr8.s:302    .text.CRYP_DataIn:00000008 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccPJ8Mr8.s:305    .text.CRYP_DataOut:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccPJ8Mr8.s:311    .text.CRYP_DataOut:00000000 CRYP_DataOut
-C:\Users\ktkuru\AppData\Local\Temp\ccPJ8Mr8.s:321    .text.CRYP_DataOut:00000008 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccPJ8Mr8.s:324    .text.CRYP_SaveContext:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccPJ8Mr8.s:330    .text.CRYP_SaveContext:00000000 CRYP_SaveContext
-C:\Users\ktkuru\AppData\Local\Temp\ccPJ8Mr8.s:449    .text.CRYP_SaveContext:000000f8 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccPJ8Mr8.s:452    .text.CRYP_RestoreContext:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccPJ8Mr8.s:458    .text.CRYP_RestoreContext:00000000 CRYP_RestoreContext
-C:\Users\ktkuru\AppData\Local\Temp\ccPJ8Mr8.s:528    .text.CRYP_RestoreContext:00000088 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccPJ8Mr8.s:531    .text.CRYP_DMACmd:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccPJ8Mr8.s:537    .text.CRYP_DMACmd:00000000 CRYP_DMACmd
-C:\Users\ktkuru\AppData\Local\Temp\ccPJ8Mr8.s:558    .text.CRYP_DMACmd:0000001c $d
-C:\Users\ktkuru\AppData\Local\Temp\ccPJ8Mr8.s:561    .text.CRYP_ITConfig:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccPJ8Mr8.s:567    .text.CRYP_ITConfig:00000000 CRYP_ITConfig
-C:\Users\ktkuru\AppData\Local\Temp\ccPJ8Mr8.s:588    .text.CRYP_ITConfig:0000001c $d
-C:\Users\ktkuru\AppData\Local\Temp\ccPJ8Mr8.s:591    .text.CRYP_GetITStatus:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccPJ8Mr8.s:597    .text.CRYP_GetITStatus:00000000 CRYP_GetITStatus
-C:\Users\ktkuru\AppData\Local\Temp\ccPJ8Mr8.s:613    .text.CRYP_GetITStatus:00000010 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccPJ8Mr8.s:616    .text.CRYP_GetCmdStatus:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccPJ8Mr8.s:622    .text.CRYP_GetCmdStatus:00000000 CRYP_GetCmdStatus
-C:\Users\ktkuru\AppData\Local\Temp\ccPJ8Mr8.s:638    .text.CRYP_GetCmdStatus:00000014 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccPJ8Mr8.s:641    .text.CRYP_GetFlagStatus:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccPJ8Mr8.s:647    .text.CRYP_GetFlagStatus:00000000 CRYP_GetFlagStatus
-C:\Users\ktkuru\AppData\Local\Temp\ccPJ8Mr8.s:670    .text.CRYP_GetFlagStatus:0000001c $d
+C:\Users\ktkuru\AppData\Local\Temp\cc0tbPrZ.s:18     .text.CRYP_DeInit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc0tbPrZ.s:24     .text.CRYP_DeInit:00000000 CRYP_DeInit
+C:\Users\ktkuru\AppData\Local\Temp\cc0tbPrZ.s:37     .text.CRYP_Init:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc0tbPrZ.s:43     .text.CRYP_Init:00000000 CRYP_Init
+C:\Users\ktkuru\AppData\Local\Temp\cc0tbPrZ.s:93     .text.CRYP_Init:00000060 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc0tbPrZ.s:97     .text.CRYP_StructInit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc0tbPrZ.s:103    .text.CRYP_StructInit:00000000 CRYP_StructInit
+C:\Users\ktkuru\AppData\Local\Temp\cc0tbPrZ.s:115    .text.CRYP_KeyInit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc0tbPrZ.s:121    .text.CRYP_KeyInit:00000000 CRYP_KeyInit
+C:\Users\ktkuru\AppData\Local\Temp\cc0tbPrZ.s:146    .text.CRYP_KeyInit:00000024 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc0tbPrZ.s:149    .text.CRYP_KeyStructInit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc0tbPrZ.s:155    .text.CRYP_KeyStructInit:00000000 CRYP_KeyStructInit
+C:\Users\ktkuru\AppData\Local\Temp\cc0tbPrZ.s:171    .text.CRYP_IVInit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc0tbPrZ.s:177    .text.CRYP_IVInit:00000000 CRYP_IVInit
+C:\Users\ktkuru\AppData\Local\Temp\cc0tbPrZ.s:194    .text.CRYP_IVInit:00000014 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc0tbPrZ.s:197    .text.CRYP_IVStructInit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc0tbPrZ.s:203    .text.CRYP_IVStructInit:00000000 CRYP_IVStructInit
+C:\Users\ktkuru\AppData\Local\Temp\cc0tbPrZ.s:215    .text.CRYP_PhaseConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc0tbPrZ.s:221    .text.CRYP_PhaseConfig:00000000 CRYP_PhaseConfig
+C:\Users\ktkuru\AppData\Local\Temp\cc0tbPrZ.s:234    .text.CRYP_PhaseConfig:00000010 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc0tbPrZ.s:237    .text.CRYP_FIFOFlush:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc0tbPrZ.s:243    .text.CRYP_FIFOFlush:00000000 CRYP_FIFOFlush
+C:\Users\ktkuru\AppData\Local\Temp\cc0tbPrZ.s:255    .text.CRYP_FIFOFlush:0000000c $d
+C:\Users\ktkuru\AppData\Local\Temp\cc0tbPrZ.s:258    .text.CRYP_Cmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc0tbPrZ.s:264    .text.CRYP_Cmd:00000000 CRYP_Cmd
+C:\Users\ktkuru\AppData\Local\Temp\cc0tbPrZ.s:283    .text.CRYP_Cmd:0000001c $d
+C:\Users\ktkuru\AppData\Local\Temp\cc0tbPrZ.s:286    .text.CRYP_DataIn:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc0tbPrZ.s:292    .text.CRYP_DataIn:00000000 CRYP_DataIn
+C:\Users\ktkuru\AppData\Local\Temp\cc0tbPrZ.s:302    .text.CRYP_DataIn:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc0tbPrZ.s:305    .text.CRYP_DataOut:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc0tbPrZ.s:311    .text.CRYP_DataOut:00000000 CRYP_DataOut
+C:\Users\ktkuru\AppData\Local\Temp\cc0tbPrZ.s:321    .text.CRYP_DataOut:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc0tbPrZ.s:324    .text.CRYP_SaveContext:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc0tbPrZ.s:330    .text.CRYP_SaveContext:00000000 CRYP_SaveContext
+C:\Users\ktkuru\AppData\Local\Temp\cc0tbPrZ.s:449    .text.CRYP_SaveContext:000000f8 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc0tbPrZ.s:452    .text.CRYP_RestoreContext:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc0tbPrZ.s:458    .text.CRYP_RestoreContext:00000000 CRYP_RestoreContext
+C:\Users\ktkuru\AppData\Local\Temp\cc0tbPrZ.s:528    .text.CRYP_RestoreContext:00000088 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc0tbPrZ.s:531    .text.CRYP_DMACmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc0tbPrZ.s:537    .text.CRYP_DMACmd:00000000 CRYP_DMACmd
+C:\Users\ktkuru\AppData\Local\Temp\cc0tbPrZ.s:558    .text.CRYP_DMACmd:0000001c $d
+C:\Users\ktkuru\AppData\Local\Temp\cc0tbPrZ.s:561    .text.CRYP_ITConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc0tbPrZ.s:567    .text.CRYP_ITConfig:00000000 CRYP_ITConfig
+C:\Users\ktkuru\AppData\Local\Temp\cc0tbPrZ.s:588    .text.CRYP_ITConfig:0000001c $d
+C:\Users\ktkuru\AppData\Local\Temp\cc0tbPrZ.s:591    .text.CRYP_GetITStatus:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc0tbPrZ.s:597    .text.CRYP_GetITStatus:00000000 CRYP_GetITStatus
+C:\Users\ktkuru\AppData\Local\Temp\cc0tbPrZ.s:613    .text.CRYP_GetITStatus:00000010 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc0tbPrZ.s:616    .text.CRYP_GetCmdStatus:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc0tbPrZ.s:622    .text.CRYP_GetCmdStatus:00000000 CRYP_GetCmdStatus
+C:\Users\ktkuru\AppData\Local\Temp\cc0tbPrZ.s:638    .text.CRYP_GetCmdStatus:00000014 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc0tbPrZ.s:641    .text.CRYP_GetFlagStatus:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc0tbPrZ.s:647    .text.CRYP_GetFlagStatus:00000000 CRYP_GetFlagStatus
+C:\Users\ktkuru\AppData\Local\Temp\cc0tbPrZ.s:670    .text.CRYP_GetFlagStatus:0000001c $d
 
 UNDEFINED SYMBOLS
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccPJ8Mr8.s 			page 14
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc0tbPrZ.s 			page 14
 
 
 RCC_AHB2PeriphResetCmd

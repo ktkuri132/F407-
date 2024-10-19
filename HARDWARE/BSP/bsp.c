@@ -67,8 +67,12 @@ int BSP_Init()
      
     EXIT15_Init();
     printf("->ETIT15 Init done\n");
-    TIM2_Init(5);
-    printf("->TIM2 Init done\n");
+    if(mode==5)
+    {
+        TIM2_Init(3);
+        printf("->TIM2 Init done\n");
+    }
+    
 
 
     return 0;
