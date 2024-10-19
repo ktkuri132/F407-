@@ -425,7 +425,7 @@ void Task5_CircleMove(float R)
 
     printf("%f,%f\r\n",Vtarget_angle,feedback_angle);
 
-    time+=0.01;
+    time+=0.015;
     if(time>T)
     {
         time=0;

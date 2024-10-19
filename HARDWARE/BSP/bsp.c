@@ -64,8 +64,7 @@ int BSP_Init()
         printf("->MPU6050 DMP init success\n");
     }
 
-    OLED_Printf(0,16,OLED_8X16,"init done");
-    OLED_Update();  
+     
     EXIT15_Init();
     printf("->ETIT15 Init done\n");
     TIM2_Init(5);
