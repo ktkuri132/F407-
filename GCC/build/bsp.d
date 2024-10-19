@@ -1,6 +1,7 @@
-GCC/build/bsp.o: HARDWARE/BSP/bsp.c USER/stm32f4xx.h CORE/core_cm4.h \
- CORE/core_cmInstr.h CORE/core_cmFunc.h CORE/core_cm4_simd.h \
- USER/system_stm32f4xx.h USER/stm32f4xx_conf.h \
+GCC/build/bsp.o: HARDWARE/BSP/bsp.c HARDWARE/BSP/bsp.h \
+ HARDWARE/OLED_SPI/OLED.h HARDWARE/OLED_SPI/OLED_Data.h USER/stm32f4xx.h \
+ CORE/core_cm4.h CORE/core_cmInstr.h CORE/core_cmFunc.h \
+ CORE/core_cm4_simd.h USER/system_stm32f4xx.h USER/stm32f4xx_conf.h \
  STM32F4xx_FWLib/inc/stm32f4xx_adc.h STM32F4xx_FWLib/inc/stm32f4xx_crc.h \
  STM32F4xx_FWLib/inc/stm32f4xx_dbgmcu.h \
  STM32F4xx_FWLib/inc/stm32f4xx_dma.h STM32F4xx_FWLib/inc/stm32f4xx_exti.h \
@@ -18,11 +19,12 @@ GCC/build/bsp.o: HARDWARE/BSP/bsp.c USER/stm32f4xx.h CORE/core_cm4.h \
  STM32F4xx_FWLib/inc/stm32f4xx_can.h STM32F4xx_FWLib/inc/stm32f4xx_dac.h \
  STM32F4xx_FWLib/inc/stm32f4xx_dcmi.h \
  STM32F4xx_FWLib/inc/stm32f4xx_fsmc.h SYSTEM/usart/usart.h \
- USER/stm32f4xx_conf.h SYSTEM/sys/sys.h HARDWARE/BSP/bsp.h \
- HARDWARE/OLED_SPI/OLED.h HARDWARE/OLED_SPI/OLED_Data.h \
- HARDWARE/CONTROL/control.h HARDWARE/MPU6050/mpu6050.h \
- HARDWARE/IIC/myiic.h HARDWARE/MPU6050/eMPL/inv_mpu.h \
- SYSTEM/delay/delay.h
+ USER/stm32f4xx_conf.h SYSTEM/sys/sys.h HARDWARE/CONTROL/control.h \
+ HARDWARE/MPU6050/mpu6050.h HARDWARE/IIC/myiic.h \
+ HARDWARE/MPU6050/eMPL/inv_mpu.h SYSTEM/delay/delay.h
+HARDWARE/BSP/bsp.h:
+HARDWARE/OLED_SPI/OLED.h:
+HARDWARE/OLED_SPI/OLED_Data.h:
 USER/stm32f4xx.h:
 CORE/core_cm4.h:
 CORE/core_cmInstr.h:
@@ -59,9 +61,6 @@ STM32F4xx_FWLib/inc/stm32f4xx_fsmc.h:
 SYSTEM/usart/usart.h:
 USER/stm32f4xx_conf.h:
 SYSTEM/sys/sys.h:
-HARDWARE/BSP/bsp.h:
-HARDWARE/OLED_SPI/OLED.h:
-HARDWARE/OLED_SPI/OLED_Data.h:
 HARDWARE/CONTROL/control.h:
 HARDWARE/MPU6050/mpu6050.h:
 HARDWARE/IIC/myiic.h:

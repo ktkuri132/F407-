@@ -65,7 +65,7 @@ int main(void)
     {
         printf("peripheral init done\n");
     }
-    OLED_clear();
+    OLED_Clear();
 /*
     TIM8->CCR1=600;//水平方向内侧电机
     TIM8->CCR2=600;//水平方向外侧电机
@@ -95,7 +95,7 @@ int main(void)
             break;
     }
 
-    OLED_clear();
+    OLED_Clear();
     /* 前台程序轮询  */
     while (1)
     {

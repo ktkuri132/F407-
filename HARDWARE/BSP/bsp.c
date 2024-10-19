@@ -9,15 +9,8 @@
 
 
 
-#include <stm32f4xx.h>
-#include <usart.h>
 #include <bsp.h>
-#include <control.h>
-#include <usart.h>
-#include <mpu6050.h>
-#include <inv_mpu.h>
-#include <stm32f4xx_exti.h>
-#include <delay.h>
+  
 
 
 #define target 180
@@ -42,7 +35,7 @@ int BSP_Init()
     printf("->Motor Init  done\n");
     OLED_Init();
     OLED_Printf(0,0,OLED_8X16,"wiat for init");
-    OLED_update();
+    OLED_Update();
     printf("->OLED Init done\n");
     GPIO_Config(GPIOF, GPIO_Pin_0 | GPIO_Pin_1 | GPIO_Pin_2 | GPIO_Pin_3 | GPIO_Pin_4 | GPIO_Pin_5 | GPIO_Pin_6 | GPIO_Pin_7, GPIO_Mode_OUT, GPIO_PuPd_NOPULL);
     printf("->GPIOF Init done\n");
@@ -72,7 +65,7 @@ int BSP_Init()
     }
 
     OLED_Printf(0,16,OLED_8X16,"init done");
-    OELD_update();  
+    OLED_Update();  
     EXIT15_Init();
     printf("->ETIT15 Init done\n");
     TIM2_Init(5);

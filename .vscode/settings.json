@@ -34,5 +34,5 @@
     },
     "files.encoding": "gb2312",
     "C_Cpp.errorSquiggles": "enabled",
-    "commentTranslate.hover.enabled": true
+    "commentTranslate.hover.enabled": false
 }

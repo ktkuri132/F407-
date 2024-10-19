@@ -11,6 +11,7 @@
                 "${workspaceFolder}/SYSTEM/delay",
                 "${workspaceFolder}/SYSTEM/usart",
                 "${workspaceFolder}/HARDWARE/OLED_SPI",
+                "${workspaceFolder}/HARDWARE/BSP",
                 "${workspaceFolder}/HARDWARE/CONTROL",
                 "${workspaceFolder}/HARDWARE/IIC",
                 "${workspaceFolder}/HARDWARE/**"

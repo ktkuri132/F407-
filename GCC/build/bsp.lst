@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNKjhFS.s 			page 1
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccYd9epO.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNKjhFS.s 			page 1
   58              		@ frame_needed = 0, uses_anonymous_args = 0
   59 0000 00B5     		push	{lr}
   60 0002 83B0     		sub	sp, sp, #12
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNKjhFS.s 			page 2
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccYd9epO.s 			page 2
 
 
   61 0004 0091     		str	r1, [sp]
@@ -118,447 +118,487 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNKjhFS.s 			page 1
  117              		.align	2
  118              	.L8:
  119 0058 00180240 		.word	1073879040
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNKjhFS.s 			page 3
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccYd9epO.s 			page 3
 
 
- 121              		.section	.rodata.BSP_Init.str1.4,"aMS",%progbits,1
- 122              		.align	2
- 123              	.LC0:
- 124 0000 70657269 		.ascii	"peripheral init start......\000"
- 124      70686572 
- 124      616C2069 
- 124      6E697420 
- 124      73746172 
- 125              		.align	2
- 126              	.LC1:
- 127 001c 2D3E4465 		.ascii	"->Delay Init done\000"
- 127      6C617920 
- 127      496E6974 
- 127      20646F6E 
- 127      6500
- 128 002e 0000     		.align	2
- 129              	.LC2:
- 130 0030 2D3E4E56 		.ascii	"->NVIC Init  done\000"
- 130      49432049 
- 130      6E697420 
- 130      20646F6E 
- 130      6500
- 131 0042 0000     		.align	2
- 132              	.LC3:
- 133 0044 2D3E4C45 		.ascii	"->LED Init  done\000"
- 133      4420496E 
- 133      69742020 
- 133      646F6E65 
- 133      00
- 134 0055 000000   		.align	2
- 135              	.LC4:
- 136 0058 2D3E4D6F 		.ascii	"->Motor Init  done\000"
- 136      746F7220 
- 136      496E6974 
- 136      2020646F 
- 136      6E6500
- 137 006b 00       		.align	2
- 138              	.LC5:
- 139 006c 2D3E4F4C 		.ascii	"->OLED Init done\000"
- 139      45442049 
- 139      6E697420 
- 139      646F6E65 
- 139      00
- 140 007d 000000   		.align	2
- 141              	.LC6:
- 142 0080 2D3E4750 		.ascii	"->GPIOF Init done\000"
- 142      494F4620 
- 142      496E6974 
- 142      20646F6E 
- 142      6500
- 143 0092 0000     		.align	2
- 144              	.LC7:
- 145 0094 2A2A2A2A 		.ascii	"****MPU6050 init failed return:%d\012\000"
- 145      4D505536 
- 145      30353020 
- 145      696E6974 
- 145      20666169 
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNKjhFS.s 			page 4
+ 121              		.section	.text.TIM2_Init,"ax",%progbits
+ 122              		.align	1
+ 123              		.global	TIM2_Init
+ 124              		.syntax unified
+ 125              		.thumb
+ 126              		.thumb_func
+ 128              	TIM2_Init:
+ 129              		@ args = 0, pretend = 0, frame = 16
+ 130              		@ frame_needed = 0, uses_anonymous_args = 0
+ 131 0000 10B5     		push	{r4, lr}
+ 132 0002 84B0     		sub	sp, sp, #16
+ 133 0004 0446     		mov	r4, r0
+ 134 0006 0121     		movs	r1, #1
+ 135 0008 0846     		mov	r0, r1
+ 136 000a FFF7FEFF 		bl	RCC_APB1PeriphClockCmd
+ 137 000e 4FF47A73 		mov	r3, #1000
+ 138 0012 03FB04F4 		mul	r4, r3, r4
+ 139 0016 013C     		subs	r4, r4, #1
+ 140 0018 0294     		str	r4, [sp, #8]
+ 141 001a 5323     		movs	r3, #83
+ 142 001c ADF80430 		strh	r3, [sp, #4]	@ movhi
+ 143 0020 0023     		movs	r3, #0
+ 144 0022 ADF80C30 		strh	r3, [sp, #12]	@ movhi
+ 145 0026 ADF80630 		strh	r3, [sp, #6]	@ movhi
+ 146 002a 01A9     		add	r1, sp, #4
+ 147 002c 4FF08040 		mov	r0, #1073741824
+ 148 0030 FFF7FEFF 		bl	TIM_TimeBaseInit
+ 149 0034 0122     		movs	r2, #1
+ 150 0036 1146     		mov	r1, r2
+ 151 0038 4FF08040 		mov	r0, #1073741824
+ 152 003c FFF7FEFF 		bl	TIM_ITConfig
+ 153 0040 0121     		movs	r1, #1
+ 154 0042 4FF08040 		mov	r0, #1073741824
+ 155 0046 FFF7FEFF 		bl	TIM_Cmd
+ 156 004a 04B0     		add	sp, sp, #16
+ 157              		@ sp needed
+ 158 004c 10BD     		pop	{r4, pc}
+ 160              		.section	.rodata.BSP_Init.str1.4,"aMS",%progbits,1
+ 161              		.align	2
+ 162              	.LC0:
+ 163 0000 70657269 		.ascii	"peripheral init start......\000"
+ 163      70686572 
+ 163      616C2069 
+ 163      6E697420 
+ 163      73746172 
+ 164              		.align	2
+ 165              	.LC1:
+ 166 001c 2D3E4465 		.ascii	"->Delay Init done\000"
+ 166      6C617920 
+ 166      496E6974 
+ 166      20646F6E 
+ 166      6500
+ 167 002e 0000     		.align	2
+ 168              	.LC2:
+ 169 0030 2D3E4E56 		.ascii	"->NVIC Init  done\000"
+ 169      49432049 
+ 169      6E697420 
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccYd9epO.s 			page 4
 
 
- 146 00b7 00       		.align	2
- 147              	.LC8:
- 148 00b8 2D3E4D50 		.ascii	"->MPU6050 init success\000"
- 148      55363035 
- 148      3020696E 
- 148      69742073 
- 148      75636365 
- 149 00cf 00       		.align	2
- 150              	.LC9:
- 151 00d0 2A2A2A2A 		.ascii	"**************MPU6050 DMP init failed******>>Reset "
- 151      2A2A2A2A 
- 151      2A2A2A2A 
- 151      2A2A4D50 
- 151      55363035 
- 152 0103 616E6420 		.ascii	"and Retry or Cheak\000"
- 152      52657472 
- 152      79206F72 
- 152      20436865 
- 152      616B00
- 153 0116 0000     		.align	2
- 154              	.LC10:
- 155 0118 2D3E4D50 		.ascii	"->MPU6050 DMP init success\000"
- 155      55363035 
- 155      3020444D 
- 155      5020696E 
- 155      69742073 
- 156 0133 00       		.align	2
- 157              	.LC11:
- 158 0134 2D3E4554 		.ascii	"->ETIT15 Init done\000"
- 158      49543135 
- 158      20496E69 
- 158      7420646F 
- 158      6E6500
- 159              		.section	.text.BSP_Init,"ax",%progbits
- 160              		.align	1
- 161              		.global	BSP_Init
- 162              		.syntax unified
- 163              		.thumb
- 164              		.thumb_func
- 166              	BSP_Init:
- 167              		@ args = 0, pretend = 0, frame = 0
- 168              		@ frame_needed = 0, uses_anonymous_args = 0
- 169 0000 08B5     		push	{r3, lr}
- 170 0002 4FF4E130 		mov	r0, #115200
- 171 0006 FFF7FEFF 		bl	usart1_init
- 172 000a 4FF41650 		mov	r0, #9600
- 173 000e FFF7FEFF 		bl	usart2_init
- 174 0012 2448     		ldr	r0, .L17
- 175 0014 FFF7FEFF 		bl	puts
- 176 0018 5420     		movs	r0, #84
- 177 001a FFF7FEFF 		bl	delay_init
- 178 001e 2248     		ldr	r0, .L17+4
- 179 0020 FFF7FEFF 		bl	puts
- 180 0024 FFF7FEFF 		bl	BSP_NVIC_IT_Config
- 181 0028 2048     		ldr	r0, .L17+8
- 182 002a FFF7FEFF 		bl	puts
- 183 002e FFF7FEFF 		bl	LED_Init
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNKjhFS.s 			page 5
+ 169      20646F6E 
+ 169      6500
+ 170 0042 0000     		.align	2
+ 171              	.LC3:
+ 172 0044 2D3E4C45 		.ascii	"->LED Init  done\000"
+ 172      4420496E 
+ 172      69742020 
+ 172      646F6E65 
+ 172      00
+ 173 0055 000000   		.align	2
+ 174              	.LC4:
+ 175 0058 2D3E4D6F 		.ascii	"->Motor Init  done\000"
+ 175      746F7220 
+ 175      496E6974 
+ 175      2020646F 
+ 175      6E6500
+ 176 006b 00       		.align	2
+ 177              	.LC5:
+ 178 006c 77696174 		.ascii	"wiat for init\000"
+ 178      20666F72 
+ 178      20696E69 
+ 178      7400
+ 179 007a 0000     		.align	2
+ 180              	.LC6:
+ 181 007c 2D3E4F4C 		.ascii	"->OLED Init done\000"
+ 181      45442049 
+ 181      6E697420 
+ 181      646F6E65 
+ 181      00
+ 182 008d 000000   		.align	2
+ 183              	.LC7:
+ 184 0090 2D3E4750 		.ascii	"->GPIOF Init done\000"
+ 184      494F4620 
+ 184      496E6974 
+ 184      20646F6E 
+ 184      6500
+ 185 00a2 0000     		.align	2
+ 186              	.LC8:
+ 187 00a4 2A2A2A2A 		.ascii	"****MPU6050 init failed return:%d\012\000"
+ 187      4D505536 
+ 187      30353020 
+ 187      696E6974 
+ 187      20666169 
+ 188 00c7 00       		.align	2
+ 189              	.LC9:
+ 190 00c8 2D3E4D50 		.ascii	"->MPU6050 init success\000"
+ 190      55363035 
+ 190      3020696E 
+ 190      69742073 
+ 190      75636365 
+ 191 00df 00       		.align	2
+ 192              	.LC10:
+ 193 00e0 2A2A2A2A 		.ascii	"**************MPU6050 DMP init failed******>>Reset "
+ 193      2A2A2A2A 
+ 193      2A2A2A2A 
+ 193      2A2A4D50 
+ 193      55363035 
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccYd9epO.s 			page 5
 
 
- 184 0032 1F48     		ldr	r0, .L17+12
- 185 0034 FFF7FEFF 		bl	puts
- 186 0038 FFF7FEFF 		bl	Motor_PWM_TIM8_Init
- 187 003c 1D48     		ldr	r0, .L17+16
- 188 003e FFF7FEFF 		bl	puts
- 189 0042 FFF7FEFF 		bl	OLED_Init
- 190 0046 1C48     		ldr	r0, .L17+20
- 191 0048 FFF7FEFF 		bl	puts
- 192 004c 0023     		movs	r3, #0
- 193 004e 0122     		movs	r2, #1
- 194 0050 FF21     		movs	r1, #255
- 195 0052 1A48     		ldr	r0, .L17+24
- 196 0054 FFF7FEFF 		bl	GPIO_Config
- 197 0058 1948     		ldr	r0, .L17+28
- 198 005a FFF7FEFF 		bl	puts
- 199 005e 1420     		movs	r0, #20
- 200 0060 FFF7FEFF 		bl	delay_ms
- 201 0064 FFF7FEFF 		bl	MPU_Init
- 202 0068 78B9     		cbnz	r0, .L15
- 203 006a 1648     		ldr	r0, .L17+32
- 204 006c FFF7FEFF 		bl	puts
- 205 0070 FFF7FEFF 		bl	mpu_dmp_init
- 206 0074 88B9     		cbnz	r0, .L16
- 207 0076 1448     		ldr	r0, .L17+36
- 208 0078 FFF7FEFF 		bl	puts
- 209 007c FFF7FEFF 		bl	EXIT15_Init
- 210 0080 1248     		ldr	r0, .L17+40
- 211 0082 FFF7FEFF 		bl	puts
- 212 0086 0020     		movs	r0, #0
- 213              	.L10:
- 214 0088 08BD     		pop	{r3, pc}
- 215              	.L15:
- 216 008a FFF7FEFF 		bl	MPU_Init
- 217 008e 0146     		mov	r1, r0
- 218 0090 0F48     		ldr	r0, .L17+44
- 219 0092 FFF7FEFF 		bl	printf
- 220 0096 0120     		movs	r0, #1
- 221 0098 F6E7     		b	.L10
- 222              	.L16:
- 223 009a 0E48     		ldr	r0, .L17+48
- 224 009c FFF7FEFF 		bl	puts
- 225 00a0 0220     		movs	r0, #2
- 226 00a2 F1E7     		b	.L10
- 227              	.L18:
- 228              		.align	2
- 229              	.L17:
- 230 00a4 00000000 		.word	.LC0
- 231 00a8 1C000000 		.word	.LC1
- 232 00ac 30000000 		.word	.LC2
- 233 00b0 44000000 		.word	.LC3
- 234 00b4 58000000 		.word	.LC4
- 235 00b8 6C000000 		.word	.LC5
- 236 00bc 00140240 		.word	1073878016
- 237 00c0 80000000 		.word	.LC6
- 238 00c4 B8000000 		.word	.LC8
- 239 00c8 18010000 		.word	.LC10
- 240 00cc 34010000 		.word	.LC11
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNKjhFS.s 			page 6
+ 194 0113 616E6420 		.ascii	"and Retry or Cheak\000"
+ 194      52657472 
+ 194      79206F72 
+ 194      20436865 
+ 194      616B00
+ 195 0126 0000     		.align	2
+ 196              	.LC11:
+ 197 0128 2D3E4D50 		.ascii	"->MPU6050 DMP init success\000"
+ 197      55363035 
+ 197      3020444D 
+ 197      5020696E 
+ 197      69742073 
+ 198 0143 00       		.align	2
+ 199              	.LC12:
+ 200 0144 696E6974 		.ascii	"init done\000"
+ 200      20646F6E 
+ 200      6500
+ 201 014e 0000     		.align	2
+ 202              	.LC13:
+ 203 0150 2D3E4554 		.ascii	"->ETIT15 Init done\000"
+ 203      49543135 
+ 203      20496E69 
+ 203      7420646F 
+ 203      6E6500
+ 204 0163 00       		.align	2
+ 205              	.LC14:
+ 206 0164 2D3E5449 		.ascii	"->TIM2 Init done\000"
+ 206      4D322049 
+ 206      6E697420 
+ 206      646F6E65 
+ 206      00
+ 207              		.section	.text.BSP_Init,"ax",%progbits
+ 208              		.align	1
+ 209              		.global	BSP_Init
+ 210              		.syntax unified
+ 211              		.thumb
+ 212              		.thumb_func
+ 214              	BSP_Init:
+ 215              		@ args = 0, pretend = 0, frame = 0
+ 216              		@ frame_needed = 0, uses_anonymous_args = 0
+ 217 0000 08B5     		push	{r3, lr}
+ 218 0002 4FF4E130 		mov	r0, #115200
+ 219 0006 FFF7FEFF 		bl	usart1_init
+ 220 000a 4FF41650 		mov	r0, #9600
+ 221 000e FFF7FEFF 		bl	usart2_init
+ 222 0012 2F48     		ldr	r0, .L19
+ 223 0014 FFF7FEFF 		bl	puts
+ 224 0018 5420     		movs	r0, #84
+ 225 001a FFF7FEFF 		bl	delay_init
+ 226 001e 2D48     		ldr	r0, .L19+4
+ 227 0020 FFF7FEFF 		bl	puts
+ 228 0024 FFF7FEFF 		bl	BSP_NVIC_IT_Config
+ 229 0028 2B48     		ldr	r0, .L19+8
+ 230 002a FFF7FEFF 		bl	puts
+ 231 002e FFF7FEFF 		bl	LED_Init
+ 232 0032 2A48     		ldr	r0, .L19+12
+ 233 0034 FFF7FEFF 		bl	puts
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccYd9epO.s 			page 6
 
 
- 241 00d0 94000000 		.word	.LC7
- 242 00d4 D0000000 		.word	.LC9
- 244              		.section	.text.TIM2_Init,"ax",%progbits
- 245              		.align	1
- 246              		.global	TIM2_Init
- 247              		.syntax unified
- 248              		.thumb
- 249              		.thumb_func
- 251              	TIM2_Init:
- 252              		@ args = 0, pretend = 0, frame = 16
- 253              		@ frame_needed = 0, uses_anonymous_args = 0
- 254 0000 10B5     		push	{r4, lr}
- 255 0002 84B0     		sub	sp, sp, #16
- 256 0004 0446     		mov	r4, r0
- 257 0006 0121     		movs	r1, #1
- 258 0008 0846     		mov	r0, r1
- 259 000a FFF7FEFF 		bl	RCC_APB1PeriphClockCmd
- 260 000e 4FF47A73 		mov	r3, #1000
- 261 0012 03FB04F4 		mul	r4, r3, r4
- 262 0016 013C     		subs	r4, r4, #1
- 263 0018 0294     		str	r4, [sp, #8]
- 264 001a 5323     		movs	r3, #83
- 265 001c ADF80430 		strh	r3, [sp, #4]	@ movhi
- 266 0020 0023     		movs	r3, #0
- 267 0022 ADF80C30 		strh	r3, [sp, #12]	@ movhi
- 268 0026 ADF80630 		strh	r3, [sp, #6]	@ movhi
- 269 002a 01A9     		add	r1, sp, #4
- 270 002c 4FF08040 		mov	r0, #1073741824
- 271 0030 FFF7FEFF 		bl	TIM_TimeBaseInit
- 272 0034 0122     		movs	r2, #1
- 273 0036 1146     		mov	r1, r2
- 274 0038 4FF08040 		mov	r0, #1073741824
- 275 003c FFF7FEFF 		bl	TIM_ITConfig
- 276 0040 0121     		movs	r1, #1
- 277 0042 4FF08040 		mov	r0, #1073741824
- 278 0046 FFF7FEFF 		bl	TIM_Cmd
- 279 004a 04B0     		add	sp, sp, #16
- 280              		@ sp needed
- 281 004c 10BD     		pop	{r4, pc}
- 283              		.section	.text.ADC_Config,"ax",%progbits
- 284              		.align	1
- 285              		.global	ADC_Config
- 286              		.syntax unified
- 287              		.thumb
- 288              		.thumb_func
- 290              	ADC_Config:
- 291              		@ args = 0, pretend = 0, frame = 56
- 292              		@ frame_needed = 0, uses_anonymous_args = 0
- 293 0000 70B5     		push	{r4, r5, r6, lr}
- 294 0002 8EB0     		sub	sp, sp, #56
- 295 0004 0121     		movs	r1, #1
- 296 0006 4FF48070 		mov	r0, #256
- 297 000a FFF7FEFF 		bl	RCC_APB2PeriphClockCmd
- 298 000e 0121     		movs	r1, #1
- 299 0010 0846     		mov	r0, r1
- 300 0012 FFF7FEFF 		bl	RCC_AHB1PeriphClockCmd
- 301 0016 0223     		movs	r3, #2
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNKjhFS.s 			page 7
+ 234 0038 FFF7FEFF 		bl	Motor_PWM_TIM8_Init
+ 235 003c 2848     		ldr	r0, .L19+16
+ 236 003e FFF7FEFF 		bl	puts
+ 237 0042 FFF7FEFF 		bl	OLED_Init
+ 238 0046 274B     		ldr	r3, .L19+20
+ 239 0048 0822     		movs	r2, #8
+ 240 004a 0021     		movs	r1, #0
+ 241 004c 0846     		mov	r0, r1
+ 242 004e FFF7FEFF 		bl	OLED_Printf
+ 243 0052 FFF7FEFF 		bl	OLED_Update
+ 244 0056 2448     		ldr	r0, .L19+24
+ 245 0058 FFF7FEFF 		bl	puts
+ 246 005c 0023     		movs	r3, #0
+ 247 005e 0122     		movs	r2, #1
+ 248 0060 FF21     		movs	r1, #255
+ 249 0062 2248     		ldr	r0, .L19+28
+ 250 0064 FFF7FEFF 		bl	GPIO_Config
+ 251 0068 2148     		ldr	r0, .L19+32
+ 252 006a FFF7FEFF 		bl	puts
+ 253 006e 1420     		movs	r0, #20
+ 254 0070 FFF7FEFF 		bl	delay_ms
+ 255 0074 FFF7FEFF 		bl	MPU_Init
+ 256 0078 E8B9     		cbnz	r0, .L17
+ 257 007a 1E48     		ldr	r0, .L19+36
+ 258 007c FFF7FEFF 		bl	puts
+ 259 0080 FFF7FEFF 		bl	mpu_dmp_init
+ 260 0084 F8B9     		cbnz	r0, .L18
+ 261 0086 1C48     		ldr	r0, .L19+40
+ 262 0088 FFF7FEFF 		bl	puts
+ 263 008c 1B4B     		ldr	r3, .L19+44
+ 264 008e 0822     		movs	r2, #8
+ 265 0090 1021     		movs	r1, #16
+ 266 0092 0020     		movs	r0, #0
+ 267 0094 FFF7FEFF 		bl	OLED_Printf
+ 268 0098 FFF7FEFF 		bl	OLED_Update
+ 269 009c FFF7FEFF 		bl	EXIT15_Init
+ 270 00a0 1748     		ldr	r0, .L19+48
+ 271 00a2 FFF7FEFF 		bl	puts
+ 272 00a6 0520     		movs	r0, #5
+ 273 00a8 FFF7FEFF 		bl	TIM2_Init
+ 274 00ac 1548     		ldr	r0, .L19+52
+ 275 00ae FFF7FEFF 		bl	puts
+ 276 00b2 0020     		movs	r0, #0
+ 277              	.L12:
+ 278 00b4 08BD     		pop	{r3, pc}
+ 279              	.L17:
+ 280 00b6 FFF7FEFF 		bl	MPU_Init
+ 281 00ba 0146     		mov	r1, r0
+ 282 00bc 1248     		ldr	r0, .L19+56
+ 283 00be FFF7FEFF 		bl	printf
+ 284 00c2 0120     		movs	r0, #1
+ 285 00c4 F6E7     		b	.L12
+ 286              	.L18:
+ 287 00c6 1148     		ldr	r0, .L19+60
+ 288 00c8 FFF7FEFF 		bl	puts
+ 289 00cc 0220     		movs	r0, #2
+ 290 00ce F1E7     		b	.L12
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccYd9epO.s 			page 7
 
 
- 302 0018 0293     		str	r3, [sp, #8]
- 303 001a 0323     		movs	r3, #3
- 304 001c 8DF80C30 		strb	r3, [sp, #12]
- 305 0020 0025     		movs	r5, #0
- 306 0022 8DF80F50 		strb	r5, [sp, #15]
- 307 0026 02A9     		add	r1, sp, #8
- 308 0028 1D48     		ldr	r0, .L23
- 309 002a FFF7FEFF 		bl	GPIO_Init
- 310 002e 0895     		str	r5, [sp, #32]
- 311 0030 8DF82450 		strb	r5, [sp, #36]
- 312 0034 0124     		movs	r4, #1
- 313 0036 8DF82540 		strb	r4, [sp, #37]
- 314 003a 0A95     		str	r5, [sp, #40]
- 315 003c 0C95     		str	r5, [sp, #48]
- 316 003e 8DF83440 		strb	r4, [sp, #52]
- 317 0042 184E     		ldr	r6, .L23+4
- 318 0044 08A9     		add	r1, sp, #32
- 319 0046 3046     		mov	r0, r6
- 320 0048 FFF7FEFF 		bl	ADC_Init
- 321 004c 0723     		movs	r3, #7
- 322 004e 2246     		mov	r2, r4
- 323 0050 2146     		mov	r1, r4
- 324 0052 3046     		mov	r0, r6
- 325 0054 FFF7FEFF 		bl	ADC_RegularChannelConfig
- 326 0058 0495     		str	r5, [sp, #16]
- 327 005a 4FF48033 		mov	r3, #65536
- 328 005e 0593     		str	r3, [sp, #20]
- 329 0060 0695     		str	r5, [sp, #24]
- 330 0062 0795     		str	r5, [sp, #28]
- 331 0064 04A8     		add	r0, sp, #16
- 332 0066 FFF7FEFF 		bl	ADC_CommonInit
- 333 006a 2146     		mov	r1, r4
- 334 006c 3046     		mov	r0, r6
- 335 006e FFF7FEFF 		bl	ADC_Cmd
- 336 0072 3046     		mov	r0, r6
- 337 0074 FFF7FEFF 		bl	ADC_SoftwareStartConv
- 338 0078 2246     		mov	r2, r4
- 339 007a 40F20521 		movw	r1, #517
- 340 007e 3046     		mov	r0, r6
- 341 0080 FFF7FEFF 		bl	ADC_ITConfig
- 342 0084 1223     		movs	r3, #18
- 343 0086 8DF80430 		strb	r3, [sp, #4]
- 344 008a 8DF80540 		strb	r4, [sp, #5]
- 345 008e 8DF80640 		strb	r4, [sp, #6]
- 346 0092 8DF80740 		strb	r4, [sp, #7]
- 347 0096 01A8     		add	r0, sp, #4
- 348 0098 FFF7FEFF 		bl	NVIC_Init
- 349 009c 0EB0     		add	sp, sp, #56
- 350              		@ sp needed
- 351 009e 70BD     		pop	{r4, r5, r6, pc}
- 352              	.L24:
- 353              		.align	2
- 354              	.L23:
- 355 00a0 00000240 		.word	1073872896
- 356 00a4 00200140 		.word	1073815552
- 358              		.global	__aeabi_f2d
- 359              		.global	__aeabi_ddiv
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNKjhFS.s 			page 8
+ 291              	.L20:
+ 292              		.align	2
+ 293              	.L19:
+ 294 00d0 00000000 		.word	.LC0
+ 295 00d4 1C000000 		.word	.LC1
+ 296 00d8 30000000 		.word	.LC2
+ 297 00dc 44000000 		.word	.LC3
+ 298 00e0 58000000 		.word	.LC4
+ 299 00e4 6C000000 		.word	.LC5
+ 300 00e8 7C000000 		.word	.LC6
+ 301 00ec 00140240 		.word	1073878016
+ 302 00f0 90000000 		.word	.LC7
+ 303 00f4 C8000000 		.word	.LC9
+ 304 00f8 28010000 		.word	.LC11
+ 305 00fc 44010000 		.word	.LC12
+ 306 0100 50010000 		.word	.LC13
+ 307 0104 64010000 		.word	.LC14
+ 308 0108 A4000000 		.word	.LC8
+ 309 010c E0000000 		.word	.LC10
+ 311              		.section	.text.ADC_Config,"ax",%progbits
+ 312              		.align	1
+ 313              		.global	ADC_Config
+ 314              		.syntax unified
+ 315              		.thumb
+ 316              		.thumb_func
+ 318              	ADC_Config:
+ 319              		@ args = 0, pretend = 0, frame = 56
+ 320              		@ frame_needed = 0, uses_anonymous_args = 0
+ 321 0000 70B5     		push	{r4, r5, r6, lr}
+ 322 0002 8EB0     		sub	sp, sp, #56
+ 323 0004 0121     		movs	r1, #1
+ 324 0006 4FF48070 		mov	r0, #256
+ 325 000a FFF7FEFF 		bl	RCC_APB2PeriphClockCmd
+ 326 000e 0121     		movs	r1, #1
+ 327 0010 0846     		mov	r0, r1
+ 328 0012 FFF7FEFF 		bl	RCC_AHB1PeriphClockCmd
+ 329 0016 0223     		movs	r3, #2
+ 330 0018 0293     		str	r3, [sp, #8]
+ 331 001a 0323     		movs	r3, #3
+ 332 001c 8DF80C30 		strb	r3, [sp, #12]
+ 333 0020 0025     		movs	r5, #0
+ 334 0022 8DF80F50 		strb	r5, [sp, #15]
+ 335 0026 02A9     		add	r1, sp, #8
+ 336 0028 1D48     		ldr	r0, .L23
+ 337 002a FFF7FEFF 		bl	GPIO_Init
+ 338 002e 0895     		str	r5, [sp, #32]
+ 339 0030 8DF82450 		strb	r5, [sp, #36]
+ 340 0034 0124     		movs	r4, #1
+ 341 0036 8DF82540 		strb	r4, [sp, #37]
+ 342 003a 0A95     		str	r5, [sp, #40]
+ 343 003c 0C95     		str	r5, [sp, #48]
+ 344 003e 8DF83440 		strb	r4, [sp, #52]
+ 345 0042 184E     		ldr	r6, .L23+4
+ 346 0044 08A9     		add	r1, sp, #32
+ 347 0046 3046     		mov	r0, r6
+ 348 0048 FFF7FEFF 		bl	ADC_Init
+ 349 004c 0723     		movs	r3, #7
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccYd9epO.s 			page 8
 
 
- 360              		.global	__aeabi_dmul
- 361              		.global	__aeabi_d2uiz
- 362              		.section	.text.ADCvalue_convert,"ax",%progbits
- 363              		.align	1
- 364              		.global	ADCvalue_convert
- 365              		.syntax unified
- 366              		.thumb
- 367              		.thumb_func
- 369              	ADCvalue_convert:
- 370              		@ args = 0, pretend = 0, frame = 0
- 371              		@ frame_needed = 0, uses_anonymous_args = 0
- 372 0000 08B5     		push	{r3, lr}
- 373 0002 07EE900A 		vmov	s15, r0	@ int
- 374 0006 F8EE677A 		vcvt.f32.u32	s15, s15
- 375 000a 17EE900A 		vmov	r0, s15
- 376 000e FFF7FEFF 		bl	__aeabi_f2d
- 377 0012 08A3     		adr	r3, .L27+4
- 378 0014 D3E90023 		ldrd	r2, [r3]
- 379 0018 FFF7FEFF 		bl	__aeabi_ddiv
- 380 001c 0022     		movs	r2, #0
- 381 001e 044B     		ldr	r3, .L27
- 382 0020 FFF7FEFF 		bl	__aeabi_dmul
- 383 0024 FFF7FEFF 		bl	__aeabi_d2uiz
- 384 0028 80B2     		uxth	r0, r0
- 385 002a 08BD     		pop	{r3, pc}
- 386              	.L28:
- 387 002c AFF30080 		.align	3
- 388              	.L27:
- 389 0030 00807640 		.word	1081507840
- 390 0034 00000000 		.word	0
- 391 0038 004EA840 		.word	1084771840
- 393              		.section	.rodata.ADC_IRQHandler.str1.4,"aMS",%progbits,1
- 394              		.align	2
- 395              	.LC12:
- 396 0000 41444320 		.ascii	"ADC value: %d\012\000"
- 396      76616C75 
- 396      653A2025 
- 396      640A00
- 397              		.section	.text.ADC_IRQHandler,"ax",%progbits
- 398              		.align	1
- 399              		.global	ADC_IRQHandler
- 400              		.syntax unified
- 401              		.thumb
- 402              		.thumb_func
- 404              	ADC_IRQHandler:
- 405              		@ args = 0, pretend = 0, frame = 0
- 406              		@ frame_needed = 0, uses_anonymous_args = 0
- 407 0000 10B5     		push	{r4, lr}
- 408 0002 40F20521 		movw	r1, #517
- 409 0006 0D48     		ldr	r0, .L33
- 410 0008 FFF7FEFF 		bl	ADC_GetITStatus
- 411 000c 00B9     		cbnz	r0, .L32
- 412              	.L29:
- 413 000e 10BD     		pop	{r4, pc}
- 414              	.L32:
- 415 0010 0A4C     		ldr	r4, .L33
- 416 0012 40F20521 		movw	r1, #517
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNKjhFS.s 			page 9
+ 350 004e 2246     		mov	r2, r4
+ 351 0050 2146     		mov	r1, r4
+ 352 0052 3046     		mov	r0, r6
+ 353 0054 FFF7FEFF 		bl	ADC_RegularChannelConfig
+ 354 0058 0495     		str	r5, [sp, #16]
+ 355 005a 4FF48033 		mov	r3, #65536
+ 356 005e 0593     		str	r3, [sp, #20]
+ 357 0060 0695     		str	r5, [sp, #24]
+ 358 0062 0795     		str	r5, [sp, #28]
+ 359 0064 04A8     		add	r0, sp, #16
+ 360 0066 FFF7FEFF 		bl	ADC_CommonInit
+ 361 006a 2146     		mov	r1, r4
+ 362 006c 3046     		mov	r0, r6
+ 363 006e FFF7FEFF 		bl	ADC_Cmd
+ 364 0072 3046     		mov	r0, r6
+ 365 0074 FFF7FEFF 		bl	ADC_SoftwareStartConv
+ 366 0078 2246     		mov	r2, r4
+ 367 007a 40F20521 		movw	r1, #517
+ 368 007e 3046     		mov	r0, r6
+ 369 0080 FFF7FEFF 		bl	ADC_ITConfig
+ 370 0084 1223     		movs	r3, #18
+ 371 0086 8DF80430 		strb	r3, [sp, #4]
+ 372 008a 8DF80540 		strb	r4, [sp, #5]
+ 373 008e 8DF80640 		strb	r4, [sp, #6]
+ 374 0092 8DF80740 		strb	r4, [sp, #7]
+ 375 0096 01A8     		add	r0, sp, #4
+ 376 0098 FFF7FEFF 		bl	NVIC_Init
+ 377 009c 0EB0     		add	sp, sp, #56
+ 378              		@ sp needed
+ 379 009e 70BD     		pop	{r4, r5, r6, pc}
+ 380              	.L24:
+ 381              		.align	2
+ 382              	.L23:
+ 383 00a0 00000240 		.word	1073872896
+ 384 00a4 00200140 		.word	1073815552
+ 386              		.global	__aeabi_f2d
+ 387              		.global	__aeabi_ddiv
+ 388              		.global	__aeabi_dmul
+ 389              		.global	__aeabi_d2uiz
+ 390              		.section	.text.ADCvalue_convert,"ax",%progbits
+ 391              		.align	1
+ 392              		.global	ADCvalue_convert
+ 393              		.syntax unified
+ 394              		.thumb
+ 395              		.thumb_func
+ 397              	ADCvalue_convert:
+ 398              		@ args = 0, pretend = 0, frame = 0
+ 399              		@ frame_needed = 0, uses_anonymous_args = 0
+ 400 0000 08B5     		push	{r3, lr}
+ 401 0002 07EE900A 		vmov	s15, r0	@ int
+ 402 0006 F8EE677A 		vcvt.f32.u32	s15, s15
+ 403 000a 17EE900A 		vmov	r0, s15
+ 404 000e FFF7FEFF 		bl	__aeabi_f2d
+ 405 0012 08A3     		adr	r3, .L27+4
+ 406 0014 D3E90023 		ldrd	r2, [r3]
+ 407 0018 FFF7FEFF 		bl	__aeabi_ddiv
+ 408 001c 0022     		movs	r2, #0
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccYd9epO.s 			page 9
 
 
- 417 0016 2046     		mov	r0, r4
- 418 0018 FFF7FEFF 		bl	ADC_ClearITPendingBit
- 419 001c 2046     		mov	r0, r4
- 420 001e FFF7FEFF 		bl	ADC_GetConversionValue
- 421 0022 074B     		ldr	r3, .L33+4
- 422 0024 1880     		strh	r0, [r3]	@ movhi
- 423 0026 074B     		ldr	r3, .L33+8
- 424 0028 4FF46162 		mov	r2, #3600
- 425 002c 5A63     		str	r2, [r3, #52]
- 426 002e FFF7FEFF 		bl	ADCvalue_convert
- 427 0032 0146     		mov	r1, r0
- 428 0034 0448     		ldr	r0, .L33+12
- 429 0036 FFF7FEFF 		bl	printf
- 430 003a E8E7     		b	.L29
- 431              	.L34:
- 432              		.align	2
- 433              	.L33:
- 434 003c 00200140 		.word	1073815552
- 435 0040 00000000 		.word	adcValue.0
- 436 0044 00000140 		.word	1073807360
- 437 0048 00000000 		.word	.LC12
- 439              		.section	.text.function_goto,"ax",%progbits
- 440              		.align	1
- 441              		.global	function_goto
- 442              		.syntax unified
- 443              		.thumb
- 444              		.thumb_func
- 446              	function_goto:
- 447              		@ args = 0, pretend = 0, frame = 0
- 448              		@ frame_needed = 0, uses_anonymous_args = 0
- 449              		@ link register save eliminated.
- 450              		.syntax unified
- 451              	@ 246 "HARDWARE/BSP/bsp.c" 1
- 452 0000 0046     		mov r0,r0 
- 453 0002 0047     		bx r0     
- 454              		
- 455              	@ 0 "" 2
- 456              		.thumb
- 457              		.syntax unified
- 458 0004 7047     		bx	lr
- 460              		.section	.bss.adcValue.0,"aw",%nobits
- 461              		.align	1
- 464              	adcValue.0:
- 465 0000 0000     		.space	2
- 466              		.ident	"GCC: (Arm GNU Toolchain 13.3.Rel1 (Build arm-13.24)) 13.3.1 20240614"
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNKjhFS.s 			page 10
+ 409 001e 044B     		ldr	r3, .L27
+ 410 0020 FFF7FEFF 		bl	__aeabi_dmul
+ 411 0024 FFF7FEFF 		bl	__aeabi_d2uiz
+ 412 0028 80B2     		uxth	r0, r0
+ 413 002a 08BD     		pop	{r3, pc}
+ 414              	.L28:
+ 415 002c AFF30080 		.align	3
+ 416              	.L27:
+ 417 0030 00807640 		.word	1081507840
+ 418 0034 00000000 		.word	0
+ 419 0038 004EA840 		.word	1084771840
+ 421              		.section	.rodata.ADC_IRQHandler.str1.4,"aMS",%progbits,1
+ 422              		.align	2
+ 423              	.LC15:
+ 424 0000 41444320 		.ascii	"ADC value: %d\012\000"
+ 424      76616C75 
+ 424      653A2025 
+ 424      640A00
+ 425              		.section	.text.ADC_IRQHandler,"ax",%progbits
+ 426              		.align	1
+ 427              		.global	ADC_IRQHandler
+ 428              		.syntax unified
+ 429              		.thumb
+ 430              		.thumb_func
+ 432              	ADC_IRQHandler:
+ 433              		@ args = 0, pretend = 0, frame = 0
+ 434              		@ frame_needed = 0, uses_anonymous_args = 0
+ 435 0000 10B5     		push	{r4, lr}
+ 436 0002 40F20521 		movw	r1, #517
+ 437 0006 0D48     		ldr	r0, .L33
+ 438 0008 FFF7FEFF 		bl	ADC_GetITStatus
+ 439 000c 00B9     		cbnz	r0, .L32
+ 440              	.L29:
+ 441 000e 10BD     		pop	{r4, pc}
+ 442              	.L32:
+ 443 0010 0A4C     		ldr	r4, .L33
+ 444 0012 40F20521 		movw	r1, #517
+ 445 0016 2046     		mov	r0, r4
+ 446 0018 FFF7FEFF 		bl	ADC_ClearITPendingBit
+ 447 001c 2046     		mov	r0, r4
+ 448 001e FFF7FEFF 		bl	ADC_GetConversionValue
+ 449 0022 074B     		ldr	r3, .L33+4
+ 450 0024 1880     		strh	r0, [r3]	@ movhi
+ 451 0026 074B     		ldr	r3, .L33+8
+ 452 0028 4FF46162 		mov	r2, #3600
+ 453 002c 5A63     		str	r2, [r3, #52]
+ 454 002e FFF7FEFF 		bl	ADCvalue_convert
+ 455 0032 0146     		mov	r1, r0
+ 456 0034 0448     		ldr	r0, .L33+12
+ 457 0036 FFF7FEFF 		bl	printf
+ 458 003a E8E7     		b	.L29
+ 459              	.L34:
+ 460              		.align	2
+ 461              	.L33:
+ 462 003c 00200140 		.word	1073815552
+ 463 0040 00000000 		.word	adcValue.0
+ 464 0044 00000140 		.word	1073807360
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccYd9epO.s 			page 10
+
+
+ 465 0048 00000000 		.word	.LC15
+ 467              		.section	.text.function_goto,"ax",%progbits
+ 468              		.align	1
+ 469              		.global	function_goto
+ 470              		.syntax unified
+ 471              		.thumb
+ 472              		.thumb_func
+ 474              	function_goto:
+ 475              		@ args = 0, pretend = 0, frame = 0
+ 476              		@ frame_needed = 0, uses_anonymous_args = 0
+ 477              		@ link register save eliminated.
+ 478              		.syntax unified
+ 479              	@ 243 "HARDWARE/BSP/bsp.c" 1
+ 480 0000 0046     		mov r0,r0 
+ 481 0002 0047     		bx r0     
+ 482              		
+ 483              	@ 0 "" 2
+ 484              		.thumb
+ 485              		.syntax unified
+ 486 0004 7047     		bx	lr
+ 488              		.section	.bss.adcValue.0,"aw",%nobits
+ 489              		.align	1
+ 492              	adcValue.0:
+ 493 0000 0000     		.space	2
+ 494              		.ident	"GCC: (Arm GNU Toolchain 13.3.Rel1 (Build arm-13.24)) 13.3.1 20240614"
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccYd9epO.s 			page 11
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 bsp.c
-C:\Users\ktkuru\AppData\Local\Temp\ccNKjhFS.s:18     .text.LED_Init:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccNKjhFS.s:24     .text.LED_Init:00000000 LED_Init
-C:\Users\ktkuru\AppData\Local\Temp\ccNKjhFS.s:46     .text.LED_Init:00000024 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccNKjhFS.s:50     .text.GPIO_Config:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccNKjhFS.s:56     .text.GPIO_Config:00000000 GPIO_Config
-C:\Users\ktkuru\AppData\Local\Temp\ccNKjhFS.s:75     .text.EXIT15_Init:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccNKjhFS.s:81     .text.EXIT15_Init:00000000 EXIT15_Init
-C:\Users\ktkuru\AppData\Local\Temp\ccNKjhFS.s:119    .text.EXIT15_Init:00000058 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccNKjhFS.s:122    .rodata.BSP_Init.str1.4:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccNKjhFS.s:160    .text.BSP_Init:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccNKjhFS.s:166    .text.BSP_Init:00000000 BSP_Init
-C:\Users\ktkuru\AppData\Local\Temp\ccNKjhFS.s:230    .text.BSP_Init:000000a4 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccNKjhFS.s:245    .text.TIM2_Init:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccNKjhFS.s:251    .text.TIM2_Init:00000000 TIM2_Init
-C:\Users\ktkuru\AppData\Local\Temp\ccNKjhFS.s:284    .text.ADC_Config:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccNKjhFS.s:290    .text.ADC_Config:00000000 ADC_Config
-C:\Users\ktkuru\AppData\Local\Temp\ccNKjhFS.s:355    .text.ADC_Config:000000a0 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccNKjhFS.s:363    .text.ADCvalue_convert:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccNKjhFS.s:369    .text.ADCvalue_convert:00000000 ADCvalue_convert
-C:\Users\ktkuru\AppData\Local\Temp\ccNKjhFS.s:389    .text.ADCvalue_convert:00000030 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccNKjhFS.s:394    .rodata.ADC_IRQHandler.str1.4:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccNKjhFS.s:398    .text.ADC_IRQHandler:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccNKjhFS.s:404    .text.ADC_IRQHandler:00000000 ADC_IRQHandler
-C:\Users\ktkuru\AppData\Local\Temp\ccNKjhFS.s:434    .text.ADC_IRQHandler:0000003c $d
-C:\Users\ktkuru\AppData\Local\Temp\ccNKjhFS.s:464    .bss.adcValue.0:00000000 adcValue.0
-C:\Users\ktkuru\AppData\Local\Temp\ccNKjhFS.s:440    .text.function_goto:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccNKjhFS.s:446    .text.function_goto:00000000 function_goto
-C:\Users\ktkuru\AppData\Local\Temp\ccNKjhFS.s:461    .bss.adcValue.0:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccYd9epO.s:18     .text.LED_Init:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccYd9epO.s:24     .text.LED_Init:00000000 LED_Init
+C:\Users\ktkuru\AppData\Local\Temp\ccYd9epO.s:46     .text.LED_Init:00000024 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccYd9epO.s:50     .text.GPIO_Config:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccYd9epO.s:56     .text.GPIO_Config:00000000 GPIO_Config
+C:\Users\ktkuru\AppData\Local\Temp\ccYd9epO.s:75     .text.EXIT15_Init:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccYd9epO.s:81     .text.EXIT15_Init:00000000 EXIT15_Init
+C:\Users\ktkuru\AppData\Local\Temp\ccYd9epO.s:119    .text.EXIT15_Init:00000058 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccYd9epO.s:122    .text.TIM2_Init:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccYd9epO.s:128    .text.TIM2_Init:00000000 TIM2_Init
+C:\Users\ktkuru\AppData\Local\Temp\ccYd9epO.s:161    .rodata.BSP_Init.str1.4:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccYd9epO.s:208    .text.BSP_Init:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccYd9epO.s:214    .text.BSP_Init:00000000 BSP_Init
+C:\Users\ktkuru\AppData\Local\Temp\ccYd9epO.s:294    .text.BSP_Init:000000d0 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccYd9epO.s:312    .text.ADC_Config:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccYd9epO.s:318    .text.ADC_Config:00000000 ADC_Config
+C:\Users\ktkuru\AppData\Local\Temp\ccYd9epO.s:383    .text.ADC_Config:000000a0 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccYd9epO.s:391    .text.ADCvalue_convert:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccYd9epO.s:397    .text.ADCvalue_convert:00000000 ADCvalue_convert
+C:\Users\ktkuru\AppData\Local\Temp\ccYd9epO.s:417    .text.ADCvalue_convert:00000030 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccYd9epO.s:422    .rodata.ADC_IRQHandler.str1.4:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccYd9epO.s:426    .text.ADC_IRQHandler:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccYd9epO.s:432    .text.ADC_IRQHandler:00000000 ADC_IRQHandler
+C:\Users\ktkuru\AppData\Local\Temp\ccYd9epO.s:462    .text.ADC_IRQHandler:0000003c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccYd9epO.s:492    .bss.adcValue.0:00000000 adcValue.0
+C:\Users\ktkuru\AppData\Local\Temp\ccYd9epO.s:468    .text.function_goto:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccYd9epO.s:474    .text.function_goto:00000000 function_goto
+C:\Users\ktkuru\AppData\Local\Temp\ccYd9epO.s:489    .bss.adcValue.0:00000000 $d
 
 UNDEFINED SYMBOLS
 GPIO_Init
@@ -566,6 +606,10 @@ RCC_AHB1PeriphClockCmd
 RCC_APB2PeriphClockCmd
 SYSCFG_EXTILineConfig
 EXTI_Init
+RCC_APB1PeriphClockCmd
+TIM_TimeBaseInit
+TIM_ITConfig
+TIM_Cmd
 usart1_init
 usart2_init
 puts
@@ -573,22 +617,20 @@ delay_init
 BSP_NVIC_IT_Config
 Motor_PWM_TIM8_Init
 OLED_Init
+OLED_Printf
+OLED_Update
 delay_ms
 MPU_Init
 mpu_dmp_init
 printf
-RCC_APB1PeriphClockCmd
-TIM_TimeBaseInit
-TIM_ITConfig
-TIM_Cmd
 ADC_Init
 ADC_RegularChannelConfig
 ADC_CommonInit
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccYd9epO.s 			page 12
+
+
 ADC_Cmd
 ADC_SoftwareStartConv
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNKjhFS.s 			page 11
-
-
 ADC_ITConfig
 NVIC_Init
 __aeabi_f2d
