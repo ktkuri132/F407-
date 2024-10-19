@@ -107,8 +107,9 @@ void TIM2_IRQHandler(void)
 */
 void Task4_StopFast()
 {
+    GetPolar(roll,pitch);
+
     /*
-	
     //垂直制动输出
     static float VerticalOutput;
     //水平制动输出
