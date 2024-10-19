@@ -41,4 +41,10 @@
 .\objects\usart.o: ..\HARDWARE\BSP\bsp.h
 .\objects\usart.o: ..\HARDWARE\OLED_SPI\OLED.h
 .\objects\usart.o: ..\HARDWARE\OLED_SPI\OLED_Data.h
+.\objects\usart.o: ..\HARDWARE\BSP\bsp.h
+.\objects\usart.o: ..\HARDWARE\CONTROL\control.h
+.\objects\usart.o: ..\HARDWARE\MPU6050\mpu6050.h
+.\objects\usart.o: ..\HARDWARE\IIC\myiic.h
+.\objects\usart.o: ..\HARDWARE\MPU6050\eMPL\inv_mpu.h
+.\objects\usart.o: ..\SYSTEM\delay\delay.h
 .\objects\usart.o: C:\Users\ktkuru\AppData\Local\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h

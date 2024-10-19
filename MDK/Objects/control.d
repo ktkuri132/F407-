@@ -39,7 +39,13 @@
 .\objects\control.o: ..\HARDWARE\BSP\bsp.h
 .\objects\control.o: ..\HARDWARE\OLED_SPI\OLED.h
 .\objects\control.o: ..\HARDWARE\OLED_SPI\OLED_Data.h
+.\objects\control.o: ..\SYSTEM\usart\usart.h
 .\objects\control.o: ..\SYSTEM\sys\sys.h
+.\objects\control.o: ..\HARDWARE\BSP\bsp.h
 .\objects\control.o: ..\HARDWARE\CONTROL\control.h
+.\objects\control.o: ..\HARDWARE\MPU6050\mpu6050.h
+.\objects\control.o: ..\HARDWARE\IIC\myiic.h
+.\objects\control.o: ..\HARDWARE\MPU6050\eMPL\inv_mpu.h
+.\objects\control.o: ..\SYSTEM\delay\delay.h
 .\objects\control.o: C:\Users\ktkuru\AppData\Local\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
 .\objects\control.o: C:\Users\ktkuru\AppData\Local\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h

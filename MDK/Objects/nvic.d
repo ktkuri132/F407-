@@ -38,7 +38,12 @@
 .\objects\nvic.o: ..\HARDWARE\BSP\bsp.h
 .\objects\nvic.o: ..\HARDWARE\OLED_SPI\OLED.h
 .\objects\nvic.o: ..\HARDWARE\OLED_SPI\OLED_Data.h
-.\objects\nvic.o: ..\HARDWARE\CONTROL\control.h
 .\objects\nvic.o: ..\SYSTEM\usart\usart.h
 .\objects\nvic.o: C:\Users\ktkuru\AppData\Local\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\nvic.o: ..\SYSTEM\sys\sys.h
+.\objects\nvic.o: ..\HARDWARE\BSP\bsp.h
+.\objects\nvic.o: ..\HARDWARE\CONTROL\control.h
+.\objects\nvic.o: ..\HARDWARE\MPU6050\mpu6050.h
+.\objects\nvic.o: ..\HARDWARE\IIC\myiic.h
+.\objects\nvic.o: ..\HARDWARE\MPU6050\eMPL\inv_mpu.h
+.\objects\nvic.o: ..\SYSTEM\delay\delay.h

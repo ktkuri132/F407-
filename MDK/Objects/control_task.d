@@ -38,11 +38,13 @@
 .\objects\control_task.o: ..\HARDWARE\BSP\bsp.h
 .\objects\control_task.o: ..\HARDWARE\OLED_SPI\OLED.h
 .\objects\control_task.o: ..\HARDWARE\OLED_SPI\OLED_Data.h
-.\objects\control_task.o: ..\HARDWARE\CONTROL\control.h
 .\objects\control_task.o: ..\SYSTEM\usart\usart.h
 .\objects\control_task.o: C:\Users\ktkuru\AppData\Local\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\control_task.o: ..\SYSTEM\sys\sys.h
+.\objects\control_task.o: ..\HARDWARE\BSP\bsp.h
+.\objects\control_task.o: ..\HARDWARE\CONTROL\control.h
 .\objects\control_task.o: ..\HARDWARE\MPU6050\mpu6050.h
 .\objects\control_task.o: ..\HARDWARE\IIC\myiic.h
 .\objects\control_task.o: ..\HARDWARE\MPU6050\eMPL\inv_mpu.h
+.\objects\control_task.o: ..\SYSTEM\delay\delay.h
 .\objects\control_task.o: C:\Users\ktkuru\AppData\Local\Keil_v5\ARM\ARMCC\Bin\..\include\math.h

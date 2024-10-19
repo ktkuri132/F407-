@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s 			page 1
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s 			page 1
   57              		.thumb
   58              		.thumb_func
   60              	Task1_LineMove:
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s 			page 2
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s 			page 2
 
 
   61              		@ args = 0, pretend = 0, frame = 0
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s 			page 1
  115 00a2 B0EE480A 		vmov.f32	s0, s16
  116 00a6 9847     		blx	r3
  117 00a8 4D4B     		ldr	r3, .L23+72
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s 			page 3
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s 			page 3
 
 
  118 00aa 83ED000A 		vstr.32	s0, [r3]
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s 			page 1
  172 013c 274A     		ldr	r2, .L23+68
  173 013e D2ED000A 		vldr.32	s1, [r2]
  174 0142 B0EE480A 		vmov.f32	s0, s16
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s 			page 4
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s 			page 4
 
 
  175 0146 9847     		blx	r3
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s 			page 1
  229 01e0 00000000 		.word	VOutput.25
  230 01e4 00000000 		.word	pitch
  231 01e8 00000000 		.word	0
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s 			page 5
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s 			page 5
 
 
  232 01ec 00000000 		.word	LOutput.24
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s 			page 1
  287 007a 85A3     		adr	r3, .L146+8
  288 007c D3E90023 		ldrd	r2, [r3]
  289 0080 FFF7FEFF 		bl	__aeabi_ddiv
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s 			page 6
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s 			page 6
 
 
  290 0084 FFF7FEFF 		bl	__aeabi_d2f
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s 			page 1
  344 013c 624B     		ldr	r3, .L146+64
  345 013e 83ED008A 		vstr.32	s16, [r3]
  346 0142 DFED5A7A 		vldr.32	s15, .L146+36
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s 			page 7
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s 			page 7
 
 
  347 0146 68EEA77A 		vmul.f32	s15, s17, s15
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s 			page 1
  401 01ea F1EE10FA 		vmrs	APSR_nzcv, FPSCR
  402 01ee 08D8     		bhi	.L122
  403 01f0 2F4B     		ldr	r3, .L146+40
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s 			page 8
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s 			page 8
 
 
  404 01f2 D3ED007A 		vldr.32	s15, [r3]	@ int
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s 			page 1
  458 027e 0124     		movs	r4, #1
  459 0280 E0E6     		b	.L30
  460              	.L126:
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s 			page 9
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s 			page 9
 
 
  461 0282 0124     		movs	r4, #1
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s 			page 1
  515 0326 F1EE600A 		vneg.f32	s1, s1
  516 032a A14A     		ldr	r2, .L148+72
  517 032c 92ED000A 		vldr.32	s0, [r2]
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s 			page 10
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s 			page 10
 
 
  518 0330 9847     		blx	r3
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s 			page 1
  572 03c6 7A4A     		ldr	r2, .L148+72
  573 03c8 92ED000A 		vldr.32	s0, [r2]
  574 03cc 9847     		blx	r3
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s 			page 11
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s 			page 11
 
 
  575 03ce B0EE408A 		vmov.f32	s16, s0
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s 			page 1
  629 0464 C368     		ldr	r3, [r0, #12]
  630 0466 514A     		ldr	r2, .L148+68
  631 0468 D2ED000A 		vldr.32	s1, [r2]
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s 			page 12
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s 			page 12
 
 
  632 046c F1EE600A 		vneg.f32	s1, s1
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s 			page 1
  686 0508 C368     		ldr	r3, [r0, #12]
  687 050a 284A     		ldr	r2, .L148+68
  688 050c D2ED000A 		vldr.32	s1, [r2]
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s 			page 13
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s 			page 13
 
 
  689 0510 F1EE600A 		vneg.f32	s1, s1
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s 			page 1
  743 05b8 00000000 		.word	time.20
  744 05bc 00000000 		.word	Taks3Pid3.13
  745 05c0 00000000 		.word	Taks3Pid4.12
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s 			page 14
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s 			page 14
 
 
  746 05c4 00000000 		.word	Taks3Pid5.11
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s 			page 1
  800 0662 0020     		movs	r0, #0
  801 0664 F0EE480A 		vmov.f32	s1, s16
  802 0668 624B     		ldr	r3, .L150+44
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s 			page 15
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s 			page 15
 
 
  803 066a 93ED000A 		vldr.32	s0, [r3]
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s 			page 1
  857 0702 F0EE480A 		vmov.f32	s1, s16
  858 0706 3B4B     		ldr	r3, .L150+44
  859 0708 93ED000A 		vldr.32	s0, [r3]
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s 			page 16
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s 			page 16
 
 
  860 070c FFF7FEFF 		bl	T3Motor_CmdCombination
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s 			page 1
  914 07ac 1A60     		str	r2, [r3]	@ float
  915 07ae DFE4     		b	.L25
  916              	.L145:
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s 			page 17
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s 			page 17
 
 
  917 07b0 0020     		movs	r0, #0
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s 			page 1
  972 0020 1448     		ldr	r0, .L158+8
  973 0022 FFF7FEFF 		bl	mpu_dmp_get_data
  974 0026 144B     		ldr	r3, .L158+12
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s 			page 18
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s 			page 18
 
 
  975 0028 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s 			page 1
  1031 001c 2046     		mov	r0, r4	@ float
  1032 001e FFF7FEFF 		bl	__aeabi_f2d
  1033 0022 9DA3     		adr	r3, .L188
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s 			page 19
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s 			page 19
 
 
  1034 0024 D3E90023 		ldrd	r2, [r3]
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s 			page 1
  1088 00e2 3B46     		mov	r3, r7
  1089 00e4 8448     		ldr	r0, .L188+96
  1090 00e6 FFF7FEFF 		bl	printf
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s 			page 20
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s 			page 20
 
 
  1091 00ea 2068     		ldr	r0, [r4]	@ float
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s 			page 1
  1145 017e BDEC048B 		vldm	sp!, {d8-d9}
  1146 0182 F0BD     		pop	{r4, r5, r6, r7, pc}
  1147              	.L187:
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s 			page 21
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s 			page 21
 
 
  1148 0184 0022     		movs	r2, #0
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s 			page 1
  1202 020c F1EE600A 		vneg.f32	s1, s1
  1203 0210 364A     		ldr	r2, .L188+84
  1204 0212 92ED000A 		vldr.32	s0, [r2]
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s 			page 22
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s 			page 22
 
 
  1205 0216 9847     		blx	r3
@@ -1318,13 +1318,13 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s 			page 1
  1259 029c 1E85EB3F 		.word	1072399646
  1260 02a0 4AD8124D 		.word	1293080650
  1261 02a4 FB210940 		.word	1074340347
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s 			page 23
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s 			page 23
 
 
  1262 02a8 7983A29B 		.word	-1683848327
  1263 02ac A1F40D40 		.word	1074656417
- 1264 02b0 FA7E6ABC 		.word	-1133871366
- 1265 02b4 7493783F 		.word	1064866676
+ 1264 02b0 9A999999 		.word	-1717986918
+ 1265 02b4 9999A93F 		.word	1068079513
  1266 02b8 0C022B87 		.word	-2027224564
  1267 02bc 16D9FA3F 		.word	1073404182
  1268 02c0 4AD8124D 		.word	1293080650
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s 			page 1
  1319              		.section	.bss.LOutput.0,"aw",%nobits
  1320              		.align	2
  1323              	LOutput.0:
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s 			page 24
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s 			page 24
 
 
  1324 0000 00000000 		.space	4
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s 			page 1
  1398 0008 0000DCC2 		.word	-1025769472
  1399 000c 00000000 		.word	PidControl_LineMove
  1400              		.section	.data.Taks3Pid5.11,"aw"
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s 			page 25
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s 			page 25
 
 
  1401              		.align	2
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s 			page 1
  1475              		.section	.bss.target_pitch.21,"aw",%nobits
  1476              		.align	2
  1479              	target_pitch.21:
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s 			page 26
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s 			page 26
 
 
  1480 0000 00000000 		.space	4
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s 			page 1
  1556              	Target_angle:
  1557 0000 0000A042 		.word	1117782016
  1558              		.global	Target_dis
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s 			page 27
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s 			page 27
 
 
  1559              		.section	.data.Target_dis,"aw"
@@ -1577,107 +1577,107 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s 			page 1
  1576 0014 09000000 		.word	9
  1577 0018 F6FFFFFF 		.word	-10
  1578              		.ident	"GCC: (Arm GNU Toolchain 13.3.Rel1 (Build arm-13.24)) 13.3.1 20240614"
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s 			page 28
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s 			page 28
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 Control_Task.c
-C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s:18     .text.Task4_StopFast:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s:24     .text.Task4_StopFast:00000000 Task4_StopFast
-C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s:40     .text.Task4_StopFast:0000001c $d
-C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s:1539   .data.Taks4Pid.30:00000000 Taks4Pid.30
-C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s:1533   .bss.Output.29:00000000 Output.29
-C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s:54     .text.Task1_LineMove:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s:60     .text.Task1_LineMove:00000000 Task1_LineMove
-C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s:211    .text.Task1_LineMove:00000198 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s:1527   .bss.A.28:00000000 A.28
-C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s:1521   .bss.time.27:00000000 time.27
-C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s:1549   .bss.target_angle:00000000 target_angle
-C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s:1512   .data.Taks1Pid1.26:00000000 Taks1Pid1.26
-C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s:1506   .bss.VOutput.25:00000000 VOutput.25
-C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s:1500   .bss.LOutput.24:00000000 LOutput.24
-C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s:1491   .data.Taks1Pid2.23:00000000 Taks1Pid2.23
-C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s:239    .rodata.Task3_AngleMove.str1.4:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s:243    .text.Task3_AngleMove:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s:249    .text.Task3_AngleMove:00000000 Task3_AngleMove
-C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s:466    .text.Task3_AngleMove:00000288 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s:1570   .data.de:00000000 de
-C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s:1485   .bss.target_roll.22:00000000 target_roll.22
-C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s:1479   .bss.target_pitch.21:00000000 target_pitch.21
-C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s:1473   .bss.time.20:00000000 time.20
-C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s:1467   .bss.Vtarget_angle.19:00000000 Vtarget_angle.19
-C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s:1461   .bss.Ltarget_angle.18:00000000 Ltarget_angle.18
-C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s:486    .text.Task3_AngleMove:000002d4 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s:723    .text.Task3_AngleMove:00000568 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s:1452   .data.Taks3Pid1.17:00000000 Taks3Pid1.17
-C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s:1446   .bss.VOutput.16:00000000 VOutput.16
-C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s:1437   .data.Taks3Pid2.15:00000000 Taks3Pid2.15
-C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s:1431   .bss.LOutput.14:00000000 LOutput.14
-C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s:1422   .data.Taks3Pid3.13:00000000 Taks3Pid3.13
-C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s:1413   .data.Taks3Pid4.12:00000000 Taks3Pid4.12
-C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s:1404   .data.Taks3Pid5.11:00000000 Taks3Pid5.11
-C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s:1395   .data.Taks3Pid6.10:00000000 Taks3Pid6.10
-C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s:1386   .data.Taks3Pid7.9:00000000 Taks3Pid7.9
-C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s:1377   .data.Taks3Pid8.8:00000000 Taks3Pid8.8
-C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s:754    .text.Task3_AngleMove:000005e0 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s:926    .text.Task3_AngleMove:000007c8 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s:949    .text.EXTI15_10_IRQHandler:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s:955    .text.EXTI15_10_IRQHandler:00000000 EXTI15_10_IRQHandler
-C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s:1004   .text.EXTI15_10_IRQHandler:0000006c $d
-C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s:1556   .data.Target_angle:00000000 Target_angle
-C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s:1563   .data.Target_dis:00000000 Target_dis
-C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s:1013   .text.Task5_CircleMove:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s:1019   .text.Task5_CircleMove:00000000 Task5_CircleMove
-C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s:1258   .text.Task5_CircleMove:00000298 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s:1371   .bss.A.7:00000000 A.7
-C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s:1365   .bss.time.6:00000000 time.6
-C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s:1359   .bss.Vtarget_angle.5:00000000 Vtarget_angle.5
-C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s:1353   .bss.Ltarget_angle.4:00000000 Ltarget_angle.4
-C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s:1344   .data.Taks5Pid.3:00000000 Taks5Pid.3
-C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s:1338   .bss.VOutput.2:00000000 VOutput.2
-C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s:1329   .data.Taks5Pid2.1:00000000 Taks5Pid2.1
-C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s:1323   .bss.LOutput.0:00000000 LOutput.0
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s 			page 29
+C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s:18     .text.Task4_StopFast:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s:24     .text.Task4_StopFast:00000000 Task4_StopFast
+C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s:40     .text.Task4_StopFast:0000001c $d
+C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s:1539   .data.Taks4Pid.30:00000000 Taks4Pid.30
+C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s:1533   .bss.Output.29:00000000 Output.29
+C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s:54     .text.Task1_LineMove:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s:60     .text.Task1_LineMove:00000000 Task1_LineMove
+C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s:211    .text.Task1_LineMove:00000198 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s:1527   .bss.A.28:00000000 A.28
+C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s:1521   .bss.time.27:00000000 time.27
+C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s:1549   .bss.target_angle:00000000 target_angle
+C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s:1512   .data.Taks1Pid1.26:00000000 Taks1Pid1.26
+C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s:1506   .bss.VOutput.25:00000000 VOutput.25
+C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s:1500   .bss.LOutput.24:00000000 LOutput.24
+C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s:1491   .data.Taks1Pid2.23:00000000 Taks1Pid2.23
+C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s:239    .rodata.Task3_AngleMove.str1.4:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s:243    .text.Task3_AngleMove:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s:249    .text.Task3_AngleMove:00000000 Task3_AngleMove
+C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s:466    .text.Task3_AngleMove:00000288 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s:1570   .data.de:00000000 de
+C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s:1485   .bss.target_roll.22:00000000 target_roll.22
+C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s:1479   .bss.target_pitch.21:00000000 target_pitch.21
+C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s:1473   .bss.time.20:00000000 time.20
+C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s:1467   .bss.Vtarget_angle.19:00000000 Vtarget_angle.19
+C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s:1461   .bss.Ltarget_angle.18:00000000 Ltarget_angle.18
+C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s:486    .text.Task3_AngleMove:000002d4 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s:723    .text.Task3_AngleMove:00000568 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s:1452   .data.Taks3Pid1.17:00000000 Taks3Pid1.17
+C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s:1446   .bss.VOutput.16:00000000 VOutput.16
+C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s:1437   .data.Taks3Pid2.15:00000000 Taks3Pid2.15
+C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s:1431   .bss.LOutput.14:00000000 LOutput.14
+C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s:1422   .data.Taks3Pid3.13:00000000 Taks3Pid3.13
+C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s:1413   .data.Taks3Pid4.12:00000000 Taks3Pid4.12
+C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s:1404   .data.Taks3Pid5.11:00000000 Taks3Pid5.11
+C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s:1395   .data.Taks3Pid6.10:00000000 Taks3Pid6.10
+C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s:1386   .data.Taks3Pid7.9:00000000 Taks3Pid7.9
+C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s:1377   .data.Taks3Pid8.8:00000000 Taks3Pid8.8
+C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s:754    .text.Task3_AngleMove:000005e0 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s:926    .text.Task3_AngleMove:000007c8 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s:949    .text.EXTI15_10_IRQHandler:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s:955    .text.EXTI15_10_IRQHandler:00000000 EXTI15_10_IRQHandler
+C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s:1004   .text.EXTI15_10_IRQHandler:0000006c $d
+C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s:1556   .data.Target_angle:00000000 Target_angle
+C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s:1563   .data.Target_dis:00000000 Target_dis
+C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s:1013   .text.Task5_CircleMove:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s:1019   .text.Task5_CircleMove:00000000 Task5_CircleMove
+C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s:1258   .text.Task5_CircleMove:00000298 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s:1371   .bss.A.7:00000000 A.7
+C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s:1365   .bss.time.6:00000000 time.6
+C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s:1359   .bss.Vtarget_angle.5:00000000 Vtarget_angle.5
+C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s:1353   .bss.Ltarget_angle.4:00000000 Ltarget_angle.4
+C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s:1344   .data.Taks5Pid.3:00000000 Taks5Pid.3
+C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s:1338   .bss.VOutput.2:00000000 VOutput.2
+C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s:1329   .data.Taks5Pid2.1:00000000 Taks5Pid2.1
+C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s:1323   .bss.LOutput.0:00000000 LOutput.0
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s 			page 29
 
 
-C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s:1291   .text.TIM2_IRQHandler:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s:1297   .text.TIM2_IRQHandler:00000000 TIM2_IRQHandler
-C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s:1317   .text.TIM2_IRQHandler:00000024 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s:1320   .bss.LOutput.0:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s:1326   .data.Taks5Pid2.1:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s:1335   .bss.VOutput.2:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s:1341   .data.Taks5Pid.3:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s:1350   .bss.Ltarget_angle.4:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s:1356   .bss.Vtarget_angle.5:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s:1362   .bss.time.6:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s:1368   .bss.A.7:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s:1374   .data.Taks3Pid8.8:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s:1383   .data.Taks3Pid7.9:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s:1392   .data.Taks3Pid6.10:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s:1401   .data.Taks3Pid5.11:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s:1410   .data.Taks3Pid4.12:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s:1419   .data.Taks3Pid3.13:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s:1428   .bss.LOutput.14:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s:1434   .data.Taks3Pid2.15:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s:1443   .bss.VOutput.16:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s:1449   .data.Taks3Pid1.17:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s:1458   .bss.Ltarget_angle.18:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s:1464   .bss.Vtarget_angle.19:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s:1470   .bss.time.20:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s:1476   .bss.target_pitch.21:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s:1482   .bss.target_roll.22:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s:1488   .data.Taks1Pid2.23:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s:1497   .bss.LOutput.24:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s:1503   .bss.VOutput.25:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s:1509   .data.Taks1Pid1.26:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s:1518   .bss.time.27:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s:1524   .bss.A.28:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s:1530   .bss.Output.29:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s:1536   .data.Taks4Pid.30:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s:1546   .bss.target_angle:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s:1553   .data.Target_angle:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s:1560   .data.Target_dis:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s:1567   .data.de:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s:1291   .text.TIM2_IRQHandler:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s:1297   .text.TIM2_IRQHandler:00000000 TIM2_IRQHandler
+C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s:1317   .text.TIM2_IRQHandler:00000024 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s:1320   .bss.LOutput.0:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s:1326   .data.Taks5Pid2.1:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s:1335   .bss.VOutput.2:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s:1341   .data.Taks5Pid.3:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s:1350   .bss.Ltarget_angle.4:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s:1356   .bss.Vtarget_angle.5:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s:1362   .bss.time.6:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s:1368   .bss.A.7:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s:1374   .data.Taks3Pid8.8:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s:1383   .data.Taks3Pid7.9:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s:1392   .data.Taks3Pid6.10:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s:1401   .data.Taks3Pid5.11:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s:1410   .data.Taks3Pid4.12:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s:1419   .data.Taks3Pid3.13:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s:1428   .bss.LOutput.14:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s:1434   .data.Taks3Pid2.15:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s:1443   .bss.VOutput.16:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s:1449   .data.Taks3Pid1.17:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s:1458   .bss.Ltarget_angle.18:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s:1464   .bss.Vtarget_angle.19:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s:1470   .bss.time.20:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s:1476   .bss.target_pitch.21:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s:1482   .bss.target_roll.22:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s:1488   .data.Taks1Pid2.23:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s:1497   .bss.LOutput.24:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s:1503   .bss.VOutput.25:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s:1509   .data.Taks1Pid1.26:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s:1518   .bss.time.27:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s:1524   .bss.A.28:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s:1530   .bss.Output.29:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s:1536   .data.Taks4Pid.30:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s:1546   .bss.target_angle:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s:1553   .data.Target_angle:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s:1560   .data.Target_dis:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s:1567   .data.de:00000000 $d
 
 UNDEFINED SYMBOLS
 dis
@@ -1697,7 +1697,7 @@ pitch
 cosf
 printf
 T3Motor_CmdCombination
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccaSQgZO.s 			page 30
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc2DPfA5.s 			page 30
 
 
 EXTI_GetITStatus

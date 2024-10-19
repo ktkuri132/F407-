@@ -41,9 +41,10 @@
 .\objects\main.o: ..\SYSTEM\usart\usart.h
 .\objects\main.o: C:\Users\ktkuru\AppData\Local\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\main.o: ..\SYSTEM\sys\sys.h
-.\objects\main.o: ..\SYSTEM\delay\delay.h
-.\objects\main.o: ..\SYSTEM\shell\shell.h
+.\objects\main.o: ..\HARDWARE\BSP\bsp.h
+.\objects\main.o: ..\HARDWARE\CONTROL\control.h
 .\objects\main.o: ..\HARDWARE\MPU6050\mpu6050.h
 .\objects\main.o: ..\HARDWARE\IIC\myiic.h
 .\objects\main.o: ..\HARDWARE\MPU6050\eMPL\inv_mpu.h
-.\objects\main.o: ..\HARDWARE\CONTROL\control.h
+.\objects\main.o: ..\SYSTEM\delay\delay.h
+.\objects\main.o: ..\SYSTEM\shell\shell.h
