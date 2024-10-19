@@ -83,7 +83,7 @@ int main(void)
 
     RIN3=0;//垂直方向内侧电机
     RIN4=1;
-*/
+
  
     while (1)
     {
@@ -94,7 +94,7 @@ int main(void)
         if(mode)
             break;
     }
-
+*/
     OLED_Clear();
     /* 前台程序轮询  */
     while (1)
