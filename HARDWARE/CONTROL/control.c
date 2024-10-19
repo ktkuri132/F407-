@@ -378,7 +378,7 @@ __INLINE void T3Motor_CmdCombination(float Vo,float Lo,uint8_t a)
     
 }
 
-__INLINE void T5Motor_CmdCombination(int sit,float Vo,float Lo)
+void T5Motor_CmdCombination(int sit,float Vo,float Lo)
 {
     switch (sit)
     {

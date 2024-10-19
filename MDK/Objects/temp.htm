@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\temp.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\temp.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Sat Oct 19 10:19:51 2024
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Sat Oct 19 10:31:12 2024
 <BR><P>
 <H3>Maximum Stack Usage =        420 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -433,6 +433,14 @@ Global Symbols
 <LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task1_LineMove
 </UL>
 
+<P><STRONG><a name="[a3]"></a>T5Motor_CmdCombination</STRONG> (Thumb, 742 bytes, Stack size 20 bytes, control.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = T5Motor_CmdCombination &rArr; Motor_Cmd
+</UL>
+<BR>[Calls]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Motor_Cmd
+</UL>
+<BR>[Called By]<UL><LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task5_CircleMove
+</UL>
+
 <P><STRONG><a name="[b3]"></a>StopAllMotor</STRONG> (Thumb, 30 bytes, Stack size 4 bytes, control.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Motor_Cmd
 </UL>
@@ -725,14 +733,14 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Write_Len
 <LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_ms
 </UL>
-<BR>[Called By]<UL><LI><a href="#[e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_set_dmp_state
+<BR>[Called By]<UL><LI><a href="#[fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_enable_feature
+<LI><a href="#[e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_set_dmp_state
 <LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_read_fifo_stream
 <LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_read_fifo
 <LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_configure_fifo
 <LI><a href="#[10d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_enable_lp_quat
 <LI><a href="#[10b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_enable_6x_lp_quat
 <LI><a href="#[fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_read_fifo
-<LI><a href="#[fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_enable_feature
 </UL>
 
 <P><STRONG><a name="[d1]"></a>mpu_configure_fifo</STRONG> (Thumb, 92 bytes, Stack size 24 bytes, inv_mpu.o(.text))
@@ -955,7 +963,8 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Write_Len
 </UL>
-<BR>[Called By]<UL><LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_load_firmware
+<BR>[Called By]<UL><LI><a href="#[fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_enable_feature
+<LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_load_firmware
 <LI><a href="#[10f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_interrupt_mode
 <LI><a href="#[10e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_enable_gyro_cal
 <LI><a href="#[10d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_enable_lp_quat
@@ -974,7 +983,6 @@ Global Symbols
 <LI><a href="#[f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_gyro_bias
 <LI><a href="#[fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_fifo_rate
 <LI><a href="#[f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_accel_bias
-<LI><a href="#[fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_enable_feature
 </UL>
 
 <P><STRONG><a name="[ed]"></a>mpu_read_mem</STRONG> (Thumb, 104 bytes, Stack size 32 bytes, inv_mpu.o(.text))
@@ -1053,7 +1061,8 @@ Global Symbols
 <P><STRONG><a name="[82]"></a>mpu_dmp_init</STRONG> (Thumb, 154 bytes, Stack size 8 bytes, inv_mpu.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 304<LI>Call Chain = mpu_dmp_init &rArr; run_self_test &rArr; mpu_run_self_test &rArr; mpu_set_dmp_state &rArr; mpu_set_sample_rate &rArr; mpu_lp_accel_mode &rArr; mpu_configure_fifo &rArr; mpu_reset_fifo &rArr; MPU_Write_Len &rArr; IIC_Send_Byte &rArr; delay_us
 </UL>
-<BR>[Calls]<UL><LI><a href="#[f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;inv_orientation_matrix_to_scalar
+<BR>[Calls]<UL><LI><a href="#[fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_enable_feature
+<LI><a href="#[f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;inv_orientation_matrix_to_scalar
 <LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;run_self_test
 <LI><a href="#[e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_set_dmp_state
 <LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_init
@@ -1064,7 +1073,6 @@ Global Symbols
 <LI><a href="#[f9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_orientation
 <LI><a href="#[fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_fifo_rate
 <LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_load_motion_driver_firmware
-<LI><a href="#[fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_enable_feature
 </UL>
 <BR>[Called By]<UL><LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_Init
 </UL>
@@ -2976,14 +2984,6 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Motor_Cmd
 </UL>
 <BR>[Called By]<UL><LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task3_AngleMove
-</UL>
-
-<P><STRONG><a name="[a3]"></a>T5Motor_CmdCombination</STRONG> (Thumb, 742 bytes, Stack size 20 bytes, control.o(i.T5Motor_CmdCombination))
-<BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = T5Motor_CmdCombination &rArr; Motor_Cmd
-</UL>
-<BR>[Calls]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Motor_Cmd
-</UL>
-<BR>[Called By]<UL><LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task5_CircleMove
 </UL>
 
 <P><STRONG><a name="[170]"></a>__0printf</STRONG> (Thumb, 22 bytes, Stack size 24 bytes, printfa.o(i.__0printf), UNUSED)

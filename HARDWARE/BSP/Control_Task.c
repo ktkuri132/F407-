@@ -425,7 +425,7 @@ void Task5_CircleMove(float R)
 
     printf("%f,%f\r\n",Vtarget_angle,feedback_angle);
 
-    time+=0.015;
+    time+=0.01;
     if(time>T)
     {
         time=0;
@@ -436,7 +436,7 @@ void Task5_CircleMove(float R)
     {
         sit = 1;
         VOutput = Taks5Pid.PIDControl(Vtarget_angle,absroll,&Taks5Pid);
-        LOutput = Taks5Pid2.PIDControl(Ltarget_angle,-abspitch,&Taks5Pid2);
+        LOutput = Taks5Pid2.PIDControl(Ltarget_angle,abspitch,&Taks5Pid2);
     }
     else if((wt<PI)&&(wt>PI/2)) //PI/2-PI
     {
@@ -448,7 +448,7 @@ void Task5_CircleMove(float R)
     {
         sit = 3;
         VOutput = Taks5Pid.PIDControl(Vtarget_angle,-absroll,&Taks5Pid);
-        LOutput = Taks5Pid2.PIDControl(Ltarget_angle,abspitch,&Taks5Pid2);
+        LOutput = Taks5Pid2.PIDControl(Ltarget_angle,-abspitch,&Taks5Pid2);
     }
     else if((wt<2*PI)&&(wt>3*PI/2)) //3PI/2-2PI
     {
