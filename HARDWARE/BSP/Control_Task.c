@@ -18,7 +18,7 @@
 #include <stm32f4xx_exti.h>
 #include <OLED.h>
 #include <math.h>
-
+#include <stdint.h>
 
 extern float pitch,roll,yaw,dis,def,polar,Opolar,absroll,abspitch;
 
@@ -68,6 +68,7 @@ void EXTI15_10_IRQHandler(void)
                 break;    
             
             case 3:
+            
                 Task3_AngleMove(Target_angle,Target_dis);
                 break;
 
@@ -113,10 +114,10 @@ void Task4_StopFast()
 
    
     static float Output;
-    static struct PID Taks4Pid={40000,0,-300,PidControl_Stop};
+    static struct PID Taks4Pid={38810,0,-300,PidControl_Stop};
     
     Output = Taks4Pid.PIDControl(TargetDis,dis, &Taks4Pid);
-    printf("Output:%f\n",Output);
+    //printf("Output:%f\n",Output);
     PWM_Allocation(Output);
   
 }
@@ -212,10 +213,6 @@ void Task3_AngleMove(float angle,float R)
     static struct PID Taks3Pid7={340,0,-90,PidControl_LineMove};
     static struct  PID Taks3Pid8={340,0,-90,PidControl_LineMove};
 
-    if((angle<81)&&(angle>79))
-    {
-        angle = 81;
-    }
     int a;
     if(angle>90)
     {   
@@ -255,9 +252,10 @@ void Task3_AngleMove(float angle,float R)
 
         a=1;
     }
-    else
+    else if(angle==90)
     {
         angle +=de[6];
+        a=1;
     }
     
    // angle = angle+5;
@@ -265,8 +263,6 @@ void Task3_AngleMove(float angle,float R)
 
     target_roll = atanf(R*cosf(angle)/0.86)/PI*180;
     target_pitch = atanf(R*sinf(angle)/0.86)/PI*180;
-	
-//	printf("%f,%f\r\n",A1,A2);
 
     float wt = 2*PI*(time/T);
 
@@ -418,11 +414,20 @@ void Task5_CircleMove(float R)
     static struct PID Taks5Pid={295,0,0,PidControl_LineMove};
     static struct PID Taks5Pid2={295,0,0,PidControl_LineMove};
     
-    if(R>=0.24)
+    if((R>=0.24)&&(R<=0.26))
     {
         R=0.24;
     }
+    else if((R>=0.29)&&(R<=0.31))
+    {
+        R=0.27;
+    }
+    else if((R>=0.34)&&(R<=0.36))
+    {
+        R=0.32;
+    }
     
+
     R += 0.05;
 
 
