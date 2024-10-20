@@ -36,7 +36,7 @@ int BSP_Init()
     Motor_PWM_TIM8_Init();
     printf("->Motor Init  done\n");
     OLED_Init();
-    OLED_Printf(0,0,OLED_8X16,"wiat for init");
+    OLED_Printf(0,0,OLED_8X16,"Wait for Initing");
     OLED_Update();
     printf("->OLED Init done\n");
     GPIO_Config(GPIOF, GPIO_Pin_0 | GPIO_Pin_1 | GPIO_Pin_2 | GPIO_Pin_3 | GPIO_Pin_4 | GPIO_Pin_5 | GPIO_Pin_6 | GPIO_Pin_7, GPIO_Mode_OUT, GPIO_PuPd_NOPULL);

@@ -54,7 +54,8 @@ extern uint8_t mode;
 */
 int main(void) 
 {
-    
+
+Init:
     /* 所有外设的初始化函数都在这个里面了  */
     if(BSP_Init())
     {
@@ -123,12 +124,17 @@ next:
             TIM_Cmd(TIM2,DISABLE);
             goto strat;
         }
-        
+        if((!pitch)&&(!roll))
+        {
+            OLED_Clear();
+            OLED_Printf(0,0,OLED_8X16,"MPU6050 error");
+            OLED_Printf(0,16,OLED_8X16,"please try again");
+            OLED_Update();
+            delay_ms(1000);
+            Reset_Handler();
+            
+        }
         OLED_Printf(0,0,OLED_6X8,"pitch:%f",pitch);
-        OLED_Printf(0,16,OLED_6X8,"roll:%f",roll);
-        OLED_Printf(0,32,OLED_6X8,"def:%f",def);
-        //printf("dis:%f  polar:%f\n",dis,polar);
-        //printf("%f,%f\r\n",roll,target_angle);
         OLED_Update();
     }
     
