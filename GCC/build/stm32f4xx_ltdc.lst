@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s 			page 1
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s 			page 1
   58 001a 9960     		str	r1, [r3, #8]
   59 001c D968     		ldr	r1, [r3, #12]
   60 001e 1140     		ands	r1, r1, r2
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s 			page 2
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s 			page 2
 
 
   61 0020 D960     		str	r1, [r3, #12]
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s 			page 1
  115              		.align	2
  116              	.L5:
  117 0098 00680140 		.word	1073833984
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s 			page 3
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s 			page 3
 
 
  118 009c 00F800F0 		.word	-268371968
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s 			page 1
  176 001c 00680140 		.word	1073833984
  178              		.section	.text.LTDC_DitherCmd,"ax",%progbits
  179              		.align	1
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s 			page 4
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s 			page 4
 
 
  180              		.global	LTDC_DitherCmd
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s 			page 1
  237 002c 00680140 		.word	1073833984
  238 0030 8F88FE0F 		.word	268339343
  240              		.section	.text.LTDC_RGBStructInit,"ax",%progbits
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s 			page 5
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s 			page 5
 
 
  241              		.align	1
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s 			page 1
  302              	LTDC_LayerInit:
  303              		@ args = 0, pretend = 0, frame = 0
  304              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s 			page 6
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s 			page 6
 
 
  305              		@ link register save eliminated.
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s 			page 1
  359 0082 43EA0243 		orr	r3, r3, r2, lsl #16
  360 0086 C362     		str	r3, [r0, #44]
  361 0088 036B     		ldr	r3, [r0, #48]
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s 			page 7
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s 			page 7
 
 
  362 008a 6FF30A03 		bfc	r3, #0, #11
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s 			page 1
  420 000e 23F00103 		bic	r3, r3, #1
  421 0012 0360     		str	r3, [r0]
  422 0014 7047     		bx	lr
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s 			page 8
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s 			page 8
 
 
  424              		.section	.text.LTDC_GetPosStatus,"ax",%progbits
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s 			page 1
  483 000a 7047     		bx	lr
  484              	.L41:
  485 000c 0020     		movs	r0, #0
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s 			page 9
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s 			page 9
 
 
  486 000e 7047     		bx	lr
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s 			page 1
  544              	LTDC_ColorKeyingStructInit:
  545              		@ args = 0, pretend = 0, frame = 0
  546              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s 			page 10
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s 			page 10
 
 
  547              		@ link register save eliminated.
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s 			page 1
  605 001a 7047     		bx	lr
  607              		.section	.text.LTDC_CLUTStructInit,"ax",%progbits
  608              		.align	1
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s 			page 11
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s 			page 11
 
 
  609              		.global	LTDC_CLUTStructInit
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s 			page 1
  666 0038 C36A     		ldr	r3, [r0, #44]
  667 003a C3F30C03 		ubfx	r3, r3, #0, #13
  668 003e 033B     		subs	r3, r3, #3
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s 			page 12
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s 			page 12
 
 
  669 0040 B3FBF1F3 		udiv	r3, r3, r1
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s 			page 1
  727 0000 8162     		str	r1, [r0, #40]
  728 0002 7047     		bx	lr
  730              		.section	.text.LTDC_LayerSize,"ax",%progbits
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s 			page 13
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s 			page 13
 
 
  731              		.align	1
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s 			page 1
  786 005c 4FF0020E 		mov	lr, #2
  787 0060 DAE7     		b	.L86
  788              	.L80:
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s 			page 14
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s 			page 14
 
 
  789 0062 4FF0020E 		mov	lr, #2
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s 			page 1
  845              	.L95:
  846 0034 0222     		movs	r2, #2
  847 0036 EDE7     		b	.L97
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s 			page 15
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s 			page 15
 
 
  848              	.L94:
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s 			page 1
  904 000e 536B     		ldr	r3, [r2, #52]
  905 0010 23EA0003 		bic	r3, r3, r0
  906 0014 5363     		str	r3, [r2, #52]
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s 			page 16
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s 			page 16
 
 
  907 0016 7047     		bx	lr
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s 			page 1
  967              		@ link register save eliminated.
  968 0000 0346     		mov	r3, r0
  969 0002 064A     		ldr	r2, .L126
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s 			page 17
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s 			page 17
 
 
  970 0004 926B     		ldr	r2, [r2, #56]
@@ -998,98 +998,98 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s 			page 1
  1006              	.L129:
  1007 0008 00680140 		.word	1073833984
  1009              		.ident	"GCC: (Arm GNU Toolchain 13.3.Rel1 (Build arm-13.24)) 13.3.1 20240614"
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s 			page 18
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s 			page 18
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 stm32f4xx_ltdc.c
-C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s:18     .text.LTDC_DeInit:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s:24     .text.LTDC_DeInit:00000000 LTDC_DeInit
-C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s:37     .text.LTDC_Init:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s:43     .text.LTDC_Init:00000000 LTDC_Init
-C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s:117    .text.LTDC_Init:00000098 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s:122    .text.LTDC_StructInit:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s:128    .text.LTDC_StructInit:00000000 LTDC_StructInit
-C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s:151    .text.LTDC_Cmd:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s:157    .text.LTDC_Cmd:00000000 LTDC_Cmd
-C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s:176    .text.LTDC_Cmd:0000001c $d
-C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s:179    .text.LTDC_DitherCmd:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s:185    .text.LTDC_DitherCmd:00000000 LTDC_DitherCmd
-C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s:204    .text.LTDC_DitherCmd:0000001c $d
-C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s:207    .text.LTDC_GetRGBWidth:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s:213    .text.LTDC_GetRGBWidth:00000000 LTDC_GetRGBWidth
-C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s:237    .text.LTDC_GetRGBWidth:0000002c $d
-C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s:241    .text.LTDC_RGBStructInit:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s:247    .text.LTDC_RGBStructInit:00000000 LTDC_RGBStructInit
-C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s:258    .text.LTDC_LIPConfig:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s:264    .text.LTDC_LIPConfig:00000000 LTDC_LIPConfig
-C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s:274    .text.LTDC_LIPConfig:00000008 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s:277    .text.LTDC_ReloadConfig:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s:283    .text.LTDC_ReloadConfig:00000000 LTDC_ReloadConfig
-C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s:293    .text.LTDC_ReloadConfig:00000008 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s:296    .text.LTDC_LayerInit:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s:302    .text.LTDC_LayerInit:00000000 LTDC_LayerInit
-C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s:370    .text.LTDC_LayerStructInit:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s:376    .text.LTDC_LayerStructInit:00000000 LTDC_LayerStructInit
-C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s:403    .text.LTDC_LayerCmd:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s:409    .text.LTDC_LayerCmd:00000000 LTDC_LayerCmd
-C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s:425    .text.LTDC_GetPosStatus:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s:431    .text.LTDC_GetPosStatus:00000000 LTDC_GetPosStatus
-C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s:449    .text.LTDC_GetPosStatus:00000018 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s:452    .text.LTDC_PosStructInit:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s:458    .text.LTDC_PosStructInit:00000000 LTDC_PosStructInit
-C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s:468    .text.LTDC_GetCDStatus:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s:474    .text.LTDC_GetCDStatus:00000000 LTDC_GetCDStatus
-C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s:490    .text.LTDC_GetCDStatus:00000010 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s:493    .text.LTDC_ColorKeyingConfig:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s:499    .text.LTDC_ColorKeyingConfig:00000000 LTDC_ColorKeyingConfig
-C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s:535    .text.LTDC_ColorKeyingConfig:00000044 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s:538    .text.LTDC_ColorKeyingStructInit:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s:544    .text.LTDC_ColorKeyingStructInit:00000000 LTDC_ColorKeyingStructInit
-C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s:555    .text.LTDC_CLUTCmd:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s:561    .text.LTDC_CLUTCmd:00000000 LTDC_CLUTCmd
-C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s:582    .text.LTDC_CLUTCmd:0000001c $d
-C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s:585    .text.LTDC_CLUTInit:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s:591    .text.LTDC_CLUTInit:00000000 LTDC_CLUTInit
-C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s:608    .text.LTDC_CLUTStructInit:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s:614    .text.LTDC_CLUTStructInit:00000000 LTDC_CLUTStructInit
-C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s:626    .text.LTDC_LayerPosition:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s:632    .text.LTDC_LayerPosition:00000000 LTDC_LayerPosition
-C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s:654    .text.LTDC_LayerPosition:0000002e $d
-C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s:662    .text.LTDC_LayerPosition:00000036 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s:700    .text.LTDC_LayerPosition:00000078 $d
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s 			page 19
+C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s:18     .text.LTDC_DeInit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s:24     .text.LTDC_DeInit:00000000 LTDC_DeInit
+C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s:37     .text.LTDC_Init:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s:43     .text.LTDC_Init:00000000 LTDC_Init
+C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s:117    .text.LTDC_Init:00000098 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s:122    .text.LTDC_StructInit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s:128    .text.LTDC_StructInit:00000000 LTDC_StructInit
+C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s:151    .text.LTDC_Cmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s:157    .text.LTDC_Cmd:00000000 LTDC_Cmd
+C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s:176    .text.LTDC_Cmd:0000001c $d
+C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s:179    .text.LTDC_DitherCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s:185    .text.LTDC_DitherCmd:00000000 LTDC_DitherCmd
+C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s:204    .text.LTDC_DitherCmd:0000001c $d
+C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s:207    .text.LTDC_GetRGBWidth:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s:213    .text.LTDC_GetRGBWidth:00000000 LTDC_GetRGBWidth
+C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s:237    .text.LTDC_GetRGBWidth:0000002c $d
+C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s:241    .text.LTDC_RGBStructInit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s:247    .text.LTDC_RGBStructInit:00000000 LTDC_RGBStructInit
+C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s:258    .text.LTDC_LIPConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s:264    .text.LTDC_LIPConfig:00000000 LTDC_LIPConfig
+C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s:274    .text.LTDC_LIPConfig:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s:277    .text.LTDC_ReloadConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s:283    .text.LTDC_ReloadConfig:00000000 LTDC_ReloadConfig
+C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s:293    .text.LTDC_ReloadConfig:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s:296    .text.LTDC_LayerInit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s:302    .text.LTDC_LayerInit:00000000 LTDC_LayerInit
+C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s:370    .text.LTDC_LayerStructInit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s:376    .text.LTDC_LayerStructInit:00000000 LTDC_LayerStructInit
+C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s:403    .text.LTDC_LayerCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s:409    .text.LTDC_LayerCmd:00000000 LTDC_LayerCmd
+C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s:425    .text.LTDC_GetPosStatus:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s:431    .text.LTDC_GetPosStatus:00000000 LTDC_GetPosStatus
+C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s:449    .text.LTDC_GetPosStatus:00000018 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s:452    .text.LTDC_PosStructInit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s:458    .text.LTDC_PosStructInit:00000000 LTDC_PosStructInit
+C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s:468    .text.LTDC_GetCDStatus:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s:474    .text.LTDC_GetCDStatus:00000000 LTDC_GetCDStatus
+C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s:490    .text.LTDC_GetCDStatus:00000010 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s:493    .text.LTDC_ColorKeyingConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s:499    .text.LTDC_ColorKeyingConfig:00000000 LTDC_ColorKeyingConfig
+C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s:535    .text.LTDC_ColorKeyingConfig:00000044 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s:538    .text.LTDC_ColorKeyingStructInit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s:544    .text.LTDC_ColorKeyingStructInit:00000000 LTDC_ColorKeyingStructInit
+C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s:555    .text.LTDC_CLUTCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s:561    .text.LTDC_CLUTCmd:00000000 LTDC_CLUTCmd
+C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s:582    .text.LTDC_CLUTCmd:0000001c $d
+C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s:585    .text.LTDC_CLUTInit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s:591    .text.LTDC_CLUTInit:00000000 LTDC_CLUTInit
+C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s:608    .text.LTDC_CLUTStructInit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s:614    .text.LTDC_CLUTStructInit:00000000 LTDC_CLUTStructInit
+C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s:626    .text.LTDC_LayerPosition:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s:632    .text.LTDC_LayerPosition:00000000 LTDC_LayerPosition
+C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s:654    .text.LTDC_LayerPosition:0000002e $d
+C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s:662    .text.LTDC_LayerPosition:00000036 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s:700    .text.LTDC_LayerPosition:00000078 $d
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s 			page 19
 
 
-C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s:703    .text.LTDC_LayerAlpha:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s:709    .text.LTDC_LayerAlpha:00000000 LTDC_LayerAlpha
-C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s:717    .text.LTDC_LayerAddress:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s:723    .text.LTDC_LayerAddress:00000000 LTDC_LayerAddress
-C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s:731    .text.LTDC_LayerSize:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s:737    .text.LTDC_LayerSize:00000000 LTDC_LayerSize
-C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s:746    .text.LTDC_LayerSize:0000000c $d
-C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s:754    .text.LTDC_LayerSize:00000014 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s:796    .text.LTDC_LayerPixelFormat:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s:802    .text.LTDC_LayerPixelFormat:00000000 LTDC_LayerPixelFormat
-C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s:811    .text.LTDC_LayerPixelFormat:0000000a $d
-C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s:819    .text.LTDC_LayerPixelFormat:00000012 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s:830    .text.LTDC_LayerPixelFormat:00000024 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s:838    .text.LTDC_LayerPixelFormat:0000002c $t
-C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s:886    .text.LTDC_ITConfig:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s:892    .text.LTDC_ITConfig:00000000 LTDC_ITConfig
-C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s:911    .text.LTDC_ITConfig:00000018 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s:914    .text.LTDC_GetFlagStatus:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s:920    .text.LTDC_GetFlagStatus:00000000 LTDC_GetFlagStatus
-C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s:936    .text.LTDC_GetFlagStatus:00000010 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s:939    .text.LTDC_ClearFlag:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s:945    .text.LTDC_ClearFlag:00000000 LTDC_ClearFlag
-C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s:955    .text.LTDC_ClearFlag:00000008 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s:958    .text.LTDC_GetITStatus:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s:964    .text.LTDC_GetITStatus:00000000 LTDC_GetITStatus
-C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s:988    .text.LTDC_GetITStatus:0000001c $d
-C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s:991    .text.LTDC_ClearITPendingBit:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s:997    .text.LTDC_ClearITPendingBit:00000000 LTDC_ClearITPendingBit
-C:\Users\ktkuru\AppData\Local\Temp\ccFEbQTh.s:1007   .text.LTDC_ClearITPendingBit:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s:703    .text.LTDC_LayerAlpha:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s:709    .text.LTDC_LayerAlpha:00000000 LTDC_LayerAlpha
+C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s:717    .text.LTDC_LayerAddress:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s:723    .text.LTDC_LayerAddress:00000000 LTDC_LayerAddress
+C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s:731    .text.LTDC_LayerSize:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s:737    .text.LTDC_LayerSize:00000000 LTDC_LayerSize
+C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s:746    .text.LTDC_LayerSize:0000000c $d
+C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s:754    .text.LTDC_LayerSize:00000014 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s:796    .text.LTDC_LayerPixelFormat:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s:802    .text.LTDC_LayerPixelFormat:00000000 LTDC_LayerPixelFormat
+C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s:811    .text.LTDC_LayerPixelFormat:0000000a $d
+C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s:819    .text.LTDC_LayerPixelFormat:00000012 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s:830    .text.LTDC_LayerPixelFormat:00000024 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s:838    .text.LTDC_LayerPixelFormat:0000002c $t
+C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s:886    .text.LTDC_ITConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s:892    .text.LTDC_ITConfig:00000000 LTDC_ITConfig
+C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s:911    .text.LTDC_ITConfig:00000018 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s:914    .text.LTDC_GetFlagStatus:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s:920    .text.LTDC_GetFlagStatus:00000000 LTDC_GetFlagStatus
+C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s:936    .text.LTDC_GetFlagStatus:00000010 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s:939    .text.LTDC_ClearFlag:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s:945    .text.LTDC_ClearFlag:00000000 LTDC_ClearFlag
+C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s:955    .text.LTDC_ClearFlag:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s:958    .text.LTDC_GetITStatus:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s:964    .text.LTDC_GetITStatus:00000000 LTDC_GetITStatus
+C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s:988    .text.LTDC_GetITStatus:0000001c $d
+C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s:991    .text.LTDC_ClearITPendingBit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s:997    .text.LTDC_ClearITPendingBit:00000000 LTDC_ClearITPendingBit
+C:\Users\ktkuru\AppData\Local\Temp\cc96XjnX.s:1007   .text.LTDC_ClearITPendingBit:00000008 $d
 
 UNDEFINED SYMBOLS
 RCC_APB2PeriphResetCmd

@@ -30,7 +30,8 @@
         "string.h": "c",
         "myiic.h": "c",
         "stdarg.h": "c",
-        "math.h": "c"
+        "math.h": "c",
+        "hmi.h": "c"
     },
     "files.encoding": "utf8",
     "C_Cpp.errorSquiggles": "enabled",

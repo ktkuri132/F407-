@@ -22,7 +22,7 @@ GCC/build/usart.o: SYSTEM/usart/usart.c SYSTEM/sys/sys.h USER/stm32f4xx.h \
  HARDWARE/OLED_SPI/OLED_Data.h SYSTEM/usart/usart.h \
  HARDWARE/CONTROL/control.h HARDWARE/MPU6050/mpu6050.h \
  HARDWARE/IIC/myiic.h HARDWARE/MPU6050/eMPL/inv_mpu.h \
- SYSTEM/delay/delay.h
+ SYSTEM/delay/delay.h HARDWARE/HMI/hmi.h
 SYSTEM/sys/sys.h:
 USER/stm32f4xx.h:
 CORE/core_cm4.h:
@@ -68,3 +68,4 @@ HARDWARE/MPU6050/mpu6050.h:
 HARDWARE/IIC/myiic.h:
 HARDWARE/MPU6050/eMPL/inv_mpu.h:
 SYSTEM/delay/delay.h:
+HARDWARE/HMI/hmi.h:

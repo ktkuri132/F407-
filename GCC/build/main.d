@@ -23,7 +23,7 @@ GCC/build/main.o: USER/main.c USER/stm32f4xx.h CORE/core_cm4.h \
  SYSTEM/usart/usart.h USER/stm32f4xx_conf.h SYSTEM/sys/sys.h \
  HARDWARE/CONTROL/control.h HARDWARE/MPU6050/mpu6050.h \
  HARDWARE/IIC/myiic.h HARDWARE/MPU6050/eMPL/inv_mpu.h \
- SYSTEM/delay/delay.h SYSTEM/shell/shell.h
+ SYSTEM/delay/delay.h HARDWARE/HMI/hmi.h SYSTEM/shell/shell.h
 USER/stm32f4xx.h:
 CORE/core_cm4.h:
 CORE/core_cmInstr.h:
@@ -69,4 +69,5 @@ HARDWARE/MPU6050/mpu6050.h:
 HARDWARE/IIC/myiic.h:
 HARDWARE/MPU6050/eMPL/inv_mpu.h:
 SYSTEM/delay/delay.h:
+HARDWARE/HMI/hmi.h:
 SYSTEM/shell/shell.h:

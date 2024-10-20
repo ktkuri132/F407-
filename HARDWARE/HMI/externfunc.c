@@ -1,0 +1,174 @@
+#include <hmi.h>
+
+extern uint8_t mode;
+extern uint16_t Res;
+extern float Target_dis,Target_angle,target_R;
+
+//通用串口屏协议
+void HMI_ResCheck()
+{
+    /************初始页面选择模式*********** */
+    switch (Res)
+    {
+        case 0x31:  //进入模式1-2
+        {
+            mode = 1;
+        }break;
+
+        case 0x33:  //进入模式3
+        {
+            mode = 3;
+        }break;
+        
+        case 0x34:  //进入模式4
+        {
+            mode = 4;
+        }break;
+
+        case 0x35:  //进入模式5
+        {
+            mode = 5;
+        }break;
+
+        default:break;
+    }
+
+}
+
+
+
+void HMI_Mode1_2()
+{
+    char buf[50];
+    if(mode==1)
+    {
+        switch (Res)
+        {
+            case 0x41:  //半径增加
+            {
+                Target_dis += 0.05;
+                sprintf(buf,"page1.n0.val=\"%d\"",(uint16_t)(Target_dis*100));
+                HMISends(USART_PORT_2,buf);		
+                HMISendb(USART_PORT_2,0xff);
+            }break;
+            
+            case 0x42:  //半径减小
+            {
+                Target_dis -= 0.05;
+                sprintf(buf,"page1.n0.val=\"%d\"",(uint16_t)(Target_dis*100));
+                HMISends(USART_PORT_2,buf);		
+                HMISendb(USART_PORT_2,0xff);
+            }break;
+                
+            case 0x43:  //返回初始页面
+            {
+                mode = 0;
+            }break;
+            
+            default:
+                break;
+        }
+    }
+}
+
+void HMI_Mode3()
+{
+    char buf[50];
+    if(mode==3)
+    {
+        switch (Res)
+        {
+            case 0x51:  //角度增加
+            {
+                Target_angle += 5;
+                sprintf(buf,"page2.n0.val=\"%d\"",(uint16_t)Target_angle);
+                HMISends(USART_PORT_2,buf);		
+                HMISendb(USART_PORT_2,0xff);
+            }break;
+            
+            case 0x52:  //角度减小
+            {
+                Target_angle -= 5;
+                sprintf(buf,"page2.n0.val=\"%d\"",(uint16_t)Target_angle);
+                HMISends(USART_PORT_2,buf);		
+                HMISendb(USART_PORT_2,0xff);
+            }break;
+                
+            case 0x53:  //半径增加
+            {
+                Target_dis += 0.05;
+                sprintf(buf,"page2.n1.val=\"%d\"",(uint16_t)(Target_dis*100));
+                HMISends(USART_PORT_2,buf);		
+                HMISendb(USART_PORT_2,0xff);
+            }break;
+
+            case 0x54:  //半径减小
+            {
+                Target_dis -= 0.05;
+                sprintf(buf,"page2.n1.val=\"%d\"",(uint16_t)(Target_dis*100));
+                HMISends(USART_PORT_2,buf);		
+                HMISendb(USART_PORT_2,0xff);
+            }break;
+
+            case 0x55:  //返回初始页面
+            {
+                mode=0;
+            }break;
+            
+            default:
+                break;
+        }
+    }
+}
+
+
+void HMI_Mode4()
+{
+    if(mode==4)
+    {
+        switch (Res)
+        {
+            case 0x71:  //返回初始页面
+            {
+                mode=0;
+            }break;
+            
+            default:
+                break;
+        }
+    }
+}
+
+void HMI_Mode5()
+{
+    char buf[50];
+    if(mode==5)
+    {
+        switch (Res)
+        {
+            case 0x61:  //半径增加
+            {
+                target_R += 0.05;
+                sprintf(buf,"page4.n0.val=\"%d\"",(uint16_t)(target_R*100));
+                HMISends(USART_PORT_2,buf);		
+                HMISendb(USART_PORT_2,0xff);
+            }break;
+            
+            case 0x62:  //半径减小
+            {
+                target_R -= 0.05;
+                sprintf(buf,"page4.n0.val=\"%d\"",(uint16_t)(target_R*100));
+                HMISends(USART_PORT_2,buf);		
+                HMISendb(USART_PORT_2,0xff);
+            }break;
+
+            case 0x63:  //返回初始页面
+            {
+                mode=0;
+            }break;
+
+            default:
+                break;
+        }
+    }
+}

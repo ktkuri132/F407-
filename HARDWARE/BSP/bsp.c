@@ -27,6 +27,8 @@ int BSP_Init()
     printf("peripheral init start......\n");
     delay_init(84);
     printf("->Delay Init done\n");
+    HMISendstart(USART2);
+    printf("->HMI Init done\n");
     BSP_NVIC_IT_Config();
     printf("->NVIC Init  done\n");
 	LED_Init();

@@ -11,6 +11,7 @@
 #include <inv_mpu.h>
 #include <stm32f4xx_exti.h>
 #include <delay.h>
+#include <hmi.h>
 
 extern uint8_t mode;
 

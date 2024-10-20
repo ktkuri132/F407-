@@ -21,7 +21,7 @@ GCC/build/bsp.o: HARDWARE/BSP/bsp.c HARDWARE/BSP/bsp.h \
  STM32F4xx_FWLib/inc/stm32f4xx_fsmc.h SYSTEM/usart/usart.h \
  USER/stm32f4xx_conf.h SYSTEM/sys/sys.h HARDWARE/CONTROL/control.h \
  HARDWARE/MPU6050/mpu6050.h HARDWARE/IIC/myiic.h \
- HARDWARE/MPU6050/eMPL/inv_mpu.h SYSTEM/delay/delay.h
+ HARDWARE/MPU6050/eMPL/inv_mpu.h SYSTEM/delay/delay.h HARDWARE/HMI/hmi.h
 HARDWARE/BSP/bsp.h:
 HARDWARE/OLED_SPI/OLED.h:
 HARDWARE/OLED_SPI/OLED_Data.h:
@@ -66,3 +66,4 @@ HARDWARE/MPU6050/mpu6050.h:
 HARDWARE/IIC/myiic.h:
 HARDWARE/MPU6050/eMPL/inv_mpu.h:
 SYSTEM/delay/delay.h:
+HARDWARE/HMI/hmi.h:

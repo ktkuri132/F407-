@@ -191,6 +191,8 @@ void USART1_IRQHandler(void)
 } 
 
 
+#ifndef __HMI_H_
+
 void SendTo429(uint16_t *dataf)
 {
 	USART_Send_Data(USART1,0x01);	//ÆðÊ¼Ö¡
@@ -254,5 +256,5 @@ void USART_Send_String(USART_TypeDef *USARTx,char *String)
 	}
 }
 
-
+#endif
 
