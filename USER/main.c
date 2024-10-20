@@ -128,10 +128,10 @@ next:
         {
             OLED_Clear();
             OLED_Printf(0,0,OLED_8X16,"MPU6050 error");
-            OLED_Printf(0,16,OLED_8X16,"please try again");
+            OLED_Printf(0,16,OLED_8X16,"Trying to Reset");
             OLED_Update();
             delay_ms(1000);
-            Reset_Handler();
+            return ;
             
         }
         OLED_Printf(0,0,OLED_6X8,"pitch:%f",pitch);

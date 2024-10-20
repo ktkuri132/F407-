@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cctlUIkE.s 			page 1
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccP0FiUj.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -52,259 +52,229 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cctlUIkE.s 			page 1
   32      7200
   33 005e 0000     		.align	2
   34              	.LC5:
-  35 0060 706C6561 		.ascii	"please try again\000"
-  35      73652074 
-  35      72792061 
-  35      6761696E 
-  35      00
-  36 0071 000000   		.align	2
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cctlUIkE.s 			page 2
-
-
+  35 0060 54727969 		.ascii	"Trying to Reset\000"
+  35      6E672074 
+  35      6F205265 
+  35      73657400 
+  36              		.align	2
   37              	.LC6:
-  38 0074 70697463 		.ascii	"pitch:%f\000"
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccP0FiUj.s 			page 2
+
+
+  38 0070 70697463 		.ascii	"pitch:%f\000"
   38      683A2566 
   38      00
   39              		.global	__aeabi_f2d
-  40 007d 000000   		.align	2
-  41              	.LC7:
-  42 0080 726F6C6C 		.ascii	"roll:%f\000"
-  42      3A256600 
-  43              		.align	2
-  44              	.LC8:
-  45 0088 6465663A 		.ascii	"def:%f\000"
-  45      256600
-  46              		.section	.text.main,"ax",%progbits
-  47              		.align	1
-  48              		.global	main
-  49              		.syntax unified
-  50              		.thumb
-  51              		.thumb_func
-  53              	main:
-  54              		@ Volatile: function does not return.
-  55              		@ args = 0, pretend = 0, frame = 0
-  56              		@ frame_needed = 0, uses_anonymous_args = 0
-  57 0000 00B5     		push	{lr}
-  58 0002 83B0     		sub	sp, sp, #12
-  59              	.L2:
-  60 0004 FFF7FEFF 		bl	BSP_Init
-  61 0008 28B1     		cbz	r0, .L3
-  62 000a 4B48     		ldr	r0, .L15
-  63 000c FFF7FEFF 		bl	puts
-  64              	.L4:
-  65 0010 FFF7FEFF 		bl	OLED_Clear
-  66 0014 17E0     		b	.L5
-  67              	.L3:
-  68 0016 4948     		ldr	r0, .L15+4
-  69 0018 FFF7FEFF 		bl	puts
-  70 001c F8E7     		b	.L4
-  71              	.L13:
-  72 001e 0121     		movs	r1, #1
-  73 0020 4FF08040 		mov	r0, #1073741824
-  74 0024 FFF7FEFF 		bl	TIM_Cmd
-  75 0028 2DE0     		b	.L7
-  76              	.L14:
-  77 002a 454B     		ldr	r3, .L15+8
-  78 002c D3ED000A 		vldr.32	s1, [r3]
-  79 0030 444B     		ldr	r3, .L15+12
-  80 0032 93ED000A 		vldr.32	s0, [r3]
-  81 0036 FFF7FEFF 		bl	MotorState
-  82 003a 51E0     		b	.L8
-  83              	.L9:
-  84 003c 0021     		movs	r1, #0
-  85 003e 4FF08040 		mov	r0, #1073741824
-  86 0042 FFF7FEFF 		bl	TIM_Cmd
-  87              	.L5:
-  88 0046 FFF7FEFF 		bl	OLED_Clear
-  89              	.L6:
-  90 004a 3F4B     		ldr	r3, .L15+16
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cctlUIkE.s 			page 3
+  40              		.section	.text.main,"ax",%progbits
+  41              		.align	1
+  42              		.global	main
+  43              		.syntax unified
+  44              		.thumb
+  45              		.thumb_func
+  47              	main:
+  48              		@ args = 0, pretend = 0, frame = 0
+  49              		@ frame_needed = 0, uses_anonymous_args = 0
+  50 0000 00B5     		push	{lr}
+  51 0002 83B0     		sub	sp, sp, #12
+  52              	.L2:
+  53 0004 FFF7FEFF 		bl	BSP_Init
+  54 0008 28B1     		cbz	r0, .L3
+  55 000a 3F48     		ldr	r0, .L17
+  56 000c FFF7FEFF 		bl	puts
+  57              	.L4:
+  58 0010 FFF7FEFF 		bl	OLED_Clear
+  59 0014 17E0     		b	.L5
+  60              	.L3:
+  61 0016 3D48     		ldr	r0, .L17+4
+  62 0018 FFF7FEFF 		bl	puts
+  63 001c F8E7     		b	.L4
+  64              	.L15:
+  65 001e 0121     		movs	r1, #1
+  66 0020 4FF08040 		mov	r0, #1073741824
+  67 0024 FFF7FEFF 		bl	TIM_Cmd
+  68 0028 2DE0     		b	.L7
+  69              	.L16:
+  70 002a 394B     		ldr	r3, .L17+8
+  71 002c D3ED000A 		vldr.32	s1, [r3]
+  72 0030 384B     		ldr	r3, .L17+12
+  73 0032 93ED000A 		vldr.32	s0, [r3]
+  74 0036 FFF7FEFF 		bl	MotorState
+  75 003a 39E0     		b	.L8
+  76              	.L9:
+  77 003c 0021     		movs	r1, #0
+  78 003e 4FF08040 		mov	r0, #1073741824
+  79 0042 FFF7FEFF 		bl	TIM_Cmd
+  80              	.L5:
+  81 0046 FFF7FEFF 		bl	OLED_Clear
+  82              	.L6:
+  83 004a 334B     		ldr	r3, .L17+16
+  84 004c 0822     		movs	r2, #8
+  85 004e 0021     		movs	r1, #0
+  86 0050 0846     		mov	r0, r1
+  87 0052 FFF7FEFF 		bl	OLED_Printf
+  88 0056 FFF7FEFF 		bl	OLED_Update
+  89 005a 4FF4FA70 		mov	r0, #500
+  90 005e FFF7FEFF 		bl	delay_ms
+  91 0062 2E4B     		ldr	r3, .L17+20
+  92 0064 0822     		movs	r2, #8
+  93 0066 0021     		movs	r1, #0
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccP0FiUj.s 			page 3
 
 
-  91 004c 0822     		movs	r2, #8
-  92 004e 0021     		movs	r1, #0
-  93 0050 0846     		mov	r0, r1
-  94 0052 FFF7FEFF 		bl	OLED_Printf
-  95 0056 FFF7FEFF 		bl	OLED_Update
-  96 005a 4FF4FA70 		mov	r0, #500
-  97 005e FFF7FEFF 		bl	delay_ms
-  98 0062 3A4B     		ldr	r3, .L15+20
-  99 0064 0822     		movs	r2, #8
- 100 0066 0021     		movs	r1, #0
- 101 0068 0846     		mov	r0, r1
- 102 006a FFF7FEFF 		bl	OLED_Printf
- 103 006e FFF7FEFF 		bl	OLED_Update
- 104 0072 4FF4FA70 		mov	r0, #500
- 105 0076 FFF7FEFF 		bl	delay_ms
- 106 007a 354B     		ldr	r3, .L15+24
- 107 007c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 108 007e 002B     		cmp	r3, #0
- 109 0080 E3D0     		beq	.L6
- 110 0082 052B     		cmp	r3, #5
- 111 0084 CBD0     		beq	.L13
- 112              	.L7:
- 113 0086 FFF7FEFF 		bl	OLED_Clear
- 114 008a 25E0     		b	.L11
- 115              	.L10:
- 116 008c 2D4B     		ldr	r3, .L15+12
- 117 008e 1868     		ldr	r0, [r3]	@ float
- 118 0090 FFF7FEFF 		bl	__aeabi_f2d
- 119 0094 CDE90001 		strd	r0, [sp]
- 120 0098 2E4B     		ldr	r3, .L15+28
- 121 009a 0622     		movs	r2, #6
- 122 009c 0021     		movs	r1, #0
- 123 009e 0846     		mov	r0, r1
- 124 00a0 FFF7FEFF 		bl	OLED_Printf
- 125 00a4 264B     		ldr	r3, .L15+8
- 126 00a6 1868     		ldr	r0, [r3]	@ float
- 127 00a8 FFF7FEFF 		bl	__aeabi_f2d
- 128 00ac CDE90001 		strd	r0, [sp]
- 129 00b0 294B     		ldr	r3, .L15+32
- 130 00b2 0622     		movs	r2, #6
- 131 00b4 1021     		movs	r1, #16
- 132 00b6 0020     		movs	r0, #0
- 133 00b8 FFF7FEFF 		bl	OLED_Printf
- 134 00bc 274B     		ldr	r3, .L15+36
- 135 00be 1868     		ldr	r0, [r3]	@ float
- 136 00c0 FFF7FEFF 		bl	__aeabi_f2d
- 137 00c4 CDE90001 		strd	r0, [sp]
- 138 00c8 254B     		ldr	r3, .L15+40
- 139 00ca 0622     		movs	r2, #6
- 140 00cc 2021     		movs	r1, #32
- 141 00ce 0020     		movs	r0, #0
- 142 00d0 FFF7FEFF 		bl	OLED_Printf
- 143 00d4 FFF7FEFF 		bl	OLED_Update
- 144              	.L11:
- 145 00d8 1D4B     		ldr	r3, .L15+24
- 146 00da 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 147 00dc 042B     		cmp	r3, #4
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cctlUIkE.s 			page 4
+  94 0068 0846     		mov	r0, r1
+  95 006a FFF7FEFF 		bl	OLED_Printf
+  96 006e FFF7FEFF 		bl	OLED_Update
+  97 0072 4FF4FA70 		mov	r0, #500
+  98 0076 FFF7FEFF 		bl	delay_ms
+  99 007a 294B     		ldr	r3, .L17+24
+ 100 007c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 101 007e 002B     		cmp	r3, #0
+ 102 0080 E3D0     		beq	.L6
+ 103 0082 052B     		cmp	r3, #5
+ 104 0084 CBD0     		beq	.L15
+ 105              	.L7:
+ 106 0086 FFF7FEFF 		bl	OLED_Clear
+ 107 008a 0DE0     		b	.L11
+ 108              	.L10:
+ 109 008c 17EE900A 		vmov	r0, s15
+ 110 0090 FFF7FEFF 		bl	__aeabi_f2d
+ 111 0094 CDE90001 		strd	r0, [sp]
+ 112 0098 224B     		ldr	r3, .L17+28
+ 113 009a 0622     		movs	r2, #6
+ 114 009c 0021     		movs	r1, #0
+ 115 009e 0846     		mov	r0, r1
+ 116 00a0 FFF7FEFF 		bl	OLED_Printf
+ 117 00a4 FFF7FEFF 		bl	OLED_Update
+ 118              	.L11:
+ 119 00a8 1D4B     		ldr	r3, .L17+24
+ 120 00aa 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 121 00ac 042B     		cmp	r3, #4
+ 122 00ae BCD0     		beq	.L16
+ 123              	.L8:
+ 124 00b0 1B4B     		ldr	r3, .L17+24
+ 125 00b2 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 126 00b4 002B     		cmp	r3, #0
+ 127 00b6 C1D0     		beq	.L9
+ 128 00b8 164B     		ldr	r3, .L17+12
+ 129 00ba D3ED007A 		vldr.32	s15, [r3]
+ 130 00be F5EE407A 		vcmp.f32	s15, #0
+ 131 00c2 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 132 00c6 E1D1     		bne	.L10
+ 133 00c8 114B     		ldr	r3, .L17+8
+ 134 00ca 93ED007A 		vldr.32	s14, [r3]
+ 135 00ce B5EE407A 		vcmp.f32	s14, #0
+ 136 00d2 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 137 00d6 D9D1     		bne	.L10
+ 138 00d8 FFF7FEFF 		bl	OLED_Clear
+ 139 00dc 124B     		ldr	r3, .L17+32
+ 140 00de 0822     		movs	r2, #8
+ 141 00e0 0021     		movs	r1, #0
+ 142 00e2 0846     		mov	r0, r1
+ 143 00e4 FFF7FEFF 		bl	OLED_Printf
+ 144 00e8 104B     		ldr	r3, .L17+36
+ 145 00ea 0822     		movs	r2, #8
+ 146 00ec 1021     		movs	r1, #16
+ 147 00ee 0020     		movs	r0, #0
+ 148 00f0 FFF7FEFF 		bl	OLED_Printf
+ 149 00f4 FFF7FEFF 		bl	OLED_Update
+ 150 00f8 4FF47A70 		mov	r0, #1000
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccP0FiUj.s 			page 4
 
 
- 148 00de A4D0     		beq	.L14
- 149              	.L8:
- 150 00e0 1B4B     		ldr	r3, .L15+24
- 151 00e2 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 152 00e4 002B     		cmp	r3, #0
- 153 00e6 A9D0     		beq	.L9
- 154 00e8 164B     		ldr	r3, .L15+12
- 155 00ea D3ED007A 		vldr.32	s15, [r3]
- 156 00ee F5EE407A 		vcmp.f32	s15, #0
- 157 00f2 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
- 158 00f6 C9D1     		bne	.L10
- 159 00f8 114B     		ldr	r3, .L15+8
- 160 00fa D3ED007A 		vldr.32	s15, [r3]
- 161 00fe F5EE407A 		vcmp.f32	s15, #0
- 162 0102 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
- 163 0106 C1D1     		bne	.L10
- 164 0108 FFF7FEFF 		bl	OLED_Clear
- 165 010c 154B     		ldr	r3, .L15+44
- 166 010e 0822     		movs	r2, #8
- 167 0110 0021     		movs	r1, #0
- 168 0112 0846     		mov	r0, r1
- 169 0114 FFF7FEFF 		bl	OLED_Printf
- 170 0118 134B     		ldr	r3, .L15+48
- 171 011a 0822     		movs	r2, #8
- 172 011c 1021     		movs	r1, #16
- 173 011e 0020     		movs	r0, #0
- 174 0120 FFF7FEFF 		bl	OLED_Printf
- 175 0124 FFF7FEFF 		bl	OLED_Update
- 176 0128 4FF47A70 		mov	r0, #1000
- 177 012c FFF7FEFF 		bl	delay_ms
- 178 0130 FFF7FEFF 		bl	Reset_Handler
- 179 0134 AAE7     		b	.L10
- 180              	.L16:
- 181 0136 00BF     		.align	2
- 182              	.L15:
- 183 0138 00000000 		.word	.LC0
- 184 013c 18000000 		.word	.LC1
- 185 0140 00000000 		.word	roll
- 186 0144 00000000 		.word	pitch
- 187 0148 30000000 		.word	.LC2
- 188 014c 40000000 		.word	.LC3
- 189 0150 00000000 		.word	mode
- 190 0154 74000000 		.word	.LC6
- 191 0158 80000000 		.word	.LC7
- 192 015c 00000000 		.word	def
- 193 0160 88000000 		.word	.LC8
- 194 0164 50000000 		.word	.LC4
- 195 0168 60000000 		.word	.LC5
- 197              		.global	abspitch
- 198              		.section	.bss.abspitch,"aw",%nobits
- 199              		.align	2
- 202              	abspitch:
- 203 0000 00000000 		.space	4
- 204              		.global	absroll
- 205              		.section	.bss.absroll,"aw",%nobits
- 206              		.align	2
- 209              	absroll:
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cctlUIkE.s 			page 5
+ 151 00fc FFF7FEFF 		bl	delay_ms
+ 152 0100 0020     		movs	r0, #0
+ 153 0102 03B0     		add	sp, sp, #12
+ 154              		@ sp needed
+ 155 0104 5DF804FB 		ldr	pc, [sp], #4
+ 156              	.L18:
+ 157              		.align	2
+ 158              	.L17:
+ 159 0108 00000000 		.word	.LC0
+ 160 010c 18000000 		.word	.LC1
+ 161 0110 00000000 		.word	roll
+ 162 0114 00000000 		.word	pitch
+ 163 0118 30000000 		.word	.LC2
+ 164 011c 40000000 		.word	.LC3
+ 165 0120 00000000 		.word	mode
+ 166 0124 70000000 		.word	.LC6
+ 167 0128 50000000 		.word	.LC4
+ 168 012c 60000000 		.word	.LC5
+ 170              		.global	abspitch
+ 171              		.section	.bss.abspitch,"aw",%nobits
+ 172              		.align	2
+ 175              	abspitch:
+ 176 0000 00000000 		.space	4
+ 177              		.global	absroll
+ 178              		.section	.bss.absroll,"aw",%nobits
+ 179              		.align	2
+ 182              	absroll:
+ 183 0000 00000000 		.space	4
+ 184              		.global	Opolar
+ 185              		.section	.bss.Opolar,"aw",%nobits
+ 186              		.align	2
+ 189              	Opolar:
+ 190 0000 00000000 		.space	4
+ 191              		.global	polar
+ 192              		.section	.bss.polar,"aw",%nobits
+ 193              		.align	2
+ 196              	polar:
+ 197 0000 00000000 		.space	4
+ 198              		.global	dis
+ 199              		.section	.bss.dis,"aw",%nobits
+ 200              		.align	2
+ 203              	dis:
+ 204 0000 00000000 		.space	4
+ 205              		.global	def
+ 206              		.section	.bss.def,"aw",%nobits
+ 207              		.align	2
+ 210              	def:
+ 211 0000 00000000 		.space	4
+ 212              		.global	yaw
+ 213              		.section	.bss.yaw,"aw",%nobits
+ 214              		.align	2
+ 217              	yaw:
+ 218 0000 00000000 		.space	4
+ 219              		.global	roll
+ 220              		.section	.bss.roll,"aw",%nobits
+ 221              		.align	2
+ 224              	roll:
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccP0FiUj.s 			page 5
 
 
- 210 0000 00000000 		.space	4
- 211              		.global	Opolar
- 212              		.section	.bss.Opolar,"aw",%nobits
- 213              		.align	2
- 216              	Opolar:
- 217 0000 00000000 		.space	4
- 218              		.global	polar
- 219              		.section	.bss.polar,"aw",%nobits
- 220              		.align	2
- 223              	polar:
- 224 0000 00000000 		.space	4
- 225              		.global	dis
- 226              		.section	.bss.dis,"aw",%nobits
- 227              		.align	2
- 230              	dis:
- 231 0000 00000000 		.space	4
- 232              		.global	def
- 233              		.section	.bss.def,"aw",%nobits
- 234              		.align	2
- 237              	def:
- 238 0000 00000000 		.space	4
- 239              		.global	yaw
- 240              		.section	.bss.yaw,"aw",%nobits
- 241              		.align	2
- 244              	yaw:
- 245 0000 00000000 		.space	4
- 246              		.global	roll
- 247              		.section	.bss.roll,"aw",%nobits
- 248              		.align	2
- 251              	roll:
- 252 0000 00000000 		.space	4
- 253              		.global	pitch
- 254              		.section	.bss.pitch,"aw",%nobits
- 255              		.align	2
- 258              	pitch:
- 259 0000 00000000 		.space	4
- 260              		.ident	"GCC: (Arm GNU Toolchain 13.3.Rel1 (Build arm-13.24)) 13.3.1 20240614"
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cctlUIkE.s 			page 6
+ 225 0000 00000000 		.space	4
+ 226              		.global	pitch
+ 227              		.section	.bss.pitch,"aw",%nobits
+ 228              		.align	2
+ 231              	pitch:
+ 232 0000 00000000 		.space	4
+ 233              		.ident	"GCC: (Arm GNU Toolchain 13.3.Rel1 (Build arm-13.24)) 13.3.1 20240614"
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccP0FiUj.s 			page 6
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 main.c
-C:\Users\ktkuru\AppData\Local\Temp\cctlUIkE.s:18     .rodata.main.str1.4:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\cctlUIkE.s:47     .text.main:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\cctlUIkE.s:53     .text.main:00000000 main
-C:\Users\ktkuru\AppData\Local\Temp\cctlUIkE.s:183    .text.main:00000138 $d
-C:\Users\ktkuru\AppData\Local\Temp\cctlUIkE.s:251    .bss.roll:00000000 roll
-C:\Users\ktkuru\AppData\Local\Temp\cctlUIkE.s:258    .bss.pitch:00000000 pitch
-C:\Users\ktkuru\AppData\Local\Temp\cctlUIkE.s:237    .bss.def:00000000 def
-C:\Users\ktkuru\AppData\Local\Temp\cctlUIkE.s:202    .bss.abspitch:00000000 abspitch
-C:\Users\ktkuru\AppData\Local\Temp\cctlUIkE.s:199    .bss.abspitch:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\cctlUIkE.s:209    .bss.absroll:00000000 absroll
-C:\Users\ktkuru\AppData\Local\Temp\cctlUIkE.s:206    .bss.absroll:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\cctlUIkE.s:216    .bss.Opolar:00000000 Opolar
-C:\Users\ktkuru\AppData\Local\Temp\cctlUIkE.s:213    .bss.Opolar:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\cctlUIkE.s:223    .bss.polar:00000000 polar
-C:\Users\ktkuru\AppData\Local\Temp\cctlUIkE.s:220    .bss.polar:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\cctlUIkE.s:230    .bss.dis:00000000 dis
-C:\Users\ktkuru\AppData\Local\Temp\cctlUIkE.s:227    .bss.dis:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\cctlUIkE.s:234    .bss.def:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\cctlUIkE.s:244    .bss.yaw:00000000 yaw
-C:\Users\ktkuru\AppData\Local\Temp\cctlUIkE.s:241    .bss.yaw:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\cctlUIkE.s:248    .bss.roll:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\cctlUIkE.s:255    .bss.pitch:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccP0FiUj.s:18     .rodata.main.str1.4:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccP0FiUj.s:41     .text.main:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccP0FiUj.s:47     .text.main:00000000 main
+C:\Users\ktkuru\AppData\Local\Temp\ccP0FiUj.s:159    .text.main:00000108 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccP0FiUj.s:224    .bss.roll:00000000 roll
+C:\Users\ktkuru\AppData\Local\Temp\ccP0FiUj.s:231    .bss.pitch:00000000 pitch
+C:\Users\ktkuru\AppData\Local\Temp\ccP0FiUj.s:175    .bss.abspitch:00000000 abspitch
+C:\Users\ktkuru\AppData\Local\Temp\ccP0FiUj.s:172    .bss.abspitch:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccP0FiUj.s:182    .bss.absroll:00000000 absroll
+C:\Users\ktkuru\AppData\Local\Temp\ccP0FiUj.s:179    .bss.absroll:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccP0FiUj.s:189    .bss.Opolar:00000000 Opolar
+C:\Users\ktkuru\AppData\Local\Temp\ccP0FiUj.s:186    .bss.Opolar:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccP0FiUj.s:196    .bss.polar:00000000 polar
+C:\Users\ktkuru\AppData\Local\Temp\ccP0FiUj.s:193    .bss.polar:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccP0FiUj.s:203    .bss.dis:00000000 dis
+C:\Users\ktkuru\AppData\Local\Temp\ccP0FiUj.s:200    .bss.dis:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccP0FiUj.s:210    .bss.def:00000000 def
+C:\Users\ktkuru\AppData\Local\Temp\ccP0FiUj.s:207    .bss.def:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccP0FiUj.s:217    .bss.yaw:00000000 yaw
+C:\Users\ktkuru\AppData\Local\Temp\ccP0FiUj.s:214    .bss.yaw:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccP0FiUj.s:221    .bss.roll:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccP0FiUj.s:228    .bss.pitch:00000000 $d
 
 UNDEFINED SYMBOLS
 __aeabi_f2d
@@ -316,5 +286,4 @@ MotorState
 OLED_Printf
 OLED_Update
 delay_ms
-Reset_Handler
 mode

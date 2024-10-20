@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s 			page 1
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s 			page 1
   56 004e 83ED007A 		vstr.32	s14, [r3]
   57              	.L6:
   58 0052 1D4B     		ldr	r3, .L13+24
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s 			page 2
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s 			page 2
 
 
   59 0054 D3ED007A 		vldr.32	s15, [r3]
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s 			page 1
  115 0006 F0EE408A 		vmov.f32	s17, s0
  116 000a B0EE608A 		vmov.f32	s16, s1
  117 000e B5EEC00A 		vcmpe.f32	s0, #0
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s 			page 3
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s 			page 3
 
 
  118 0012 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s 			page 1
  172 00ce 1860     		str	r0, [r3]	@ float
  173 00d0 C7EE8A7A 		vdiv.f32	s15, s15, s20
  174 00d4 17EE900A 		vmov	r0, s15
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s 			page 4
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s 			page 4
 
 
  175 00d8 FFF7FEFF 		bl	__aeabi_f2d
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s 			page 1
  229 017e F5EEC08A 		vcmpe.f32	s17, #0
  230 0182 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
  231 0186 0BDD     		ble	.L45
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s 			page 5
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s 			page 5
 
 
  232 0188 1D4B     		ldr	r3, .L53+40
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s 			page 1
  287              		@ frame_needed = 0, uses_anonymous_args = 0
  288 0000 D0B5     		push	{r4, r6, r7, lr}
  289 0002 2DED028B 		vpush.64	{d8}
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s 			page 6
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s 			page 6
 
 
  290 0006 0446     		mov	r4, r0
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s 			page 1
  344 00aa D0BD     		pop	{r4, r6, r7, pc}
  345              	.L65:
  346 00ac 9FED107A 		vldr.32	s14, .L67+40
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s 			page 7
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s 			page 7
 
 
  347 00b0 F4EEC77A 		vcmpe.f32	s15, s14
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s 			page 1
  394 0016 0023     		movs	r3, #0
  395 0018 0222     		movs	r2, #2
  396 001a 4FF47071 		mov	r1, #960
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s 			page 8
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s 			page 8
 
 
  397 001e 2046     		mov	r0, r4
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s 			page 1
  451 00b8 2046     		mov	r0, r4
  452 00ba FFF7FEFF 		bl	TIM_OC2PreloadConfig
  453 00be 0821     		movs	r1, #8
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s 			page 9
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s 			page 9
 
 
  454 00c0 2046     		mov	r0, r4
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s 			page 1
  510 001e 7047     		bx	lr
  511              	.L86:
  512 0020 264B     		ldr	r3, .L90
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s 			page 10
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s 			page 10
 
 
  513 0022 0022     		movs	r2, #0
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s 			page 1
  567 009e C3F88422 		str	r2, [r3, #644]
  568 00a2 C3F88822 		str	r2, [r3, #648]
  569 00a6 C3F88C22 		str	r2, [r3, #652]
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s 			page 11
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s 			page 11
 
 
  570 00aa C3F89022 		str	r2, [r3, #656]
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s 			page 1
  626 0060 FFF7FEFF 		bl	Motor_Cmd
  627 0064 0021     		movs	r1, #0
  628 0066 0220     		movs	r0, #2
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s 			page 12
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s 			page 12
 
 
  629 0068 FFF7FEFF 		bl	Motor_Cmd
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s 			page 1
  683 0108 A1E7     		b	.L92
  684              	.L105:
  685 010a 00BF     		.align	2
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s 			page 13
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s 			page 13
 
 
  686              	.L104:
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s 			page 1
  744              	.L110:
  745 001a B5EEC09A 		vcmpe.f32	s18, #0
  746 001e F1EE10FA 		vmrs	APSR_nzcv, FPSCR
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s 			page 14
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s 			page 14
 
 
  747 0022 4DD4     		bmi	.L131
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s 			page 1
  801              	.L131:
  802 00c0 B1EE499A 		vneg.f32	s18, s18
  803 00c4 AEE7     		b	.L112
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s 			page 15
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s 			page 15
 
 
  804              	.L132:
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s 			page 1
  858 015c 0021     		movs	r1, #0
  859 015e 0220     		movs	r0, #2
  860 0160 FFF7FEFF 		bl	Motor_Cmd
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s 			page 16
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s 			page 16
 
 
  861 0164 0121     		movs	r1, #1
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s 			page 1
  916              		.thumb_func
  918              	T5Angle_Deceive:
  919              		@ args = 0, pretend = 0, frame = 0
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s 			page 17
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s 			page 17
 
 
  920              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s 			page 1
  976 0002 064B     		ldr	r3, .L146
  977 0004 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
  978 0006 23B1     		cbz	r3, .L143
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s 			page 18
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s 			page 18
 
 
  979 0008 0021     		movs	r1, #0
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s 			page 1
  1035 0050 0220     		movs	r0, #2
  1036 0052 FFF7FEFF 		bl	Motor_Cmd
  1037 0056 0121     		movs	r1, #1
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s 			page 19
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s 			page 19
 
 
  1038 0058 0846     		mov	r0, r1
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s 			page 1
  1092 00d8 0420     		movs	r0, #4
  1093 00da FFF7FEFF 		bl	Motor_Cmd
  1094 00de 0121     		movs	r1, #1
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s 			page 20
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s 			page 20
 
 
  1095 00e0 0320     		movs	r0, #3
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s 			page 1
  1150 0056 2046     		mov	r0, r4	@ float
  1151 0058 FFF7FEFF 		bl	__aeabi_f2d
  1152 005c CDE90001 		strd	r0, [sp]
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s 			page 21
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s 			page 21
 
 
  1153 0060 3246     		mov	r2, r6
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s 			page 1
  1207 00e8 03B0     		add	sp, sp, #12
  1208              		@ sp needed
  1209 00ea BDEC028B 		vldm	sp!, {d8}
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s 			page 22
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s 			page 22
 
 
  1210 00ee F0BD     		pop	{r4, r5, r6, r7, pc}
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s 			page 1
  1266 0018 B5EEC00A 		vcmpe.f32	s0, #0
  1267 001c F1EE10FA 		vmrs	APSR_nzcv, FPSCR
  1268 0020 04D5     		bpl	.L195
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s 			page 23
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s 			page 23
 
 
  1269 0022 B1EE408A 		vneg.f32	s16, s0
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s 			page 1
  1323 00ba 08EE900A 		vmov	s17, r0
  1324 00be B0EE680A 		vmov.f32	s0, s17
  1325 00c2 FFF7FEFF 		bl	cosf
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s 			page 24
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s 			page 24
 
 
  1326 00c6 20EE080A 		vmul.f32	s0, s0, s16
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s 			page 1
  1380 0184 20EE080A 		vmul.f32	s0, s0, s16
  1381 0188 BCEEC00A 		vcvt.u32.f32	s0, s0
  1382 018c 84ED0D0A 		vstr.32	s0, [r4, #52]	@ int
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s 			page 25
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s 			page 25
 
 
  1383 0190 7EE7     		b	.L194
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s 			page 1
  1453              	T1Lderivative.9:
  1454 0000 00000000 		.space	4
  1455              		.section	.bss.T1LlastError.10,"aw",%nobits
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s 			page 26
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s 			page 26
 
 
  1456              		.align	2
@@ -1541,102 +1541,102 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s 			page 1
  1513              	State_Data:
  1514 0000 00       		.space	1
  1515              		.ident	"GCC: (Arm GNU Toolchain 13.3.Rel1 (Build arm-13.24)) 13.3.1 20240614"
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s 			page 27
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s 			page 27
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 control.c
-C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s:20     .text.PidControl_Stop:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s:26     .text.PidControl_Stop:00000000 PidControl_Stop
-C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s:89     .text.PidControl_Stop:000000b0 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s:1501   .bss.T4Serror.21:00000000 T4Serror.21
-C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s:1495   .bss.T4Sintegral.20:00000000 T4Sintegral.20
-C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s:1489   .bss.T4SlastError.17:00000000 T4SlastError.17
-C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s:1483   .bss.T4Sderivative.16:00000000 T4Sderivative.16
-C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s:1477   .bss.output.15:00000000 output.15
-C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s:104    .text.GetPolar:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s:110    .text.GetPolar:00000000 GetPolar
-C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s:265    .text.GetPolar:000001d8 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s:279    .text.PidControl_LineMove:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s:285    .text.PidControl_LineMove:00000000 PidControl_LineMove
-C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s:356    .text.PidControl_LineMove:000000c8 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s:1471   .bss.T1Lerror.14:00000000 T1Lerror.14
-C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s:1465   .bss.T1Lintegral.13:00000000 T1Lintegral.13
-C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s:1459   .bss.T1LlastError.10:00000000 T1LlastError.10
-C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s:1453   .bss.T1Lderivative.9:00000000 T1Lderivative.9
-C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s:1447   .bss.output.8:00000000 output.8
-C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s:369    .rodata.Motor_PWM_TIM8_Init.str1.4:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s:376    .text.Motor_PWM_TIM8_Init:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s:382    .text.Motor_PWM_TIM8_Init:00000000 Motor_PWM_TIM8_Init
-C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s:478    .text.Motor_PWM_TIM8_Init:000000f8 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s:483    .text.Motor_Cmd:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s:489    .text.Motor_Cmd:00000000 Motor_Cmd
-C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s:497    .text.Motor_Cmd:00000008 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s:579    .text.Motor_Cmd:000000bc $d
-C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s:582    .text.T3Motor_CmdCombination:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s:588    .text.T3Motor_CmdCombination:00000000 T3Motor_CmdCombination
-C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s:687    .text.T3Motor_CmdCombination:0000010c $d
-C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s:690    .text.T5LowPassFilter:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s:696    .text.T5LowPassFilter:00000000 T5LowPassFilter
-C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s:721    .text.T5LowPassFilter:00000040 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s:1441   .bss.last_Vinput.7:00000000 last_Vinput.7
-C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s:1435   .bss.Output.6:00000000 Output.6
-C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s:1429   .bss.last_Linput.5:00000000 last_Linput.5
-C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s:727    .text.T5Motor_CmdCombination:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s:733    .text.T5Motor_CmdCombination:00000000 T5Motor_CmdCombination
-C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s:793    .text.T5Motor_CmdCombination:000000b6 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s:797    .text.T5Motor_CmdCombination:000000ba $t
-C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s:898    .text.T5Motor_CmdCombination:000001c8 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s:912    .text.T5Angle_Deceive:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s:918    .text.T5Angle_Deceive:00000000 T5Angle_Deceive
-C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s:958    .text.T5Angle_Deceive:00000070 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s:966    .text.StopAllMotor:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s:972    .text.StopAllMotor:00000000 StopAllMotor
-C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s:992    .text.StopAllMotor:0000001c $d
-C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s:995    .text.MotorState:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s:1001   .text.MotorState:00000000 MotorState
-C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s:1104   .text.MotorState:000000f0 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s:1507   .bss.MotorLocation:00000000 MotorLocation
-C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s:1107   .rodata.Task4_StopFast.str1.4:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s:1111   .text.Task4_StopFast:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s:1117   .text.Task4_StopFast:00000000 Task4_StopFast
-C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s:1195   .text.Task4_StopFast:000000d2 $d
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s 			page 28
+C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s:20     .text.PidControl_Stop:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s:26     .text.PidControl_Stop:00000000 PidControl_Stop
+C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s:89     .text.PidControl_Stop:000000b0 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s:1501   .bss.T4Serror.21:00000000 T4Serror.21
+C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s:1495   .bss.T4Sintegral.20:00000000 T4Sintegral.20
+C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s:1489   .bss.T4SlastError.17:00000000 T4SlastError.17
+C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s:1483   .bss.T4Sderivative.16:00000000 T4Sderivative.16
+C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s:1477   .bss.output.15:00000000 output.15
+C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s:104    .text.GetPolar:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s:110    .text.GetPolar:00000000 GetPolar
+C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s:265    .text.GetPolar:000001d8 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s:279    .text.PidControl_LineMove:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s:285    .text.PidControl_LineMove:00000000 PidControl_LineMove
+C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s:356    .text.PidControl_LineMove:000000c8 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s:1471   .bss.T1Lerror.14:00000000 T1Lerror.14
+C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s:1465   .bss.T1Lintegral.13:00000000 T1Lintegral.13
+C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s:1459   .bss.T1LlastError.10:00000000 T1LlastError.10
+C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s:1453   .bss.T1Lderivative.9:00000000 T1Lderivative.9
+C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s:1447   .bss.output.8:00000000 output.8
+C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s:369    .rodata.Motor_PWM_TIM8_Init.str1.4:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s:376    .text.Motor_PWM_TIM8_Init:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s:382    .text.Motor_PWM_TIM8_Init:00000000 Motor_PWM_TIM8_Init
+C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s:478    .text.Motor_PWM_TIM8_Init:000000f8 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s:483    .text.Motor_Cmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s:489    .text.Motor_Cmd:00000000 Motor_Cmd
+C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s:497    .text.Motor_Cmd:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s:579    .text.Motor_Cmd:000000bc $d
+C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s:582    .text.T3Motor_CmdCombination:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s:588    .text.T3Motor_CmdCombination:00000000 T3Motor_CmdCombination
+C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s:687    .text.T3Motor_CmdCombination:0000010c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s:690    .text.T5LowPassFilter:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s:696    .text.T5LowPassFilter:00000000 T5LowPassFilter
+C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s:721    .text.T5LowPassFilter:00000040 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s:1441   .bss.last_Vinput.7:00000000 last_Vinput.7
+C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s:1435   .bss.Output.6:00000000 Output.6
+C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s:1429   .bss.last_Linput.5:00000000 last_Linput.5
+C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s:727    .text.T5Motor_CmdCombination:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s:733    .text.T5Motor_CmdCombination:00000000 T5Motor_CmdCombination
+C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s:793    .text.T5Motor_CmdCombination:000000b6 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s:797    .text.T5Motor_CmdCombination:000000ba $t
+C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s:898    .text.T5Motor_CmdCombination:000001c8 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s:912    .text.T5Angle_Deceive:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s:918    .text.T5Angle_Deceive:00000000 T5Angle_Deceive
+C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s:958    .text.T5Angle_Deceive:00000070 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s:966    .text.StopAllMotor:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s:972    .text.StopAllMotor:00000000 StopAllMotor
+C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s:992    .text.StopAllMotor:0000001c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s:995    .text.MotorState:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s:1001   .text.MotorState:00000000 MotorState
+C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s:1104   .text.MotorState:000000f0 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s:1507   .bss.MotorLocation:00000000 MotorLocation
+C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s:1107   .rodata.Task4_StopFast.str1.4:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s:1111   .text.Task4_StopFast:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s:1117   .text.Task4_StopFast:00000000 Task4_StopFast
+C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s:1195   .text.Task4_StopFast:000000d2 $d
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s 			page 28
 
 
-C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s:1199   .text.Task4_StopFast:000000d6 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s:1235   .text.Task4_StopFast:0000012c $d
-C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s:1420   .data.Taks4Pid1.3:00000000 Taks4Pid1.3
-C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s:1414   .bss.VerticalOutput.2:00000000 VerticalOutput.2
-C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s:1405   .data.Taks4Pid2.1:00000000 Taks4Pid2.1
-C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s:1399   .bss.LevelOutput.0:00000000 LevelOutput.0
-C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s:1250   .text.PWM_Allocation:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s:1256   .text.PWM_Allocation:00000000 PWM_Allocation
-C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s:1281   .text.PWM_Allocation:0000003a $d
-C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s:1285   .text.PWM_Allocation:0000003e $t
-C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s:1387   .text.PWM_Allocation:00000198 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s:1396   .bss.LevelOutput.0:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s:1402   .data.Taks4Pid2.1:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s:1411   .bss.VerticalOutput.2:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s:1417   .data.Taks4Pid1.3:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s:1426   .bss.last_Linput.5:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s:1432   .bss.Output.6:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s:1438   .bss.last_Vinput.7:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s:1444   .bss.output.8:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s:1450   .bss.T1Lderivative.9:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s:1456   .bss.T1LlastError.10:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s:1462   .bss.T1Lintegral.13:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s:1468   .bss.T1Lerror.14:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s:1474   .bss.output.15:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s:1480   .bss.T4Sderivative.16:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s:1486   .bss.T4SlastError.17:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s:1492   .bss.T4Sintegral.20:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s:1498   .bss.T4Serror.21:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s:1508   .bss.MotorLocation:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s:1513   .bss.State_Data:00000000 State_Data
-C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s:1514   .bss.State_Data:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s:502    .text.Motor_Cmd:0000000d $d
-C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s:502    .text.Motor_Cmd:0000000e $t
+C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s:1199   .text.Task4_StopFast:000000d6 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s:1235   .text.Task4_StopFast:0000012c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s:1420   .data.Taks4Pid1.3:00000000 Taks4Pid1.3
+C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s:1414   .bss.VerticalOutput.2:00000000 VerticalOutput.2
+C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s:1405   .data.Taks4Pid2.1:00000000 Taks4Pid2.1
+C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s:1399   .bss.LevelOutput.0:00000000 LevelOutput.0
+C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s:1250   .text.PWM_Allocation:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s:1256   .text.PWM_Allocation:00000000 PWM_Allocation
+C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s:1281   .text.PWM_Allocation:0000003a $d
+C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s:1285   .text.PWM_Allocation:0000003e $t
+C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s:1387   .text.PWM_Allocation:00000198 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s:1396   .bss.LevelOutput.0:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s:1402   .data.Taks4Pid2.1:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s:1411   .bss.VerticalOutput.2:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s:1417   .data.Taks4Pid1.3:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s:1426   .bss.last_Linput.5:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s:1432   .bss.Output.6:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s:1438   .bss.last_Vinput.7:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s:1444   .bss.output.8:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s:1450   .bss.T1Lderivative.9:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s:1456   .bss.T1LlastError.10:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s:1462   .bss.T1Lintegral.13:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s:1468   .bss.T1Lerror.14:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s:1474   .bss.output.15:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s:1480   .bss.T4Sderivative.16:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s:1486   .bss.T4SlastError.17:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s:1492   .bss.T4Sintegral.20:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s:1498   .bss.T4Serror.21:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s:1508   .bss.MotorLocation:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s:1513   .bss.State_Data:00000000 State_Data
+C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s:1514   .bss.State_Data:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s:502    .text.Motor_Cmd:0000000d $d
+C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s:502    .text.Motor_Cmd:0000000e $t
 
 UNDEFINED SYMBOLS
 __aeabi_f2d
@@ -1661,7 +1661,7 @@ GPIO_PinAFConfig
 TIM_TimeBaseInit
 TIM_OC1Init
 TIM_OC2Init
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNMswab.s 			page 29
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccmzB8wa.s 			page 29
 
 
 TIM_OC3Init
