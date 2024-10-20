@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccZvSNME.s 			page 1
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccFsEoyc.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccZvSNME.s 			page 1
   58              		@ frame_needed = 0, uses_anonymous_args = 0
   59 0000 00B5     		push	{lr}
   60 0002 83B0     		sub	sp, sp, #12
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccZvSNME.s 			page 2
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccFsEoyc.s 			page 2
 
 
   61 0004 0091     		str	r1, [sp]
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccZvSNME.s 			page 1
  117              		.align	2
  118              	.L8:
  119 0058 00180240 		.word	1073879040
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccZvSNME.s 			page 3
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccFsEoyc.s 			page 3
 
 
  121              		.section	.text.TIM2_Init,"ax",%progbits
@@ -142,9 +142,9 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccZvSNME.s 			page 1
  140 0018 0294     		str	r4, [sp, #8]
  141 001a 5323     		movs	r3, #83
  142 001c ADF80430 		strh	r3, [sp, #4]	@ movhi
- 143 0020 0023     		movs	r3, #0
- 144 0022 ADF80C30 		strh	r3, [sp, #12]	@ movhi
- 145 0026 ADF80630 		strh	r3, [sp, #6]	@ movhi
+ 143 0020 0024     		movs	r4, #0
+ 144 0022 ADF80C40 		strh	r4, [sp, #12]	@ movhi
+ 145 0026 ADF80640 		strh	r4, [sp, #6]	@ movhi
  146 002a 01A9     		add	r1, sp, #4
  147 002c 4FF08040 		mov	r0, #1073741824
  148 0030 FFF7FEFF 		bl	TIM_TimeBaseInit
@@ -152,7 +152,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccZvSNME.s 			page 1
  150 0036 1146     		mov	r1, r2
  151 0038 4FF08040 		mov	r0, #1073741824
  152 003c FFF7FEFF 		bl	TIM_ITConfig
- 153 0040 0121     		movs	r1, #1
+ 153 0040 2146     		mov	r1, r4
  154 0042 4FF08040 		mov	r0, #1073741824
  155 0046 FFF7FEFF 		bl	TIM_Cmd
  156 004a 04B0     		add	sp, sp, #16
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccZvSNME.s 			page 1
  169 0030 2D3E484D 		.ascii	"->HMI Init done\000"
  169      4920496E 
  169      69742064 
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccZvSNME.s 			page 4
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccFsEoyc.s 			page 4
 
 
  169      6F6E6500 
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccZvSNME.s 			page 1
  193      69742073 
  193      75636365 
  194 00ef 00       		.align	2
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccZvSNME.s 			page 5
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccFsEoyc.s 			page 5
 
 
  195              	.LC11:
@@ -285,328 +285,320 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccZvSNME.s 			page 1
  217 0000 08B5     		push	{r3, lr}
  218 0002 4FF4E130 		mov	r0, #115200
  219 0006 FFF7FEFF 		bl	usart1_init
- 220 000a 4FF41650 		mov	r0, #9600
+ 220 000a 4FF4E130 		mov	r0, #115200
  221 000e FFF7FEFF 		bl	usart2_init
- 222 0012 3148     		ldr	r0, .L21
+ 222 0012 2E48     		ldr	r0, .L19
  223 0014 FFF7FEFF 		bl	puts
  224 0018 5420     		movs	r0, #84
  225 001a FFF7FEFF 		bl	delay_init
- 226 001e 2F48     		ldr	r0, .L21+4
+ 226 001e 2C48     		ldr	r0, .L19+4
  227 0020 FFF7FEFF 		bl	puts
- 228 0024 2E48     		ldr	r0, .L21+8
+ 228 0024 2B48     		ldr	r0, .L19+8
  229 0026 FFF7FEFF 		bl	HMISendstart
- 230 002a 2E48     		ldr	r0, .L21+12
+ 230 002a 2B48     		ldr	r0, .L19+12
  231 002c FFF7FEFF 		bl	puts
  232 0030 FFF7FEFF 		bl	BSP_NVIC_IT_Config
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccZvSNME.s 			page 6
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccFsEoyc.s 			page 6
 
 
- 233 0034 2C48     		ldr	r0, .L21+16
+ 233 0034 2948     		ldr	r0, .L19+16
  234 0036 FFF7FEFF 		bl	puts
  235 003a FFF7FEFF 		bl	LED_Init
- 236 003e 2B48     		ldr	r0, .L21+20
+ 236 003e 2848     		ldr	r0, .L19+20
  237 0040 FFF7FEFF 		bl	puts
  238 0044 FFF7FEFF 		bl	Motor_PWM_TIM8_Init
- 239 0048 2948     		ldr	r0, .L21+24
+ 239 0048 2648     		ldr	r0, .L19+24
  240 004a FFF7FEFF 		bl	puts
  241 004e FFF7FEFF 		bl	OLED_Init
- 242 0052 284B     		ldr	r3, .L21+28
+ 242 0052 254B     		ldr	r3, .L19+28
  243 0054 0822     		movs	r2, #8
  244 0056 0021     		movs	r1, #0
  245 0058 0846     		mov	r0, r1
  246 005a FFF7FEFF 		bl	OLED_Printf
  247 005e FFF7FEFF 		bl	OLED_Update
- 248 0062 2548     		ldr	r0, .L21+32
+ 248 0062 2248     		ldr	r0, .L19+32
  249 0064 FFF7FEFF 		bl	puts
  250 0068 0023     		movs	r3, #0
  251 006a 0122     		movs	r2, #1
  252 006c FF21     		movs	r1, #255
- 253 006e 2348     		ldr	r0, .L21+36
+ 253 006e 2048     		ldr	r0, .L19+36
  254 0070 FFF7FEFF 		bl	GPIO_Config
- 255 0074 2248     		ldr	r0, .L21+40
+ 255 0074 1F48     		ldr	r0, .L19+40
  256 0076 FFF7FEFF 		bl	puts
  257 007a 1420     		movs	r0, #20
  258 007c FFF7FEFF 		bl	delay_ms
  259 0080 FFF7FEFF 		bl	MPU_Init
- 260 0084 98B9     		cbnz	r0, .L18
- 261 0086 1F48     		ldr	r0, .L21+44
+ 260 0084 A8B9     		cbnz	r0, .L17
+ 261 0086 1C48     		ldr	r0, .L19+44
  262 0088 FFF7FEFF 		bl	puts
  263 008c FFF7FEFF 		bl	mpu_dmp_init
- 264 0090 A8B9     		cbnz	r0, .L19
- 265 0092 1D48     		ldr	r0, .L21+48
+ 264 0090 B8B9     		cbnz	r0, .L18
+ 265 0092 1A48     		ldr	r0, .L19+48
  266 0094 FFF7FEFF 		bl	puts
  267 0098 FFF7FEFF 		bl	EXIT15_Init
- 268 009c 1B48     		ldr	r0, .L21+52
+ 268 009c 1848     		ldr	r0, .L19+52
  269 009e FFF7FEFF 		bl	puts
- 270 00a2 1B4B     		ldr	r3, .L21+56
- 271 00a4 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 272 00a6 052B     		cmp	r3, #5
- 273 00a8 0ED0     		beq	.L20
- 274 00aa 0020     		movs	r0, #0
+ 270 00a2 0320     		movs	r0, #3
+ 271 00a4 FFF7FEFF 		bl	TIM2_Init
+ 272 00a8 1648     		ldr	r0, .L19+56
+ 273 00aa FFF7FEFF 		bl	puts
+ 274 00ae 0020     		movs	r0, #0
  275              	.L12:
- 276 00ac 08BD     		pop	{r3, pc}
- 277              	.L18:
- 278 00ae FFF7FEFF 		bl	MPU_Init
- 279 00b2 0146     		mov	r1, r0
- 280 00b4 1748     		ldr	r0, .L21+60
- 281 00b6 FFF7FEFF 		bl	printf
- 282 00ba 0120     		movs	r0, #1
- 283 00bc F6E7     		b	.L12
- 284              	.L19:
- 285 00be 1648     		ldr	r0, .L21+64
- 286 00c0 FFF7FEFF 		bl	puts
- 287 00c4 0220     		movs	r0, #2
- 288 00c6 F1E7     		b	.L12
+ 276 00b0 08BD     		pop	{r3, pc}
+ 277              	.L17:
+ 278 00b2 FFF7FEFF 		bl	MPU_Init
+ 279 00b6 0146     		mov	r1, r0
+ 280 00b8 1348     		ldr	r0, .L19+60
+ 281 00ba FFF7FEFF 		bl	printf
+ 282 00be 0120     		movs	r0, #1
+ 283 00c0 F6E7     		b	.L12
+ 284              	.L18:
+ 285 00c2 1248     		ldr	r0, .L19+64
+ 286 00c4 FFF7FEFF 		bl	puts
+ 287 00c8 0220     		movs	r0, #2
+ 288 00ca F1E7     		b	.L12
  289              	.L20:
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccZvSNME.s 			page 7
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccFsEoyc.s 			page 7
 
 
- 290 00c8 0320     		movs	r0, #3
- 291 00ca FFF7FEFF 		bl	TIM2_Init
- 292 00ce 1348     		ldr	r0, .L21+68
- 293 00d0 FFF7FEFF 		bl	puts
- 294 00d4 0020     		movs	r0, #0
- 295 00d6 E9E7     		b	.L12
- 296              	.L22:
- 297              		.align	2
- 298              	.L21:
- 299 00d8 00000000 		.word	.LC0
- 300 00dc 1C000000 		.word	.LC1
- 301 00e0 00440040 		.word	1073759232
- 302 00e4 30000000 		.word	.LC2
- 303 00e8 40000000 		.word	.LC3
- 304 00ec 54000000 		.word	.LC4
- 305 00f0 68000000 		.word	.LC5
- 306 00f4 7C000000 		.word	.LC6
- 307 00f8 8C000000 		.word	.LC7
- 308 00fc 00140240 		.word	1073878016
- 309 0100 A0000000 		.word	.LC8
- 310 0104 D8000000 		.word	.LC10
- 311 0108 38010000 		.word	.LC12
- 312 010c 54010000 		.word	.LC13
- 313 0110 00000000 		.word	mode
- 314 0114 B4000000 		.word	.LC9
- 315 0118 F0000000 		.word	.LC11
- 316 011c 68010000 		.word	.LC14
- 318              		.section	.text.ADC_Config,"ax",%progbits
- 319              		.align	1
- 320              		.global	ADC_Config
- 321              		.syntax unified
- 322              		.thumb
- 323              		.thumb_func
- 325              	ADC_Config:
- 326              		@ args = 0, pretend = 0, frame = 56
- 327              		@ frame_needed = 0, uses_anonymous_args = 0
- 328 0000 70B5     		push	{r4, r5, r6, lr}
- 329 0002 8EB0     		sub	sp, sp, #56
- 330 0004 0121     		movs	r1, #1
- 331 0006 4FF48070 		mov	r0, #256
- 332 000a FFF7FEFF 		bl	RCC_APB2PeriphClockCmd
- 333 000e 0121     		movs	r1, #1
- 334 0010 0846     		mov	r0, r1
- 335 0012 FFF7FEFF 		bl	RCC_AHB1PeriphClockCmd
- 336 0016 0223     		movs	r3, #2
- 337 0018 0293     		str	r3, [sp, #8]
- 338 001a 0323     		movs	r3, #3
- 339 001c 8DF80C30 		strb	r3, [sp, #12]
- 340 0020 0025     		movs	r5, #0
- 341 0022 8DF80F50 		strb	r5, [sp, #15]
- 342 0026 02A9     		add	r1, sp, #8
- 343 0028 1D48     		ldr	r0, .L25
- 344 002a FFF7FEFF 		bl	GPIO_Init
- 345 002e 0895     		str	r5, [sp, #32]
- 346 0030 8DF82450 		strb	r5, [sp, #36]
- 347 0034 0124     		movs	r4, #1
- 348 0036 8DF82540 		strb	r4, [sp, #37]
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccZvSNME.s 			page 8
+ 290              		.align	2
+ 291              	.L19:
+ 292 00cc 00000000 		.word	.LC0
+ 293 00d0 1C000000 		.word	.LC1
+ 294 00d4 00440040 		.word	1073759232
+ 295 00d8 30000000 		.word	.LC2
+ 296 00dc 40000000 		.word	.LC3
+ 297 00e0 54000000 		.word	.LC4
+ 298 00e4 68000000 		.word	.LC5
+ 299 00e8 7C000000 		.word	.LC6
+ 300 00ec 8C000000 		.word	.LC7
+ 301 00f0 00140240 		.word	1073878016
+ 302 00f4 A0000000 		.word	.LC8
+ 303 00f8 D8000000 		.word	.LC10
+ 304 00fc 38010000 		.word	.LC12
+ 305 0100 54010000 		.word	.LC13
+ 306 0104 68010000 		.word	.LC14
+ 307 0108 B4000000 		.word	.LC9
+ 308 010c F0000000 		.word	.LC11
+ 310              		.section	.text.ADC_Config,"ax",%progbits
+ 311              		.align	1
+ 312              		.global	ADC_Config
+ 313              		.syntax unified
+ 314              		.thumb
+ 315              		.thumb_func
+ 317              	ADC_Config:
+ 318              		@ args = 0, pretend = 0, frame = 56
+ 319              		@ frame_needed = 0, uses_anonymous_args = 0
+ 320 0000 70B5     		push	{r4, r5, r6, lr}
+ 321 0002 8EB0     		sub	sp, sp, #56
+ 322 0004 0121     		movs	r1, #1
+ 323 0006 4FF48070 		mov	r0, #256
+ 324 000a FFF7FEFF 		bl	RCC_APB2PeriphClockCmd
+ 325 000e 0121     		movs	r1, #1
+ 326 0010 0846     		mov	r0, r1
+ 327 0012 FFF7FEFF 		bl	RCC_AHB1PeriphClockCmd
+ 328 0016 0223     		movs	r3, #2
+ 329 0018 0293     		str	r3, [sp, #8]
+ 330 001a 0323     		movs	r3, #3
+ 331 001c 8DF80C30 		strb	r3, [sp, #12]
+ 332 0020 0025     		movs	r5, #0
+ 333 0022 8DF80F50 		strb	r5, [sp, #15]
+ 334 0026 02A9     		add	r1, sp, #8
+ 335 0028 1D48     		ldr	r0, .L23
+ 336 002a FFF7FEFF 		bl	GPIO_Init
+ 337 002e 0895     		str	r5, [sp, #32]
+ 338 0030 8DF82450 		strb	r5, [sp, #36]
+ 339 0034 0124     		movs	r4, #1
+ 340 0036 8DF82540 		strb	r4, [sp, #37]
+ 341 003a 0A95     		str	r5, [sp, #40]
+ 342 003c 0C95     		str	r5, [sp, #48]
+ 343 003e 8DF83440 		strb	r4, [sp, #52]
+ 344 0042 184E     		ldr	r6, .L23+4
+ 345 0044 08A9     		add	r1, sp, #32
+ 346 0046 3046     		mov	r0, r6
+ 347 0048 FFF7FEFF 		bl	ADC_Init
+ 348 004c 0723     		movs	r3, #7
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccFsEoyc.s 			page 8
 
 
- 349 003a 0A95     		str	r5, [sp, #40]
- 350 003c 0C95     		str	r5, [sp, #48]
- 351 003e 8DF83440 		strb	r4, [sp, #52]
- 352 0042 184E     		ldr	r6, .L25+4
- 353 0044 08A9     		add	r1, sp, #32
- 354 0046 3046     		mov	r0, r6
- 355 0048 FFF7FEFF 		bl	ADC_Init
- 356 004c 0723     		movs	r3, #7
- 357 004e 2246     		mov	r2, r4
- 358 0050 2146     		mov	r1, r4
- 359 0052 3046     		mov	r0, r6
- 360 0054 FFF7FEFF 		bl	ADC_RegularChannelConfig
- 361 0058 0495     		str	r5, [sp, #16]
- 362 005a 4FF48033 		mov	r3, #65536
- 363 005e 0593     		str	r3, [sp, #20]
- 364 0060 0695     		str	r5, [sp, #24]
- 365 0062 0795     		str	r5, [sp, #28]
- 366 0064 04A8     		add	r0, sp, #16
- 367 0066 FFF7FEFF 		bl	ADC_CommonInit
- 368 006a 2146     		mov	r1, r4
- 369 006c 3046     		mov	r0, r6
- 370 006e FFF7FEFF 		bl	ADC_Cmd
- 371 0072 3046     		mov	r0, r6
- 372 0074 FFF7FEFF 		bl	ADC_SoftwareStartConv
- 373 0078 2246     		mov	r2, r4
- 374 007a 40F20521 		movw	r1, #517
- 375 007e 3046     		mov	r0, r6
- 376 0080 FFF7FEFF 		bl	ADC_ITConfig
- 377 0084 1223     		movs	r3, #18
- 378 0086 8DF80430 		strb	r3, [sp, #4]
- 379 008a 8DF80540 		strb	r4, [sp, #5]
- 380 008e 8DF80640 		strb	r4, [sp, #6]
- 381 0092 8DF80740 		strb	r4, [sp, #7]
- 382 0096 01A8     		add	r0, sp, #4
- 383 0098 FFF7FEFF 		bl	NVIC_Init
- 384 009c 0EB0     		add	sp, sp, #56
- 385              		@ sp needed
- 386 009e 70BD     		pop	{r4, r5, r6, pc}
- 387              	.L26:
- 388              		.align	2
- 389              	.L25:
- 390 00a0 00000240 		.word	1073872896
- 391 00a4 00200140 		.word	1073815552
- 393              		.global	__aeabi_f2d
- 394              		.global	__aeabi_ddiv
- 395              		.global	__aeabi_dmul
- 396              		.global	__aeabi_d2uiz
- 397              		.section	.text.ADCvalue_convert,"ax",%progbits
- 398              		.align	1
- 399              		.global	ADCvalue_convert
- 400              		.syntax unified
- 401              		.thumb
- 402              		.thumb_func
- 404              	ADCvalue_convert:
- 405              		@ args = 0, pretend = 0, frame = 0
- 406              		@ frame_needed = 0, uses_anonymous_args = 0
- 407 0000 08B5     		push	{r3, lr}
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccZvSNME.s 			page 9
+ 349 004e 2246     		mov	r2, r4
+ 350 0050 2146     		mov	r1, r4
+ 351 0052 3046     		mov	r0, r6
+ 352 0054 FFF7FEFF 		bl	ADC_RegularChannelConfig
+ 353 0058 0495     		str	r5, [sp, #16]
+ 354 005a 4FF48033 		mov	r3, #65536
+ 355 005e 0593     		str	r3, [sp, #20]
+ 356 0060 0695     		str	r5, [sp, #24]
+ 357 0062 0795     		str	r5, [sp, #28]
+ 358 0064 04A8     		add	r0, sp, #16
+ 359 0066 FFF7FEFF 		bl	ADC_CommonInit
+ 360 006a 2146     		mov	r1, r4
+ 361 006c 3046     		mov	r0, r6
+ 362 006e FFF7FEFF 		bl	ADC_Cmd
+ 363 0072 3046     		mov	r0, r6
+ 364 0074 FFF7FEFF 		bl	ADC_SoftwareStartConv
+ 365 0078 2246     		mov	r2, r4
+ 366 007a 40F20521 		movw	r1, #517
+ 367 007e 3046     		mov	r0, r6
+ 368 0080 FFF7FEFF 		bl	ADC_ITConfig
+ 369 0084 1223     		movs	r3, #18
+ 370 0086 8DF80430 		strb	r3, [sp, #4]
+ 371 008a 8DF80540 		strb	r4, [sp, #5]
+ 372 008e 8DF80640 		strb	r4, [sp, #6]
+ 373 0092 8DF80740 		strb	r4, [sp, #7]
+ 374 0096 01A8     		add	r0, sp, #4
+ 375 0098 FFF7FEFF 		bl	NVIC_Init
+ 376 009c 0EB0     		add	sp, sp, #56
+ 377              		@ sp needed
+ 378 009e 70BD     		pop	{r4, r5, r6, pc}
+ 379              	.L24:
+ 380              		.align	2
+ 381              	.L23:
+ 382 00a0 00000240 		.word	1073872896
+ 383 00a4 00200140 		.word	1073815552
+ 385              		.global	__aeabi_f2d
+ 386              		.global	__aeabi_ddiv
+ 387              		.global	__aeabi_dmul
+ 388              		.global	__aeabi_d2uiz
+ 389              		.section	.text.ADCvalue_convert,"ax",%progbits
+ 390              		.align	1
+ 391              		.global	ADCvalue_convert
+ 392              		.syntax unified
+ 393              		.thumb
+ 394              		.thumb_func
+ 396              	ADCvalue_convert:
+ 397              		@ args = 0, pretend = 0, frame = 0
+ 398              		@ frame_needed = 0, uses_anonymous_args = 0
+ 399 0000 08B5     		push	{r3, lr}
+ 400 0002 07EE900A 		vmov	s15, r0	@ int
+ 401 0006 F8EE677A 		vcvt.f32.u32	s15, s15
+ 402 000a 17EE900A 		vmov	r0, s15
+ 403 000e FFF7FEFF 		bl	__aeabi_f2d
+ 404 0012 08A3     		adr	r3, .L27+4
+ 405 0014 D3E90023 		ldrd	r2, [r3]
+ 406 0018 FFF7FEFF 		bl	__aeabi_ddiv
+ 407 001c 0022     		movs	r2, #0
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccFsEoyc.s 			page 9
 
 
- 408 0002 07EE900A 		vmov	s15, r0	@ int
- 409 0006 F8EE677A 		vcvt.f32.u32	s15, s15
- 410 000a 17EE900A 		vmov	r0, s15
- 411 000e FFF7FEFF 		bl	__aeabi_f2d
- 412 0012 08A3     		adr	r3, .L29+4
- 413 0014 D3E90023 		ldrd	r2, [r3]
- 414 0018 FFF7FEFF 		bl	__aeabi_ddiv
- 415 001c 0022     		movs	r2, #0
- 416 001e 044B     		ldr	r3, .L29
- 417 0020 FFF7FEFF 		bl	__aeabi_dmul
- 418 0024 FFF7FEFF 		bl	__aeabi_d2uiz
- 419 0028 80B2     		uxth	r0, r0
- 420 002a 08BD     		pop	{r3, pc}
- 421              	.L30:
- 422 002c AFF30080 		.align	3
- 423              	.L29:
- 424 0030 00807640 		.word	1081507840
- 425 0034 00000000 		.word	0
- 426 0038 004EA840 		.word	1084771840
- 428              		.section	.rodata.ADC_IRQHandler.str1.4,"aMS",%progbits,1
- 429              		.align	2
- 430              	.LC15:
- 431 0000 41444320 		.ascii	"ADC value: %d\012\000"
- 431      76616C75 
- 431      653A2025 
- 431      640A00
- 432              		.section	.text.ADC_IRQHandler,"ax",%progbits
- 433              		.align	1
- 434              		.global	ADC_IRQHandler
- 435              		.syntax unified
- 436              		.thumb
- 437              		.thumb_func
- 439              	ADC_IRQHandler:
- 440              		@ args = 0, pretend = 0, frame = 0
- 441              		@ frame_needed = 0, uses_anonymous_args = 0
- 442 0000 10B5     		push	{r4, lr}
- 443 0002 40F20521 		movw	r1, #517
- 444 0006 0D48     		ldr	r0, .L35
- 445 0008 FFF7FEFF 		bl	ADC_GetITStatus
- 446 000c 00B9     		cbnz	r0, .L34
- 447              	.L31:
- 448 000e 10BD     		pop	{r4, pc}
- 449              	.L34:
- 450 0010 0A4C     		ldr	r4, .L35
- 451 0012 40F20521 		movw	r1, #517
- 452 0016 2046     		mov	r0, r4
- 453 0018 FFF7FEFF 		bl	ADC_ClearITPendingBit
- 454 001c 2046     		mov	r0, r4
- 455 001e FFF7FEFF 		bl	ADC_GetConversionValue
- 456 0022 074B     		ldr	r3, .L35+4
- 457 0024 1880     		strh	r0, [r3]	@ movhi
- 458 0026 074B     		ldr	r3, .L35+8
- 459 0028 4FF46162 		mov	r2, #3600
- 460 002c 5A63     		str	r2, [r3, #52]
- 461 002e FFF7FEFF 		bl	ADCvalue_convert
- 462 0032 0146     		mov	r1, r0
- 463 0034 0448     		ldr	r0, .L35+12
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccZvSNME.s 			page 10
+ 408 001e 044B     		ldr	r3, .L27
+ 409 0020 FFF7FEFF 		bl	__aeabi_dmul
+ 410 0024 FFF7FEFF 		bl	__aeabi_d2uiz
+ 411 0028 80B2     		uxth	r0, r0
+ 412 002a 08BD     		pop	{r3, pc}
+ 413              	.L28:
+ 414 002c AFF30080 		.align	3
+ 415              	.L27:
+ 416 0030 00807640 		.word	1081507840
+ 417 0034 00000000 		.word	0
+ 418 0038 004EA840 		.word	1084771840
+ 420              		.section	.rodata.ADC_IRQHandler.str1.4,"aMS",%progbits,1
+ 421              		.align	2
+ 422              	.LC15:
+ 423 0000 41444320 		.ascii	"ADC value: %d\012\000"
+ 423      76616C75 
+ 423      653A2025 
+ 423      640A00
+ 424              		.section	.text.ADC_IRQHandler,"ax",%progbits
+ 425              		.align	1
+ 426              		.global	ADC_IRQHandler
+ 427              		.syntax unified
+ 428              		.thumb
+ 429              		.thumb_func
+ 431              	ADC_IRQHandler:
+ 432              		@ args = 0, pretend = 0, frame = 0
+ 433              		@ frame_needed = 0, uses_anonymous_args = 0
+ 434 0000 10B5     		push	{r4, lr}
+ 435 0002 40F20521 		movw	r1, #517
+ 436 0006 0D48     		ldr	r0, .L33
+ 437 0008 FFF7FEFF 		bl	ADC_GetITStatus
+ 438 000c 00B9     		cbnz	r0, .L32
+ 439              	.L29:
+ 440 000e 10BD     		pop	{r4, pc}
+ 441              	.L32:
+ 442 0010 0A4C     		ldr	r4, .L33
+ 443 0012 40F20521 		movw	r1, #517
+ 444 0016 2046     		mov	r0, r4
+ 445 0018 FFF7FEFF 		bl	ADC_ClearITPendingBit
+ 446 001c 2046     		mov	r0, r4
+ 447 001e FFF7FEFF 		bl	ADC_GetConversionValue
+ 448 0022 074B     		ldr	r3, .L33+4
+ 449 0024 1880     		strh	r0, [r3]	@ movhi
+ 450 0026 074B     		ldr	r3, .L33+8
+ 451 0028 4FF46162 		mov	r2, #3600
+ 452 002c 5A63     		str	r2, [r3, #52]
+ 453 002e FFF7FEFF 		bl	ADCvalue_convert
+ 454 0032 0146     		mov	r1, r0
+ 455 0034 0448     		ldr	r0, .L33+12
+ 456 0036 FFF7FEFF 		bl	printf
+ 457 003a E8E7     		b	.L29
+ 458              	.L34:
+ 459              		.align	2
+ 460              	.L33:
+ 461 003c 00200140 		.word	1073815552
+ 462 0040 00000000 		.word	adcValue.0
+ 463 0044 00000140 		.word	1073807360
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccFsEoyc.s 			page 10
 
 
- 464 0036 FFF7FEFF 		bl	printf
- 465 003a E8E7     		b	.L31
- 466              	.L36:
- 467              		.align	2
- 468              	.L35:
- 469 003c 00200140 		.word	1073815552
- 470 0040 00000000 		.word	adcValue.0
- 471 0044 00000140 		.word	1073807360
- 472 0048 00000000 		.word	.LC15
- 474              		.section	.text.function_goto,"ax",%progbits
- 475              		.align	1
- 476              		.global	function_goto
+ 464 0048 00000000 		.word	.LC15
+ 466              		.section	.text.function_goto,"ax",%progbits
+ 467              		.align	1
+ 468              		.global	function_goto
+ 469              		.syntax unified
+ 470              		.thumb
+ 471              		.thumb_func
+ 473              	function_goto:
+ 474              		@ args = 0, pretend = 0, frame = 0
+ 475              		@ frame_needed = 0, uses_anonymous_args = 0
+ 476              		@ link register save eliminated.
  477              		.syntax unified
- 478              		.thumb
- 479              		.thumb_func
- 481              	function_goto:
- 482              		@ args = 0, pretend = 0, frame = 0
- 483              		@ frame_needed = 0, uses_anonymous_args = 0
- 484              		@ link register save eliminated.
- 485              		.syntax unified
- 486              	@ 248 "HARDWARE/BSP/bsp.c" 1
- 487 0000 0046     		mov r0,r0 
- 488 0002 0047     		bx r0     
- 489              		
- 490              	@ 0 "" 2
- 491              		.thumb
- 492              		.syntax unified
- 493 0004 7047     		bx	lr
- 495              		.section	.bss.adcValue.0,"aw",%nobits
- 496              		.align	1
- 499              	adcValue.0:
- 500 0000 0000     		.space	2
- 501              		.ident	"GCC: (Arm GNU Toolchain 13.3.Rel1 (Build arm-13.24)) 13.3.1 20240614"
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccZvSNME.s 			page 11
+ 478              	@ 245 "HARDWARE/BSP/bsp.c" 1
+ 479 0000 0046     		mov r0,r0 
+ 480 0002 0047     		bx r0     
+ 481              		
+ 482              	@ 0 "" 2
+ 483              		.thumb
+ 484              		.syntax unified
+ 485 0004 7047     		bx	lr
+ 487              		.section	.bss.adcValue.0,"aw",%nobits
+ 488              		.align	1
+ 491              	adcValue.0:
+ 492 0000 0000     		.space	2
+ 493              		.ident	"GCC: (Arm GNU Toolchain 13.3.Rel1 (Build arm-13.24)) 13.3.1 20240614"
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccFsEoyc.s 			page 11
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 bsp.c
-C:\Users\ktkuru\AppData\Local\Temp\ccZvSNME.s:18     .text.LED_Init:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccZvSNME.s:24     .text.LED_Init:00000000 LED_Init
-C:\Users\ktkuru\AppData\Local\Temp\ccZvSNME.s:46     .text.LED_Init:00000024 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccZvSNME.s:50     .text.GPIO_Config:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccZvSNME.s:56     .text.GPIO_Config:00000000 GPIO_Config
-C:\Users\ktkuru\AppData\Local\Temp\ccZvSNME.s:75     .text.EXIT15_Init:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccZvSNME.s:81     .text.EXIT15_Init:00000000 EXIT15_Init
-C:\Users\ktkuru\AppData\Local\Temp\ccZvSNME.s:119    .text.EXIT15_Init:00000058 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccZvSNME.s:122    .text.TIM2_Init:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccZvSNME.s:128    .text.TIM2_Init:00000000 TIM2_Init
-C:\Users\ktkuru\AppData\Local\Temp\ccZvSNME.s:161    .rodata.BSP_Init.str1.4:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccZvSNME.s:208    .text.BSP_Init:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccZvSNME.s:214    .text.BSP_Init:00000000 BSP_Init
-C:\Users\ktkuru\AppData\Local\Temp\ccZvSNME.s:299    .text.BSP_Init:000000d8 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccZvSNME.s:319    .text.ADC_Config:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccZvSNME.s:325    .text.ADC_Config:00000000 ADC_Config
-C:\Users\ktkuru\AppData\Local\Temp\ccZvSNME.s:390    .text.ADC_Config:000000a0 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccZvSNME.s:398    .text.ADCvalue_convert:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccZvSNME.s:404    .text.ADCvalue_convert:00000000 ADCvalue_convert
-C:\Users\ktkuru\AppData\Local\Temp\ccZvSNME.s:424    .text.ADCvalue_convert:00000030 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccZvSNME.s:429    .rodata.ADC_IRQHandler.str1.4:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccZvSNME.s:433    .text.ADC_IRQHandler:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccZvSNME.s:439    .text.ADC_IRQHandler:00000000 ADC_IRQHandler
-C:\Users\ktkuru\AppData\Local\Temp\ccZvSNME.s:469    .text.ADC_IRQHandler:0000003c $d
-C:\Users\ktkuru\AppData\Local\Temp\ccZvSNME.s:499    .bss.adcValue.0:00000000 adcValue.0
-C:\Users\ktkuru\AppData\Local\Temp\ccZvSNME.s:475    .text.function_goto:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccZvSNME.s:481    .text.function_goto:00000000 function_goto
-C:\Users\ktkuru\AppData\Local\Temp\ccZvSNME.s:496    .bss.adcValue.0:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccFsEoyc.s:18     .text.LED_Init:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccFsEoyc.s:24     .text.LED_Init:00000000 LED_Init
+C:\Users\ktkuru\AppData\Local\Temp\ccFsEoyc.s:46     .text.LED_Init:00000024 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccFsEoyc.s:50     .text.GPIO_Config:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccFsEoyc.s:56     .text.GPIO_Config:00000000 GPIO_Config
+C:\Users\ktkuru\AppData\Local\Temp\ccFsEoyc.s:75     .text.EXIT15_Init:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccFsEoyc.s:81     .text.EXIT15_Init:00000000 EXIT15_Init
+C:\Users\ktkuru\AppData\Local\Temp\ccFsEoyc.s:119    .text.EXIT15_Init:00000058 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccFsEoyc.s:122    .text.TIM2_Init:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccFsEoyc.s:128    .text.TIM2_Init:00000000 TIM2_Init
+C:\Users\ktkuru\AppData\Local\Temp\ccFsEoyc.s:161    .rodata.BSP_Init.str1.4:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccFsEoyc.s:208    .text.BSP_Init:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccFsEoyc.s:214    .text.BSP_Init:00000000 BSP_Init
+C:\Users\ktkuru\AppData\Local\Temp\ccFsEoyc.s:292    .text.BSP_Init:000000cc $d
+C:\Users\ktkuru\AppData\Local\Temp\ccFsEoyc.s:311    .text.ADC_Config:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccFsEoyc.s:317    .text.ADC_Config:00000000 ADC_Config
+C:\Users\ktkuru\AppData\Local\Temp\ccFsEoyc.s:382    .text.ADC_Config:000000a0 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccFsEoyc.s:390    .text.ADCvalue_convert:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccFsEoyc.s:396    .text.ADCvalue_convert:00000000 ADCvalue_convert
+C:\Users\ktkuru\AppData\Local\Temp\ccFsEoyc.s:416    .text.ADCvalue_convert:00000030 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccFsEoyc.s:421    .rodata.ADC_IRQHandler.str1.4:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccFsEoyc.s:425    .text.ADC_IRQHandler:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccFsEoyc.s:431    .text.ADC_IRQHandler:00000000 ADC_IRQHandler
+C:\Users\ktkuru\AppData\Local\Temp\ccFsEoyc.s:461    .text.ADC_IRQHandler:0000003c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccFsEoyc.s:491    .bss.adcValue.0:00000000 adcValue.0
+C:\Users\ktkuru\AppData\Local\Temp\ccFsEoyc.s:467    .text.function_goto:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccFsEoyc.s:473    .text.function_goto:00000000 function_goto
+C:\Users\ktkuru\AppData\Local\Temp\ccFsEoyc.s:488    .bss.adcValue.0:00000000 $d
 
 UNDEFINED SYMBOLS
 GPIO_Init
@@ -632,12 +624,11 @@ delay_ms
 MPU_Init
 mpu_dmp_init
 printf
-mode
 ADC_Init
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccZvSNME.s 			page 12
-
-
 ADC_RegularChannelConfig
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccFsEoyc.s 			page 12
+
+
 ADC_CommonInit
 ADC_Cmd
 ADC_SoftwareStartConv

@@ -12,6 +12,8 @@
 ".\objects\inv_mpu_dmp_motion_driver.o"
 ".\objects\oled.o"
 ".\objects\oled_data.o"
+".\objects\externfunc.o"
+".\objects\hmi.o"
 ".\objects\startup_stm32f40_41xxx.o"
 ".\objects\delay.o"
 ".\objects\sys.o"

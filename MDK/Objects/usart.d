@@ -47,4 +47,5 @@
 .\objects\usart.o: ..\HARDWARE\IIC\myiic.h
 .\objects\usart.o: ..\HARDWARE\MPU6050\eMPL\inv_mpu.h
 .\objects\usart.o: ..\SYSTEM\delay\delay.h
+.\objects\usart.o: ..\HARDWARE\HMI\hmi.h
 .\objects\usart.o: C:\Users\ktkuru\AppData\Local\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h

@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s 			page 1
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccjocoNv.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s 			page 1
   58 001a 2343     		orrs	r3, r3, r4
   59 001c 0468     		ldr	r4, [r0]
   60 001e 2343     		orrs	r3, r3, r4
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s 			page 2
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccjocoNv.s 			page 2
 
 
   61 0020 0069     		ldr	r0, [r0, #16]
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s 			page 1
  121              		@ link register save eliminated.
  122 0000 014B     		ldr	r3, .L12
  123 0002 1860     		str	r0, [r3]
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s 			page 3
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccjocoNv.s 			page 3
 
 
  124 0004 7047     		bx	lr
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s 			page 1
  183              		.section	.text.SDIO_CmdStructInit,"ax",%progbits
  184              		.align	1
  185              		.global	SDIO_CmdStructInit
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s 			page 4
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccjocoNv.s 			page 4
 
 
  186              		.syntax unified
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s 			page 1
  245              		.align	2
  246              	.L27:
  247 0014 142C0140 		.word	1073818644
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s 			page 5
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccjocoNv.s 			page 5
 
 
  249              		.section	.text.SDIO_DataConfig,"ax",%progbits
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s 			page 1
  307              		.global	SDIO_GetDataCounter
  308              		.syntax unified
  309              		.thumb
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s 			page 6
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccjocoNv.s 			page 6
 
 
  310              		.thumb_func
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s 			page 1
  371              		@ frame_needed = 0, uses_anonymous_args = 0
  372              		@ link register save eliminated.
  373 0000 014B     		ldr	r3, .L44
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s 			page 7
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccjocoNv.s 			page 7
 
 
  374 0002 986C     		ldr	r0, [r3, #72]
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s 			page 1
  434              		.align	2
  435              	.L53:
  436 0008 00802542 		.word	1109753856
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s 			page 8
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccjocoNv.s 			page 8
 
 
  438              		.section	.text.SDIO_SetSDIOOperation,"ax",%progbits
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s 			page 1
  498              		.syntax unified
  499              		.thumb
  500              		.thumb_func
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s 			page 9
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccjocoNv.s 			page 9
 
 
  502              	SDIO_CEATAITCmd:
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s 			page 1
  562              		@ args = 0, pretend = 0, frame = 0
  563              		@ frame_needed = 0, uses_anonymous_args = 0
  564              		@ link register save eliminated.
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s 			page 10
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccjocoNv.s 			page 10
 
 
  565 0000 21B1     		cbz	r1, .L74
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s 			page 1
  623              	.L84:
  624 0008 002C0140 		.word	1073818624
  626              		.section	.text.SDIO_GetITStatus,"ax",%progbits
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s 			page 11
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccjocoNv.s 			page 11
 
 
  627              		.align	1
@@ -641,100 +641,100 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s 			page 1
  667              	.L92:
  668 0008 002C0140 		.word	1073818624
  670              		.ident	"GCC: (Arm GNU Toolchain 13.3.Rel1 (Build arm-13.24)) 13.3.1 20240614"
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s 			page 12
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccjocoNv.s 			page 12
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 stm32f4xx_sdio.c
-C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s:18     .text.SDIO_DeInit:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s:24     .text.SDIO_DeInit:00000000 SDIO_DeInit
-C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s:37     .text.SDIO_Init:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s:43     .text.SDIO_Init:00000000 SDIO_Init
-C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s:70     .text.SDIO_Init:00000030 $d
-C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s:73     .text.SDIO_StructInit:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s:79     .text.SDIO_StructInit:00000000 SDIO_StructInit
-C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s:93     .text.SDIO_ClockCmd:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s:99     .text.SDIO_ClockCmd:00000000 SDIO_ClockCmd
-C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s:109    .text.SDIO_ClockCmd:00000008 $d
-C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s:112    .text.SDIO_SetPowerState:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s:118    .text.SDIO_SetPowerState:00000000 SDIO_SetPowerState
-C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s:128    .text.SDIO_SetPowerState:00000008 $d
-C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s:131    .text.SDIO_GetPowerState:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s:137    .text.SDIO_GetPowerState:00000000 SDIO_GetPowerState
-C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s:148    .text.SDIO_GetPowerState:0000000c $d
-C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s:151    .text.SDIO_SendCommand:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s:157    .text.SDIO_SendCommand:00000000 SDIO_SendCommand
-C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s:181    .text.SDIO_SendCommand:00000028 $d
-C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s:184    .text.SDIO_CmdStructInit:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s:190    .text.SDIO_CmdStructInit:00000000 SDIO_CmdStructInit
-C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s:203    .text.SDIO_GetCommandResponse:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s:209    .text.SDIO_GetCommandResponse:00000000 SDIO_GetCommandResponse
-C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s:220    .text.SDIO_GetCommandResponse:00000008 $d
-C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s:223    .text.SDIO_GetResponse:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s:229    .text.SDIO_GetResponse:00000000 SDIO_GetResponse
-C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s:247    .text.SDIO_GetResponse:00000014 $d
-C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s:250    .text.SDIO_DataConfig:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s:256    .text.SDIO_DataConfig:00000000 SDIO_DataConfig
-C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s:282    .text.SDIO_DataConfig:0000002c $d
-C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s:285    .text.SDIO_DataStructInit:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s:291    .text.SDIO_DataStructInit:00000000 SDIO_DataStructInit
-C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s:306    .text.SDIO_GetDataCounter:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s:312    .text.SDIO_GetDataCounter:00000000 SDIO_GetDataCounter
-C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s:322    .text.SDIO_GetDataCounter:00000008 $d
-C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s:325    .text.SDIO_ReadData:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s:331    .text.SDIO_ReadData:00000000 SDIO_ReadData
-C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s:341    .text.SDIO_ReadData:00000008 $d
-C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s:344    .text.SDIO_WriteData:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s:350    .text.SDIO_WriteData:00000000 SDIO_WriteData
-C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s:360    .text.SDIO_WriteData:00000008 $d
-C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s:363    .text.SDIO_GetFIFOCount:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s:369    .text.SDIO_GetFIFOCount:00000000 SDIO_GetFIFOCount
-C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s:379    .text.SDIO_GetFIFOCount:00000008 $d
-C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s:382    .text.SDIO_StartSDIOReadWait:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s:388    .text.SDIO_StartSDIOReadWait:00000000 SDIO_StartSDIOReadWait
-C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s:398    .text.SDIO_StartSDIOReadWait:00000008 $d
-C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s:401    .text.SDIO_StopSDIOReadWait:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s:407    .text.SDIO_StopSDIOReadWait:00000000 SDIO_StopSDIOReadWait
-C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s:417    .text.SDIO_StopSDIOReadWait:00000008 $d
-C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s:420    .text.SDIO_SetSDIOReadWaitMode:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s:426    .text.SDIO_SetSDIOReadWaitMode:00000000 SDIO_SetSDIOReadWaitMode
-C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s:436    .text.SDIO_SetSDIOReadWaitMode:00000008 $d
-C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s:439    .text.SDIO_SetSDIOOperation:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s:445    .text.SDIO_SetSDIOOperation:00000000 SDIO_SetSDIOOperation
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s 			page 13
+C:\Users\ktkuru\AppData\Local\Temp\ccjocoNv.s:18     .text.SDIO_DeInit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccjocoNv.s:24     .text.SDIO_DeInit:00000000 SDIO_DeInit
+C:\Users\ktkuru\AppData\Local\Temp\ccjocoNv.s:37     .text.SDIO_Init:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccjocoNv.s:43     .text.SDIO_Init:00000000 SDIO_Init
+C:\Users\ktkuru\AppData\Local\Temp\ccjocoNv.s:70     .text.SDIO_Init:00000030 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccjocoNv.s:73     .text.SDIO_StructInit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccjocoNv.s:79     .text.SDIO_StructInit:00000000 SDIO_StructInit
+C:\Users\ktkuru\AppData\Local\Temp\ccjocoNv.s:93     .text.SDIO_ClockCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccjocoNv.s:99     .text.SDIO_ClockCmd:00000000 SDIO_ClockCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccjocoNv.s:109    .text.SDIO_ClockCmd:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccjocoNv.s:112    .text.SDIO_SetPowerState:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccjocoNv.s:118    .text.SDIO_SetPowerState:00000000 SDIO_SetPowerState
+C:\Users\ktkuru\AppData\Local\Temp\ccjocoNv.s:128    .text.SDIO_SetPowerState:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccjocoNv.s:131    .text.SDIO_GetPowerState:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccjocoNv.s:137    .text.SDIO_GetPowerState:00000000 SDIO_GetPowerState
+C:\Users\ktkuru\AppData\Local\Temp\ccjocoNv.s:148    .text.SDIO_GetPowerState:0000000c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccjocoNv.s:151    .text.SDIO_SendCommand:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccjocoNv.s:157    .text.SDIO_SendCommand:00000000 SDIO_SendCommand
+C:\Users\ktkuru\AppData\Local\Temp\ccjocoNv.s:181    .text.SDIO_SendCommand:00000028 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccjocoNv.s:184    .text.SDIO_CmdStructInit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccjocoNv.s:190    .text.SDIO_CmdStructInit:00000000 SDIO_CmdStructInit
+C:\Users\ktkuru\AppData\Local\Temp\ccjocoNv.s:203    .text.SDIO_GetCommandResponse:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccjocoNv.s:209    .text.SDIO_GetCommandResponse:00000000 SDIO_GetCommandResponse
+C:\Users\ktkuru\AppData\Local\Temp\ccjocoNv.s:220    .text.SDIO_GetCommandResponse:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccjocoNv.s:223    .text.SDIO_GetResponse:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccjocoNv.s:229    .text.SDIO_GetResponse:00000000 SDIO_GetResponse
+C:\Users\ktkuru\AppData\Local\Temp\ccjocoNv.s:247    .text.SDIO_GetResponse:00000014 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccjocoNv.s:250    .text.SDIO_DataConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccjocoNv.s:256    .text.SDIO_DataConfig:00000000 SDIO_DataConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccjocoNv.s:282    .text.SDIO_DataConfig:0000002c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccjocoNv.s:285    .text.SDIO_DataStructInit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccjocoNv.s:291    .text.SDIO_DataStructInit:00000000 SDIO_DataStructInit
+C:\Users\ktkuru\AppData\Local\Temp\ccjocoNv.s:306    .text.SDIO_GetDataCounter:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccjocoNv.s:312    .text.SDIO_GetDataCounter:00000000 SDIO_GetDataCounter
+C:\Users\ktkuru\AppData\Local\Temp\ccjocoNv.s:322    .text.SDIO_GetDataCounter:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccjocoNv.s:325    .text.SDIO_ReadData:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccjocoNv.s:331    .text.SDIO_ReadData:00000000 SDIO_ReadData
+C:\Users\ktkuru\AppData\Local\Temp\ccjocoNv.s:341    .text.SDIO_ReadData:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccjocoNv.s:344    .text.SDIO_WriteData:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccjocoNv.s:350    .text.SDIO_WriteData:00000000 SDIO_WriteData
+C:\Users\ktkuru\AppData\Local\Temp\ccjocoNv.s:360    .text.SDIO_WriteData:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccjocoNv.s:363    .text.SDIO_GetFIFOCount:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccjocoNv.s:369    .text.SDIO_GetFIFOCount:00000000 SDIO_GetFIFOCount
+C:\Users\ktkuru\AppData\Local\Temp\ccjocoNv.s:379    .text.SDIO_GetFIFOCount:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccjocoNv.s:382    .text.SDIO_StartSDIOReadWait:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccjocoNv.s:388    .text.SDIO_StartSDIOReadWait:00000000 SDIO_StartSDIOReadWait
+C:\Users\ktkuru\AppData\Local\Temp\ccjocoNv.s:398    .text.SDIO_StartSDIOReadWait:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccjocoNv.s:401    .text.SDIO_StopSDIOReadWait:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccjocoNv.s:407    .text.SDIO_StopSDIOReadWait:00000000 SDIO_StopSDIOReadWait
+C:\Users\ktkuru\AppData\Local\Temp\ccjocoNv.s:417    .text.SDIO_StopSDIOReadWait:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccjocoNv.s:420    .text.SDIO_SetSDIOReadWaitMode:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccjocoNv.s:426    .text.SDIO_SetSDIOReadWaitMode:00000000 SDIO_SetSDIOReadWaitMode
+C:\Users\ktkuru\AppData\Local\Temp\ccjocoNv.s:436    .text.SDIO_SetSDIOReadWaitMode:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccjocoNv.s:439    .text.SDIO_SetSDIOOperation:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccjocoNv.s:445    .text.SDIO_SetSDIOOperation:00000000 SDIO_SetSDIOOperation
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccjocoNv.s 			page 13
 
 
-C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s:455    .text.SDIO_SetSDIOOperation:00000008 $d
-C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s:458    .text.SDIO_SendSDIOSuspendCmd:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s:464    .text.SDIO_SendSDIOSuspendCmd:00000000 SDIO_SendSDIOSuspendCmd
-C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s:474    .text.SDIO_SendSDIOSuspendCmd:00000008 $d
-C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s:477    .text.SDIO_CommandCompletionCmd:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s:483    .text.SDIO_CommandCompletionCmd:00000000 SDIO_CommandCompletionCmd
-C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s:493    .text.SDIO_CommandCompletionCmd:00000008 $d
-C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s:496    .text.SDIO_CEATAITCmd:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s:502    .text.SDIO_CEATAITCmd:00000000 SDIO_CEATAITCmd
-C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s:514    .text.SDIO_CEATAITCmd:00000010 $d
-C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s:517    .text.SDIO_SendCEATACmd:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s:523    .text.SDIO_SendCEATACmd:00000000 SDIO_SendCEATACmd
-C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s:533    .text.SDIO_SendCEATACmd:00000008 $d
-C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s:536    .text.SDIO_DMACmd:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s:542    .text.SDIO_DMACmd:00000000 SDIO_DMACmd
-C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s:552    .text.SDIO_DMACmd:00000008 $d
-C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s:555    .text.SDIO_ITConfig:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s:561    .text.SDIO_ITConfig:00000000 SDIO_ITConfig
-C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s:580    .text.SDIO_ITConfig:00000018 $d
-C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s:583    .text.SDIO_GetFlagStatus:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s:589    .text.SDIO_GetFlagStatus:00000000 SDIO_GetFlagStatus
-C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s:605    .text.SDIO_GetFlagStatus:00000010 $d
-C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s:608    .text.SDIO_ClearFlag:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s:614    .text.SDIO_ClearFlag:00000000 SDIO_ClearFlag
-C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s:624    .text.SDIO_ClearFlag:00000008 $d
-C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s:627    .text.SDIO_GetITStatus:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s:633    .text.SDIO_GetITStatus:00000000 SDIO_GetITStatus
-C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s:649    .text.SDIO_GetITStatus:00000010 $d
-C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s:652    .text.SDIO_ClearITPendingBit:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s:658    .text.SDIO_ClearITPendingBit:00000000 SDIO_ClearITPendingBit
-C:\Users\ktkuru\AppData\Local\Temp\cccvuDME.s:668    .text.SDIO_ClearITPendingBit:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccjocoNv.s:455    .text.SDIO_SetSDIOOperation:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccjocoNv.s:458    .text.SDIO_SendSDIOSuspendCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccjocoNv.s:464    .text.SDIO_SendSDIOSuspendCmd:00000000 SDIO_SendSDIOSuspendCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccjocoNv.s:474    .text.SDIO_SendSDIOSuspendCmd:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccjocoNv.s:477    .text.SDIO_CommandCompletionCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccjocoNv.s:483    .text.SDIO_CommandCompletionCmd:00000000 SDIO_CommandCompletionCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccjocoNv.s:493    .text.SDIO_CommandCompletionCmd:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccjocoNv.s:496    .text.SDIO_CEATAITCmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccjocoNv.s:502    .text.SDIO_CEATAITCmd:00000000 SDIO_CEATAITCmd
+C:\Users\ktkuru\AppData\Local\Temp\ccjocoNv.s:514    .text.SDIO_CEATAITCmd:00000010 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccjocoNv.s:517    .text.SDIO_SendCEATACmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccjocoNv.s:523    .text.SDIO_SendCEATACmd:00000000 SDIO_SendCEATACmd
+C:\Users\ktkuru\AppData\Local\Temp\ccjocoNv.s:533    .text.SDIO_SendCEATACmd:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccjocoNv.s:536    .text.SDIO_DMACmd:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccjocoNv.s:542    .text.SDIO_DMACmd:00000000 SDIO_DMACmd
+C:\Users\ktkuru\AppData\Local\Temp\ccjocoNv.s:552    .text.SDIO_DMACmd:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccjocoNv.s:555    .text.SDIO_ITConfig:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccjocoNv.s:561    .text.SDIO_ITConfig:00000000 SDIO_ITConfig
+C:\Users\ktkuru\AppData\Local\Temp\ccjocoNv.s:580    .text.SDIO_ITConfig:00000018 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccjocoNv.s:583    .text.SDIO_GetFlagStatus:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccjocoNv.s:589    .text.SDIO_GetFlagStatus:00000000 SDIO_GetFlagStatus
+C:\Users\ktkuru\AppData\Local\Temp\ccjocoNv.s:605    .text.SDIO_GetFlagStatus:00000010 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccjocoNv.s:608    .text.SDIO_ClearFlag:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccjocoNv.s:614    .text.SDIO_ClearFlag:00000000 SDIO_ClearFlag
+C:\Users\ktkuru\AppData\Local\Temp\ccjocoNv.s:624    .text.SDIO_ClearFlag:00000008 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccjocoNv.s:627    .text.SDIO_GetITStatus:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccjocoNv.s:633    .text.SDIO_GetITStatus:00000000 SDIO_GetITStatus
+C:\Users\ktkuru\AppData\Local\Temp\ccjocoNv.s:649    .text.SDIO_GetITStatus:00000010 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccjocoNv.s:652    .text.SDIO_ClearITPendingBit:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccjocoNv.s:658    .text.SDIO_ClearITPendingBit:00000000 SDIO_ClearITPendingBit
+C:\Users\ktkuru\AppData\Local\Temp\ccjocoNv.s:668    .text.SDIO_ClearITPendingBit:00000008 $d
 
 UNDEFINED SYMBOLS
 RCC_APB2PeriphResetCmd

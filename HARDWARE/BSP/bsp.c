@@ -23,7 +23,7 @@
 int BSP_Init()
 {
     usart1_init(115200);
-    usart2_init(9600);
+    usart2_init(115200);
     printf("peripheral init start......\n");
     delay_init(84);
     printf("->Delay Init done\n");
@@ -69,11 +69,8 @@ int BSP_Init()
      
     EXIT15_Init();
     printf("->ETIT15 Init done\n");
-    if(mode==5)
-    {
-        TIM2_Init(3);
-        printf("->TIM2 Init done\n");
-    }
+    TIM2_Init(3);
+    printf("->TIM2 Init done\n");
     
 
 
@@ -147,7 +144,7 @@ void TIM2_Init(uint32_t ms)
 
     TIM_ITConfig(TIM2, TIM_IT_Update, ENABLE);
 
-    TIM_Cmd(TIM2, ENABLE);
+    TIM_Cmd(TIM2, DISABLE);
 }
 
 

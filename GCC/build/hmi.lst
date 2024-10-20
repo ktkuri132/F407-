@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccrkjt28.s 			page 1
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccQWoYTp.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -26,150 +26,152 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccrkjt28.s 			page 1
   24              	HMISendb:
   25              		@ args = 0, pretend = 0, frame = 0
   26              		@ frame_needed = 0, uses_anonymous_args = 0
-  27 0000 70B5     		push	{r4, r5, r6, lr}
-  28 0002 0646     		mov	r6, r0
-  29 0004 0D46     		mov	r5, r1
-  30 0006 0024     		movs	r4, #0
-  31              	.L2:
-  32 0008 022C     		cmp	r4, #2
-  33 000a 0DD8     		bhi	.L1
-  34 000c 65B1     		cbz	r5, .L1
-  35 000e 2946     		mov	r1, r5
-  36 0010 3046     		mov	r0, r6
-  37 0012 FFF7FEFF 		bl	USART_SendData
-  38              	.L4:
-  39 0016 8021     		movs	r1, #128
-  40 0018 0448     		ldr	r0, .L7
-  41 001a FFF7FEFF 		bl	USART_GetFlagStatus
-  42 001e 0028     		cmp	r0, #0
-  43 0020 F9D0     		beq	.L4
-  44 0022 0134     		adds	r4, r4, #1
-  45 0024 E4B2     		uxtb	r4, r4
-  46 0026 EFE7     		b	.L2
-  47              	.L1:
-  48 0028 70BD     		pop	{r4, r5, r6, pc}
-  49              	.L8:
-  50 002a 00BF     		.align	2
-  51              	.L7:
-  52 002c 00100140 		.word	1073811456
-  54              		.section	.text.HMISendstart,"ax",%progbits
-  55              		.align	1
-  56              		.global	HMISendstart
-  57              		.syntax unified
-  58              		.thumb
-  59              		.thumb_func
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccrkjt28.s 			page 2
+  27 0000 38B5     		push	{r3, r4, r5, lr}
+  28 0002 0D46     		mov	r5, r1
+  29 0004 0024     		movs	r4, #0
+  30              	.L2:
+  31 0006 022C     		cmp	r4, #2
+  32 0008 0DD8     		bhi	.L1
+  33 000a 65B1     		cbz	r5, .L1
+  34 000c 2946     		mov	r1, r5
+  35 000e 0648     		ldr	r0, .L7
+  36 0010 FFF7FEFF 		bl	USART_SendData
+  37              	.L4:
+  38 0014 8021     		movs	r1, #128
+  39 0016 0448     		ldr	r0, .L7
+  40 0018 FFF7FEFF 		bl	USART_GetFlagStatus
+  41 001c 0028     		cmp	r0, #0
+  42 001e F9D0     		beq	.L4
+  43 0020 0134     		adds	r4, r4, #1
+  44 0022 E4B2     		uxtb	r4, r4
+  45 0024 EFE7     		b	.L2
+  46              	.L1:
+  47 0026 38BD     		pop	{r3, r4, r5, pc}
+  48              	.L8:
+  49              		.align	2
+  50              	.L7:
+  51 0028 00440040 		.word	1073759232
+  53              		.section	.text.HMISendstart,"ax",%progbits
+  54              		.align	1
+  55              		.global	HMISendstart
+  56              		.syntax unified
+  57              		.thumb
+  58              		.thumb_func
+  60              	HMISendstart:
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccQWoYTp.s 			page 2
 
 
-  61              	HMISendstart:
-  62              		@ args = 0, pretend = 0, frame = 0
-  63              		@ frame_needed = 0, uses_anonymous_args = 0
-  64 0000 10B5     		push	{r4, lr}
-  65 0002 0446     		mov	r4, r0
-  66 0004 C820     		movs	r0, #200
-  67 0006 FFF7FEFF 		bl	delay_ms
-  68 000a FF21     		movs	r1, #255
-  69 000c 2046     		mov	r0, r4
-  70 000e FFF7FEFF 		bl	HMISendb
-  71 0012 C820     		movs	r0, #200
-  72 0014 FFF7FEFF 		bl	delay_ms
-  73 0018 10BD     		pop	{r4, pc}
-  75              		.section	.text.HMISends,"ax",%progbits
-  76              		.align	1
-  77              		.global	HMISends
-  78              		.syntax unified
-  79              		.thumb
-  80              		.thumb_func
-  82              	HMISends:
-  83              		@ args = 0, pretend = 0, frame = 0
-  84              		@ frame_needed = 0, uses_anonymous_args = 0
-  85 0000 70B5     		push	{r4, r5, r6, lr}
-  86 0002 0646     		mov	r6, r0
-  87 0004 0D46     		mov	r5, r1
-  88 0006 0024     		movs	r4, #0
-  89              	.L14:
-  90 0008 295D     		ldrb	r1, [r5, r4]	@ zero_extendqisi2
-  91 000a 59B1     		cbz	r1, .L11
-  92 000c 3046     		mov	r0, r6
-  93 000e FFF7FEFF 		bl	USART_SendData
-  94              	.L13:
-  95 0012 8021     		movs	r1, #128
-  96 0014 0448     		ldr	r0, .L16
-  97 0016 FFF7FEFF 		bl	USART_GetFlagStatus
-  98 001a 0028     		cmp	r0, #0
-  99 001c F9D0     		beq	.L13
- 100 001e 0134     		adds	r4, r4, #1
- 101 0020 E4B2     		uxtb	r4, r4
- 102 0022 F1E7     		b	.L14
- 103              	.L11:
- 104 0024 70BD     		pop	{r4, r5, r6, pc}
- 105              	.L17:
- 106 0026 00BF     		.align	2
- 107              	.L16:
- 108 0028 00100140 		.word	1073811456
- 110              		.section	.text.USART2_IRQHandler,"ax",%progbits
- 111              		.align	1
- 112              		.global	USART2_IRQHandler
- 113              		.syntax unified
- 114              		.thumb
- 115              		.thumb_func
- 117              	USART2_IRQHandler:
- 118              		@ args = 0, pretend = 0, frame = 0
- 119              		@ frame_needed = 0, uses_anonymous_args = 0
- 120 0000 10B5     		push	{r4, lr}
- 121 0002 40F22551 		movw	r1, #1317
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccrkjt28.s 			page 3
+  61              		@ args = 0, pretend = 0, frame = 0
+  62              		@ frame_needed = 0, uses_anonymous_args = 0
+  63 0000 08B5     		push	{r3, lr}
+  64 0002 C820     		movs	r0, #200
+  65 0004 FFF7FEFF 		bl	delay_ms
+  66 0008 FF21     		movs	r1, #255
+  67 000a 0348     		ldr	r0, .L11
+  68 000c FFF7FEFF 		bl	HMISendb
+  69 0010 C820     		movs	r0, #200
+  70 0012 FFF7FEFF 		bl	delay_ms
+  71 0016 08BD     		pop	{r3, pc}
+  72              	.L12:
+  73              		.align	2
+  74              	.L11:
+  75 0018 00440040 		.word	1073759232
+  77              		.section	.text.HMISends,"ax",%progbits
+  78              		.align	1
+  79              		.global	HMISends
+  80              		.syntax unified
+  81              		.thumb
+  82              		.thumb_func
+  84              	HMISends:
+  85              		@ args = 0, pretend = 0, frame = 0
+  86              		@ frame_needed = 0, uses_anonymous_args = 0
+  87 0000 38B5     		push	{r3, r4, r5, lr}
+  88 0002 0D46     		mov	r5, r1
+  89 0004 0024     		movs	r4, #0
+  90              	.L16:
+  91 0006 295D     		ldrb	r1, [r5, r4]	@ zero_extendqisi2
+  92 0008 59B1     		cbz	r1, .L13
+  93 000a 0648     		ldr	r0, .L18
+  94 000c FFF7FEFF 		bl	USART_SendData
+  95              	.L15:
+  96 0010 8021     		movs	r1, #128
+  97 0012 0448     		ldr	r0, .L18
+  98 0014 FFF7FEFF 		bl	USART_GetFlagStatus
+  99 0018 0028     		cmp	r0, #0
+ 100 001a F9D0     		beq	.L15
+ 101 001c 0134     		adds	r4, r4, #1
+ 102 001e E4B2     		uxtb	r4, r4
+ 103 0020 F1E7     		b	.L16
+ 104              	.L13:
+ 105 0022 38BD     		pop	{r3, r4, r5, pc}
+ 106              	.L19:
+ 107              		.align	2
+ 108              	.L18:
+ 109 0024 00440040 		.word	1073759232
+ 111              		.section	.text.USART2_IRQHandler,"ax",%progbits
+ 112              		.align	1
+ 113              		.global	USART2_IRQHandler
+ 114              		.syntax unified
+ 115              		.thumb
+ 116              		.thumb_func
+ 118              	USART2_IRQHandler:
+ 119              		@ args = 0, pretend = 0, frame = 0
+ 120              		@ frame_needed = 0, uses_anonymous_args = 0
+ 121 0000 10B5     		push	{r4, lr}
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccQWoYTp.s 			page 3
 
 
- 122 0006 0D48     		ldr	r0, .L22
- 123 0008 FFF7FEFF 		bl	USART_GetITStatus
- 124 000c 00B9     		cbnz	r0, .L21
- 125              	.L18:
- 126 000e 10BD     		pop	{r4, pc}
- 127              	.L21:
- 128 0010 0A4C     		ldr	r4, .L22
- 129 0012 2021     		movs	r1, #32
- 130 0014 2046     		mov	r0, r4
- 131 0016 FFF7FEFF 		bl	USART_ClearFlag
- 132 001a 2046     		mov	r0, r4
- 133 001c FFF7FEFF 		bl	USART_ReceiveData
- 134 0020 074B     		ldr	r3, .L22+4
- 135 0022 1880     		strh	r0, [r3]	@ movhi
- 136 0024 FFF7FEFF 		bl	HMI_ResCheck
- 137 0028 FFF7FEFF 		bl	HMI_Mode1_2
- 138 002c FFF7FEFF 		bl	HMI_Mode3
- 139 0030 FFF7FEFF 		bl	HMI_Mode4
- 140 0034 FFF7FEFF 		bl	HMI_Mode5
- 141 0038 E9E7     		b	.L18
- 142              	.L23:
- 143 003a 00BF     		.align	2
- 144              	.L22:
- 145 003c 00440040 		.word	1073759232
- 146 0040 00000000 		.word	Res
- 148              		.global	Res
- 149              		.section	.bss.Res,"aw",%nobits
- 150              		.align	1
- 153              	Res:
- 154 0000 0000     		.space	2
- 155              		.ident	"GCC: (Arm GNU Toolchain 13.3.Rel1 (Build arm-13.24)) 13.3.1 20240614"
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccrkjt28.s 			page 4
+ 122 0002 40F22551 		movw	r1, #1317
+ 123 0006 0D48     		ldr	r0, .L24
+ 124 0008 FFF7FEFF 		bl	USART_GetITStatus
+ 125 000c 00B9     		cbnz	r0, .L23
+ 126              	.L20:
+ 127 000e 10BD     		pop	{r4, pc}
+ 128              	.L23:
+ 129 0010 0A4C     		ldr	r4, .L24
+ 130 0012 2021     		movs	r1, #32
+ 131 0014 2046     		mov	r0, r4
+ 132 0016 FFF7FEFF 		bl	USART_ClearFlag
+ 133 001a 2046     		mov	r0, r4
+ 134 001c FFF7FEFF 		bl	USART_ReceiveData
+ 135 0020 074B     		ldr	r3, .L24+4
+ 136 0022 1880     		strh	r0, [r3]	@ movhi
+ 137 0024 FFF7FEFF 		bl	HMI_ResCheck
+ 138 0028 FFF7FEFF 		bl	HMI_Mode1_2
+ 139 002c FFF7FEFF 		bl	HMI_Mode3
+ 140 0030 FFF7FEFF 		bl	HMI_Mode4
+ 141 0034 FFF7FEFF 		bl	HMI_Mode5
+ 142 0038 E9E7     		b	.L20
+ 143              	.L25:
+ 144 003a 00BF     		.align	2
+ 145              	.L24:
+ 146 003c 00440040 		.word	1073759232
+ 147 0040 00000000 		.word	Res
+ 149              		.global	Res
+ 150              		.section	.bss.Res,"aw",%nobits
+ 151              		.align	1
+ 154              	Res:
+ 155 0000 0000     		.space	2
+ 156              		.ident	"GCC: (Arm GNU Toolchain 13.3.Rel1 (Build arm-13.24)) 13.3.1 20240614"
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccQWoYTp.s 			page 4
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 hmi.c
-C:\Users\ktkuru\AppData\Local\Temp\ccrkjt28.s:18     .text.HMISendb:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccrkjt28.s:24     .text.HMISendb:00000000 HMISendb
-C:\Users\ktkuru\AppData\Local\Temp\ccrkjt28.s:52     .text.HMISendb:0000002c $d
-C:\Users\ktkuru\AppData\Local\Temp\ccrkjt28.s:55     .text.HMISendstart:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccrkjt28.s:61     .text.HMISendstart:00000000 HMISendstart
-C:\Users\ktkuru\AppData\Local\Temp\ccrkjt28.s:76     .text.HMISends:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccrkjt28.s:82     .text.HMISends:00000000 HMISends
-C:\Users\ktkuru\AppData\Local\Temp\ccrkjt28.s:108    .text.HMISends:00000028 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccrkjt28.s:111    .text.USART2_IRQHandler:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccrkjt28.s:117    .text.USART2_IRQHandler:00000000 USART2_IRQHandler
-C:\Users\ktkuru\AppData\Local\Temp\ccrkjt28.s:145    .text.USART2_IRQHandler:0000003c $d
-C:\Users\ktkuru\AppData\Local\Temp\ccrkjt28.s:153    .bss.Res:00000000 Res
-C:\Users\ktkuru\AppData\Local\Temp\ccrkjt28.s:150    .bss.Res:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccQWoYTp.s:18     .text.HMISendb:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccQWoYTp.s:24     .text.HMISendb:00000000 HMISendb
+C:\Users\ktkuru\AppData\Local\Temp\ccQWoYTp.s:51     .text.HMISendb:00000028 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccQWoYTp.s:54     .text.HMISendstart:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccQWoYTp.s:60     .text.HMISendstart:00000000 HMISendstart
+C:\Users\ktkuru\AppData\Local\Temp\ccQWoYTp.s:75     .text.HMISendstart:00000018 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccQWoYTp.s:78     .text.HMISends:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccQWoYTp.s:84     .text.HMISends:00000000 HMISends
+C:\Users\ktkuru\AppData\Local\Temp\ccQWoYTp.s:109    .text.HMISends:00000024 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccQWoYTp.s:112    .text.USART2_IRQHandler:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccQWoYTp.s:118    .text.USART2_IRQHandler:00000000 USART2_IRQHandler
+C:\Users\ktkuru\AppData\Local\Temp\ccQWoYTp.s:146    .text.USART2_IRQHandler:0000003c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccQWoYTp.s:154    .bss.Res:00000000 Res
+C:\Users\ktkuru\AppData\Local\Temp\ccQWoYTp.s:151    .bss.Res:00000000 $d
 
 UNDEFINED SYMBOLS
 USART_SendData

@@ -190,6 +190,24 @@ void USART1_IRQHandler(void)
   	} 
 } 
 
+/* 串口发送函数  */
+void USART_Send_Data(USART_TypeDef *USARTx, char data)
+{
+	USART_SendData(USARTx,data);
+	while(USART_GetFlagStatus(USARTx,USART_FLAG_TC)!=1);
+}
+
+/* 串口发送字符串函数  */
+void USART_Send_String(USART_TypeDef *USARTx,char *String)
+{
+	u16 len,j;
+	
+	len=strlen(String);
+	for(j=0;j<len;j++)
+	{
+		USART_Send_Data(USARTx, *String++);
+	}
+}
 
 #ifndef __HMI_H_
 
@@ -237,24 +255,7 @@ void USART2_IRQHandler(void)
 	}
 }
 
-/* 串口发送函数  */
-void USART_Send_Data(USART_TypeDef *USARTx, char data)
-{
-	USART_SendData(USARTx,data);
-	while(USART_GetFlagStatus(USARTx,USART_FLAG_TC)!=1);
-}
 
-/* 串口发送字符串函数  */
-void USART_Send_String(USART_TypeDef *USARTx,char *String)
-{
-	u16 len,j;
-	
-	len=strlen(String);
-	for(j=0;j<len;j++)
-	{
-		USART_Send_Data(USARTx, *String++);
-	}
-}
 
 #endif
 

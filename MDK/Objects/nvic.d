@@ -47,3 +47,4 @@
 .\objects\nvic.o: ..\HARDWARE\IIC\myiic.h
 .\objects\nvic.o: ..\HARDWARE\MPU6050\eMPL\inv_mpu.h
 .\objects\nvic.o: ..\SYSTEM\delay\delay.h
+.\objects\nvic.o: ..\HARDWARE\HMI\hmi.h

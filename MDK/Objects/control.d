@@ -47,5 +47,6 @@
 .\objects\control.o: ..\HARDWARE\IIC\myiic.h
 .\objects\control.o: ..\HARDWARE\MPU6050\eMPL\inv_mpu.h
 .\objects\control.o: ..\SYSTEM\delay\delay.h
+.\objects\control.o: ..\HARDWARE\HMI\hmi.h
 .\objects\control.o: C:\Users\ktkuru\AppData\Local\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
 .\objects\control.o: C:\Users\ktkuru\AppData\Local\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h

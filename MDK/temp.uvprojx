@@ -326,7 +326,7 @@
             <wLevel>1</wLevel>
             <uThumb>0</uThumb>
             <uSurpInc>0</uSurpInc>
-            <uC99>0</uC99>
+            <uC99>1</uC99>
             <uGnu>0</uGnu>
             <useXO>0</useXO>
             <v6Lang>1</v6Lang>
@@ -340,7 +340,7 @@
               <MiscControls></MiscControls>
               <Define>STM32F40_41xxx,USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>..\STM32F4xx_FWLib\inc;..\USER;..\SYSTEM\delay;..\SYSTEM\sys;..\SYSTEM\usart;..\HARDWARE\CONTROL;..\HARDWARE\BSP;..\HARDWARE\MPU6050;..\HARDWARE\MPU6050\eMPL;..\HARDWARE\OLED_SPI;..\HARDWARE\IIC;..\SYSTEM\shell</IncludePath>
+              <IncludePath>..\STM32F4xx_FWLib\inc;..\USER;..\SYSTEM\delay;..\SYSTEM\sys;..\SYSTEM\usart;..\HARDWARE\CONTROL;..\HARDWARE\BSP;..\HARDWARE\HMI;..\HARDWARE\MPU6050;..\HARDWARE\MPU6050\eMPL;..\HARDWARE\OLED_SPI;..\HARDWARE\IIC;..\SYSTEM\shell</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -453,6 +453,16 @@
               <FileName>OLED_Data.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\HARDWARE\OLED_SPI\OLED_Data.c</FilePath>
+            </File>
+            <File>
+              <FileName>externfunc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\HMI\externfunc.c</FilePath>
+            </File>
+            <File>
+              <FileName>hmi.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\HMI\hmi.c</FilePath>
             </File>
           </Files>
         </Group>

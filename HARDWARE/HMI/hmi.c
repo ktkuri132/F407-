@@ -11,12 +11,7 @@ extern uint8_t mode;
 uint16_t Res;
 
 
-void HMISendstart(USART_TypeDef* USARTx)
-{
-	delay_ms(200);
-	HMISendb(USARTx,0xff);
-	delay_ms(200);
-}
+
 
 
 void HMISendb(USART_TypeDef* USARTx,u8 k)		         
@@ -26,8 +21,8 @@ void HMISendb(USART_TypeDef* USARTx,u8 k)
 	 {
 		if(k!=0)
 		{
-			USART_SendData(USARTx,k);  
-			while(USART_GetFlagStatus(USART1,USART_FLAG_TXE)==RESET){};
+			USART_SendData(USART_PORT_2,k);  
+			while(USART_GetFlagStatus(USART_PORT_2,USART_FLAG_TXE)==RESET){};
 		}
 		else
 		{
@@ -36,6 +31,12 @@ void HMISendb(USART_TypeDef* USARTx,u8 k)
 	 } 
 } 
 
+void HMISendstart(USART_TypeDef* USARTx)
+{
+	delay_ms(200);
+	HMISendb(USART_PORT_2,0xff);
+	delay_ms(200);
+}
 
 void HMISends(USART_TypeDef* USARTx, char *buf1)		  
 {
@@ -44,8 +45,8 @@ void HMISends(USART_TypeDef* USARTx, char *buf1)
 	{
 		if(buf1[i]!=0)
 		{
-			USART_SendData(USARTx,buf1[i]);  
-			while(USART_GetFlagStatus(USART1,USART_FLAG_TXE)==RESET){};
+			USART_SendData(USART_PORT_2,buf1[i]);  
+			while(USART_GetFlagStatus(USART_PORT_2,USART_FLAG_TXE)==RESET){};
 			i++;
 		}
 		else

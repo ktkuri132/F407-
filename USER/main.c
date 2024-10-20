@@ -66,6 +66,8 @@ int main(void)
         printf("peripheral init done\n");
     }
     OLED_Clear();
+    
+    
 /*
     TIM8->CCR1=600;//水平方向内侧电机
     TIM8->CCR2=600;//水平方向外侧电机
@@ -84,17 +86,30 @@ int main(void)
     RIN3=0;//垂直方向内侧电机
     RIN4=1;
 
- 
+ */
+    
+strat:
+    OLED_Clear();
     while (1)
     {
         OLED_Printf(0,0,OLED_8X16,"Mode chose...");
-        delay_ms(800);
+        OLED_Update();
+        delay_ms(500);
         OLED_Printf(0,0,OLED_8X16,"             ");
-        delay_ms(800);
+        OLED_Update();
+        delay_ms(500);
         if(mode)
-            break;
+        {
+            goto next;
+        }        
     }
-*/
+
+next:
+    if(mode==5)
+    {
+        TIM_Cmd(TIM2,ENABLE);
+    }
+
     OLED_Clear();
     /* 前台程序轮询  */
     while (1)
@@ -102,6 +117,11 @@ int main(void)
         if(mode==4)
         {
             MotorState(pitch,roll);
+        }
+        while (!mode)
+        {
+            TIM_Cmd(TIM2,DISABLE);
+            goto strat;
         }
         
         OLED_Printf(0,0,OLED_6X8,"pitch:%f",pitch);

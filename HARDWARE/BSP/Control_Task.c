@@ -43,9 +43,9 @@ extern float pitch,roll,yaw,dis,def,polar,Opolar,absroll,abspitch;
 int de[7]={0,-5,-7,+12.5,+10.5,+9.9,-10 };
 
 
-float Target_dis=0.15;
-float Target_angle = 150;
-uint8_t mode=4;
+float Target_dis=0;
+float Target_angle = 0;
+uint8_t mode=0;
 
 
 /// @brief MPU6050读值触发的外部中断函数      
@@ -76,7 +76,9 @@ void EXTI15_10_IRQHandler(void)
                 break;
 
 
-            default:break;
+            default:
+                    StopAllMotor();
+            break;
                 
         }
 
@@ -210,7 +212,7 @@ void Task3_AngleMove(float angle,float R)
     static struct PID Taks3Pid7={340,0,-90,PidControl_LineMove};
     static struct  PID Taks3Pid8={340,0,-90,PidControl_LineMove};
 
-    if(angle<81)
+    if((angle<81)&&(angle>79))
     {
         angle = 81;
     }
@@ -276,7 +278,7 @@ void Task3_AngleMove(float angle,float R)
 /**************************************小于90度**************************************************************** */
     if(a==1)
     {
-        printf("%f,%f\r\n",angle,PI/6);
+        //printf("%f,%f\r\n",angle,PI/6);
         if(angle<=30+de[0])
         {
             VOutput = Taks3Pid1.PIDControl(Vtarget_angle,roll,&Taks3Pid1);

@@ -1,3 +1,10 @@
+/*
+
+    这里搞了一些HMI的外部函数
+
+*/
+
+
 #include <hmi.h>
 
 extern uint8_t mode;
@@ -12,12 +19,18 @@ void HMI_ResCheck()
     {
         case 0x31:  //进入模式1-2
         {
+            /*在这些地方随便改*/
             mode = 1;
+            Target_angle=0;
+            Target_dis=0.15;
         }break;
 
         case 0x33:  //进入模式3
         {
             mode = 3;
+            Target_angle=30;
+            Target_dis=0.15;
+
         }break;
         
         case 0x34:  //进入模式4
@@ -28,6 +41,7 @@ void HMI_ResCheck()
         case 0x35:  //进入模式5
         {
             mode = 5;
+            target_R=0.15;
         }break;
 
         default:break;
@@ -47,7 +61,7 @@ void HMI_Mode1_2()
             case 0x41:  //半径增加
             {
                 Target_dis += 0.05;
-                sprintf(buf,"page1.n0.val=\"%d\"",(uint16_t)(Target_dis*100));
+                sprintf(buf,"page1.t2.txt=\"%d\"",(uint16_t)(Target_dis*100));
                 HMISends(USART_PORT_2,buf);		
                 HMISendb(USART_PORT_2,0xff);
             }break;
@@ -55,7 +69,7 @@ void HMI_Mode1_2()
             case 0x42:  //半径减小
             {
                 Target_dis -= 0.05;
-                sprintf(buf,"page1.n0.val=\"%d\"",(uint16_t)(Target_dis*100));
+                sprintf(buf,"page1.t2.txt=\"%d\"",(uint16_t)(Target_dis*100));
                 HMISends(USART_PORT_2,buf);		
                 HMISendb(USART_PORT_2,0xff);
             }break;
@@ -81,7 +95,7 @@ void HMI_Mode3()
             case 0x51:  //角度增加
             {
                 Target_angle += 5;
-                sprintf(buf,"page2.n0.val=\"%d\"",(uint16_t)Target_angle);
+                sprintf(buf,"page2.t3.txt=\"%d\"",(uint16_t)Target_angle);
                 HMISends(USART_PORT_2,buf);		
                 HMISendb(USART_PORT_2,0xff);
             }break;
@@ -89,7 +103,7 @@ void HMI_Mode3()
             case 0x52:  //角度减小
             {
                 Target_angle -= 5;
-                sprintf(buf,"page2.n0.val=\"%d\"",(uint16_t)Target_angle);
+                sprintf(buf,"page2.t3.txt=\"%d\"",(uint16_t)Target_angle);
                 HMISends(USART_PORT_2,buf);		
                 HMISendb(USART_PORT_2,0xff);
             }break;
@@ -97,7 +111,7 @@ void HMI_Mode3()
             case 0x53:  //半径增加
             {
                 Target_dis += 0.05;
-                sprintf(buf,"page2.n1.val=\"%d\"",(uint16_t)(Target_dis*100));
+                sprintf(buf,"page2.t4.txt=\"%d\"",(uint16_t)(Target_dis*100));
                 HMISends(USART_PORT_2,buf);		
                 HMISendb(USART_PORT_2,0xff);
             }break;
@@ -105,7 +119,7 @@ void HMI_Mode3()
             case 0x54:  //半径减小
             {
                 Target_dis -= 0.05;
-                sprintf(buf,"page2.n1.val=\"%d\"",(uint16_t)(Target_dis*100));
+                sprintf(buf,"page2.t4.txt=\"%d\"",(uint16_t)(Target_dis*100));
                 HMISends(USART_PORT_2,buf);		
                 HMISendb(USART_PORT_2,0xff);
             }break;
@@ -149,7 +163,7 @@ void HMI_Mode5()
             case 0x61:  //半径增加
             {
                 target_R += 0.05;
-                sprintf(buf,"page4.n0.val=\"%d\"",(uint16_t)(target_R*100));
+                sprintf(buf,"page4.t2.txt=\"%d\"",(uint16_t)(target_R*100));
                 HMISends(USART_PORT_2,buf);		
                 HMISendb(USART_PORT_2,0xff);
             }break;
@@ -157,7 +171,7 @@ void HMI_Mode5()
             case 0x62:  //半径减小
             {
                 target_R -= 0.05;
-                sprintf(buf,"page4.n0.val=\"%d\"",(uint16_t)(target_R*100));
+                sprintf(buf,"page4.t2.txt=\"%d\"",(uint16_t)(target_R*100));
                 HMISends(USART_PORT_2,buf);		
                 HMISendb(USART_PORT_2,0xff);
             }break;

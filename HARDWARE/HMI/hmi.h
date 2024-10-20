@@ -1,9 +1,12 @@
 #ifndef __HMI_H_
 #define __HMI_H_
 
-//接口头文件
-#include <stm32f4xx.h>
-#include <usart.h>  
+//接口头文件，这里改成自己的一些头文件
+#include <bsp.h>
+
+void HMISendb(USART_TypeDef* USARTx,u8 k);
+void HMISends(USART_TypeDef* USARTx, char *buf1);
+
 
 
 //若不是STM32F103或者STM32F407则要重新实现底层接口
@@ -19,6 +22,8 @@
 #else
 
 #define __STM32
+
+//串口端口定义
 
 //#define USART_PORT_1 USART1
 #define USART_PORT_2 USART2

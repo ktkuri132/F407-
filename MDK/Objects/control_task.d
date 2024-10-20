@@ -47,4 +47,5 @@
 .\objects\control_task.o: ..\HARDWARE\IIC\myiic.h
 .\objects\control_task.o: ..\HARDWARE\MPU6050\eMPL\inv_mpu.h
 .\objects\control_task.o: ..\SYSTEM\delay\delay.h
+.\objects\control_task.o: ..\HARDWARE\HMI\hmi.h
 .\objects\control_task.o: C:\Users\ktkuru\AppData\Local\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
