@@ -44,8 +44,8 @@ int de[7]={0,-5,-7,+12.5,+10.5,+9.9,-10 };
 
 
 float Target_dis=0.15;
-float Target_angle = 0;
-uint8_t mode=1;
+float Target_angle = 150;
+uint8_t mode=4;
 
 
 /// @brief MPU6050读值触发的外部中断函数      
@@ -105,26 +105,19 @@ void TIM2_IRQHandler(void)
 /*
     第四项  快速制动
 */
-void Task4_StopFast()
+void Task4_StopFast() 
 {
     GetPolar(roll,pitch);
 
-    /*
-    //垂直制动输出
-    static float VerticalOutput;
-    //水平制动输出
-    static float LevelOutput;
-    */
+   
     static float Output;
-    static struct PID Taks4Pid={900,-1,0,PidControl_Stop};
+    static struct PID Taks4Pid={40000,0,-300,PidControl_Stop};
     
     Output = Taks4Pid.PIDControl(TargetDis,dis, &Taks4Pid);
-    //printf("Output:%f\n",Output);
+    printf("Output:%f\n",Output);
     PWM_Allocation(Output);
   
 }
-
-
 
 
 float target_angle;
@@ -208,8 +201,8 @@ void Task3_AngleMove(float angle,float R)
     static struct PID Taks3Pid1={380,0,-110,PidControl_LineMove};
     static struct  PID Taks3Pid2={380,0,-110,PidControl_LineMove};
     
-    static struct PID Taks3Pid3={340,0,-90,PidControl_LineMove};
-    static struct  PID Taks3Pid4={340,0,-90,PidControl_LineMove};
+    static struct PID Taks3Pid3={345,0,-90,PidControl_LineMove};
+    static struct  PID Taks3Pid4={345,0,-90,PidControl_LineMove};
 
     static struct PID Taks3Pid5={380,0,-110,PidControl_LineMove};
     static struct  PID Taks3Pid6={380,0,-110,PidControl_LineMove};
@@ -217,6 +210,10 @@ void Task3_AngleMove(float angle,float R)
     static struct PID Taks3Pid7={340,0,-90,PidControl_LineMove};
     static struct  PID Taks3Pid8={340,0,-90,PidControl_LineMove};
 
+    if(angle<81)
+    {
+        angle = 81;
+    }
     int a;
     if(angle>90)
     {   
@@ -350,7 +347,7 @@ void Task3_AngleMove(float angle,float R)
             VOutput = Taks3Pid1.PIDControl(Vtarget_angle,-roll,&Taks3Pid1);
             LOutput = Taks3Pid2.PIDControl(Ltarget_angle,-pitch,&Taks3Pid2);
 
-            time +=0.0104123;
+            time +=0.0103123;
             if(time<T)
             {
                 T3Motor_CmdCombination(VOutput,LOutput,0);
@@ -365,7 +362,7 @@ void Task3_AngleMove(float angle,float R)
             VOutput = Taks3Pid3.PIDControl(Vtarget_angle,-roll,&Taks3Pid3);
             LOutput = Taks3Pid4.PIDControl(Ltarget_angle,-pitch,&Taks3Pid4);
 
-            time +=0.0103423;
+            time +=0.0102523;
             if(time<T)
             {
                 T3Motor_CmdCombination(VOutput,LOutput,0);
@@ -416,8 +413,8 @@ void Task5_CircleMove(float R)
     static float time=0;
     static float Vtarget_angle,Ltarget_angle;
     
-    static struct PID Taks5Pid={290,0,0,PidControl_LineMove};
-    static struct PID Taks5Pid2={290,0,0,PidControl_LineMove};
+    static struct PID Taks5Pid={295,0,0,PidControl_LineMove};
+    static struct PID Taks5Pid2={295,0,0,PidControl_LineMove};
     
     if(R>=0.24)
     {

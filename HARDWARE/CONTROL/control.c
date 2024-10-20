@@ -533,7 +533,7 @@ __INLINE void T5Motor_CmdCombination(int sit,float Vo,float Lo)
 }
 
 //角度欺骗+目标缓冲  用于第五项
-__INLINE float T5Angle_Deceive(float def, float target_R)
+float T5Angle_Deceive(float def, float target_R)
 {
     static float last_R;    //上一次的R值
     float output_R;     //输出的R值
@@ -625,7 +625,56 @@ __attribute__((__weak__)) void MotorState(float pitch,float roll)
     }
 }
 
+__attribute__((__weak__)) void Task4_StopFast()
+{
+    GetPolar(roll,pitch);
 
+    static float VerticalOutput;
+    static float LevelOutput;
+
+    static struct PID Taks4Pid1={800,-1,0,PidControl_Stop};
+    static struct PID Taks4Pid2={800,-1,0,PidControl_Stop};
+
+    VerticalOutput = Taks4Pid1.PIDControl(TargetRoll,absroll, &Taks4Pid1);
+    LevelOutput = Taks4Pid2.PIDControl(TargetPitch,abspitch, &Taks4Pid2);
+
+    printf("%f,%f\r\n",VerticalOutput,LevelOutput);
+
+    VerticalOutput=VerticalOutput>8400?8400:(VerticalOutput<0?(-VerticalOutput):VerticalOutput);
+    LevelOutput=LevelOutput>8400?8400:(LevelOutput<0?(-LevelOutput):LevelOutput);
+
+    switch (MotorLocation)
+    {
+        case 4:
+        {
+            Motor->MLevelIn =(uint32_t)(LevelOutput);
+            Motor->MVerticalOut =(uint32_t)(VerticalOutput);
+        }break;
+        
+        case 1:
+        {
+            Motor->MLevelOut =(uint32_t)(LevelOutput);
+            Motor->MVerticalOut =(uint32_t)(VerticalOutput);
+        }break;
+
+        case 3:
+        {
+            Motor->MLevelIn =(uint32_t)(LevelOutput);
+            Motor->MVerticalIn =(uint32_t)(VerticalOutput);
+        }break;
+
+        case 2:
+        {
+            Motor->MLevelOut =(uint32_t)(LevelOutput);
+            Motor->MVerticalIn =(uint32_t)(VerticalOutput);
+        }break;  
+    
+        default:break;
+            
+    }
+
+
+} 
 
 /*
 依据极坐标角度和位移，对PID输出值正交分解

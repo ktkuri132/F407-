@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNYSI27.s 			page 1
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccFIeArU.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNYSI27.s 			page 1
   57              		.align	1
   58              		.global	usart1_init
   59              		.syntax unified
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNYSI27.s 			page 2
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccFIeArU.s 			page 2
 
 
   60              		.thumb
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNYSI27.s 			page 1
  115 008c 07B0     		add	sp, sp, #28
  116              		@ sp needed
  117 008e F0BD     		pop	{r4, r5, r6, r7, pc}
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNYSI27.s 			page 3
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccFIeArU.s 			page 3
 
 
  118              	.L14:
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNYSI27.s 			page 1
  174 006e FFF7FEFF 		bl	USART_ITConfig
  175 0072 05B0     		add	sp, sp, #20
  176              		@ sp needed
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNYSI27.s 			page 4
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccFIeArU.s 			page 4
 
 
  177 0074 30BD     		pop	{r4, r5, pc}
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNYSI27.s 			page 1
  233 0056 1380     		strh	r3, [r2]	@ movhi
  234 0058 C72B     		cmp	r3, #199
  235 005a D8D9     		bls	.L19
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNYSI27.s 			page 5
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccFIeArU.s 			page 5
 
 
  236 005c 1346     		mov	r3, r2
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNYSI27.s 			page 1
  294 0018 FFF7FEFF 		bl	USART_Send_Data
  295 001c 0135     		adds	r5, r5, #1
  296 001e ADB2     		uxth	r5, r5
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNYSI27.s 			page 6
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccFIeArU.s 			page 6
 
 
  297              	.L33:
@@ -358,20 +358,20 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNYSI27.s 			page 1
  351              	USART2_IRQHandler:
  352              		@ args = 0, pretend = 0, frame = 0
  353              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNYSI27.s 			page 7
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccFIeArU.s 			page 7
 
 
  354 0000 10B5     		push	{r4, lr}
  355 0002 40F22551 		movw	r1, #1317
- 356 0006 2C48     		ldr	r0, .L47+16
+ 356 0006 2A48     		ldr	r0, .L47+8
  357 0008 FFF7FEFF 		bl	USART_GetITStatus
  358 000c 00B9     		cbnz	r0, .L46
  359              	.L40:
  360 000e 10BD     		pop	{r4, pc}
  361              	.L46:
- 362 0010 2948     		ldr	r0, .L47+16
+ 362 0010 2748     		ldr	r0, .L47+8
  363 0012 FFF7FEFF 		bl	USART_ReceiveData
- 364 0016 294B     		ldr	r3, .L47+20
+ 364 0016 274B     		ldr	r3, .L47+12
  365 0018 1880     		strh	r0, [r3]	@ movhi
  366 001a 6228     		cmp	r0, #98
  367 001c 1CD0     		beq	.L42
@@ -379,7 +379,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNYSI27.s 			page 1
  369 0020 2ED0     		beq	.L43
  370 0022 6128     		cmp	r0, #97
  371 0024 12D1     		bne	.L44
- 372 0026 264C     		ldr	r4, .L47+24
+ 372 0026 244C     		ldr	r4, .L47+16
  373 0028 2068     		ldr	r0, [r4]	@ float
  374 002a FFF7FEFF 		bl	__aeabi_f2d
  375 002e 1EA3     		adr	r3, .L47
@@ -390,15 +390,15 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNYSI27.s 			page 1
  380 003e FFF7FEFF 		bl	__aeabi_f2d
  381 0042 0246     		mov	r2, r0
  382 0044 0B46     		mov	r3, r1
- 383 0046 1F48     		ldr	r0, .L47+28
+ 383 0046 1D48     		ldr	r0, .L47+20
  384 0048 FFF7FEFF 		bl	U2printf
  385              	.L44:
  386 004c 40F22551 		movw	r1, #1317
- 387 0050 1948     		ldr	r0, .L47+16
+ 387 0050 1748     		ldr	r0, .L47+8
  388 0052 FFF7FEFF 		bl	USART_ClearITPendingBit
  389 0056 DAE7     		b	.L40
  390              	.L42:
- 391 0058 194C     		ldr	r4, .L47+24
+ 391 0058 174C     		ldr	r4, .L47+16
  392 005a 2068     		ldr	r0, [r4]	@ float
  393 005c FFF7FEFF 		bl	__aeabi_f2d
  394 0060 11A3     		adr	r3, .L47
@@ -409,16 +409,16 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNYSI27.s 			page 1
  399 0070 FFF7FEFF 		bl	__aeabi_f2d
  400 0074 0246     		mov	r2, r0
  401 0076 0B46     		mov	r3, r1
- 402 0078 1248     		ldr	r0, .L47+28
+ 402 0078 1048     		ldr	r0, .L47+20
  403 007a FFF7FEFF 		bl	U2printf
  404 007e E5E7     		b	.L44
  405              	.L43:
- 406 0080 114C     		ldr	r4, .L47+32
+ 406 0080 0F4C     		ldr	r4, .L47+24
  407 0082 2068     		ldr	r0, [r4]	@ float
  408 0084 FFF7FEFF 		bl	__aeabi_f2d
- 409 0088 09A3     		adr	r3, .L47+8
+ 409 0088 07A3     		adr	r3, .L47
  410 008a D3E90023 		ldrd	r2, [r3]
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNYSI27.s 			page 8
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccFIeArU.s 			page 8
 
 
  411 008e FFF7FEFF 		bl	__aeabi_dadd
@@ -427,116 +427,114 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNYSI27.s 			page 1
  414 0098 FFF7FEFF 		bl	__aeabi_f2d
  415 009c 0246     		mov	r2, r0
  416 009e 0B46     		mov	r3, r1
- 417 00a0 0A48     		ldr	r0, .L47+36
+ 417 00a0 0848     		ldr	r0, .L47+28
  418 00a2 FFF7FEFF 		bl	U2printf
  419 00a6 D1E7     		b	.L44
  420              	.L48:
  421              		.align	3
  422              	.L47:
- 423 00a8 7B14AE47 		.word	1202590843
- 424 00ac E17A843F 		.word	1065646817
- 425 00b0 9A999999 		.word	-1717986918
- 426 00b4 9999A93F 		.word	1068079513
- 427 00b8 00440040 		.word	1073759232
- 428 00bc 00000000 		.word	Res.0
- 429 00c0 00000000 		.word	Target_dis
- 430 00c4 00000000 		.word	.LC0
- 431 00c8 00000000 		.word	target_R
- 432 00cc 10000000 		.word	.LC1
- 434              		.section	.text.SendTo429,"ax",%progbits
- 435              		.align	1
- 436              		.global	SendTo429
- 437              		.syntax unified
- 438              		.thumb
- 439              		.thumb_func
- 441              	SendTo429:
- 442              		@ args = 0, pretend = 0, frame = 8
- 443              		@ frame_needed = 0, uses_anonymous_args = 0
- 444 0000 10B5     		push	{r4, lr}
- 445 0002 82B0     		sub	sp, sp, #8
- 446 0004 0190     		str	r0, [sp, #4]
- 447 0006 074C     		ldr	r4, .L51
- 448 0008 0121     		movs	r1, #1
- 449 000a 2046     		mov	r0, r4
- 450 000c FFF7FEFF 		bl	USART_Send_Data
- 451 0010 01A9     		add	r1, sp, #4
- 452 0012 2046     		mov	r0, r4
- 453 0014 FFF7FEFF 		bl	USART_Send_String
- 454 0018 0221     		movs	r1, #2
- 455 001a 2046     		mov	r0, r4
- 456 001c FFF7FEFF 		bl	USART_Send_Data
- 457 0020 02B0     		add	sp, sp, #8
- 458              		@ sp needed
- 459 0022 10BD     		pop	{r4, pc}
- 460              	.L52:
- 461              		.align	2
- 462              	.L51:
- 463 0024 00100140 		.word	1073811456
- 465              		.section	.bss.Res.0,"aw",%nobits
- 466              		.align	1
- 469              	Res.0:
- 470 0000 0000     		.space	2
- 471              		.global	USART_RX_STA
- 472              		.section	.bss.USART_RX_STA,"aw",%nobits
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNYSI27.s 			page 9
+ 423 00a8 9A999999 		.word	-1717986918
+ 424 00ac 9999A93F 		.word	1068079513
+ 425 00b0 00440040 		.word	1073759232
+ 426 00b4 00000000 		.word	Res.0
+ 427 00b8 00000000 		.word	Target_dis
+ 428 00bc 00000000 		.word	.LC0
+ 429 00c0 00000000 		.word	target_R
+ 430 00c4 10000000 		.word	.LC1
+ 432              		.section	.text.SendTo429,"ax",%progbits
+ 433              		.align	1
+ 434              		.global	SendTo429
+ 435              		.syntax unified
+ 436              		.thumb
+ 437              		.thumb_func
+ 439              	SendTo429:
+ 440              		@ args = 0, pretend = 0, frame = 8
+ 441              		@ frame_needed = 0, uses_anonymous_args = 0
+ 442 0000 10B5     		push	{r4, lr}
+ 443 0002 82B0     		sub	sp, sp, #8
+ 444 0004 0190     		str	r0, [sp, #4]
+ 445 0006 074C     		ldr	r4, .L51
+ 446 0008 0121     		movs	r1, #1
+ 447 000a 2046     		mov	r0, r4
+ 448 000c FFF7FEFF 		bl	USART_Send_Data
+ 449 0010 01A9     		add	r1, sp, #4
+ 450 0012 2046     		mov	r0, r4
+ 451 0014 FFF7FEFF 		bl	USART_Send_String
+ 452 0018 0221     		movs	r1, #2
+ 453 001a 2046     		mov	r0, r4
+ 454 001c FFF7FEFF 		bl	USART_Send_Data
+ 455 0020 02B0     		add	sp, sp, #8
+ 456              		@ sp needed
+ 457 0022 10BD     		pop	{r4, pc}
+ 458              	.L52:
+ 459              		.align	2
+ 460              	.L51:
+ 461 0024 00100140 		.word	1073811456
+ 463              		.section	.bss.Res.0,"aw",%nobits
+ 464              		.align	1
+ 467              	Res.0:
+ 468 0000 0000     		.space	2
+ 469              		.global	USART_RX_STA
+ 470              		.section	.bss.USART_RX_STA,"aw",%nobits
+ 471              		.align	1
+ 474              	USART_RX_STA:
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccFIeArU.s 			page 9
 
 
- 473              		.align	1
- 476              	USART_RX_STA:
- 477 0000 0000     		.space	2
- 478              		.global	USART_RX_BUF
- 479              		.section	.bss.USART_RX_BUF,"aw",%nobits
- 480              		.align	2
- 483              	USART_RX_BUF:
- 484 0000 00000000 		.space	200
- 484      00000000 
- 484      00000000 
- 484      00000000 
- 484      00000000 
- 485              		.global	Stop_flag
- 486              		.section	.bss.Stop_flag,"aw",%nobits
- 489              	Stop_flag:
- 490 0000 00       		.space	1
- 491              		.ident	"GCC: (Arm GNU Toolchain 13.3.Rel1 (Build arm-13.24)) 13.3.1 20240614"
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNYSI27.s 			page 10
+ 475 0000 0000     		.space	2
+ 476              		.global	USART_RX_BUF
+ 477              		.section	.bss.USART_RX_BUF,"aw",%nobits
+ 478              		.align	2
+ 481              	USART_RX_BUF:
+ 482 0000 00000000 		.space	200
+ 482      00000000 
+ 482      00000000 
+ 482      00000000 
+ 482      00000000 
+ 483              		.global	Stop_flag
+ 484              		.section	.bss.Stop_flag,"aw",%nobits
+ 487              	Stop_flag:
+ 488 0000 00       		.space	1
+ 489              		.ident	"GCC: (Arm GNU Toolchain 13.3.Rel1 (Build arm-13.24)) 13.3.1 20240614"
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccFIeArU.s 			page 10
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 usart.c
-C:\Users\ktkuru\AppData\Local\Temp\ccNYSI27.s:23     .text._write:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccNYSI27.s:29     .text._write:00000000 _write
-C:\Users\ktkuru\AppData\Local\Temp\ccNYSI27.s:54     .text._write:00000030 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccNYSI27.s:57     .text.usart1_init:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccNYSI27.s:63     .text.usart1_init:00000000 usart1_init
-C:\Users\ktkuru\AppData\Local\Temp\ccNYSI27.s:121    .text.usart1_init:00000090 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccNYSI27.s:124    .text.usart2_init:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccNYSI27.s:130    .text.usart2_init:00000000 usart2_init
-C:\Users\ktkuru\AppData\Local\Temp\ccNYSI27.s:181    .text.usart2_init:00000078 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccNYSI27.s:185    .text.USART1_IRQHandler:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccNYSI27.s:191    .text.USART1_IRQHandler:00000000 USART1_IRQHandler
-C:\Users\ktkuru\AppData\Local\Temp\ccNYSI27.s:248    .text.USART1_IRQHandler:00000070 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccNYSI27.s:476    .bss.USART_RX_STA:00000000 USART_RX_STA
-C:\Users\ktkuru\AppData\Local\Temp\ccNYSI27.s:483    .bss.USART_RX_BUF:00000000 USART_RX_BUF
-C:\Users\ktkuru\AppData\Local\Temp\ccNYSI27.s:253    .text.USART_Send_Data:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccNYSI27.s:259    .text.USART_Send_Data:00000000 USART_Send_Data
-C:\Users\ktkuru\AppData\Local\Temp\ccNYSI27.s:274    .text.USART_Send_String:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccNYSI27.s:280    .text.USART_Send_String:00000000 USART_Send_String
-C:\Users\ktkuru\AppData\Local\Temp\ccNYSI27.s:303    .text.U2printf:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccNYSI27.s:309    .text.U2printf:00000000 U2printf
-C:\Users\ktkuru\AppData\Local\Temp\ccNYSI27.s:331    .text.U2printf:00000028 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccNYSI27.s:337    .rodata.USART2_IRQHandler.str1.4:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccNYSI27.s:345    .text.USART2_IRQHandler:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccNYSI27.s:351    .text.USART2_IRQHandler:00000000 USART2_IRQHandler
-C:\Users\ktkuru\AppData\Local\Temp\ccNYSI27.s:423    .text.USART2_IRQHandler:000000a8 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccNYSI27.s:469    .bss.Res.0:00000000 Res.0
-C:\Users\ktkuru\AppData\Local\Temp\ccNYSI27.s:435    .text.SendTo429:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccNYSI27.s:441    .text.SendTo429:00000000 SendTo429
-C:\Users\ktkuru\AppData\Local\Temp\ccNYSI27.s:463    .text.SendTo429:00000024 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccNYSI27.s:466    .bss.Res.0:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccNYSI27.s:473    .bss.USART_RX_STA:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccNYSI27.s:480    .bss.USART_RX_BUF:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccNYSI27.s:489    .bss.Stop_flag:00000000 Stop_flag
-C:\Users\ktkuru\AppData\Local\Temp\ccNYSI27.s:490    .bss.Stop_flag:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccFIeArU.s:23     .text._write:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccFIeArU.s:29     .text._write:00000000 _write
+C:\Users\ktkuru\AppData\Local\Temp\ccFIeArU.s:54     .text._write:00000030 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccFIeArU.s:57     .text.usart1_init:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccFIeArU.s:63     .text.usart1_init:00000000 usart1_init
+C:\Users\ktkuru\AppData\Local\Temp\ccFIeArU.s:121    .text.usart1_init:00000090 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccFIeArU.s:124    .text.usart2_init:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccFIeArU.s:130    .text.usart2_init:00000000 usart2_init
+C:\Users\ktkuru\AppData\Local\Temp\ccFIeArU.s:181    .text.usart2_init:00000078 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccFIeArU.s:185    .text.USART1_IRQHandler:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccFIeArU.s:191    .text.USART1_IRQHandler:00000000 USART1_IRQHandler
+C:\Users\ktkuru\AppData\Local\Temp\ccFIeArU.s:248    .text.USART1_IRQHandler:00000070 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccFIeArU.s:474    .bss.USART_RX_STA:00000000 USART_RX_STA
+C:\Users\ktkuru\AppData\Local\Temp\ccFIeArU.s:481    .bss.USART_RX_BUF:00000000 USART_RX_BUF
+C:\Users\ktkuru\AppData\Local\Temp\ccFIeArU.s:253    .text.USART_Send_Data:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccFIeArU.s:259    .text.USART_Send_Data:00000000 USART_Send_Data
+C:\Users\ktkuru\AppData\Local\Temp\ccFIeArU.s:274    .text.USART_Send_String:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccFIeArU.s:280    .text.USART_Send_String:00000000 USART_Send_String
+C:\Users\ktkuru\AppData\Local\Temp\ccFIeArU.s:303    .text.U2printf:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccFIeArU.s:309    .text.U2printf:00000000 U2printf
+C:\Users\ktkuru\AppData\Local\Temp\ccFIeArU.s:331    .text.U2printf:00000028 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccFIeArU.s:337    .rodata.USART2_IRQHandler.str1.4:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccFIeArU.s:345    .text.USART2_IRQHandler:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccFIeArU.s:351    .text.USART2_IRQHandler:00000000 USART2_IRQHandler
+C:\Users\ktkuru\AppData\Local\Temp\ccFIeArU.s:423    .text.USART2_IRQHandler:000000a8 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccFIeArU.s:467    .bss.Res.0:00000000 Res.0
+C:\Users\ktkuru\AppData\Local\Temp\ccFIeArU.s:433    .text.SendTo429:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccFIeArU.s:439    .text.SendTo429:00000000 SendTo429
+C:\Users\ktkuru\AppData\Local\Temp\ccFIeArU.s:461    .text.SendTo429:00000024 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccFIeArU.s:464    .bss.Res.0:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccFIeArU.s:471    .bss.USART_RX_STA:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccFIeArU.s:478    .bss.USART_RX_BUF:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccFIeArU.s:487    .bss.Stop_flag:00000000 Stop_flag
+C:\Users\ktkuru\AppData\Local\Temp\ccFIeArU.s:488    .bss.Stop_flag:00000000 $d
 
 UNDEFINED SYMBOLS
 __use_no_semihosting
@@ -558,7 +556,7 @@ vsprintf
 __aeabi_f2d
 __aeabi_dadd
 __aeabi_d2f
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccNYSI27.s 			page 11
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccFIeArU.s 			page 11
 
 
 __aeabi_dsub

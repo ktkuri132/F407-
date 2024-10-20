@@ -212,13 +212,13 @@ void USART2_IRQHandler(void)
 		{
 			case 'a':
 			{
-				Target_dis +=0.01;
+				Target_dis +=0.05;
 				U2printf("Target_dis:%f\n",Target_dis);
 			}	break;
 
 			case 'b':
 			{
-				Target_dis -=0.01;
+				Target_dis -=0.05;
 				U2printf("Target_dis:%f\n",Target_dis);
 			}	break;
 			
