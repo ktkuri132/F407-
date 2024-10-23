@@ -1,18 +1,5 @@
 
 /*
-<<<<<<< HEAD
-
-如果头文件飘红，那不是工程问题，那是因为vscode的搜索路径是我的电脑上的路径，
-你们的电脑上的路径不一样，所以vscode找不到头文件，所以头文件飘红，这时只要创建一个新窗口重新打开keil工程，
-然后在右下角的弹出框点OK，就会恢复成你自己电脑的路径了，这时头文件就不会飘红了
-然后如果弹出：在父目录找到了git仓库，是否打开，点打开就行了
-
-*/
-
-
-
-=======
->>>>>>> 6dca5cc88870901170feac0f521a926933cccec3
 
 如果头文件飘红，那不是工程问题，那是因为vscode的搜索路径是我的电脑上的路径，
 你们的电脑上的路径不一样，所以vscode找不到头文件，所以头文件飘红，这时只要创建一个新窗口重新打开keil工程，
@@ -45,7 +32,7 @@ extern float target_angle;
 //定义角度的绝对值
 float absroll,abspitch;
 //定义模式选择
-extern uint8_t mode;
+extern uint8_t mode,AngleSet;
 /*
 
 每一步都有都有调试信息，妈妈再也不用担心我找不出程序bug了
@@ -132,6 +119,18 @@ next:
             delay_ms(1000);
             return 0;
             
+        }
+set:
+        if(AngleSet)
+        {
+            
+            OLED_Printf(0,0,OLED_8X16,"Set Angle...");
+            OLED_Update();
+            delay_ms(500);
+            OLED_Printf(0,0,OLED_8X16,"           ");
+            OLED_Update();
+            delay_ms(500);
+            goto set;
         }
         OLED_Printf(0,0,OLED_6X8,"pitch:%f",pitch);
         OLED_Update();
