@@ -30,7 +30,7 @@ void HMI_ResCheck()
         case 0x33:  //进入模式3的角度设置
         {
             AngleSet=1;
-            HMI_Mode3_SetAngle();
+            mode=0;
 
         }break;
         
@@ -98,6 +98,7 @@ void HMI_Mode3_SetAngle()
         OLED_Update();
         delay_ms(500);
     }
+    return ;
     
 }
 
