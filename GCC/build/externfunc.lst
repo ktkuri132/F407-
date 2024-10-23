@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccbHsmSc.s 			page 1
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccoYvOCb.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,11 +58,11 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccbHsmSc.s 			page 1
   56 002e 0B4B     		ldr	r3, .L9+8
   57 0030 0D4A     		ldr	r2, .L9+20
   58 0032 1A60     		str	r2, [r3]	@ float
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccbHsmSc.s 			page 2
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccoYvOCb.s 			page 2
 
 
   59 0034 0A4B     		ldr	r3, .L9+12
-  60 0036 0B4A     		ldr	r2, .L9+16
+  60 0036 0D4A     		ldr	r2, .L9+24
   61 0038 1A60     		str	r2, [r3]	@ float
   62 003a 7047     		bx	lr
   63              	.L5:
@@ -74,7 +74,7 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccbHsmSc.s 			page 1
   69 0044 044B     		ldr	r3, .L9+4
   70 0046 0522     		movs	r2, #5
   71 0048 1A70     		strb	r2, [r3]
-  72 004a 084B     		ldr	r3, .L9+24
+  72 004a 094B     		ldr	r3, .L9+28
   73 004c 054A     		ldr	r2, .L9+16
   74 004e 1A60     		str	r2, [r3]	@ float
   75              	.L1:
@@ -88,456 +88,457 @@ ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccbHsmSc.s 			page 1
   83 0060 00000000 		.word	Target_dis
   84 0064 9A99193E 		.word	1041865114
   85 0068 0000F041 		.word	1106247680
-  86 006c 00000000 		.word	target_R
-  88              		.global	__aeabi_f2d
-  89              		.global	__aeabi_dadd
-  90              		.global	__aeabi_d2f
-  91              		.section	.rodata.HMI_Mode1_2.str1.4,"aMS",%progbits,1
-  92              		.align	2
-  93              	.LC0:
-  94 0000 70616765 		.ascii	"page1.t2.txt=\"%d\"\000"
-  94      312E7432 
-  94      2E747874 
-  94      3D222564 
-  94      2200
-  95              		.global	__aeabi_dsub
-  96              		.section	.text.HMI_Mode1_2,"ax",%progbits
-  97              		.align	1
-  98              		.global	HMI_Mode1_2
-  99              		.syntax unified
- 100              		.thumb
- 101              		.thumb_func
- 103              	HMI_Mode1_2:
- 104              		@ args = 0, pretend = 0, frame = 56
- 105              		@ frame_needed = 0, uses_anonymous_args = 0
- 106 0000 314B     		ldr	r3, .L20+8
- 107 0002 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 108 0004 012B     		cmp	r3, #1
- 109 0006 00D0     		beq	.L19
- 110 0008 7047     		bx	lr
- 111              	.L19:
- 112 000a 10B5     		push	{r4, lr}
- 113 000c 8EB0     		sub	sp, sp, #56
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccbHsmSc.s 			page 3
+  86 006c 0AD7233E 		.word	1042536202
+  87 0070 00000000 		.word	target_R
+  89              		.global	__aeabi_f2d
+  90              		.global	__aeabi_dadd
+  91              		.global	__aeabi_d2f
+  92              		.section	.rodata.HMI_Mode1_2.str1.4,"aMS",%progbits,1
+  93              		.align	2
+  94              	.LC0:
+  95 0000 70616765 		.ascii	"page1.t2.txt=\"%d\"\000"
+  95      312E7432 
+  95      2E747874 
+  95      3D222564 
+  95      2200
+  96              		.global	__aeabi_dsub
+  97              		.section	.text.HMI_Mode1_2,"ax",%progbits
+  98              		.align	1
+  99              		.global	HMI_Mode1_2
+ 100              		.syntax unified
+ 101              		.thumb
+ 102              		.thumb_func
+ 104              	HMI_Mode1_2:
+ 105              		@ args = 0, pretend = 0, frame = 56
+ 106              		@ frame_needed = 0, uses_anonymous_args = 0
+ 107 0000 314B     		ldr	r3, .L20+8
+ 108 0002 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 109 0004 012B     		cmp	r3, #1
+ 110 0006 00D0     		beq	.L19
+ 111 0008 7047     		bx	lr
+ 112              	.L19:
+ 113 000a 10B5     		push	{r4, lr}
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccoYvOCb.s 			page 3
 
 
- 114 000e 2F4B     		ldr	r3, .L20+12
- 115 0010 1B88     		ldrh	r3, [r3]
- 116 0012 422B     		cmp	r3, #66
- 117 0014 29D0     		beq	.L13
- 118 0016 432B     		cmp	r3, #67
- 119 0018 4CD0     		beq	.L14
- 120 001a 412B     		cmp	r3, #65
- 121 001c 23D1     		bne	.L11
- 122 001e 2C4C     		ldr	r4, .L20+16
- 123 0020 2068     		ldr	r0, [r4]	@ float
- 124 0022 FFF7FEFF 		bl	__aeabi_f2d
- 125 0026 26A3     		adr	r3, .L20
- 126 0028 D3E90023 		ldrd	r2, [r3]
- 127 002c FFF7FEFF 		bl	__aeabi_dadd
- 128 0030 FFF7FEFF 		bl	__aeabi_d2f
- 129 0034 07EE900A 		vmov	s15, r0
- 130 0038 2060     		str	r0, [r4]	@ float
- 131 003a 9FED267A 		vldr.32	s14, .L20+20
- 132 003e 67EE877A 		vmul.f32	s15, s15, s14
- 133 0042 FCEEE77A 		vcvt.u32.f32	s15, s15
- 134 0046 17EE903A 		vmov	r3, s15	@ int
- 135 004a 9AB2     		uxth	r2, r3
- 136 004c 2249     		ldr	r1, .L20+24
- 137 004e 01A8     		add	r0, sp, #4
- 138 0050 FFF7FEFF 		bl	sprintf
- 139 0054 214C     		ldr	r4, .L20+28
- 140 0056 01A9     		add	r1, sp, #4
- 141 0058 2046     		mov	r0, r4
- 142 005a FFF7FEFF 		bl	HMISends
- 143 005e FF21     		movs	r1, #255
- 144 0060 2046     		mov	r0, r4
- 145 0062 FFF7FEFF 		bl	HMISendb
- 146              	.L11:
- 147 0066 0EB0     		add	sp, sp, #56
- 148              		@ sp needed
- 149 0068 10BD     		pop	{r4, pc}
- 150              	.L13:
- 151 006a 194C     		ldr	r4, .L20+16
- 152 006c 2068     		ldr	r0, [r4]	@ float
- 153 006e FFF7FEFF 		bl	__aeabi_f2d
- 154 0072 13A3     		adr	r3, .L20
- 155 0074 D3E90023 		ldrd	r2, [r3]
- 156 0078 FFF7FEFF 		bl	__aeabi_dsub
- 157 007c FFF7FEFF 		bl	__aeabi_d2f
- 158 0080 07EE900A 		vmov	s15, r0
- 159 0084 2060     		str	r0, [r4]	@ float
- 160 0086 9FED137A 		vldr.32	s14, .L20+20
- 161 008a 67EE877A 		vmul.f32	s15, s15, s14
- 162 008e FCEEE77A 		vcvt.u32.f32	s15, s15
- 163 0092 17EE903A 		vmov	r3, s15	@ int
- 164 0096 9AB2     		uxth	r2, r3
- 165 0098 0F49     		ldr	r1, .L20+24
- 166 009a 01A8     		add	r0, sp, #4
- 167 009c FFF7FEFF 		bl	sprintf
- 168 00a0 0E4C     		ldr	r4, .L20+28
- 169 00a2 01A9     		add	r1, sp, #4
- 170 00a4 2046     		mov	r0, r4
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccbHsmSc.s 			page 4
+ 114 000c 8EB0     		sub	sp, sp, #56
+ 115 000e 2F4B     		ldr	r3, .L20+12
+ 116 0010 1B88     		ldrh	r3, [r3]
+ 117 0012 422B     		cmp	r3, #66
+ 118 0014 29D0     		beq	.L13
+ 119 0016 432B     		cmp	r3, #67
+ 120 0018 4CD0     		beq	.L14
+ 121 001a 412B     		cmp	r3, #65
+ 122 001c 23D1     		bne	.L11
+ 123 001e 2C4C     		ldr	r4, .L20+16
+ 124 0020 2068     		ldr	r0, [r4]	@ float
+ 125 0022 FFF7FEFF 		bl	__aeabi_f2d
+ 126 0026 26A3     		adr	r3, .L20
+ 127 0028 D3E90023 		ldrd	r2, [r3]
+ 128 002c FFF7FEFF 		bl	__aeabi_dadd
+ 129 0030 FFF7FEFF 		bl	__aeabi_d2f
+ 130 0034 07EE900A 		vmov	s15, r0
+ 131 0038 2060     		str	r0, [r4]	@ float
+ 132 003a 9FED267A 		vldr.32	s14, .L20+20
+ 133 003e 67EE877A 		vmul.f32	s15, s15, s14
+ 134 0042 FCEEE77A 		vcvt.u32.f32	s15, s15
+ 135 0046 17EE903A 		vmov	r3, s15	@ int
+ 136 004a 9AB2     		uxth	r2, r3
+ 137 004c 2249     		ldr	r1, .L20+24
+ 138 004e 01A8     		add	r0, sp, #4
+ 139 0050 FFF7FEFF 		bl	sprintf
+ 140 0054 214C     		ldr	r4, .L20+28
+ 141 0056 01A9     		add	r1, sp, #4
+ 142 0058 2046     		mov	r0, r4
+ 143 005a FFF7FEFF 		bl	HMISends
+ 144 005e FF21     		movs	r1, #255
+ 145 0060 2046     		mov	r0, r4
+ 146 0062 FFF7FEFF 		bl	HMISendb
+ 147              	.L11:
+ 148 0066 0EB0     		add	sp, sp, #56
+ 149              		@ sp needed
+ 150 0068 10BD     		pop	{r4, pc}
+ 151              	.L13:
+ 152 006a 194C     		ldr	r4, .L20+16
+ 153 006c 2068     		ldr	r0, [r4]	@ float
+ 154 006e FFF7FEFF 		bl	__aeabi_f2d
+ 155 0072 13A3     		adr	r3, .L20
+ 156 0074 D3E90023 		ldrd	r2, [r3]
+ 157 0078 FFF7FEFF 		bl	__aeabi_dsub
+ 158 007c FFF7FEFF 		bl	__aeabi_d2f
+ 159 0080 07EE900A 		vmov	s15, r0
+ 160 0084 2060     		str	r0, [r4]	@ float
+ 161 0086 9FED137A 		vldr.32	s14, .L20+20
+ 162 008a 67EE877A 		vmul.f32	s15, s15, s14
+ 163 008e FCEEE77A 		vcvt.u32.f32	s15, s15
+ 164 0092 17EE903A 		vmov	r3, s15	@ int
+ 165 0096 9AB2     		uxth	r2, r3
+ 166 0098 0F49     		ldr	r1, .L20+24
+ 167 009a 01A8     		add	r0, sp, #4
+ 168 009c FFF7FEFF 		bl	sprintf
+ 169 00a0 0E4C     		ldr	r4, .L20+28
+ 170 00a2 01A9     		add	r1, sp, #4
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccoYvOCb.s 			page 4
 
 
- 171 00a6 FFF7FEFF 		bl	HMISends
- 172 00aa FF21     		movs	r1, #255
- 173 00ac 2046     		mov	r0, r4
- 174 00ae FFF7FEFF 		bl	HMISendb
- 175 00b2 D8E7     		b	.L11
- 176              	.L14:
- 177 00b4 044B     		ldr	r3, .L20+8
- 178 00b6 0022     		movs	r2, #0
- 179 00b8 1A70     		strb	r2, [r3]
- 180 00ba D4E7     		b	.L11
- 181              	.L21:
- 182 00bc AFF30080 		.align	3
- 183              	.L20:
- 184 00c0 9A999999 		.word	-1717986918
- 185 00c4 9999A93F 		.word	1068079513
- 186 00c8 00000000 		.word	mode
- 187 00cc 00000000 		.word	Res
- 188 00d0 00000000 		.word	Target_dis
- 189 00d4 0000C842 		.word	1120403456
- 190 00d8 00000000 		.word	.LC0
- 191 00dc 00440040 		.word	1073759232
- 193              		.section	.rodata.HMI_Mode3.str1.4,"aMS",%progbits,1
- 194              		.align	2
- 195              	.LC1:
- 196 0000 70616765 		.ascii	"page2.t3.txt=\"%d\"\000"
- 196      322E7433 
- 196      2E747874 
- 196      3D222564 
- 196      2200
- 197 0012 0000     		.align	2
- 198              	.LC2:
- 199 0014 70616765 		.ascii	"page2.t4.txt=\"%d\"\000"
- 199      322E7434 
- 199      2E747874 
- 199      3D222564 
- 199      2200
- 200              		.section	.text.HMI_Mode3,"ax",%progbits
- 201              		.align	1
- 202              		.global	HMI_Mode3
- 203              		.syntax unified
- 204              		.thumb
- 205              		.thumb_func
- 207              	HMI_Mode3:
- 208              		@ args = 0, pretend = 0, frame = 56
- 209              		@ frame_needed = 0, uses_anonymous_args = 0
- 210 0000 4D4B     		ldr	r3, .L36+8
- 211 0002 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 212 0004 032B     		cmp	r3, #3
- 213 0006 00D0     		beq	.L35
- 214 0008 7047     		bx	lr
- 215              	.L35:
- 216 000a 10B5     		push	{r4, lr}
- 217 000c 8EB0     		sub	sp, sp, #56
- 218 000e 4B4B     		ldr	r3, .L36+12
- 219 0010 1B88     		ldrh	r3, [r3]
- 220 0012 513B     		subs	r3, r3, #81
- 221 0014 042B     		cmp	r3, #4
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccbHsmSc.s 			page 5
+ 171 00a4 2046     		mov	r0, r4
+ 172 00a6 FFF7FEFF 		bl	HMISends
+ 173 00aa FF21     		movs	r1, #255
+ 174 00ac 2046     		mov	r0, r4
+ 175 00ae FFF7FEFF 		bl	HMISendb
+ 176 00b2 D8E7     		b	.L11
+ 177              	.L14:
+ 178 00b4 044B     		ldr	r3, .L20+8
+ 179 00b6 0022     		movs	r2, #0
+ 180 00b8 1A70     		strb	r2, [r3]
+ 181 00ba D4E7     		b	.L11
+ 182              	.L21:
+ 183 00bc AFF30080 		.align	3
+ 184              	.L20:
+ 185 00c0 9A999999 		.word	-1717986918
+ 186 00c4 9999A93F 		.word	1068079513
+ 187 00c8 00000000 		.word	mode
+ 188 00cc 00000000 		.word	Res
+ 189 00d0 00000000 		.word	Target_dis
+ 190 00d4 0000C842 		.word	1120403456
+ 191 00d8 00000000 		.word	.LC0
+ 192 00dc 00440040 		.word	1073759232
+ 194              		.section	.rodata.HMI_Mode3.str1.4,"aMS",%progbits,1
+ 195              		.align	2
+ 196              	.LC1:
+ 197 0000 70616765 		.ascii	"page2.t3.txt=\"%d\"\000"
+ 197      322E7433 
+ 197      2E747874 
+ 197      3D222564 
+ 197      2200
+ 198 0012 0000     		.align	2
+ 199              	.LC2:
+ 200 0014 70616765 		.ascii	"page2.t4.txt=\"%d\"\000"
+ 200      322E7434 
+ 200      2E747874 
+ 200      3D222564 
+ 200      2200
+ 201              		.section	.text.HMI_Mode3,"ax",%progbits
+ 202              		.align	1
+ 203              		.global	HMI_Mode3
+ 204              		.syntax unified
+ 205              		.thumb
+ 206              		.thumb_func
+ 208              	HMI_Mode3:
+ 209              		@ args = 0, pretend = 0, frame = 56
+ 210              		@ frame_needed = 0, uses_anonymous_args = 0
+ 211 0000 4D4B     		ldr	r3, .L36+8
+ 212 0002 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 213 0004 032B     		cmp	r3, #3
+ 214 0006 00D0     		beq	.L35
+ 215 0008 7047     		bx	lr
+ 216              	.L35:
+ 217 000a 10B5     		push	{r4, lr}
+ 218 000c 8EB0     		sub	sp, sp, #56
+ 219 000e 4B4B     		ldr	r3, .L36+12
+ 220 0010 1B88     		ldrh	r3, [r3]
+ 221 0012 513B     		subs	r3, r3, #81
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccoYvOCb.s 			page 5
 
 
- 222 0016 1FD8     		bhi	.L22
- 223 0018 DFE803F0 		tbb	[pc, r3]
- 224              	.L25:
- 225 001c 03       		.byte	(.L29-.L25)/2
- 226 001d 20       		.byte	(.L28-.L25)/2
- 227 001e 3C       		.byte	(.L27-.L25)/2
- 228 001f 61       		.byte	(.L26-.L25)/2
- 229 0020 86       		.byte	(.L24-.L25)/2
- 230 0021 00       		.p2align 1
- 231              	.L29:
- 232 0022 474B     		ldr	r3, .L36+16
- 233 0024 D3ED007A 		vldr.32	s15, [r3]
- 234 0028 B1EE047A 		vmov.f32	s14, #5.0e+0
- 235 002c 77EE877A 		vadd.f32	s15, s15, s14
- 236 0030 C3ED007A 		vstr.32	s15, [r3]
- 237 0034 FCEEE77A 		vcvt.u32.f32	s15, s15
- 238 0038 17EE903A 		vmov	r3, s15	@ int
- 239 003c 9AB2     		uxth	r2, r3
- 240 003e 4149     		ldr	r1, .L36+20
- 241 0040 01A8     		add	r0, sp, #4
- 242 0042 FFF7FEFF 		bl	sprintf
- 243 0046 404C     		ldr	r4, .L36+24
- 244 0048 01A9     		add	r1, sp, #4
- 245 004a 2046     		mov	r0, r4
- 246 004c FFF7FEFF 		bl	HMISends
- 247 0050 FF21     		movs	r1, #255
- 248 0052 2046     		mov	r0, r4
- 249 0054 FFF7FEFF 		bl	HMISendb
- 250              	.L22:
- 251 0058 0EB0     		add	sp, sp, #56
- 252              		@ sp needed
- 253 005a 10BD     		pop	{r4, pc}
- 254              	.L28:
- 255 005c 384B     		ldr	r3, .L36+16
- 256 005e D3ED007A 		vldr.32	s15, [r3]
- 257 0062 B1EE047A 		vmov.f32	s14, #5.0e+0
- 258 0066 77EEC77A 		vsub.f32	s15, s15, s14
- 259 006a C3ED007A 		vstr.32	s15, [r3]
- 260 006e FCEEE77A 		vcvt.u32.f32	s15, s15
- 261 0072 17EE903A 		vmov	r3, s15	@ int
- 262 0076 9AB2     		uxth	r2, r3
- 263 0078 3249     		ldr	r1, .L36+20
- 264 007a 01A8     		add	r0, sp, #4
- 265 007c FFF7FEFF 		bl	sprintf
- 266 0080 314C     		ldr	r4, .L36+24
- 267 0082 01A9     		add	r1, sp, #4
- 268 0084 2046     		mov	r0, r4
- 269 0086 FFF7FEFF 		bl	HMISends
- 270 008a FF21     		movs	r1, #255
- 271 008c 2046     		mov	r0, r4
- 272 008e FFF7FEFF 		bl	HMISendb
- 273 0092 E1E7     		b	.L22
- 274              	.L27:
- 275 0094 2D4C     		ldr	r4, .L36+28
- 276 0096 2068     		ldr	r0, [r4]	@ float
- 277 0098 FFF7FEFF 		bl	__aeabi_f2d
- 278 009c 24A3     		adr	r3, .L36
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccbHsmSc.s 			page 6
+ 222 0014 042B     		cmp	r3, #4
+ 223 0016 1FD8     		bhi	.L22
+ 224 0018 DFE803F0 		tbb	[pc, r3]
+ 225              	.L25:
+ 226 001c 03       		.byte	(.L29-.L25)/2
+ 227 001d 20       		.byte	(.L28-.L25)/2
+ 228 001e 3C       		.byte	(.L27-.L25)/2
+ 229 001f 61       		.byte	(.L26-.L25)/2
+ 230 0020 86       		.byte	(.L24-.L25)/2
+ 231 0021 00       		.p2align 1
+ 232              	.L29:
+ 233 0022 474B     		ldr	r3, .L36+16
+ 234 0024 D3ED007A 		vldr.32	s15, [r3]
+ 235 0028 B1EE047A 		vmov.f32	s14, #5.0e+0
+ 236 002c 77EE877A 		vadd.f32	s15, s15, s14
+ 237 0030 C3ED007A 		vstr.32	s15, [r3]
+ 238 0034 FCEEE77A 		vcvt.u32.f32	s15, s15
+ 239 0038 17EE903A 		vmov	r3, s15	@ int
+ 240 003c 9AB2     		uxth	r2, r3
+ 241 003e 4149     		ldr	r1, .L36+20
+ 242 0040 01A8     		add	r0, sp, #4
+ 243 0042 FFF7FEFF 		bl	sprintf
+ 244 0046 404C     		ldr	r4, .L36+24
+ 245 0048 01A9     		add	r1, sp, #4
+ 246 004a 2046     		mov	r0, r4
+ 247 004c FFF7FEFF 		bl	HMISends
+ 248 0050 FF21     		movs	r1, #255
+ 249 0052 2046     		mov	r0, r4
+ 250 0054 FFF7FEFF 		bl	HMISendb
+ 251              	.L22:
+ 252 0058 0EB0     		add	sp, sp, #56
+ 253              		@ sp needed
+ 254 005a 10BD     		pop	{r4, pc}
+ 255              	.L28:
+ 256 005c 384B     		ldr	r3, .L36+16
+ 257 005e D3ED007A 		vldr.32	s15, [r3]
+ 258 0062 B1EE047A 		vmov.f32	s14, #5.0e+0
+ 259 0066 77EEC77A 		vsub.f32	s15, s15, s14
+ 260 006a C3ED007A 		vstr.32	s15, [r3]
+ 261 006e FCEEE77A 		vcvt.u32.f32	s15, s15
+ 262 0072 17EE903A 		vmov	r3, s15	@ int
+ 263 0076 9AB2     		uxth	r2, r3
+ 264 0078 3249     		ldr	r1, .L36+20
+ 265 007a 01A8     		add	r0, sp, #4
+ 266 007c FFF7FEFF 		bl	sprintf
+ 267 0080 314C     		ldr	r4, .L36+24
+ 268 0082 01A9     		add	r1, sp, #4
+ 269 0084 2046     		mov	r0, r4
+ 270 0086 FFF7FEFF 		bl	HMISends
+ 271 008a FF21     		movs	r1, #255
+ 272 008c 2046     		mov	r0, r4
+ 273 008e FFF7FEFF 		bl	HMISendb
+ 274 0092 E1E7     		b	.L22
+ 275              	.L27:
+ 276 0094 2D4C     		ldr	r4, .L36+28
+ 277 0096 2068     		ldr	r0, [r4]	@ float
+ 278 0098 FFF7FEFF 		bl	__aeabi_f2d
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccoYvOCb.s 			page 6
 
 
- 279 009e D3E90023 		ldrd	r2, [r3]
- 280 00a2 FFF7FEFF 		bl	__aeabi_dadd
- 281 00a6 FFF7FEFF 		bl	__aeabi_d2f
- 282 00aa 07EE900A 		vmov	s15, r0
- 283 00ae 2060     		str	r0, [r4]	@ float
- 284 00b0 9FED277A 		vldr.32	s14, .L36+32
- 285 00b4 67EE877A 		vmul.f32	s15, s15, s14
- 286 00b8 FCEEE77A 		vcvt.u32.f32	s15, s15
- 287 00bc 17EE903A 		vmov	r3, s15	@ int
- 288 00c0 9AB2     		uxth	r2, r3
- 289 00c2 2449     		ldr	r1, .L36+36
- 290 00c4 01A8     		add	r0, sp, #4
- 291 00c6 FFF7FEFF 		bl	sprintf
- 292 00ca 1F4C     		ldr	r4, .L36+24
- 293 00cc 01A9     		add	r1, sp, #4
- 294 00ce 2046     		mov	r0, r4
- 295 00d0 FFF7FEFF 		bl	HMISends
- 296 00d4 FF21     		movs	r1, #255
- 297 00d6 2046     		mov	r0, r4
- 298 00d8 FFF7FEFF 		bl	HMISendb
- 299 00dc BCE7     		b	.L22
- 300              	.L26:
- 301 00de 1B4C     		ldr	r4, .L36+28
- 302 00e0 2068     		ldr	r0, [r4]	@ float
- 303 00e2 FFF7FEFF 		bl	__aeabi_f2d
- 304 00e6 12A3     		adr	r3, .L36
- 305 00e8 D3E90023 		ldrd	r2, [r3]
- 306 00ec FFF7FEFF 		bl	__aeabi_dsub
- 307 00f0 FFF7FEFF 		bl	__aeabi_d2f
- 308 00f4 07EE900A 		vmov	s15, r0
- 309 00f8 2060     		str	r0, [r4]	@ float
- 310 00fa 9FED157A 		vldr.32	s14, .L36+32
- 311 00fe 67EE877A 		vmul.f32	s15, s15, s14
- 312 0102 FCEEE77A 		vcvt.u32.f32	s15, s15
- 313 0106 17EE903A 		vmov	r3, s15	@ int
- 314 010a 9AB2     		uxth	r2, r3
- 315 010c 1149     		ldr	r1, .L36+36
- 316 010e 01A8     		add	r0, sp, #4
- 317 0110 FFF7FEFF 		bl	sprintf
- 318 0114 0C4C     		ldr	r4, .L36+24
- 319 0116 01A9     		add	r1, sp, #4
- 320 0118 2046     		mov	r0, r4
- 321 011a FFF7FEFF 		bl	HMISends
- 322 011e FF21     		movs	r1, #255
- 323 0120 2046     		mov	r0, r4
- 324 0122 FFF7FEFF 		bl	HMISendb
- 325 0126 97E7     		b	.L22
- 326              	.L24:
- 327 0128 034B     		ldr	r3, .L36+8
- 328 012a 0022     		movs	r2, #0
- 329 012c 1A70     		strb	r2, [r3]
- 330 012e 93E7     		b	.L22
- 331              	.L37:
- 332              		.align	3
- 333              	.L36:
- 334 0130 9A999999 		.word	-1717986918
- 335 0134 9999A93F 		.word	1068079513
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccbHsmSc.s 			page 7
+ 279 009c 24A3     		adr	r3, .L36
+ 280 009e D3E90023 		ldrd	r2, [r3]
+ 281 00a2 FFF7FEFF 		bl	__aeabi_dadd
+ 282 00a6 FFF7FEFF 		bl	__aeabi_d2f
+ 283 00aa 07EE900A 		vmov	s15, r0
+ 284 00ae 2060     		str	r0, [r4]	@ float
+ 285 00b0 9FED277A 		vldr.32	s14, .L36+32
+ 286 00b4 67EE877A 		vmul.f32	s15, s15, s14
+ 287 00b8 FCEEE77A 		vcvt.u32.f32	s15, s15
+ 288 00bc 17EE903A 		vmov	r3, s15	@ int
+ 289 00c0 9AB2     		uxth	r2, r3
+ 290 00c2 2449     		ldr	r1, .L36+36
+ 291 00c4 01A8     		add	r0, sp, #4
+ 292 00c6 FFF7FEFF 		bl	sprintf
+ 293 00ca 1F4C     		ldr	r4, .L36+24
+ 294 00cc 01A9     		add	r1, sp, #4
+ 295 00ce 2046     		mov	r0, r4
+ 296 00d0 FFF7FEFF 		bl	HMISends
+ 297 00d4 FF21     		movs	r1, #255
+ 298 00d6 2046     		mov	r0, r4
+ 299 00d8 FFF7FEFF 		bl	HMISendb
+ 300 00dc BCE7     		b	.L22
+ 301              	.L26:
+ 302 00de 1B4C     		ldr	r4, .L36+28
+ 303 00e0 2068     		ldr	r0, [r4]	@ float
+ 304 00e2 FFF7FEFF 		bl	__aeabi_f2d
+ 305 00e6 12A3     		adr	r3, .L36
+ 306 00e8 D3E90023 		ldrd	r2, [r3]
+ 307 00ec FFF7FEFF 		bl	__aeabi_dsub
+ 308 00f0 FFF7FEFF 		bl	__aeabi_d2f
+ 309 00f4 07EE900A 		vmov	s15, r0
+ 310 00f8 2060     		str	r0, [r4]	@ float
+ 311 00fa 9FED157A 		vldr.32	s14, .L36+32
+ 312 00fe 67EE877A 		vmul.f32	s15, s15, s14
+ 313 0102 FCEEE77A 		vcvt.u32.f32	s15, s15
+ 314 0106 17EE903A 		vmov	r3, s15	@ int
+ 315 010a 9AB2     		uxth	r2, r3
+ 316 010c 1149     		ldr	r1, .L36+36
+ 317 010e 01A8     		add	r0, sp, #4
+ 318 0110 FFF7FEFF 		bl	sprintf
+ 319 0114 0C4C     		ldr	r4, .L36+24
+ 320 0116 01A9     		add	r1, sp, #4
+ 321 0118 2046     		mov	r0, r4
+ 322 011a FFF7FEFF 		bl	HMISends
+ 323 011e FF21     		movs	r1, #255
+ 324 0120 2046     		mov	r0, r4
+ 325 0122 FFF7FEFF 		bl	HMISendb
+ 326 0126 97E7     		b	.L22
+ 327              	.L24:
+ 328 0128 034B     		ldr	r3, .L36+8
+ 329 012a 0022     		movs	r2, #0
+ 330 012c 1A70     		strb	r2, [r3]
+ 331 012e 93E7     		b	.L22
+ 332              	.L37:
+ 333              		.align	3
+ 334              	.L36:
+ 335 0130 9A999999 		.word	-1717986918
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccoYvOCb.s 			page 7
 
 
- 336 0138 00000000 		.word	mode
- 337 013c 00000000 		.word	Res
- 338 0140 00000000 		.word	Target_angle
- 339 0144 00000000 		.word	.LC1
- 340 0148 00440040 		.word	1073759232
- 341 014c 00000000 		.word	Target_dis
- 342 0150 0000C842 		.word	1120403456
- 343 0154 14000000 		.word	.LC2
- 345              		.section	.text.HMI_Mode4,"ax",%progbits
- 346              		.align	1
- 347              		.global	HMI_Mode4
- 348              		.syntax unified
- 349              		.thumb
- 350              		.thumb_func
- 352              	HMI_Mode4:
- 353              		@ args = 0, pretend = 0, frame = 0
- 354              		@ frame_needed = 0, uses_anonymous_args = 0
- 355              		@ link register save eliminated.
- 356 0000 064B     		ldr	r3, .L41
- 357 0002 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 358 0004 042B     		cmp	r3, #4
- 359 0006 00D0     		beq	.L40
- 360              	.L38:
- 361 0008 7047     		bx	lr
- 362              	.L40:
- 363 000a 054B     		ldr	r3, .L41+4
- 364 000c 1B88     		ldrh	r3, [r3]
- 365 000e 712B     		cmp	r3, #113
- 366 0010 FAD1     		bne	.L38
- 367 0012 024B     		ldr	r3, .L41
- 368 0014 0022     		movs	r2, #0
- 369 0016 1A70     		strb	r2, [r3]
- 370 0018 F6E7     		b	.L38
- 371              	.L42:
- 372 001a 00BF     		.align	2
- 373              	.L41:
- 374 001c 00000000 		.word	mode
- 375 0020 00000000 		.word	Res
- 377              		.section	.rodata.HMI_Mode5.str1.4,"aMS",%progbits,1
- 378              		.align	2
- 379              	.LC3:
- 380 0000 70616765 		.ascii	"page4.t2.txt=\"%d\"\000"
- 380      342E7432 
- 380      2E747874 
- 380      3D222564 
- 380      2200
- 381              		.section	.text.HMI_Mode5,"ax",%progbits
- 382              		.align	1
- 383              		.global	HMI_Mode5
- 384              		.syntax unified
- 385              		.thumb
- 386              		.thumb_func
- 388              	HMI_Mode5:
- 389              		@ args = 0, pretend = 0, frame = 56
- 390              		@ frame_needed = 0, uses_anonymous_args = 0
- 391 0000 314B     		ldr	r3, .L52+8
- 392 0002 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccbHsmSc.s 			page 8
+ 336 0134 9999A93F 		.word	1068079513
+ 337 0138 00000000 		.word	mode
+ 338 013c 00000000 		.word	Res
+ 339 0140 00000000 		.word	Target_angle
+ 340 0144 00000000 		.word	.LC1
+ 341 0148 00440040 		.word	1073759232
+ 342 014c 00000000 		.word	Target_dis
+ 343 0150 0000C842 		.word	1120403456
+ 344 0154 14000000 		.word	.LC2
+ 346              		.section	.text.HMI_Mode4,"ax",%progbits
+ 347              		.align	1
+ 348              		.global	HMI_Mode4
+ 349              		.syntax unified
+ 350              		.thumb
+ 351              		.thumb_func
+ 353              	HMI_Mode4:
+ 354              		@ args = 0, pretend = 0, frame = 0
+ 355              		@ frame_needed = 0, uses_anonymous_args = 0
+ 356              		@ link register save eliminated.
+ 357 0000 064B     		ldr	r3, .L41
+ 358 0002 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 359 0004 042B     		cmp	r3, #4
+ 360 0006 00D0     		beq	.L40
+ 361              	.L38:
+ 362 0008 7047     		bx	lr
+ 363              	.L40:
+ 364 000a 054B     		ldr	r3, .L41+4
+ 365 000c 1B88     		ldrh	r3, [r3]
+ 366 000e 712B     		cmp	r3, #113
+ 367 0010 FAD1     		bne	.L38
+ 368 0012 024B     		ldr	r3, .L41
+ 369 0014 0022     		movs	r2, #0
+ 370 0016 1A70     		strb	r2, [r3]
+ 371 0018 F6E7     		b	.L38
+ 372              	.L42:
+ 373 001a 00BF     		.align	2
+ 374              	.L41:
+ 375 001c 00000000 		.word	mode
+ 376 0020 00000000 		.word	Res
+ 378              		.section	.rodata.HMI_Mode5.str1.4,"aMS",%progbits,1
+ 379              		.align	2
+ 380              	.LC3:
+ 381 0000 70616765 		.ascii	"page4.t2.txt=\"%d\"\000"
+ 381      342E7432 
+ 381      2E747874 
+ 381      3D222564 
+ 381      2200
+ 382              		.section	.text.HMI_Mode5,"ax",%progbits
+ 383              		.align	1
+ 384              		.global	HMI_Mode5
+ 385              		.syntax unified
+ 386              		.thumb
+ 387              		.thumb_func
+ 389              	HMI_Mode5:
+ 390              		@ args = 0, pretend = 0, frame = 56
+ 391              		@ frame_needed = 0, uses_anonymous_args = 0
+ 392 0000 314B     		ldr	r3, .L52+8
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccoYvOCb.s 			page 8
 
 
- 393 0004 052B     		cmp	r3, #5
- 394 0006 00D0     		beq	.L51
- 395 0008 7047     		bx	lr
- 396              	.L51:
- 397 000a 10B5     		push	{r4, lr}
- 398 000c 8EB0     		sub	sp, sp, #56
- 399 000e 2F4B     		ldr	r3, .L52+12
- 400 0010 1B88     		ldrh	r3, [r3]
- 401 0012 622B     		cmp	r3, #98
- 402 0014 29D0     		beq	.L45
- 403 0016 632B     		cmp	r3, #99
- 404 0018 4CD0     		beq	.L46
- 405 001a 612B     		cmp	r3, #97
- 406 001c 23D1     		bne	.L43
- 407 001e 2C4C     		ldr	r4, .L52+16
- 408 0020 2068     		ldr	r0, [r4]	@ float
- 409 0022 FFF7FEFF 		bl	__aeabi_f2d
- 410 0026 26A3     		adr	r3, .L52
- 411 0028 D3E90023 		ldrd	r2, [r3]
- 412 002c FFF7FEFF 		bl	__aeabi_dadd
- 413 0030 FFF7FEFF 		bl	__aeabi_d2f
- 414 0034 07EE900A 		vmov	s15, r0
- 415 0038 2060     		str	r0, [r4]	@ float
- 416 003a 9FED267A 		vldr.32	s14, .L52+20
- 417 003e 67EE877A 		vmul.f32	s15, s15, s14
- 418 0042 FCEEE77A 		vcvt.u32.f32	s15, s15
- 419 0046 17EE903A 		vmov	r3, s15	@ int
- 420 004a 9AB2     		uxth	r2, r3
- 421 004c 2249     		ldr	r1, .L52+24
- 422 004e 01A8     		add	r0, sp, #4
- 423 0050 FFF7FEFF 		bl	sprintf
- 424 0054 214C     		ldr	r4, .L52+28
- 425 0056 01A9     		add	r1, sp, #4
- 426 0058 2046     		mov	r0, r4
- 427 005a FFF7FEFF 		bl	HMISends
- 428 005e FF21     		movs	r1, #255
- 429 0060 2046     		mov	r0, r4
- 430 0062 FFF7FEFF 		bl	HMISendb
- 431              	.L43:
- 432 0066 0EB0     		add	sp, sp, #56
- 433              		@ sp needed
- 434 0068 10BD     		pop	{r4, pc}
- 435              	.L45:
- 436 006a 194C     		ldr	r4, .L52+16
- 437 006c 2068     		ldr	r0, [r4]	@ float
- 438 006e FFF7FEFF 		bl	__aeabi_f2d
- 439 0072 13A3     		adr	r3, .L52
- 440 0074 D3E90023 		ldrd	r2, [r3]
- 441 0078 FFF7FEFF 		bl	__aeabi_dsub
- 442 007c FFF7FEFF 		bl	__aeabi_d2f
- 443 0080 07EE900A 		vmov	s15, r0
- 444 0084 2060     		str	r0, [r4]	@ float
- 445 0086 9FED137A 		vldr.32	s14, .L52+20
- 446 008a 67EE877A 		vmul.f32	s15, s15, s14
- 447 008e FCEEE77A 		vcvt.u32.f32	s15, s15
- 448 0092 17EE903A 		vmov	r3, s15	@ int
- 449 0096 9AB2     		uxth	r2, r3
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccbHsmSc.s 			page 9
+ 393 0002 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 394 0004 052B     		cmp	r3, #5
+ 395 0006 00D0     		beq	.L51
+ 396 0008 7047     		bx	lr
+ 397              	.L51:
+ 398 000a 10B5     		push	{r4, lr}
+ 399 000c 8EB0     		sub	sp, sp, #56
+ 400 000e 2F4B     		ldr	r3, .L52+12
+ 401 0010 1B88     		ldrh	r3, [r3]
+ 402 0012 622B     		cmp	r3, #98
+ 403 0014 29D0     		beq	.L45
+ 404 0016 632B     		cmp	r3, #99
+ 405 0018 4CD0     		beq	.L46
+ 406 001a 612B     		cmp	r3, #97
+ 407 001c 23D1     		bne	.L43
+ 408 001e 2C4C     		ldr	r4, .L52+16
+ 409 0020 2068     		ldr	r0, [r4]	@ float
+ 410 0022 FFF7FEFF 		bl	__aeabi_f2d
+ 411 0026 26A3     		adr	r3, .L52
+ 412 0028 D3E90023 		ldrd	r2, [r3]
+ 413 002c FFF7FEFF 		bl	__aeabi_dadd
+ 414 0030 FFF7FEFF 		bl	__aeabi_d2f
+ 415 0034 07EE900A 		vmov	s15, r0
+ 416 0038 2060     		str	r0, [r4]	@ float
+ 417 003a 9FED267A 		vldr.32	s14, .L52+20
+ 418 003e 67EE877A 		vmul.f32	s15, s15, s14
+ 419 0042 FCEEE77A 		vcvt.u32.f32	s15, s15
+ 420 0046 17EE903A 		vmov	r3, s15	@ int
+ 421 004a 9AB2     		uxth	r2, r3
+ 422 004c 2249     		ldr	r1, .L52+24
+ 423 004e 01A8     		add	r0, sp, #4
+ 424 0050 FFF7FEFF 		bl	sprintf
+ 425 0054 214C     		ldr	r4, .L52+28
+ 426 0056 01A9     		add	r1, sp, #4
+ 427 0058 2046     		mov	r0, r4
+ 428 005a FFF7FEFF 		bl	HMISends
+ 429 005e FF21     		movs	r1, #255
+ 430 0060 2046     		mov	r0, r4
+ 431 0062 FFF7FEFF 		bl	HMISendb
+ 432              	.L43:
+ 433 0066 0EB0     		add	sp, sp, #56
+ 434              		@ sp needed
+ 435 0068 10BD     		pop	{r4, pc}
+ 436              	.L45:
+ 437 006a 194C     		ldr	r4, .L52+16
+ 438 006c 2068     		ldr	r0, [r4]	@ float
+ 439 006e FFF7FEFF 		bl	__aeabi_f2d
+ 440 0072 13A3     		adr	r3, .L52
+ 441 0074 D3E90023 		ldrd	r2, [r3]
+ 442 0078 FFF7FEFF 		bl	__aeabi_dsub
+ 443 007c FFF7FEFF 		bl	__aeabi_d2f
+ 444 0080 07EE900A 		vmov	s15, r0
+ 445 0084 2060     		str	r0, [r4]	@ float
+ 446 0086 9FED137A 		vldr.32	s14, .L52+20
+ 447 008a 67EE877A 		vmul.f32	s15, s15, s14
+ 448 008e FCEEE77A 		vcvt.u32.f32	s15, s15
+ 449 0092 17EE903A 		vmov	r3, s15	@ int
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccoYvOCb.s 			page 9
 
 
- 450 0098 0F49     		ldr	r1, .L52+24
- 451 009a 01A8     		add	r0, sp, #4
- 452 009c FFF7FEFF 		bl	sprintf
- 453 00a0 0E4C     		ldr	r4, .L52+28
- 454 00a2 01A9     		add	r1, sp, #4
- 455 00a4 2046     		mov	r0, r4
- 456 00a6 FFF7FEFF 		bl	HMISends
- 457 00aa FF21     		movs	r1, #255
- 458 00ac 2046     		mov	r0, r4
- 459 00ae FFF7FEFF 		bl	HMISendb
- 460 00b2 D8E7     		b	.L43
- 461              	.L46:
- 462 00b4 044B     		ldr	r3, .L52+8
- 463 00b6 0022     		movs	r2, #0
- 464 00b8 1A70     		strb	r2, [r3]
- 465 00ba D4E7     		b	.L43
- 466              	.L53:
- 467 00bc AFF30080 		.align	3
- 468              	.L52:
- 469 00c0 9A999999 		.word	-1717986918
- 470 00c4 9999A93F 		.word	1068079513
- 471 00c8 00000000 		.word	mode
- 472 00cc 00000000 		.word	Res
- 473 00d0 00000000 		.word	target_R
- 474 00d4 0000C842 		.word	1120403456
- 475 00d8 00000000 		.word	.LC3
- 476 00dc 00440040 		.word	1073759232
- 478              		.ident	"GCC: (Arm GNU Toolchain 13.3.Rel1 (Build arm-13.24)) 13.3.1 20240614"
-ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccbHsmSc.s 			page 10
+ 450 0096 9AB2     		uxth	r2, r3
+ 451 0098 0F49     		ldr	r1, .L52+24
+ 452 009a 01A8     		add	r0, sp, #4
+ 453 009c FFF7FEFF 		bl	sprintf
+ 454 00a0 0E4C     		ldr	r4, .L52+28
+ 455 00a2 01A9     		add	r1, sp, #4
+ 456 00a4 2046     		mov	r0, r4
+ 457 00a6 FFF7FEFF 		bl	HMISends
+ 458 00aa FF21     		movs	r1, #255
+ 459 00ac 2046     		mov	r0, r4
+ 460 00ae FFF7FEFF 		bl	HMISendb
+ 461 00b2 D8E7     		b	.L43
+ 462              	.L46:
+ 463 00b4 044B     		ldr	r3, .L52+8
+ 464 00b6 0022     		movs	r2, #0
+ 465 00b8 1A70     		strb	r2, [r3]
+ 466 00ba D4E7     		b	.L43
+ 467              	.L53:
+ 468 00bc AFF30080 		.align	3
+ 469              	.L52:
+ 470 00c0 9A999999 		.word	-1717986918
+ 471 00c4 9999A93F 		.word	1068079513
+ 472 00c8 00000000 		.word	mode
+ 473 00cc 00000000 		.word	Res
+ 474 00d0 00000000 		.word	target_R
+ 475 00d4 0000C842 		.word	1120403456
+ 476 00d8 00000000 		.word	.LC3
+ 477 00dc 00440040 		.word	1073759232
+ 479              		.ident	"GCC: (Arm GNU Toolchain 13.3.Rel1 (Build arm-13.24)) 13.3.1 20240614"
+ARM GAS  C:\Users\ktkuru\AppData\Local\Temp\ccoYvOCb.s 			page 10
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 externfunc.c
-C:\Users\ktkuru\AppData\Local\Temp\ccbHsmSc.s:18     .text.HMI_ResCheck:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccbHsmSc.s:24     .text.HMI_ResCheck:00000000 HMI_ResCheck
-C:\Users\ktkuru\AppData\Local\Temp\ccbHsmSc.s:35     .text.HMI_ResCheck:0000000e $d
-C:\Users\ktkuru\AppData\Local\Temp\ccbHsmSc.s:80     .text.HMI_ResCheck:00000054 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccbHsmSc.s:92     .rodata.HMI_Mode1_2.str1.4:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccbHsmSc.s:97     .text.HMI_Mode1_2:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccbHsmSc.s:103    .text.HMI_Mode1_2:00000000 HMI_Mode1_2
-C:\Users\ktkuru\AppData\Local\Temp\ccbHsmSc.s:184    .text.HMI_Mode1_2:000000c0 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccbHsmSc.s:194    .rodata.HMI_Mode3.str1.4:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccbHsmSc.s:201    .text.HMI_Mode3:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccbHsmSc.s:207    .text.HMI_Mode3:00000000 HMI_Mode3
-C:\Users\ktkuru\AppData\Local\Temp\ccbHsmSc.s:225    .text.HMI_Mode3:0000001c $d
-C:\Users\ktkuru\AppData\Local\Temp\ccbHsmSc.s:334    .text.HMI_Mode3:00000130 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccbHsmSc.s:346    .text.HMI_Mode4:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccbHsmSc.s:352    .text.HMI_Mode4:00000000 HMI_Mode4
-C:\Users\ktkuru\AppData\Local\Temp\ccbHsmSc.s:374    .text.HMI_Mode4:0000001c $d
-C:\Users\ktkuru\AppData\Local\Temp\ccbHsmSc.s:378    .rodata.HMI_Mode5.str1.4:00000000 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccbHsmSc.s:382    .text.HMI_Mode5:00000000 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccbHsmSc.s:388    .text.HMI_Mode5:00000000 HMI_Mode5
-C:\Users\ktkuru\AppData\Local\Temp\ccbHsmSc.s:469    .text.HMI_Mode5:000000c0 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccbHsmSc.s:40     .text.HMI_ResCheck:00000013 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccbHsmSc.s:40     .text.HMI_ResCheck:00000014 $t
-C:\Users\ktkuru\AppData\Local\Temp\ccbHsmSc.s:230    .text.HMI_Mode3:00000021 $d
-C:\Users\ktkuru\AppData\Local\Temp\ccbHsmSc.s:230    .text.HMI_Mode3:00000022 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccoYvOCb.s:18     .text.HMI_ResCheck:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccoYvOCb.s:24     .text.HMI_ResCheck:00000000 HMI_ResCheck
+C:\Users\ktkuru\AppData\Local\Temp\ccoYvOCb.s:35     .text.HMI_ResCheck:0000000e $d
+C:\Users\ktkuru\AppData\Local\Temp\ccoYvOCb.s:80     .text.HMI_ResCheck:00000054 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccoYvOCb.s:93     .rodata.HMI_Mode1_2.str1.4:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccoYvOCb.s:98     .text.HMI_Mode1_2:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccoYvOCb.s:104    .text.HMI_Mode1_2:00000000 HMI_Mode1_2
+C:\Users\ktkuru\AppData\Local\Temp\ccoYvOCb.s:185    .text.HMI_Mode1_2:000000c0 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccoYvOCb.s:195    .rodata.HMI_Mode3.str1.4:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccoYvOCb.s:202    .text.HMI_Mode3:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccoYvOCb.s:208    .text.HMI_Mode3:00000000 HMI_Mode3
+C:\Users\ktkuru\AppData\Local\Temp\ccoYvOCb.s:226    .text.HMI_Mode3:0000001c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccoYvOCb.s:335    .text.HMI_Mode3:00000130 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccoYvOCb.s:347    .text.HMI_Mode4:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccoYvOCb.s:353    .text.HMI_Mode4:00000000 HMI_Mode4
+C:\Users\ktkuru\AppData\Local\Temp\ccoYvOCb.s:375    .text.HMI_Mode4:0000001c $d
+C:\Users\ktkuru\AppData\Local\Temp\ccoYvOCb.s:379    .rodata.HMI_Mode5.str1.4:00000000 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccoYvOCb.s:383    .text.HMI_Mode5:00000000 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccoYvOCb.s:389    .text.HMI_Mode5:00000000 HMI_Mode5
+C:\Users\ktkuru\AppData\Local\Temp\ccoYvOCb.s:470    .text.HMI_Mode5:000000c0 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccoYvOCb.s:40     .text.HMI_ResCheck:00000013 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccoYvOCb.s:40     .text.HMI_ResCheck:00000014 $t
+C:\Users\ktkuru\AppData\Local\Temp\ccoYvOCb.s:231    .text.HMI_Mode3:00000021 $d
+C:\Users\ktkuru\AppData\Local\Temp\ccoYvOCb.s:231    .text.HMI_Mode3:00000022 $t
 
 UNDEFINED SYMBOLS
 Res

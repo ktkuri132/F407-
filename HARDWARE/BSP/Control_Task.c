@@ -40,7 +40,7 @@ extern float pitch,roll,yaw,dis,def,polar,Opolar,absroll,abspitch;
 
 
 //         30 45 60 150  135   120  90
-int de[7]={0,-5,-7,+12.5,+10.5,+9.9,-10 };
+int de[7]={-1,+0,-5,-7,+12.5,+10.5,-10 };
 
 
 float Target_dis=0;
@@ -201,14 +201,14 @@ void Task3_AngleMove(float angle,float R)
     static float time=0;
     static float Vtarget_angle,Ltarget_angle;
     
-    static struct PID Taks3Pid1={380,0,-110,PidControl_LineMove};
-    static struct  PID Taks3Pid2={380,0,-110,PidControl_LineMove};
+    static struct PID Taks3Pid1={360,0,-90,PidControl_LineMove};
+    static struct  PID Taks3Pid2={360,0,-90,PidControl_LineMove};
     
-    static struct PID Taks3Pid3={345,0,-90,PidControl_LineMove};
-    static struct  PID Taks3Pid4={345,0,-90,PidControl_LineMove};
+    static struct PID Taks3Pid3={345,0,-110,PidControl_LineMove};
+    static struct  PID Taks3Pid4={345,0,-110,PidControl_LineMove};
 
-    static struct PID Taks3Pid5={380,0,-110,PidControl_LineMove};
-    static struct  PID Taks3Pid6={380,0,-110,PidControl_LineMove};
+    static struct PID Taks3Pid5={380,0,-120,PidControl_LineMove};
+    static struct  PID Taks3Pid6={380,0,-120,PidControl_LineMove};
 
     static struct PID Taks3Pid7={340,0,-90,PidControl_LineMove};
     static struct  PID Taks3Pid8={340,0,-90,PidControl_LineMove};
@@ -241,11 +241,11 @@ void Task3_AngleMove(float angle,float R)
         {
             angle += de[0];
         }
-        else if((angle>31)&&(angle<=46))
+        else if((angle>31)&&(angle<=45))
         {
             angle += de[1];
         }
-        else if((angle>46)&&(angle<=61))
+        else if((angle>45)&&(angle<=56))
         {
             angle += de[2];
         }
@@ -307,10 +307,11 @@ void Task3_AngleMove(float angle,float R)
         }
         else if((angle>45+de[1])&&(angle<=60+de[2]))
         {
+            Target_dis = 0.16;
             VOutput = Taks3Pid5.PIDControl(Vtarget_angle,roll,&Taks3Pid5);
             LOutput = Taks3Pid6.PIDControl(Ltarget_angle,-pitch,&Taks3Pid6);
 
-            time +=0.0102323;
+            time +=0.0114323;
             if(time<T)
             {
                 T3Motor_CmdCombination(VOutput,LOutput,1);

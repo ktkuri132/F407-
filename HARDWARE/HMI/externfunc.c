@@ -29,7 +29,7 @@ void HMI_ResCheck()
         {
             mode = 3;
             Target_angle=30;
-            Target_dis=0.15;
+            Target_dis=0.16;
 
         }break;
         
