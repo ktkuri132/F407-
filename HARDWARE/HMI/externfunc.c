@@ -11,7 +11,6 @@ extern uint8_t mode;
 extern uint16_t Res;
 extern float Target_dis,Target_angle,target_R;
 
-uint8_t AngleSet=0;
 
 //通用串口屏协议
 void HMI_ResCheck()
@@ -29,9 +28,9 @@ void HMI_ResCheck()
 
         case 0x33:  //进入模式3的角度设置
         {
-            AngleSet=1;
-            HMI_Mode3_SetAngle();
-
+            mode = 3;
+            Target_angle=30;
+            Target_dis=0.15;
         }break;
         
         case 0x34:  //进入模式4
@@ -86,20 +85,6 @@ void HMI_Mode1_2()
     }
 }
 
-void HMI_Mode3_SetAngle()
-{
-    OLED_Clear();
-    while (AngleSet)
-    {
-        OLED_Printf(0,0,OLED_8X16,"Set Angle...");
-        OLED_Update();
-        delay_ms(500);
-        OLED_Printf(0,0,OLED_8X16,"           ");
-        OLED_Update();
-        delay_ms(500);
-    }
-    
-}
 
 
 void HMI_Mode3()
@@ -109,84 +94,20 @@ void HMI_Mode3()
     {
         switch (Res)
         {
-            case 0x52:  
+            case 0x52:  //角度增加
             {
-                Target_angle = 0;   //角度清零,跑模式1
-                mode=1;
+                Target_angle += 5;
                 sprintf(buf,"page2.t3.txt=\"%d\"",(uint16_t)Target_angle);
                 HMISends(USART_PORT_2,buf);		
                 HMISendb(USART_PORT_2,0xff);
-                AngleSet=0;
-            }break;
-            
-            case 0x53:  
-            {
-                Target_angle = 30;
-                mode=3;
-                sprintf(buf,"page2.t3.txt=\"%d\"",(uint16_t)Target_angle);
-                HMISends(USART_PORT_2,buf);		
-                HMISendb(USART_PORT_2,0xff);
-                AngleSet=0;
-            }break;
-                
-            case 0x54:  
-            {
-                Target_angle = 45;
-                mode=3;
-                sprintf(buf,"page2.t3.txt=\"%d\"",(uint16_t)Target_angle);
-                HMISends(USART_PORT_2,buf);		
-                HMISendb(USART_PORT_2,0xff);
-                AngleSet=0;
             }break;
 
-            case 0x55:  
+            case 0x53:  //角度减小
             {
-                Target_angle = 60;
-                mode=3;
+                Target_angle -= 5;
                 sprintf(buf,"page2.t3.txt=\"%d\"",(uint16_t)Target_angle);
                 HMISends(USART_PORT_2,buf);		
                 HMISendb(USART_PORT_2,0xff);
-                AngleSet=0;
-            }break;
-
-            case 0x56:  
-            {
-                Target_angle = 90;
-                mode=3;
-                sprintf(buf,"page2.t3.txt=\"%d\"",(uint16_t)Target_angle);
-                HMISends(USART_PORT_2,buf);		
-                HMISendb(USART_PORT_2,0xff);
-                AngleSet=0;
-            }break;
-
-            case 0x57:  
-            {
-                Target_angle = 120;
-                mode=3;
-                sprintf(buf,"page2.t3.txt=\"%d\"",(uint16_t)Target_angle);
-                HMISends(USART_PORT_2,buf);		
-                HMISendb(USART_PORT_2,0xff);
-                AngleSet=0;
-            }break;
-
-            case 0x58:  
-            {
-                Target_angle = 135;
-                mode=3;
-                sprintf(buf,"page2.t3.txt=\"%d\"",(uint16_t)Target_angle);
-                HMISends(USART_PORT_2,buf);		
-                HMISendb(USART_PORT_2,0xff);
-                AngleSet=0;
-            }break;
-
-            case 0x59:  
-            {
-                Target_angle = 150;
-                mode=3;
-                sprintf(buf,"page2.t3.txt=\"%d\"",(uint16_t)Target_angle);
-                HMISends(USART_PORT_2,buf);		
-                HMISendb(USART_PORT_2,0xff);
-                AngleSet=0;
             }break;
 
             case 0x51:  //返回初始页面
