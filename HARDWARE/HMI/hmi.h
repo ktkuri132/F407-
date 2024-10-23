@@ -7,6 +7,7 @@
 void HMISendb(USART_TypeDef* USARTx,u8 k);
 void HMISends(USART_TypeDef* USARTx, char *buf1);
 
+void HMI_Mode3_SetAngle();
 
 
 //若不是STM32F103或者STM32F407则要重新实现底层接口
