@@ -1,5 +1,9 @@
 Dependencies for Project 'temp', Target 'inverted_pendulum': (DO NOT MODIFY !)
+<<<<<<< HEAD
 F (..\USER\main.c)(0x6718D939)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -W -O1 --apcs=interwork -I ..\STM32F4xx_FWLib\inc -I ..\USER -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\HARDWARE\CONTROL -I ..\HARDWARE\BSP -I ..\HARDWARE\HMI -I ..\HARDWARE\MPU6050 -I ..\HARDWARE\MPU6050\eMPL -I ..\HARDWARE\OLED_SPI -I ..\HARDWARE\IIC -I ..\SYSTEM\shell-I.\RTE\_inverted_pendulum-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F40_41xxx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
+=======
+F (..\USER\main.c)(0x6718C823)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -W -O1 --apcs=interwork -I ..\STM32F4xx_FWLib\inc -I ..\USER -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\HARDWARE\CONTROL -I ..\HARDWARE\BSP -I ..\HARDWARE\HMI -I ..\HARDWARE\MPU6050 -I ..\HARDWARE\MPU6050\eMPL -I ..\HARDWARE\OLED_SPI -I ..\HARDWARE\IIC -I ..\SYSTEM\shell-I.\RTE\_inverted_pendulum-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F40_41xxx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
+>>>>>>> 6dca5cc88870901170feac0f521a926933cccec3
 I (..\USER\stm32f4xx.h)(0x6718843A)
 I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include\core_cm4.h)(0x5898498A)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x588B8344)
@@ -44,7 +48,11 @@ I (..\HARDWARE\MPU6050\mpu6050.h)(0x6718843A)
 I (..\HARDWARE\IIC\myiic.h)(0x6718843A)
 I (..\HARDWARE\MPU6050\eMPL\inv_mpu.h)(0x6718843A)
 I (..\SYSTEM\delay\delay.h)(0x6718843A)
+<<<<<<< HEAD
 I (..\HARDWARE\HMI\hmi.h)(0x6718D841)
+=======
+I (..\HARDWARE\HMI\hmi.h)(0x6718843A)
+>>>>>>> 6dca5cc88870901170feac0f521a926933cccec3
 I (..\SYSTEM\shell\shell.h)(0x6718843A)
 F (..\USER\stm32f4xx_it.c)(0x6718843A)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -W -O1 --apcs=interwork -I ..\STM32F4xx_FWLib\inc -I ..\USER -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\HARDWARE\CONTROL -I ..\HARDWARE\BSP -I ..\HARDWARE\HMI -I ..\HARDWARE\MPU6050 -I ..\HARDWARE\MPU6050\eMPL -I ..\HARDWARE\OLED_SPI -I ..\HARDWARE\IIC -I ..\SYSTEM\shell-I.\RTE\_inverted_pendulum-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F40_41xxx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o .\objects\stm32f4xx_it.o --omf_browse .\objects\stm32f4xx_it.crf --depend .\objects\stm32f4xx_it.d)
 I (..\USER\stm32f4xx_it.h)(0x6718843A)
@@ -160,7 +168,11 @@ I (..\HARDWARE\MPU6050\mpu6050.h)(0x6718843A)
 I (..\HARDWARE\IIC\myiic.h)(0x6718843A)
 I (..\HARDWARE\MPU6050\eMPL\inv_mpu.h)(0x6718843A)
 I (..\SYSTEM\delay\delay.h)(0x6718843A)
+<<<<<<< HEAD
 I (..\HARDWARE\HMI\hmi.h)(0x6718D841)
+=======
+I (..\HARDWARE\HMI\hmi.h)(0x6718843A)
+>>>>>>> 6dca5cc88870901170feac0f521a926933cccec3
 F (..\HARDWARE\BSP\Control_Task.c)(0x6718C53D)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -W -O1 --apcs=interwork -I ..\STM32F4xx_FWLib\inc -I ..\USER -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\HARDWARE\CONTROL -I ..\HARDWARE\BSP -I ..\HARDWARE\HMI -I ..\HARDWARE\MPU6050 -I ..\HARDWARE\MPU6050\eMPL -I ..\HARDWARE\OLED_SPI -I ..\HARDWARE\IIC -I ..\SYSTEM\shell-I.\RTE\_inverted_pendulum-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F40_41xxx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o .\objects\control_task.o --omf_browse .\objects\control_task.crf --depend .\objects\control_task.d)
 I (..\USER\stm32f4xx.h)(0x6718843A)
 I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include\core_cm4.h)(0x5898498A)
@@ -206,7 +218,11 @@ I (..\HARDWARE\MPU6050\mpu6050.h)(0x6718843A)
 I (..\HARDWARE\IIC\myiic.h)(0x6718843A)
 I (..\HARDWARE\MPU6050\eMPL\inv_mpu.h)(0x6718843A)
 I (..\SYSTEM\delay\delay.h)(0x6718843A)
+<<<<<<< HEAD
 I (..\HARDWARE\HMI\hmi.h)(0x6718D841)
+=======
+I (..\HARDWARE\HMI\hmi.h)(0x6718843A)
+>>>>>>> 6dca5cc88870901170feac0f521a926933cccec3
 I (C:\Keil_v5\ARM\ARMCC\include\math.h)(0x588B8344)
 F (..\HARDWARE\CONTROL\control.c)(0x6718843A)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -W -O1 --apcs=interwork -I ..\STM32F4xx_FWLib\inc -I ..\USER -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\HARDWARE\CONTROL -I ..\HARDWARE\BSP -I ..\HARDWARE\HMI -I ..\HARDWARE\MPU6050 -I ..\HARDWARE\MPU6050\eMPL -I ..\HARDWARE\OLED_SPI -I ..\HARDWARE\IIC -I ..\SYSTEM\shell-I.\RTE\_inverted_pendulum-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F40_41xxx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o .\objects\control.o --omf_browse .\objects\control.crf --depend .\objects\control.d)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x588B8344)
@@ -253,7 +269,11 @@ I (..\HARDWARE\MPU6050\mpu6050.h)(0x6718843A)
 I (..\HARDWARE\IIC\myiic.h)(0x6718843A)
 I (..\HARDWARE\MPU6050\eMPL\inv_mpu.h)(0x6718843A)
 I (..\SYSTEM\delay\delay.h)(0x6718843A)
+<<<<<<< HEAD
 I (..\HARDWARE\HMI\hmi.h)(0x6718D841)
+=======
+I (..\HARDWARE\HMI\hmi.h)(0x6718843A)
+>>>>>>> 6dca5cc88870901170feac0f521a926933cccec3
 I (C:\Keil_v5\ARM\ARMCC\include\math.h)(0x588B8344)
 I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x588B8344)
 F (..\HARDWARE\BSP\NVIC.c)(0x6718843A)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -W -O1 --apcs=interwork -I ..\STM32F4xx_FWLib\inc -I ..\USER -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\HARDWARE\CONTROL -I ..\HARDWARE\BSP -I ..\HARDWARE\HMI -I ..\HARDWARE\MPU6050 -I ..\HARDWARE\MPU6050\eMPL -I ..\HARDWARE\OLED_SPI -I ..\HARDWARE\IIC -I ..\SYSTEM\shell-I.\RTE\_inverted_pendulum-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F40_41xxx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o .\objects\nvic.o --omf_browse .\objects\nvic.crf --depend .\objects\nvic.d)
@@ -301,7 +321,11 @@ I (..\HARDWARE\MPU6050\mpu6050.h)(0x6718843A)
 I (..\HARDWARE\IIC\myiic.h)(0x6718843A)
 I (..\HARDWARE\MPU6050\eMPL\inv_mpu.h)(0x6718843A)
 I (..\SYSTEM\delay\delay.h)(0x6718843A)
+<<<<<<< HEAD
 I (..\HARDWARE\HMI\hmi.h)(0x6718D841)
+=======
+I (..\HARDWARE\HMI\hmi.h)(0x6718843A)
+>>>>>>> 6dca5cc88870901170feac0f521a926933cccec3
 F (..\HARDWARE\IIC\myiic.c)(0x6718843A)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -W -O1 --apcs=interwork -I ..\STM32F4xx_FWLib\inc -I ..\USER -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\HARDWARE\CONTROL -I ..\HARDWARE\BSP -I ..\HARDWARE\HMI -I ..\HARDWARE\MPU6050 -I ..\HARDWARE\MPU6050\eMPL -I ..\HARDWARE\OLED_SPI -I ..\HARDWARE\IIC -I ..\SYSTEM\shell-I.\RTE\_inverted_pendulum-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F40_41xxx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o .\objects\myiic.o --omf_browse .\objects\myiic.crf --depend .\objects\myiic.d)
 I (..\HARDWARE\IIC\myiic.h)(0x6718843A)
 I (..\SYSTEM\sys\sys.h)(0x6718843A)
@@ -512,8 +536,13 @@ I (C:\Keil_v5\ARM\ARMCC\include\stdarg.h)(0x588B8344)
 F (..\HARDWARE\OLED_SPI\OLED_Data.c)(0x6718843A)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -W -O1 --apcs=interwork -I ..\STM32F4xx_FWLib\inc -I ..\USER -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\HARDWARE\CONTROL -I ..\HARDWARE\BSP -I ..\HARDWARE\HMI -I ..\HARDWARE\MPU6050 -I ..\HARDWARE\MPU6050\eMPL -I ..\HARDWARE\OLED_SPI -I ..\HARDWARE\IIC -I ..\SYSTEM\shell-I.\RTE\_inverted_pendulum-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F40_41xxx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o .\objects\oled_data.o --omf_browse .\objects\oled_data.crf --depend .\objects\oled_data.d)
 I (..\HARDWARE\OLED_SPI\OLED_Data.h)(0x6718843A)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x588B8344)
+<<<<<<< HEAD
 F (..\HARDWARE\HMI\externfunc.c)(0x6718D841)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -W -O1 --apcs=interwork -I ..\STM32F4xx_FWLib\inc -I ..\USER -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\HARDWARE\CONTROL -I ..\HARDWARE\BSP -I ..\HARDWARE\HMI -I ..\HARDWARE\MPU6050 -I ..\HARDWARE\MPU6050\eMPL -I ..\HARDWARE\OLED_SPI -I ..\HARDWARE\IIC -I ..\SYSTEM\shell-I.\RTE\_inverted_pendulum-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F40_41xxx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o .\objects\externfunc.o --omf_browse .\objects\externfunc.crf --depend .\objects\externfunc.d)
 I (..\HARDWARE\HMI\hmi.h)(0x6718D841)
+=======
+F (..\HARDWARE\HMI\externfunc.c)(0x671884F4)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -W -O1 --apcs=interwork -I ..\STM32F4xx_FWLib\inc -I ..\USER -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\HARDWARE\CONTROL -I ..\HARDWARE\BSP -I ..\HARDWARE\HMI -I ..\HARDWARE\MPU6050 -I ..\HARDWARE\MPU6050\eMPL -I ..\HARDWARE\OLED_SPI -I ..\HARDWARE\IIC -I ..\SYSTEM\shell-I.\RTE\_inverted_pendulum-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F40_41xxx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o .\objects\externfunc.o --omf_browse .\objects\externfunc.crf --depend .\objects\externfunc.d)
+I (..\HARDWARE\HMI\hmi.h)(0x6718843A)
+>>>>>>> 6dca5cc88870901170feac0f521a926933cccec3
 I (..\HARDWARE\BSP\bsp.h)(0x6718843A)
 I (..\HARDWARE\OLED_SPI\OLED.h)(0x6718843A)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x588B8344)
@@ -559,7 +588,11 @@ I (..\HARDWARE\IIC\myiic.h)(0x6718843A)
 I (..\HARDWARE\MPU6050\eMPL\inv_mpu.h)(0x6718843A)
 I (..\SYSTEM\delay\delay.h)(0x6718843A)
 F (..\HARDWARE\HMI\hmi.c)(0x6718843A)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -W -O1 --apcs=interwork -I ..\STM32F4xx_FWLib\inc -I ..\USER -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\HARDWARE\CONTROL -I ..\HARDWARE\BSP -I ..\HARDWARE\HMI -I ..\HARDWARE\MPU6050 -I ..\HARDWARE\MPU6050\eMPL -I ..\HARDWARE\OLED_SPI -I ..\HARDWARE\IIC -I ..\SYSTEM\shell-I.\RTE\_inverted_pendulum-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F40_41xxx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o .\objects\hmi.o --omf_browse .\objects\hmi.crf --depend .\objects\hmi.d)
+<<<<<<< HEAD
 I (..\HARDWARE\HMI\hmi.h)(0x6718D841)
+=======
+I (..\HARDWARE\HMI\hmi.h)(0x6718843A)
+>>>>>>> 6dca5cc88870901170feac0f521a926933cccec3
 I (..\HARDWARE\BSP\bsp.h)(0x6718843A)
 I (..\HARDWARE\OLED_SPI\OLED.h)(0x6718843A)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x588B8344)
@@ -721,7 +754,11 @@ I (..\HARDWARE\MPU6050\mpu6050.h)(0x6718843A)
 I (..\HARDWARE\IIC\myiic.h)(0x6718843A)
 I (..\HARDWARE\MPU6050\eMPL\inv_mpu.h)(0x6718843A)
 I (..\SYSTEM\delay\delay.h)(0x6718843A)
+<<<<<<< HEAD
 I (..\HARDWARE\HMI\hmi.h)(0x6718D841)
+=======
+I (..\HARDWARE\HMI\hmi.h)(0x6718843A)
+>>>>>>> 6dca5cc88870901170feac0f521a926933cccec3
 I (C:\Keil_v5\ARM\ARMCC\include\stdarg.h)(0x588B8344)
 F (..\SYSTEM\shell\shell.c)(0x6718843A)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -W -O1 --apcs=interwork -I ..\STM32F4xx_FWLib\inc -I ..\USER -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\HARDWARE\CONTROL -I ..\HARDWARE\BSP -I ..\HARDWARE\HMI -I ..\HARDWARE\MPU6050 -I ..\HARDWARE\MPU6050\eMPL -I ..\HARDWARE\OLED_SPI -I ..\HARDWARE\IIC -I ..\SYSTEM\shell-I.\RTE\_inverted_pendulum-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F40_41xxx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o .\objects\shell.o --omf_browse .\objects\shell.crf --depend .\objects\shell.d)
 I (..\USER\stm32f4xx.h)(0x6718843A)
