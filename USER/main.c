@@ -32,7 +32,7 @@ extern float target_angle;
 //定义角度的绝对值
 float absroll,abspitch;
 //定义模式选择
-extern uint8_t mode;
+extern uint8_t mode,AngleSet;
 /*
 
 每一步都有都有调试信息，妈妈再也不用担心我找不出程序bug了
@@ -119,6 +119,18 @@ next:
             delay_ms(1000);
             return 0;
             
+        }
+set:
+        if(AngleSet)
+        {
+            
+            OLED_Printf(0,0,OLED_8X16,"Set Angle...");
+            OLED_Update();
+            delay_ms(500);
+            OLED_Printf(0,0,OLED_8X16,"           ");
+            OLED_Update();
+            delay_ms(500);
+            goto set;
         }
         OLED_Printf(0,0,OLED_6X8,"pitch:%f",pitch);
         OLED_Update();

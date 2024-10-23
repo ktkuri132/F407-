@@ -30,7 +30,11 @@ void HMI_ResCheck()
         case 0x33:  //进入模式3的角度设置
         {
             AngleSet=1;
+<<<<<<< HEAD
             mode=0;
+=======
+            OLED_Clear();
+>>>>>>> 6ee079e76486fefe624903fb2e2ead951b6c2775
 
         }break;
         
@@ -86,6 +90,7 @@ void HMI_Mode1_2()
     }
 }
 
+<<<<<<< HEAD
 void HMI_Mode3_SetAngle()
 {
     OLED_Clear();
@@ -101,6 +106,9 @@ void HMI_Mode3_SetAngle()
     return ;
     
 }
+=======
+
+>>>>>>> 6ee079e76486fefe624903fb2e2ead951b6c2775
 
 
 void HMI_Mode3()
@@ -174,10 +182,11 @@ void HMI_Mode3()
             {
                 Target_angle = 135;
                 mode=3;
+                AngleSet=0;
                 sprintf(buf,"page2.t3.txt=\"%d\"",(uint16_t)Target_angle);
                 HMISends(USART_PORT_2,buf);		
                 HMISendb(USART_PORT_2,0xff);
-                AngleSet=0;
+                
             }break;
 
             case 0x59:  
