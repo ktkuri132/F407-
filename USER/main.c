@@ -1,4 +1,15 @@
 
+/*
+
+如果头文件飘红，那不是工程问题，那是因为vscode的搜索路径是我的电脑上的路径，
+你们的电脑上的路径不一样，所以vscode找不到头文件，所以头文件飘红，这时只要创建一个新窗口重新打开keil工程，
+然后在右下角的弹出框点OK，就会恢复成你自己电脑的路径了，这时头文件就不会飘红了
+然后如果弹出：在父目录找到了git仓库，是否打开，点打开就行了
+
+*/
+
+
+
 
 
 #include "stm32f4xx.h"
@@ -110,7 +121,7 @@ next:
             OLED_Printf(0,16,OLED_8X16,"Trying to Reset");
             OLED_Update();
             delay_ms(1000);
-            return ;
+            return 0;
             
         }
         OLED_Printf(0,0,OLED_6X8,"pitch:%f",pitch);
@@ -118,6 +129,8 @@ next:
     }
     
 }
+
+
 
 
 
