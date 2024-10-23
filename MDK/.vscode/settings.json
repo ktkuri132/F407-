@@ -2,6 +2,7 @@
     "files.associations": {
         "stm32f4xx.h": "c",
         "bsp.h": "c",
-        "oled.h": "c"
+        "oled.h": "c",
+        "hmi.h": "c"
     }
 }
