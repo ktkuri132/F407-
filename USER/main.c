@@ -124,7 +124,7 @@ next:
             OLED_Printf(0,16,OLED_8X16,"Trying to Reset");
             OLED_Update();
             delay_ms(1000);
-            return ;
+            return 0;
             
         }
         OLED_Printf(0,0,OLED_6X8,"pitch:%f",pitch);
@@ -132,6 +132,8 @@ next:
     }
     
 }
+
+
 
 
 

@@ -1,11 +1,9 @@
 .\objects\oled.o: ..\HARDWARE\OLED_SPI\OLED.c
 .\objects\oled.o: ..\USER\stm32f4xx.h
-.\objects\oled.o: C:\Users\ktkuru\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\core_cm4.h
-.\objects\oled.o: C:\Users\ktkuru\AppData\Local\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
-.\objects\oled.o: C:\Users\ktkuru\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_version.h
-.\objects\oled.o: C:\Users\ktkuru\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_compiler.h
-.\objects\oled.o: C:\Users\ktkuru\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_armcc.h
-.\objects\oled.o: C:\Users\ktkuru\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\mpu_armv7.h
+.\objects\oled.o: C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include\core_cm4.h
+.\objects\oled.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\oled.o: C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include\cmsis_compiler.h
+.\objects\oled.o: C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include\cmsis_armcc.h
 .\objects\oled.o: ..\USER\system_stm32f4xx.h
 .\objects\oled.o: ..\USER\stm32f4xx_conf.h
 .\objects\oled.o: ..\STM32F4xx_FWLib\inc\stm32f4xx_adc.h
@@ -37,7 +35,7 @@
 .\objects\oled.o: ..\STM32F4xx_FWLib\inc\stm32f4xx_fsmc.h
 .\objects\oled.o: ..\HARDWARE\OLED_SPI\OLED.h
 .\objects\oled.o: ..\HARDWARE\OLED_SPI\OLED_Data.h
-.\objects\oled.o: C:\Users\ktkuru\AppData\Local\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
-.\objects\oled.o: C:\Users\ktkuru\AppData\Local\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
-.\objects\oled.o: C:\Users\ktkuru\AppData\Local\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
-.\objects\oled.o: C:\Users\ktkuru\AppData\Local\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+.\objects\oled.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\oled.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
+.\objects\oled.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\oled.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h

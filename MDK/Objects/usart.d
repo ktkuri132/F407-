@@ -1,12 +1,10 @@
 .\objects\usart.o: ..\SYSTEM\usart\usart.c
 .\objects\usart.o: ..\SYSTEM\sys\sys.h
 .\objects\usart.o: ..\USER\stm32f4xx.h
-.\objects\usart.o: C:\Users\ktkuru\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\core_cm4.h
-.\objects\usart.o: C:\Users\ktkuru\AppData\Local\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
-.\objects\usart.o: C:\Users\ktkuru\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_version.h
-.\objects\usart.o: C:\Users\ktkuru\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_compiler.h
-.\objects\usart.o: C:\Users\ktkuru\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_armcc.h
-.\objects\usart.o: C:\Users\ktkuru\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\mpu_armv7.h
+.\objects\usart.o: C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include\core_cm4.h
+.\objects\usart.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\usart.o: C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include\cmsis_compiler.h
+.\objects\usart.o: C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include\cmsis_armcc.h
 .\objects\usart.o: ..\USER\system_stm32f4xx.h
 .\objects\usart.o: ..\USER\stm32f4xx_conf.h
 .\objects\usart.o: ..\STM32F4xx_FWLib\inc\stm32f4xx_adc.h
@@ -37,7 +35,7 @@
 .\objects\usart.o: ..\STM32F4xx_FWLib\inc\stm32f4xx_dcmi.h
 .\objects\usart.o: ..\STM32F4xx_FWLib\inc\stm32f4xx_fsmc.h
 .\objects\usart.o: ..\SYSTEM\usart\usart.h
-.\objects\usart.o: C:\Users\ktkuru\AppData\Local\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\usart.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\usart.o: ..\HARDWARE\BSP\bsp.h
 .\objects\usart.o: ..\HARDWARE\OLED_SPI\OLED.h
 .\objects\usart.o: ..\HARDWARE\OLED_SPI\OLED_Data.h
@@ -48,4 +46,4 @@
 .\objects\usart.o: ..\HARDWARE\MPU6050\eMPL\inv_mpu.h
 .\objects\usart.o: ..\SYSTEM\delay\delay.h
 .\objects\usart.o: ..\HARDWARE\HMI\hmi.h
-.\objects\usart.o: C:\Users\ktkuru\AppData\Local\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+.\objects\usart.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h

@@ -402,6 +402,8 @@ float timepp = 0.0102220;
 
     290,0,0  Εά 15~20
     290,0,0
+    295,0,0
+    280,0,50
 */
 void Task5_CircleMove(float R)
 {
@@ -412,8 +414,8 @@ void Task5_CircleMove(float R)
     static float time=0;
     static float Vtarget_angle,Ltarget_angle;
     
-    static struct PID Taks5Pid={295,0,0,PidControl_LineMove};
-    static struct PID Taks5Pid2={295,0,0,PidControl_LineMove};
+    static struct PID Taks5Pid={280,0,30,PidControl_LineMove};
+    static struct PID Taks5Pid2={280,0,30,PidControl_LineMove};
     
     if((R>=0.24)&&(R<=0.26))
     {
@@ -433,7 +435,7 @@ void Task5_CircleMove(float R)
 
 
     GetPolar(roll,pitch);
-    A = asinf(R/0.875)*180.0f/PI;
+    A = asinf(R/0.8751)*180.0f/PI;
 
     float wt = 2*PI/T*time;
 

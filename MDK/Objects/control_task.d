@@ -1,11 +1,9 @@
 .\objects\control_task.o: ..\HARDWARE\BSP\Control_Task.c
 .\objects\control_task.o: ..\USER\stm32f4xx.h
-.\objects\control_task.o: C:\Users\ktkuru\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\core_cm4.h
-.\objects\control_task.o: C:\Users\ktkuru\AppData\Local\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
-.\objects\control_task.o: C:\Users\ktkuru\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_version.h
-.\objects\control_task.o: C:\Users\ktkuru\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_compiler.h
-.\objects\control_task.o: C:\Users\ktkuru\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_armcc.h
-.\objects\control_task.o: C:\Users\ktkuru\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\mpu_armv7.h
+.\objects\control_task.o: C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include\core_cm4.h
+.\objects\control_task.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\control_task.o: C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include\cmsis_compiler.h
+.\objects\control_task.o: C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include\cmsis_armcc.h
 .\objects\control_task.o: ..\USER\system_stm32f4xx.h
 .\objects\control_task.o: ..\USER\stm32f4xx_conf.h
 .\objects\control_task.o: ..\STM32F4xx_FWLib\inc\stm32f4xx_adc.h
@@ -39,7 +37,7 @@
 .\objects\control_task.o: ..\HARDWARE\OLED_SPI\OLED.h
 .\objects\control_task.o: ..\HARDWARE\OLED_SPI\OLED_Data.h
 .\objects\control_task.o: ..\SYSTEM\usart\usart.h
-.\objects\control_task.o: C:\Users\ktkuru\AppData\Local\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\control_task.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\control_task.o: ..\SYSTEM\sys\sys.h
 .\objects\control_task.o: ..\HARDWARE\BSP\bsp.h
 .\objects\control_task.o: ..\HARDWARE\CONTROL\control.h
@@ -48,4 +46,4 @@
 .\objects\control_task.o: ..\HARDWARE\MPU6050\eMPL\inv_mpu.h
 .\objects\control_task.o: ..\SYSTEM\delay\delay.h
 .\objects\control_task.o: ..\HARDWARE\HMI\hmi.h
-.\objects\control_task.o: C:\Users\ktkuru\AppData\Local\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
+.\objects\control_task.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
