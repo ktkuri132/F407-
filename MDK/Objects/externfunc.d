@@ -2,14 +2,12 @@
 .\objects\externfunc.o: ..\HARDWARE\HMI\hmi.h
 .\objects\externfunc.o: ..\HARDWARE\BSP\bsp.h
 .\objects\externfunc.o: ..\HARDWARE\OLED_SPI\OLED.h
-.\objects\externfunc.o: C:\Users\ktkuru\AppData\Local\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\externfunc.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\externfunc.o: ..\HARDWARE\OLED_SPI\OLED_Data.h
 .\objects\externfunc.o: ..\USER\stm32f4xx.h
-.\objects\externfunc.o: C:\Users\ktkuru\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\core_cm4.h
-.\objects\externfunc.o: C:\Users\ktkuru\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_version.h
-.\objects\externfunc.o: C:\Users\ktkuru\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_compiler.h
-.\objects\externfunc.o: C:\Users\ktkuru\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_armcc.h
-.\objects\externfunc.o: C:\Users\ktkuru\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\mpu_armv7.h
+.\objects\externfunc.o: C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include\core_cm4.h
+.\objects\externfunc.o: C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include\cmsis_compiler.h
+.\objects\externfunc.o: C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include\cmsis_armcc.h
 .\objects\externfunc.o: ..\USER\system_stm32f4xx.h
 .\objects\externfunc.o: ..\USER\stm32f4xx_conf.h
 .\objects\externfunc.o: ..\STM32F4xx_FWLib\inc\stm32f4xx_adc.h
@@ -40,7 +38,7 @@
 .\objects\externfunc.o: ..\STM32F4xx_FWLib\inc\stm32f4xx_dcmi.h
 .\objects\externfunc.o: ..\STM32F4xx_FWLib\inc\stm32f4xx_fsmc.h
 .\objects\externfunc.o: ..\SYSTEM\usart\usart.h
-.\objects\externfunc.o: C:\Users\ktkuru\AppData\Local\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\externfunc.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\externfunc.o: ..\SYSTEM\sys\sys.h
 .\objects\externfunc.o: ..\HARDWARE\BSP\bsp.h
 .\objects\externfunc.o: ..\HARDWARE\CONTROL\control.h

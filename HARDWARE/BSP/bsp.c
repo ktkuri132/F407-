@@ -14,7 +14,7 @@
 
 
 #define target 180
-
+int Num;
 
 /// @brief 外设初始化
 /// @return 0:成功;  
@@ -41,7 +41,7 @@ int BSP_Init()
     printf("->OLED Init done\n");
     GPIO_Config(GPIOF, GPIO_Pin_0 | GPIO_Pin_1 | GPIO_Pin_2 | GPIO_Pin_3 | GPIO_Pin_4 | GPIO_Pin_5 | GPIO_Pin_6 | GPIO_Pin_7, GPIO_Mode_OUT, GPIO_PuPd_NOPULL);
     printf("->GPIOF Init done\n");
-    
+    ch451_init();
     
 
     delay_ms(20);
@@ -146,7 +146,6 @@ void TIM2_Init(uint32_t ms)
 
     TIM_Cmd(TIM2, DISABLE);
 }
-
 
 
 /* ADC配置  */

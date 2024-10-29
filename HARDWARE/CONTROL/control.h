@@ -2,32 +2,32 @@
 #define CONTROL_H
 #include <stm32f4xx.h>
 
-//Ê¹ÄÜÇý¶¯1
+//Ê¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½1
 #define LIN1 PFout(0)
 #define LIN2 PFout(1)//vo
 #define LIN3 PFout(2)
 #define LIN4 PFout(3)//vi
-//Ê¹ÄÜÇý¶¯2
+//Ê¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½2
 #define RIN1 PFout(4)
 #define RIN2 PFout(5)//li
 #define RIN3 PFout(6)
 #define RIN4 PFout(7)//lo
 
-//µç»úÎ»ÖÃ
+//ï¿½ï¿½ï¿½Î»ï¿½ï¿½
 #define VerticalIn      3
 #define VerticalOut     4
 #define LevelOut        2
 #define LevelIn         1
 #define StopAll         0
 
-//·½±ãµ÷ÊÔ£¬¶¨Òåµç»ú·½Î»
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î»
 #define Motor           TIM8
-#define MVerticalIn     CCR3    //´¹Ö±·½ÏòÄÚ²àµç»ú,M--µç»úÇ°×º£¬Vertical--µç»ú·½Ïò´¹Ö±·½Ïò£¬Out--µç»úÎ»ÖÃÍâ²àµç»ú
-#define MVerticalOut    CCR4    //´¹Ö±·½ÏòÍâ²àµç»ú
-#define MLevelOut       CCR2    //Ë®Æ½·½ÏòÍâ²àµç»ú
-#define MLevelIn        CCR1   //Ë®Æ½·½ÏòÄÚ²àµç»ú
+#define MVerticalIn     CCR3    //ï¿½ï¿½Ö±ï¿½ï¿½ï¿½ï¿½ï¿½Ú²ï¿½ï¿½ï¿½,M--ï¿½ï¿½ï¿½Ç°×ºï¿½ï¿½Vertical--ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö±ï¿½ï¿½ï¿½ï¿½Out--ï¿½ï¿½ï¿½Î»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+#define MVerticalOut    CCR4    //ï¿½ï¿½Ö±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+#define MLevelOut       CCR2    //Ë®Æ½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+#define MLevelIn        CCR1   //Ë®Æ½ï¿½ï¿½ï¿½ï¿½ï¿½Ú²ï¿½ï¿½ï¿½
 
-//Ñ¡ÔñÄ£Ê½µÄºê¶¨Òå
+//Ñ¡ï¿½ï¿½Ä£Ê½ï¿½Äºê¶¨ï¿½ï¿½
 #define Task4
 
 #ifdef Task4
@@ -36,14 +36,14 @@
 #define TargetDis   0
 #endif
 
-//Ô²ÖÜÂÊ
+//Ô²ï¿½ï¿½ï¿½ï¿½
 #define PI 3.1415926
-//µ½µØÃæ¾àÀë
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 #define H 0.875
-//ÖÜÆÚ
+//ï¿½ï¿½ï¿½ï¿½
 #define T 1.678
 
-//PID½á¹¹Ìå
+//PIDï¿½á¹¹ï¿½ï¿½
 typedef struct PID
 {
     float Kp;
@@ -54,7 +54,7 @@ typedef struct PID
 };
 
 
-/* »ù´¡  */
+/* ï¿½ï¿½ï¿½ï¿½  */
 
 void Motor_PWM_TIM8_Init();
 void GetPolar(float roll,float pitch);
@@ -64,22 +64,22 @@ void GetPolar(float roll,float pitch);
 void StopAllMotor();
 
 
-/* µÚÒ»Ïî  */
+/* ï¿½ï¿½Ò»ï¿½ï¿½  */
 
 float PidControl_LineMove(float target, float feedback,struct PID* pid);
 void Task1_LineMove(float R,uint8_t forward);
 
-/* µÚ¶þÏî  */
+/* ï¿½Ú¶ï¿½ï¿½ï¿½  */
 
 
-/* µÚÈýÏî  */
+/* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½  */
 extern uint8_t State_Data;
 
 void Task3_AngleMove(float angle,float R);
 float (*T3State_Update(float angle,float R,float roll,float pitch))[5];
 void T3Motor_CmdCombination(float Vo,float Lo,uint8_t a);
 
-/* µÚËÄÏî  */
+/* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½  */
 
 float PidControl_Stop(float target, float feedback,struct PID* pid);
 void Task4_StopFast();
@@ -87,9 +87,9 @@ void PWM_Allocation(float Output);
 void MotorState(float pitch,float roll);
 
 
-/* µÚÎåÏî  */
+/* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½  */
 void Task5_CircleMove(float R);
-void T5Motor_CmdCombination(int sit,float Vo,float Lo);
+void T5Motor_CmdCombination(int sit,float Vo,float Lo,float tR);
 float (*T5LowPassFilter(float Vinput,float Linput,float a))[3];
 
 #endif 

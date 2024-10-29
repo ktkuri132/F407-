@@ -398,15 +398,20 @@ float (*T5LowPassFilter(float Vinput,float Linput,float a))[3]
 //#define VcovL
 #define AllVL
 
+extern float Target_dis;
+
 // 第5项电机控制函数
-__INLINE void T5Motor_CmdCombination(int sit,float Vo,float Lo)
-{
+__INLINE void T5Motor_CmdCombination(int sit,float Vo,float Lo,float tR)
+{   
+    
     Vo = Vo<0?(-Vo):Vo; //取绝对值
     Lo = Lo<0?(-Lo):Lo;
-
+    
+   
+/* 
     float R = tanf((def/180)*PI)*H;//当前的R值
 
-    float delta_R = 1-((target_R-R)/target_R);  //计算R的差值的百分比
+    float delta_R = 1-((Target_dis-R)/Target_dis);  //计算R的差值的百分比
     delta_R = delta_R>1?1:delta_R;  //限制R的差值的百分比在0-1之间
     if(delta_R<0.5)
     {
@@ -419,7 +424,7 @@ __INLINE void T5Motor_CmdCombination(int sit,float Vo,float Lo)
 
     Vo = Vo*delta_R;    //根据R的差值的百分比调整Vo的值
     Lo = Lo*delta_R;    //根据R的差值的百分比调整Lo的值
-    
+     */
     //低通滤波
     float (*FilterOutputArr)[3] =  T5LowPassFilter(Vo,Lo,0.7);
     Vo = (*FilterOutputArr)[0];

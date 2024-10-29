@@ -42,7 +42,7 @@ void HMI_ResCheck()
         case 0x35:  //进入模式5
         {
             mode = 5;
-            target_R=0.15;
+            Target_dis=0.15;
         }break;
 
         default:break;
@@ -227,16 +227,16 @@ void HMI_Mode5()
         {
             case 0x61:  //半径增加
             {
-                target_R += 0.05;
-                sprintf(buf,"page4.t2.txt=\"%d\"",(uint16_t)(target_R*100));
+                Target_dis += 0.05;
+                sprintf(buf,"page4.t2.txt=\"%d\"",(uint16_t)(Target_dis*100));
                 HMISends(USART_PORT_2,buf);		
                 HMISendb(USART_PORT_2,0xff);
             }break;
             
             case 0x62:  //半径减小
             {
-                target_R -= 0.05;
-                sprintf(buf,"page4.t2.txt=\"%d\"",(uint16_t)(target_R*100));
+                Target_dis -= 0.05;
+                sprintf(buf,"page4.t2.txt=\"%d\"",(uint16_t)(Target_dis*100));
                 HMISends(USART_PORT_2,buf);		
                 HMISendb(USART_PORT_2,0xff);
             }break;
