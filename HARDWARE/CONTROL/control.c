@@ -421,7 +421,7 @@ __INLINE void T5Motor_CmdCombination(int sit,float Vo,float Lo)
     Lo = Lo*delta_R;    //根据R的差值的百分比调整Lo的值
     
     //低通滤波
-    float (*FilterOutputArr)[3] =  T5LowPassFilter(Vo,Lo,0.7);
+    float (*FilterOutputArr)[3] =  T5LowPassFilter(Vo,Lo,0.3);
     Vo = (*FilterOutputArr)[0];
     Lo = (*FilterOutputArr)[1];
 
@@ -435,11 +435,11 @@ __INLINE void T5Motor_CmdCombination(int sit,float Vo,float Lo)
             #ifdef AllVL
             Motor_Cmd(LevelOut,ENABLE);
             Motor_Cmd(LevelIn,DISABLE);
-            Motor->MLevelOut =(uint32_t)(Lo);
+            Motor->MLevelOut =(uint32_t)(Lo)*1.1;
 
             Motor_Cmd(VerticalIn,ENABLE);
             Motor_Cmd(VerticalOut,DISABLE);
-            Motor->MVerticalIn =(uint32_t)(Vo);
+            Motor->MVerticalIn =(uint32_t)(Vo)*1.2;
             #else
                 #ifdef VcovL
                     Motor_Cmd(LevelOut,ENABLE);
@@ -463,7 +463,7 @@ __INLINE void T5Motor_CmdCombination(int sit,float Vo,float Lo)
 
             Motor_Cmd(VerticalIn,ENABLE);
             Motor_Cmd(VerticalOut,DISABLE);
-            Motor->MVerticalIn =(uint32_t)(Vo);
+            Motor->MVerticalIn =(uint32_t)(Vo)*1.2;
             #else
                 #ifdef VcovL
                     Motor_Cmd(LevelOut,DISABLE);
@@ -508,7 +508,7 @@ __INLINE void T5Motor_CmdCombination(int sit,float Vo,float Lo)
             #ifdef AllVL
                 Motor_Cmd(LevelOut,ENABLE);
                 Motor_Cmd(LevelIn,DISABLE);
-                Motor->MLevelOut =(uint32_t)(Lo);
+                Motor->MLevelOut =(uint32_t)(Lo)*1.1;
 
                 Motor_Cmd(VerticalOut,ENABLE);
                 Motor_Cmd(VerticalIn,DISABLE);

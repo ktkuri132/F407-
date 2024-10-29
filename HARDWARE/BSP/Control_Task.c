@@ -421,11 +421,16 @@ void Task5_CircleMove(float R)
     }
     else if((R>=0.29)&&(R<=0.31))
     {
-        R=0.27;
+        R=0.26;
+        Taks5Pid.Kp = 290;
+        Taks5Pid.Kd = 0;
+        Taks5Pid2.Kp = 290;
+        Taks5Pid2.Kd = 0;
     }
     else if((R>=0.34)&&(R<=0.36))
     {
         R=0.32;
+        
     }
     
 
