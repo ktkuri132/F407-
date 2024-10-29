@@ -2,12 +2,10 @@
 .\objects\myiic.o: ..\HARDWARE\IIC\myiic.h
 .\objects\myiic.o: ..\SYSTEM\sys\sys.h
 .\objects\myiic.o: ..\USER\stm32f4xx.h
-.\objects\myiic.o: C:\Users\ktkuru\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\core_cm4.h
-.\objects\myiic.o: C:\Users\ktkuru\AppData\Local\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
-.\objects\myiic.o: C:\Users\ktkuru\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_version.h
-.\objects\myiic.o: C:\Users\ktkuru\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_compiler.h
-.\objects\myiic.o: C:\Users\ktkuru\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_armcc.h
-.\objects\myiic.o: C:\Users\ktkuru\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\mpu_armv7.h
+.\objects\myiic.o: C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include\core_cm4.h
+.\objects\myiic.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\myiic.o: C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include\cmsis_compiler.h
+.\objects\myiic.o: C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include\cmsis_armcc.h
 .\objects\myiic.o: ..\USER\system_stm32f4xx.h
 .\objects\myiic.o: ..\USER\stm32f4xx_conf.h
 .\objects\myiic.o: ..\STM32F4xx_FWLib\inc\stm32f4xx_adc.h

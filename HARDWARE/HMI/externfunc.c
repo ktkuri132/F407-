@@ -1,6 +1,6 @@
 /*
 
-    ÕâÀï¸ãÁËÒ»Ğ©HMIµÄÍâ²¿º¯Êı
+    è¿™é‡Œæäº†ä¸€äº›HMIçš„å¤–éƒ¨å‡½æ•°
 
 */
 
@@ -12,33 +12,33 @@ extern uint16_t Res;
 extern float Target_dis,Target_angle,target_R;
 
 
-//Í¨ÓÃ´®¿ÚÆÁĞ­Òé
+//é€šç”¨ä¸²å£å±åè®®
 void HMI_ResCheck()
 {
-    /************³õÊ¼Ò³ÃæÑ¡ÔñÄ£Ê½*********** */
+    /************åˆå§‹é¡µé¢é€‰æ‹©æ¨¡å¼*********** */
     switch (Res)
     {
-        case 0x31:  //½øÈëÄ£Ê½1-2
+        case 0x31:  //è¿›å…¥æ¨¡å¼1-2
         {
-            /*ÔÚÕâĞ©µØ·½Ëæ±ã¸Ä*/
+            /*åœ¨è¿™äº›åœ°æ–¹éšä¾¿æ”¹*/
             mode = 1;
             Target_angle=0;
             Target_dis=0.15;
         }break;
 
-        case 0x33:  //½øÈëÄ£Ê½3µÄ½Ç¶ÈÉèÖÃ
+        case 0x33:  //è¿›å…¥æ¨¡å¼3çš„è§’åº¦è®¾ç½®
         {
             mode = 3;
             Target_angle=30;
             Target_dis=0.15;
         }break;
         
-        case 0x34:  //½øÈëÄ£Ê½4
+        case 0x34:  //è¿›å…¥æ¨¡å¼4
         {
             mode = 4;
         }break;
 
-        case 0x35:  //½øÈëÄ£Ê½5
+        case 0x35:  //è¿›å…¥æ¨¡å¼5
         {
             mode = 5;
             target_R=0.15;
@@ -58,7 +58,7 @@ void HMI_Mode1_2()
     {
         switch (Res)
         {
-            case 0x41:  //°ë¾¶Ôö¼Ó
+            case 0x41:  //åŠå¾„å¢åŠ 
             {
                 Target_dis += 0.05;
                 sprintf(buf,"page1.t2.txt=\"%d\"",(uint16_t)(Target_dis*100));
@@ -66,7 +66,7 @@ void HMI_Mode1_2()
                 HMISendb(USART_PORT_2,0xff);
             }break;
             
-            case 0x42:  //°ë¾¶¼õĞ¡
+            case 0x42:  //åŠå¾„å‡å°
             {
                 Target_dis -= 0.05;
                 sprintf(buf,"page1.t2.txt=\"%d\"",(uint16_t)(Target_dis*100));
@@ -74,7 +74,7 @@ void HMI_Mode1_2()
                 HMISendb(USART_PORT_2,0xff);
             }break;
                 
-            case 0x43:  //·µ»Ø³õÊ¼Ò³Ãæ
+            case 0x43:  //è¿”å›åˆå§‹é¡µé¢
             {
                 mode = 0;
             }break;
@@ -90,11 +90,11 @@ void HMI_Mode1_2()
 void HMI_Mode3()
 {
     char buf[50];
-    if((mode==3)||(AngleSet))
+    if(mode==3)
     {
         switch (Res)
         {
-            case 0x52:  //½Ç¶ÈÔö¼Ó
+            case 0x52:  //è§’åº¦å¢åŠ 
             {
                 Target_angle += 5;
                 sprintf(buf,"page2.t3.txt=\"%d\"",(uint16_t)Target_angle);
@@ -102,7 +102,7 @@ void HMI_Mode3()
                 HMISendb(USART_PORT_2,0xff);
             }break;
 
-            case 0x53:  //½Ç¶È¼õĞ¡
+            case 0x53:  //è§’åº¦å‡å°
             {
                 Target_angle -= 5;
                 sprintf(buf,"page2.t3.txt=\"%d\"",(uint16_t)Target_angle);
@@ -110,7 +110,7 @@ void HMI_Mode3()
                 HMISendb(USART_PORT_2,0xff);
             }break;
 
-            case 0x51:  //·µ»Ø³õÊ¼Ò³Ãæ
+            case 0x51:  //è¿”å›åˆå§‹é¡µé¢
             {
                 mode=0;
             }break;
@@ -128,7 +128,7 @@ void HMI_Mode4()
     {
         switch (Res)
         {
-            case 0x71:  //·µ»Ø³õÊ¼Ò³Ãæ
+            case 0x71:  //è¿”å›åˆå§‹é¡µé¢
             {
                 mode=0;
             }break;
@@ -146,7 +146,7 @@ void HMI_Mode5()
     {
         switch (Res)
         {
-            case 0x61:  //°ë¾¶Ôö¼Ó
+            case 0x61:  //åŠå¾„å¢åŠ 
             {
                 target_R += 0.05;
                 sprintf(buf,"page4.t2.txt=\"%d\"",(uint16_t)(target_R*100));
@@ -154,7 +154,7 @@ void HMI_Mode5()
                 HMISendb(USART_PORT_2,0xff);
             }break;
             
-            case 0x62:  //°ë¾¶¼õĞ¡
+            case 0x62:  //åŠå¾„å‡å°
             {
                 target_R -= 0.05;
                 sprintf(buf,"page4.t2.txt=\"%d\"",(uint16_t)(target_R*100));
@@ -162,7 +162,7 @@ void HMI_Mode5()
                 HMISendb(USART_PORT_2,0xff);
             }break;
 
-            case 0x63:  //·µ»Ø³õÊ¼Ò³Ãæ
+            case 0x63:  //è¿”å›åˆå§‹é¡µé¢
             {
                 mode=0;
             }break;

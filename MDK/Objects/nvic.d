@@ -1,11 +1,9 @@
 .\objects\nvic.o: ..\HARDWARE\BSP\NVIC.c
 .\objects\nvic.o: ..\USER\stm32f4xx.h
-.\objects\nvic.o: C:\Users\ktkuru\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\core_cm4.h
-.\objects\nvic.o: C:\Users\ktkuru\AppData\Local\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
-.\objects\nvic.o: C:\Users\ktkuru\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_version.h
-.\objects\nvic.o: C:\Users\ktkuru\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_compiler.h
-.\objects\nvic.o: C:\Users\ktkuru\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_armcc.h
-.\objects\nvic.o: C:\Users\ktkuru\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\mpu_armv7.h
+.\objects\nvic.o: C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include\core_cm4.h
+.\objects\nvic.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\nvic.o: C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include\cmsis_compiler.h
+.\objects\nvic.o: C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include\cmsis_armcc.h
 .\objects\nvic.o: ..\USER\system_stm32f4xx.h
 .\objects\nvic.o: ..\USER\stm32f4xx_conf.h
 .\objects\nvic.o: ..\STM32F4xx_FWLib\inc\stm32f4xx_adc.h
@@ -39,7 +37,7 @@
 .\objects\nvic.o: ..\HARDWARE\OLED_SPI\OLED.h
 .\objects\nvic.o: ..\HARDWARE\OLED_SPI\OLED_Data.h
 .\objects\nvic.o: ..\SYSTEM\usart\usart.h
-.\objects\nvic.o: C:\Users\ktkuru\AppData\Local\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\nvic.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\nvic.o: ..\SYSTEM\sys\sys.h
 .\objects\nvic.o: ..\HARDWARE\BSP\bsp.h
 .\objects\nvic.o: ..\HARDWARE\CONTROL\control.h
