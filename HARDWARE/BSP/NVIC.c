@@ -1,7 +1,7 @@
 /*
 
 
-Õâ¸öÎÄ¼ş  ¶¨ÒåÁË  Õû¸ö³ÌĞòµÄÖĞ¶Ï¿ØÖÆÓÅÏÈ¼¶Ë³Ğò
+è¿™ä¸ªæ–‡ä»¶  å®šä¹‰äº†  æ•´ä¸ªç¨‹åºçš„ä¸­æ–­æ§åˆ¶ä¼˜å…ˆçº§é¡ºåº
 
 
 */
@@ -12,13 +12,13 @@
 #include <control.h>
 #include <usart.h>
 
-/// @brief ÖĞ¶Ï³õÊ¼»¯
+/// @brief ä¸­æ–­åˆå§‹åŒ–
 void BSP_NVIC_IT_Config()
 {
-    //ÉèÖÃÓÅÏÈ¼¶·Ö×é4£¬ÎªÁË¼æÈİRTOSµ÷¶È
+    //è®¾ç½®ä¼˜å…ˆçº§åˆ†ç»„4ï¼Œä¸ºäº†å…¼å®¹RTOSè°ƒåº¦
     NVIC_PriorityGroupConfig( NVIC_PriorityGroup_4 );   
     
-    //Íâ²¿ÖĞ¶Ï
+    //å¤–éƒ¨ä¸­æ–­
     NVIC_InitTypeDef NVIC_InitStructure;
     NVIC_InitStructure.NVIC_IRQChannel = EXTI15_10_IRQn;
     NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 2;
@@ -26,30 +26,30 @@ void BSP_NVIC_IT_Config()
     NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
     NVIC_Init(&NVIC_InitStructure);
 
-    //¶¨Ê±Æ÷2ÖĞ¶Ï
+    //å®šæ—¶å™¨2ä¸­æ–­
     NVIC_InitStructure.NVIC_IRQChannel = TIM2_IRQn;
     NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 1;
     NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;
     NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
     NVIC_Init(&NVIC_InitStructure);
 
-    //´®¿Ú1ÖĞ¶Ï
-    NVIC_InitStructure.NVIC_IRQChannel = USART1_IRQn;//´®¿Ú1ÖĞ¶ÏÍ¨µÀ
-	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority=2;//ÇÀÕ¼ÓÅÏÈ¼¶2
+    //ä¸²å£1ä¸­æ–­
+    NVIC_InitStructure.NVIC_IRQChannel = USART1_IRQn;//ä¸²å£1ä¸­æ–­é€šé“
+	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority=2;//æŠ¢å ä¼˜å…ˆçº§2
 	NVIC_InitStructure.NVIC_IRQChannelSubPriority =0;		
 	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;			
 	NVIC_Init(&NVIC_InitStructure);	
 
-    //´®¿Ú2ÖĞ¶Ï-->ÓÃÓÚÀ¶ÑÀ
-    NVIC_InitStructure.NVIC_IRQChannel = USART2_IRQn;//´®¿Ú1ÖĞ¶ÏÍ¨µÀ
-	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority=0;//ÇÀÕ¼ÓÅÏÈ¼¶0
+    //ä¸²å£2ä¸­æ–­-->ç”¨äºè“ç‰™
+    NVIC_InitStructure.NVIC_IRQChannel = USART2_IRQn;//ä¸²å£1ä¸­æ–­é€šé“
+	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority=0;//æŠ¢å ä¼˜å…ˆçº§0
 	NVIC_InitStructure.NVIC_IRQChannelSubPriority =0;		
 	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;			
 	NVIC_Init(&NVIC_InitStructure);	
 
-    //´®¿Ú3ÖĞ¶Ï-->ÎªÁËÍæÍæÎÒµÄ429,¸úÎÒµÄ429Í¨ĞÅ
-    NVIC_InitStructure.NVIC_IRQChannel = USART3_IRQn;//´®¿Ú1ÖĞ¶ÏÍ¨µÀ
-	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority=3;//ÇÀÕ¼ÓÅÏÈ¼¶3
+    //ä¸²å£3ä¸­æ–­-->ä¸ºäº†ç©ç©æˆ‘çš„429,è·Ÿæˆ‘çš„429é€šä¿¡
+    NVIC_InitStructure.NVIC_IRQChannel = USART3_IRQn;//ä¸²å£1ä¸­æ–­é€šé“
+	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority=3;//æŠ¢å ä¼˜å…ˆçº§3
 	NVIC_InitStructure.NVIC_IRQChannelSubPriority =0;		
 	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;			
 	NVIC_Init(&NVIC_InitStructure);	

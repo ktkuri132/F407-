@@ -1,7 +1,7 @@
 /*
 
 
-    ’‚∏ˆŒƒº˛  µœ÷¡À ≤ø∑÷ª˘±æµƒÕ‚…Ëµƒ≥ı ºªØ∫Ø ˝£¨“‘º∞Õ‚…Ëµƒ≥ı ºªØ£¨¥¯≤Œ ˝µƒ∫Ø ˝∂º”–”√◊¢ ÕΩÈ…‹
+    Ëøô‰∏™Êñá‰ª∂ ÂÆûÁé∞‰∫Ü ÈÉ®ÂàÜÂü∫Êú¨ÁöÑÂ§ñËÆæÁöÑÂàùÂßãÂåñÂáΩÊï∞Ôºå‰ª•ÂèäÂ§ñËÆæÁöÑÂàùÂßãÂåñÔºåÂ∏¶ÂèÇÊï∞ÁöÑÂáΩÊï∞ÈÉΩÊúâÁî®Ê≥®Èáä‰ªãÁªç
 
 
 
@@ -16,10 +16,10 @@
 #define target 180
 
 
-/// @brief Õ‚…Ë≥ı ºªØ
-/// @return 0:≥…π¶;  
-/// @return 1:MPU6050≥ı ºªØ ß∞‹
-/// @return 2:MPU6050 DMP≥ı ºªØ ß∞‹
+/// @brief Â§ñËÆæÂàùÂßãÂåñ
+/// @return 0:ÊàêÂäü;  
+/// @return 1:MPU6050ÂàùÂßãÂåñÂ§±Ë¥•
+/// @return 2:MPU6050 DMPÂàùÂßãÂåñÂ§±Ë¥•
 int BSP_Init()
 {
     usart1_init(115200);
@@ -86,11 +86,11 @@ void LED_Init()
     GPIOF->BSRRL |=1<<9;
 }
 
-/// @brief GPIO≈‰÷√∫Ø ˝£®ƒ¨»œÀŸ∂»100£¨ƒ¨»œÕ∆ÕÏ ‰≥ˆ£¨µ˜”√«∞«Î◊‘–– πƒ‹ ±÷”£©
-/// @param GPIOx ≤ª±ÿ∂‡Àµ
-/// @param GPIO_Pin_x ≤ª±ÿ∂‡Àµ
-/// @param GPIO_Mode_x GPIOƒ£ Ω
-/// @param GPIO_PuPd_x …œ¿≠°¢œ¬¿≠°¢∏°ø’
+/// @brief GPIOÈÖçÁΩÆÂáΩÊï∞ÔºàÈªòËÆ§ÈÄüÂ∫¶100ÔºåÈªòËÆ§Êé®ÊåΩËæìÂá∫ÔºåË∞ÉÁî®ÂâçËØ∑Ëá™Ë°å‰ΩøËÉΩÊó∂ÈíüÔºâ
+/// @param GPIOx ‰∏çÂøÖÂ§öËØ¥
+/// @param GPIO_Pin_x ‰∏çÂøÖÂ§öËØ¥
+/// @param GPIO_Mode_x GPIOÊ®°Âºè
+/// @param GPIO_PuPd_x ‰∏äÊãâ„ÄÅ‰∏ãÊãâ„ÄÅÊµÆÁ©∫
 void GPIO_Config(GPIO_TypeDef *GPIOx,uint32_t GPIO_Pin_x,uint32_t GPIO_Mode_x,uint32_t GPIO_PuPd_x)
 {
     GPIO_InitTypeDef GPIO_InitStructure;
@@ -102,7 +102,7 @@ void GPIO_Config(GPIO_TypeDef *GPIOx,uint32_t GPIO_Pin_x,uint32_t GPIO_Mode_x,ui
     GPIO_Init(GPIOx, &GPIO_InitStructure);
 }
 
-//PG15µƒÕ‚≤ø÷–∂œ≥ı ºªØ
+//PG15ÁöÑÂ§ñÈÉ®‰∏≠Êñ≠ÂàùÂßãÂåñ
 void EXIT15_Init()
 {
     RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOG, ENABLE);
@@ -128,7 +128,7 @@ void EXIT15_Init()
 }
 
 
-//∂® ±∆˜2≥ı ºªØ
+//ÂÆöÊó∂Âô®2ÂàùÂßãÂåñ
 void TIM2_Init(uint32_t ms)
 {
     TIM_TimeBaseInitTypeDef TIM_TimeBaseStructure;
@@ -149,7 +149,7 @@ void TIM2_Init(uint32_t ms)
 
 
 
-/* ADC≈‰÷√  */
+/* ADCÈÖçÁΩÆ  */
 void ADC_Config()
 {
     ADC_InitTypeDef ADC_InitStructure;
@@ -198,8 +198,8 @@ void ADC_Config()
 
     // Configure and enable ADC interrupt in NVIC
     NVIC_InitStructure.NVIC_IRQChannel = ADC_IRQn;
-    NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 1; // …Ë÷√«¿’º”≈œ»º∂
-    NVIC_InitStructure.NVIC_IRQChannelSubPriority = 1; // …Ë÷√◊””≈œ»º∂
+    NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 1; // ËÆæÁΩÆÊä¢Âç†‰ºòÂÖàÁ∫ß
+    NVIC_InitStructure.NVIC_IRQChannelSubPriority = 1; // ËÆæÁΩÆÂ≠ê‰ºòÂÖàÁ∫ß
     NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
     NVIC_Init(&NVIC_InitStructure);
 
@@ -226,7 +226,7 @@ void ADC_IRQHandler(void)
         TIM1->CCR1 = 3600;
         printf("ADC value: %d\n", ADCvalue_convert(adcValue));
 
-        // ¥¶¿ÌadcValue
+        // Â§ÑÁêÜadcValue
     }
 }
 

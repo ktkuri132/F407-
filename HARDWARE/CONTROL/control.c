@@ -1,10 +1,10 @@
 /*
 
-Õâ¸öÎÄ¼ş  ÊµÏÖÁË  PID¿ØÖÆ¼ÆËã£¬PWMÊä³ö  ÊÇ·çÁ¦°Ú¿ØÖÆÖĞµ÷ÓÃµÄÖ÷Òªº¯Êı
+è¿™ä¸ªæ–‡ä»¶  å®ç°äº†  PIDæ§åˆ¶è®¡ç®—ï¼ŒPWMè¾“å‡º  æ˜¯é£åŠ›æ‘†æ§åˆ¶ä¸­è°ƒç”¨çš„ä¸»è¦å‡½æ•°
 
-    Ë®Æ½·½Ïò pitchÖá  ---ÏòÍâ + ÏòÄÚ -
-    Ç°ºó·½Ïò rollÖá  ---ÏòÍâ - ÏòÄÚ +
-    Ğı×ª·½Ïò yawÖá£¨Î´Ê¹ÓÃ£©
+    æ°´å¹³æ–¹å‘ pitchè½´  ---å‘å¤– + å‘å†… -
+    å‰åæ–¹å‘ rollè½´  ---å‘å¤– - å‘å†… +
+    æ—‹è½¬æ–¹å‘ yawè½´ï¼ˆæœªä½¿ç”¨ï¼‰
 
 */
 
@@ -21,11 +21,11 @@ extern uint8_t Stop_flag;
 extern float pitch,roll,abspitch,absroll, yaw,def,dis,polar,Opolar,target_R;
 uint8_t State_Data;
 
-//¼ÆËã¼«×ø±ê,ÒÔ¼°ÈÎÒâ½Ç
+//è®¡ç®—æåæ ‡,ä»¥åŠä»»æ„è§’
 void GetPolar(float roll,float pitch)
 {
     /*
-        ÈÎÒâ½ÇdefµÄ¼ÆËã¹«Ê½
+        ä»»æ„è§’defçš„è®¡ç®—å…¬å¼
         tan?(def)=tan?(roll)+tan?(pitch)
         def=atan(sqrt(tan?(roll)+tan?(pitch)))
     */
@@ -52,7 +52,7 @@ void GetPolar(float roll,float pitch)
     def = (atanf(a)*180.0)/3.1415926;
 
     /*
-        Î»ÒÆdisµÄ¼ÆËã¹«Ê½
+        ä½ç§»disçš„è®¡ç®—å…¬å¼
         dis=heigh*tan(def)
     
     */
@@ -77,7 +77,7 @@ void GetPolar(float roll,float pitch)
         polar = 360-Opolar;
     }
 
-    //¹æ¶¨×ø±êÎŞĞ§ÇøÓò
+    //è§„å®šåæ ‡æ— æ•ˆåŒºåŸŸ
     if(dis<1)
     {
         polar=0;
@@ -85,37 +85,37 @@ void GetPolar(float roll,float pitch)
     
 }
 
-//¼ÆËã
+//è®¡ç®—
 
 
-//T--ÈÎÎñ£¬4--µÚËÄÏî£¬S--Í£Ö¹£¬ÖÆ¶¯
+//T--ä»»åŠ¡ï¼Œ4--ç¬¬å››é¡¹ï¼ŒS--åœæ­¢ï¼Œåˆ¶åŠ¨
 extern float T4SKp, T4SKi, T4SKd;
 //extern float T1LKp, T1LKi, T1LKd;
 
-/// @brief PID¿ØÖÆÖÆ¶¯
-/// @param target Ä¿±êÖµ
-/// @param feedback µ±Ç°Öµ
-/// @return ¼ÆËãÖµ£¨¸¡µãĞÍ£¬ÎŞÕı¸º£©
+/// @brief PIDæ§åˆ¶åˆ¶åŠ¨
+/// @param target ç›®æ ‡å€¼
+/// @param feedback å½“å‰å€¼
+/// @return è®¡ç®—å€¼ï¼ˆæµ®ç‚¹å‹ï¼Œæ— æ­£è´Ÿï¼‰
 float PidControl_Stop(float target, float feedback,struct PID* pid)
 {
 
-    // ¶¨ÒåÎó²î±äÁ¿
+    // å®šä¹‰è¯¯å·®å˜é‡
     static float T4Serror = 0;
     static float T4SlastError = 0;
     static float T4Sintegral = 0;
     static float T4Sderivative = 0;
 
-    // ¶¨Òå»ı·ÖÏŞ·ù±äÁ¿
+    // å®šä¹‰ç§¯åˆ†é™å¹…å˜é‡
     static float T4SintegralMin = -8400;
     static float T4SintegralMax = 8400;
 
-    // ¶¨ÒåPIDÊä³ö±äÁ¿
+    // å®šä¹‰PIDè¾“å‡ºå˜é‡
     static float output = 0;
 
-    // ¼ÆËãÎó²î
+    // è®¡ç®—è¯¯å·®
     T4Serror = feedback - target;
 
-    // ¼ÆËã»ı·ÖÏî
+    // è®¡ç®—ç§¯åˆ†é¡¹
     T4Sintegral += T4Serror;
 
     if(def<0.8)
@@ -123,49 +123,49 @@ float PidControl_Stop(float target, float feedback,struct PID* pid)
         T4Sintegral=0;
     }
 
-    // ÏŞÖÆ»ı·ÖÏîÔÚ»ı·ÖÏŞ·ù·¶Î§ÄÚ
+    // é™åˆ¶ç§¯åˆ†é¡¹åœ¨ç§¯åˆ†é™å¹…èŒƒå›´å†…
     if (T4Sintegral < T4SintegralMin) {
         T4Sintegral = T4SintegralMin;
     } else if (T4Sintegral > T4SintegralMax) {
         T4Sintegral = T4SintegralMax;
     }
 
-    // ¼ÆËãÎ¢·ÖÏî
+    // è®¡ç®—å¾®åˆ†é¡¹
     T4Sderivative = T4Serror - T4SlastError;
 
-    // ¼ÆËãPIDÊä³ö
+    // è®¡ç®—PIDè¾“å‡º
     output = pid->Kp * T4Serror + pid->Ki * T4Sintegral + pid->Kd * T4Sderivative;
 
-    // ¸üĞÂÎó²î±äÁ¿
+    // æ›´æ–°è¯¯å·®å˜é‡
     T4SlastError = T4Serror;
 
     return output;
 
 }
 
-/// @brief PID¿ØÖÆÏßĞÔÒÆ¶¯
-/// @param target Ä¿±êÖµ
-/// @param feedback µ±Ç°Öµ
-/// @return ¼ÆËãÖµ£¨¸¡µãĞÍ£¬ÓĞÕı¸º£©
+/// @brief PIDæ§åˆ¶çº¿æ€§ç§»åŠ¨
+/// @param target ç›®æ ‡å€¼
+/// @param feedback å½“å‰å€¼
+/// @return è®¡ç®—å€¼ï¼ˆæµ®ç‚¹å‹ï¼Œæœ‰æ­£è´Ÿï¼‰
 float PidControl_LineMove(float target, float feedback,struct PID* pid)
 {
-    // ¶¨ÒåÎó²î±äÁ¿
+    // å®šä¹‰è¯¯å·®å˜é‡
     static float T1Lerror = 0;
     static float T1LlastError = 0;
     static float T1Lintegral = 0;
     static float T1Lderivative = 0;
 
-    // ¶¨Òå»ı·ÖÏŞ·ù±äÁ¿
+    // å®šä¹‰ç§¯åˆ†é™å¹…å˜é‡
     static float T1LintegralMin = -8400;
     static float T1LintegralMax = 8400;
 
-    // ¶¨ÒåPIDÊä³ö±äÁ¿
+    // å®šä¹‰PIDè¾“å‡ºå˜é‡
     static float output = 0;
 
-    // ¼ÆËãÎó²î
+    // è®¡ç®—è¯¯å·®
     T1Lerror = feedback - target;
 
-    // ¼ÆËã»ı·ÖÏî
+    // è®¡ç®—ç§¯åˆ†é¡¹
     T1Lintegral += T1Lerror;
 
     if((T1Lerror<0.8)||(T1Lerror> -0.8))
@@ -173,26 +173,26 @@ float PidControl_LineMove(float target, float feedback,struct PID* pid)
         T1Lintegral=0;
     }
 
-    // ÏŞÖÆ»ı·ÖÏîÔÚ»ı·ÖÏŞ·ù·¶Î§ÄÚ
+    // é™åˆ¶ç§¯åˆ†é¡¹åœ¨ç§¯åˆ†é™å¹…èŒƒå›´å†…
     if (T1Lintegral < T1LintegralMin) {
         T1Lintegral = T1LintegralMin;
     } else if (T1Lintegral > T1LintegralMax) {
         T1Lintegral = T1LintegralMax;
     }
 
-    // ¼ÆËãÎ¢·ÖÏî
+    // è®¡ç®—å¾®åˆ†é¡¹
     T1Lderivative = T1Lerror - T1LlastError;
 
-    // ¼ÆËãPIDÊä³ö
+    // è®¡ç®—PIDè¾“å‡º
     output = pid->Kp * T1Lerror + pid->Ki * T1Lintegral + pid->Kd * T1Lderivative;
 
-    // ¸üĞÂÎó²î±äÁ¿
+    // æ›´æ–°è¯¯å·®å˜é‡
     T1LlastError = T1Lerror;
 
     return output;
 }
 
-//PWMÊä³ö£¬²ÉÓÃ¸ß¼¶¶¨Ê±Æ÷TIM8£¬Êä³ö4Â·PWM
+//PWMè¾“å‡ºï¼Œé‡‡ç”¨é«˜çº§å®šæ—¶å™¨TIM8ï¼Œè¾“å‡º4è·¯PWM
 void Motor_PWM_TIM8_Init()
 {
     RCC_APB2PeriphClockCmd(RCC_APB2Periph_TIM8, ENABLE);
@@ -205,7 +205,7 @@ void Motor_PWM_TIM8_Init()
     GPIO_PinAFConfig(GPIOC, GPIO_PinSource8, GPIO_AF_TIM8);
     GPIO_PinAFConfig(GPIOC, GPIO_PinSource9, GPIO_AF_TIM8);
 
-    // ÅäÖÃTIM8
+    // é…ç½®TIM8
     TIM_TimeBaseInitTypeDef TIM8_TimeBaseInitStruct;
     TIM8_TimeBaseInitStruct.TIM_Period = 8400-1;  
     TIM8_TimeBaseInitStruct.TIM_Prescaler = 1;  
@@ -214,7 +214,7 @@ void Motor_PWM_TIM8_Init()
     TIM_TimeBaseInit(TIM8, &TIM8_TimeBaseInitStruct);
 
 
-    // ÅäÖÃTIM8µÄ4¸öÍ¨µÀÎªPWMÄ£Ê½
+    // é…ç½®TIM8çš„4ä¸ªé€šé“ä¸ºPWMæ¨¡å¼
     TIM_OCInitTypeDef TIM8_OCInitStruct;
     TIM8_OCInitStruct.TIM_OCMode = TIM_OCMode_PWM1;
     TIM8_OCInitStruct.TIM_OutputState = TIM_OutputState_Enable;
@@ -239,9 +239,9 @@ void Motor_PWM_TIM8_Init()
 
     printf("->Motor->TIM8_OC1_OC2_OC3_OC4 Init  done\n");
 
-    // Ê¹ÄÜTIM8Ö÷Êä³ö
+    // ä½¿èƒ½TIM8ä¸»è¾“å‡º
     TIM_CtrlPWMOutputs(TIM8, ENABLE);
-    // Ê¹ÄÜTIM8
+    // ä½¿èƒ½TIM8
     TIM_Cmd(TIM8, ENABLE);
 
     printf("->Motor->TIM1_TIM8 Enable  done\n");
@@ -250,7 +250,7 @@ void Motor_PWM_TIM8_Init()
 
 
 
-/// @brief µç»úÊ¹ÄÜº¯Êı
+/// @brief ç”µæœºä½¿èƒ½å‡½æ•°
 /// @param x LevelOut 
 //           LevelIn
 //           VerticalOut
@@ -325,9 +325,9 @@ void Motor_Cmd(uint8_t MotorSit,FunctionalState NewState)
     }
 }
 
-/// @brief ÉèÖÃÄ¬ÈÏÔË¶¯·½Ïò£º90·½ÏòÏòÉÏ£¬180·½ÏòÏòÏÂ£¬¸ù¾İÊä³öÓë·½Î»À´¿ØÖÆµç»ú
-/// @param Vo ´¹Ö±·½ÏòÊä³ö
-/// @param Lo Ë®Æ½·½ÏòÊä³ö
+/// @brief è®¾ç½®é»˜è®¤è¿åŠ¨æ–¹å‘ï¼š90æ–¹å‘å‘ä¸Šï¼Œ180æ–¹å‘å‘ä¸‹ï¼Œæ ¹æ®è¾“å‡ºä¸æ–¹ä½æ¥æ§åˆ¶ç”µæœº
+/// @param Vo å‚ç›´æ–¹å‘è¾“å‡º
+/// @param Lo æ°´å¹³æ–¹å‘è¾“å‡º
 __INLINE void T3Motor_CmdCombination(float Vo,float Lo,uint8_t a)
 {
     if(a)
@@ -378,7 +378,7 @@ __INLINE void T3Motor_CmdCombination(float Vo,float Lo,uint8_t a)
     
 }
 
-//µÍÍ¨ÂË²¨Æ÷
+//ä½é€šæ»¤æ³¢å™¨
 float (*T5LowPassFilter(float Vinput,float Linput,float a))[3]
 {
     static float last_Vinput;
@@ -398,16 +398,16 @@ float (*T5LowPassFilter(float Vinput,float Linput,float a))[3]
 //#define VcovL
 #define AllVL
 
-// µÚ5Ïîµç»ú¿ØÖÆº¯Êı
+// ç¬¬5é¡¹ç”µæœºæ§åˆ¶å‡½æ•°
 __INLINE void T5Motor_CmdCombination(int sit,float Vo,float Lo)
 {
-    Vo = Vo<0?(-Vo):Vo; //È¡¾ø¶ÔÖµ
+    Vo = Vo<0?(-Vo):Vo; //å–ç»å¯¹å€¼
     Lo = Lo<0?(-Lo):Lo;
 
-    float R = tanf((def/180)*PI)*H;//µ±Ç°µÄRÖµ
+    float R = tanf((def/180)*PI)*H;//å½“å‰çš„Rå€¼
 
-    float delta_R = 1-((target_R-R)/target_R);  //¼ÆËãRµÄ²îÖµµÄ°Ù·Ö±È
-    delta_R = delta_R>1?1:delta_R;  //ÏŞÖÆRµÄ²îÖµµÄ°Ù·Ö±ÈÔÚ0-1Ö®¼ä
+    float delta_R = 1-((target_R-R)/target_R);  //è®¡ç®—Rçš„å·®å€¼çš„ç™¾åˆ†æ¯”
+    delta_R = delta_R>1?1:delta_R;  //é™åˆ¶Rçš„å·®å€¼çš„ç™¾åˆ†æ¯”åœ¨0-1ä¹‹é—´
     if(delta_R<0.5)
     {
         delta_R += 0.6;
@@ -417,10 +417,10 @@ __INLINE void T5Motor_CmdCombination(int sit,float Vo,float Lo)
         delta_R = 1;
     }
 
-    Vo = Vo*delta_R;    //¸ù¾İRµÄ²îÖµµÄ°Ù·Ö±Èµ÷ÕûVoµÄÖµ
-    Lo = Lo*delta_R;    //¸ù¾İRµÄ²îÖµµÄ°Ù·Ö±Èµ÷ÕûLoµÄÖµ
+    Vo = Vo*delta_R;    //æ ¹æ®Rçš„å·®å€¼çš„ç™¾åˆ†æ¯”è°ƒæ•´Voçš„å€¼
+    Lo = Lo*delta_R;    //æ ¹æ®Rçš„å·®å€¼çš„ç™¾åˆ†æ¯”è°ƒæ•´Loçš„å€¼
     
-    //µÍÍ¨ÂË²¨
+    //ä½é€šæ»¤æ³¢
     float (*FilterOutputArr)[3] =  T5LowPassFilter(Vo,Lo,0.7);
     Vo = (*FilterOutputArr)[0];
     Lo = (*FilterOutputArr)[1];
@@ -532,20 +532,20 @@ __INLINE void T5Motor_CmdCombination(int sit,float Vo,float Lo)
     }
 }
 
-//½Ç¶ÈÆÛÆ­+Ä¿±ê»º³å  ÓÃÓÚµÚÎåÏî
+//è§’åº¦æ¬ºéª—+ç›®æ ‡ç¼“å†²  ç”¨äºç¬¬äº”é¡¹
 float T5Angle_Deceive(float def, float target_R)
 {
-    static float last_R;    //ÉÏÒ»´ÎµÄRÖµ
-    float output_R;     //Êä³öµÄRÖµ
-    float R = tanf((def/180)*PI)*H;//µ±Ç°µÄRÖµ
+    static float last_R;    //ä¸Šä¸€æ¬¡çš„Rå€¼
+    float output_R;     //è¾“å‡ºçš„Rå€¼
+    float R = tanf((def/180)*PI)*H;//å½“å‰çš„Rå€¼
 
-    float arv_R = R*0.5+last_R*0.5;    //Æ½¾ùRÖµ
+    float arv_R = R*0.5+last_R*0.5;    //å¹³å‡Rå€¼
 
-    if(target_R<=0.16)  //ÏÖÔÚRµÄÄ¿±êÖµÊÇ15cm
+    if(target_R<=0.16)  //ç°åœ¨Rçš„ç›®æ ‡å€¼æ˜¯15cm
     {
-        if(arv_R>=0.11) //ÅĞ¶ÏÏÖÔÚRµÄÖµÊÇ·ñ´ïµ½10cm
+        if(arv_R>=0.11) //åˆ¤æ–­ç°åœ¨Rçš„å€¼æ˜¯å¦è¾¾åˆ°10cm
         {           
-            //Èç¹û´ïµ½10cm£¬¾Í½«Ä¿±ê°ë¾¶µÄÖµÉèÖÃÎª15cm
+            //å¦‚æœè¾¾åˆ°10cmï¼Œå°±å°†ç›®æ ‡åŠå¾„çš„å€¼è®¾ç½®ä¸º15cm
             output_R = 0.15;
         }
         else
@@ -578,11 +578,11 @@ void StopAllMotor()
 
 
 
-//µç»úÎ»ÖÃ
+//ç”µæœºä½ç½®
 uint8_t MotorLocation=0;
 
 /*
-ÒÀ¾İ½Ç¶ÈÅĞ¶Ï·ç»ú·½Î»£¬µ÷ÓÃµç»úÊ¹ÄÜº¯Êı
+ä¾æ®è§’åº¦åˆ¤æ–­é£æœºæ–¹ä½ï¼Œè°ƒç”¨ç”µæœºä½¿èƒ½å‡½æ•°
 */
 __attribute__((__weak__)) void MotorState(float pitch,float roll) 
 {
@@ -677,7 +677,7 @@ __attribute__((__weak__)) void Task4_StopFast()
 } 
 
 /*
-ÒÀ¾İ¼«×ø±ê½Ç¶ÈºÍÎ»ÒÆ£¬¶ÔPIDÊä³öÖµÕı½»·Ö½â
+ä¾æ®æåæ ‡è§’åº¦å’Œä½ç§»ï¼Œå¯¹PIDè¾“å‡ºå€¼æ­£äº¤åˆ†è§£
 */
 void PWM_Allocation(float Output)
 {

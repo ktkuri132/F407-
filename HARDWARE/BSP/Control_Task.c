@@ -1,7 +1,7 @@
 /*
 
 
-Õâ¸öÎÄ¼ş ×°ÔØÁË  ·çÁ¦°ÚµÄºËĞÄ²¿·Ö---¿ØÖÆ²¿·Ö
+è¿™ä¸ªæ–‡ä»¶ è£…è½½äº†  é£åŠ›æ‘†çš„æ ¸å¿ƒéƒ¨åˆ†---æ§åˆ¶éƒ¨åˆ†
 
 
 
@@ -29,7 +29,7 @@ extern float pitch,roll,yaw,dis,def,polar,Opolar,absroll,abspitch;
 /*
 
 15cm 500,0,-65.5,00983
-25cm 395,0,0.0001,0.0104223  <---Õâ¸ö¾ßÓĞÆÕ±éĞÔ
+25cm 395,0,0.0001,0.0104223  <---è¿™ä¸ªå…·æœ‰æ™®éæ€§
 
 750,0,-350,0.0104223
 
@@ -48,14 +48,14 @@ float Target_angle = 0;
 uint8_t mode=0;
 
 
-/// @brief MPU6050¶ÁÖµ´¥·¢µÄÍâ²¿ÖĞ¶Ïº¯Êı      
+/// @brief MPU6050è¯»å€¼è§¦å‘çš„å¤–éƒ¨ä¸­æ–­å‡½æ•°      
 void EXTI15_10_IRQHandler(void)
 {
     if (EXTI_GetITStatus(EXTI_Line15) != RESET)
     {
         EXTI_ClearITPendingBit(EXTI_Line15);
         
-        mpu_dmp_get_data(&pitch, &roll, &yaw);      //¶ÁÈ¡MPU6050Êı¾İ
+        mpu_dmp_get_data(&pitch, &roll, &yaw);      //è¯»å–MPU6050æ•°æ®
 
         
         switch (mode)
@@ -73,7 +73,7 @@ void EXTI15_10_IRQHandler(void)
                 break;
 
             case 4:
-                Task4_StopFast();    //µ÷ÓÃ¿ØÖÆº¯Êı--->µÚ4Ïî
+                Task4_StopFast();    //è°ƒç”¨æ§åˆ¶å‡½æ•°--->ç¬¬4é¡¹
                 break;
 
 
@@ -90,7 +90,7 @@ void EXTI15_10_IRQHandler(void)
 float target_R=0.15;
 
 /*
-    ¶¨Ê±Æ÷2ÖĞ¶Ïº¯Êı,¶¨Ê±5ms¼ÆËãÒ»´ÎPID
+    å®šæ—¶å™¨2ä¸­æ–­å‡½æ•°,å®šæ—¶5msè®¡ç®—ä¸€æ¬¡PID
 */
 void TIM2_IRQHandler(void)
 {
@@ -106,7 +106,7 @@ void TIM2_IRQHandler(void)
 
 
 /*
-    µÚËÄÏî  ¿ìËÙÖÆ¶¯
+    ç¬¬å››é¡¹  å¿«é€Ÿåˆ¶åŠ¨
 */
 void Task4_StopFast() 
 {
@@ -126,7 +126,7 @@ void Task4_StopFast()
 float target_angle;
 
 /*
-    µÚÒ»,¶şÏî  µ¥°ÚÔË¶¯+·ù¶È¿Éµ÷
+    ç¬¬ä¸€,äºŒé¡¹  å•æ‘†è¿åŠ¨+å¹…åº¦å¯è°ƒ
 */
 void Task1_LineMove(float R,uint8_t forward)
 {
@@ -134,13 +134,13 @@ void Task1_LineMove(float R,uint8_t forward)
     static float A;
     static float time=0;
 	static uint8_t flag_1=0,flag_2=0,flag_3=0;
-    /*0¶È - 15cmÒÔÄÚ*/
+    /*0åº¦ - 15cmä»¥å†…*/
     static struct PID Taks1Pid1={750,0,-295,PidControl_LineMove};
-    /*0¶È - 20~25cm*/
+    /*0åº¦ - 20~25cm*/
     static struct PID Taks1Pid2={950,0,-320,PidControl_LineMove};
-    /*90¶È - 15cm*/
+    /*90åº¦ - 15cm*/
     static struct PID Taks1Pid3={720,0,-420,PidControl_LineMove};
-    /*90¶È - 20~25cm*/
+    /*90åº¦ - 20~25cm*/
     static struct PID Taks1Pid4={830,0,-200,PidControl_LineMove};
 
 
@@ -165,7 +165,7 @@ void Task1_LineMove(float R,uint8_t forward)
     
 
 //0.00983---0.15
-    time+=0.0104220;//µ½Î»£¬µ½Î»
+    time+=0.0104220;//åˆ°ä½ï¼Œåˆ°ä½
     if(time<T)
     {
         if(forward==0)
@@ -191,7 +191,7 @@ void Task1_LineMove(float R,uint8_t forward)
 
 
 /*
-    µÚÈıÏî  ½Ç¶È¿Éµ÷µÄµ¥°ÚÔË¶¯
+    ç¬¬ä¸‰é¡¹  è§’åº¦å¯è°ƒçš„å•æ‘†è¿åŠ¨
 */
 void Task3_AngleMove(float angle,float R)
 {
@@ -218,7 +218,7 @@ void Task3_AngleMove(float angle,float R)
     {   
         //angle = (140.625-angle)/3.75+angle,0.15;
         angle = 180 - angle;
-        //ÕâÀï¸ã¶àµãÊÇÒòÎª¸¡µãĞÍ¶ÁÖµ²»È·¶¨
+        //è¿™é‡Œæå¤šç‚¹æ˜¯å› ä¸ºæµ®ç‚¹å‹è¯»å€¼ä¸ç¡®å®š
         if(angle<=31)   
         {
             angle += de[3];
@@ -271,7 +271,7 @@ void Task3_AngleMove(float angle,float R)
  
     angle = (angle * 180) / PI;
 	//printf("%f,%f\r\n",VOutput,LOutput);
-/**************************************Ğ¡ÓÚ90¶È**************************************************************** */
+/**************************************å°äº90åº¦**************************************************************** */
     if(a==1)
     {
         //printf("%f,%f\r\n",angle,PI/6);
@@ -321,7 +321,7 @@ void Task3_AngleMove(float angle,float R)
                 time=0;
             }
         }
-        else if((angle>60+de[2])&&(angle<=80))//90¶È
+        else if((angle>60+de[2])&&(angle<=80))//90åº¦
         {
             VOutput = Taks3Pid7.PIDControl(Vtarget_angle,roll,&Taks3Pid7);
             LOutput = Taks3Pid8.PIDControl(Ltarget_angle,-pitch,&Taks3Pid8);
@@ -338,7 +338,7 @@ void Task3_AngleMove(float angle,float R)
         }
         
     }
-/*****************************************´óÓÚ90¶È************************************************************* */
+/*****************************************å¤§äº90åº¦************************************************************* */
     else if(a==2)
     {
         if(angle<=30+de[3])     //150   
@@ -389,7 +389,7 @@ void Task3_AngleMove(float angle,float R)
         
         
     }
-/******************************************µÈÓÚ90*********************************************************** */
+/******************************************ç­‰äº90*********************************************************** */
 
     
 }
@@ -398,9 +398,9 @@ void Task3_AngleMove(float angle,float R)
 
 float timepp = 0.0102220;
 /*
-    »­Ô²
+    ç”»åœ†
 
-    290,0,0  ÅÜ 15~20
+    290,0,0  è·‘ 15~20
     290,0,0
 */
 void Task5_CircleMove(float R)
@@ -444,7 +444,7 @@ void Task5_CircleMove(float R)
 
     int sit;
 
-    //Êµ¼ÊÕıÏÒÓëÄ¿±êÕıÏÒµÄ±È½Ï
+    //å®é™…æ­£å¼¦ä¸ç›®æ ‡æ­£å¼¦çš„æ¯”è¾ƒ
     //printf("%f,%f\r\n",Ltarget_angle,feedback_angle);
 
     
@@ -481,7 +481,7 @@ void Task5_CircleMove(float R)
     }
     
     
-    //´¹Ö±Êä³öºÍË®Æ½Êä³öµÄ±È½Ï
+    //å‚ç›´è¾“å‡ºå’Œæ°´å¹³è¾“å‡ºçš„æ¯”è¾ƒ
     //printf("%f,%f\r\n",VOutput,LOutput);
     
     T5Motor_CmdCombination(sit,VOutput,LOutput);
