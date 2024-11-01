@@ -258,7 +258,6 @@ void Task3_AngleMove(float angle,float R)
         a=1;
     }
     
-   // angle = angle+5;
     angle = angle*PI/180.0f;
 
     target_roll = atanf(R*cosf(angle)/0.86)/PI*180;
@@ -270,7 +269,6 @@ void Task3_AngleMove(float angle,float R)
     Ltarget_angle =sinf(wt)*target_pitch;
  
     angle = (angle * 180) / PI;
-	//printf("%f,%f\r\n",VOutput,LOutput);
 /**************************************小于90度**************************************************************** */
     if(a==1)
     {
@@ -440,9 +438,7 @@ void Task5_CircleMove(float R)
         Taks5Pid2.Kd = 95;//95
     }
     
-
     R += 0.05;
-
 
     GetPolar(roll,pitch);
     A = asinf(R/0.875)*180.0f/PI;
@@ -454,12 +450,6 @@ void Task5_CircleMove(float R)
 
     float feedback_angle = A*sinf((polar/180*PI)+PI);
 
-    int sit;
-
-    //实际正弦与目标正弦的比较
-    //printf("%f,%f\r\n",Ltarget_angle,feedback_angle);
-
-    
     time+=timepp;
     if(time>T)
     {
@@ -469,33 +459,24 @@ void Task5_CircleMove(float R)
 
     if((wt<PI/2)&&(wt>=0))   //0-PI/2
     {
-        sit = 1;
         VOutput = Taks5Pid.PIDControl(Vtarget_angle,absroll,&Taks5Pid);
         LOutput = Taks5Pid2.PIDControl(Ltarget_angle,abspitch,&Taks5Pid2);
     }
     else if((wt<PI)&&(wt>=PI/2)) //PI/2-PI
     {
-        sit = 2;
         VOutput = Taks5Pid.PIDControl(Vtarget_angle,absroll,&Taks5Pid);
         LOutput = Taks5Pid2.PIDControl(Ltarget_angle,-abspitch,&Taks5Pid2);
     }
     else if((wt<3*PI/2)&&(wt>=PI))   //PI-3PI/2
     {
-        sit = 3;
         VOutput = Taks5Pid.PIDControl(Vtarget_angle,-absroll,&Taks5Pid);
         LOutput = Taks5Pid2.PIDControl(Ltarget_angle,-abspitch,&Taks5Pid2);
     }
     else if((wt<2*PI)&&(wt>=3*PI/2)) //3PI/2-2PI
     {
-        sit = 4;
         VOutput = Taks5Pid.PIDControl(Vtarget_angle,-absroll,&Taks5Pid);
         LOutput = Taks5Pid2.PIDControl(Ltarget_angle,abspitch,&Taks5Pid2);
     }
     
-    
-    //垂直输出和水平输出的比较
-    //printf("%f,%f\r\n",VOutput,LOutput);
-    
-    //T5Motor_CmdCombination(sit,VOutput,LOutput);
-    T5_2Motor_CmdCombination(sit,VOutput,LOutput);
+    T5_2Motor_CmdCombination(VOutput,LOutput);
 }
