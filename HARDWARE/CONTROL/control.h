@@ -90,6 +90,7 @@ void MotorState(float pitch,float roll);
 /* 第五项  */
 void Task5_CircleMove(float R);
 void T5Motor_CmdCombination(int sit,float Vo,float Lo);
+void T5_2Motor_CmdCombination(int sit,float Vo,float Lo);
 float (*T5LowPassFilter(float Vinput,float Linput,float a))[3];
 
 #endif 

@@ -412,25 +412,32 @@ void Task5_CircleMove(float R)
     static float time=0;
     static float Vtarget_angle,Ltarget_angle;
     
-    static struct PID Taks5Pid={295,0,0,PidControl_LineMove};
-    static struct PID Taks5Pid2={295,0,0,PidControl_LineMove};
+    static struct PID Taks5Pid={200,0,50,PidControl_LineMove};
+    static struct PID Taks5Pid2={270,0,60,PidControl_LineMove};
     
     if((R>=0.24)&&(R<=0.26))
     {
         R=0.24;
+        Taks5Pid.Kp = 250;
+        Taks5Pid.Kd = 60;
     }
     else if((R>=0.29)&&(R<=0.31))
     {
-        R=0.26;
-        Taks5Pid.Kp = 290;
-        Taks5Pid.Kd = 0;
-        Taks5Pid2.Kp = 290;
-        Taks5Pid2.Kd = 0;
+        R=0.265;
+        Taks5Pid.Kp = 260;
+        Taks5Pid.Kd = 60;
+
+        Taks5Pid2.Kp = 280;
+        Taks5Pid2.Kd = 80;
     }
     else if((R>=0.34)&&(R<=0.36))
     {
-        R=0.32;
-        
+        R=0.282511;
+        Taks5Pid.Kp = 336;//346
+        Taks5Pid.Kd = 96;//100
+
+        Taks5Pid2.Kp = 316;//326
+        Taks5Pid2.Kd = 95;//95
     }
     
 
@@ -489,6 +496,6 @@ void Task5_CircleMove(float R)
     //垂直输出和水平输出的比较
     //printf("%f,%f\r\n",VOutput,LOutput);
     
-    T5Motor_CmdCombination(sit,VOutput,LOutput);
-
+    //T5Motor_CmdCombination(sit,VOutput,LOutput);
+    T5_2Motor_CmdCombination(sit,VOutput,LOutput);
 }

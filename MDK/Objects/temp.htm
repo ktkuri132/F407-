@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\temp.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\temp.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060528: Last Updated: Tue Oct 29 22:45:24 2024
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060528: Last Updated: Fri Nov 01 22:38:57 2024
 <BR><P>
 <H3>Maximum Stack Usage =        436 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -359,12 +359,12 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f40_41xxx.o(RESET)
 </UL>
-<P><STRONG><a name="[a5]"></a>Task5_CircleMove</STRONG> (Thumb, 628 bytes, Stack size 48 bytes, control_task.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 184<LI>Call Chain = Task5_CircleMove &rArr; T5Motor_CmdCombination &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
+<P><STRONG><a name="[a5]"></a>Task5_CircleMove</STRONG> (Thumb, 684 bytes, Stack size 40 bytes, control_task.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 176<LI>Call Chain = Task5_CircleMove &rArr; GetPolar &rArr; __aeabi_dmul &rArr; _double_epilogue &rArr; _double_round
 </UL>
 <BR>[Calls]<UL><LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
 <LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2f
-<LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;T5Motor_CmdCombination
+<LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;T5_2Motor_CmdCombination
 <LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetPolar
 <LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
 <LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ddiv
@@ -377,7 +377,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[29]"></a>TIM2_IRQHandler</STRONG> (Thumb, 38 bytes, Stack size 8 bytes, control_task.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 192<LI>Call Chain = TIM2_IRQHandler &rArr; Task5_CircleMove &rArr; T5Motor_CmdCombination &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
+<BR><BR>[Stack]<UL><LI>Max Depth = 184<LI>Call Chain = TIM2_IRQHandler &rArr; Task5_CircleMove &rArr; GetPolar &rArr; __aeabi_dmul &rArr; _double_epilogue &rArr; _double_round
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_GetITStatus
 <LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ClearITPendingBit
@@ -435,7 +435,7 @@ Global Symbols
 <P><STRONG><a name="[a0]"></a>Motor_Cmd</STRONG> (Thumb, 140 bytes, Stack size 12 bytes, control.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = Motor_Cmd
 </UL>
-<BR>[Called By]<UL><LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;T5Motor_CmdCombination
+<BR>[Called By]<UL><LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;T5_2Motor_CmdCombination
 <LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;T3Motor_CmdCombination
 <LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StopAllMotor
 <LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task1_LineMove
@@ -443,7 +443,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[17a]"></a>T5LowPassFilter</STRONG> (Thumb, 56 bytes, Stack size 0 bytes, control.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;T5Motor_CmdCombination
+<BR><BR>[Called By]<UL><LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;T5_2Motor_CmdCombination
 </UL>
 
 <P><STRONG><a name="[b7]"></a>T5Angle_Deceive</STRONG> (Thumb, 152 bytes, Stack size 32 bytes, control.o(.text), UNUSED)
@@ -2824,7 +2824,7 @@ Global Symbols
 </UL>
 <BR>[Called By]<UL><LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Get_Temperature
 <LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;T5Angle_Deceive
-<LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;T5Motor_CmdCombination
+<LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;T5_2Motor_CmdCombination
 <LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task5_CircleMove
 <LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task1_LineMove
 <LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task3_AngleMove
@@ -2874,7 +2874,7 @@ Global Symbols
 </UL>
 <BR>[Called By]<UL><LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;T5Angle_Deceive
 <LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_dmp_get_data
-<LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;T5Motor_CmdCombination
+<LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;T5_2Motor_CmdCombination
 <LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PWM_Allocation
 <LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetPolar
 <LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task5_CircleMove
@@ -2923,8 +2923,7 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[172]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_double_epilogue
 </UL>
-<BR>[Called By]<UL><LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;T5Motor_CmdCombination
-<LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADCvalue_convert
+<BR>[Called By]<UL><LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADCvalue_convert
 <LI><a href="#[12c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_ShowFloatNum
 </UL>
 
@@ -2939,15 +2938,14 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[174]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_llsr
 </UL>
-<BR>[Called By]<UL><LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;T5Motor_CmdCombination
-<LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADCvalue_convert
+<BR>[Called By]<UL><LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADCvalue_convert
 <LI><a href="#[12c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_ShowFloatNum
 </UL>
 
 <P><STRONG><a name="[6e]"></a>__aeabi_f2d</STRONG> (Thumb, 38 bytes, Stack size 0 bytes, f2d.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;T5Angle_Deceive
 <LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_dmp_get_data
-<LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;T5Motor_CmdCombination
+<LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;T5_2Motor_CmdCombination
 <LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PWM_Allocation
 <LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetPolar
 <LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task5_CircleMove
@@ -2980,7 +2978,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Get_Temperature
 <LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;T5Angle_Deceive
 <LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_dmp_get_data
-<LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;T5Motor_CmdCombination
+<LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;T5_2Motor_CmdCombination
 <LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PWM_Allocation
 <LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetPolar
 <LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task5_CircleMove
@@ -3111,16 +3109,14 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task3_AngleMove
 </UL>
 
-<P><STRONG><a name="[a7]"></a>T5Motor_CmdCombination</STRONG> (Thumb, 552 bytes, Stack size 48 bytes, control.o(i.T5Motor_CmdCombination))
-<BR><BR>[Stack]<UL><LI>Max Depth = 136<LI>Call Chain = T5Motor_CmdCombination &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
+<P><STRONG><a name="[a7]"></a>T5_2Motor_CmdCombination</STRONG> (Thumb, 380 bytes, Stack size 24 bytes, control.o(i.T5_2Motor_CmdCombination))
+<BR><BR>[Stack]<UL><LI>Max Depth = 112<LI>Call Chain = T5_2Motor_CmdCombination &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
 </UL>
 <BR>[Calls]<UL><LI><a href="#[17a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;T5LowPassFilter
 <LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
 <LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2f
 <LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Motor_Cmd
-<LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ui2d
 <LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
-<LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2uiz
 <LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2d
 <LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_tanf
 </UL>
@@ -3335,7 +3331,7 @@ Global Symbols
 <LI><a href="#[188]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ARM_fpclassifyf
 </UL>
 <BR>[Called By]<UL><LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;T5Angle_Deceive
-<LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;T5Motor_CmdCombination
+<LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;T5_2Motor_CmdCombination
 <LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetPolar
 </UL>
 
