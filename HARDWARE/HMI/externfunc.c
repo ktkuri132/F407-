@@ -1,6 +1,7 @@
 /*
 
     这里搞了一些HMI的外部函数
+            嘿嘿嘿
 
 */
 
@@ -11,6 +12,7 @@ extern uint8_t mode;
 extern uint16_t Res;
 extern float Target_dis,Target_angle,target_R;
 
+int HFY=1;
 
 //通用串口屏协议
 void HMI_ResCheck()
@@ -28,8 +30,7 @@ void HMI_ResCheck()
 
         case 0x33:  //进入模式3的角度设置
         {
-            mode = 3;
-            Target_angle=30;
+            HFY = 1;
             Target_dis=0.15;
         }break;
         
@@ -85,26 +86,71 @@ void HMI_Mode1_2()
     }
 }
 
-
-
 void HMI_Mode3()
 {
     char buf[50];
-    if(mode==3)
+    if (HFY==1)    
     {
         switch (Res)
         {
-            case 0x52:  //角度增加
+            case 0x52:  //90度
             {
-                Target_angle += 5;
+                Target_angle = 90;
+                mode=3;
                 sprintf(buf,"page2.t3.txt=\"%d\"",(uint16_t)Target_angle);
                 HMISends(USART_PORT_2,buf);		
                 HMISendb(USART_PORT_2,0xff);
             }break;
 
-            case 0x53:  //角度减小
+            case 0x54:  //30度
             {
-                Target_angle -= 5;
+                Target_angle = 30;
+                mode=3;
+                sprintf(buf,"page2.t3.txt=\"%d\"",(uint16_t)Target_angle);
+                HMISends(USART_PORT_2,buf);		
+                HMISendb(USART_PORT_2,0xff);
+            }break;
+
+            case 0x55:  //45度
+            {
+                Target_angle = 45;
+                mode=3;
+                sprintf(buf,"page2.t3.txt=\"%d\"",(uint16_t)Target_angle);
+                HMISends(USART_PORT_2,buf);		
+                HMISendb(USART_PORT_2,0xff);
+            }break;
+
+            case 0x56:  //60度
+            {
+                Target_angle = 60;
+                mode=3;
+                sprintf(buf,"page2.t3.txt=\"%d\"",(uint16_t)Target_angle);
+                HMISends(USART_PORT_2,buf);		
+                HMISendb(USART_PORT_2,0xff);
+            }break;
+
+            case 0x57:  //120度
+            {
+                Target_angle = 120;
+                mode=3;
+                sprintf(buf,"page2.t3.txt=\"%d\"",(uint16_t)Target_angle);
+                HMISends(USART_PORT_2,buf);		
+                HMISendb(USART_PORT_2,0xff);
+            }break;
+
+            case 0x58:  //135度
+            {
+                Target_angle = 135;
+                mode=3;
+                sprintf(buf,"page2.t3.txt=\"%d\"",(uint16_t)Target_angle);
+                HMISends(USART_PORT_2,buf);		
+                HMISendb(USART_PORT_2,0xff);
+            }break;
+
+            case 0x59:  //150度
+            {
+                Target_angle = 150;
+                mode=3;
                 sprintf(buf,"page2.t3.txt=\"%d\"",(uint16_t)Target_angle);
                 HMISends(USART_PORT_2,buf);		
                 HMISendb(USART_PORT_2,0xff);

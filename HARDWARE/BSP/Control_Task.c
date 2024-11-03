@@ -40,7 +40,7 @@ extern float pitch,roll,yaw,dis,def,polar,Opolar,absroll,abspitch;
 
 
 //         30 45 60 150  135   120  90
-int de[7]={-1,+0,-5,-7,+12.5,+10.5,-10 };
+int de[7]={-1,+0,-2,+13,+12.5,+15.5,-3 };
 
 
 float Target_dis=0;
@@ -210,8 +210,8 @@ void Task3_AngleMove(float angle,float R)
     static struct PID Taks3Pid5={380,0,-120,PidControl_LineMove};
     static struct  PID Taks3Pid6={380,0,-120,PidControl_LineMove};
 
-    static struct PID Taks3Pid7={340,0,-90,PidControl_LineMove};
-    static struct  PID Taks3Pid8={340,0,-90,PidControl_LineMove};
+    static struct PID Taks3Pid7={400,0,-80,PidControl_LineMove};
+    static struct  PID Taks3Pid8={400,0,-80,PidControl_LineMove};
 
     int a;
     if(angle>90)
@@ -321,7 +321,7 @@ void Task3_AngleMove(float angle,float R)
                 time=0;
             }
         }
-        else if((angle>60+de[2])&&(angle<=80))//90度
+        else if((angle>60+de[2])&&(angle<=90+de[6]))//90度
         {
             VOutput = Taks3Pid7.PIDControl(Vtarget_angle,roll,&Taks3Pid7);
             LOutput = Taks3Pid8.PIDControl(Ltarget_angle,-pitch,&Taks3Pid8);
@@ -373,10 +373,14 @@ void Task3_AngleMove(float angle,float R)
         }
         else if((angle>45+de[4])&&(angle<=60+de[5]))     //120 
         {
+            Taks3Pid5.Kp = 400;
+            Taks3Pid5.Kd = -100;
+            Taks3Pid6.Kp = 400;
+            Taks3Pid6.Kd -100;
             VOutput = Taks3Pid5.PIDControl(Vtarget_angle,-roll,&Taks3Pid5);
             LOutput = Taks3Pid6.PIDControl(Ltarget_angle,-pitch,&Taks3Pid6);
 
-            time +=0.0103323;
+            time +=0.0103123;   //时间搞大距离变短
             if(time<T)
             {
                 T3Motor_CmdCombination(VOutput,LOutput,0);
