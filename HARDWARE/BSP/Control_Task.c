@@ -80,7 +80,6 @@ void EXTI15_10_IRQHandler(void)
             default:
                     StopAllMotor();
             break;
-                
         }
 
     }

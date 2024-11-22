@@ -66,7 +66,7 @@ int BSP_Init()
         printf("->MPU6050 DMP init success\n");
     }
 
-     
+        
     EXIT15_Init();
     printf("->ETIT15 Init done\n");
     TIM2_Init(3);

@@ -1,12 +1,14 @@
 .\objects\bsp.o: ..\HARDWARE\BSP\bsp.c
 .\objects\bsp.o: ..\HARDWARE\BSP\bsp.h
 .\objects\bsp.o: ..\HARDWARE\OLED_SPI\OLED.h
-.\objects\bsp.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\bsp.o: C:\Users\ktkuru\AppData\Local\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\bsp.o: ..\HARDWARE\OLED_SPI\OLED_Data.h
 .\objects\bsp.o: ..\USER\stm32f4xx.h
-.\objects\bsp.o: C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include\core_cm4.h
-.\objects\bsp.o: C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include\cmsis_compiler.h
-.\objects\bsp.o: C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include\cmsis_armcc.h
+.\objects\bsp.o: C:\Users\ktkuru\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\core_cm4.h
+.\objects\bsp.o: C:\Users\ktkuru\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_version.h
+.\objects\bsp.o: C:\Users\ktkuru\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_compiler.h
+.\objects\bsp.o: C:\Users\ktkuru\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_armcc.h
+.\objects\bsp.o: C:\Users\ktkuru\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\mpu_armv7.h
 .\objects\bsp.o: ..\USER\system_stm32f4xx.h
 .\objects\bsp.o: ..\USER\stm32f4xx_conf.h
 .\objects\bsp.o: ..\STM32F4xx_FWLib\inc\stm32f4xx_adc.h
@@ -37,7 +39,7 @@
 .\objects\bsp.o: ..\STM32F4xx_FWLib\inc\stm32f4xx_dcmi.h
 .\objects\bsp.o: ..\STM32F4xx_FWLib\inc\stm32f4xx_fsmc.h
 .\objects\bsp.o: ..\SYSTEM\usart\usart.h
-.\objects\bsp.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\bsp.o: C:\Users\ktkuru\AppData\Local\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\bsp.o: ..\SYSTEM\sys\sys.h
 .\objects\bsp.o: ..\HARDWARE\BSP\bsp.h
 .\objects\bsp.o: ..\HARDWARE\CONTROL\control.h
