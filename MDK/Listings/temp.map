@@ -53,7 +53,6 @@ Section Cross References
     control_task.o(.text) refers to inv_mpu.o(.text) for mpu_dmp_get_data
     control_task.o(.text) refers to main.o(.data) for yaw
     control_task.o(.text) refers to asinf.o(i.__hardfp_asinf) for __hardfp_asinf
-    control_task.o(.text) refers to control.o(i.T5Motor_CmdCombination) for T5Motor_CmdCombination
     control_task.o(.text) refers to stm32f4xx_tim.o(.text) for TIM_GetITStatus
     control_task.o(.text) refers to main.o(.data) for polar
     control_task.o(.text) refers to main.o(.data) for absroll
@@ -78,13 +77,10 @@ Section Cross References
     control.o(.text) refers to main.o(.data) for Opolar
     control.o(.text) refers to main.o(.data) for polar
     control.o(.text) refers to control.o(.data) for .data
-    control.o(.text) refers to dadd.o(.text) for __aeabi_dadd
-    control.o(.text) refers to control.o(.bss) for .bss
-    control.o(.text) refers to usart.o(.data) for Stop_flag
-    control.o(.text) refers to main.o(.data) for pitch
     control.o(.text) refers to cosf.o(i.__hardfp_cosf) for __hardfp_cosf
     control.o(.text) refers to sinf.o(i.__hardfp_sinf) for __hardfp_sinf
-    control.o(.data) refers to control.o(.text) for PidControl_Stop
+    control.o(.text) refers to control.o(.bss) for .bss
+    control.o(.text) refers to usart.o(.data) for Stop_flag
     nvic.o(.text) refers to misc.o(.text) for NVIC_PriorityGroupConfig
     myiic.o(.text) refers to stm32f4xx_rcc.o(.text) for RCC_AHB1PeriphClockCmd
     myiic.o(.text) refers to stm32f4xx_gpio.o(.text) for GPIO_Init
@@ -722,16 +718,6 @@ Section Cross References
     dsqrt.o(.text) refers to llushr.o(.text) for __aeabi_llsr
     dsqrt.o(.text) refers to depilogue.o(.text) for _double_round
     control.o(i.T3Motor_CmdCombination) refers to control.o(.text) for Motor_Cmd
-    control.o(i.T5Motor_CmdCombination) refers to f2d.o(.text) for __aeabi_f2d
-    control.o(i.T5Motor_CmdCombination) refers to dmul.o(.text) for __aeabi_dmul
-    control.o(i.T5Motor_CmdCombination) refers to d2f.o(.text) for __aeabi_d2f
-    control.o(i.T5Motor_CmdCombination) refers to tanf.o(i.__hardfp_tanf) for __hardfp_tanf
-    control.o(i.T5Motor_CmdCombination) refers to dadd.o(.text) for __aeabi_dadd
-    control.o(i.T5Motor_CmdCombination) refers to control.o(.text) for T5LowPassFilter
-    control.o(i.T5Motor_CmdCombination) refers to dfltui.o(.text) for __aeabi_ui2d
-    control.o(i.T5Motor_CmdCombination) refers to dfixui.o(.text) for __aeabi_d2uiz
-    control.o(i.T5Motor_CmdCombination) refers to main.o(.data) for def
-    control.o(i.T5Motor_CmdCombination) refers to control_task.o(.data) for target_R
 
 
 ==============================================================================
@@ -933,6 +919,7 @@ Removing Unused input sections from the image.
     Removing dneg.o(.text), (6 bytes).
 
 193 unused section(s) (total 22897 bytes) removed from the image.
+<<<<<<< HEAD
 
 ==============================================================================
 
@@ -2406,3 +2393,5 @@ Image component sizes
 
 ==============================================================================
 
+=======
+>>>>>>> 6e00d8f55b86cb791e805c2f66d60e950cb0d876

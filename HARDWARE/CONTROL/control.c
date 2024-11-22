@@ -395,14 +395,11 @@ float (*T5LowPassFilter(float Vinput,float Linput,float a))[3]
     return &Output;
 }
 
-//#define VcovL
-#define AllVL
-
 // 第5项电机控制函数
-__INLINE void T5Motor_CmdCombination(int sit,float Vo,float Lo)
+__INLINE void T5_2Motor_CmdCombination(float Vo,float Lo)
 {
-    Vo = Vo<0?(-Vo):Vo; //取绝对值
-    Lo = Lo<0?(-Lo):Lo;
+    //Vo = Vo<0?(-Vo):Vo; //取绝对值
+    //Lo = Lo<0?(-Lo):Lo;
 
     float R = tanf((def/180)*PI)*H;//当前的R值
 
@@ -418,149 +415,42 @@ __INLINE void T5Motor_CmdCombination(int sit,float Vo,float Lo)
     }
 
     Vo = Vo*delta_R;    //根据R的差值的百分比调整Vo的值
-    Lo = Lo*delta_R;    //根据R的差值的百分比调整Lo的值
+    Lo = Lo*delta_R+400;    //根据R的差值的百分比调整Lo的值
     
     //低通滤波
     float (*FilterOutputArr)[3] =  T5LowPassFilter(Vo,Lo,0.3);
     Vo = (*FilterOutputArr)[0];
     Lo = (*FilterOutputArr)[1];
 
-    
-
-    switch (sit)
+    if(Vo>0)
     {
-        case 1:
-        {
-            
-            #ifdef AllVL
-            Motor_Cmd(LevelOut,ENABLE);
-            Motor_Cmd(LevelIn,DISABLE);
-            Motor->MLevelOut =(uint32_t)(Lo)*1.1;
-
-            Motor_Cmd(VerticalIn,ENABLE);
-            Motor_Cmd(VerticalOut,DISABLE);
-            Motor->MVerticalIn =(uint32_t)(Vo)*1.2;
-            #else
-                #ifdef VcovL
-                    Motor_Cmd(LevelOut,ENABLE);
-                    Motor_Cmd(LevelIn,DISABLE);
-                    Motor->MLevelOut =(uint32_t)(Lo);
-                #else
-                    Motor_Cmd(VerticalIn,ENABLE);
-                    Motor_Cmd(VerticalOut,DISABLE);
-                    Motor->MVerticalIn =(uint32_t)(Vo);
-                #endif
-            #endif
-        }break;
-
-        case 2:
-        {
-            
-            #ifdef AllVL
-            Motor_Cmd(LevelOut,DISABLE);
-            Motor_Cmd(LevelIn,ENABLE);
-            Motor->MLevelIn =(uint32_t)(Lo);
-
-            Motor_Cmd(VerticalIn,ENABLE);
-            Motor_Cmd(VerticalOut,DISABLE);
-            Motor->MVerticalIn =(uint32_t)(Vo)*1.2;
-            #else
-                #ifdef VcovL
-                    Motor_Cmd(LevelOut,DISABLE);
-                    Motor_Cmd(LevelIn,ENABLE);
-                    Motor->MLevelIn =(uint32_t)(Lo);
-                #else
-                    Motor_Cmd(VerticalIn,ENABLE);
-                    Motor_Cmd(VerticalOut,DISABLE);
-                    Motor->MVerticalIn =(uint32_t)(Vo);
-                #endif
-            #endif
-            
-        }break;
-        
-        case 3:
-        {
-            #ifdef AllVL
-            Motor_Cmd(LevelOut,DISABLE);
-            Motor_Cmd(LevelIn,ENABLE);
-            Motor->MLevelIn =(uint32_t)(Lo);
-
-            Motor_Cmd(VerticalOut,ENABLE);
-            Motor_Cmd(VerticalIn,DISABLE);
-            Motor->MVerticalOut =(uint32_t)(Vo);
-            #else
-                #ifdef VcovL
-                    Motor_Cmd(LevelOut,DISABLE);
-                    Motor_Cmd(LevelIn,ENABLE);
-                    Motor->MLevelIn =(uint32_t)(Lo);
-                #else
-                    Motor_Cmd(VerticalOut,ENABLE);
-                    Motor_Cmd(VerticalIn,DISABLE);
-                    Motor->MVerticalOut =(uint32_t)(Vo);
-                #endif
-            #endif
-
-        }break;
-
-        case 4:
-        {
-            
-            #ifdef AllVL
-                Motor_Cmd(LevelOut,ENABLE);
-                Motor_Cmd(LevelIn,DISABLE);
-                Motor->MLevelOut =(uint32_t)(Lo)*1.1;
-
-                Motor_Cmd(VerticalOut,ENABLE);
-                Motor_Cmd(VerticalIn,DISABLE);
-                Motor->MVerticalOut =(uint32_t)(Vo);
-            #else
-                #ifdef VcovL
-                    Motor_Cmd(LevelOut,ENABLE);
-                    Motor_Cmd(LevelIn,DISABLE);
-                    Motor->MLevelOut =(uint32_t)(Lo);
-                #else
-                    Motor_Cmd(VerticalOut,ENABLE);
-                    Motor_Cmd(VerticalIn,DISABLE);
-                    Motor->MVerticalOut =(uint32_t)(Vo);
-                #endif
-            #endif
+        Motor_Cmd(VerticalOut,ENABLE);
+        Motor_Cmd(VerticalIn,DISABLE);
+        Motor->MVerticalOut = (uint32_t)(Vo);
+    }
+    else if(Vo<0)
+    {
+        Motor_Cmd(VerticalIn,ENABLE);
+        Motor_Cmd(VerticalOut,DISABLE);
+        Motor->MVerticalIn = (uint32_t)(-Vo);
+    }
+    if(Lo>0)
+    {
+        Motor_Cmd(LevelOut,ENABLE);
+        Motor_Cmd(LevelIn,DISABLE);
+        Motor->MLevelOut = (uint32_t)(Lo);
+    }
+    else if (Lo<0)
+    {
+        Motor_Cmd(LevelIn,ENABLE);
+        Motor_Cmd(LevelOut,DISABLE);
+        Motor->MLevelIn = (uint32_t)(-Lo);
+    }
+    
            
-        }break;
- 
-    default:break;
-        
-    }
+
 }
 
-//角度欺骗+目标缓冲  用于第五项
-float T5Angle_Deceive(float def, float target_R)
-{
-    static float last_R;    //上一次的R值
-    float output_R;     //输出的R值
-    float R = tanf((def/180)*PI)*H;//当前的R值
-
-    float arv_R = R*0.5+last_R*0.5;    //平均R值
-
-    if(target_R<=0.16)  //现在R的目标值是15cm
-    {
-        if(arv_R>=0.11) //判断现在R的值是否达到10cm
-        {           
-            //如果达到10cm，就将目标半径的值设置为15cm
-            output_R = 0.15;
-        }
-        else
-        {
-            R = arv_R;
-        }
-    }
-
-    if(R>=0.24)
-    {
-        R=0.24;
-    }
-    
-    R += 0.05;
-}
 
 void StopAllMotor()
 {
@@ -624,57 +514,6 @@ __attribute__((__weak__)) void MotorState(float pitch,float roll)
         MotorLocation = 0;
     }
 }
-
-__attribute__((__weak__)) void Task4_StopFast()
-{
-    GetPolar(roll,pitch);
-
-    static float VerticalOutput;
-    static float LevelOutput;
-
-    static struct PID Taks4Pid1={800,-1,0,PidControl_Stop};
-    static struct PID Taks4Pid2={800,-1,0,PidControl_Stop};
-
-    VerticalOutput = Taks4Pid1.PIDControl(TargetRoll,absroll, &Taks4Pid1);
-    LevelOutput = Taks4Pid2.PIDControl(TargetPitch,abspitch, &Taks4Pid2);
-
-    printf("%f,%f\r\n",VerticalOutput,LevelOutput);
-
-    VerticalOutput=VerticalOutput>8400?8400:(VerticalOutput<0?(-VerticalOutput):VerticalOutput);
-    LevelOutput=LevelOutput>8400?8400:(LevelOutput<0?(-LevelOutput):LevelOutput);
-
-    switch (MotorLocation)
-    {
-        case 4:
-        {
-            Motor->MLevelIn =(uint32_t)(LevelOutput);
-            Motor->MVerticalOut =(uint32_t)(VerticalOutput);
-        }break;
-        
-        case 1:
-        {
-            Motor->MLevelOut =(uint32_t)(LevelOutput);
-            Motor->MVerticalOut =(uint32_t)(VerticalOutput);
-        }break;
-
-        case 3:
-        {
-            Motor->MLevelIn =(uint32_t)(LevelOutput);
-            Motor->MVerticalIn =(uint32_t)(VerticalOutput);
-        }break;
-
-        case 2:
-        {
-            Motor->MLevelOut =(uint32_t)(LevelOutput);
-            Motor->MVerticalIn =(uint32_t)(VerticalOutput);
-        }break;  
-    
-        default:break;
-            
-    }
-
-
-} 
 
 /*
 依据极坐标角度和位移，对PID输出值正交分解
